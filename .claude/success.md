@@ -46,9 +46,16 @@ Skill / Effect 열은 영문 원본이 Korean-overlay 아틀라스로 렌더되�
 - ⚠️ 칼 상세 설명 바닥 텍스트 `공: 18 오의: 비연환톱 …` → **영문으로 되돌아감** (홀수 skip)
 - ⚠️ Skill/Effect 열: 영문 원본 (읽기 가능, 깨짐 없음)
 
-### 다음 단계 (Task #10)
-마커 보존 번역 전략: 칼 설명의 `Attack:`, `Secret Art:`, `Effect:` 접두사만 영문 유지, 값은 한글로 교체.
-게임 파서가 마커를 찾은 뒤 한글 값을 추출 → Skill/Effect 열이 한글로 표시.
+### Phase 2 완료 (commit 673cf8f, 사용자 확인 2026-04-14)
+NinPriPatch US의 스킬명 테이블(595-1176)과 `_itemdata_main`(878 entries) 사이의
+**+8 인덱스 시프트를 경험적으로 확증** (22개 샘플 - Misty Slash→안개자르기, Divine Moon→월광 등).
+
+`build_patch.py`에 `custom_idx` 매치 모드 + `us_itemdata_hybrid` 빌더 추가:
+- `[0, 594)` ∩ ¬(홀수 371-593): `_itemdata[i].ko`
+- `[595, 1177)`: `_itemdata_main[i-8].ko`
+
+결과: `US[662] = 나선은하`, `US[608] = 월광`, `US[595] = 안개자르기` 등.
+사용자 실기 확인: **어빌리티 화면 Skill/Effect 열 정상 한글 표시**.
 
 ---
 
