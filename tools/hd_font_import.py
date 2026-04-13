@@ -94,11 +94,16 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         ax, ay = asc * cs, asr * cs
         draw.rectangle([ax, ay, ax + cs - 1, ay + cs - 1], fill=(0, 0, 0, 0))
 
-    # Render ASCII glyphs at positions 960+
+    # Render ASCII glyphs at positions 960+. Skip cells that Korean was
+    # relocated into (cells 993-1003 for 둔/둘/둠/둥/둬/뒤/뒷/드/득/든) so
+    # their Korean glyphs (drawn above) survive.
     pos = 960
     for code in range(0x20, 0x7F):
         if pos >= 1024:
             break
+        if pos in korean_cells:
+            pos += 1
+            continue
         row = pos // cols
         col = pos % cols
         x, y = col * cs, row * cs
@@ -123,6 +128,28 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
                 gy = y + (cs - gh) // 2 - bbox[1]
             draw.text((gx, gy), ch, font=font_ascii, fill=acolor)
         pos += 1
+
+    # Runtime-digit overlay at cells 192+code (240-249) so the game's raw
+    # ASCII digit output (from %D/%d formatting) shows actual digit glyphs
+    # instead of the Korean chars that used to live at those cells.
+    for code in range(0x30, 0x3A):
+        cell = 192 + code
+        row = cell // cols
+        col = cell % cols
+        x, y = col * cs, row * cs
+        if fmt == "white":
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(255, 255, 255, 0))
+            dcolor = (255, 255, 255, 255)
+        else:
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
+            dcolor = (247, 247, 247, 255)
+        ch = chr(code)
+        bbox = font_ascii.getbbox(ch)
+        gw = bbox[2] - bbox[0]
+        gh = bbox[3] - bbox[1]
+        gx = x + (cs - gw) // 2 - bbox[0]
+        gy = y + (cs - gh) // 2 - bbox[1]
+        draw.text((gx, gy), ch, font=font_ascii, fill=dcolor)
 
     # Downscale to max_dim if needed
     if w > max_dim or h > max_dim:

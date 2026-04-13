@@ -197,12 +197,19 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         ax, ay = asc * cs, asr * cs
         draw.rectangle([ax, ay, ax+cs-1, ay+cs-1], fill=(0, 0, 0, 0))
 
-    # Render ASCII glyphs at positions 960+ (remapped from Korean overlap zone)
+    # Render ASCII glyphs at positions 960+ (remapped from Korean overlap zone).
+    # Skip cells that Korean was relocated into (e.g. cells 993-1003 for
+    # 둔/둘/둠/둥/둬/뒤/뒷/드/득/든). Those Korean glyphs were already drawn
+    # above and must not be overwritten by ASCII letters.
     ascii_font = ImageFont.truetype(font_path, 18)  # slightly smaller for ASCII
     pos = 960
     for code in range(0x20, 0x7F):
         if pos >= 1024:
             break
+        if pos in korean_cells:
+            # Reserved for a relocated Korean glyph — do not overwrite.
+            pos += 1
+            continue
         row = pos // cols
         col = pos % cols
         x, y = col * cs, row * cs
@@ -230,6 +237,30 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
                 gy = y + (cs - gh) // 2 - bbox[1]
             draw.text((gx, gy), ch, font=ascii_font, fill=acolor)
         pos += 1
+
+    # Runtime-digit overlay: when the game formats integers via %D/%d it emits
+    # raw ASCII bytes 0x30-0x39 and reads cells 192+code in this texture. Those
+    # cells originally held Korean 둔/둘/둠/둥/둬/뒤/뒷/드/득/든 — we moved those
+    # to cells 993+ in kr_sjis_mapping.json, freeing cells 240-249 to carry
+    # digit glyphs for runtime rendering.
+    for code in range(0x30, 0x3A):  # '0'-'9'
+        cell = 192 + code
+        row = cell // cols
+        col = cell % cols
+        x, y = col * cs, row * cs
+        if fmt == "white":
+            draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(255,255,255,0))
+            dcolor = (255,255,255,255)
+        else:
+            draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
+            dcolor = (247,247,247,255)
+        ch = chr(code)
+        bbox = ascii_font.getbbox(ch)
+        gw = bbox[2] - bbox[0]
+        gh = bbox[3] - bbox[1]
+        gx = x + (cs - gw) // 2 - bbox[0]
+        gy = y + (cs - gh) // 2 - bbox[1]
+        draw.text((gx, gy), ch, font=ascii_font, fill=dcolor)
 
     img.save(import_path)
     return len(korean_cells)
