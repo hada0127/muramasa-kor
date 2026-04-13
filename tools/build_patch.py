@@ -503,13 +503,18 @@ def build_korean_patch():
         custom_idx_ko = None
         if info.get('custom_idx_builder') == 'us_itemdata_hybrid':
             # Build US _itemdata hybrid translation map:
-            #  • [0, 594) ∩ ¬skip_odd_blade_desc : _itemdata[i].ko
-            #  • [595, 1177): _itemdata_main[i-8].ko  (empirically verified +8 shift)
+            #  • [0, 594)     : _itemdata[i].ko (all — blade descriptions too)
+            #  • [595, 1177)  : _itemdata_main[i-8].ko  (empirically verified +8 shift)
+            # Blade descriptions at odd 371-593 used to be skipped because the
+            # Ability screen parser found 'Secret Art: …' markers in the English
+            # text. After shipping the skill-name table in Korean at 595-1176,
+            # the Ability screen reads skills by ID directly (confirmed by user),
+            # so Korean blade descriptions are safe and needed for Forge/Equip
+            # detail screens.
             main_msgs = translations.get('_itemdata_main', {}).get('messages', [])
             custom_idx_ko = {}
-            skip_blade_desc = set(range(371, 594, 2))  # odd blade descs
             for i in range(0, 594):
-                if i in skip_blade_desc or i >= len(msgs):
+                if i >= len(msgs):
                     continue
                 ko = msgs[i].get('ko', '')
                 if ko:
