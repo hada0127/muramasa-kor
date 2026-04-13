@@ -1,0 +1,114 @@
+{
+  "_description": "메뉴/UI 텍스처 한글화 카탈로그 - 전수조사 결과 (379개 중 12개 텍스트 텍스처 발견)",
+  "_survey_date": "2026-04-10",
+  "_total_textures": 379,
+  "_text_textures": 12,
+  "textures": [
+    {
+      "hash": "DF66CADDABE022E3",
+      "size": "512x512",
+      "category": "ui_menu",
+      "priority": "high",
+      "description": "메인 UI/메뉴 텍스트 아틀라스",
+      "content": "Victory!, Fight!, Load Game, New Game, Rating, Save, Back, Default, Bestiary, Play, Confirm, Cancel, Warp, Retry, Cooking, Controls, Songs, Proceed, Autumn, Accessories 등",
+      "alpha_text": true,
+      "status": "pending",
+      "notes": "가장 중요 - 게임 전반 UI 텍스트"
+    },
+    {
+      "hash": "7DC6CF5A87DB1312",
+      "size": "512x512",
+      "category": "item_names",
+      "priority": "high",
+      "description": "아이템 이름 아틀라스",
+      "content": "Ability Boost, Sage Elixir, Dragon Elixir, Strength Boost, Full Immunity, Golden Hammer, Hellish Magatama, Bombs, Vitality Boost, Recovery Pellet, Herbal Remedy, White Lightning, Longevity Elixir, Soul Salvation, Restore Blade, Absorb Life, Ninja Arts, Roasted Yams, Broiled Fish, Healing Pellet, Holy Comet, Holy Blessing, Auto Restore, Holy Benediction, Bamboo Spear, Triple Blaze 등",
+      "alpha_text": false,
+      "status": "pending",
+      "notes": "흰 텍스트 on 검은 배경 + 회색 줄무늬 텍스처"
+    },
+    {
+      "hash": "E8E01EAF5D41DB52",
+      "size": "512x512",
+      "category": "skill_names",
+      "priority": "high",
+      "description": "스킬/기술 이름 아틀라스",
+      "content": "Hazy Slash, Quad Lightning, Murky Slash, Falling Moon, Soaring Lark, Bronze Mirror, Misty Slash, Sickle, Quad Blaze, Forlorn Moon, Dark Cross, Dual Lightning, Abyssal Fire, Faerie Strike, Pandemonium, Sun Ring, Gambler's Choice, Vengeance, Faerie Blaze, Divine Blade, Revenge, Dragonfly, Focus Slash, Faerie Bolt, Monster Cat, Hell's Gate, Faerie Inferno, Thunderstorm, Revenant Blow, Cursed Moon, Retribution, Skull, Tempest, Mountain Gale, Celestial Eve, Crescent Moon, New Moon, Chaos Roar, Lightning Eft, Invincible, Hellfire, XP Boost, Ambush Hoe, Demon Child, Vortex, Tornado, Avatar, Sake, Rice Ball, Miike, Adult, Wind, Fullness, Gale, Skill 등",
+      "alpha_text": false,
+      "status": "pending",
+      "notes": "흰 붓글씨 스타일 on 검은 배경"
+    },
+    {
+      "hash": "A3BE57CE9854B5CC",
+      "size": "1024x1024",
+      "category": "story_titles",
+      "priority": "high",
+      "description": "스토리/DLC 제목 아틀라스 (한자 붓글씨 + 영문 부제)",
+      "content": "Legend, The Story of, A Spirited Seven Nights' Haunting, Fishy Tales of the Nekomata, Chaos, Hell's Where the Heart Is, A Cause to Daikon Foraka, White Serpent, Ninja Scroll, Demon Blade, Pandemonium, Oboro Blade",
+      "alpha_text": true,
+      "status": "pending",
+      "notes": "한자 붓글씨는 보존, 영문 부제만 한글로 교체"
+    },
+    {
+      "hash": "74EEEC230BEE120C",
+      "size": "1024x512",
+      "category": "story_titles",
+      "priority": "high",
+      "description": "스토리 제목 + 라벨 혼합 아틀라스",
+      "content": "Revolution, Demon Cat, Wild Child, Title, Kisuke + 한자 (伝, 根, 魔, 義, 妖, 忍, 民, 百, 刀, 大, 正, 地, Title 등)",
+      "alpha_text": true,
+      "status": "pending",
+      "notes": "영문 라벨만 한글로 교체, 한자 보존"
+    },
+    {
+      "hash": "1823D39C0279886B",
+      "size": "256x128",
+      "category": "place_names",
+      "priority": "high",
+      "description": "지역명 (영문 로마자 표기)",
+      "content": "YAMASHIRO, SHINANO, MUSASHI, IZU, MINO, OWARI, SURUGA, KAWARI, SAGAMI, TOHTOMI, MAKAMO",
+      "alpha_text": true,
+      "status": "pending",
+      "notes": "일본 옛 지역명의 영문 표기 → 한글 표기로"
+    },
+    {
+      "hash": "ADE2B8B5998887A9",
+      "size": "256x128",
+      "category": "ui_subtitle",
+      "priority": "high",
+      "description": "DLC 부제 'GENROKU LEGENDS'",
+      "content": "GENROKU LEGENDS",
+      "alpha_text": true,
+      "status": "pending",
+      "notes": "겐로쿠 전기 또는 원록전설"
+    },
+    {
+      "hash": "8EFF960FC088FDD7",
+      "size": "1024x512",
+      "category": "logo",
+      "priority": "medium",
+      "description": "게임 로고 (OBORO MURAMASA + 한자 타이틀)",
+      "content": "怪奇譚, 朧村正, OBORO MURAMASA",
+      "alpha_text": true,
+      "status": "pending",
+      "notes": "로고 한글화 여부는 선택사항"
+    },
+    {
+      "hash": "79C935AA47DD1810",
+      "size": "512x512",
+      "category": "opening_narration",
+      "priority": "high",
+      "description": "오프닝 나레이션 + 크레딧 혼합 텍스트",
+      "content": "Countless, Demon, Blades, strewn, world, Once, blades, drawn, sheath, they immediately, begin thirsting, blood, Witness, fates, fell prey, their power, Yoshifumi Hashimoto, PRODUCER 등",
+      "alpha_text": true,
+      "status": "pending",
+      "notes": "오프닝 인트로 영문 나레이션 텍스트. Demon/blood/fates는 게임에서 빨간색으로 렌더링됨"
+    }
+  ],
+  "summary": {
+    "high_priority": 8,
+    "medium_priority": 1,
+    "low_priority": 0,
+    "completed": 0,
+    "total": 9
+  }
+}

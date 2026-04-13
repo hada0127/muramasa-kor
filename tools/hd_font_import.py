@@ -1,0 +1,216 @@
+#!/usr/bin/env python
+"""Create HD Korean font import textures from HD texture pack base.
+Draws Korean glyphs at full 4096x4096 resolution, then downscales to 2048x2048."""
+
+import json, os, sys, subprocess
+import numpy as np
+from PIL import Image, ImageFont, ImageDraw
+
+
+def sjis_to_cell(b1, b2):
+    if b2 < 0x80:
+        b2_offset = b2 - 0x40
+    else:
+        b2_offset = b2 - 0x41
+    return (b1 - 0x81) * 188 + b2_offset
+
+
+def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, max_dim=2048):
+    """Create HD Korean font by overlaying glyphs on HD base texture."""
+    with open(mapping_path, 'r', encoding='utf-8') as f:
+        mapping = json.load(f)
+    kr_map = mapping['korean_to_sjis']
+
+    img = Image.open(hd_base_path).convert("RGBA")
+    w, h = img.size
+    # Cell size scales with texture: 1024->32px, 2048->64px, 4096->128px
+    scale = w // 1024
+    cs = 32 * scale
+    font_size_kr = int(22 * scale)
+    font_size_ascii = int(18 * scale)
+
+    print(f"  Base: {w}x{h}, scale={scale}x, cell={cs}px, font_kr={font_size_kr}px")
+
+    font_kr = ImageFont.truetype(font_path, font_size_kr)
+    font_ascii = ImageFont.truetype(font_path, font_size_ascii)
+
+    # Space glyph slot
+    SPACE_SJIS = (0x8C, 0x6D)
+    space_cell = sjis_to_cell(*SPACE_SJIS)
+    space_local = space_cell - 1644
+
+    # Build Korean cell map
+    korean_cells = {}
+    for char, (b1, b2) in kr_map.items():
+        cell = sjis_to_cell(b1, b2)
+        local = cell - 1644
+        if 0 <= local < 1024:
+            if local == space_local:
+                continue
+            korean_cells[local] = char
+
+    # Detect format (white RGB + alpha vs dark RGBA)
+    arr = np.array(img)
+    rgb_mean = arr[:, :, :3].mean()
+    fmt = "white" if rgb_mean > 200 else "dark"
+    print(f"  Format: {fmt} (RGB mean={rgb_mean:.0f})")
+
+    draw = ImageDraw.Draw(img)
+    cols = w // cs
+
+    # Draw Korean glyphs
+    for local_idx, kr_char in korean_cells.items():
+        row = local_idx // cols
+        col = local_idx % cols
+        x, y = col * cs, row * cs
+
+        if fmt == "white":
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(255, 255, 255, 0))
+            color = (255, 255, 255, 255)
+        else:
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
+            color = (247, 247, 247, 255)
+
+        bbox = font_kr.getbbox(kr_char)
+        gw = bbox[2] - bbox[0]
+        gh = bbox[3] - bbox[1]
+        gx = x + (cs - gw) // 2 - bbox[0]
+        gy = y + (cs - gh) // 2 - bbox[1]
+        draw.text((gx, gy), kr_char, font=font_kr, fill=color)
+
+    # Clear space glyph slot
+    if 0 <= space_local < 1024:
+        sr = space_local // cols
+        sc = space_local % cols
+        sx, sy = sc * cs, sr * cs
+        draw.rectangle([sx, sy, sx + cs - 1, sy + cs - 1], fill=(0, 0, 0, 0))
+
+    # Clear ASCII-space cell at local 224 (192 + 0x20). Game renders raw 0x20
+    # at this position at half-width; must be transparent.
+    ASCII_SPACE_LOCAL = 224
+    if 0 <= ASCII_SPACE_LOCAL < 1024:
+        asr = ASCII_SPACE_LOCAL // cols
+        asc = ASCII_SPACE_LOCAL % cols
+        ax, ay = asc * cs, asr * cs
+        draw.rectangle([ax, ay, ax + cs - 1, ay + cs - 1], fill=(0, 0, 0, 0))
+
+    # Render ASCII glyphs at positions 960+
+    pos = 960
+    for code in range(0x20, 0x7F):
+        if pos >= 1024:
+            break
+        row = pos // cols
+        col = pos % cols
+        x, y = col * cs, row * cs
+        ch = chr(code)
+        if ch == ' ':
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
+        else:
+            if fmt == "white":
+                draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(255, 255, 255, 0))
+                acolor = (255, 255, 255, 255)
+            else:
+                draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
+                acolor = (247, 247, 247, 255)
+            bbox = font_ascii.getbbox(ch)
+            gw = bbox[2] - bbox[0]
+            gh = bbox[3] - bbox[1]
+            if ch in '.,':
+                gx = x + int(2 * scale) - bbox[0]
+                gy = y + cs - gh - int(4 * scale) - bbox[1]
+            else:
+                gx = x + (cs - gw) // 2 - bbox[0]
+                gy = y + (cs - gh) // 2 - bbox[1]
+            draw.text((gx, gy), ch, font=font_ascii, fill=acolor)
+        pos += 1
+
+    # Downscale to max_dim if needed
+    if w > max_dim or h > max_dim:
+        ds = max_dim / max(w, h)
+        nw, nh = int(w * ds), int(h * ds)
+        img = img.resize((nw, nh), Image.LANCZOS)
+        print(f"  Downscaled: {nw}x{nh}")
+
+    img.save(import_path, optimize=True)
+
+    # Try pngquant
+    quant_path = import_path + ".quant.png"
+    result = subprocess.run(
+        ["pngquant", "--quality=80-100", "--speed=1", "--force", "-o", quant_path, import_path],
+        capture_output=True
+    )
+    if result.returncode == 0 and os.path.exists(quant_path):
+        os.replace(quant_path, import_path)
+        print(f"  pngquant applied")
+    elif os.path.exists(quant_path):
+        os.remove(quant_path)
+
+    final_size = os.path.getsize(import_path)
+    print(f"  Output: {final_size / 1024:.0f}KB, {len(korean_cells)} Korean glyphs")
+    return len(korean_cells)
+
+
+if __name__ == '__main__':
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    hd_dir = "C:/Users/taro1/Downloads/Muramasa Complete 2.0/PCSE00240/Best/"
+    import_dir = "C:/game/vita3k/textures/import/PCSE00240/"
+    mapping_path = os.path.join(base_dir, "translations", "kr_sjis_mapping.json")
+    font_path = os.path.join(base_dir, "fonts", "RIDIBatang.otf")
+
+    # Font texture hashes that need Korean overlay.
+    # NOTE: 87B72F6DB3C3FBDC was previously listed here but turned out to be a
+    # foliage/plant background texture — overwriting it caused the DLC
+    # difficulty screen to render our font atlas as background. Removed.
+    font_hashes = ["6706A53E1D94C16E"]
+
+    # Also handle font hashes from Vita3K export (session-dependent)
+    export_dir = "C:/game/vita3k/textures/export/PCSE00240/"
+
+    print("=== HD Korean Font Import ===\n")
+
+    for fhash in font_hashes:
+        hd_path = os.path.join(hd_dir, f"{fhash}.png")
+        if os.path.exists(hd_path):
+            print(f"Processing HD base: {fhash}.png")
+            import_path = os.path.join(import_dir, f"{fhash}.png")
+            create_hd_korean_font(hd_path, import_path, mapping_path, font_path)
+            print()
+        else:
+            print(f"HD base not found: {fhash}.png")
+
+    # Check for additional font textures in export (session-specific hashes)
+    if os.path.exists(export_dir):
+        known = set(font_hashes)
+        for fn in sorted(os.listdir(export_dir)):
+            if not fn.endswith('.png'):
+                continue
+            fhash = fn.replace('.png', '')
+            if fhash in known:
+                continue
+            img = Image.open(os.path.join(export_dir, fn))
+            w, h = img.size
+            if w < 1024 or h < 1024:
+                continue
+            arr = np.array(img.convert("RGBA"))
+            alpha = arr[:, :, 3]
+            # Check 32px grid pattern
+            row_alpha = alpha.mean(axis=1)
+            boundaries = [row_alpha[r] for r in range(0, min(512, h), 32)]
+            inners = [row_alpha[r] for r in range(16, min(512, h), 32)]
+            b_mean = sum(boundaries) / max(len(boundaries), 1)
+            i_mean = sum(inners) / max(len(inners), 1)
+            if b_mean < 5 and i_mean > 20:
+                cell0_alpha = alpha[0:32, 0:32].mean()
+                cell1_alpha = alpha[0:32, 32:64].mean()
+                if cell0_alpha < 5 and cell1_alpha > 0 and cell1_alpha < 20:
+                    continue  # ASCII page
+                print(f"Processing export font: {fn}")
+                # Use export as base (no HD version available)
+                import_path = os.path.join(import_dir, fn)
+                create_hd_korean_font(
+                    os.path.join(export_dir, fn), import_path,
+                    mapping_path, font_path, max_dim=1024
+                )
+                print()
+
+    print("Done! Restart Vita3K for changes to take effect.")

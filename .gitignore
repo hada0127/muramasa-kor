@@ -1,0 +1,45 @@
+# === Game source data ===
+# Keep backup/ (pristine original CPKs used as build input) tracked.
+# Ignore other CPK artifacts (build outputs, intermediate copies).
+/output/*.cpk
+extracted/
+extracted_wii/
+output/
+*.wbfs
+
+# === Large / disposable texture data (local only) ===
+# DDS/GXT/FTX: intermediate binary formats
+*.dds
+*.gxt
+*.ftx
+# Downloaded third-party tools
+tools/wit/
+tools/upscaler/
+*.zip
+*.xdelta
+
+# === Build artifacts / debug captures ===
+# Screenshots (debug images from automated Vita3K runs)
+screenshots/
+debug_*.png
+# Temp workspace (upscaled textures, realesrgan, export_backup, etc.)
+temp/
+# Scratch files at repo root
+tmp_*.png
+# Extracted Wii intermediate binaries
+extracted_wii/ftx_decomp/
+
+# === bkit plugin state (session-scoped) ===
+.bkit/
+
+# === Duplicates / editor artifacts ===
+fonts/fonts/
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+
+# === IDE ===
+.vscode/
+.idea/

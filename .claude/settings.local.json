@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:zenhax.com)",
+      "WebFetch(domain:www.retroreversing.com)",
+      "WebFetch(domain:forums.launchbox-app.com)",
+      "WebFetch(domain:www.maketecheasier.com)",
+      "WebFetch(domain:vita3k.org)",
+      "WebFetch(domain:www.romhacking.net)",
+      "Bash(cat /tmp/wii_summary.txt)",
+      "Bash(echo \"\")"
+    ]
+  }
+}

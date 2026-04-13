@@ -1,0 +1,126 @@
+{
+  "summary": {
+    "files": 21,
+    "total_messages": 17329,
+    "oor_messages": 8143,
+    "oor_codes": {
+      "8EEF": 4558,
+      "8EED": 1904,
+      "8F43": 723,
+      "8EF2": 554,
+      "8EF3": 509,
+      "8EFB": 406,
+      "8EF1": 366,
+      "8EF4": 342,
+      "8EE9": 302,
+      "8EEA": 302
+    }
+  },
+  "files": [
+    {
+      "path": "patch_main\\_US\\msgsheet\\_itemdata.nms",
+      "message_count": 757,
+      "oor_message_count": 357
+    },
+    {
+      "path": "patch_main\\_US\\msgsheet\\scemsg.nms",
+      "message_count": 1116,
+      "oor_message_count": 1044
+    },
+    {
+      "path": "patch_main\\_US\\msgsheet\\scename_US.nms",
+      "message_count": 111,
+      "oor_message_count": 29
+    },
+    {
+      "path": "patch_main\\_US\\msgsheet\\staffroll.nms",
+      "message_count": 111,
+      "oor_message_count": 0
+    },
+    {
+      "path": "patch_main\\_US\\msgsheet\\sysmsg.nms",
+      "message_count": 574,
+      "oor_message_count": 206
+    },
+    {
+      "path": "patch_main\\msgsheet\\_itemdata.nms",
+      "message_count": 878,
+      "oor_message_count": 389
+    },
+    {
+      "path": "patch_main\\msgsheet\\scemsg.nms",
+      "message_count": 1116,
+      "oor_message_count": 1044
+    },
+    {
+      "path": "patch_main\\msgsheet\\scename.nms",
+      "message_count": 111,
+      "oor_message_count": 29
+    },
+    {
+      "path": "patch_main\\msgsheet\\sysmsg.nms",
+      "message_count": 574,
+      "oor_message_count": 206
+    },
+    {
+      "path": "patch_patch\\_US\\msgsheet\\_itemdata.nms",
+      "message_count": 1177,
+      "oor_message_count": 287
+    },
+    {
+      "path": "patch_patch\\_US\\msgsheet\\lyricmsg.nms",
+      "message_count": 36,
+      "oor_message_count": 5
+    },
+    {
+      "path": "patch_patch\\_US\\msgsheet\\scemsg.nms",
+      "message_count": 2178,
+      "oor_message_count": 1632
+    },
+    {
+      "path": "patch_patch\\_US\\msgsheet\\scename_US.nms",
+      "message_count": 203,
+      "oor_message_count": 29
+    },
+    {
+      "path": "patch_patch\\_US\\msgsheet\\staffroll.nms",
+      "message_count": 203,
+      "oor_message_count": 29
+    },
+    {
+      "path": "patch_patch\\_US\\msgsheet\\sysmsg.nms",
+      "message_count": 965,
+      "oor_message_count": 310
+    },
+    {
+      "path": "patch_patch\\msgsheet\\_itemdata.nms",
+      "message_count": 3565,
+      "oor_message_count": 523
+    },
+    {
+      "path": "patch_patch\\msgsheet\\lyricmsg.nms",
+      "message_count": 36,
+      "oor_message_count": 7
+    },
+    {
+      "path": "patch_patch\\msgsheet\\scemsg.nms",
+      "message_count": 2247,
+      "oor_message_count": 1648
+    },
+    {
+      "path": "patch_patch\\msgsheet\\scename.nms",
+      "message_count": 203,
+      "oor_message_count": 29
+    },
+    {
+      "path": "patch_patch\\msgsheet\\staffroll.nms",
+      "message_count": 203,
+      "oor_message_count": 29
+    },
+    {
+      "path": "patch_patch\\msgsheet\\sysmsg.nms",
+      "message_count": 965,
+      "oor_message_count": 311
+    }
+  ]
+}

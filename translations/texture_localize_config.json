@@ -1,0 +1,37 @@
+{
+  "_description": "텍스처 한글화 설정 - 각 텍스처의 텍스트 영역 + 한글 번역 정의",
+  "textures": [
+    {
+      "hash": "ADE2B8B5998887A9",
+      "size": "256x128",
+      "description": "DLC 부제 선택 상태 (GENROKU LEGENDS → 겐로쿠 괴기담)",
+      "status": "done",
+      "regions": [
+        {
+          "x": 0, "y": 0, "w": 200, "h": 60,
+          "clear": true,
+          "text": "겐로쿠 괴기담",
+          "font_size": 28,
+          "color": [255, 255, 255, 255],
+          "note": "게임은 알파만 사용, RGB 무시"
+        }
+      ]
+    },
+    {
+      "hash": "8EFF960FC088FDD7",
+      "size": "1024x512",
+      "description": "게임 로고 그림자/미선택 상태. GENROKU LEGENDS + OBOROMURAMASA 텍스트 삭제",
+      "status": "done",
+      "method": "텍스트 영역 알파를 0으로 설정하여 그림자 제거. 캘리그래피 보존. 수동 편집.",
+      "notes": "원본: textures/originals/8EFF960FC088FDD7.png"
+    },
+    {
+      "hash": "73420FAEA9F664FD",
+      "size": "1024x512",
+      "description": "본편 타이틀 선택 상태 (MURAMASA REBIRTH → 오보로 무라마사)",
+      "status": "done",
+      "method": "MURAMASA REBIRTH 영문 제거 + 오보로 무라마사 한글 렌더링 (흰 글씨 + 검은 테두리). 수동 편집.",
+      "notes": "컬러 텍스처 (RGB+알파). 원본: textures/originals/73420FAEA9F664FD.png"
+    }
+  ]
+}
