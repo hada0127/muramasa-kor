@@ -178,7 +178,7 @@ def parse_nms_raw(filepath: str):
     return messages, data, text_start, original_text_section
 
 
-def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_path: str, match_mode: str = 'content', jp_source_path: str = None, index_range: tuple = None, skip_indices: set = None):
+def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_path: str, match_mode: str = 'content', jp_source_path: str = None, index_range: tuple = None, skip_indices: set = None, custom_idx_to_ko: dict = None):
     """Rebuild NMS file, preserving exact original structure.
 
     Only replaces messages that have Korean translations.
@@ -208,6 +208,14 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
             raise ValueError("index_range mode requires index_range=(start, end)")
         range_start, range_end = index_range
         match_mode = 'index'
+    # 'custom_idx' uses a pre-built {idx: korean_text} dict
+    if match_mode == 'custom_idx':
+        if not custom_idx_to_ko:
+            raise ValueError("custom_idx mode requires custom_idx_to_ko dict")
+        idx_to_ko_override = custom_idx_to_ko
+        match_mode = 'index'
+    else:
+        idx_to_ko_override = None
 
     messages, original, text_start, orig_text_section = parse_nms_raw(original_path)
     orig_count = len(messages)
@@ -248,12 +256,15 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
                 idx_to_ko[jp_to_us[jp_i]] = ja_to_ko[key]
         match_mode = 'index'  # now use index mode with the correct US-index mapping
     elif match_mode == 'index':
-        # Index-based: translate by position (JP msg[i] → KR for US msg[i])
-        idx_to_ko = {}
-        for idx, msg in enumerate(translated_msgs):
-            ko = msg.get('ko', '')
-            if ko:
-                idx_to_ko[idx] = ko
+        if idx_to_ko_override is not None:
+            idx_to_ko = dict(idx_to_ko_override)
+        else:
+            # Index-based: translate by position (JP msg[i] → KR for US msg[i])
+            idx_to_ko = {}
+            for idx, msg in enumerate(translated_msgs):
+                ko = msg.get('ko', '')
+                if ko:
+                    idx_to_ko[idx] = ko
         if range_start is not None:
             idx_to_ko = {k: v for k, v in idx_to_ko.items()
                          if range_start <= k < range_end}
@@ -434,19 +445,13 @@ def build_korean_patch():
                 #   0-369  : items + descriptions (align with JP _itemdata)
                 #   370-593: blade name/description pairs (even=name, odd=desc)
                 #   594    : separator '-'
-                #   595+   : COMPACT English skill-name table (NOT in JP layout)
-                # The Ability screen's Skill/Effect columns parse English markers
-                # ("Secret Art:", "Effect:") out of the BLADE DESCRIPTION text
-                # (odd indices 371-593). Overwriting those descriptions with
-                # Korean breaks the parser → shows random Korean glyphs from
-                # whatever byte offset the parser lands on.
-                # Strategy: patch 0-593 by index (item descs + blade NAMES in
-                # Korean) but SKIP odd blade descriptions 371..593 so skill
-                # extraction still works. Leave 594+ untouched.
-                # See docs/01-plan/features/font-mapping-repair.plan.md §3.1.
-                us_entry['match_mode'] = 'index_range'
-                us_entry['index_range'] = (0, 594)
-                us_entry['skip_indices'] = set(range(371, 594, 2))
+                #   595-1176: COMPACT English skill-name table
+                #             (NinPriPatch US[i] = _itemdata_main[i-8], +8 shift)
+                # Build explicit idx_to_ko:
+                #  • [0, 594) ∩ ¬skip_odd_blade_desc : _itemdata[i].ko
+                #  • [595, 1177): _itemdata_main[i-8].ko
+                us_entry['match_mode'] = 'custom_idx'
+                us_entry['custom_idx_builder'] = 'us_itemdata_hybrid'
             else:
                 us_entry['match_mode'] = 'index'
             patch_files[f'{name}_US'] = us_entry
@@ -495,8 +500,28 @@ def build_korean_patch():
         jp_src = str(base_dir / info['jp_source']) if 'jp_source' in info else None
         idx_range = info.get('index_range')
         skip_idx = info.get('skip_indices')
+        custom_idx_ko = None
+        if info.get('custom_idx_builder') == 'us_itemdata_hybrid':
+            # Build US _itemdata hybrid translation map:
+            #  • [0, 594) ∩ ¬skip_odd_blade_desc : _itemdata[i].ko
+            #  • [595, 1177): _itemdata_main[i-8].ko  (empirically verified +8 shift)
+            main_msgs = translations.get('_itemdata_main', {}).get('messages', [])
+            custom_idx_ko = {}
+            skip_blade_desc = set(range(371, 594, 2))  # odd blade descs
+            for i in range(0, 594):
+                if i in skip_blade_desc or i >= len(msgs):
+                    continue
+                ko = msgs[i].get('ko', '')
+                if ko:
+                    custom_idx_ko[i] = ko
+            for i in range(595, 1177):
+                main_i = i - 8
+                if 0 <= main_i < len(main_msgs):
+                    ko = main_msgs[main_i].get('ko', '')
+                    if ko:
+                        custom_idx_ko[i] = ko
         try:
-            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, jp_source_path=jp_src, index_range=idx_range, skip_indices=skip_idx)
+            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, jp_source_path=jp_src, index_range=idx_range, skip_indices=skip_idx, custom_idx_to_ko=custom_idx_ko)
             print(f"  {name}: {matched}/{count} matched ({mode}), {size} bytes")
         except Exception as e:
             print(f"  {name}: ERROR - {e}")
