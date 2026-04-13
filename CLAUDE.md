@@ -53,6 +53,28 @@ wii/
   - 빌드 → 설치 → Vita3K 실행 → 게임 시작 → 스크린샷 캡처 → 결과 확인까지 자동으로 수행
   - 문제가 있으면 스스로 수정하고 다시 테스트. 해결될 때까지 반복
 
+## 이미지 읽기 규칙 (필수 준수)
+
+- **Read 툴로 이미지를 직접 읽으면 안 됨** — PNG/JPG가 2000px 또는 8000px를 초과하면 API 에러 발생
+- **항상 먼저 리사이즈 후 읽을 것**:
+  1. Python(PIL)로 이미지 크기 확인
+  2. 긴 변이 **1500px 초과**이면 긴 변을 1500px로 축소한 임시본을 `temp/preview/` 에 저장
+  3. 그 임시 파일을 Read 툴로 읽기
+- 원본 분석이 필요하면 numpy/PIL로 수치 분석하고, 시각 확인용으로만 리사이즈본을 Read
+- 예시 스니펫:
+  ```python
+  from PIL import Image
+  from pathlib import Path
+  src = Path("screenshots/xxx.png")
+  img = Image.open(src)
+  if max(img.size) > 1500:
+      img.thumbnail((1500, 1500))
+      out = Path("temp/preview") / src.name
+      out.parent.mkdir(parents=True, exist_ok=True)
+      img.save(out)
+      # Read 툴은 out 경로 사용
+  ```
+
 ## Vita3K 게임 실행 자동화 (필수 준수)
 
 ### 게임 실행 절차
