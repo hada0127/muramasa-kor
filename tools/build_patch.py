@@ -46,13 +46,56 @@ def _build_ascii_sjis_map():
 ASCII_SJIS_MAP = _build_ascii_sjis_map()
 
 
+# Full-width and punctuation chars that would otherwise be encoded to raw SJIS
+# 0x81xx/0x82xx — those bytes get rendered at texture cells 448+ where we placed
+# Korean glyphs, producing visible garbling (e.g. "："→"봐", "（"→"사", "1"→"웨").
+# Normalize to ASCII equivalents so they go through ASCII_SJIS_MAP (pos 960+)
+# which has correct glyphs drawn by auto_font_import.py / hd_font_import.py.
+FULLWIDTH_NORMALIZE = {
+    # Full-width ASCII punctuation
+    '\uFF1A': ':', '\uFF08': '(', '\uFF09': ')', '\uFF01': '!', '\uFF1F': '?',
+    '\uFF05': '%', '\uFF0B': '+', '\uFF0D': '-', '\uFF1D': '=', '\uFF0F': '/',
+    '\uFF0A': '*', '\uFF03': '#', '\uFF06': '&', '\uFF20': '@', '\uFF04': '$',
+    '\uFF3E': '^', '\uFF1C': '<', '\uFF1E': '>', '\uFF3B': '[', '\uFF3D': ']',
+    '\uFF5B': '{', '\uFF5D': '}', '\uFF5C': '|', '\uFF5E': '~',
+    '\uFF0C': ',', '\uFF0E': '.', '\uFF1B': ';', '\uFF40': '`',
+    # Full-width digits
+    '\uFF10': '0', '\uFF11': '1', '\uFF12': '2', '\uFF13': '3', '\uFF14': '4',
+    '\uFF15': '5', '\uFF16': '6', '\uFF17': '7', '\uFF18': '8', '\uFF19': '9',
+    # Japanese/CJK punctuation → nearest ASCII
+    '\u3001': ',',    # 、 ideographic comma
+    '\u3002': '.',    # 。 ideographic period
+    '\u30FB': '.',    # ・ katakana middle dot → period
+    '\u300C': '[',    # 「 left corner bracket
+    '\u300D': ']',    # 」 right corner bracket
+    '\u300E': '[',    # 『 left white corner bracket
+    '\u300F': ']',    # 』 right white corner bracket
+    '\u3000': ' ',    # ideographic space → ASCII space
+    '\u2026': '...',  # … horizontal ellipsis → 3 dots
+    '\u25C6': '*',    # ◆ black diamond
+}
+
+
+def _normalize_text(text: str) -> str:
+    """Apply full-width → ASCII normalization before SJIS encoding."""
+    out = []
+    for c in text:
+        out.append(FULLWIDTH_NORMALIZE.get(c, c))
+    return ''.join(out)
+
+
 def encode_korean_to_sjis(text: str, kr_map: dict) -> bytes:
     """Encode Korean text using the character mapping table.
 
     Format specifiers (%s, %4s, %2d, %D, etc.) and control codes
     (@#(xx), @c(x)) are kept as raw ASCII so the game engine can parse them.
+
+    Full-width punctuation/digits are normalized to ASCII half-width first so
+    they land in the ASCII_SJIS_MAP overflow region (texture cells 960+)
+    rather than rendering as Korean glyphs at cells 448+.
     """
     import re
+    text = _normalize_text(text)
     result = bytearray()
     i = 0
     while i < len(text):
@@ -68,6 +111,8 @@ def encode_korean_to_sjis(text: str, kr_map: dict) -> bytes:
                 continue
 
         # Control codes: @#(xx), @c(r,g,b), @/c, @/# etc.
+        # After normalization, full-width '（）' become '()' so the half-width
+        # regex covers both original forms.
         if c == '@':
             m = re.match(r'@[#c]\(\d+(?:,\d+)*\)|@/[#c]', text[i:])
             if m:
