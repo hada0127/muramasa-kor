@@ -49,11 +49,25 @@
 
 ## 3. 조사 결과 (2026-04-14 현재)
 
-### 3.1 어빌리티 Skill/Effect 열의 데이터 소스
-- `_itemdata.nms` 엔트리 **1637~1710**이 "스킬 이름 테이블" (예: `1705 → 나선은하`, `1661 → 톱날리기`, `1651 → 월광`).
-- `patch_patch/msgsheet/_itemdata.nms` (EU) 는 전 3565 엔트리 정상 패치 — 스킬 이름도 한글로 존재 확인.
-- `patch_patch/_US/msgsheet/_itemdata.nms` (US) 는 1177 엔트리까지만 채워져 있어 **엔트리 1637+가 빈 오프셋**. 원본 US 템플릿(NinPriPatch_full/_US)도 동일 레이아웃이라 US 패치만 생성해서는 스킬 이름이 비어 있음.
-- 현장 증상("닷맽않딸돕맒 담햝맣")은 **게임이 EU 파일을 읽지 못하거나, 비어 있는 US 엔트리를 읽어 스택 쓰레기를 렌더**하는 것으로 추정. 확정 원인은 Design 단계에서 byte-probe로 확인 필요.
+### 3.1 어빌리티 Skill/Effect 열의 데이터 소스 — **ROOT CAUSE 확정 (2026-04-14)**
+
+**US와 EU의 `_itemdata.nms` 인덱스 구조가 완전히 다름.** 빌드 파이프라인이 이를 무시하고 EU 기반 `_itemdata` 번역 테이블로 US 파일을 index-mode 패치해 **엉뚱한 엔트리에 한글을 덮어쓰고 있음**.
+
+- `extracted/NinPriPatch/msgsheet/_itemdata.nms` (EU/JP): 3565 entries — items+descriptions+accessories+skill names 섞임. Entry 608 = `金剛の腕輪` (Kongou bracelet).
+- `extracted/NinPriPatch/_US/msgsheet/_itemdata.nms` (US): 1177 entries — items 0-593 + separator 594 + **컴팩트 스킬명 리스트 595-1176**. Entry 608 = `Divine Moon I` (skill name).
+- `translations/jp_messages.json` `_itemdata.messages[608].ko` = `금강 팔찌` (bracelet name).
+- `tools/build_patch.py`가 US 파일에 `_itemdata` 번역을 **인덱스 기준**으로 적용 → `US[608] = Divine Moon I` 자리에 `'금강 팔찌'`가 주입됨.
+- 결과: 어빌리티 화면에서 2행 Skill 열이 `'금강 팔찌'`로 표시 (실제 Divine Moon I 자리). 1/3행의 엉뚱한 Korean/JP mix은 `_itemdata`의 긴 설명·특수 문자·미매핑 syllable이 짧은 SKILL slot에 덮어써지면서 생긴 바이트 조각.
+
+**검증된 사실**
+- `temp/cpk_verify` 비교: 설치된 `NinPriPatch.cpk`가 `patch_patch/_US/msgsheet/_itemdata.nms`와 MD5 일치 → 빌드 결과가 그대로 게임으로 들어감.
+- US `_itemdata.nms` 엔트리 600-619 원문 전부 확인 완료 (‘Gale II’, ‘Divine Moon I’, ‘Meteor I’ 등 스킬명).
+- JP `_itemdata_main` (NinPri 베이스, 878 entries)도 스킬 테이블이지만 US와 8칸 시프트로 **1:1 매핑 불가**.
+
+**Fix Candidates**
+- **C-1 (권장)** — US `_itemdata.nms` 패치 SKIP: 원본 영어 그대로 설치. 어빌리티/장비 화면이 영문 스킬명으로 나오지만 깨짐·덮어쓰기 없음. 즉시 실행 가능, 회귀 위험 0.
+- **C-2** — US 영문→한글 수동 매핑 사전 구축: US 원본 1177 엔트리 전수 파싱 → `_itemdata_main` 내 Korean 매칭 → 새 번역 파일. 품질 최고지만 공수 큼.
+- **C-3** — `_itemdata_main` content-match 적용: US와 _itemdata_main의 구조가 유사하므로 EN↔JP 매핑을 자동 추정 (8칸 시프트 감안). 중간 품질.
 
 ### 3.2 인코딩 경로
 - `build_patch.py`의 `ASCII_SJIS_MAP`은 `pos=960+`에 ASCII 글리프를 배치하고, `hd_font_import.py`의 오버레이 루프도 동일 규칙으로 `:` `(` `)` `0-9` 등을 그리고 있어 기본 ASCII는 정상.

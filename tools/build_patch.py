@@ -178,7 +178,7 @@ def parse_nms_raw(filepath: str):
     return messages, data, text_start, original_text_section
 
 
-def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_path: str, match_mode: str = 'content', jp_source_path: str = None):
+def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_path: str, match_mode: str = 'content', jp_source_path: str = None, index_range: tuple = None, skip_indices: set = None):
     """Rebuild NMS file, preserving exact original structure.
 
     Only replaces messages that have Korean translations.
@@ -188,7 +188,27 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
       'content' - match by Japanese text content
       'index' - match by position in translated_msgs list
       'jp_index' - content-match against jp_source_path, apply by matched index
+      'copy' - copy original bytes verbatim, no translation applied
+      'index_range' - like 'index' but limited to [range_start, range_end)
     """
+    if match_mode == 'copy':
+        # Pass-through: copy original file to output unchanged
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(original_path, 'rb') as f:
+            data = f.read()
+        with open(output_path, 'wb') as f:
+            f.write(data)
+        return 0, 0, len(data)
+
+    # 'index_range' restricts index-mode patching to [start, end)
+    range_start = None
+    range_end = None
+    if match_mode == 'index_range':
+        if index_range is None:
+            raise ValueError("index_range mode requires index_range=(start, end)")
+        range_start, range_end = index_range
+        match_mode = 'index'
+
     messages, original, text_start, orig_text_section = parse_nms_raw(original_path)
     orig_count = len(messages)
 
@@ -234,6 +254,12 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
             ko = msg.get('ko', '')
             if ko:
                 idx_to_ko[idx] = ko
+        if range_start is not None:
+            idx_to_ko = {k: v for k, v in idx_to_ko.items()
+                         if range_start <= k < range_end}
+        if skip_indices:
+            idx_to_ko = {k: v for k, v in idx_to_ko.items()
+                         if k not in skip_indices}
     else:
         # Content-based: match by Japanese text
         ja_to_ko = {}
@@ -403,6 +429,24 @@ def build_korean_patch():
                 # scemsg: content-match against JP source, apply by matched index
                 us_entry['match_mode'] = 'jp_index'
                 us_entry['jp_source'] = src_jp
+            elif name == '_itemdata':
+                # US _itemdata.nms has a hybrid layout:
+                #   0-369  : items + descriptions (align with JP _itemdata)
+                #   370-593: blade name/description pairs (even=name, odd=desc)
+                #   594    : separator '-'
+                #   595+   : COMPACT English skill-name table (NOT in JP layout)
+                # The Ability screen's Skill/Effect columns parse English markers
+                # ("Secret Art:", "Effect:") out of the BLADE DESCRIPTION text
+                # (odd indices 371-593). Overwriting those descriptions with
+                # Korean breaks the parser → shows random Korean glyphs from
+                # whatever byte offset the parser lands on.
+                # Strategy: patch 0-593 by index (item descs + blade NAMES in
+                # Korean) but SKIP odd blade descriptions 371..593 so skill
+                # extraction still works. Leave 594+ untouched.
+                # See docs/01-plan/features/font-mapping-repair.plan.md §3.1.
+                us_entry['match_mode'] = 'index_range'
+                us_entry['index_range'] = (0, 594)
+                us_entry['skip_indices'] = set(range(371, 594, 2))
             else:
                 us_entry['match_mode'] = 'index'
             patch_files[f'{name}_US'] = us_entry
@@ -449,8 +493,10 @@ def build_korean_patch():
 
         msgs = translations[trans_key]['messages']
         jp_src = str(base_dir / info['jp_source']) if 'jp_source' in info else None
+        idx_range = info.get('index_range')
+        skip_idx = info.get('skip_indices')
         try:
-            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, jp_source_path=jp_src)
+            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, jp_source_path=jp_src, index_range=idx_range, skip_indices=skip_idx)
             print(f"  {name}: {matched}/{count} matched ({mode}), {size} bytes")
         except Exception as e:
             print(f"  {name}: ERROR - {e}")
