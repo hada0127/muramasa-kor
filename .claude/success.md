@@ -1,5 +1,57 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-04-14: 어빌리티 화면 Skill/Effect 깨짐 1차 수정 (font-mapping-repair)
+
+### 문제
+어빌리티 화면의 Skill / Effect 열이 `닷맽않딸돕맒 담햝맣`, `묘혔떏뗄맶 땀맒` 형태로 완전 깨짐.
+동시에 식당 메뉴·대장간 칼 이름·대사 런타임 치환도 잔재.
+
+### 근본 원인 (RCA)
+US 버전 `NinPriPatch/_US/msgsheet/_itemdata.nms`는 EU/JP 파일과 **완전히 다른 인덱스 레이아웃**을 가짐:
+- 0-369: 아이템 + 설명 (JP 인덱스와 정렬됨)
+- 370-593: 칼 이름(짝수) + 칼 설명(홀수) 쌍
+- 594: separator `-`
+- 595-1176: **영문 컴팩트 스킬명 테이블** (JP에는 없음)
+
+기존 `tools/build_patch.py`가 US 파일을 `_itemdata` (3565-entry) 번역 테이블로 index-mode 패치 →
+영문 스킬명 슬롯에 한글 "금강 팔찌" 등 accessory 이름이 덮여쓰여 **엉뚱한 위치에 Korean bytes 주입**.
+어빌리티 화면은 칼 설명(홀수 인덱스) 안에서 "Secret Art:" / "Effect:" 마커를 파싱해
+Skill / Effect 열을 추출하는데, 칼 설명이 한글로 바뀌면서 파서가 **랜덤 byte offset**을 읽어 깨짐 발생.
+
+### 수정 (commit ccfdcbc)
+`tools/build_patch.py`:
+- `rebuild_nms`에 `index_range=(start,end)`, `skip_indices=set(...)` 파라미터 추가
+- 새 매치 모드 `index_range` + `copy` 추가
+- US `_itemdata` 패치 범위: `index_range=(0, 594)`, `skip_indices={371, 373, …, 593}` (홀수 칼 설명)
+- 결과: `_itemdata_US: 482/1177 matched (index_range)`
+
+### 검증 (데이터 레벨)
+`patch_patch/_US/msgsheet/_itemdata.nms` 디코드:
+| idx | 원문 (EN) | 패치 후 |
+|---|---|---|
+| 2 | Bamboo Flask | `대나무수통` (Korean) |
+| 384 | Peony Blade | `「모란」무라마사` (Korean) |
+| 385 | `Attack: 18 / Secret Art: Soaring Lark I / Effect: Attack Boost I` | **영문 원본 유지** |
+| 388 | Celestial Origins | `하세베쿠니시게` (Korean) |
+| 389 | `Attack: 17 / Secret Art: Divine Blade I / …` | **영문 원본 유지** |
+| 608 | Divine Moon I | **영문 원본 유지** (594+ 범위 외) |
+
+### 검증 (라이브 인게임 - 1회 성공 후 Windows 포커스 문제로 반복 실패)
+첫 실행에서 어빌리티 화면 Equipment 열이 `하세베쿠니시게 / [아야메] 무라마사 / [모란] 무라마사` 한글 정상 표시 확인.
+Skill / Effect 열은 영문 원본이 Korean-overlay 아틀라스로 렌더되어 여전히 읽기 어려움 → Phase 2로 분리.
+
+### 남은 트레이드오프
+- ✅ Equipment 열 (칼 이름): 한글
+- ✅ 대부분 아이템 이름 (0-369): 한글
+- ⚠️ 칼 상세 설명 바닥 텍스트 `공: 18 오의: 비연환톱 …` → **영문으로 되돌아감** (홀수 skip)
+- ⚠️ Skill/Effect 열: 영문 원본 (읽기 가능, 깨짐 없음)
+
+### 다음 단계 (Task #10)
+마커 보존 번역 전략: 칼 설명의 `Attack:`, `Secret Art:`, `Effect:` 접두사만 영문 유지, 값은 한글로 교체.
+게임 파서가 마커를 찾은 뒤 한글 값을 추출 → Skill/Effect 열이 한글로 표시.
+
+---
+
 ## 2026-04-13: 전각 문자 렌더링 깨짐 수정 (fullwidth-normalize)
 
 ### 문제
