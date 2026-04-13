@@ -46,6 +46,12 @@ Skill / Effect 열은 영문 원본이 Korean-overlay 아틀라스로 렌더되�
 - ⚠️ 칼 상세 설명 바닥 텍스트 `공: 18 오의: 비연환톱 …` → **영문으로 되돌아감** (홀수 skip)
 - ⚠️ Skill/Effect 열: 영문 원본 (읽기 가능, 깨짐 없음)
 
+### Phase 3 완료 (commit 9cfc94d, 사용자 확인 2026-04-14)
+블레이드 설명(홀수 371-593) 한글 복구 — `skip_indices` 제거.
+스킬명 테이블이 Korean이라 Ability 파서가 description 대신 skill-ID로 조회.
+결과: Forge/Equipment 상세 하단 `공: 18 오의: 비연환톱 효: 공격 강화…` 한글 정상 + Ability 화면 유지.
+매치 건수 773 → 885 (+112 description).
+
 ### Phase 2 완료 (commit 673cf8f, 사용자 확인 2026-04-14)
 NinPriPatch US의 스킬명 테이블(595-1176)과 `_itemdata_main`(878 entries) 사이의
 **+8 인덱스 시프트를 경험적으로 확증** (22개 샘플 - Misty Slash→안개자르기, Divine Moon→월광 등).
