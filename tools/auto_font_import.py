@@ -238,12 +238,13 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             draw.text((gx, gy), ch, font=ascii_font, fill=acolor)
         pos += 1
 
-    # Runtime-digit overlay: when the game formats integers via %D/%d it emits
-    # raw ASCII bytes 0x30-0x39 and reads cells 192+code in this texture. Those
-    # cells originally held Korean 둔/둘/둠/둥/둬/뒤/뒷/드/득/든 — we moved those
-    # to cells 993+ in kr_sjis_mapping.json, freeing cells 240-249 to carry
-    # digit glyphs for runtime rendering.
-    for code in range(0x30, 0x3A):  # '0'-'9'
+    # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
+    # integers, ':' separators in stat labels, '-' placeholders in empty
+    # effect slots) it reads cells 192+code in this texture. Those cells
+    # originally held Korean glyphs that we relocated in kr_sjis_mapping.json.
+    # We overlay the actual ASCII glyph here so runtime output renders cleanly.
+    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x2D, 0x2E, 0x2F]
+    for code in RUNTIME_OVERLAY_CODES:
         cell = 192 + code
         row = cell // cols
         col = cell % cols
@@ -258,8 +259,12 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         bbox = ascii_font.getbbox(ch)
         gw = bbox[2] - bbox[0]
         gh = bbox[3] - bbox[1]
-        gx = x + (cs - gw) // 2 - bbox[0]
-        gy = y + (cs - gh) // 2 - bbox[1]
+        if ch in '.,':
+            gx = x + 2 - bbox[0]
+            gy = y + cs - gh - 4 - bbox[1]
+        else:
+            gx = x + (cs - gw) // 2 - bbox[0]
+            gy = y + (cs - gh) // 2 - bbox[1]
         draw.text((gx, gy), ch, font=ascii_font, fill=dcolor)
 
     img.save(import_path)

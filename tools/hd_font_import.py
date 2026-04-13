@@ -129,10 +129,12 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
             draw.text((gx, gy), ch, font=font_ascii, fill=acolor)
         pos += 1
 
-    # Runtime-digit overlay at cells 192+code (240-249) so the game's raw
-    # ASCII digit output (from %D/%d formatting) shows actual digit glyphs
-    # instead of the Korean chars that used to live at those cells.
-    for code in range(0x30, 0x3A):
+    # Runtime-ASCII overlay at cells 192+code: digits 0-9, plus ':', '-', '.', '/'
+    # — characters the game emits as raw bytes (e.g. "힘: 3", "Effect -",
+    # time formatting "1/13"). Cells originally held Korean glyphs we
+    # relocated in kr_sjis_mapping.json.
+    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x2D, 0x2E, 0x2F]
+    for code in RUNTIME_OVERLAY_CODES:
         cell = 192 + code
         row = cell // cols
         col = cell % cols
@@ -147,8 +149,12 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         bbox = font_ascii.getbbox(ch)
         gw = bbox[2] - bbox[0]
         gh = bbox[3] - bbox[1]
-        gx = x + (cs - gw) // 2 - bbox[0]
-        gy = y + (cs - gh) // 2 - bbox[1]
+        if ch in '.,':
+            gx = x + int(2 * scale) - bbox[0]
+            gy = y + cs - gh - int(4 * scale) - bbox[1]
+        else:
+            gx = x + (cs - gw) // 2 - bbox[0]
+            gy = y + (cs - gh) // 2 - bbox[1]
         draw.text((gx, gy), ch, font=font_ascii, fill=dcolor)
 
     # Downscale to max_dim if needed
