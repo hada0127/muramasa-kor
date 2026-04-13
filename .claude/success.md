@@ -46,6 +46,31 @@ Skill / Effect 열은 영문 원본이 Korean-overlay 아틀라스로 렌더되�
 - ⚠️ 칼 상세 설명 바닥 텍스트 `공: 18 오의: 비연환톱 …` → **영문으로 되돌아감** (홀수 skip)
 - ⚠️ Skill/Effect 열: 영문 원본 (읽기 가능, 깨짐 없음)
 
+### Phase 4-6 완료 (2026-04-14)
+
+**Phase 4 — 대사 "등" 치환 제거 (commit 865dbdf)**
+mapping에 없는 95개 한글 syllable이 SJIS 인코딩 실패 → `?` (0x3F) →
+런타임 오버레이 셀 255(=등)에서 렌더 → `따윈`→`따등` 깨짐.
+`translations/char_substitutions.json` 생성 (unmapped → phonetic nearest: 윈→위, 똥→또, 맘→마 등)
++ `build_patch.py` encoder fallback 단계에 사전 매치 추가.
+결과: `따위 요만큼도` 정상 표시.
+
+**Phase 5 — 소바 가게 JP kanji → 한글 (commit 865dbdf 일부)**
+가게 메뉴는 폰트 atlas `A8E6FDD162258699` 사용 (기존 overlay 미적용).
+`auto_font_import.py` 세션 detect에 걸려 이번에 overlay 생성.
+
+**Phase 6a — sysmsg 오번역 수정 (commit 140409d)**
+sysmsg[770-778] 항목이 Wii scemsg 병합 잔재로 **장소/캐릭터 이름**(『이누가미 겐시로』, 「무사시」에도 성곽 해자 등)이 음식명 자리에 들어가 있었음. `sysmsg_main[495-515]`의 정상 번역으로 8 entry 재동기화.
+결과: `쌀밥 / 자루 소바 / 청어 소바 / 키츠네 우동` 정상.
+
+**Phase 6b — 덴 글자 복구 (commit d08e145)**
+`덴`=0x8AF1 → 로컬 셀 224. 그런데 이 셀은 ASCII space(0x20)가 렌더되는 위치라 hd_font_import이 **transparent로 클리어** → 덴 글리프 증발. `덴푸라 우동` → `푸라 우동`, `덴고로` → ` 고로`.
+덴을 로컬 960 (0x8EE1, ASCII zone 선두, 실제로 아무 글리프 미사용)으로 재배치.
+`kr_sjis_mapping.json` 수정 + auto_font_import / hd_font_import 재생성.
+결과: `덴푸라 우동` 정상 표시.
+
+---
+
 ### Phase 3 완료 (commit 9cfc94d, 사용자 확인 2026-04-14)
 블레이드 설명(홀수 371-593) 한글 복구 — `skip_indices` 제거.
 스킬명 테이블이 Korean이라 Ability 파서가 description 대신 skill-ID로 조회.
