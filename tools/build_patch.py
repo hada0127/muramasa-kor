@@ -84,6 +84,24 @@ def _normalize_text(text: str) -> str:
     return ''.join(out)
 
 
+# Unmapped Korean syllable → nearest mappable syllable. Generated from
+# translations/char_substitutions.json. Without this, unmapped chars fall
+# through to `?` (0x3F), which renders as `등` through the Korean atlas at
+# cell 255, producing dialogue corruption (e.g. `따윈 요만큼도` → `따등요만큼도`).
+_CHAR_SUBS_CACHE = None
+def _load_char_subs():
+    global _CHAR_SUBS_CACHE
+    if _CHAR_SUBS_CACHE is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..',
+                            'translations', 'char_substitutions.json')
+        if os.path.exists(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                _CHAR_SUBS_CACHE = json.load(f)
+        else:
+            _CHAR_SUBS_CACHE = {}
+    return _CHAR_SUBS_CACHE
+
+
 def encode_korean_to_sjis(text: str, kr_map: dict) -> bytes:
     """Encode Korean text using the character mapping table.
 
@@ -130,10 +148,16 @@ def encode_korean_to_sjis(text: str, kr_map: dict) -> bytes:
         elif ord(c) < 0x80:
             result.append(ord(c))  # control chars (\n etc.) stay as-is
         else:
-            try:
-                result.extend(c.encode('shift_jis'))
-            except:
-                result.extend(b'?')
+            # Try Korean → nearest-mapped substitution before falling back to SJIS
+            subs = _load_char_subs()
+            if c in subs and subs[c] in kr_map:
+                b1, b2 = kr_map[subs[c]]
+                result.extend([b1, b2])
+            else:
+                try:
+                    result.extend(c.encode('shift_jis'))
+                except:
+                    result.extend(b'?')
         i += 1
     return bytes(result)
 
