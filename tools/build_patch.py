@@ -28,11 +28,13 @@ def _build_ascii_sjis_map():
     """
     ascii_map = {}
     pos = 960
+    # Codes kept as raw 1-byte so the game renders them half-width at
+    # cell 192+code. Those cells are drawn by font_import's RUNTIME_OVERLAY.
+    # 0x20 (space) — cell 224, cleared transparent.
+    # 0x2E (period) — cell 238, overlay draws '.'.
+    HALFWIDTH_CODES = {0x20, 0x2E}
     for code in range(0x20, 0x7F):  # space to ~
-        if code == 0x20:
-            # Keep space as raw 1-byte 0x20 so the game renders it at half-width.
-            # The ASCII-space cell (local 224 in KANJI texture) must be cleared
-            # transparent by auto_font_import.py to avoid garbled glyphs.
+        if code in HALFWIDTH_CODES:
             pos += 1
             continue
         cell = 1644 + pos
