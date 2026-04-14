@@ -540,14 +540,23 @@ def build_korean_patch():
             # so Korean blade descriptions are safe and needed for Forge/Equip
             # detail screens.
             main_msgs = translations.get('_itemdata_main', {}).get('messages', [])
+            # US _itemdata separators ('-') that must not be overwritten:
+            #   [0],[1]  : placeholder dashes at file start
+            #   [594]    : separator between items and skill names (excluded by range gap)
+            #   [704]    : separator between skill names and effect name/desc pairs
+            us_separators = {0, 1, 704}
             custom_idx_ko = {}
             for i in range(0, 594):
+                if i in us_separators:
+                    continue
                 if i >= len(msgs):
                     continue
                 ko = msgs[i].get('ko', '')
                 if ko:
                     custom_idx_ko[i] = ko
             for i in range(595, 1177):
+                if i in us_separators:
+                    continue
                 main_i = i - 8
                 if 0 <= main_i < len(main_msgs):
                     ko = main_msgs[main_i].get('ko', '')
