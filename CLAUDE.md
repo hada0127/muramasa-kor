@@ -25,7 +25,7 @@
 - **번역 문구 고민 시** → `wii/messages/kr/*.json`에서 같은 문맥의 번역 예시 찾기
 - **용어/고유명사(인물·지명·아이템)** → `wii/messages/kr/_itemdata.json`, `scename_US.json`
 - **UI/메뉴 번역** → `wii/messages/kr/sysmsg.json`, `wii/textures/kr/*.png` (시각 레퍼런스)
-- **한글 폰트 디자인 참고** → `wii/fonts/kr/font_p0-3.png` (이롭게 계열 폰트 글리프)
+- **한글 폰트 디자인 참고** → Wii 한글 패치에서 이롭게 계열 폰트 사용 (참고용)
 - **JP 원문 대조** → `wii/messages/jp/*.json` (같은 인덱스 매칭)
 
 ### wii/ 폴더 구조
@@ -272,8 +272,7 @@ muramasa-kor/
 | 파일 | 용도 |
 |---|---|
 | `RIDIBatang.otf` | 본문 한글 폰트 (22px, 폰트 아틀라스 렌더링) |
-| `Griun_PolSensibility-Rg.ttf` | UI 텍스처 한글 (타이틀, 버튼) |
-| `IropkeBatangM.ttf` | 이롭게 바탕체 (레퍼런스) |
+| `Griun_PolSensibility-Rg.ttf` | 그리운 경찰감성체 — UI 텍스처 한글 (타이틀, 버튼) |
 
 ## 기술 정보
 
@@ -355,7 +354,7 @@ python tools/vita3k_ctrl.py close && sleep 2 && python tools/vita3k_ctrl.py laun
 - **알파 전용 텍스처 다수** — 뷰어에서 흰색으로 보임. 검은 배경 합성(`Image.alpha_composite`)으로 확인
 - **선택/미선택 상태가 별도 텍스처** — 같은 텍스트가 2개 이상 텍스처에 존재할 수 있음 (예: GENROKU LEGENDS → ADE2B8B5998887A9 + 8EFF960FC088FDD7)
 - **한자 붓글씨는 보존** — 영문 텍스트만 한글로 교체
-- **폰트**: Griun_PolSensibility-Rg.ttf (그리운 폴센서빌리티체)
+- **폰트**: Griun_PolSensibility-Rg.ttf (그리운 경찰감성체)
 - **작업 후 반드시 texture_localize_config.json에 기록** — 영역 좌표, 번역 텍스트, 폰트 크기, status 업데이트
 - **출력 위치**: Vita3K `import/` 폴더 + 리포 `kr_textures/ui/` 양쪽에 저장 (`texture_localize.py`가 자동 복사)
 - **수동 편집 텍스처 (regions 없음)**: `kr_textures/ui/`에 커밋된 버전을 권위로 간주. `texture_localize.py`가 자동 SKIP — 덮어쓰기 금지

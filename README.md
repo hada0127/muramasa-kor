@@ -77,7 +77,7 @@ python tools/vita3k_ctrl.py close && python tools/vita3k_ctrl.py launch
 |---|---|---|
 | **원본 CPK** | `backup/NinPri.cpk`, `backup/NinPriPatch.cpk` | 별도 확보 필요 — 아래 PKG 해시 참고 |
 | **HD 텍스처 팩** (선택) | Plaidray/xibalva "Muramasa Complete 2.0" | 커뮤니티 배포 — 별도 다운로드 |
-| **Korean 폰트** | `fonts/` | 리포 포함 (RIDIBatang, Griun Polsensibility, Iropke Batang) |
+| **Korean 폰트** | `fonts/` | 리포 포함 (RIDIBatang, 그리운 경찰감성체) |
 
 ### Python 패키지
 ```
@@ -196,17 +196,12 @@ muramasa-kor/
 │   └── texture_localize_*.json  # 텍스처 한글화 설정·카탈로그
 ├── fonts/                       # 한글 TTF/OTF
 │   ├── RIDIBatang.otf           # 본문 폰트 (22px, 폰트 아틀라스용)
-│   ├── Griun_PolSensibility-Rg.ttf  # UI 텍스처용
-│   └── IropkeBatangM.ttf        # 이롭게 바탕체 (레퍼런스)
+│   └── Griun_PolSensibility-Rg.ttf  # 그리운 경찰감성체 (UI 텍스처용)
 ├── textures/                    # 텍스처 소스 리소스
 │   ├── originals/               # Vita3K export 원본 (로컬화 작업 소스)
 │   └── work/                    # PSD 작업 파일
 ├── kr_textures/                 # 한글화된 텍스처 (Vita3K import용 배포본)
 │   └── ui/                      # UI 텍스처 한글판 (타이틀, 로고, DLC 부제 등)
-├── wii/                         # Wii USA 한글 패치 참고 자료
-│   ├── messages/                # JP/KR 메시지 JSON (4,920 엔트리)
-│   ├── fonts/                   # JP/KR 폰트 아틀라스
-│   └── textures/                # UI 텍스처 레퍼런스
 ├── docs/                        # PDCA 문서
 │   ├── 01-plan/features/        # 기능별 계획서
 │   ├── 02-design/features/      # 구현 설계
@@ -280,14 +275,13 @@ b2_offset = b2 - 0x41       (b2 >= 0x80, 0x7F skip)
 
 ### 참고 자료
 - [한글패치 대안 방법 연구](.claude/research_korean_patch_methods.md)
-- [Wii 한글 패치 참고 자료](wii/README.md)
 
 ---
 
 ## 기여 가이드
 
 ### 번역 품질 기준
-- **Wii USA 한글 패치**가 1차 레퍼런스 (`wii/messages/kr/*.json`)
+- **Wii USA 한글 패치**가 1차 레퍼런스 (번역 기반)
 - 고유명사는 `translations/proper_nouns.json`에 정의 후 `polish_dlc.py`로 일괄 적용
 - 1줄 ≤ 18자 (scemsg), 아이템 설명 2줄, 지명 1줄 캡
 
@@ -348,9 +342,7 @@ cp "$VITA3K_DIR/ux0/app/PCSE00240/NinPriPatch.cpk"  backup/
 - **도구 스크립트** (`tools/*.py`): MIT (별도 LICENSE 파일 참고)
 - **폰트** (`fonts/`):
   - RIDIBatang — RIDI 배포, 개인 사용 허용
-  - Griun Polsensibility — 저작자 확인 후 사용
-  - Iropke Batang — 이롭게 재단 무료 배포
-- **Wii 참고 자료** (`wii/`): 원본 Wii USA 한글 패치 저작자에게 귀속
+  - 그리운 경찰감성체 (Griun_PolSensibility-Rg.ttf) — 저작자 확인 후 사용
 - **원본 게임 에셋** (CPK, HD 팩): **포함되지 않음** — 각자 합법적으로 확보
 
 이 프로젝트는 마무리시 비공식 팬 번역으로 배포 예정이며, 상업적 이용을 금지한다.
