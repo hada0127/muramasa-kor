@@ -223,7 +223,7 @@ muramasa-kor/
 ├── docs/                        # PDCA 문서 (01-plan, 02-design, 03-analysis, 04-report)
 ├── patch_main/                  # NinPri.cpk용 NMS 빌드 결과 (build_patch.py 출력)
 ├── patch_patch/                 # NinPriPatch.cpk용 NMS 빌드 결과 (build_patch.py 출력)
-├── backup/                      # 원본 CPK (NinPri.cpk + NinPriPatch.cpk, 459MB, 리포 포함)
+├── backup/                      # 원본 CPK (NinPri.cpk + NinPriPatch.cpk, 459MB, gitignored)
 ├── .claude/                     # 작업 로그 (todo/success/fail)
 └── [gitignored 로컬 전용]
     ├── extracted/               # 추출된 게임 NMS (msgsheet만)
@@ -407,10 +407,8 @@ NinPri.cpk        → 베이스 게임 (NinPriPatch가 덮어씀)
 
 ## 외부 의존 자원
 
-리포에 포함:
-- 원본 CPK: `backup/NinPri.cpk`, `backup/NinPriPatch.cpk` (459MB, 정품 사적 이용)
-
 별도 확보 필요 (로컬 전용):
+- 원본 CPK: `backup/NinPri.cpk`, `backup/NinPriPatch.cpk` (459MB, gitignored — PKG에서 추출)
 - HD 텍스처 팩: Plaidray/xibalva "Muramasa Complete 2.0" (외부 다운로드)
 - Wiimms ISO Tools (wit): `tools/wit/` (Wii 참고 자료 재생성용, 선택)
 - Real-ESRGAN ncnn-vulkan: `temp/realesrgan/` (업스케일용, 선택)

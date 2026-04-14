@@ -8,9 +8,9 @@
 - **언어**: 한국어
 - **기반**: Wii USA판 한글 패치(RSFE7U)의 공식 검수 번역 + DLC 추가 번역
 
-> ⚠️ **저작권 안내**: 이 리포에는 편의를 위해 `backup/`에 원본 CPK가 포함되어 있다.
-> 이 파일들은 Aksys/Vanillaware의 저작물이며, **정품 소유자의 사적 이용 범위**에서만 사용할 것.
-> **상업적 배포·재판매 금지**. HD 텍스처 팩은 별도로 확보해야 한다.
+> ⚠️ **저작권 안내**: 원본 게임 에셋(CPK, PKG)은 리포에 포함되지 않는다.
+> **정품 소유자가 합법적으로 확보한 파일**을 `backup/`에 직접 배치해야 한다.
+> **상업적 배포·재판매 금지**. HD 텍스처 팩도 별도로 확보해야 한다.
 
 ---
 
@@ -37,7 +37,13 @@ cd muramasa-kor
 # 2. Python 의존성 설치
 pip install -r requirements.txt        # Pillow, numpy, mss, pyautogui 등
 
-# 3. (원본 CPK는 backup/에 이미 포함됨 — 별도 확보 불필요)
+# 3. 원본 CPK 준비 (아래 '원본 게임 파일' 섹션 참고)
+#    Vita3K에 PKG 설치 후 CPK를 backup/에 복사
+#    VITA3K_DIR은 자신의 Vita3K 설치 경로로 변경
+VITA3K_DIR="C:/game/vita3k"  # ← 본인 경로에 맞게 수정
+mkdir -p backup
+cp "$VITA3K_DIR/ux0/app/PCSE00240/NinPri.cpk"      backup/
+cp "$VITA3K_DIR/ux0/app/PCSE00240/NinPriPatch.cpk"  backup/
 
 # 4. 번역 → NMS 빌드
 python tools/build_patch.py
@@ -47,8 +53,8 @@ python tools/cpk_patch.py backup/NinPri.cpk      patch_main  output/NinPri_final
 python tools/cpk_patch.py backup/NinPriPatch.cpk patch_patch output/NinPriPatch_final.cpk --append
 
 # 6. Vita3K에 설치
-cp output/NinPri_final.cpk      C:/game/vita3k/ux0/app/PCSE00240/NinPri.cpk
-cp output/NinPriPatch_final.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPriPatch.cpk
+cp output/NinPri_final.cpk      "$VITA3K_DIR/ux0/app/PCSE00240/NinPri.cpk"
+cp output/NinPriPatch_final.cpk "$VITA3K_DIR/ux0/app/PCSE00240/NinPriPatch.cpk"
 
 # 7. 한글 폰트 오버레이 생성 (한 번만)
 python tools/vita3k_ctrl.py launch     # 게임 진입 → 폰트 텍스처 export 유도
@@ -69,7 +75,7 @@ python tools/vita3k_ctrl.py close && python tools/vita3k_ctrl.py launch
 
 | 자원 | 위치 | 비고 |
 |---|---|---|
-| **원본 CPK** | `backup/NinPri.cpk`, `backup/NinPriPatch.cpk` | 리포 포함 — 정품 소유자만 사용 |
+| **원본 CPK** | `backup/NinPri.cpk`, `backup/NinPriPatch.cpk` | 별도 확보 필요 — 아래 PKG 해시 참고 |
 | **HD 텍스처 팩** (선택) | Plaidray/xibalva "Muramasa Complete 2.0" | 커뮤니티 배포 — 별도 다운로드 |
 | **Korean 폰트** | `fonts/` | 리포 포함 (RIDIBatang, Griun Polsensibility, Iropke Batang) |
 
@@ -87,24 +93,29 @@ pywin32          # Windows 키 입력 자동화
 ## 환경 셋업
 
 ### 1) 디렉토리 준비
-```bash
-# Vita3K 기본 경로 (Windows 기준, 프로젝트가 기대하는 위치)
-C:/game/vita3k/
+Vita3K 설치 경로는 사람마다 다를 수 있다. 아래는 예시이며, 본인 경로에 맞게 읽을 것.
+```
+<VITA3K_DIR>/                     # 예: C:/game/vita3k, D:/emulators/vita3k 등
 ├── Vita3K.exe
-├── ux0/app/PCSE00240/          # 게임 앱
+├── ux0/app/PCSE00240/            # 게임 앱
 └── textures/
-    ├── export/PCSE00240/       # 게임 실행 시 자동 dump
-    └── import/PCSE00240/       # 한글 폰트/텍스처 overlay
+    ├── export/PCSE00240/         # 게임 실행 시 자동 dump
+    └── import/PCSE00240/         # 한글 폰트/텍스처 overlay
 ```
 
 Vita3K 설정에서 **Texture Import/Export** 옵션을 활성화해야 한다.
 
-### 2) 원본 CPK (리포 포함)
-`backup/NinPri.cpk`와 `backup/NinPriPatch.cpk`는 리포에 포함되어 있다 (459MB).
-정품 소유자의 사적 이용을 위해 유지되며, 재배포하지 말 것.
+### 2) 원본 CPK 준비
+원본 CPK는 리포에 포함되지 않는다 (용량 459MB). Vita3K에 PKG를 설치한 뒤 복사한다:
+```bash
+mkdir -p backup
+cp C:/game/vita3k/ux0/app/PCSE00240/NinPri.cpk      backup/
+cp C:/game/vita3k/ux0/app/PCSE00240/NinPriPatch.cpk  backup/
+```
+올바른 원본인지 아래 '원본 게임 파일' 섹션의 해시 표로 확인할 것.
 
 ### 3) HD 팩 적용 (선택)
-HD 팩은 `C:/game/vita3k/textures/import/PCSE00240/`에 PNG들을 배치하면 자동 적용된다.
+HD 팩은 `<VITA3K_DIR>/textures/import/PCSE00240/`에 PNG들을 배치하면 자동 적용된다.
 리사이즈 + 최적화는 `tools/hd_font_import.py` 참고.
 
 ---
@@ -143,8 +154,8 @@ python tools/vita3k_ctrl.py launch
 
 ### 원본 복원
 ```bash
-cp backup/NinPri.cpk      C:/game/vita3k/ux0/app/PCSE00240/NinPri.cpk
-cp backup/NinPriPatch.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPriPatch.cpk
+cp backup/NinPri.cpk      "$VITA3K_DIR/ux0/app/PCSE00240/NinPri.cpk"
+cp backup/NinPriPatch.cpk "$VITA3K_DIR/ux0/app/PCSE00240/NinPriPatch.cpk"
 ```
 
 ### 트러블슈팅
@@ -210,7 +221,7 @@ muramasa-kor/
 │   ├── success.md               # 완료 기록
 │   ├── fail.md                  # 실패 기록
 │   └── research_korean_patch_methods.md
-├── backup/                      # 원본 CPK (NinPri.cpk, NinPriPatch.cpk — 459MB, 리포 포함)
+├── backup/                      # 원본 CPK (NinPri.cpk, NinPriPatch.cpk — 459MB, gitignored)
 └── [gitignored — 로컬 전용]
     ├── extracted/               # 추출된 게임 NMS (msgsheet만, 빌드 시 생성)
     ├── extracted_wii/           # Wii msgsheet NMS (참고)
@@ -295,6 +306,39 @@ b2_offset = b2 - 0x41       (b2 >= 0x80, 0x7F skip)
 2. `CLAUDE.md`의 **주요 도구** 표에 등재
 3. 필요시 `README.md`의 **빠른 시작** / **파이프라인**에 명령 추가
 4. 의존성은 `requirements.txt`에 추가
+
+---
+
+## 원본 게임 파일 (PKG)
+
+빌드에 필요한 원본 CPK를 얻으려면 아래 PKG를 Vita3K에 설치한 뒤 `backup/`에 복사한다.
+정품 소유자가 합법적으로 확보한 파일만 사용할 것.
+
+### 본편 (PCSE00240)
+
+| 파일 | 크기 | SHA-256 |
+|---|---|---|
+| `Muramasa Rebirth.pkg` | 450 MB | `339cd06ec0f19bea3c9ce40fe47d4873b365d8ad6f78845f9819edeb0d5d9b71` |
+| `update.pkg` | 33 MB | `1396e08a04a28a41f64f10cc762546139df1eed29cce9ca87363696d13a9388b` |
+| `work.bin` | 512 B | `49e2550c82fe5a61e873682e84cd22b32229d0482150185abc25087b08b6ba48` |
+
+### DLC — Genroku Legends
+
+| DLC | PKG SHA-256 | work.bin SHA-256 |
+|---|---|---|
+| **A Cause to Daikon For** (69 MB) | `62f46a334f79054a76b4b2644942c2a2ccb4a8271bb553f5208d60f77f922f84` | `9a6ebb5121110ad2f01ca0d0cf05e93b9b742a463746b8eb4c69ec57687b24f0` |
+| **A Spirited Seven Nights' Haunting** (84 MB) | `9c018a639cf631b6babbe2ba48e14a06bca866f752c53a86f9436e39a236a84c` | `9d39ed0c09e446cd852715f87160f0af6882a00504d7ae455089361a879b9d89` |
+| **Fishy Tales of the Nekomata** (76 MB) | `03e660dbf4fbeb848de1650bfe900db346fe711265e42f01a07042a421b657ba` | `9498bd7f4ed205564a46a7f3dbdb8484e156b06ee037030e1b6ab352b57f2439` |
+| **Hell's Where the Heart Is** (83 MB) | `2af2a4de7fd1b1e1233eee86e8a039ae834d015c9ca293e217a047e5292aaf82` | `1ede67a4e510b94682937ca49c1cd7400d0b553a7c5932eac6d3c2a2ef30baa3` |
+
+### 설치 후 CPK 복사
+```bash
+# Vita3K GUI에서 본편 PKG → update.pkg → DLC 4개 순서로 설치
+# 설치 완료 후 (VITA3K_DIR은 본인 Vita3K 경로):
+mkdir -p backup
+cp "$VITA3K_DIR/ux0/app/PCSE00240/NinPri.cpk"      backup/
+cp "$VITA3K_DIR/ux0/app/PCSE00240/NinPriPatch.cpk"  backup/
+```
 
 ---
 
