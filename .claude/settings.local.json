@@ -12,5 +12,19 @@
       "Bash(cat /tmp/wii_summary.txt)",
       "Bash(echo \"\")"
     ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"C:/Users/taro1/project/muramasa-kor\" && if [ -n \"$(git status --porcelain)\" ]; then git add -A && git commit -m \"auto-commit by Claude Code\" && git push origin main; else echo '{\"systemMessage\": \"No changes to commit\"}'; fi",
+            "timeout": 60,
+            "statusMessage": "Auto commit & push..."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -59,7 +59,9 @@ FULLWIDTH_NORMALIZE = {
     '\uFF05': '%', '\uFF0B': '+', '\uFF0D': '-', '\uFF1D': '=', '\uFF0F': '/',
     '\uFF0A': '*', '\uFF03': '#', '\uFF06': '&', '\uFF20': '@', '\uFF04': '$',
     '\uFF3E': '^', '\uFF1C': '<', '\uFF1E': '>', '\uFF3B': '[', '\uFF3D': ']',
-    '\uFF5B': '{', '\uFF5D': '}', '\uFF5C': '|', '\uFF5E': '~',
+    '\uFF5B': '{', '\uFF5D': '}', '\uFF5C': '|',
+    '\uFF5E': '\u301C',  # ～ fullwidth tilde → 〜 wave dash (SJIS 0x8160)
+    '~': '\u301C',        # ~ ASCII tilde → 〜 wave dash (avoids cell 1054 overflow)
     '\uFF0C': ',', '\uFF0E': '.', '\uFF1B': ';', '\uFF40': '`',
     # Full-width digits
     '\uFF10': '0', '\uFF11': '1', '\uFF12': '2', '\uFF13': '3', '\uFF14': '4',
