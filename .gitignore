@@ -1,6 +1,6 @@
 # === Game source data ===
-# Keep backup/ (pristine original CPKs used as build input) tracked.
-# Ignore other CPK artifacts (build outputs, intermediate copies).
+# Original CPKs are too large for git (~459 MB). Keep locally only.
+backup/
 /output/*.cpk
 extracted/
 extracted_wii/
