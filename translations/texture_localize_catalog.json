@@ -2,7 +2,7 @@
   "_description": "메뉴/UI 텍스처 한글화 카탈로그 - 전수조사 결과 (379개 중 12개 텍스트 텍스처 발견)",
   "_survey_date": "2026-04-10",
   "_total_textures": 379,
-  "_text_textures": 12,
+  "_text_textures": 14,
   "textures": [
     {
       "hash": "DF66CADDABE022E3",
@@ -13,7 +13,7 @@
       "content": "Victory!, Fight!, Load Game, New Game, Rating, Save, Back, Default, Bestiary, Play, Confirm, Cancel, Warp, Retry, Cooking, Controls, Songs, Proceed, Autumn, Accessories 등",
       "alpha_text": true,
       "status": "pending",
-      "notes": "가장 중요 - 게임 전반 UI 텍스트"
+      "notes": "가장 중요 - 게임 전반 UI 텍스트. 수동 편집 완료 (kr_textures/ui/)"
     },
     {
       "hash": "7DC6CF5A87DB1312",
@@ -46,7 +46,7 @@
       "content": "Legend, The Story of, A Spirited Seven Nights' Haunting, Fishy Tales of the Nekomata, Chaos, Hell's Where the Heart Is, A Cause to Daikon Foraka, White Serpent, Ninja Scroll, Demon Blade, Pandemonium, Oboro Blade",
       "alpha_text": true,
       "status": "pending",
-      "notes": "한자 붓글씨는 보존, 영문 부제만 한글로 교체"
+      "notes": "한자 붓글씨는 보존, 영문 부제만 한글로 교체. 수동 편집 완료 (kr_textures/ui/)"
     },
     {
       "hash": "74EEEC230BEE120C",
@@ -102,13 +102,35 @@
       "alpha_text": true,
       "status": "pending",
       "notes": "오프닝 인트로 영문 나레이션 텍스트. Demon/blood/fates는 게임에서 빨간색으로 렌더링됨"
+    },
+    {
+      "hash": "3B58B76CBA15E487",
+      "size": "2048x1024",
+      "category": "system_ui",
+      "priority": "high",
+      "description": "시스템 UI 텍스트 아틀라스",
+      "content": "Please, Seven Lucky Credits, PlayStation® RETURN, 이야하기, ©2009 2013, Licensed to and published, Treasures, press Return 시작, 새게임, by Aksys Games, MarvelousAQL Inc., Store, 뒤로",
+      "alpha_text": true,
+      "status": "done",
+      "notes": "수동 편집 완료 (kr_textures/ui/). 카탈로그 전수조사 시 미발견 - 별도 세션에서 export"
+    },
+    {
+      "hash": "E4A9FD9D2047280B",
+      "size": "2048x1024",
+      "category": "ending",
+      "priority": "high",
+      "description": "엔딩 '완 결' 텍스트",
+      "content": "완 결 (엔딩 화면 표시)",
+      "alpha_text": true,
+      "status": "done",
+      "notes": "수동 편집 완료 (kr_textures/ui/). 카탈로그 전수조사 시 미발견 - 별도 세션에서 export"
     }
   ],
   "summary": {
-    "high_priority": 8,
+    "high_priority": 10,
     "medium_priority": 1,
     "low_priority": 0,
-    "completed": 0,
-    "total": 9
+    "completed": 7,
+    "total": 11
   }
 }

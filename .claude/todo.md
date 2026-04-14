@@ -54,16 +54,18 @@
 - [x] ~~영남일보 구상시인체 다운로드~~ → 라이선스 문제로 사용 불가
 - [x] 그리운 폴센서빌리티체(Griun_PolSensibility-Rg.ttf) 프로젝트에 추가
 - [x] 전수조사 완료: 379개 export 텍스처 → 12개 텍스트 텍스처 식별
-- [ ] **HIGH** DF66CADDABE022E3 — 메인 UI 텍스트 (Victory, Save, Load, Cooking 등)
+- [x] **HIGH** DF66CADDABE022E3 — 메인 UI 텍스트 (Victory, Save, Load, Cooking 등) — 수동 편집 완료
 - [ ] **HIGH** 7DC6CF5A87DB1312 — 아이템 이름 (Ability Boost, Sage Elixir 등)
 - [ ] **HIGH** E8E01EAF5D41DB52 — 스킬 이름 (Hazy Slash, Divine Blade 등)
-- [ ] **HIGH** A3BE57CE9854B5CC — 스토리/DLC 제목 (영문 부제)
+- [x] **HIGH** A3BE57CE9854B5CC — 스토리/DLC 제목 (영문 부제) — 수동 편집 완료
 - [x] **HIGH** 73420FAEA9F664FD — 본편 타이틀 (오보로 무라마사, 수동 편집)
 - [ ] **HIGH** 74EEEC230BEE120C — 스토리 제목+라벨 혼합
 - [ ] **HIGH** 1823D39C0279886B — 지역명 (YAMASHIRO, MUSASHI 등)
 - [x] **HIGH** ADE2B8B5998887A9 — DLC 부제 (겐로쿠 괴기담)
 - [ ] **HIGH** 79C935AA47DD1810 — 오프닝 나레이션 (Countless Demon Blades...)
 - [x] **MED** 8EFF960FC088FDD7 — 그림자 제거 (수동 편집)
+- [x] **NEW** 3B58B76CBA15E487 — 시스템 UI (Please, Return, 시작, 새게임, Store 등) — 수동 편집 완료
+- [x] **NEW** E4A9FD9D2047280B — 엔딩 "완 결" 텍스트 — 수동 편집 완료
 - [ ] texture_localize.py 도구 작성
 
 ### Phase 5: 통합 테스트
