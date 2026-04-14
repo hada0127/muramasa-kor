@@ -1,6 +1,8 @@
 # === Game source data ===
 # Original CPKs are too large for git (~459 MB). Keep locally only.
 backup/
+# Wii reference data — removed from history, keep locally if needed.
+wii/
 /output/*.cpk
 extracted/
 extracted_wii/
