@@ -66,6 +66,7 @@
 - [x] **MED** 8EFF960FC088FDD7 — 그림자 제거 (수동 편집)
 - [x] **NEW** 3B58B76CBA15E487 — 시스템 UI (Please, Return, 시작, 새게임, Store 등) — 수동 편집 완료
 - [x] **NEW** E4A9FD9D2047280B — 엔딩 "완 결" 텍스트 — 수동 편집 완료
+- [x] **NEW** 8725F040AEE76DFC — 수동 편집 완료
 - [ ] texture_localize.py 도구 작성
 
 ### Phase 5: 통합 테스트
