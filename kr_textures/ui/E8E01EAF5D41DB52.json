@@ -5,7 +5,7 @@
   "original_size": [512, 512],
   "font_suggestion": "fonts/Griun_PolSensibility-Rg.ttf",
   "labels": [
-    {"en": "Hazy Slash",         "ko": "몽롱 베기",        "rot": 0},
+    {"en": "Hazy Slash",         "ko": "오보로 베기",      "rot": 0, "notes": "朧斬り (prj convention: 朧 → 오보로)"},
     {"en": "Quad Lightning",     "ko": "사중 번개",        "rot": 0},
     {"en": "Specter Blow",       "ko": "망령의 일격",      "rot": 90, "notes": "vertical middle-upper"},
     {"en": "Bronze Mirror",      "ko": "청동거울",         "rot": 0, "notes": "_itemdata: 青銅の鏡 → 청동거울"},
