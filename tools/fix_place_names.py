@@ -1,15 +1,12 @@
-"""Place-name-fix Phase 3.6 M1: replace 전각 숫자 in '제N막' with 한글 음독.
+"""Place-name-fix Phase 3.6 revision: use half-width Arabic digits.
 
-Target: translations/jp_messages.json
-Changes:
-  제２막 → 제이막
-  제３막 → 제삼막
-  제４막 → 제사막
-  제５막 → 제오막
-  제６막 → 제육막
-  제７막 → 제칠막
+Previous v1 replaced 전각 숫자 (２-７) with 한글 음독 (이-칠) for OOR avoidance,
+but user preferred '제2막' natural style. Half-width ASCII digits (2-7) route
+through build_patch.py ASCII_SJIS_MAP → cell 960+ which font_import overlays,
+so numerals render correctly while keeping natural Korean typography.
 
-Validate: every syllable in the replacement set must be in kr_sjis_mapping.
+This script is idempotent: runs on either '제이막' or '제２막' inputs and
+produces '제2막'.
 """
 from __future__ import annotations
 
@@ -18,38 +15,24 @@ from pathlib import Path
 
 
 REPLACEMENTS = {
-    "제２막": "제이막",
-    "제３막": "제삼막",
-    "제４막": "제사막",
-    "제５막": "제오막",
-    "제６막": "제육막",
-    "제７막": "제칠막",
+    # Previous 한글 음독 version → ASCII half-width
+    "제이막": "제2막",
+    "제삼막": "제3막",
+    "제사막": "제4막",
+    "제오막": "제5막",
+    "제육막": "제6막",
+    "제칠막": "제7막",
+    # Also normalize leftover full-width forms (idempotent safety)
+    "제２막": "제2막",
+    "제３막": "제3막",
+    "제４막": "제4막",
+    "제５막": "제5막",
+    "제６막": "제6막",
+    "제７막": "제7막",
 }
 
 
 def main() -> None:
-    # Validate syllables against kr mapping
-    kr_map = json.loads(Path("translations/kr_sjis_mapping.json").read_text(encoding="utf-8"))
-    # kr_map structure: {"char": 0xNNNN} or similar
-    all_mapped_chars = set()
-    if isinstance(kr_map, dict):
-        for k in kr_map.keys():
-            if isinstance(k, str) and len(k) == 1:
-                all_mapped_chars.add(k)
-        # If nested: check "mapping" key
-        if "mapping" in kr_map and isinstance(kr_map["mapping"], dict):
-            for k in kr_map["mapping"].keys():
-                if isinstance(k, str) and len(k) == 1:
-                    all_mapped_chars.add(k)
-
-    needed = set("제이삼사오육칠막")
-    missing = needed - all_mapped_chars
-    if missing:
-        print(f"WARNING: chars missing from kr mapping: {missing}")
-    else:
-        print(f"all {len(needed)} needed syllables present in kr mapping ✓")
-
-    # Load translations
     path = Path("translations/jp_messages.json")
     data = json.loads(path.read_text(encoding="utf-8"))
 
@@ -89,7 +72,7 @@ def main() -> None:
 
     walk(data)
 
-    print(f"\nTotal replacements: {total_replacements}")
+    print(f"Total replacements: {total_replacements}")
     print(f"Sections affected:")
     for s, c in affected_sections.items():
         print(f"  {s}: {c}")
