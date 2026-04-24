@@ -1,13 +1,11 @@
-"""Build a Korean opening01 atlas WITHOUT touching opening01.mbs.
+"""Build Korean atlas for opening01 by assigning specific text fragments
+to each carrier. Each carrier draws its own text in its own atlas UV rect,
+rendered at carrier.screen_bbox size, then scaled/transposed to fit the
+UV rect shape.
 
-Per-carrier approach: each carrier defines a quadrilateral in screen space
-(its 4 vertex screen positions) and a rectangle in atlas UV space (its 4
-vertex UV positions, Hypothesis A: first float = atlas x, second = atlas y).
-
-For each visible carrier, PIL.Image.transform with the QUAD mode warps the
-Korean paragraph's carrier-sized region into the carrier's atlas UV rect.
-This handles aspect-matched carriers, transposed carriers, and arbitrary
-affine quads uniformly.
+This avoids the "paragraph crop" approach's problem of gaps between
+carriers swallowing parts of a continuous sentence. Instead, each
+carrier is a self-contained text fragment that renders fully on screen.
 """
 from __future__ import annotations
 
@@ -23,18 +21,29 @@ QUAD_SIZE = 80
 VERTEX_SIZE = 20
 ATLAS_SIZE = (512, 512)
 
-KOREAN_LINES = [
-    "헤아릴 수 없이 흩어진 마검들.",
-    "칼집에서 뽑히는 순간,",
-    "피에 굶주린 듯 곧장 생명을 탐한다.",
-    "그 힘에 스러진 이들의 운명을 보라.",
-]
-LINE_Y_ROWS = [(170, 213), (240, 278), (314, 347), (384, 417)]
+# Per-carrier Korean text fragments. Blank/missing carriers remain unchanged
+# in atlas (so the original English leaks through — acceptable if we hide
+# those carriers via MBS or pick a full set).
+#
+# Line/x-position comments for reference:
+CARRIER_TEXT = {
+    # Line 1 (y ~170-213)
+    115: "헤아릴",          # x=196..278, small left
+    80:  "수 없이 흩어진",   # x=304..610, middle
+    109: "마검들.",         # x=551..762, right
+    # Line 2 (y ~240-278)
+    97:  "칼집에서 뽑히는",  # x=116..397, left
+    100: "순간,",           # x=685..734, tiny right
+    # Line 3 (y ~314-347)
+    91:  "피에 굶주린 듯",   # x=19..233
+    94:  "생명을 탐한다.",   # x=547..728
+    # Line 4 (y ~384-417)
+    112: "그 힘에",         # x=207..302, left
+    88:  "스러진 이들의",    # x=529..744, middle-right
+}
+
 RED_CARRIERS = {85, 86, 102, 106, 107}
-LARGE_CONTAINER_CARRIERS = {90, 96, 111, 114}   # backdrops
-# Aspect-matched or close-to-matched carriers. Others (transposed / big UV /
-# non-rectangular) either cause ghosting or illegible warp results.
-USE_CARRIERS = {80, 88, 91, 94, 95, 97, 100, 103, 109, 115}
+LARGE_CONTAINER_CARRIERS = {90, 96, 111, 114}
 
 
 def quad_offset(idx: int) -> int:
@@ -58,128 +67,114 @@ def uv_rect_image_coords(vs):
     return int(min(xs)), int(min(ys)), int(max(xs)), int(max(ys))
 
 
-def compute_line_boxes():
-    return [
-        (100, LINE_Y_ROWS[0][0], 860, LINE_Y_ROWS[0][1]),
-        (100, LINE_Y_ROWS[1][0], 860, LINE_Y_ROWS[1][1]),
-        (20,  LINE_Y_ROWS[2][0], 940, LINE_Y_ROWS[2][1]),
-        (40,  LINE_Y_ROWS[3][0], 920, LINE_Y_ROWS[3][1]),
-    ]
+def is_rectangular(vs) -> bool:
+    f1s = {round(v[1], 1) for v in vs}
+    f2s = {round(v[2], 1) for v in vs}
+    return len(f1s) == 2 and len(f2s) == 2
 
 
-def fit_font(line_boxes, font_path: Path, max_size=28, min_size=14):
-    size = max_size
+def fit_text(text: str, font_path: Path, max_w: int, max_h: int,
+             start_size: int = 28, min_size: int = 10) -> ImageFont.FreeTypeFont:
+    size = start_size
     while size >= min_size:
         font = ImageFont.truetype(str(font_path), size=size)
-        stroke = max(2, size // 14)
-        ok = True
-        for text, (x0, y0, x1, y1) in zip(KOREAN_LINES, line_boxes):
-            box = font.getbbox(text, stroke_width=stroke)
-            w = box[2] - box[0]; h = box[3] - box[1]
-            if w > (x1 - x0 - 8) or h > (y1 - y0 - 4):
-                ok = False; break
-        if ok: return font
+        stroke = max(1, size // 14)
+        box = font.getbbox(text, stroke_width=stroke)
+        w = box[2] - box[0]; h = box[3] - box[1]
+        if w <= max_w - 6 and h <= max_h - 4:
+            return font
         size -= 1
     return ImageFont.truetype(str(font_path), size=min_size)
 
 
-def draw_paragraph(font_path: Path):
-    line_boxes = compute_line_boxes()
-    font = fit_font(line_boxes, font_path)
-    stroke = max(2, font.size // 14)
-    canvas = Image.new("RGBA", (960, 544), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(canvas)
-    for text, (x0, y0, x1, y1) in zip(KOREAN_LINES, line_boxes):
-        box = draw.textbbox((0, 0), text, font=font, stroke_width=stroke)
-        tw = box[2] - box[0]; th = box[3] - box[1]
-        tx = x0 + ((x1 - x0) - tw) // 2 - box[0]
-        ty = y0 + ((y1 - y0) - th) // 2 - box[1]
-        draw.text((tx, ty), text, font=font,
-                  fill=(255, 255, 255, 255),
-                  stroke_width=stroke, stroke_fill=(255, 255, 255, 255))
-    return canvas, font.size
+def render_text_at_screen_size(text: str, screen_size: tuple[int, int],
+                                font_path: Path) -> Image.Image:
+    w, h = max(4, screen_size[0]), max(4, screen_size[1])
+    font = fit_text(text, font_path, w, h)
+    stroke = max(1, font.size // 14)
+    tile = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(tile)
+    box = draw.textbbox((0, 0), text, font=font, stroke_width=stroke)
+    tw = box[2] - box[0]; th = box[3] - box[1]
+    tx = (w - tw) // 2 - box[0]
+    ty = (h - th) // 2 - box[1]
+    draw.text((tx, ty), text, font=font,
+              fill=(255, 255, 255, 255),
+              stroke_width=stroke, stroke_fill=(255, 255, 255, 255))
+    return tile
 
 
-def warp_carrier_tile(paragraph: Image.Image, vs, uv_rect):
-    """Use PIL's QUAD transform to warp paragraph's screen-space quad into
-    the carrier's UV-space rectangle."""
+def warp_rect_to_uv(tile: Image.Image, vs, uv_rect) -> Image.Image:
+    """Warp the tile (drawn at screen-bbox size) into the carrier's UV
+    rect using PIL's QUAD transform. Handles rectangular carriers —
+    including transposed ones — correctly."""
     ux0, uy0, ux1, uy1 = uv_rect
-    uv_w = ux1 - ux0
-    uv_h = uy1 - uy0
-    if uv_w <= 0 or uv_h <= 0:
-        return None
+    uv_w = ux1 - ux0; uv_h = uy1 - uy0
 
-    # Locate vertex with a given (f1, f2); use tolerance for floats
-    def find_vertex(tx, ty):
-        best = None; best_d = float("inf")
-        for v in vs:
-            d = (v[1] - tx) ** 2 + (v[2] - ty) ** 2
-            if d < best_d:
-                best_d = d; best = v
-        return best
+    def find(tx, ty):
+        return min(vs, key=lambda v: (v[1]-tx)**2 + (v[2]-ty)**2)
 
-    v_tl = find_vertex(ux0, uy0)   # atlas TL
-    v_bl = find_vertex(ux0, uy1)   # atlas BL
-    v_br = find_vertex(ux1, uy1)   # atlas BR
-    v_tr = find_vertex(ux1, uy0)   # atlas TR
+    v_tl = find(ux0, uy0); v_bl = find(ux0, uy1)
+    v_br = find(ux1, uy1); v_tr = find(ux1, uy0)
 
-    def screen(v):
-        return (v[3] + 480.0, 272.0 - v[4])
-    sx_tl, sy_tl = screen(v_tl)
-    sx_bl, sy_bl = screen(v_bl)
-    sx_br, sy_br = screen(v_br)
-    sx_tr, sy_tr = screen(v_tr)
+    def screen(v): return (v[3] + 480.0, 272.0 - v[4])
+    sx_tl, sy_tl = screen(v_tl); sx_bl, sy_bl = screen(v_bl)
+    sx_br, sy_br = screen(v_br); sx_tr, sy_tr = screen(v_tr)
 
-    # PIL QUAD data: upper-left, lower-left, lower-right, upper-right of TARGET
-    data = (sx_tl, sy_tl,
-            sx_bl, sy_bl,
-            sx_br, sy_br,
-            sx_tr, sy_tr)
-    return paragraph.transform((uv_w, uv_h), Image.QUAD, data, Image.BILINEAR)
+    # Shift source coords so they refer to the TILE (which is at origin),
+    # not the full 960×544 screen.
+    sc_x0, sc_y0, sc_x1, sc_y1 = screen_bbox_top_left(vs)
+
+    def to_tile(sx, sy):
+        return (sx - sc_x0, sy - sc_y0)
+
+    t_tl = to_tile(sx_tl, sy_tl); t_bl = to_tile(sx_bl, sy_bl)
+    t_br = to_tile(sx_br, sy_br); t_tr = to_tile(sx_tr, sy_tr)
+    data = (t_tl[0], t_tl[1], t_bl[0], t_bl[1],
+            t_br[0], t_br[1], t_tr[0], t_tr[1])
+    return tile.transform((uv_w, uv_h), Image.QUAD, data, Image.BILINEAR)
 
 
 def build_atlas(source_mbs: Path, output_tex: Path, font_path: Path) -> dict:
     src = source_mbs.read_bytes()
-    paragraph, chosen_size = draw_paragraph(font_path)
     atlas = Image.new("RGBA", ATLAS_SIZE, (0, 0, 0, 0))
     used: list[int] = []
     skipped: list[tuple[int, str]] = []
 
     for idx in range(80, 116):
         vs = read_quad(src, idx)
-        color = vs[0][0]
         if idx in RED_CARRIERS:
-            skipped.append((idx, "red-highlight")); continue
-        if idx not in USE_CARRIERS:
-            skipped.append((idx, "not-in-use-set")); continue
+            skipped.append((idx, "red")); continue
         if idx in LARGE_CONTAINER_CARRIERS:
-            skipped.append((idx, "large-container")); continue
-        if ((color >> 24) & 0xFF) == 0:
-            skipped.append((idx, "alpha=0")); continue
+            skipped.append((idx, "container")); continue
+        if idx not in CARRIER_TEXT:
+            skipped.append((idx, "no-text-assigned")); continue
+        text = CARRIER_TEXT[idx]
+        if not text:
+            skipped.append((idx, "empty-text")); continue
+
         sx0, sy0, sx1, sy1 = screen_bbox_top_left(vs)
         if sx0 < 0 or sx1 > 960 or sy0 < 0 or sy1 > 544:
             skipped.append((idx, "off-screen")); continue
-
         ux0, uy0, ux1, uy1 = uv_rect_image_coords(vs)
-        if (ux0 < 0 or uy0 < 0 or ux1 > 512 or uy1 > 512
-                or ux0 == ux1 or uy0 == uy1):
-            skipped.append((idx, f"bad-uv ({ux0},{uy0},{ux1},{uy1})")); continue
+        if ux0 < 0 or ux1 > 512 or uy0 < 0 or uy1 > 512:
+            skipped.append((idx, "uv-oob")); continue
 
-        # Simple crop + resize. For aspect-matched rectangular carriers this
-        # is lossless. (Warp via Image.QUAD proved to give ghosting when a
-        # carrier is non-rectangular, so we restrict to USE_CARRIERS.)
-        sx0c = max(0, min(959, sx0)); sy0c = max(0, min(543, sy0))
-        sx1c = max(sx0c+1, min(960, sx1)); sy1c = max(sy0c+1, min(544, sy1))
-        crop = paragraph.crop((sx0c, sy0c, sx1c, sy1c))
-        target_w = ux1 - ux0; target_h = uy1 - uy0
-        if (crop.width, crop.height) != (target_w, target_h):
-            crop = crop.resize((max(1, target_w), max(1, target_h)), Image.LANCZOS)
-        atlas.alpha_composite(crop, (ux0, uy0))
+        sc_w = sx1 - sx0; sc_h = sy1 - sy0
+        tile = render_text_at_screen_size(text, (sc_w, sc_h), font_path)
+
+        if is_rectangular(vs):
+            warped = warp_rect_to_uv(tile, vs, (ux0, uy0, ux1, uy1))
+        else:
+            # Fallback: resize (non-rect aspect approximated)
+            warped = tile.resize((ux1 - ux0, uy1 - uy0), Image.LANCZOS)
+
+        atlas.alpha_composite(warped, (ux0, uy0))
         used.append(idx)
 
     output_tex.parent.mkdir(parents=True, exist_ok=True)
     atlas.save(output_tex)
-    return {"used": used, "skipped": skipped, "font_size": chosen_size}
+    return {"used": used, "skipped": skipped}
 
 
 def main() -> None:
@@ -189,7 +184,6 @@ def main() -> None:
     ap.add_argument("--font", default="fonts/Griun_PolSensibility-Rg.ttf")
     args = ap.parse_args()
     info = build_atlas(Path(args.source_mbs), Path(args.output_texture), Path(args.font))
-    print(f"font size: {info['font_size']}px")
     print(f"used ({len(info['used'])}): {info['used']}")
     print(f"skipped ({len(info['skipped'])}): {info['skipped']}")
 
