@@ -27,10 +27,10 @@ RED_COLOR = 0xFF0000FF
 LARGE_CONTAINER_CARRIERS = {90, 96, 111, 114}
 
 KOREAN_SENTENCES = [
-    "헤아릴 수 없이 흩어진 마검들.",
-    "칼집에서 뽑히는 순간,",
-    "피에 굶주린 듯 곧장 생명을 탐한다.",
-    "그 힘에 스러진 이들의 운명을 보라.",
+    "흩어진 마검들",
+    "뽑히는 순간,",
+    "피를 갈망한다",
+    "운명을 보라",
 ]
 KOREAN_PHRASES = [
     "헤아릴 수 없이", "흩어진 마검들",
@@ -78,7 +78,7 @@ def fit_text(text: str, max_w: int, max_h: int, font_path: Path,
     size = start_size
     while size >= min_size:
         font = ImageFont.truetype(str(font_path), size=size)
-        stroke = max(1, size // 16)
+        stroke = max(2, size // 10)   # thicker stroke for legibility
         box = font.getbbox(text, stroke_width=stroke)
         w = box[2] - box[0]; h = box[3] - box[1]
         if w <= max_w - 2 and h <= max_h - 2:
@@ -210,7 +210,7 @@ def build_atlas(source_mbs: Path, source_atlas: Path, font_path: Path,
                         continue
 
             tier_counts[tier] += 1
-            stroke = max(1, font.size // 16)
+            stroke = max(2, font.size // 10)
             tbox = draw.textbbox((0, 0), text, font=font, stroke_width=stroke)
             tw = tbox[2] - tbox[0]; th = tbox[3] - tbox[1]
             tx = ux0 + (w - tw) // 2 - tbox[0]
