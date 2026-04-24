@@ -38,8 +38,15 @@ KOREAN_LINES = [
 
 CARRIER_RANGE = range(80, 116)
 RED_CARRIERS = {85, 86, 102, 106, 107}   # color FF0000FF — English word-emphasis
+# Minimal union-covering set per line (hand-picked after carrier bbox survey).
+# Any carrier in CARRIER_RANGE not in this set will be hidden.
+ACTIVE_CARRIERS = {
+    115, 81,                       # Line 1 (y ~170-213) — x 192..813
+    97, 99, 101,                   # Line 2 (y ~240-278) — x 116..832
+    91, 93, 94, 95,                # Line 3 (y ~314-347) — x 19..940
+    84, 112, 87, 88, 89,           # Line 4 (y ~384-417) — x 30..931
+}
 LINE_Y_ROWS = [(170, 213), (240, 278), (314, 347), (384, 417)]
-MAX_CARRIER_AREA = 30000                  # larger carriers likely container/fill; hide
 
 
 def quad_offset(idx: int) -> int:
@@ -104,17 +111,14 @@ def classify_carriers(blob: bytes) -> tuple[list[int], list[int]]:
     active: list[int] = []
     to_hide: list[int] = []
     for idx in CARRIER_RANGE:
-        if idx in RED_CARRIERS:
+        if idx not in ACTIVE_CARRIERS:
+            # RED_CARRIERS, overlapping duplicates, large containers — all hidden.
             to_hide.append(idx)
             continue
         vs = quad_vertices(blob, idx)
         bbox = screen_bbox(vs)
-        # skip off-screen carriers (they were already invisible in-game)
         if bbox[0] < 0 or bbox[2] > 960 or bbox[1] < 0 or bbox[3] > 544:
-            continue
-        area = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1])
-        if area > MAX_CARRIER_AREA:
-            to_hide.append(idx)
+            # off-screen: do not hide (leave original), just don't remap
             continue
         active.append(idx)
     return active, to_hide
@@ -209,6 +213,11 @@ def build(source_mbs: Path, output_mbs: Path, output_tex: Path,
         x1 = max(x0 + 1, min(960, x1))
         y1 = max(y0 + 1, min(544, y1))
         tile = paragraph.crop((x0, y0, x1, y1))
+        # Compensate for the carrier's rotated UV-to-screen mapping:
+        # atlas u-axis drives screen y, atlas v-axis drives screen x.
+        # Storing the tile with ROTATE_90 makes text's horizontal direction
+        # run along v, so the carrier's rotation lands it horizontal on-screen.
+        tile = tile.transpose(Image.Transpose.ROTATE_90)
         tiles.append((idx, tile))
 
     placements = pack_tiles(tiles, atlas_size)
