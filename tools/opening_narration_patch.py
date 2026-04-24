@@ -37,15 +37,8 @@ KOREAN_LINES = [
 ]
 
 CARRIER_RANGE = range(80, 116)
-RED_CARRIERS = {85, 86, 102, 106, 107}   # color FF0000FF — English word-emphasis
-# Minimal union-covering set per line (hand-picked after carrier bbox survey).
-# Any carrier in CARRIER_RANGE not in this set will be hidden.
-ACTIVE_CARRIERS = {
-    115, 81,                       # Line 1 (y ~170-213) — x 192..813
-    97, 99, 101,                   # Line 2 (y ~240-278) — x 116..832
-    91, 93, 94, 95,                # Line 3 (y ~314-347) — x 19..940
-    84, 112, 87, 88, 89,           # Line 4 (y ~384-417) — x 30..931
-}
+RED_CARRIERS = {85, 86, 102, 106, 107}       # word-emphasis — hidden
+LARGE_CONTAINER_CARRIERS = {90, 96, 111, 114} # backdrops — hidden
 LINE_Y_ROWS = [(170, 213), (240, 278), (314, 347), (384, 417)]
 
 
@@ -78,23 +71,24 @@ def hide_quad(blob: bytearray, idx: int) -> None:
 
 
 def remap_uv(blob: bytearray, idx: int, new_rect: tuple[int, int, int, int]) -> None:
-    """Replace UV coords with the matching corner of new_rect while preserving
-    the carrier's original screen vertices and the u-min↔u-max / v-min↔v-max
-    pairing. opening01's rotated mapping means u-axis becomes screen y and
-    v-axis becomes screen x."""
+    """Replace UV coords to address new_rect while preserving each vertex's
+    corner role. Hypothesis A: first float = atlas x (horizontal),
+    second float = atlas y (vertical)."""
     base = quad_offset(idx)
     x0, y0, x1, y1 = new_rect
     old = [struct.unpack_from("<Iffff", blob, base + i * VERTEX_SIZE) for i in range(4)]
-    u_vals = [v[1] for v in old]
-    v_vals = [v[2] for v in old]
-    u_min, u_max = min(u_vals), max(u_vals)
-    v_min, v_max = min(v_vals), max(v_vals)
-    for i, (color, u, v, sx, sy) in enumerate(old):
-        nu = y0 if abs(u - u_min) <= abs(u - u_max) else y1
-        nv = x0 if abs(v - v_min) <= abs(v - v_max) else x1
+    f1_vals = [v[1] for v in old]   # first float
+    f2_vals = [v[2] for v in old]   # second float
+    f1_min, f1_max = min(f1_vals), max(f1_vals)
+    f2_min, f2_max = min(f2_vals), max(f2_vals)
+    for i, (color, f1, f2, sx, sy) in enumerate(old):
+        # first float ↔ atlas x (horizontal)
+        n1 = x0 if abs(f1 - f1_min) <= abs(f1 - f1_max) else x1
+        # second float ↔ atlas y (vertical)
+        n2 = y0 if abs(f2 - f2_min) <= abs(f2 - f2_max) else y1
         struct.pack_into(
             "<Iffff", blob, base + i * VERTEX_SIZE,
-            color, float(nu), float(nv), sx, sy,
+            color, float(n1), float(n2), sx, sy,
         )
 
 
@@ -111,14 +105,13 @@ def classify_carriers(blob: bytes) -> tuple[list[int], list[int]]:
     active: list[int] = []
     to_hide: list[int] = []
     for idx in CARRIER_RANGE:
-        if idx not in ACTIVE_CARRIERS:
-            # RED_CARRIERS, overlapping duplicates, large containers — all hidden.
+        if idx in RED_CARRIERS or idx in LARGE_CONTAINER_CARRIERS:
             to_hide.append(idx)
             continue
         vs = quad_vertices(blob, idx)
         bbox = screen_bbox(vs)
         if bbox[0] < 0 or bbox[2] > 960 or bbox[1] < 0 or bbox[3] > 544:
-            # off-screen: do not hide (leave original), just don't remap
+            # off-screen carriers — leave them alone (already invisible)
             continue
         active.append(idx)
     return active, to_hide
@@ -213,11 +206,15 @@ def build(source_mbs: Path, output_mbs: Path, output_tex: Path,
         x1 = max(x0 + 1, min(960, x1))
         y1 = max(y0 + 1, min(544, y1))
         tile = paragraph.crop((x0, y0, x1, y1))
-        # Compensate for the carrier's rotated UV-to-screen mapping:
-        # atlas u-axis drives screen y, atlas v-axis drives screen x.
-        # Storing the tile with ROTATE_90 makes text's horizontal direction
-        # run along v, so the carrier's rotation lands it horizontal on-screen.
-        tile = tile.transpose(Image.Transpose.ROTATE_90)
+        # Carrier uses normal (non-rotated) UV mapping: atlas u ↔ screen x,
+        # atlas v ↔ screen y. The original MBS stores (v, u) per vertex though
+        # — `remap_uv` accounts for that; no tile rotation needed here.
+        # Cap width so wide tiles fit into 512 atlas (carrier stretches anyway).
+        max_w = atlas_size[0] - 8
+        if tile.width > max_w:
+            scale = max_w / tile.width
+            new_h = max(2, int(tile.height * scale))
+            tile = tile.resize((max_w, new_h), Image.LANCZOS)
         tiles.append((idx, tile))
 
     placements = pack_tiles(tiles, atlas_size)
