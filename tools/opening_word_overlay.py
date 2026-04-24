@@ -1,11 +1,14 @@
-"""Build Korean opening atlas by classifying carriers by color:
-- MAIN (0xFFFFFFFF, white): Korean text is drawn at its atlas UV rect.
-- SHADOW (0xFF402000, dark brown): UV rect is cleared (transparent).
-- RED (0xFF0000FF, word highlight): UV rect is cleared.
-- LARGE overlap carriers (90, 96, 111, 114): UV rect cleared (underlay).
+"""Build Korean opening atlas using multi-carrier-per-line.
 
-For each MAIN carrier, we try a full Korean sentence first, then phrase,
-then single word, fitting into its UV rect. MBS is NOT modified.
+For each narration line, use ALL aspect-matched 1:1 carriers on that line
+together. Render the Korean sentence onto a paragraph canvas that spans
+the line's screen x-range union. Each carrier crops its screen bbox from
+the paragraph and pastes at its UV rect (1:1, no resize needed).
+
+This spreads the sentence across multiple carriers on a line, giving a
+larger overall font size.
+
+MBS is NOT modified.
 """
 from __future__ import annotations
 
@@ -20,6 +23,7 @@ from PIL import Image, ImageDraw, ImageFont
 MBS_TABLE_OFFSET = 0x1940
 QUAD_SIZE = 80
 VERTEX_SIZE = 20
+ATLAS_SIZE = (512, 512)
 
 MAIN_COLOR = 0xFFFFFFFF
 SHADOW_COLOR = 0xFF402000
@@ -27,26 +31,14 @@ RED_COLOR = 0xFF0000FF
 LARGE_CONTAINER_CARRIERS = {90, 96, 111, 114}
 
 KOREAN_SENTENCES = [
-    "흩어진 마검들",
-    "뽑히는 순간,",
-    "피를 갈망한다",
-    "운명을 보라",
-]
-KOREAN_PHRASES = [
-    "헤아릴 수 없이", "흩어진 마검들",
-    "칼집에서", "뽑히는 순간,",
-    "피에 굶주린", "생명을 탐한다",
-    "그 힘에", "스러진 이들의 운명",
-]
-KOREAN_WORDS = [
-    "헤아릴", "마검들", "칼집", "순간",
-    "피에", "굶주린", "탐한다", "운명",
-    "스러진", "힘에", "보라", "생명",
+    "헤아릴 수 없이 흩어진 마검들",
+    "칼집에서 뽑히는 순간",
+    "피에 굶주린 듯 생명을 탐한다",
+    "스러진 이들의 운명을 보라",
 ]
 
-MIN_SENTENCE_SIZE = 14
-MIN_PHRASE_SIZE = 16
-MIN_WORD_SIZE = 13
+MIN_FONT_SIZE = 22
+MAX_FONT_SIZE = 48
 
 
 def quad_offset(idx: int) -> int:
@@ -59,32 +51,32 @@ def read_quad(src: bytes, idx: int):
 
 
 def uv_rect(vs) -> tuple[int, int, int, int]:
-    xs = [v[1] for v in vs]
-    ys = [v[2] for v in vs]
+    xs = [v[1] for v in vs]; ys = [v[2] for v in vs]
     return int(min(xs)), int(min(ys)), int(max(xs)), int(max(ys))
 
 
-def screen_info(vs) -> tuple[float, float, float, float, float]:
+def screen_rect(vs) -> tuple[int, int, int, int]:
     sxs = [v[3] + 480.0 for v in vs]
     sys_ = [272.0 - v[4] for v in vs]
-    sx0, sx1 = min(sxs), max(sxs)
-    sy0, sy1 = min(sys_), max(sys_)
-    cy = (sy0 + sy1) / 2.0
-    return sx0, sy0, sx1, sy1, cy
+    return int(min(sxs)), int(min(sys_)), int(max(sxs)), int(max(sys_))
 
 
-def fit_text(text: str, max_w: int, max_h: int, font_path: Path,
-             start_size: int, min_size: int) -> ImageFont.FreeTypeFont | None:
-    size = start_size
-    while size >= min_size:
-        font = ImageFont.truetype(str(font_path), size=size)
-        stroke = max(2, size // 10)   # thicker stroke for legibility
-        box = font.getbbox(text, stroke_width=stroke)
-        w = box[2] - box[0]; h = box[3] - box[1]
-        if w <= max_w - 2 and h <= max_h - 2:
-            return font
-        size -= 1
-    return None
+def is_rectangular(vs) -> bool:
+    f1s = {round(v[1], 1) for v in vs}
+    f2s = {round(v[2], 1) for v in vs}
+    return len(f1s) == 2 and len(f2s) == 2
+
+
+def is_aspect_matched(sc, uv, tol: float = 0.15) -> bool:
+    """True if screen and UV rects have matching aspect (within tolerance)."""
+    sc_w = sc[2] - sc[0]; sc_h = sc[3] - sc[1]
+    uv_w = uv[2] - uv[0]; uv_h = uv[3] - uv[1]
+    if sc_h == 0 or uv_h == 0: return False
+    sa = sc_w / sc_h; ua = uv_w / uv_h
+    if max(sa, ua) / max(min(sa, ua), 0.001) > 1 + tol:
+        return False
+    # Also require same orientation (both landscape, both portrait, or both square)
+    return (sc_w > sc_h) == (uv_w > uv_h) or abs(sa - ua) < 0.3
 
 
 def assign_line(cy: float) -> int:
@@ -94,26 +86,37 @@ def assign_line(cy: float) -> int:
     return 3
 
 
+def fit_text_to_width(text: str, max_w: int, max_h: int, font_path: Path,
+                      max_size: int, min_size: int) -> ImageFont.FreeTypeFont:
+    size = max_size
+    while size >= min_size:
+        font = ImageFont.truetype(str(font_path), size=size)
+        stroke = max(2, size // 10)
+        box = font.getbbox(text, stroke_width=stroke)
+        w = box[2] - box[0]; h = box[3] - box[1]
+        if w <= max_w - 8 and h <= max_h - 6:
+            return font
+        size -= 1
+    return ImageFont.truetype(str(font_path), size=min_size)
+
+
 def build_atlas(source_mbs: Path, source_atlas: Path, font_path: Path,
                 output: Path) -> dict:
     src = source_mbs.read_bytes()
     atlas = Image.open(source_atlas).convert("RGBA")
     arr = np.array(atlas)
-    # Snapshot of the ORIGINAL alpha, so coverage checks are not disturbed by
-    # clears of overlapping carriers processed earlier in the loop.
     original_alpha = arr[:, :, 3].copy()
 
-    main_per_line: dict[int, list] = {0: [], 1: [], 2: [], 3: []}
+    # Gather candidates per line: rectangular + aspect-matched main carriers
+    line_carriers: dict[int, list] = {0: [], 1: [], 2: [], 3: []}
     stats = {"kept": 0, "cleared": 0}
 
     for idx in range(40, 116):
         vs = read_quad(src, idx)
         color = vs[0][0]
         ux0, uy0, ux1, uy1 = uv_rect(vs)
-        if ux0 < 0 or uy0 < 0 or ux1 > 512 or uy1 > 512:
-            continue
-        if ux0 == ux1 or uy0 == uy1:
-            continue
+        if ux0 < 0 or uy0 < 0 or ux1 > 512 or uy1 > 512: continue
+        if ux0 == ux1 or uy0 == uy1: continue
 
         def clear():
             arr[uy0:uy1, ux0:ux1, 3] = 0
@@ -126,10 +129,10 @@ def build_atlas(source_mbs: Path, source_atlas: Path, font_path: Path,
         if color != MAIN_COLOR:
             continue
 
-        sx0, sy0, sx1, sy1, cy = screen_info(vs)
-        on_screen = 0 <= sx0 and sx1 <= 960 and 0 <= sy0 and sy1 <= 544
-        in_narration_y = 160 <= sy0 and sy1 <= 420
-        if not (on_screen and in_narration_y):
+        sx0, sy0, sx1, sy1 = screen_rect(vs)
+        if not (0 <= sx0 and sx1 <= 960 and 0 <= sy0 and sy1 <= 544):
+            clear(); continue
+        if not (160 <= sy0 and sy1 <= 420):
             clear(); continue
 
         region = original_alpha[uy0:uy1, ux0:ux1]
@@ -137,93 +140,82 @@ def build_atlas(source_mbs: Path, source_atlas: Path, font_path: Path,
         if coverage < 0.15:
             clear(); continue
 
+        if not is_rectangular(vs):
+            clear(); continue
+        if not is_aspect_matched((sx0, sy0, sx1, sy1), (ux0, uy0, ux1, uy1)):
+            clear(); continue
+
+        cy = (sy0 + sy1) / 2.0
         line = assign_line(cy)
-        sc_w = sx1 - sx0
-        sc_h = sy1 - sy0
-        uv_w = ux1 - ux0
-        uv_h = uy1 - uy0
-        # Penalize aspect mismatch: carriers whose UV rect aspect differs
-        # wildly from screen rect aspect compress the sentence into a stripe.
-        sc_aspect = sc_w / max(sc_h, 1)
-        uv_aspect = uv_w / max(uv_h, 1)
-        aspect_ratio = max(sc_aspect, uv_aspect) / max(min(sc_aspect, uv_aspect), 0.001)
-        score = sc_w / aspect_ratio
-        main_per_line[line].append((score, sc_w, idx, cy, (ux0, uy0, ux1, uy1)))
+        line_carriers[line].append({
+            "idx": idx,
+            "screen": (sx0, sy0, sx1, sy1),
+            "uv": (ux0, uy0, ux1, uy1),
+        })
         stats["kept"] += 1
 
-    # Per line, keep the carrier with the HIGHEST score (screen width
-    # divided by aspect mismatch). Clear the rest.
-    for line in main_per_line.values():
-        if not line: continue
-        line.sort(key=lambda t: -t[0])       # highest score first
-        for _, _, _, _, (ux0, uy0, ux1, uy1) in line[1:]:
-            arr[uy0:uy1, ux0:ux1, 3] = 0
-        line[:] = [line[0]]
-
-    # Clear kept carriers' UV regions too (redraw Korean)
-    for line_entries in main_per_line.values():
-        for _, _, _, _, (ux0, uy0, ux1, uy1) in line_entries:
+    # Clear all candidate UV regions (will redraw)
+    for carriers in line_carriers.values():
+        for c in carriers:
+            ux0, uy0, ux1, uy1 = c["uv"]
             arr[uy0:uy1, ux0:ux1, 3] = 0
 
     atlas = Image.fromarray(arr, mode="RGBA")
-    draw = ImageDraw.Draw(atlas)
 
-    tier_counts = {"sentence": 0, "phrase": 0, "word": 0, "skipped": 0}
+    # For each line, build a paragraph canvas at screen resolution and draw
+    # Korean text centered across the line's x-range union. Each carrier
+    # crops its part.
+    font_sizes = {}
+    for line_idx, carriers in line_carriers.items():
+        if not carriers: continue
+        text = KOREAN_SENTENCES[line_idx]
 
-    for line_idx in sorted(main_per_line):
-        carriers = main_per_line[line_idx]
-        sentence_text = KOREAN_SENTENCES[line_idx]
-        # Seq of phrase/word options for this line
-        phrases_for_line = [KOREAN_PHRASES[line_idx * 2], KOREAN_PHRASES[line_idx * 2 + 1]]
-        words_for_line = [KOREAN_WORDS[line_idx * 3 + k % 3] for k in range(len(carriers))]
+        # Line x-range = union of carrier screen x
+        x0_union = min(c["screen"][0] for c in carriers)
+        x1_union = max(c["screen"][2] for c in carriers)
+        y0_union = min(c["screen"][1] for c in carriers)
+        y1_union = max(c["screen"][3] for c in carriers)
+        w_union = x1_union - x0_union
+        h_union = y1_union - y0_union
 
-        for seq, (score, sc_w, idx, cy, (ux0, uy0, ux1, uy1)) in enumerate(carriers):
-            w = ux1 - ux0; h = uy1 - uy0
+        # Fit font to full line width (much larger than single carrier)
+        font = fit_text_to_width(text, w_union, h_union, font_path,
+                                 max_size=MAX_FONT_SIZE, min_size=MIN_FONT_SIZE)
+        font_sizes[line_idx] = font.size
+        stroke = max(2, font.size // 10)
 
-            # Widest gets sentence; others get phrase or word
-            if seq == 0:
-                font = fit_text(sentence_text, w, h, font_path, start_size=h, min_size=MIN_SENTENCE_SIZE)
-                if font is not None:
-                    text = sentence_text; tier = "sentence"
-                else:
-                    # fall back to phrase then word
-                    phrase = phrases_for_line[0]
-                    font = fit_text(phrase, w, h, font_path, start_size=h, min_size=MIN_PHRASE_SIZE)
-                    if font: text, tier = phrase, "phrase"
-                    else:
-                        wtext = words_for_line[seq]
-                        font = fit_text(wtext, w, h, font_path, start_size=h, min_size=MIN_WORD_SIZE)
-                        if font: text, tier = wtext, "word"
-                        else:
-                            tier_counts["skipped"] += 1
-                            continue
-            else:
-                phrase = phrases_for_line[min(seq - 1, 1)]
-                font = fit_text(phrase, w, h, font_path, start_size=h, min_size=MIN_PHRASE_SIZE)
-                if font: text, tier = phrase, "phrase"
-                else:
-                    wtext = words_for_line[seq]
-                    font = fit_text(wtext, w, h, font_path, start_size=h, min_size=MIN_WORD_SIZE)
-                    if font: text, tier = wtext, "word"
-                    else:
-                        tier_counts["skipped"] += 1
-                        continue
+        # Draw text into a 960x544 full-screen canvas at the line's y range
+        para = Image.new("RGBA", (960, 544), (0, 0, 0, 0))
+        pdraw = ImageDraw.Draw(para)
+        tbox = pdraw.textbbox((0, 0), text, font=font, stroke_width=stroke)
+        tw = tbox[2] - tbox[0]; th = tbox[3] - tbox[1]
+        tx = x0_union + (w_union - tw) // 2 - tbox[0]
+        ty = y0_union + (h_union - th) // 2 - tbox[1]
+        pdraw.text((tx, ty), text, font=font,
+                   fill=(255, 255, 255, 255),
+                   stroke_width=stroke, stroke_fill=(255, 255, 255, 255))
 
-            tier_counts[tier] += 1
-            stroke = max(2, font.size // 10)
-            tbox = draw.textbbox((0, 0), text, font=font, stroke_width=stroke)
-            tw = tbox[2] - tbox[0]; th = tbox[3] - tbox[1]
-            tx = ux0 + (w - tw) // 2 - tbox[0]
-            ty = uy0 + (h - th) // 2 - tbox[1]
-            draw.text((tx, ty), text, font=font,
-                      fill=(255, 255, 255, 255),
-                      stroke_width=stroke, stroke_fill=(255, 255, 255, 255))
+        # Each carrier crops its screen bbox from paragraph and pastes at
+        # its UV rect (1:1 since aspect matched).
+        for c in carriers:
+            sx0, sy0, sx1, sy1 = c["screen"]
+            ux0, uy0, ux1, uy1 = c["uv"]
+            crop = para.crop((sx0, sy0, sx1, sy1))
+            # Resize to UV rect dims (should be ~1:1 since aspect matched)
+            uv_w = ux1 - ux0; uv_h = uy1 - uy0
+            if (crop.width, crop.height) != (uv_w, uv_h):
+                crop = crop.resize((max(1, uv_w), max(1, uv_h)), Image.LANCZOS)
+            atlas.alpha_composite(crop, (ux0, uy0))
 
     output.parent.mkdir(parents=True, exist_ok=True)
     atlas.save(output)
-    counts = {k: len(v) for k, v in main_per_line.items()}
-    return {"kept": stats["kept"], "cleared": stats["cleared"],
-            "per_line": counts, "tiers": tier_counts}
+    per_line_count = {k: len(v) for k, v in line_carriers.items()}
+    return {
+        "kept": stats["kept"],
+        "cleared": stats["cleared"],
+        "per_line_count": per_line_count,
+        "font_sizes": font_sizes,
+    }
 
 
 def main() -> None:
@@ -236,8 +228,8 @@ def main() -> None:
     info = build_atlas(Path(args.source_mbs), Path(args.source_atlas),
                        Path(args.font), Path(args.output))
     print(f"kept: {info['kept']}  cleared: {info['cleared']}")
-    print(f"per line: {info['per_line']}")
-    print(f"tiers: {info['tiers']}")
+    print(f"per line: {info['per_line_count']}")
+    print(f"font sizes: {info['font_sizes']}")
 
 
 if __name__ == "__main__":
