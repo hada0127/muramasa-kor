@@ -1,116 +1,243 @@
-"""Build Korean opening atlas by detecting English word bounding boxes
-via connected-component labeling, then drawing a Korean word at each box
-with auto-fit font size. Carriers sample the same UV positions as before,
-but instead of English glyphs they see Korean words.
+"""Build Korean opening atlas by classifying carriers by color:
+- MAIN (0xFFFFFFFF, white): Korean text is drawn at its atlas UV rect.
+- SHADOW (0xFF402000, dark brown): UV rect is cleared (transparent).
+- RED (0xFF0000FF, word highlight): UV rect is cleared.
+- LARGE overlap carriers (90, 96, 111, 114): UV rect cleared (underlay).
 
-MBS is NOT modified. Only the atlas is replaced.
+For each MAIN carrier, we try a full Korean sentence first, then phrase,
+then single word, fitting into its UV rect. MBS is NOT modified.
 """
 from __future__ import annotations
 
 import argparse
+import struct
 from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-from scipy import ndimage
 
 
+MBS_TABLE_OFFSET = 0x1940
+QUAD_SIZE = 80
+VERTEX_SIZE = 20
+
+MAIN_COLOR = 0xFFFFFFFF
+SHADOW_COLOR = 0xFF402000
+RED_COLOR = 0xFF0000FF
+LARGE_CONTAINER_CARRIERS = {90, 96, 111, 114}
+
+KOREAN_SENTENCES = [
+    "헤아릴 수 없이 흩어진 마검들.",
+    "칼집에서 뽑히는 순간,",
+    "피에 굶주린 듯 곧장 생명을 탐한다.",
+    "그 힘에 스러진 이들의 운명을 보라.",
+]
+KOREAN_PHRASES = [
+    "헤아릴 수 없이", "흩어진 마검들",
+    "칼집에서", "뽑히는 순간,",
+    "피에 굶주린", "생명을 탐한다",
+    "그 힘에", "스러진 이들의 운명",
+]
 KOREAN_WORDS = [
-    # Line 1
-    "헤아릴", "수", "없이", "흩어진", "마검들",
-    # Line 2
-    "칼집에서", "뽑히는", "순간",
-    # Line 3
-    "피에", "굶주린", "듯", "곧장", "생명을", "탐한다",
-    # Line 4
-    "그", "힘에", "스러진", "이들의", "운명을", "보라",
+    "헤아릴", "마검들", "칼집", "순간",
+    "피에", "굶주린", "탐한다", "운명",
+    "스러진", "힘에", "보라", "생명",
 ]
 
-
-def detect_word_boxes(atlas_path: Path) -> tuple[Image.Image, list[tuple[int, int, int, int]]]:
-    atlas = Image.open(atlas_path).convert("RGBA")
-    arr = np.array(atlas)
-    alpha = arr[:, :, 3]
-    binary = alpha > 30
-    h_struct = np.ones((1, 5), dtype=bool)
-    dilated = ndimage.binary_dilation(binary, structure=h_struct, iterations=1)
-    labeled, _ = ndimage.label(dilated)
-    slices = ndimage.find_objects(labeled)
-    words: list[tuple[int, int, int, int]] = []
-    for sl in slices:
-        if sl is None: continue
-        y0, y1 = sl[0].start, sl[0].stop
-        x0, x1 = sl[1].start, sl[1].stop
-        w, h = x1 - x0, y1 - y0
-        if w < 12 or h < 10: continue
-        if w > 300 or h > 80: continue
-        words.append((x0, y0, x1, y1))
-    # Sort by y-row (rough), then x
-    words.sort(key=lambda b: (b[1] // 20, b[0]))
-    return atlas, words
+MIN_SENTENCE_SIZE = 14
+MIN_PHRASE_SIZE = 16
+MIN_WORD_SIZE = 13
 
 
-def fit_text(word: str, max_w: int, max_h: int,
-             font_path: Path, start_size: int, min_size: int = 6) -> ImageFont.FreeTypeFont:
+def quad_offset(idx: int) -> int:
+    return MBS_TABLE_OFFSET + idx * QUAD_SIZE
+
+
+def read_quad(src: bytes, idx: int):
+    base = quad_offset(idx)
+    return [struct.unpack_from("<Iffff", src, base + i * VERTEX_SIZE) for i in range(4)]
+
+
+def uv_rect(vs) -> tuple[int, int, int, int]:
+    xs = [v[1] for v in vs]
+    ys = [v[2] for v in vs]
+    return int(min(xs)), int(min(ys)), int(max(xs)), int(max(ys))
+
+
+def screen_info(vs) -> tuple[float, float, float, float, float]:
+    sxs = [v[3] + 480.0 for v in vs]
+    sys_ = [272.0 - v[4] for v in vs]
+    sx0, sx1 = min(sxs), max(sxs)
+    sy0, sy1 = min(sys_), max(sys_)
+    cy = (sy0 + sy1) / 2.0
+    return sx0, sy0, sx1, sy1, cy
+
+
+def fit_text(text: str, max_w: int, max_h: int, font_path: Path,
+             start_size: int, min_size: int) -> ImageFont.FreeTypeFont | None:
     size = start_size
     while size >= min_size:
         font = ImageFont.truetype(str(font_path), size=size)
         stroke = max(1, size // 16)
-        box = font.getbbox(word, stroke_width=stroke)
+        box = font.getbbox(text, stroke_width=stroke)
         w = box[2] - box[0]; h = box[3] - box[1]
         if w <= max_w - 2 and h <= max_h - 2:
             return font
         size -= 1
-    return ImageFont.truetype(str(font_path), size=min_size)
+    return None
 
 
-def build_atlas(source_atlas: Path, font_path: Path, output: Path,
-                preserve_english: bool = False) -> dict:
-    atlas, words = detect_word_boxes(source_atlas)
-    if preserve_english:
-        new_atlas = atlas.copy()
-    else:
-        new_atlas = Image.new("RGBA", atlas.size, (0, 0, 0, 0))
+def assign_line(cy: float) -> int:
+    if cy < 220: return 0
+    if cy < 300: return 1
+    if cy < 370: return 2
+    return 3
 
-    draw = ImageDraw.Draw(new_atlas)
-    for i, (x0, y0, x1, y1) in enumerate(words):
-        word = KOREAN_WORDS[i % len(KOREAN_WORDS)]
-        w = x1 - x0; h = y1 - y0
-        # If not preserving English, clear the box first (transparent)
-        if not preserve_english:
-            # already transparent; nothing to clear on blank canvas
-            pass
-        else:
-            # Clear original English so Korean is not overlaid on top
-            clear = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-            new_atlas.paste(clear, (x0, y0))
-            draw = ImageDraw.Draw(new_atlas)  # refresh
 
-        font = fit_text(word, w, h, font_path, start_size=h)
-        stroke = max(1, font.size // 16)
-        box = draw.textbbox((0, 0), word, font=font, stroke_width=stroke)
-        tw = box[2] - box[0]; th = box[3] - box[1]
-        tx = x0 + (w - tw) // 2 - box[0]
-        ty = y0 + (h - th) // 2 - box[1]
-        draw.text((tx, ty), word, font=font,
-                  fill=(255, 255, 255, 255),
-                  stroke_width=stroke, stroke_fill=(255, 255, 255, 255))
+def build_atlas(source_mbs: Path, source_atlas: Path, font_path: Path,
+                output: Path) -> dict:
+    src = source_mbs.read_bytes()
+    atlas = Image.open(source_atlas).convert("RGBA")
+    arr = np.array(atlas)
+    # Snapshot of the ORIGINAL alpha, so coverage checks are not disturbed by
+    # clears of overlapping carriers processed earlier in the loop.
+    original_alpha = arr[:, :, 3].copy()
+
+    main_per_line: dict[int, list] = {0: [], 1: [], 2: [], 3: []}
+    stats = {"kept": 0, "cleared": 0}
+
+    for idx in range(40, 116):
+        vs = read_quad(src, idx)
+        color = vs[0][0]
+        ux0, uy0, ux1, uy1 = uv_rect(vs)
+        if ux0 < 0 or uy0 < 0 or ux1 > 512 or uy1 > 512:
+            continue
+        if ux0 == ux1 or uy0 == uy1:
+            continue
+
+        def clear():
+            arr[uy0:uy1, ux0:ux1, 3] = 0
+            stats["cleared"] += 1
+
+        if idx in LARGE_CONTAINER_CARRIERS:
+            clear(); continue
+        if color in (SHADOW_COLOR, RED_COLOR):
+            clear(); continue
+        if color != MAIN_COLOR:
+            continue
+
+        sx0, sy0, sx1, sy1, cy = screen_info(vs)
+        on_screen = 0 <= sx0 and sx1 <= 960 and 0 <= sy0 and sy1 <= 544
+        in_narration_y = 160 <= sy0 and sy1 <= 420
+        if not (on_screen and in_narration_y):
+            clear(); continue
+
+        region = original_alpha[uy0:uy1, ux0:ux1]
+        coverage = float(np.mean(region > 30)) if region.size else 0.0
+        if coverage < 0.15:
+            clear(); continue
+
+        line = assign_line(cy)
+        sc_w = sx1 - sx0
+        sc_h = sy1 - sy0
+        uv_w = ux1 - ux0
+        uv_h = uy1 - uy0
+        # Penalize aspect mismatch: carriers whose UV rect aspect differs
+        # wildly from screen rect aspect compress the sentence into a stripe.
+        sc_aspect = sc_w / max(sc_h, 1)
+        uv_aspect = uv_w / max(uv_h, 1)
+        aspect_ratio = max(sc_aspect, uv_aspect) / max(min(sc_aspect, uv_aspect), 0.001)
+        score = sc_w / aspect_ratio
+        main_per_line[line].append((score, sc_w, idx, cy, (ux0, uy0, ux1, uy1)))
+        stats["kept"] += 1
+
+    # Per line, keep the carrier with the HIGHEST score (screen width
+    # divided by aspect mismatch). Clear the rest.
+    for line in main_per_line.values():
+        if not line: continue
+        line.sort(key=lambda t: -t[0])       # highest score first
+        for _, _, _, _, (ux0, uy0, ux1, uy1) in line[1:]:
+            arr[uy0:uy1, ux0:ux1, 3] = 0
+        line[:] = [line[0]]
+
+    # Clear kept carriers' UV regions too (redraw Korean)
+    for line_entries in main_per_line.values():
+        for _, _, _, _, (ux0, uy0, ux1, uy1) in line_entries:
+            arr[uy0:uy1, ux0:ux1, 3] = 0
+
+    atlas = Image.fromarray(arr, mode="RGBA")
+    draw = ImageDraw.Draw(atlas)
+
+    tier_counts = {"sentence": 0, "phrase": 0, "word": 0, "skipped": 0}
+
+    for line_idx in sorted(main_per_line):
+        carriers = main_per_line[line_idx]
+        sentence_text = KOREAN_SENTENCES[line_idx]
+        # Seq of phrase/word options for this line
+        phrases_for_line = [KOREAN_PHRASES[line_idx * 2], KOREAN_PHRASES[line_idx * 2 + 1]]
+        words_for_line = [KOREAN_WORDS[line_idx * 3 + k % 3] for k in range(len(carriers))]
+
+        for seq, (score, sc_w, idx, cy, (ux0, uy0, ux1, uy1)) in enumerate(carriers):
+            w = ux1 - ux0; h = uy1 - uy0
+
+            # Widest gets sentence; others get phrase or word
+            if seq == 0:
+                font = fit_text(sentence_text, w, h, font_path, start_size=h, min_size=MIN_SENTENCE_SIZE)
+                if font is not None:
+                    text = sentence_text; tier = "sentence"
+                else:
+                    # fall back to phrase then word
+                    phrase = phrases_for_line[0]
+                    font = fit_text(phrase, w, h, font_path, start_size=h, min_size=MIN_PHRASE_SIZE)
+                    if font: text, tier = phrase, "phrase"
+                    else:
+                        wtext = words_for_line[seq]
+                        font = fit_text(wtext, w, h, font_path, start_size=h, min_size=MIN_WORD_SIZE)
+                        if font: text, tier = wtext, "word"
+                        else:
+                            tier_counts["skipped"] += 1
+                            continue
+            else:
+                phrase = phrases_for_line[min(seq - 1, 1)]
+                font = fit_text(phrase, w, h, font_path, start_size=h, min_size=MIN_PHRASE_SIZE)
+                if font: text, tier = phrase, "phrase"
+                else:
+                    wtext = words_for_line[seq]
+                    font = fit_text(wtext, w, h, font_path, start_size=h, min_size=MIN_WORD_SIZE)
+                    if font: text, tier = wtext, "word"
+                    else:
+                        tier_counts["skipped"] += 1
+                        continue
+
+            tier_counts[tier] += 1
+            stroke = max(1, font.size // 16)
+            tbox = draw.textbbox((0, 0), text, font=font, stroke_width=stroke)
+            tw = tbox[2] - tbox[0]; th = tbox[3] - tbox[1]
+            tx = ux0 + (w - tw) // 2 - tbox[0]
+            ty = uy0 + (h - th) // 2 - tbox[1]
+            draw.text((tx, ty), text, font=font,
+                      fill=(255, 255, 255, 255),
+                      stroke_width=stroke, stroke_fill=(255, 255, 255, 255))
 
     output.parent.mkdir(parents=True, exist_ok=True)
-    new_atlas.save(output)
-    return {"word_count": len(words), "korean_word_cycle": len(KOREAN_WORDS)}
+    atlas.save(output)
+    counts = {k: len(v) for k, v in main_per_line.items()}
+    return {"kept": stats["kept"], "cleared": stats["cleared"],
+            "per_line": counts, "tiers": tier_counts}
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--source-mbs", default="temp/cpk_extract/_US/GUI/opening01.mbs")
     ap.add_argument("--source-atlas", default="C:/game/vita3k/textures/export/79C935AA47DD1810.png")
     ap.add_argument("--output", default="temp/opening_test/atlas.png")
     ap.add_argument("--font", default="fonts/Griun_PolSensibility-Rg.ttf")
-    ap.add_argument("--preserve-english", action="store_true")
     args = ap.parse_args()
-    info = build_atlas(Path(args.source_atlas), Path(args.font),
-                       Path(args.output), args.preserve_english)
-    print(f"detected words: {info['word_count']}, cycling {info['korean_word_cycle']} Korean words")
+    info = build_atlas(Path(args.source_mbs), Path(args.source_atlas),
+                       Path(args.font), Path(args.output))
+    print(f"kept: {info['kept']}  cleared: {info['cleared']}")
+    print(f"per line: {info['per_line']}")
+    print(f"tiers: {info['tiers']}")
 
 
 if __name__ == "__main__":
