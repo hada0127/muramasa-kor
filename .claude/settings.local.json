@@ -24,7 +24,11 @@
       "Bash(cp temp/upscale_work/out_2x/__TRACKED_VAR__.png kr_textures/ui/__TRACKED_VAR__.uhd.png)",
       "Bash(cp temp/upscale_work/out_4x/__TRACKED_VAR__.png textures/work/__TRACKED_VAR__.uhd.png)",
       "Bash(cp temp/upscale_work/out_4x/__TRACKED_VAR__.png kr_textures/ui/__TRACKED_VAR__.uhd.png)",
-      "Bash(cp temp/upscale_work/out_4x/ADE2B8B5998887A9.png kr_textures/ui/ADE2B8B5998887A9.png)"
+      "Bash(cp temp/upscale_work/out_4x/ADE2B8B5998887A9.png kr_textures/ui/ADE2B8B5998887A9.png)",
+      "Bash(codex exec:*)",
+      "Bash(codex review:*)",
+      "Bash(gemini -p:*)",
+      "Bash(gemini --prompt:*)"
     ]
   },
   "hooks": {
