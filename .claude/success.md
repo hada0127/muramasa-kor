@@ -1,5 +1,35 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-04-25: E8E01EAF5D41DB52 스킬 아틀라스 라벨 번역 재검수 (27건 수정)
+
+### 문제
+`textures/work/E8E01EAF5D41DB52.json`의 라벨 영어→일본어 매핑이 추정(confidence med/low)으로 되어 있어 27건이 잘못됨. 예: Hazy Slash와 Misty Slash가 서로 뒤바뀜.
+
+### 근거
+- `extracted/NinPriPatch_full/{msgsheet,_US/msgsheet}/_itemdata.nms`를 nms_parser로 JSON export
+- US↔JP 인덱스 정렬: 스킬 블록은 **US[595]=JP[1638], offset=1043**. 아이템 블록은 1:1 (US[40]=JP[40]=青銅の鏡 등)
+- 일본어명을 `translations/proper_nouns.json` items 섹션(edit 필드 우선)으로 한국어로 변환 → 시스템 번역과 자동 일체화
+- `朧→오보로`, `家老→가신` 등 의도적 오버라이드는 `edit` 필드로 이미 proper_nouns에서 관리되므로 영향 없음
+
+### 주요 수정
+- Hazy Slash ↔ Misty Slash 스왑 복구 (霞斬り=Misty=안개자르기, 分身霞斬り=Hazy=안개자르기 2)
+- Vengeance ↔ Retribution, Tornado ↔ Vortex, Faerie Inferno ↔ Faerie Assault 스왑 복구
+- Soaring Lark 雲雀→飛燕丸鋸 (종달새→톱날리기)
+- Falling Moon/Mirrored Moon 弧月계→月ノ輪계 (고월→달무리 2, 십육야→달무리 3)
+- Divine Blade 必殺の刃→星天風車 (필살의 검→나선은하)
+- Focus Slash 月下一閃→八丁斬り (달빛베기→채썰기)
+- Hell's Gate 地獄独楽→天地一閃 (지옥팽이→천지베기)
+- Ground Runner 地走り→地虫 (땅달리기→땅벌레)
+- Mountain Gale 烈風走破→巌おろし (강풍→바위치기)
+- Tempest 鬼火嵐→烈風走破 (화염폭풍→강풍)
+- Chaos Roar 百鬼乱閃 省エネ→幻影雷光 (백귀난섬 절약→섬광)
+- 기타 Faerie/Moon 시리즈 넘버링 바로잡음, Sake→般若湯→반야탕
+
+### 검증
+수정 후 모든 `src_ja` 값이 `proper_nouns.json` 매핑과 정확히 일치함 (Monster Cat, Demon Child 2개만 PN 미등록이지만 직역 괴묘/귀자 유지).
+
+---
+
 ## 2026-04-15: UI 텍스처 수동 한글화 (사용자 직접 편집)
 
 ### 완료 텍스처 (kr_textures/ui/)
