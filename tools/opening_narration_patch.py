@@ -111,7 +111,13 @@ def classify_carriers(blob: bytes) -> tuple[list[int], list[int]]:
         vs = quad_vertices(blob, idx)
         bbox = screen_bbox(vs)
         if bbox[0] < 0 or bbox[2] > 960 or bbox[1] < 0 or bbox[3] > 544:
-            # off-screen carriers — leave them alone (already invisible)
+            continue
+        # Only rectangular quads (exactly 2 distinct f1 values AND 2 distinct
+        # f2 values). Non-rectangular quads break remap_uv's corner-matching.
+        f1_vals = {round(v[1], 1) for v in vs}
+        f2_vals = {round(v[2], 1) for v in vs}
+        if len(f1_vals) != 2 or len(f2_vals) != 2:
+            to_hide.append(idx)
             continue
         active.append(idx)
     return active, to_hide
