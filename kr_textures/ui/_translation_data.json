@@ -1,0 +1,4911 @@
+{
+  "00B61B564A5FD289": {
+    "png": "kr_textures/ui/00B61B564A5FD289.png",
+    "backup": "textures/place_name_originals/00B61B564A5FD289.png",
+    "integrated_mapping": [
+      {
+        "kind": "banner",
+        "ja": "杉林 大きな蜘蛛の巣",
+        "ko": "삼나무 숲 커다란 거미집"
+      },
+      {
+        "kind": "banner",
+        "ja": "鬼の潜む洞窟",
+        "ko": "귀신이 숨은 동굴"
+      },
+      {
+        "kind": "banner",
+        "ja": "鬼の潜む洞窟前",
+        "ko": "귀신이 숨은 동굴 앞"
+      },
+      {
+        "kind": "banner",
+        "ja": "花街海蓮座敷",
+        "ko": "하나마치 카이렌자시키"
+      },
+      {
+        "kind": "banner",
+        "ja": "祝言の場",
+        "ko": "혼례식 장"
+      },
+      {
+        "kind": "banner",
+        "ja": "花嫁行列",
+        "ko": "신부 행렬"
+      },
+      {
+        "kind": "banner",
+        "ja": "茶店前",
+        "ko": "찻집 앞"
+      },
+      {
+        "kind": "box",
+        "ja": "何処かの国",
+        "ko": "어딘가의 나라"
+      },
+      {
+        "kind": "box",
+        "ja": "武蔵",
+        "ko": "무사시"
+      },
+      {
+        "kind": "box",
+        "ja": "伊豆",
+        "ko": "이즈"
+      },
+      {
+        "kind": "character",
+        "ja": "唐木清兵衛宅",
+        "ko": "가라키 세이베에 댁"
+      },
+      {
+        "kind": "character",
+        "ja": "鬼助",
+        "ko": "키스케"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "茶店前",
+          "ko": "차야마에",
+          "position_hint": "top left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "唐木清兵衛宅",
+          "ko": "가라키 세이베에타쿠",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "鬼の潜む洞窟",
+          "ko": "오니노 히소무 도쿠츠",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "鬼の潜む洞窟前",
+          "ko": "오니노 히소무 도쿠츠마에",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "杉林 大きな蜘蛛の巣",
+          "ko": "스기바야시 오오키나 쿠모노스",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "祝言の場",
+          "ko": "슈겐노바",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "鬼助",
+          "ko": "키스케",
+          "position_hint": "middle left",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "花嫁行列",
+          "ko": "하나요메 교레츠",
+          "position_hint": "bottom left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "伊豆",
+          "ko": "이즈",
+          "position_hint": "bottom center",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "何処かの国",
+          "ko": "도코카노 쿠니",
+          "position_hint": "bottom right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "武蔵",
+          "ko": "무사시",
+          "position_hint": "bottom center",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "花街海蓮座敷",
+          "ko": "하나마치 카이렌자시키",
+          "position_hint": "bottom right",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1677,
+            15,
+            1849,
+            984
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1397,
+            1446,
+            1569,
+            2008
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            15,
+            15,
+            1370,
+            187
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1009,
+            1499,
+            1181,
+            2005
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            15,
+            215,
+            984,
+            387
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            15,
+            415,
+            892,
+            587
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            15,
+            615,
+            856,
+            787
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            13,
+            815,
+            185,
+            1413
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1681,
+            1013,
+            1927,
+            1583
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1401,
+            845,
+            1647,
+            1416
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1382,
+            0,
+            1946,
+            1602
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1669,
+            1001,
+            1939,
+            1595
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1672,
+            10,
+            1854,
+            988
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1389,
+            833,
+            1658,
+            1427
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            1412,
+            29,
+            1634,
+            797
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            10,
+            10,
+            1374,
+            1493
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            1009,
+            208,
+            1253,
+            884
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            940,
+            32,
+            1069,
+            165
+          ]
+        },
+        {
+          "idx": 8,
+          "bbox": [
+            10,
+            210,
+            988,
+            392
+          ]
+        },
+        {
+          "idx": 9,
+          "bbox": [
+            815,
+            36,
+            939,
+            163
+          ]
+        },
+        {
+          "idx": 10,
+          "bbox": [
+            10,
+            409,
+            896,
+            592
+          ]
+        },
+        {
+          "idx": 11,
+          "bbox": [
+            565,
+            239,
+            868,
+            364
+          ]
+        },
+        {
+          "idx": 12,
+          "bbox": [
+            10,
+            610,
+            860,
+            792
+          ]
+        },
+        {
+          "idx": 13,
+          "bbox": [
+            307,
+            649,
+            559,
+            758
+          ]
+        }
+      ]
+    }
+  },
+  "0AA74C448087838A": {
+    "png": "kr_textures/ui/0AA74C448087838A.png",
+    "backup": "textures/place_name_originals/0AA74C448087838A.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "相模",
+        "ko": "사가미"
+      },
+      {
+        "kind": "banner",
+        "ja": "六国見山 鎌倉墓所",
+        "ko": "로쿠코쿠미야마 가마쿠라 묘소"
+      },
+      {
+        "kind": "character",
+        "ja": "州浜",
+        "ko": "스하마"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "鎌倉",
+          "ko": "가마쿠라",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "六国見山 鎌倉墓所",
+          "ko": "롯코쿠켄잔 가마쿠라 보쇼",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "州浜",
+          "ko": "스하마",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            12,
+            14,
+            1364,
+            186
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            16,
+            217,
+            264,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1852,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1389,
+            9,
+            1836,
+            682
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            4,
+            205,
+            276,
+            800
+          ]
+        }
+      ]
+    }
+  },
+  "3ECF3B0D2C2907BE": {
+    "png": "kr_textures/ui/3ECF3B0D2C2907BE.png",
+    "backup": "textures/place_name_originals/3ECF3B0D2C2907BE.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "武蔵",
+        "ko": "무사시"
+      },
+      {
+        "kind": "banner",
+        "ja": "江戸 網釜藩邸 上屋敷",
+        "ko": "에도 아미가마 번저 가미야시키"
+      },
+      {
+        "kind": "banner",
+        "ja": "証城寺跡",
+        "ko": "쇼조지 옛터"
+      },
+      {
+        "kind": "character",
+        "ja": "綱釜千代子",
+        "ko": "쓰나가마 치요코"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "駿府",
+          "ko": "슨푸",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "駿州宗岡",
+          "ko": "슨슈 무네오카",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "江戸 細倉藩邸上屋敷",
+          "ko": "에도 호소쿠라 한테이 카미야시키",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "妖刀村正",
+          "ko": "요토 무라마사",
+          "position_hint": "bottom left",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            10,
+            12,
+            1364,
+            185
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            292,
+            206,
+            464,
+            803
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            17,
+            213,
+            263,
+            783
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1835,
+            868
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            6,
+            7,
+            1368,
+            189
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1062,
+            34,
+            1313,
+            162
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            5,
+            201,
+            275,
+            795
+          ]
+        }
+      ]
+    }
+  },
+  "7E0669E71FCD7B64": {
+    "png": "kr_textures/ui/7E0669E71FCD7B64.png",
+    "backup": "textures/place_name_originals/7E0669E71FCD7B64.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "信濃",
+        "ko": "시나노"
+      },
+      {
+        "kind": "banner",
+        "ja": "大根芋畑村",
+        "ko": "다이콘 이모하타 마을"
+      },
+      {
+        "kind": "banner",
+        "ja": "大根藩馬蕗城",
+        "ko": "다이콘 번 마후키성"
+      },
+      {
+        "kind": "character",
+        "ja": "大根",
+        "ko": "다이콘"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "大根芋畑村",
+          "ko": "다이콘이모바타케무라",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "信濃",
+          "ko": "시나노",
+          "position_hint": "top middle",
+          "color": "black_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "鴫の藪",
+          "ko": "시기노야부",
+          "position_hint": "top right",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "大益謝油源井",
+          "ko": "오마스샤유겐이",
+          "position_hint": "bottom middle",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            797,
+            15,
+            969,
+            800
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            15,
+            775,
+            752,
+            947
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            16,
+            499,
+            586,
+            744
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            792,
+            10,
+            974,
+            804
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            817,
+            419,
+            946,
+            668
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            0,
+            7,
+            792,
+            762
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            10,
+            770,
+            756,
+            952
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            4,
+            486,
+            597,
+            756
+          ]
+        }
+      ]
+    }
+  },
+  "464E370EF865D0AC": {
+    "png": "kr_textures/ui/464E370EF865D0AC.png",
+    "backup": "textures/place_name_originals/464E370EF865D0AC.png",
+    "integrated_mapping": [
+      {
+        "kind": "banner",
+        "ja": "大根藩馬路城",
+        "ko": "다이콘 번 마지성"
+      },
+      {
+        "kind": "banner",
+        "ja": "大根藩馬路城跡",
+        "ko": "다이콘 번 마지성 옛터"
+      },
+      {
+        "kind": "banner",
+        "ja": "馬路城 大天守",
+        "ko": "마지성 대천수"
+      },
+      {
+        "kind": "banner",
+        "ja": "大根芋畑村",
+        "ko": "다이콘 이모하타 마을"
+      },
+      {
+        "kind": "banner",
+        "ja": "西馬路口",
+        "ko": "니시 마지구치"
+      },
+      {
+        "kind": "banner",
+        "ja": "鬼ヶ島 大蛇",
+        "ko": "오니가시마 오로치"
+      },
+      {
+        "kind": "box",
+        "ja": "茶屋",
+        "ko": "찻집"
+      },
+      {
+        "kind": "box",
+        "ja": "船屋",
+        "ko": "배집"
+      },
+      {
+        "kind": "box",
+        "ja": "鍛冶",
+        "ko": "대장간"
+      },
+      {
+        "kind": "character",
+        "ja": "鳴野豆太夫",
+        "ko": "나루노 마메다유"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "馬路城",
+          "ko": "마지성",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "大天守",
+          "ko": "다이텐슈",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "大根藩馬路城跡",
+          "ko": "다이콘한 마지성터",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "鳴野豆太夫",
+          "ko": "나루노마메다유",
+          "position_hint": "top right",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "西馬路口",
+          "ko": "니시마지구치",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "大根芋畑村",
+          "ko": "다이콘 이모바타케무라",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "茶屋",
+          "ko": "차야",
+          "position_hint": "middle right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "船屋",
+          "ko": "후나야",
+          "position_hint": "middle right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "鍛冶",
+          "ko": "가지",
+          "position_hint": "bottom right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "大根藩馬路城",
+          "ko": "다이콘한 마지성",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "鬼ヶ島 大蛇",
+          "ko": "오니가시마 오로치",
+          "position_hint": "bottom right",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1849,
+            225,
+            2021,
+            1011
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            975,
+            15,
+            1760,
+            187
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1010,
+            831,
+            1748,
+            1003
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            15,
+            227,
+            984,
+            399
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            15,
+            427,
+            984,
+            599
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            709,
+            626,
+            881,
+            1226
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1573,
+            229,
+            1819,
+            799
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1292,
+            229,
+            1538,
+            797
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1012,
+            229,
+            1258,
+            797
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1844,
+            222,
+            2026,
+            1016
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1876,
+            255,
+            2002,
+            501
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            0,
+            0,
+            1837,
+            818
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1561,
+            217,
+            1831,
+            811
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            1006,
+            826,
+            1752,
+            1008
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            1379,
+            37,
+            1627,
+            144
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            1280,
+            216,
+            1549,
+            809
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            1000,
+            216,
+            1269,
+            809
+          ]
+        },
+        {
+          "idx": 8,
+          "bbox": [
+            10,
+            222,
+            988,
+            404
+          ]
+        },
+        {
+          "idx": 9,
+          "bbox": [
+            10,
+            422,
+            988,
+            604
+          ]
+        },
+        {
+          "idx": 10,
+          "bbox": [
+            8,
+            619,
+            683,
+            863
+          ]
+        },
+        {
+          "idx": 11,
+          "bbox": [
+            347,
+            246,
+            599,
+            353
+          ]
+        },
+        {
+          "idx": 12,
+          "bbox": [
+            67,
+            447,
+            315,
+            554
+          ]
+        }
+      ]
+    }
+  },
+  "864BD9CBCC496F78": {
+    "png": "kr_textures/ui/864BD9CBCC496F78.png",
+    "backup": "textures/place_name_originals/864BD9CBCC496F78.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "伊賀",
+        "ko": "이가"
+      },
+      {
+        "kind": "banner",
+        "ja": "暗夜城広間の場",
+        "ko": "암야성 넓은 방의 장"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "云中",
+          "ko": "운추",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "暗夜城云間の場",
+          "ko": "안야조 운칸노바",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "云中",
+          "ko": "운추",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            16,
+            217,
+            263,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1547,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            10,
+            1068,
+            192
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            4,
+            204,
+            275,
+            800
+          ]
+        }
+      ]
+    }
+  },
+  "0912E45A567A41C9": {
+    "png": "kr_textures/ui/0912E45A567A41C9.png",
+    "backup": "textures/place_name_originals/0912E45A567A41C9.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "武蔵",
+        "ko": "무사시"
+      },
+      {
+        "kind": "banner",
+        "ja": "新吉原 衣紋坂",
+        "ko": "신요시와라 에몬자카"
+      },
+      {
+        "kind": "character",
+        "ja": "百姫×鬼助",
+        "ko": "모모히메×키스케"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "駿府",
+          "ko": "슨푸",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "新吉原 大紋坂",
+          "ko": "신요시와라 오몬자카",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "百姫く鬼助",
+          "ko": "모모히메 < 키스케",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            16,
+            217,
+            264,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1557,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            10,
+            1068,
+            192
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            4,
+            205,
+            276,
+            800
+          ]
+        }
+      ]
+    }
+  },
+  "4633B92FBA1371F4": {
+    "png": "kr_textures/ui/4633B92FBA1371F4.png",
+    "backup": "textures/place_name_originals/4633B92FBA1371F4.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "相模",
+        "ko": "사가미"
+      },
+      {
+        "kind": "banner",
+        "ja": "戸塚宿観念寺",
+        "ko": "도쓰카주쿠 간넨지"
+      },
+      {
+        "kind": "banner",
+        "ja": "綱谷藩勝尾城",
+        "ko": "쓰나야 번 가쓰오성"
+      },
+      {
+        "kind": "banner",
+        "ja": "綱谷藩勝尾城回廊",
+        "ko": "쓰나야 번 가쓰오성 회랑"
+      },
+      {
+        "kind": "banner",
+        "ja": "綱谷藩葛銀字庭",
+        "ko": "쓰나야 번 갈은자 정원"
+      },
+      {
+        "kind": "banner",
+        "ja": "由比ヶ浜",
+        "ko": "유이가하마"
+      },
+      {
+        "kind": "banner",
+        "ja": "釣船川船着場",
+        "ko": "쓰리부네강 선착장"
+      },
+      {
+        "kind": "box",
+        "ja": "当川",
+        "ko": "도가와"
+      },
+      {
+        "kind": "box",
+        "ja": "荒益",
+        "ko": "아라마스"
+      },
+      {
+        "kind": "character",
+        "ja": "堺港町",
+        "ko": "사카이 항구마을"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "相模",
+          "ko": "사가미",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "戸塚宿観念寺",
+          "ko": "도쓰카주쿠 간넨지",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "綱谷藩勝尾城",
+          "ko": "쓰나야번 가쓰오성",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "綱谷藩勝尾城回廊",
+          "ko": "쓰나야번 가쓰오성 회랑",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "綱谷藩葛銀字庭",
+          "ko": "쓰나야번 갈은자 정원",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "当川",
+          "ko": "도가와",
+          "position_hint": "middle right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "由比ヶ浜",
+          "ko": "유이가하마",
+          "position_hint": "bottom left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "釣船川船着場",
+          "ko": "쓰리부네강 선착장",
+          "position_hint": "bottom right",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "荒益",
+          "ko": "아라마스",
+          "position_hint": "bottom left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "堺港町",
+          "ko": "사카이 항구마을",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1253,
+            11,
+            1425,
+            981
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1253,
+            1003,
+            1425,
+            1738
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            11,
+            13,
+            1227,
+            185
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            11,
+            208,
+            1127,
+            381
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            11,
+            406,
+            850,
+            578
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            11,
+            607,
+            850,
+            779
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1457,
+            1041,
+            1703,
+            1611
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            881,
+            409,
+            1127,
+            978
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            20,
+            808,
+            266,
+            1378
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1645,
+            9,
+            1889,
+            682
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1248,
+            7,
+            1721,
+            1630
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1445,
+            1029,
+            1715,
+            1623
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            2,
+            0,
+            1640,
+            1397
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            1249,
+            1000,
+            1430,
+            1742
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            870,
+            397,
+            1139,
+            991
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            7,
+            203,
+            1131,
+            385
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            7,
+            401,
+            854,
+            583
+          ]
+        },
+        {
+          "idx": 8,
+          "bbox": [
+            7,
+            601,
+            854,
+            783
+          ]
+        },
+        {
+          "idx": 9,
+          "bbox": [
+            434,
+            624,
+            651,
+            753
+          ]
+        },
+        {
+          "idx": 10,
+          "bbox": [
+            8,
+            797,
+            275,
+            1390
+          ]
+        }
+      ]
+    }
+  },
+  "4709F3E364671D89": {
+    "png": "kr_textures/ui/4709F3E364671D89.png",
+    "backup": "textures/place_name_originals/4709F3E364671D89.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "美濃",
+        "ko": "미노"
+      },
+      {
+        "kind": "banner",
+        "ja": "中仙道間道",
+        "ko": "나카센도 사잇길"
+      },
+      {
+        "kind": "banner",
+        "ja": "鳴神城内座敷",
+        "ko": "나루카미성 내 거실"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "中仙道間道",
+          "ko": "나카센도 간도",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "鳴神城内座敷",
+          "ko": "나루카미 성내 좌敷",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "稲城",
+          "ko": "이나기",
+          "position_hint": "bottom middle",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "城内",
+          "ko": "조나이",
+          "position_hint": "top middle",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            12,
+            15,
+            954,
+            187
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            12,
+            819,
+            798,
+            991
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            712,
+            217,
+            960,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            10,
+            978,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            700,
+            204,
+            971,
+            800
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            8,
+            814,
+            802,
+            996
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            9,
+            207,
+            682,
+            451
+          ]
+        }
+      ]
+    }
+  },
+  "5882EA68BABF3C63": {
+    "png": "kr_textures/ui/5882EA68BABF3C63.png",
+    "backup": "textures/place_name_originals/5882EA68BABF3C63.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "何処かの国",
+        "ko": "어딘가의 나라"
+      },
+      {
+        "kind": "box",
+        "ja": "武蔵",
+        "ko": "무사시"
+      },
+      {
+        "kind": "box",
+        "ja": "美濃",
+        "ko": "미노"
+      },
+      {
+        "kind": "banner",
+        "ja": "日本堤 新吉原",
+        "ko": "니혼즈츠미 신요시와라"
+      },
+      {
+        "kind": "banner",
+        "ja": "菩提寺 虎姫の墓前",
+        "ko": "보리사 토라히메의 묘 앞"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "武蔵",
+          "ko": "무사시",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "美濃",
+          "ko": "미노",
+          "position_hint": "middle left",
+          "color": "black_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "日本堤",
+          "ko": "니혼즈쓰미",
+          "position_hint": "top middle",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "新吉原",
+          "ko": "신요시와라",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "菩提寺",
+          "ko": "보다이지",
+          "position_hint": "top middle",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "虎姫の墓前",
+          "ko": "도라히메노 보젠",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "何処かの国",
+          "ko": "도코카노쿠니",
+          "position_hint": "top right",
+          "color": "black_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1853,
+            12,
+            2025,
+            380
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1389,
+            12,
+            1561,
+            954
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            12,
+            295,
+            1364,
+            467
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            14,
+            497,
+            1068,
+            669
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            620,
+            701,
+            1192,
+            948
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            17,
+            701,
+            588,
+            948
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1384,
+            8,
+            2048,
+            958
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1589,
+            9,
+            1833,
+            684
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            8,
+            290,
+            1368,
+            471
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            0,
+            0,
+            1241,
+            966
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            28,
+            31,
+            1210,
+            252
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            608,
+            688,
+            1203,
+            960
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            10,
+            492,
+            1072,
+            674
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            5,
+            688,
+            599,
+            960
+          ]
+        }
+      ]
+    }
+  },
+  "6605F569D9389F9C": {
+    "png": "kr_textures/ui/6605F569D9389F9C.png",
+    "backup": "textures/place_name_originals/6605F569D9389F9C.png",
+    "integrated_mapping": [
+      {
+        "kind": "banner",
+        "ja": "白川郷 白銀ヶ淵 廃れ社",
+        "ko": "시라카와고 시로가네가후치 폐사"
+      },
+      {
+        "kind": "banner",
+        "ja": "飛騨国",
+        "ko": "히다국"
+      },
+      {
+        "kind": "banner",
+        "ja": "飛騨街道",
+        "ko": "히다 가도"
+      },
+      {
+        "kind": "banner",
+        "ja": "飛騨川",
+        "ko": "히다강"
+      },
+      {
+        "kind": "banner",
+        "ja": "美濃国 境木峠",
+        "ko": "미노국 사카이기 고개"
+      },
+      {
+        "kind": "box",
+        "ja": "関所",
+        "ko": "관문"
+      },
+      {
+        "kind": "box",
+        "ja": "峠道",
+        "ko": "고갯길"
+      },
+      {
+        "kind": "character",
+        "ja": "大雪山",
+        "ko": "다이세쓰잔"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "関所",
+          "ko": "세키쇼",
+          "position_hint": "top middle",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "白川郷 白銀ヶ淵 廃れ社",
+          "ko": "시라카와고 시로가네가후치 스타레야시로",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "飛騨街道",
+          "ko": "히다카이도",
+          "position_hint": "bottom left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "大雪山",
+          "ko": "다이세쓰잔",
+          "position_hint": "middle right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "飛騨川",
+          "ko": "히다가와",
+          "position_hint": "bottom middle",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "飛騨国",
+          "ko": "히다노쿠니",
+          "position_hint": "bottom right",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "美濃国 境木峠",
+          "ko": "미노노쿠니 사카이기토게",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "峠道",
+          "ko": "토게미치",
+          "position_hint": "bottom middle",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1720,
+            11,
+            1893,
+            978
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1486,
+            983,
+            1657,
+            1579
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            13,
+            15,
+            1462,
+            187
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1267,
+            210,
+            1439,
+            715
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            10,
+            213,
+            977,
+            386
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            11,
+            413,
+            977,
+            585
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            11,
+            608,
+            977,
+            780
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1729,
+            1005,
+            1974,
+            1574
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            17,
+            808,
+            263,
+            1379
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1993,
+            1593
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1717,
+            993,
+            1986,
+            1587
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            9,
+            10,
+            1466,
+            192
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1001,
+            208,
+            1245,
+            883
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            7,
+            208,
+            982,
+            390
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            7,
+            407,
+            982,
+            589
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            7,
+            603,
+            982,
+            785
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            547,
+            39,
+            674,
+            167
+          ]
+        },
+        {
+          "idx": 8,
+          "bbox": [
+            5,
+            797,
+            275,
+            1391
+          ]
+        }
+      ]
+    }
+  },
+  "7053B8FFC8B89807": {
+    "png": "kr_textures/ui/7053B8FFC8B89807.png",
+    "backup": "textures/place_name_originals/7053B8FFC8B89807.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "信濃",
+        "ko": "시나노"
+      },
+      {
+        "kind": "banner",
+        "ja": "信濃山奥狐のお宿の場",
+        "ko": "시나노 산속 여우의 여인숙 장"
+      },
+      {
+        "kind": "banner",
+        "ja": "八幡原 修羅の戦場",
+        "ko": "하치만바라 수라의 전장"
+      },
+      {
+        "kind": "character",
+        "ja": "血狂毘沙門",
+        "ko": "치구루이비샤몬"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "character",
+          "ja_text": "血狂毘沙門",
+          "ko": "혈광비사문",
+          "position_hint": "middle left",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "鍛冶",
+          "ko": "가지",
+          "position_hint": "bottom left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "八幡原 修羅の戦場",
+          "ko": "하치만바라 수라의 전장",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "信濃山奥狐のお宿の場",
+          "ko": "시나노 산속 여우 여관의 장",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            8,
+            11,
+            1514,
+            183
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            9,
+            203,
+            1361,
+            375
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1046,
+            401,
+            1292,
+            971
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1528,
+            5,
+            1773,
+            680
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            0,
+            5,
+            1519,
+            990
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            4,
+            197,
+            1364,
+            380
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1034,
+            388,
+            1304,
+            984
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            762,
+            228,
+            888,
+            349
+          ]
+        }
+      ]
+    }
+  },
+  "7282AD29CF433DA0": {
+    "png": "kr_textures/ui/7282AD29CF433DA0.png",
+    "backup": "textures/place_name_originals/7282AD29CF433DA0.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "何処かの国",
+        "ko": "어딘가의 나라"
+      },
+      {
+        "kind": "box",
+        "ja": "大和",
+        "ko": "야마토"
+      },
+      {
+        "kind": "banner",
+        "ja": "峠の茶屋",
+        "ko": "고갯마루 찻집"
+      },
+      {
+        "kind": "banner",
+        "ja": "金剛山山頂高天原入口",
+        "ko": "곤고산 산정 다카마가하라 입구"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "character",
+          "ja_text": "河内",
+          "ko": "가와치",
+          "position_hint": "top left",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "金剛山山麓高天原入口",
+          "ko": "곤고산 산로쿠 다카마가하라 이리구치",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "何処かの国",
+          "ko": "도코카노쿠니",
+          "position_hint": "top right",
+          "color": "black_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "大和",
+          "ko": "야마토",
+          "position_hint": "middle right",
+          "color": "black_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "剛鉄の岳",
+          "ko": "고테쓰노다케",
+          "position_hint": "bottom left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1789,
+            289,
+            1961,
+            942
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            9,
+            291,
+            1516,
+            463
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1256,
+            17,
+            1828,
+            264
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1784,
+            284,
+            1966,
+            947
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            0,
+            0,
+            1846,
+            282
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1528,
+            284,
+            1773,
+            960
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            4,
+            285,
+            1520,
+            468
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            0,
+            7,
+            1233,
+            879
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            28,
+            31,
+            1210,
+            252
+          ]
+        }
+      ]
+    }
+  },
+  "7358BEAA2EF5F8A8": {
+    "png": "kr_textures/ui/7358BEAA2EF5F8A8.png",
+    "backup": "textures/place_name_originals/7358BEAA2EF5F8A8.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "美濃",
+        "ko": "미노"
+      },
+      {
+        "kind": "box",
+        "ja": "大和",
+        "ko": "야마토"
+      },
+      {
+        "kind": "banner",
+        "ja": "柳生城広間の場",
+        "ko": "야규성 넓은 방의 장"
+      },
+      {
+        "kind": "banner",
+        "ja": "鳴神城 大手門前",
+        "ko": "나루카미성 오테문 앞"
+      },
+      {
+        "kind": "banner",
+        "ja": "金剛山山頂高天原入口",
+        "ko": "곤고산 산정 다카마가하라 입구"
+      },
+      {
+        "kind": "character",
+        "ja": "犬神徳川綱吉",
+        "ko": "이누가미 도쿠가와 쓰나요시"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "美濃",
+          "ko": "미노",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "柳生城広間の場",
+          "ko": "야규성 히로마노바",
+          "position_hint": "top middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "鳴神城大手門前",
+          "ko": "나루카미성 오테몬 앞",
+          "position_hint": "top middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "金剛山山頂高天原入口",
+          "ko": "곤고산 산정 다카마가하라 입구",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "大谷",
+          "ko": "오타니",
+          "position_hint": "middle right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "駿河",
+          "ko": "스루가",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            9,
+            11,
+            1516,
+            183
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            203,
+            1220,
+            375
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            9,
+            395,
+            1061,
+            567
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1244,
+            209,
+            1491,
+            779
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            16,
+            593,
+            588,
+            840
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1987,
+            858
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1528,
+            5,
+            1979,
+            814
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1232,
+            196,
+            1503,
+            792
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            4,
+            197,
+            1224,
+            380
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            4,
+            389,
+            1064,
+            572
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            4,
+            580,
+            600,
+            852
+          ]
+        }
+      ]
+    }
+  },
+  "8098AD7E2C438C22": {
+    "png": "kr_textures/ui/8098AD7E2C438C22.png",
+    "backup": "textures/place_name_originals/8098AD7E2C438C22.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "大和",
+        "ko": "야마토"
+      },
+      {
+        "kind": "banner",
+        "ja": "柳生城広間の場",
+        "ko": "야규성 넓은 방의 장"
+      },
+      {
+        "kind": "banner",
+        "ja": "金剛山山腹大仏殿",
+        "ko": "곤고산 산허리 대불전"
+      },
+      {
+        "kind": "banner",
+        "ja": "金剛山山頂高天原入口",
+        "ko": "곤고산 산정 다카마가하라 입구"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "柳生城玄門の場",
+          "ko": "야규성 현문의 장",
+          "position_hint": "top left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "金剛山山腹大仏殿",
+          "ko": "곤고산 산복 대불전",
+          "position_hint": "top middle",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "金剛山山麓高天原入口",
+          "ko": "곤고산 산록 다카마가하라 입구",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "若木",
+          "ko": "와카기",
+          "position_hint": "middle right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "出雲嶽寺",
+          "ko": "이즈모다케지",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            9,
+            11,
+            1516,
+            183
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            203,
+            1220,
+            375
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            9,
+            395,
+            1061,
+            567
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1244,
+            209,
+            1491,
+            779
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            4,
+            0,
+            1987,
+            798
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1528,
+            5,
+            1979,
+            814
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1232,
+            196,
+            1503,
+            792
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            4,
+            197,
+            1224,
+            380
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            4,
+            389,
+            1064,
+            572
+          ]
+        }
+      ]
+    }
+  },
+  "31710FB73B2686EF": {
+    "png": "kr_textures/ui/31710FB73B2686EF.png",
+    "backup": "textures/place_name_originals/31710FB73B2686EF.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "地獄",
+        "ko": "지옥"
+      },
+      {
+        "kind": "banner",
+        "ja": "地獄八景 大焦熱",
+        "ko": "지옥팔경 대초열"
+      },
+      {
+        "kind": "banner",
+        "ja": "地獄八景 等活",
+        "ko": "지옥팔경 등활"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "衆合",
+          "ko": "슈고",
+          "position_hint": "top middle",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "地獄八景 大焦熱",
+          "ko": "지고쿠 핫케이 다이쇼네츠",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "行くは成仏",
+          "ko": "이쿠와 조부츠",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "変化",
+          "ko": "헨게",
+          "position_hint": "bottom right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "大凹",
+          "ko": "다이오",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1249,
+            12,
+            1421,
+            954
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            12,
+            15,
+            1224,
+            187
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1452,
+            17,
+            1700,
+            587
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            280,
+            217,
+            526,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            262,
+            0,
+            1923,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1244,
+            8,
+            1426,
+            958
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            8,
+            10,
+            1228,
+            192
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            268,
+            204,
+            538,
+            800
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            13,
+            208,
+            257,
+            886
+          ]
+        }
+      ]
+    }
+  },
+  "72165D43344F3190": {
+    "png": "kr_textures/ui/72165D43344F3190.png",
+    "backup": "textures/place_name_originals/72165D43344F3190.png",
+    "integrated_mapping": [
+      {
+        "kind": "banner",
+        "ja": "二人の刺客",
+        "ko": "두 명의 자객"
+      },
+      {
+        "kind": "banner",
+        "ja": "赤坂宿 旅籠の部屋",
+        "ko": "아카사카주쿠 여인숙 방"
+      },
+      {
+        "kind": "banner",
+        "ja": "東海道 御油吉田間街道",
+        "ko": "도카이도 고유 요시다 사이 가도"
+      },
+      {
+        "kind": "banner",
+        "ja": "東海道 藤川赤坂間街道",
+        "ko": "도카이도 후지카와 아카사카 사이 가도"
+      },
+      {
+        "kind": "box",
+        "ja": "当川",
+        "ko": "도가와"
+      },
+      {
+        "kind": "character",
+        "ja": "参州羅刹助ノ塚",
+        "ko": "산슈 라세쓰스케 무덤"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "character",
+          "ja_text": "二人の刺客",
+          "ko": "두 사람의 자객",
+          "position_hint": "middle right",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "赤坂宿 旅籠の部屋",
+          "ko": "아카사카슈쿠 하타고노헤야",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "東海道 御油吉田間街道",
+          "ko": "도카이도 고유 요시다 간 가도",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "東海道 藤川赤坂間街道",
+          "ko": "도카이도 후지카와 아카사카 간 가도",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "当川",
+          "ko": "도센",
+          "position_hint": "bottom middle",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "参州羅刹助ノ塚",
+          "ko": "산슈 라세쓰스케노쓰카",
+          "position_hint": "bottom right",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1746,
+            11,
+            1918,
+            850
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            11,
+            211,
+            1464,
+            384
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            11,
+            15,
+            1459,
+            187
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            11,
+            407,
+            1227,
+            581
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1493,
+            905,
+            1739,
+            1474
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            159,
+            7,
+            1923,
+            854
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1475,
+            205,
+            1758,
+            1493
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1482,
+            893,
+            1751,
+            1487
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            7,
+            207,
+            1468,
+            389
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            7,
+            9,
+            1463,
+            191
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            1183,
+            231,
+            1435,
+            363
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            1185,
+            35,
+            1430,
+            165
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            7,
+            403,
+            1232,
+            585
+          ]
+        },
+        {
+          "idx": 8,
+          "bbox": [
+            931,
+            435,
+            1185,
+            560
+          ]
+        },
+        {
+          "idx": 9,
+          "bbox": [
+            680,
+            237,
+            882,
+            355
+          ]
+        },
+        {
+          "idx": 10,
+          "bbox": [
+            553,
+            432,
+            762,
+            561
+          ]
+        }
+      ]
+    }
+  },
+  "615858B46587A60E": {
+    "png": "kr_textures/ui/615858B46587A60E.png",
+    "backup": "textures/place_name_originals/615858B46587A60E.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "美濃",
+        "ko": "미노"
+      },
+      {
+        "kind": "box",
+        "ja": "武蔵",
+        "ko": "무사시"
+      },
+      {
+        "kind": "banner",
+        "ja": "鳴神城広間の場",
+        "ko": "나루카미성 넓은 방의 장"
+      },
+      {
+        "kind": "banner",
+        "ja": "江戸城天守",
+        "ko": "에도성 천수각"
+      },
+      {
+        "kind": "character",
+        "ja": "犬神徳川綱吉",
+        "ko": "이누가미 도쿠가와 쓰나요시"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "無垢",
+          "ko": "무쿠",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "鳴神城雲間の場",
+          "ko": "나루카미성 구모마노바",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "犬神徳川綱吉",
+          "ko": "이누가미 도쿠가와 쓰나요시",
+          "position_hint": "top right",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "山州宗山城",
+          "ko": "산슈 소잔성",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "船州",
+          "ko": "센슈",
+          "position_hint": "bottom right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1265,
+            12,
+            1437,
+            954
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            12,
+            215,
+            1064,
+            387
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1732,
+            17,
+            1980,
+            587
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            16,
+            417,
+            264,
+            988
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1998,
+            1006
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1465,
+            9,
+            1709,
+            686
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1260,
+            8,
+            1442,
+            958
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            8,
+            210,
+            1068,
+            392
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            4,
+            405,
+            276,
+            1000
+          ]
+        }
+      ]
+    }
+  },
+  "2611666E71A8181A": {
+    "png": "kr_textures/ui/2611666E71A8181A.png",
+    "backup": "textures/place_name_originals/2611666E71A8181A.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "武蔵",
+        "ko": "무사시"
+      },
+      {
+        "kind": "banner",
+        "ja": "武蔵街道 祠の場",
+        "ko": "무사시 가도 사당의 장"
+      },
+      {
+        "kind": "banner",
+        "ja": "天門の先",
+        "ko": "천문의 너머"
+      },
+      {
+        "kind": "banner",
+        "ja": "仏界",
+        "ko": "불계"
+      },
+      {
+        "kind": "character",
+        "ja": "犬神徳川綱吉",
+        "ko": "이누가미 도쿠가와 쓰나요시"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "天門の先",
+          "ko": "천문의 앞",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "仏界",
+          "ko": "불계",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "武蔵街道",
+          "ko": "무사시 가도",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "祠の場",
+          "ko": "사당 터",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "犬神徳川綱吉",
+          "ko": "견신 도쿠가와 쓰나요시",
+          "position_hint": "top right",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1753,
+            11,
+            1925,
+            954
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            12,
+            215,
+            1224,
+            387
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            12,
+            415,
+            1064,
+            587
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1268,
+            825,
+            1516,
+            1396
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1749,
+            8,
+            1930,
+            958
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            0,
+            0,
+            1749,
+            1414
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1256,
+            813,
+            1528,
+            1408
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1280,
+            29,
+            1502,
+            780
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            8,
+            210,
+            1228,
+            391
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            8,
+            410,
+            1068,
+            592
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            9,
+            607,
+            682,
+            851
+          ]
+        }
+      ]
+    }
+  },
+  "A8486C49F76167C3": {
+    "png": "kr_textures/ui/A8486C49F76167C3.png",
+    "backup": "textures/place_name_originals/A8486C49F76167C3.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "伊勢",
+        "ko": "이세"
+      },
+      {
+        "kind": "banner",
+        "ja": "伊勢天神高天原入口",
+        "ko": "이세 천신 다카마가하라 입구"
+      },
+      {
+        "kind": "banner",
+        "ja": "二見浦",
+        "ko": "후타미우라"
+      },
+      {
+        "kind": "banner",
+        "ja": "伊勢街道",
+        "ko": "이세 가도"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "殺生",
+          "ko": "셋쇼",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "鮮血川",
+          "ko": "센케쓰가와",
+          "position_hint": "top middle",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "伊勢天神高天原入口",
+          "ko": "이세텐진 다카마가하라 입구",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "啓蟄境中",
+          "ko": "게이칫쿄추",
+          "position_hint": "bottom middle",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "奇崛",
+          "ko": "기굴",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1637,
+            8,
+            1809,
+            662
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            9,
+            11,
+            1361,
+            183
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            289,
+            200,
+            461,
+            706
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            16,
+            209,
+            263,
+            779
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            2018,
+            798
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1376,
+            5,
+            1621,
+            680
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            4,
+            5,
+            1366,
+            188
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            4,
+            196,
+            275,
+            792
+          ]
+        }
+      ]
+    }
+  },
+  "C8B2975F2A629F4B": {
+    "png": "kr_textures/ui/C8B2975F2A629F4B.png",
+    "backup": "textures/place_name_originals/C8B2975F2A629F4B.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "駿河",
+        "ko": "스루가"
+      },
+      {
+        "kind": "banner",
+        "ja": "富士山頂龍脈",
+        "ko": "후지산 정상 용맥"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "character",
+          "ja_text": "山城",
+          "ko": "야마시로",
+          "position_hint": "top left",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "駿河",
+          "ko": "스루가",
+          "position_hint": "bottom middle",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "富士山頂龍脈",
+          "ko": "후지산초 류먀쿠",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            12,
+            15,
+            954,
+            187
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            712,
+            217,
+            959,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            10,
+            977,
+            875
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            700,
+            205,
+            971,
+            800
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            9,
+            207,
+            682,
+            451
+          ]
+        }
+      ]
+    }
+  },
+  "C8C4589102431759": {
+    "png": "kr_textures/ui/C8C4589102431759.png",
+    "backup": "textures/place_name_originals/C8C4589102431759.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "大和",
+        "ko": "야마토"
+      },
+      {
+        "kind": "banner",
+        "ja": "奈良善祷寺 金堂",
+        "ko": "나라 젠토지 금당"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "吉野",
+          "ko": "요시노",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "奈良善祥寺 金堂",
+          "ko": "나라 젠쇼지 금당",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "深雪",
+          "ko": "미유키",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            12,
+            15,
+            1224,
+            187
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            16,
+            217,
+            263,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1714,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            10,
+            1228,
+            192
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            4,
+            204,
+            274,
+            800
+          ]
+        }
+      ]
+    }
+  },
+  "C8E42A56480DB818": {
+    "png": "kr_textures/ui/C8E42A56480DB818.png",
+    "backup": "textures/place_name_originals/C8E42A56480DB818.png",
+    "integrated_mapping": [
+      {
+        "kind": "banner",
+        "ja": "江戸 大根藩邸下屋敷",
+        "ko": "에도 다이콘 번저 시모야시키"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "江戸 大根藩邸下屋敷",
+          "ko": "에도 다이콘 번저 시모야시키",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            15,
+            15,
+            1370,
+            187
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            681,
+            214,
+            853,
+            1000
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            481,
+            214,
+            653,
+            1000
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            279,
+            214,
+            451,
+            1000
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1617,
+            17,
+            1863,
+            587
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            1377,
+            0,
+            1882,
+            981
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            10,
+            10,
+            1374,
+            192
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1069,
+            37,
+            1319,
+            165
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            676,
+            210,
+            858,
+            1004
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            476,
+            210,
+            658,
+            1004
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            509,
+            243,
+            634,
+            490
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            274,
+            210,
+            456,
+            1004
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            299,
+            818,
+            430,
+            947
+          ]
+        },
+        {
+          "idx": 8,
+          "bbox": [
+            13,
+            208,
+            257,
+            882
+          ]
+        }
+      ]
+    }
+  },
+  "C84B5B3A51547DF0": {
+    "png": "kr_textures/ui/C84B5B3A51547DF0.png",
+    "backup": "textures/place_name_originals/C84B5B3A51547DF0.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "遠江",
+        "ko": "토토미"
+      },
+      {
+        "kind": "banner",
+        "ja": "秋葉山山腹",
+        "ko": "아키바산 산허리"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "秋葉山山腹",
+          "ko": "아키하산 산복",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "社へ",
+          "ko": "야시로에",
+          "position_hint": "bottom left",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "門前",
+          "ko": "몬젠",
+          "position_hint": "bottom right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            13,
+            619,
+            798,
+            791
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            712,
+            17,
+            958,
+            588
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            694,
+            0,
+            1019,
+            1015
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            614,
+            802,
+            796
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            9,
+            7,
+            683,
+            251
+          ]
+        }
+      ]
+    }
+  },
+  "C3848C8E5ED70F7A": {
+    "png": "kr_textures/ui/C3848C8E5ED70F7A.png",
+    "backup": "textures/place_name_originals/C3848C8E5ED70F7A.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "美濃",
+        "ko": "미노"
+      },
+      {
+        "kind": "banner",
+        "ja": "伊吹山 不破関",
+        "ko": "이부키산 후와노세키"
+      },
+      {
+        "kind": "character",
+        "ja": "鬼助",
+        "ko": "키스케"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "近江州",
+          "ko": "오미슈",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "伊吹山",
+          "ko": "이부키야마",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "不破関",
+          "ko": "후와노세키",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "前町",
+          "ko": "마에마치",
+          "position_hint": "bottom right",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            16,
+            217,
+            264,
+            788
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            1555,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            10,
+            1068,
+            192
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            4,
+            204,
+            276,
+            800
+          ]
+        }
+      ]
+    }
+  },
+  "E9E834DE4BAFDAB2": {
+    "png": "kr_textures/ui/E9E834DE4BAFDAB2.png",
+    "backup": "textures/place_name_originals/E9E834DE4BAFDAB2.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "甲斐",
+        "ko": "카이"
+      },
+      {
+        "kind": "banner",
+        "ja": "甲府の街道",
+        "ko": "코후의 가도"
+      },
+      {
+        "kind": "banner",
+        "ja": "山の中の一軒家",
+        "ko": "산속의 외딴집"
+      },
+      {
+        "kind": "character",
+        "ja": "山姥",
+        "ko": "야마우바"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "甲府の街道",
+          "ko": "고후노 가이도",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "山姥",
+          "ko": "야마우바",
+          "position_hint": "top middle",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "山の中の一軒家",
+          "ko": "야마노 나카노 잇켄야",
+          "position_hint": "middle right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "俵田",
+          "ko": "다와라다",
+          "position_hint": "bottom middle",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            15,
+            15,
+            984,
+            187
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            15,
+            819,
+            752,
+            991
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            716,
+            217,
+            962,
+            787
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            10,
+            988,
+            806
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            704,
+            205,
+            974,
+            799
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            10,
+            814,
+            756,
+            996
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            444,
+            842,
+            689,
+            971
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            8,
+            207,
+            682,
+            451
+          ]
+        }
+      ]
+    }
+  },
+  "E9F2EC8557984A58": {
+    "png": "kr_textures/ui/E9F2EC8557984A58.png",
+    "backup": "textures/place_name_originals/E9F2EC8557984A58.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "駿河",
+        "ko": "스루가"
+      },
+      {
+        "kind": "banner",
+        "ja": "三保之松原",
+        "ko": "미호노마츠바라"
+      },
+      {
+        "kind": "banner",
+        "ja": "駿府の旅籠",
+        "ko": "슨푸의 여인숙"
+      },
+      {
+        "kind": "character",
+        "ja": "雪之丞",
+        "ko": "유키노조"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "banner",
+          "ja_text": "駿府の旅籠",
+          "ko": "슨푸노 하타고",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "三保之松原",
+          "ko": "미호노 마쓰바라",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "character",
+          "ja_text": "雪之丞",
+          "ko": "유키노조",
+          "position_hint": "top right",
+          "color": "transparent_bg_white_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "box",
+          "ja_text": "凶賊",
+          "ko": "교조쿠",
+          "position_hint": "bottom right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            13,
+            619,
+            798,
+            791
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            13,
+            819,
+            798,
+            991
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            712,
+            17,
+            959,
+            588
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            0,
+            0,
+            977,
+            606
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            8,
+            614,
+            802,
+            796
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            8,
+            814,
+            802,
+            996
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            9,
+            7,
+            683,
+            251
+          ]
+        }
+      ]
+    }
+  },
+  "FFC64B053648525E": {
+    "png": "kr_textures/ui/FFC64B053648525E.png",
+    "backup": "textures/place_name_originals/FFC64B053648525E.png",
+    "integrated_mapping": [
+      {
+        "kind": "box",
+        "ja": "飛騨",
+        "ko": "히다"
+      },
+      {
+        "kind": "banner",
+        "ja": "白川郷 白銀ヶ淵 廃れ社",
+        "ko": "시라카와고 시로가네가후치 폐사"
+      },
+      {
+        "kind": "banner",
+        "ja": "飛騨街道",
+        "ko": "히다 가도"
+      },
+      {
+        "kind": "banner",
+        "ja": "美濃国 境木峠",
+        "ko": "미노국 사카이기 고개"
+      }
+    ],
+    "codex_analysis": {
+      "regions": [
+        {
+          "kind": "box",
+          "ja_text": "関所",
+          "ko": "세키쇼",
+          "position_hint": "top left",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "白川郷 白銀ヶ淵 廃れ社",
+          "ko": "시라카와고 시로가네가후치 스타레야시로",
+          "position_hint": "top right",
+          "color": "red_bg_black_text",
+          "orientation": "vertical_top_to_bottom"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "飛騨街道",
+          "ko": "히다카이도",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "character",
+          "ja_text": "大雪山",
+          "ko": "다이세쓰잔",
+          "position_hint": "middle left",
+          "color": "transparent_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "飛騨川",
+          "ko": "히다가와",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "飛騨国",
+          "ko": "히다노쿠니",
+          "position_hint": "middle left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "banner",
+          "ja_text": "美濃国 境木峠",
+          "ko": "미노노쿠니 사카이기토게",
+          "position_hint": "bottom left",
+          "color": "red_bg_black_text",
+          "orientation": "horizontal_left_to_right"
+        },
+        {
+          "kind": "box",
+          "ja_text": "峠道",
+          "ko": "토게미치",
+          "position_hint": "bottom right",
+          "color": "black_bg_white_text",
+          "orientation": "horizontal_left_to_right"
+        }
+      ]
+    },
+    "detect_v5": {
+      "banners": [
+        {
+          "idx": 0,
+          "bbox": [
+            1486,
+            10,
+            1658,
+            977
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            13,
+            15,
+            1462,
+            187
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1165,
+            211,
+            1337,
+            715
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            965,
+            210,
+            1137,
+            715
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            555,
+            211,
+            728,
+            945
+          ]
+        }
+      ],
+      "boxes": [
+        {
+          "idx": 0,
+          "bbox": [
+            1688,
+            17,
+            1934,
+            587
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            284,
+            217,
+            530,
+            786
+          ]
+        }
+      ],
+      "characters": [
+        {
+          "idx": 0,
+          "bbox": [
+            266,
+            0,
+            1952,
+            805
+          ]
+        },
+        {
+          "idx": 1,
+          "bbox": [
+            1481,
+            7,
+            1663,
+            982
+          ]
+        },
+        {
+          "idx": 2,
+          "bbox": [
+            1510,
+            553,
+            1640,
+            683
+          ]
+        },
+        {
+          "idx": 3,
+          "bbox": [
+            1505,
+            173,
+            1637,
+            426
+          ]
+        },
+        {
+          "idx": 4,
+          "bbox": [
+            9,
+            10,
+            1466,
+            192
+          ]
+        },
+        {
+          "idx": 5,
+          "bbox": [
+            551,
+            207,
+            733,
+            950
+          ]
+        },
+        {
+          "idx": 6,
+          "bbox": [
+            547,
+            39,
+            674,
+            167
+          ]
+        },
+        {
+          "idx": 7,
+          "bbox": [
+            272,
+            205,
+            539,
+            799
+          ]
+        },
+        {
+          "idx": 8,
+          "bbox": [
+            13,
+            208,
+            257,
+            883
+          ]
+        }
+      ]
+    }
+  }
+}

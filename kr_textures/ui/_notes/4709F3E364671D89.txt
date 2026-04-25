@@ -1,0 +1,21 @@
+=== 4709F3E364671D89.png ===
+
+번역 매핑:
+  [box] 美濃 -> 미노
+  [banner] 中仙道間道 -> 나카센도 사잇길
+  [banner] 鳴神城内座敷 -> 나루카미성 내 거실
+
+codex 위치 정보:
+  [banner] 中仙道間道 -> 나카센도 간도 | pos=middle left | red_bg_black_text | vertical_top_to_bottom
+  [banner] 鳴神城内座敷 -> 나루카미 성내 좌敷 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+  [box] 稲城 -> 이나기 | pos=bottom middle | black_bg_white_text | horizontal_left_to_right
+  [character] 城内 -> 조나이 | pos=top middle | transparent_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [12, 15, 954, 187]
+  B1: [12, 819, 798, 991]
+  K0: [712, 217, 960, 788]
+  C0: [0, 10, 978, 806]
+  C1: [700, 204, 971, 800]
+  C2: [8, 814, 802, 996]
+  C3: [9, 207, 682, 451]

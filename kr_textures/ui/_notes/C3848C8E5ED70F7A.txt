@@ -1,0 +1,19 @@
+=== C3848C8E5ED70F7A.png ===
+
+번역 매핑:
+  [box] 美濃 -> 미노
+  [banner] 伊吹山 不破関 -> 이부키산 후와노세키
+  [character] 鬼助 -> 키스케
+
+codex 위치 정보:
+  [box] 近江州 -> 오미슈 | pos=top left | black_bg_white_text | horizontal_left_to_right
+  [banner] 伊吹山 -> 이부키야마 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 不破関 -> 후와노세키 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+  [character] 前町 -> 마에마치 | pos=bottom right | transparent_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [12, 15, 1064, 187]
+  K0: [16, 217, 264, 788]
+  C0: [0, 0, 1555, 806]
+  C1: [8, 10, 1068, 192]
+  C2: [4, 204, 276, 800]

@@ -1,0 +1,55 @@
+=== 00B61B564A5FD289.png ===
+
+번역 매핑:
+  [banner] 杉林 大きな蜘蛛の巣 -> 삼나무 숲 커다란 거미집
+  [banner] 鬼の潜む洞窟 -> 귀신이 숨은 동굴
+  [banner] 鬼の潜む洞窟前 -> 귀신이 숨은 동굴 앞
+  [banner] 花街海蓮座敷 -> 하나마치 카이렌자시키
+  [banner] 祝言の場 -> 혼례식 장
+  [banner] 花嫁行列 -> 신부 행렬
+  [banner] 茶店前 -> 찻집 앞
+  [box] 何処かの国 -> 어딘가의 나라
+  [box] 武蔵 -> 무사시
+  [box] 伊豆 -> 이즈
+  [character] 唐木清兵衛宅 -> 가라키 세이베에 댁
+  [character] 鬼助 -> 키스케
+
+codex 위치 정보:
+  [banner] 茶店前 -> 차야마에 | pos=top left | red_bg_black_text | horizontal_left_to_right
+  [banner] 唐木清兵衛宅 -> 가라키 세이베에타쿠 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 鬼の潜む洞窟 -> 오니노 히소무 도쿠츠 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 鬼の潜む洞窟前 -> 오니노 히소무 도쿠츠마에 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 杉林 大きな蜘蛛の巣 -> 스기바야시 오오키나 쿠모노스 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 祝言の場 -> 슈겐노바 | pos=middle left | red_bg_black_text | horizontal_left_to_right
+  [character] 鬼助 -> 키스케 | pos=middle left | transparent_bg_white_text | horizontal_left_to_right
+  [banner] 花嫁行列 -> 하나요메 교레츠 | pos=bottom left | red_bg_black_text | horizontal_left_to_right
+  [box] 伊豆 -> 이즈 | pos=bottom center | black_bg_white_text | horizontal_left_to_right
+  [box] 何処かの国 -> 도코카노 쿠니 | pos=bottom right | black_bg_white_text | horizontal_left_to_right
+  [box] 武蔵 -> 무사시 | pos=bottom center | black_bg_white_text | horizontal_left_to_right
+  [banner] 花街海蓮座敷 -> 하나마치 카이렌자시키 | pos=bottom right | red_bg_black_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [1677, 15, 1849, 984]
+  B1: [1397, 1446, 1569, 2008]
+  B2: [15, 15, 1370, 187]
+  B3: [1009, 1499, 1181, 2005]
+  B4: [15, 215, 984, 387]
+  B5: [15, 415, 892, 587]
+  B6: [15, 615, 856, 787]
+  B7: [13, 815, 185, 1413]
+  K0: [1681, 1013, 1927, 1583]
+  K1: [1401, 845, 1647, 1416]
+  C0: [1382, 0, 1946, 1602]
+  C1: [1669, 1001, 1939, 1595]
+  C2: [1672, 10, 1854, 988]
+  C3: [1389, 833, 1658, 1427]
+  C4: [1412, 29, 1634, 797]
+  C5: [10, 10, 1374, 1493]
+  C6: [1009, 208, 1253, 884]
+  C7: [940, 32, 1069, 165]
+  C8: [10, 210, 988, 392]
+  C9: [815, 36, 939, 163]
+  C10: [10, 409, 896, 592]
+  C11: [565, 239, 868, 364]
+  C12: [10, 610, 860, 792]
+  C13: [307, 649, 559, 758]

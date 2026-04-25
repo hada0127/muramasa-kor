@@ -1,0 +1,24 @@
+=== A8486C49F76167C3.png ===
+
+번역 매핑:
+  [box] 伊勢 -> 이세
+  [banner] 伊勢天神高天原入口 -> 이세 천신 다카마가하라 입구
+  [banner] 二見浦 -> 후타미우라
+  [banner] 伊勢街道 -> 이세 가도
+
+codex 위치 정보:
+  [box] 殺生 -> 셋쇼 | pos=top left | black_bg_white_text | horizontal_left_to_right
+  [banner] 鮮血川 -> 센케쓰가와 | pos=top middle | red_bg_black_text | horizontal_left_to_right
+  [banner] 伊勢天神高天原入口 -> 이세텐진 다카마가하라 입구 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 啓蟄境中 -> 게이칫쿄추 | pos=bottom middle | red_bg_black_text | horizontal_left_to_right
+  [character] 奇崛 -> 기굴 | pos=bottom right | transparent_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [1637, 8, 1809, 662]
+  B1: [9, 11, 1361, 183]
+  B2: [289, 200, 461, 706]
+  K0: [16, 209, 263, 779]
+  C0: [0, 0, 2018, 798]
+  C1: [1376, 5, 1621, 680]
+  C2: [4, 5, 1366, 188]
+  C3: [4, 196, 275, 792]

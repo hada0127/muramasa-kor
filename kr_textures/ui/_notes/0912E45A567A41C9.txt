@@ -1,0 +1,18 @@
+=== 0912E45A567A41C9.png ===
+
+번역 매핑:
+  [box] 武蔵 -> 무사시
+  [banner] 新吉原 衣紋坂 -> 신요시와라 에몬자카
+  [character] 百姫×鬼助 -> 모모히메×키스케
+
+codex 위치 정보:
+  [box] 駿府 -> 슨푸 | pos=top left | black_bg_white_text | horizontal_left_to_right
+  [banner] 新吉原 大紋坂 -> 신요시와라 오몬자카 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [character] 百姫く鬼助 -> 모모히메 < 키스케 | pos=bottom right | transparent_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [12, 15, 1064, 187]
+  K0: [16, 217, 264, 788]
+  C0: [0, 0, 1557, 806]
+  C1: [8, 10, 1068, 192]
+  C2: [4, 205, 276, 800]

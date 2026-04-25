@@ -1,0 +1,35 @@
+=== 72165D43344F3190.png ===
+
+번역 매핑:
+  [banner] 二人の刺客 -> 두 명의 자객
+  [banner] 赤坂宿 旅籠の部屋 -> 아카사카주쿠 여인숙 방
+  [banner] 東海道 御油吉田間街道 -> 도카이도 고유 요시다 사이 가도
+  [banner] 東海道 藤川赤坂間街道 -> 도카이도 후지카와 아카사카 사이 가도
+  [box] 当川 -> 도가와
+  [character] 参州羅刹助ノ塚 -> 산슈 라세쓰스케 무덤
+
+codex 위치 정보:
+  [character] 二人の刺客 -> 두 사람의 자객 | pos=middle right | transparent_bg_white_text | vertical_top_to_bottom
+  [banner] 赤坂宿 旅籠の部屋 -> 아카사카슈쿠 하타고노헤야 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 東海道 御油吉田間街道 -> 도카이도 고유 요시다 간 가도 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 東海道 藤川赤坂間街道 -> 도카이도 후지카와 아카사카 간 가도 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [box] 当川 -> 도센 | pos=bottom middle | black_bg_white_text | horizontal_left_to_right
+  [banner] 参州羅刹助ノ塚 -> 산슈 라세쓰스케노쓰카 | pos=bottom right | red_bg_black_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [1746, 11, 1918, 850]
+  B1: [11, 211, 1464, 384]
+  B2: [11, 15, 1459, 187]
+  B3: [11, 407, 1227, 581]
+  K0: [1493, 905, 1739, 1474]
+  C0: [159, 7, 1923, 854]
+  C1: [1475, 205, 1758, 1493]
+  C2: [1482, 893, 1751, 1487]
+  C3: [7, 207, 1468, 389]
+  C4: [7, 9, 1463, 191]
+  C5: [1183, 231, 1435, 363]
+  C6: [1185, 35, 1430, 165]
+  C7: [7, 403, 1232, 585]
+  C8: [931, 435, 1185, 560]
+  C9: [680, 237, 882, 355]
+  C10: [553, 432, 762, 561]

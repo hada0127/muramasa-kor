@@ -1,0 +1,17 @@
+=== C8B2975F2A629F4B.png ===
+
+번역 매핑:
+  [box] 駿河 -> 스루가
+  [banner] 富士山頂龍脈 -> 후지산 정상 용맥
+
+codex 위치 정보:
+  [character] 山城 -> 야마시로 | pos=top left | transparent_bg_white_text | horizontal_left_to_right
+  [box] 駿河 -> 스루가 | pos=bottom middle | black_bg_white_text | horizontal_left_to_right
+  [banner] 富士山頂龍脈 -> 후지산초 류먀쿠 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+
+detect bbox:
+  B0: [12, 15, 954, 187]
+  K0: [712, 217, 959, 788]
+  C0: [0, 10, 977, 875]
+  C1: [700, 205, 971, 800]
+  C2: [9, 207, 682, 451]

@@ -1,0 +1,23 @@
+=== 7053B8FFC8B89807.png ===
+
+번역 매핑:
+  [box] 信濃 -> 시나노
+  [banner] 信濃山奥狐のお宿の場 -> 시나노 산속 여우의 여인숙 장
+  [banner] 八幡原 修羅の戦場 -> 하치만바라 수라의 전장
+  [character] 血狂毘沙門 -> 치구루이비샤몬
+
+codex 위치 정보:
+  [character] 血狂毘沙門 -> 혈광비사문 | pos=middle left | transparent_bg_white_text | vertical_top_to_bottom
+  [box] 鍛冶 -> 가지 | pos=bottom left | black_bg_white_text | horizontal_left_to_right
+  [banner] 八幡原 修羅の戦場 -> 하치만바라 수라의 전장 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 信濃山奥狐のお宿の場 -> 시나노 산속 여우 여관의 장 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+
+detect bbox:
+  B0: [8, 11, 1514, 183]
+  B1: [9, 203, 1361, 375]
+  K0: [1046, 401, 1292, 971]
+  C0: [1528, 5, 1773, 680]
+  C1: [0, 5, 1519, 990]
+  C2: [4, 197, 1364, 380]
+  C3: [1034, 388, 1304, 984]
+  C4: [762, 228, 888, 349]

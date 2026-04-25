@@ -1,0 +1,25 @@
+=== 7282AD29CF433DA0.png ===
+
+번역 매핑:
+  [box] 何処かの国 -> 어딘가의 나라
+  [box] 大和 -> 야마토
+  [banner] 峠の茶屋 -> 고갯마루 찻집
+  [banner] 金剛山山頂高天原入口 -> 곤고산 산정 다카마가하라 입구
+
+codex 위치 정보:
+  [character] 河内 -> 가와치 | pos=top left | transparent_bg_white_text | horizontal_left_to_right
+  [banner] 金剛山山麓高天原入口 -> 곤고산 산로쿠 다카마가하라 이리구치 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+  [box] 何処かの国 -> 도코카노쿠니 | pos=top right | black_bg_white_text | vertical_top_to_bottom
+  [box] 大和 -> 야마토 | pos=middle right | black_bg_white_text | vertical_top_to_bottom
+  [banner] 剛鉄の岳 -> 고테쓰노다케 | pos=bottom left | red_bg_black_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [1789, 289, 1961, 942]
+  B1: [9, 291, 1516, 463]
+  K0: [1256, 17, 1828, 264]
+  C0: [1784, 284, 1966, 947]
+  C1: [0, 0, 1846, 282]
+  C2: [1528, 284, 1773, 960]
+  C3: [4, 285, 1520, 468]
+  C4: [0, 7, 1233, 879]
+  C5: [28, 31, 1210, 252]

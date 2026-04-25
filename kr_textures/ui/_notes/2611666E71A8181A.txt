@@ -1,0 +1,28 @@
+=== 2611666E71A8181A.png ===
+
+번역 매핑:
+  [box] 武蔵 -> 무사시
+  [banner] 武蔵街道 祠の場 -> 무사시 가도 사당의 장
+  [banner] 天門の先 -> 천문의 너머
+  [banner] 仏界 -> 불계
+  [character] 犬神徳川綱吉 -> 이누가미 도쿠가와 쓰나요시
+
+codex 위치 정보:
+  [banner] 天門の先 -> 천문의 앞 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 仏界 -> 불계 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 武蔵街道 -> 무사시 가도 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 祠の場 -> 사당 터 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+  [character] 犬神徳川綱吉 -> 견신 도쿠가와 쓰나요시 | pos=top right | transparent_bg_white_text | vertical_top_to_bottom
+
+detect bbox:
+  B0: [1753, 11, 1925, 954]
+  B1: [12, 215, 1224, 387]
+  B2: [12, 415, 1064, 587]
+  K0: [1268, 825, 1516, 1396]
+  C0: [1749, 8, 1930, 958]
+  C1: [0, 0, 1749, 1414]
+  C2: [1256, 813, 1528, 1408]
+  C3: [1280, 29, 1502, 780]
+  C4: [8, 210, 1228, 391]
+  C5: [8, 410, 1068, 592]
+  C6: [9, 607, 682, 851]

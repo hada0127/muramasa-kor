@@ -1,0 +1,18 @@
+=== 0AA74C448087838A.png ===
+
+번역 매핑:
+  [box] 相模 -> 사가미
+  [banner] 六国見山 鎌倉墓所 -> 로쿠코쿠미야마 가마쿠라 묘소
+  [character] 州浜 -> 스하마
+
+codex 위치 정보:
+  [box] 鎌倉 -> 가마쿠라 | pos=top left | black_bg_white_text | horizontal_left_to_right
+  [banner] 六国見山 鎌倉墓所 -> 롯코쿠켄잔 가마쿠라 보쇼 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [character] 州浜 -> 스하마 | pos=bottom right | transparent_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [12, 14, 1364, 186]
+  K0: [16, 217, 264, 788]
+  C0: [0, 0, 1852, 806]
+  C1: [1389, 9, 1836, 682]
+  C2: [4, 205, 276, 800]

@@ -1,0 +1,22 @@
+=== E9F2EC8557984A58.png ===
+
+번역 매핑:
+  [box] 駿河 -> 스루가
+  [banner] 三保之松原 -> 미호노마츠바라
+  [banner] 駿府の旅籠 -> 슨푸의 여인숙
+  [character] 雪之丞 -> 유키노조
+
+codex 위치 정보:
+  [banner] 駿府の旅籠 -> 슨푸노 하타고 | pos=middle left | red_bg_black_text | vertical_top_to_bottom
+  [banner] 三保之松原 -> 미호노 마쓰바라 | pos=middle left | red_bg_black_text | vertical_top_to_bottom
+  [character] 雪之丞 -> 유키노조 | pos=top right | transparent_bg_white_text | vertical_top_to_bottom
+  [box] 凶賊 -> 교조쿠 | pos=bottom right | black_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [13, 619, 798, 791]
+  B1: [13, 819, 798, 991]
+  K0: [712, 17, 959, 588]
+  C0: [0, 0, 977, 606]
+  C1: [8, 614, 802, 796]
+  C2: [8, 814, 802, 996]
+  C3: [9, 7, 683, 251]

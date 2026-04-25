@@ -1,0 +1,41 @@
+=== 6605F569D9389F9C.png ===
+
+번역 매핑:
+  [banner] 白川郷 白銀ヶ淵 廃れ社 -> 시라카와고 시로가네가후치 폐사
+  [banner] 飛騨国 -> 히다국
+  [banner] 飛騨街道 -> 히다 가도
+  [banner] 飛騨川 -> 히다강
+  [banner] 美濃国 境木峠 -> 미노국 사카이기 고개
+  [box] 関所 -> 관문
+  [box] 峠道 -> 고갯길
+  [character] 大雪山 -> 다이세쓰잔
+
+codex 위치 정보:
+  [box] 関所 -> 세키쇼 | pos=top middle | black_bg_white_text | horizontal_left_to_right
+  [banner] 白川郷 白銀ヶ淵 廃れ社 -> 시라카와고 시로가네가후치 스타레야시로 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [banner] 飛騨街道 -> 히다카이도 | pos=bottom left | red_bg_black_text | horizontal_left_to_right
+  [character] 大雪山 -> 다이세쓰잔 | pos=middle right | transparent_bg_white_text | horizontal_left_to_right
+  [banner] 飛騨川 -> 히다가와 | pos=bottom middle | red_bg_black_text | horizontal_left_to_right
+  [banner] 飛騨国 -> 히다노쿠니 | pos=bottom right | red_bg_black_text | horizontal_left_to_right
+  [banner] 美濃国 境木峠 -> 미노노쿠니 사카이기토게 | pos=middle right | red_bg_black_text | vertical_top_to_bottom
+  [box] 峠道 -> 토게미치 | pos=bottom middle | black_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [1720, 11, 1893, 978]
+  B1: [1486, 983, 1657, 1579]
+  B2: [13, 15, 1462, 187]
+  B3: [1267, 210, 1439, 715]
+  B4: [10, 213, 977, 386]
+  B5: [11, 413, 977, 585]
+  B6: [11, 608, 977, 780]
+  K0: [1729, 1005, 1974, 1574]
+  K1: [17, 808, 263, 1379]
+  C0: [0, 0, 1993, 1593]
+  C1: [1717, 993, 1986, 1587]
+  C2: [9, 10, 1466, 192]
+  C3: [1001, 208, 1245, 883]
+  C4: [7, 208, 982, 390]
+  C5: [7, 407, 982, 589]
+  C6: [7, 603, 982, 785]
+  C7: [547, 39, 674, 167]
+  C8: [5, 797, 275, 1391]

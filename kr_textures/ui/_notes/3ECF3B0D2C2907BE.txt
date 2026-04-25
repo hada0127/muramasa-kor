@@ -1,0 +1,22 @@
+=== 3ECF3B0D2C2907BE.png ===
+
+번역 매핑:
+  [box] 武蔵 -> 무사시
+  [banner] 江戸 網釜藩邸 上屋敷 -> 에도 아미가마 번저 가미야시키
+  [banner] 証城寺跡 -> 쇼조지 옛터
+  [character] 綱釜千代子 -> 쓰나가마 치요코
+
+codex 위치 정보:
+  [box] 駿府 -> 슨푸 | pos=top left | black_bg_white_text | horizontal_left_to_right
+  [banner] 駿州宗岡 -> 슨슈 무네오카 | pos=middle left | red_bg_black_text | horizontal_left_to_right
+  [banner] 江戸 細倉藩邸上屋敷 -> 에도 호소쿠라 한테이 카미야시키 | pos=top right | red_bg_black_text | vertical_top_to_bottom
+  [character] 妖刀村正 -> 요토 무라마사 | pos=bottom left | transparent_bg_white_text | horizontal_left_to_right
+
+detect bbox:
+  B0: [10, 12, 1364, 185]
+  B1: [292, 206, 464, 803]
+  K0: [17, 213, 263, 783]
+  C0: [0, 0, 1835, 868]
+  C1: [6, 7, 1368, 189]
+  C2: [1062, 34, 1313, 162]
+  C3: [5, 201, 275, 795]
