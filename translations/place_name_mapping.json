@@ -259,7 +259,16 @@
           "ko": "후시미야마 사당의 장",
           "matched": "「山城」伏見山祠の場"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          1
+        ]
+      }
     },
     "3B7BDFB1087549B8": {
       "boxes": [
@@ -279,7 +288,16 @@
           "ko": "다카야마 산기슭 비탕",
           "matched": "「飛騨」高山山麓秘湯"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          1
+        ]
+      }
     },
     "3ECF3B0D2C2907BE": {
       "boxes": [
@@ -297,7 +315,16 @@
           "ja": "証城寺跡",
           "ko": "쇼조지 옛터"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          0
+        ]
+      }
     },
     "7053B8FFC8B89807": {
       "boxes": [
@@ -317,7 +344,16 @@
           "ko": "하치만바라 수라의 전장",
           "matched": "「信濃」八幡原修羅の戦場"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          1
+        ]
+      }
     },
     "7E0669E71FCD7B64": {
       "boxes": [
@@ -335,7 +371,16 @@
           "ja": "大根藩馬蕗城",
           "ko": "다이콘 번 마후키성"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          1
+        ]
+      }
     },
     "E9F2EC8557984A58": {
       "boxes": [
@@ -355,7 +400,16 @@
           "ko": "슨푸의 여인숙",
           "matched": "「駿河」駿府の旅籠"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          1
+        ]
+      }
     },
     "31710FB73B2686EF": {
       "boxes": [
@@ -375,7 +429,16 @@
           "ko": "지옥팔경 등활",
           "matched": "「地獄」地獄八景等活"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          0
+        ]
+      }
     },
     "615858B46587A60E": {
       "boxes": [
@@ -399,7 +462,17 @@
           "ko": "에도성 천수각",
           "matched": "「武蔵」江戸城天守"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          1,
+          2
+        ]
+      }
     },
     "7282AD29CF433DA0": {
       "boxes": [
@@ -423,7 +496,17 @@
           "ko": "곤고산 산정 다카마가하라 입구",
           "matched": "「大和」金剛山山頂高天原入口"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          0,
+          1
+        ]
+      }
     },
     "8098AD7E2C438C22": {
       "boxes": [
@@ -448,7 +531,17 @@
           "ko": "곤고산 산정 다카마가하라 입구",
           "matched": "「大和」金剛山山頂高天原入口"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1,
+          2
+        ],
+        "box_idx": [
+          0
+        ]
+      }
     },
     "A8486C49F76167C3": {
       "boxes": [
@@ -473,7 +566,17 @@
           "ko": "이세 가도",
           "matched": "「伊勢」伊勢街道"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1,
+          2
+        ],
+        "box_idx": [
+          0
+        ]
+      }
     },
     "2611666E71A8181A": {
       "boxes": [
@@ -500,7 +603,18 @@
           "ja": "仏界",
           "ko": "불계"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1,
+          2
+        ],
+        "box_idx": [
+          0,
+          1
+        ]
+      }
     },
     "7358BEAA2EF5F8A8": {
       "boxes": [
@@ -529,7 +643,18 @@
           "ko": "곤고산 산정 다카마가하라 입구",
           "matched": "「大和」金剛山山頂高天原入口"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1,
+          2
+        ],
+        "box_idx": [
+          0,
+          1
+        ]
+      }
     },
     "5882EA68BABF3C63": {
       "boxes": [
@@ -557,7 +682,18 @@
           "ko": "보리사 토라히메의 묘 앞",
           "matched": "「美濃」菩提寺虎姫の墓前"
         }
-      ]
+      ],
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1
+        ],
+        "box_idx": [
+          0,
+          1,
+          2
+        ]
+      }
     },
     "00B61B564A5FD289": {
       "boxes": [
@@ -584,7 +720,18 @@
           "ko": "가라키 세이베에모리"
         }
       ],
-      "note": "very complex atlas, many banners, manual review needed"
+      "note": "very complex atlas, many banners, manual review needed",
+      "bbox_indices": {
+        "banner_idx": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "box_idx": [
+          0
+        ]
+      }
     }
   }
 }
