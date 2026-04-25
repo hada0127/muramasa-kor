@@ -417,3 +417,43 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - `tools/extract_wii_messages.py` - NMS → JSON 변환
 - `tools/wit/` - Wiimms 툴 (wbfs 추출용)
 
+
+## 2026-04-25: 지명 텍스처 50장 한글화 완료
+
+### 작업 범위
+- `kr_textures/ui` 폴더의 빨간/검은 배경 지명 텍스처 50장 한글화
+- 백업: `textures/place_name_originals/` (원본 50장 보관)
+- 폰트: 그리운 경찰감성체 (`fonts/Griun_PolSensibility-Rg.ttf`)
+
+### 분류 및 처리
+| 분류 | 개수 | 처리 방식 |
+|---|---|---|
+| Simple (1 banner + 1 box) | 29 | 자동 detect + 매핑 + 렌더링 |
+| Complex Group A (1 banner + 1 box, false positive 있음) | 6 | Simple 방식 |
+| Complex Group B (multi-banner) | 15 | bbox idx 수동 매핑 + 캐릭터 이름 처리 |
+
+### 주요 매핑 파일
+- `translations/place_name_mapping.json` — 텍스처별 한글 매핑
+- `translations/place_name_regions.json` — 자동 detect 영역
+- `translations/place_name_white_kanji.json` — 캐릭터 이름 흰 글자 영역
+
+### 핵심 규칙
+- 빨간 배너: 일본어와 동일 방향 (회전된 상태) → 한글 세로쓰기
+- 검은 박스 (frame): 가로/세로 방향 자동 감지하여 그에 맞춰 한글 배치
+- brush stroke + 흰 캐릭터 이름: 흰 글자 영역 별도 detect 후 한글 덮어쓰기
+- 매핑 없는 영역: 색상 클리어 (일본어 잔존 방지)
+
+### 캐릭터 이름 매핑 (jp_messages/proper_nouns 기반)
+- 大神徳川綱吉 → 도쿠가와 쓰나요시
+- 雪之丞 → 유키노조
+- 血狂毘沙門 → 치구루이비샤몬
+- 綱釜千代子 → 쓰나가마 치요코
+- 大根 → 다이콘
+
+### codex 검증
+- Simple 29장 + Complex A 6장: 모두 OK
+- Complex B 15장 v3 (일본어 완전 제거): 게임 내 검증 필요
+
+### 미해결 / 보류
+- 매핑 없는 흰 글자 영역 (일부 텍스처): 빈 영역으로 처리됨
+- E210275AFFF0A8D8 (이즈): 식별 후 매핑됨
