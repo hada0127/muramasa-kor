@@ -72,7 +72,7 @@
     {"en": "Hellfire",           "ko": "화염폭풍",        "rot": 0,  "src_ja": "鬼火嵐",      "confidence": "low"},
     {"en": "XP Boost",           "ko": "경험증가",        "rot": 0,  "src_ja": "経験値増",    "confidence": "high"},
     {"en": "Ambush Hoe",         "ko": "개미지옥",        "rot": 0,  "src_ja": "敵寄せ",      "confidence": "low"},
-    {"en": "Demon Child",        "ko": "도깨비 자식",     "rot": 0,  "src_ja": "鬼子",        "confidence": "high", "notes": "鬼子=오니노코, natural Korean: 도깨비 자식"},
+    {"en": "Demon Child",        "ko": "도깨비 아이",     "rot": 0,  "src_ja": "鬼子",        "confidence": "high", "notes": "鬼子=오니노코, natural Korean: 도깨비 아이"},
     {"en": "Vortex",             "ko": "용오름",          "rot": 0,  "src_ja": "大竜巻",      "confidence": "high"},
     {"en": "Tornado",            "ko": "태풍",            "rot": 0,  "src_ja": "竜巻",        "confidence": "high"},
     {"en": "Avatar",             "ko": "화신",            "rot": 0,  "confidence": "med"},
