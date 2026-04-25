@@ -1,0 +1,199 @@
+{
+  "_description": "Per-texture identification: box (province) + banner (specific location).",
+  "simple": {
+    "0130920C24D1E53C": {
+      "box_ja": "相模",
+      "box_ko": "사가미",
+      "banner_ja": "足柄下郡 お五ヶ池",
+      "banner_ko": "아시가라시모군 오고가이케"
+    },
+    "05D6F7C75F32325B": {
+      "box_ja": "武蔵",
+      "box_ko": "무사시",
+      "banner_ja": "日本堤 新吉原",
+      "banner_ko": "니혼즈츠미 신요시와라",
+      "matched": "「武蔵」日本堤新吉原"
+    },
+    "0770DFDD08479BD2": {
+      "box_ja": "信濃",
+      "box_ko": "시나노",
+      "banner_ja": "安曇郡 童返の滝",
+      "banner_ko": "아즈미군 와라베가에리노타키"
+    },
+    "244AED1DB11AD6DC": {
+      "box_ja": "飛騨",
+      "box_ko": "히다",
+      "banner_ja": "高山 乗鞍岳間道",
+      "banner_ko": "다카야마 노리쿠라다케 사잇길",
+      "matched": "「飛騨」高山乗鞍岳間道"
+    },
+    "2D3A29BE9B32D34A": {
+      "box_ja": "大和",
+      "box_ko": "야마토",
+      "banner_ja": "金剛山真言蓮華宗総本山",
+      "banner_ko": "곤고산 진언연화종 총본산",
+      "matched": "「大和」金剛山真言蓮華宗総本山"
+    },
+    "30033EF8FD9CC4EB": {
+      "box_ja": "大和",
+      "box_ko": "야마토",
+      "banner_ja": "曽爾村付近",
+      "banner_ko": "소니무라 부근",
+      "status": "done_pilot"
+    },
+    "48AA5B2EBC6C43B1": {
+      "box_ja": "大和",
+      "box_ko": "야마토",
+      "banner_ja": "奈良善祷寺大仏殿",
+      "banner_ko": "나라 젠토지 대불전",
+      "matched": "「大和」奈良善祷寺大仏殿"
+    },
+    "5329BF3C3BF9B18C": {
+      "box_ja": "山城",
+      "box_ko": "야마시로",
+      "banner_ja": "嵯峨嵐山近郊",
+      "banner_ko": "사가아라시야마 근교"
+    },
+    "6B6116F83EBE7153": {
+      "box_ja": "伊賀",
+      "box_ko": "이가",
+      "banner_ja": "阿閉郡 尼ヶ岳山中",
+      "banner_ko": "아쓰지군 아마가다케 산중"
+    },
+    "6CD92157D6C2502F": {
+      "box_ja": "伊勢",
+      "box_ko": "이세",
+      "banner_ja": "神路山 神宮林",
+      "banner_ko": "카미지야마 신궁림",
+      "matched": "「伊勢」神路山神宮林"
+    },
+    "75B04DBF5C53AF28": {
+      "box_ja": "相模",
+      "box_ko": "사가미",
+      "banner_ja": "六国見山山道",
+      "banner_ko": "로쿠코쿠미야마 산길",
+      "matched": "「相模」六国見山山道"
+    },
+    "779C5ABBFCE00424": {
+      "box_ja": "三河",
+      "box_ko": "미카와",
+      "banner_ja": "設楽郡 村落部",
+      "banner_ko": "시타라군 무라오치베"
+    },
+    "7B49071BF36FC555": {
+      "box_ja": "美濃",
+      "box_ko": "미노",
+      "banner_ja": "伊吹山 鳴神藩鏡見家",
+      "banner_ko": "이부키산 나루카미 번 카가미케",
+      "matched": "「美濃」伊吹山鳴神藩鏡見家"
+    },
+    "85A4D54EE933339D": {
+      "box_ja": "甲斐",
+      "box_ko": "카이",
+      "banner_ja": "御岳駒ヶ岳 刃渡り",
+      "banner_ko": "미타케 코마가타케 하와타리"
+    },
+    "89578D1F704C35E4": {
+      "box_ja": "信濃",
+      "box_ko": "시나노",
+      "banner_ja": "川中島古戦場跡 八幡原",
+      "banner_ko": "가와나카지마 옛 전장터 하치만바라",
+      "matched": "「信濃」川中島古戦場跡八幡原"
+    },
+    "919ABD92603E242F": {
+      "box_ja": "駿河",
+      "box_ko": "스루가",
+      "banner_ja": "霊峰富士山麓",
+      "banner_ko": "영봉 후지 산기슭",
+      "matched": "「駿河」霊峰富士山麓"
+    },
+    "922337BDB8D32D0F": {
+      "box_ja": "美濃",
+      "box_ko": "미노",
+      "banner_ja": "鳴神城 大手門前",
+      "banner_ko": "나루카미성 오테문 앞",
+      "matched": "「美濃」鳴神城大手門前"
+    },
+    "A62172B559EED573": {
+      "box_ja": "地獄",
+      "box_ko": "지옥",
+      "banner_ja": "地獄八景 等活",
+      "banner_ko": "지옥팔경 등활",
+      "matched": "「地獄」地獄八景等活"
+    },
+    "AF183888BC366FCA": {
+      "box_ja": "武蔵",
+      "box_ko": "무사시",
+      "banner_ja": "日本堤 新吉原",
+      "banner_ko": "니혼즈츠미 신요시와라",
+      "matched": "「武蔵」日本堤新吉原"
+    },
+    "BAD2BDA6C2AE4B16": {
+      "box_ja": "山城",
+      "box_ko": "야마시로",
+      "banner_ja": "紀伊郡 伏見山麓",
+      "banner_ko": "기이군 후시미 산기슭",
+      "matched": "「山城」紀伊郡伏見山麓"
+    },
+    "CB18104E808B56B3": {
+      "box_ja": "近江",
+      "box_ko": "오미",
+      "banner_ja": "伊吹山 山頂付近",
+      "banner_ko": "이부키산 산정 부근"
+    },
+    "D35B39CA7FAED5D7": {
+      "box_ja": "美濃",
+      "box_ko": "미노",
+      "banner_ja": "鳴神城 長屋廊上",
+      "banner_ko": "나루카미성 나가야 복도"
+    },
+    "DD1F1F1DE2039AAC": {
+      "box_ja": "伊賀",
+      "box_ko": "이가",
+      "banner_ja": "髑髏谷暗夜城 搦手門前",
+      "banner_ko": "해골 골짜기 암야성 뒷문 앞",
+      "matched": "「伊賀」どくろ谷暗夜城からめ手門前"
+    },
+    "E210275AFFF0A8D8": {
+      "box_ja": "伊豆",
+      "box_ko": "이즈",
+      "banner_ja": "幽雲寺 忌み墓場",
+      "banner_ko": "유운지 이미하카"
+    },
+    "E581194DE2C76C56": {
+      "box_ja": "駿河",
+      "box_ko": "스루가",
+      "banner_ja": "東海道間道 薩埵峠",
+      "banner_ko": "도카이도 사잇길 삿타 고개",
+      "matched": "「駿河」東海道間道薩埵峠"
+    },
+    "EC585E08CC88B03F": {
+      "box_ja": "武蔵",
+      "box_ko": "무사시",
+      "banner_ja": "江戸城 大手門前",
+      "banner_ko": "에도성 오테문 앞",
+      "matched": "「武蔵」江戸城大手門前"
+    },
+    "EE60DEFADBDD82C5": {
+      "box_ja": "飛騨",
+      "box_ko": "히다",
+      "banner_ja": "高山 大鍾乳洞",
+      "banner_ko": "다카야마 대종유동"
+    },
+    "F1C8031232197225": {
+      "box_ja": "伊勢",
+      "box_ko": "이세",
+      "banner_ja": "南伊勢町五ヶ所浦",
+      "banner_ko": "미나미이세초 고카쇼우라",
+      "status": "done_pilot"
+    },
+    "F24874ADB9581870": {
+      "box_ja": "遠江",
+      "box_ko": "토토미",
+      "banner_ja": "周智郡 秋葉山山道",
+      "banner_ko": "슈치군 아키바산 산길",
+      "matched": "「遠江」周智郡秋葉山山道",
+      "status": "done_pilot"
+    }
+  }
+}
