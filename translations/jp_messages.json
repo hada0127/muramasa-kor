@@ -10075,7 +10075,7 @@
       {
         "id": 2,
         "ja": "@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)\n@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)",
-        "ko": ""
+        "ko": "@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)\n@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)"
       },
       {
         "id": 3,
@@ -10685,32 +10685,32 @@
       {
         "id": 124,
         "ja": "*",
-        "ko": ""
+        "ko": "*"
       },
       {
         "id": 125,
         "ja": "*",
-        "ko": ""
+        "ko": "*"
       },
       {
         "id": 126,
         "ja": "*",
-        "ko": ""
+        "ko": "*"
       },
       {
         "id": 127,
         "ja": "*",
-        "ko": ""
+        "ko": "*"
       },
       {
         "id": 128,
         "ja": "*",
-        "ko": ""
+        "ko": "*"
       },
       {
         "id": 129,
         "ja": "*",
-        "ko": ""
+        "ko": "*"
       },
       {
         "id": 130,
@@ -12900,222 +12900,222 @@
       {
         "id": 567,
         "ja": "OKOI_EATING_0",
-        "ko": ""
+        "ko": "OKOI_EATING_0"
       },
       {
         "id": 568,
         "ja": "OKOI_EATING_1",
-        "ko": ""
+        "ko": "OKOI_EATING_1"
       },
       {
         "id": 569,
         "ja": "OKOI_EATING_2",
-        "ko": ""
+        "ko": "OKOI_EATING_2"
       },
       {
         "id": 570,
         "ja": "OKOI_EATING_3",
-        "ko": ""
+        "ko": "OKOI_EATING_3"
       },
       {
         "id": 571,
         "ja": "OKOI_EATING_4",
-        "ko": ""
+        "ko": "OKOI_EATING_4"
       },
       {
         "id": 572,
         "ja": "OKOI_EATING_5",
-        "ko": ""
+        "ko": "OKOI_EATING_5"
       },
       {
         "id": 573,
         "ja": "OKOI_EAT_END_0",
-        "ko": ""
+        "ko": "OKOI_EAT_END_0"
       },
       {
         "id": 574,
         "ja": "OKOI_EAT_END_1",
-        "ko": ""
+        "ko": "OKOI_EAT_END_1"
       },
       {
         "id": 575,
         "ja": "OKOI_EAT_END_2",
-        "ko": ""
+        "ko": "OKOI_EAT_END_2"
       },
       {
         "id": 576,
         "ja": "OKOI_EAT_END_3",
-        "ko": ""
+        "ko": "OKOI_EAT_END_3"
       },
       {
         "id": 577,
         "ja": "OKOI_EAT_END_4",
-        "ko": ""
+        "ko": "OKOI_EAT_END_4"
       },
       {
         "id": 578,
         "ja": "OKOI_EAT_END_5",
-        "ko": ""
+        "ko": "OKOI_EAT_END_5"
       },
       {
         "id": 579,
         "ja": "GONBE_EATING_0",
-        "ko": ""
+        "ko": "GONBE_EATING_0"
       },
       {
         "id": 580,
         "ja": "GONBE_EATING_1",
-        "ko": ""
+        "ko": "GONBE_EATING_1"
       },
       {
         "id": 581,
         "ja": "GONBE_EATING_2",
-        "ko": ""
+        "ko": "GONBE_EATING_2"
       },
       {
         "id": 582,
         "ja": "GONBE_EAT_END_0",
-        "ko": ""
+        "ko": "GONBE_EAT_END_0"
       },
       {
         "id": 583,
         "ja": "GONBE_EAT_END_1",
-        "ko": ""
+        "ko": "GONBE_EAT_END_1"
       },
       {
         "id": 584,
         "ja": "GONBE_EAT_END_2",
-        "ko": ""
+        "ko": "GONBE_EAT_END_2"
       },
       {
         "id": 585,
         "ja": "ARASHIMARU_EATING_0",
-        "ko": ""
+        "ko": "ARASHIMARU_EATING_0"
       },
       {
         "id": 586,
         "ja": "ARASHIMARU_EATING_1",
-        "ko": ""
+        "ko": "ARASHIMARU_EATING_1"
       },
       {
         "id": 587,
         "ja": "ARASHIMARU_EATING_2",
-        "ko": ""
+        "ko": "ARASHIMARU_EATING_2"
       },
       {
         "id": 588,
         "ja": "ARASHIMARU_EATING_3",
-        "ko": ""
+        "ko": "ARASHIMARU_EATING_3"
       },
       {
         "id": 589,
         "ja": "ARASHIMARU_EATING_4",
-        "ko": ""
+        "ko": "ARASHIMARU_EATING_4"
       },
       {
         "id": 590,
         "ja": "ARASHIMARU_EATING_5",
-        "ko": ""
+        "ko": "ARASHIMARU_EATING_5"
       },
       {
         "id": 591,
         "ja": "ARASHIMARU_EATEND_0",
-        "ko": ""
+        "ko": "ARASHIMARU_EATEND_0"
       },
       {
         "id": 592,
         "ja": "ARASHIMARU_EATEND_1",
-        "ko": ""
+        "ko": "ARASHIMARU_EATEND_1"
       },
       {
         "id": 593,
         "ja": "ARASHIMARU_EATEND_2",
-        "ko": ""
+        "ko": "ARASHIMARU_EATEND_2"
       },
       {
         "id": 594,
         "ja": "ARASHIMARU_EATEND_3",
-        "ko": ""
+        "ko": "ARASHIMARU_EATEND_3"
       },
       {
         "id": 595,
         "ja": "ARASHIMARU_EATEND_4",
-        "ko": ""
+        "ko": "ARASHIMARU_EATEND_4"
       },
       {
         "id": 596,
         "ja": "ARASHIMARU_EATEND_5",
-        "ko": ""
+        "ko": "ARASHIMARU_EATEND_5"
       },
       {
         "id": 597,
         "ja": "RAJYAKI_EATING_0",
-        "ko": ""
+        "ko": "RAJYAKI_EATING_0"
       },
       {
         "id": 598,
         "ja": "RAJYAKI_EATING_1",
-        "ko": ""
+        "ko": "RAJYAKI_EATING_1"
       },
       {
         "id": 599,
         "ja": "RAJYAKI_EATING_2",
-        "ko": ""
+        "ko": "RAJYAKI_EATING_2"
       },
       {
         "id": 600,
         "ja": "RAJYAKI_EATING_3",
-        "ko": ""
+        "ko": "RAJYAKI_EATING_3"
       },
       {
         "id": 601,
         "ja": "RAJYAKI_EATING_4",
-        "ko": ""
+        "ko": "RAJYAKI_EATING_4"
       },
       {
         "id": 602,
         "ja": "RAJYAKI_EATING_5",
-        "ko": ""
+        "ko": "RAJYAKI_EATING_5"
       },
       {
         "id": 603,
         "ja": "RAJYAKI_EATEND_0",
-        "ko": ""
+        "ko": "RAJYAKI_EATEND_0"
       },
       {
         "id": 604,
         "ja": "RAJYAKI_EATEND_1",
-        "ko": ""
+        "ko": "RAJYAKI_EATEND_1"
       },
       {
         "id": 605,
         "ja": "RAJYAKI_EATEND_2",
-        "ko": ""
+        "ko": "RAJYAKI_EATEND_2"
       },
       {
         "id": 606,
         "ja": "RAJYAKI_EATEND_3",
-        "ko": ""
+        "ko": "RAJYAKI_EATEND_3"
       },
       {
         "id": 607,
         "ja": "RAJYAKI_EATEND_4",
-        "ko": ""
+        "ko": "RAJYAKI_EATEND_4"
       },
       {
         "id": 608,
         "ja": "RAJYAKI_EATEND_5",
-        "ko": ""
+        "ko": "RAJYAKI_EATEND_5"
       },
       {
         "id": 609,
         "ja": "SEIKICHI_CRY_0",
-        "ko": ""
+        "ko": "SEIKICHI_CRY_0"
       },
       {
         "id": 610,
         "ja": "SEIKICHI_CRY_1",
-        "ko": ""
+        "ko": "SEIKICHI_CRY_1"
       },
       {
         "id": 611,
@@ -14080,17 +14080,17 @@
       {
         "id": 803,
         "ja": "%d",
-        "ko": ""
+        "ko": "%d"
       },
       {
         "id": 804,
         "ja": "%d+%d",
-        "ko": ""
+        "ko": "%d+%d"
       },
       {
         "id": 805,
         "ja": "%d",
-        "ko": ""
+        "ko": "%d"
       },
       {
         "id": 806,
@@ -14170,12 +14170,12 @@
       {
         "id": 821,
         "ja": "@#(35)",
-        "ko": ""
+        "ko": "@#(35)"
       },
       {
         "id": 822,
         "ja": "@#(22)",
-        "ko": ""
+        "ko": "@#(22)"
       },
       {
         "id": 823,
@@ -14215,27 +14215,27 @@
       {
         "id": 830,
         "ja": "@#(35)",
-        "ko": ""
+        "ko": "@#(35)"
       },
       {
         "id": 831,
         "ja": "@#(22)",
-        "ko": ""
+        "ko": "@#(22)"
       },
       {
         "id": 832,
         "ja": "@#(31)",
-        "ko": ""
+        "ko": "@#(31)"
       },
       {
         "id": 833,
         "ja": "@#(18)",
-        "ko": ""
+        "ko": "@#(18)"
       },
       {
         "id": 834,
         "ja": "@#(77)",
-        "ko": ""
+        "ko": "@#(77)"
       },
       {
         "id": 835,
@@ -14270,17 +14270,17 @@
       {
         "id": 841,
         "ja": "@#(61)",
-        "ko": ""
+        "ko": "@#(61)"
       },
       {
         "id": 842,
         "ja": "@#(66)",
-        "ko": ""
+        "ko": "@#(66)"
       },
       {
         "id": 843,
         "ja": "@#(67)",
-        "ko": ""
+        "ko": "@#(67)"
       },
       {
         "id": 844,
@@ -34967,7 +34967,7 @@
       },
       {
         "ja": "@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)\n@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)",
-        "ko": ""
+        "ko": "@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)\n@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)@#(0)@#(1)@#(2)@#(3)@#(4)@#(5)@#(6)@#(7)@#(8)"
       },
       {
         "ja": "@#(17)鬼助@#(18)",
@@ -37071,15 +37071,15 @@
       },
       {
         "ja": "%d",
-        "ko": ""
+        "ko": "%d"
       },
       {
         "ja": "%d+%d",
-        "ko": ""
+        "ko": "%d+%d"
       },
       {
         "ja": "%d",
-        "ko": ""
+        "ko": "%d"
       },
       {
         "ja": "各国の祠間移動が可能になりました。",
@@ -37143,11 +37143,11 @@
       },
       {
         "ja": "@#(35)",
-        "ko": ""
+        "ko": "@#(35)"
       },
       {
         "ja": "@#(22)",
-        "ko": ""
+        "ko": "@#(22)"
       },
       {
         "ja": "@#(35)（@#(22)を併用する）",
@@ -37179,23 +37179,23 @@
       },
       {
         "ja": "@#(35)",
-        "ko": ""
+        "ko": "@#(35)"
       },
       {
         "ja": "@#(22)",
-        "ko": ""
+        "ko": "@#(22)"
       },
       {
         "ja": "@#(31)",
-        "ko": ""
+        "ko": "@#(31)"
       },
       {
         "ja": "@#(18)",
-        "ko": ""
+        "ko": "@#(18)"
       },
       {
         "ja": "@#(77)",
-        "ko": ""
+        "ko": "@#(77)"
       },
       {
         "ja": "しゃがんで@#(76)",
@@ -37223,15 +37223,15 @@
       },
       {
         "ja": "@#(61)",
-        "ko": ""
+        "ko": "@#(61)"
       },
       {
         "ja": "@#(66)",
-        "ko": ""
+        "ko": "@#(66)"
       },
       {
         "ja": "@#(67)",
-        "ko": ""
+        "ko": "@#(67)"
       },
       {
         "ja": "＜ご注意＞",
