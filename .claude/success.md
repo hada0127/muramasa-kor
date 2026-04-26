@@ -1,5 +1,33 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-04-26: 1823D39C0279886B 지도 화면 로마자 지명 14개 한글화
+
+### 배경
+사용자 스크린샷(`OneDrive/Pictures/스크린샷/스크린샷 2026-04-26 061241.png`)에서 지도 메뉴의 라벨이 영어/로마자로 표시됨 발견 — 카테고리: 国名 로마자 (place_names 아틀라스, status: pending in `place_name_textures.json`).
+
+### codex/gemini 병렬 자문 결과
+- gemini: 지명은 `place_name_mapping.json`으로 관리. 스탯 라벨은 UI 텍스처 + 폰트.
+- codex: 지도 핀 지명 텍스처 아틀라스, 특히 `1823...`와 `place_names` 계열.
+- 수렴 → `1823D39C0279886B` 타겟 확정.
+
+### 처리
+1. 256x128 원본/1024x512 kr 버전 양쪽에서 라벨 14개 식별:
+   - 수평(좌측): YAMASHIRO/SHINANO/MUSASHI/HIDA/YAMATO/TOTOMI/MIKAWA
+   - 수직(우측): SAGAMI / SURUGA+OWARI / MINO+KAI / OMIGAISE / IZU
+2. 알파 컬럼 분석으로 각 라벨 bbox 정밀 산출 (5개 수직 컬럼 + 7개 수평 행)
+3. `Griun_PolSensibility-Rg.ttf`로 한글 렌더링 → 원본 bbox 동일 위치에 배치
+4. `kr_textures/ui/1823D39C0279886B.png` 갱신 + `C:/game/vita3k/textures/import/PCSE00240/`로 동기화
+5. `texture_localize_config.json`에 regions 14개 + translations 매핑 추가, status="done"
+6. `kr_textures/ui/_notes/1823D39C0279886B.txt` 노트 작성
+7. Vita3K 부팅 sanity 체크 완료
+
+### 매핑
+야마시로 / 시나노 / 무사시 / 히다 / 야마토 / 토토미 / 미카와 / 사가미 / 스루가 / 오와리 / 카이 / 미노 / 오미이세 / 이즈
+
+### 주의
+- "OMIGAISE" 8글자가 단일 라벨 vs 2-3개 분리 라벨 여부 미확정 — 일단 "오미이세"(近江·伊勢 합산)로 통합 처리. 게임 내에서 두 곳에 따로 표시되면 후속 분리 필요.
+- 게임 내 검증은 사용자 세이브 로드 후 지도 화면에서 확인 필요 (자동 진입 비용 과대).
+
 ## 2026-04-25: E8E01EAF5D41DB52 스킬 아틀라스 라벨 번역 재검수 (27건 수정)
 
 ### 문제

@@ -60,7 +60,11 @@
 - [x] **HIGH** A3BE57CE9854B5CC — 스토리/DLC 제목 (영문 부제) — 수동 편집 완료
 - [x] **HIGH** 73420FAEA9F664FD — 본편 타이틀 (오보로 무라마사, 수동 편집)
 - [ ] **HIGH** 74EEEC230BEE120C — 스토리 제목+라벨 혼합
-- [ ] **HIGH** 1823D39C0279886B — 지역명 (YAMASHIRO, MUSASHI 등)
+- [x] **HIGH** 1823D39C0279886B — 지도 로마자 지명 14개 한글화 완료 (2026-04-26)
+  - YAMASHIRO/SHINANO/MUSASHI/HIDA/YAMATO/TOTOMI/MIKAWA → 야마시로/시나노/무사시/히다/야마토/토토미/미카와
+  - SAGAMI/SURUGA/OWARI/KAI/MINO/OMIGAISE/IZU → 사가미/스루가/오와리/카이/미노/오미이세/이즈
+  - texture_localize_config.json + kr_textures/ui/_notes/1823D39C0279886B.txt 동기화
+  - import 폴더 동기화 완료. 사용자 세이브 로드 시 지도에서 한글 라벨 표시 예정
 - [x] **HIGH** ADE2B8B5998887A9 — DLC 부제 (겐로쿠 괴기담)
 - [ ] **HIGH** 79C935AA47DD1810 — 오프닝 나레이션 (Countless Demon Blades...)
 - [x] **MED** 8EFF960FC088FDD7 — 그림자 제거 (수동 편집)

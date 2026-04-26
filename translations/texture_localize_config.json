@@ -32,6 +32,46 @@
       "status": "done",
       "method": "MURAMASA REBIRTH 영문 제거 + 오보로 무라마사 한글 렌더링 (흰 글씨 + 검은 테두리). 수동 편집.",
       "notes": "컬러 텍스처 (RGB+알파). 원본: textures/originals/73420FAEA9F664FD.png"
+    },
+    {
+      "hash": "1823D39C0279886B",
+      "size": "1024x512",
+      "description": "지도 화면 로마자 지명 아틀라스 (YAMASHIRO/SHINANO/MUSASHI/HIDA/YAMATO/TOTOMI/MIKAWA/SAGAMI/SURUGA/OWARI/KAI/MINO/OMIGAISE/IZU → 한글)",
+      "status": "done",
+      "method": "원본 영문 알파 클리어 후 동일 bbox에 한글 렌더링. 수직 라벨은 음절 stack. 폰트: Griun_PolSensibility-Rg.ttf",
+      "translations": {
+        "YAMASHIRO": "야마시로",
+        "SHINANO": "시나노",
+        "MUSASHI": "무사시",
+        "HIDA": "히다",
+        "YAMATO": "야마토",
+        "TOTOMI": "토토미",
+        "MIKAWA": "미카와",
+        "SAGAMI": "사가미",
+        "SURUGA": "스루가",
+        "OWARI": "오와리",
+        "KAI": "카이",
+        "MINO": "미노",
+        "OMIGAISE": "오미이세",
+        "IZU": "이즈"
+      },
+      "regions": [
+        {"x": 0, "y": 8, "w": 264, "h": 64, "orient": "H", "text": "야마시로", "font_size": 56},
+        {"x": 0, "y": 80, "w": 212, "h": 60, "orient": "H", "text": "시나노", "font_size": 56},
+        {"x": 0, "y": 152, "w": 300, "h": 60, "orient": "H", "text": "무사시", "font_size": 56},
+        {"x": 0, "y": 220, "w": 108, "h": 44, "orient": "H", "text": "히다", "font_size": 40},
+        {"x": 0, "y": 265, "w": 140, "h": 44, "orient": "H", "text": "야마토", "font_size": 40},
+        {"x": 0, "y": 315, "w": 140, "h": 44, "orient": "H", "text": "토토미", "font_size": 40},
+        {"x": 0, "y": 365, "w": 168, "h": 48, "orient": "H", "text": "미카와", "font_size": 44},
+        {"x": 290, "y": 150, "w": 86, "h": 260, "orient": "V", "text": "사가미", "font_size": 50},
+        {"x": 385, "y": 5, "w": 60, "h": 230, "orient": "V", "text": "스루가", "font_size": 50},
+        {"x": 385, "y": 245, "w": 60, "h": 250, "orient": "V", "text": "오와리", "font_size": 50},
+        {"x": 453, "y": 5, "w": 64, "h": 165, "orient": "V", "text": "미노", "font_size": 50},
+        {"x": 453, "y": 275, "w": 64, "h": 130, "orient": "V", "text": "카이", "font_size": 50},
+        {"x": 525, "y": 5, "w": 60, "h": 400, "orient": "V", "text": "오미이세", "font_size": 50},
+        {"x": 593, "y": 5, "w": 60, "h": 130, "orient": "V", "text": "이즈", "font_size": 50}
+      ],
+      "notes": "원본: textures/originals/1823D39C0279886B.png (256x128). kr 버전은 4x 업스케일(1024x512). 알파 전용 (RGB는 흰색)."
     }
   ]
 }
