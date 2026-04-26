@@ -58,24 +58,24 @@
         "IZU": "이즈"
       },
       "regions": [
-        {"x": 8, "y": 4, "w": 270, "h": 64, "orient": "H", "text": "야마시로", "font_size": 56},
-        {"x": 8, "y": 72, "w": 200, "h": 60, "orient": "H", "text": "시나노", "font_size": 56},
-        {"x": 8, "y": 140, "w": 300, "h": 68, "orient": "H", "text": "무사시", "font_size": 60},
-        {"x": 8, "y": 220, "w": 56, "h": 256, "orient": "V", "text": "미카와", "font_size": 40},
-        {"x": 80, "y": 220, "w": 56, "h": 252, "orient": "V", "text": "야마토", "font_size": 40},
-        {"x": 152, "y": 232, "w": 56, "h": 240, "orient": "V", "text": "토토미", "font_size": 40},
-        {"x": 220, "y": 220, "w": 56, "h": 168, "orient": "V", "text": "히다", "font_size": 40},
-        {"x": 312, "y": 148, "w": 60, "h": 280, "orient": "V", "text": "사가미", "font_size": 50},
-        {"x": 392, "y": 8, "w": 60, "h": 224, "orient": "V", "text": "스루가", "font_size": 40},
-        {"x": 392, "y": 248, "w": 60, "h": 224, "orient": "V", "text": "오와리", "font_size": 40},
-        {"x": 472, "y": 8, "w": 60, "h": 152, "orient": "V", "text": "미노", "font_size": 40},
-        {"x": 472, "y": 272, "w": 60, "h": 120, "orient": "V", "text": "카이", "font_size": 40},
-        {"x": 548, "y": 8, "w": 60, "h": 120, "orient": "V", "text": "오미", "font_size": 40},
-        {"x": 548, "y": 168, "w": 60, "h": 104, "orient": "V", "text": "이가", "font_size": 40},
-        {"x": 548, "y": 320, "w": 60, "h": 96, "orient": "V", "text": "이세", "font_size": 40},
-        {"x": 624, "y": 8, "w": 60, "h": 120, "orient": "V", "text": "이즈", "font_size": 40}
+        {"x": 8, "y": 4, "w": 270, "h": 64, "orient": "H_PREROTATED", "text": "야마시로", "note": "게임이 90°CW 회전하므로 PIL ROTATE_90(CCW)로 사전 회전된 컨텐츠가 들어감"},
+        {"x": 8, "y": 72, "w": 204, "h": 60, "orient": "H_PREROTATED", "text": "시나노"},
+        {"x": 8, "y": 140, "w": 300, "h": 68, "orient": "H_PREROTATED", "text": "무사시"},
+        {"x": 8, "y": 220, "w": 52, "h": 256, "orient": "V", "text": "미카와"},
+        {"x": 80, "y": 220, "w": 52, "h": 252, "orient": "V", "text": "야마토"},
+        {"x": 152, "y": 232, "w": 52, "h": 240, "orient": "V", "text": "토토미"},
+        {"x": 220, "y": 220, "w": 52, "h": 168, "orient": "V", "text": "히다"},
+        {"x": 290, "y": 148, "w": 86, "h": 280, "orient": "V", "text": "사가미"},
+        {"x": 385, "y": 8, "w": 61, "h": 224, "orient": "V", "text": "스루가"},
+        {"x": 385, "y": 248, "w": 61, "h": 224, "orient": "V", "text": "오와리"},
+        {"x": 453, "y": 8, "w": 64, "h": 152, "orient": "V", "text": "미노"},
+        {"x": 453, "y": 272, "w": 64, "h": 132, "orient": "V", "text": "카이"},
+        {"x": 525, "y": 8, "w": 61, "h": 120, "orient": "V", "text": "오미"},
+        {"x": 525, "y": 168, "w": 61, "h": 104, "orient": "V", "text": "이가"},
+        {"x": 525, "y": 320, "w": 61, "h": 96, "orient": "V", "text": "이세"},
+        {"x": 593, "y": 8, "w": 61, "h": 120, "orient": "V", "text": "이즈"}
       ],
-      "notes": "원본: textures/originals/1823D39C0279886B.png (256x128). kr 버전은 4x 업스케일(1024x512). 알파 전용. 좌측 하단 4개 라벨(MIKAWA/YAMATO/TOTOMI/HIDA)도 수직 배치, OMIGAISE는 OMI/IGA/ISE 3개 별도 라벨로 분리."
+      "notes": "원본: textures/originals/1823D39C0279886B.png (256x128). kr 버전은 4x 업스케일(1024x512). 알파 전용. v3 변경점: (1) 야마시로/시나노/무사시는 게임 UV가 90°CW 회전하므로 PIL ROTATE_90으로 사전 회전 후 paste, (2) 우측 5개 컬럼 x 위치를 실제 UV 활성 범위(290-375/385-445/453-516/525-585/593-653)에 정확히 매핑하여 우편향 해소, (3) 폰트 크기는 각 셀 width/height 중 작은 쪽의 95%로 자동 계산해 최대한 크게 통일."
     }
   ]
 }
