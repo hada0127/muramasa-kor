@@ -397,7 +397,11 @@
       {
         "tag": "banner",
         "original": "六国見山 鎌倉墓所",
-        "korean": "로쿠코쿠미야마 가마쿠라 묘소"
+        "korean": "로쿠코쿠미야마 가마쿠라 묘소",
+        "short_alternative": "가마쿠라 묘소",
+        "medium_alternative": "로쿠코쿠미야마 묘소",
+        "reason": "두 지명 중 하나 생략으로 시인성 확보",
+        "suggested": true
       },
       {
         "tag": "character",
@@ -496,7 +500,11 @@
       {
         "tag": "character",
         "original": "犬神徳川綱吉",
-        "korean": "이누가미 도쿠가와 쓰나요시"
+        "korean": "이누가미 도쿠가와 쓰나요시",
+        "short_alternative": "이누가미 츠나요시",
+        "medium_alternative": "쇼군 츠나요시",
+        "reason": "성씨(도쿠가와) 생략으로 축약 가능",
+        "suggested": true
       }
     ],
     "codex_positions": [
@@ -739,7 +747,11 @@
       {
         "tag": "banner",
         "original": "江戸 網釜藩邸 上屋敷",
-        "korean": "에도 아미가마 번저 가미야시키"
+        "korean": "에도 아미가마 번저 가미야시키",
+        "short_alternative": "아미가마 번저 가미야시키",
+        "medium_alternative": "아미가마 번저 상저택",
+        "reason": "'에도' 생략 가능. 핵심 지명 강조",
+        "suggested": true
       },
       {
         "tag": "banner",
@@ -1667,7 +1679,11 @@
       {
         "tag": "character",
         "original": "犬神徳川綱吉",
-        "korean": "이누가미 도쿠가와 쓰나요시"
+        "korean": "이누가미 도쿠가와 쓰나요시",
+        "short_alternative": "이누가미 츠나요시",
+        "medium_alternative": "쇼군 츠나요시",
+        "reason": "성씨(도쿠가와) 생략으로 축약 가능",
+        "suggested": true
       }
     ],
     "codex_positions": [
@@ -1775,7 +1791,11 @@
       {
         "tag": "banner",
         "original": "白川郷 白銀ヶ淵 廃れ社",
-        "korean": "시라카와고 시로가네가후치 폐사"
+        "korean": "시라카와고 시로가네가후치 폐사",
+        "short_alternative": "시로가네가후치 폐사",
+        "medium_alternative": "시라카와고: 시로가네가후치",
+        "reason": "'시라카와고'를 생략하거나 핵심 장소 강조",
+        "suggested": true
       },
       {
         "tag": "banner",
@@ -2001,7 +2021,11 @@
       {
         "tag": "banner",
         "original": "信濃山奥狐のお宿の場",
-        "korean": "시나노 산속 여우의 여인숙 장"
+        "korean": "시나노 산속 여우의 여인숙 장",
+        "short_alternative": "산속 여우의 여인숙",
+        "medium_alternative": "시나노 산속 여우 여인숙",
+        "reason": "'~의 장' 삭제로 장소명만 명확히",
+        "suggested": true
       },
       {
         "tag": "banner",
@@ -2115,12 +2139,20 @@
       {
         "tag": "banner",
         "original": "東海道 御油吉田間街道",
-        "korean": "도카이도 고유 요시다 사이 가도"
+        "korean": "도카이도 고유 요시다 사이 가도",
+        "short_alternative": "고유~요시다 가도",
+        "medium_alternative": "도카이도: 고유·요시다",
+        "reason": "지명 위주로 재구성하여 가독성 개선",
+        "suggested": true
       },
       {
         "tag": "banner",
         "original": "東海道 藤川赤坂間街道",
-        "korean": "도카이도 후지카와 아카사카 사이 가도"
+        "korean": "도카이도 후지카와 아카사카 사이 가도",
+        "short_alternative": "후지카와~아카사카 가도",
+        "medium_alternative": "도카이도: 후지카와·아카사카",
+        "reason": "'사이 가도'를 물결표(~)나 가운뎃점으로 축약하여 위치 관계를 명확히 함",
+        "suggested": true
       },
       {
         "tag": "box",
@@ -2303,7 +2335,11 @@
       {
         "tag": "banner",
         "original": "金剛山山頂高天原入口",
-        "korean": "곤고산 산정 다카마가하라 입구"
+        "korean": "곤고산 산정 다카마가하라 입구",
+        "short_alternative": "곤고산 다카마가하라",
+        "medium_alternative": "곤고산 산정: 다카마가하라",
+        "reason": "'입구' 생략해도 신화적 장소 진입 충분히 표현",
+        "suggested": true
       }
     ],
     "codex_positions": [
@@ -2431,12 +2467,20 @@
       {
         "tag": "banner",
         "original": "金剛山山頂高天原入口",
-        "korean": "곤고산 산정 다카마가하라 입구"
+        "korean": "곤고산 산정 다카마가하라 입구",
+        "short_alternative": "곤고산 다카마가하라",
+        "medium_alternative": "곤고산 산정: 다카마가하라",
+        "reason": "'입구' 생략해도 신화적 장소 진입 충분히 표현",
+        "suggested": true
       },
       {
         "tag": "character",
         "original": "犬神徳川綱吉",
-        "korean": "이누가미 도쿠가와 쓰나요시"
+        "korean": "이누가미 도쿠가와 쓰나요시",
+        "short_alternative": "이누가미 츠나요시",
+        "medium_alternative": "쇼군 츠나요시",
+        "reason": "성씨(도쿠가와) 생략으로 축약 가능",
+        "suggested": true
       }
     ],
     "codex_positions": [
@@ -2688,7 +2732,11 @@
       {
         "tag": "banner",
         "original": "金剛山山頂高天原入口",
-        "korean": "곤고산 산정 다카마가하라 입구"
+        "korean": "곤고산 산정 다카마가하라 입구",
+        "short_alternative": "곤고산 다카마가하라",
+        "medium_alternative": "곤고산 산정: 다카마가하라",
+        "reason": "'입구' 생략해도 신화적 장소 진입 충분히 표현",
+        "suggested": true
       }
     ],
     "codex_positions": [
@@ -2874,7 +2922,11 @@
       {
         "tag": "banner",
         "original": "伊勢天神高天原入口",
-        "korean": "이세 천신 다카마가하라 입구"
+        "korean": "이세 천신 다카마가하라 입구",
+        "short_alternative": "이세 다카마가하라",
+        "medium_alternative": "이세 천신: 다카마가하라",
+        "reason": "'입구' 생략, 핵심 지명 강조",
+        "suggested": true
       },
       {
         "tag": "banner",
@@ -3291,7 +3343,11 @@
       {
         "tag": "banner",
         "original": "江戸 大根藩邸下屋敷",
-        "korean": "에도 다이콘 번저 시모야시키"
+        "korean": "에도 다이콘 번저 시모야시키",
+        "short_alternative": "다이콘 번저 시모야시키",
+        "medium_alternative": "다이콘 번저 하저택",
+        "reason": "'에도' 생략, 하저택 용도 명확",
+        "suggested": true
       }
     ],
     "codex_positions": [
@@ -3614,7 +3670,11 @@
       {
         "tag": "banner",
         "original": "白川郷 白銀ヶ淵 廃れ社",
-        "korean": "시라카와고 시로가네가후치 폐사"
+        "korean": "시라카와고 시로가네가후치 폐사",
+        "short_alternative": "시로가네가후치 폐사",
+        "medium_alternative": "시라카와고: 시로가네가후치",
+        "reason": "'시라카와고'를 생략하거나 핵심 장소 강조",
+        "suggested": true
       },
       {
         "tag": "banner",
