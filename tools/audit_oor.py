@@ -25,25 +25,43 @@ sys.path.insert(0, str(Path(__file__).parent))
 from nms_parser import parse_nms  # noqa
 
 # In-range SJIS codepoints (2-byte) considered valid for rendering
-KR_MAP_START = 0x89CD
-KR_MAP_END = 0x8EE0    # 960 Korean syllables
-ASCII_REMAP_START = 0x8EE1  # Some ASCII chars remapped here (excluded — see below)
+# Korean syllable mapping (960 chars): 0x89CD ~ 0x8F54
+# ASCII remap (93 chars): 0x8EE2 ~ 0x8F83 (overlaps with KR range partially)
+# Valid codes are loaded dynamically from kr_sjis_mapping.json + build_patch.ASCII_SJIS_MAP
 JP_PUNCT_START = 0x8140     # JP punctuation/symbols page (preserved by font overlay)
 JP_PUNCT_END = 0x829F
+
+_VALID_CODES = None
+def _load_valid_codes():
+    global _VALID_CODES
+    if _VALID_CODES is None:
+        valid = set()
+        # Korean mapping
+        kr_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..',
+                                'translations', 'kr_sjis_mapping.json')
+        if os.path.exists(kr_path):
+            with open(kr_path, 'r', encoding='utf-8') as f:
+                kr_data = json.load(f)
+            for ch, bp in kr_data.get('korean_to_sjis', {}).items():
+                valid.add((bp[0] << 8) | bp[1])
+        # ASCII remap from build_patch
+        try:
+            from build_patch import ASCII_SJIS_MAP
+            for ch, bp in ASCII_SJIS_MAP.items():
+                valid.add((bp[0] << 8) | bp[1])
+        except Exception:
+            pass
+        _VALID_CODES = valid
+    return _VALID_CODES
 
 
 def is_in_range(code: int) -> bool:
     """A 2-byte SJIS code is in-range if it maps to a glyph the Korean patch
-    intends to render (either custom KR syllable, preserved JP punctuation, or
-    ASCII remap slot)."""
-    if KR_MAP_START <= code <= KR_MAP_END:
-        return True
+    intends to render (custom KR syllable, ASCII remap slot, or preserved JP
+    punctuation)."""
     if JP_PUNCT_START <= code <= JP_PUNCT_END:
         return True
-    # ASCII remap: build_patch._build_ascii_sjis_map puts non-space ASCII at
-    # cells 2604+. Those bytes are technically OOR for glyph overlay, but they
-    # represent intentional encoding. We flag them separately.
-    return False
+    return code in _load_valid_codes()
 
 
 def scan_message(text: str):
