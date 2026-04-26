@@ -1,0 +1,3795 @@
+{
+  "00B61B564A5FD289.png": {
+    "filename": "00B61B564A5FD289.png",
+    "translations": [
+      {
+        "tag": "banner",
+        "original": "杉林 大きな蜘蛛の巣",
+        "korean": "삼나무 숲 커다란 거미집"
+      },
+      {
+        "tag": "banner",
+        "original": "鬼の潜む洞窟",
+        "korean": "귀신이 숨은 동굴"
+      },
+      {
+        "tag": "banner",
+        "original": "鬼の潜む洞窟前",
+        "korean": "귀신이 숨은 동굴 앞"
+      },
+      {
+        "tag": "banner",
+        "original": "花街海蓮座敷",
+        "korean": "하나마치 카이렌자시키"
+      },
+      {
+        "tag": "banner",
+        "original": "祝言の場",
+        "korean": "혼례식 장"
+      },
+      {
+        "tag": "banner",
+        "original": "花嫁行列",
+        "korean": "신부 행렬"
+      },
+      {
+        "tag": "banner",
+        "original": "茶店前",
+        "korean": "찻집 앞"
+      },
+      {
+        "tag": "box",
+        "original": "何処かの国",
+        "korean": "어딘가의 나라"
+      },
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시"
+      },
+      {
+        "tag": "box",
+        "original": "伊豆",
+        "korean": "이즈"
+      },
+      {
+        "tag": "character",
+        "original": "唐木清兵衛宅",
+        "korean": "가라키 세이베에 댁"
+      },
+      {
+        "tag": "character",
+        "original": "鬼助",
+        "korean": "키스케"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "茶店前",
+        "korean": "차야마에",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "唐木清兵衛宅",
+        "korean": "가라키 세이베에타쿠",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "鬼の潜む洞窟",
+        "korean": "오니노 히소무 도쿠츠",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "鬼の潜む洞窟前",
+        "korean": "오니노 히소무 도쿠츠마에",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "杉林 大きな蜘蛛の巣",
+        "korean": "스기바야시 오오키나 쿠모노스",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "祝言の場",
+        "korean": "슈겐노바",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "鬼助",
+        "korean": "키스케",
+        "position": "middle",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "花嫁行列",
+        "korean": "하나요메 교레츠",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "伊豆",
+        "korean": "이즈",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "何処かの国",
+        "korean": "도코카노 쿠니",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "花街海蓮座敷",
+        "korean": "하나마치 카이렌자시키",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1677,
+        15,
+        1849,
+        984
+      ],
+      "B1": [
+        1397,
+        1446,
+        1569,
+        2008
+      ],
+      "B2": [
+        15,
+        15,
+        1370,
+        187
+      ],
+      "B3": [
+        1009,
+        1499,
+        1181,
+        2005
+      ],
+      "B4": [
+        15,
+        215,
+        984,
+        387
+      ],
+      "B5": [
+        15,
+        415,
+        892,
+        587
+      ],
+      "B6": [
+        15,
+        615,
+        856,
+        787
+      ],
+      "B7": [
+        13,
+        815,
+        185,
+        1413
+      ],
+      "K0": [
+        1681,
+        1013,
+        1927,
+        1583
+      ],
+      "K1": [
+        1401,
+        845,
+        1647,
+        1416
+      ],
+      "C0": [
+        1382,
+        0,
+        1946,
+        1602
+      ],
+      "C1": [
+        1669,
+        1001,
+        1939,
+        1595
+      ],
+      "C2": [
+        1672,
+        10,
+        1854,
+        988
+      ],
+      "C3": [
+        1389,
+        833,
+        1658,
+        1427
+      ],
+      "C4": [
+        1412,
+        29,
+        1634,
+        797
+      ],
+      "C5": [
+        10,
+        10,
+        1374,
+        1493
+      ],
+      "C6": [
+        1009,
+        208,
+        1253,
+        884
+      ],
+      "C7": [
+        940,
+        32,
+        1069,
+        165
+      ],
+      "C8": [
+        10,
+        210,
+        988,
+        392
+      ],
+      "C9": [
+        815,
+        36,
+        939,
+        163
+      ],
+      "C10": [
+        10,
+        409,
+        896,
+        592
+      ],
+      "C11": [
+        565,
+        239,
+        868,
+        364
+      ],
+      "C12": [
+        10,
+        610,
+        860,
+        792
+      ],
+      "C13": [
+        307,
+        649,
+        559,
+        758
+      ]
+    }
+  },
+  "0912E45A567A41C9.png": {
+    "filename": "0912E45A567A41C9.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시"
+      },
+      {
+        "tag": "banner",
+        "original": "新吉原 衣紋坂",
+        "korean": "신요시와라 에몬자카"
+      },
+      {
+        "tag": "character",
+        "original": "百姫×鬼助",
+        "korean": "모모히메×키스케"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "駿府",
+        "korean": "슨푸",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "新吉原 大紋坂",
+        "korean": "신요시와라 오몬자카",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "百姫く鬼助",
+        "korean": "모모히메 < 키스케",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        12,
+        15,
+        1064,
+        187
+      ],
+      "K0": [
+        16,
+        217,
+        264,
+        788
+      ],
+      "C0": [
+        0,
+        0,
+        1557,
+        806
+      ],
+      "C1": [
+        8,
+        10,
+        1068,
+        192
+      ],
+      "C2": [
+        4,
+        205,
+        276,
+        800
+      ]
+    }
+  },
+  "0AA74C448087838A.png": {
+    "filename": "0AA74C448087838A.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "相模",
+        "korean": "사가미"
+      },
+      {
+        "tag": "banner",
+        "original": "六国見山 鎌倉墓所",
+        "korean": "로쿠코쿠미야마 가마쿠라 묘소"
+      },
+      {
+        "tag": "character",
+        "original": "州浜",
+        "korean": "스하마"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "鎌倉",
+        "korean": "가마쿠라",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "六国見山 鎌倉墓所",
+        "korean": "롯코쿠켄잔 가마쿠라 보쇼",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "州浜",
+        "korean": "스하마",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        12,
+        14,
+        1364,
+        186
+      ],
+      "K0": [
+        16,
+        217,
+        264,
+        788
+      ],
+      "C0": [
+        0,
+        0,
+        1852,
+        806
+      ],
+      "C1": [
+        1389,
+        9,
+        1836,
+        682
+      ],
+      "C2": [
+        4,
+        205,
+        276,
+        800
+      ]
+    }
+  },
+  "1823D39C0279886B.png": {
+    "filename": "1823D39C0279886B.png",
+    "translations": [],
+    "codex_positions": [],
+    "bboxes": {}
+  },
+  "2611666E71A8181A.png": {
+    "filename": "2611666E71A8181A.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시"
+      },
+      {
+        "tag": "banner",
+        "original": "武蔵街道 祠の場",
+        "korean": "무사시 가도 사당의 장"
+      },
+      {
+        "tag": "banner",
+        "original": "天門の先",
+        "korean": "천문의 너머"
+      },
+      {
+        "tag": "banner",
+        "original": "仏界",
+        "korean": "불계"
+      },
+      {
+        "tag": "character",
+        "original": "犬神徳川綱吉",
+        "korean": "이누가미 도쿠가와 쓰나요시"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "天門の先",
+        "korean": "천문의 앞",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "仏界",
+        "korean": "불계",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "武蔵街道",
+        "korean": "무사시 가도",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "祠の場",
+        "korean": "사당 터",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "犬神徳川綱吉",
+        "korean": "견신 도쿠가와 쓰나요시",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1753,
+        11,
+        1925,
+        954
+      ],
+      "B1": [
+        12,
+        215,
+        1224,
+        387
+      ],
+      "B2": [
+        12,
+        415,
+        1064,
+        587
+      ],
+      "K0": [
+        1268,
+        825,
+        1516,
+        1396
+      ],
+      "C0": [
+        1749,
+        8,
+        1930,
+        958
+      ],
+      "C1": [
+        0,
+        0,
+        1749,
+        1414
+      ],
+      "C2": [
+        1256,
+        813,
+        1528,
+        1408
+      ],
+      "C3": [
+        1280,
+        29,
+        1502,
+        780
+      ],
+      "C4": [
+        8,
+        210,
+        1228,
+        391
+      ],
+      "C5": [
+        8,
+        410,
+        1068,
+        592
+      ],
+      "C6": [
+        9,
+        607,
+        682,
+        851
+      ]
+    }
+  },
+  "31710FB73B2686EF.png": {
+    "filename": "31710FB73B2686EF.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "地獄",
+        "korean": "지옥"
+      },
+      {
+        "tag": "banner",
+        "original": "地獄八景 大焦熱",
+        "korean": "지옥팔경 대초열"
+      },
+      {
+        "tag": "banner",
+        "original": "地獄八景 等活",
+        "korean": "지옥팔경 등활"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "衆合",
+        "korean": "슈고",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "地獄八景 大焦熱",
+        "korean": "지고쿠 핫케이 다이쇼네츠",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "行くは成仏",
+        "korean": "이쿠와 조부츠",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "変化",
+        "korean": "헨게",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "大凹",
+        "korean": "다이오",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1249,
+        12,
+        1421,
+        954
+      ],
+      "B1": [
+        12,
+        15,
+        1224,
+        187
+      ],
+      "K0": [
+        1452,
+        17,
+        1700,
+        587
+      ],
+      "K1": [
+        280,
+        217,
+        526,
+        788
+      ],
+      "C0": [
+        262,
+        0,
+        1923,
+        806
+      ],
+      "C1": [
+        1244,
+        8,
+        1426,
+        958
+      ],
+      "C2": [
+        8,
+        10,
+        1228,
+        192
+      ],
+      "C3": [
+        268,
+        204,
+        538,
+        800
+      ],
+      "C4": [
+        13,
+        208,
+        257,
+        886
+      ]
+    }
+  },
+  "3ECF3B0D2C2907BE.png": {
+    "filename": "3ECF3B0D2C2907BE.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시"
+      },
+      {
+        "tag": "banner",
+        "original": "江戸 網釜藩邸 上屋敷",
+        "korean": "에도 아미가마 번저 가미야시키"
+      },
+      {
+        "tag": "banner",
+        "original": "証城寺跡",
+        "korean": "쇼조지 옛터"
+      },
+      {
+        "tag": "character",
+        "original": "綱釜千代子",
+        "korean": "쓰나가마 치요코"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "駿府",
+        "korean": "슨푸",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "駿州宗岡",
+        "korean": "슨슈 무네오카",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "江戸 細倉藩邸上屋敷",
+        "korean": "에도 호소쿠라 한테이 카미야시키",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "妖刀村正",
+        "korean": "요토 무라마사",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        10,
+        12,
+        1364,
+        185
+      ],
+      "B1": [
+        292,
+        206,
+        464,
+        803
+      ],
+      "K0": [
+        17,
+        213,
+        263,
+        783
+      ],
+      "C0": [
+        0,
+        0,
+        1835,
+        868
+      ],
+      "C1": [
+        6,
+        7,
+        1368,
+        189
+      ],
+      "C2": [
+        1062,
+        34,
+        1313,
+        162
+      ],
+      "C3": [
+        5,
+        201,
+        275,
+        795
+      ]
+    }
+  },
+  "4633B92FBA1371F4.png": {
+    "filename": "4633B92FBA1371F4.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "相模",
+        "korean": "사가미"
+      },
+      {
+        "tag": "banner",
+        "original": "戸塚宿観念寺",
+        "korean": "도쓰카주쿠 간넨지"
+      },
+      {
+        "tag": "banner",
+        "original": "綱谷藩勝尾城",
+        "korean": "쓰나야 번 가쓰오성"
+      },
+      {
+        "tag": "banner",
+        "original": "綱谷藩勝尾城回廊",
+        "korean": "쓰나야 번 가쓰오성 회랑"
+      },
+      {
+        "tag": "banner",
+        "original": "綱谷藩葛銀字庭",
+        "korean": "쓰나야 번 갈은자 정원"
+      },
+      {
+        "tag": "banner",
+        "original": "由比ヶ浜",
+        "korean": "유이가하마"
+      },
+      {
+        "tag": "banner",
+        "original": "釣船川船着場",
+        "korean": "쓰리부네강 선착장"
+      },
+      {
+        "tag": "box",
+        "original": "当川",
+        "korean": "도가와"
+      },
+      {
+        "tag": "box",
+        "original": "荒益",
+        "korean": "아라마스"
+      },
+      {
+        "tag": "character",
+        "original": "堺港町",
+        "korean": "사카이 항구마을"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "相模",
+        "korean": "사가미",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "戸塚宿観念寺",
+        "korean": "도쓰카주쿠 간넨지",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "綱谷藩勝尾城",
+        "korean": "쓰나야번 가쓰오성",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "綱谷藩勝尾城回廊",
+        "korean": "쓰나야번 가쓰오성 회랑",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "綱谷藩葛銀字庭",
+        "korean": "쓰나야번 갈은자 정원",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "当川",
+        "korean": "도가와",
+        "position": "middle",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "由比ヶ浜",
+        "korean": "유이가하마",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "釣船川船着場",
+        "korean": "쓰리부네강 선착장",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "荒益",
+        "korean": "아라마스",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "堺港町",
+        "korean": "사카이 항구마을",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1253,
+        11,
+        1425,
+        981
+      ],
+      "B1": [
+        1253,
+        1003,
+        1425,
+        1738
+      ],
+      "B2": [
+        11,
+        13,
+        1227,
+        185
+      ],
+      "B3": [
+        11,
+        208,
+        1127,
+        381
+      ],
+      "B4": [
+        11,
+        406,
+        850,
+        578
+      ],
+      "B5": [
+        11,
+        607,
+        850,
+        779
+      ],
+      "K0": [
+        1457,
+        1041,
+        1703,
+        1611
+      ],
+      "K1": [
+        881,
+        409,
+        1127,
+        978
+      ],
+      "K2": [
+        20,
+        808,
+        266,
+        1378
+      ],
+      "C0": [
+        1645,
+        9,
+        1889,
+        682
+      ],
+      "C1": [
+        1248,
+        7,
+        1721,
+        1630
+      ],
+      "C2": [
+        1445,
+        1029,
+        1715,
+        1623
+      ],
+      "C3": [
+        2,
+        0,
+        1640,
+        1397
+      ],
+      "C4": [
+        1249,
+        1000,
+        1430,
+        1742
+      ],
+      "C5": [
+        870,
+        397,
+        1139,
+        991
+      ],
+      "C6": [
+        7,
+        203,
+        1131,
+        385
+      ],
+      "C7": [
+        7,
+        401,
+        854,
+        583
+      ],
+      "C8": [
+        7,
+        601,
+        854,
+        783
+      ],
+      "C9": [
+        434,
+        624,
+        651,
+        753
+      ],
+      "C10": [
+        8,
+        797,
+        275,
+        1390
+      ]
+    }
+  },
+  "464E370EF865D0AC.png": {
+    "filename": "464E370EF865D0AC.png",
+    "translations": [
+      {
+        "tag": "banner",
+        "original": "大根藩馬路城",
+        "korean": "다이콘 번 마지성"
+      },
+      {
+        "tag": "banner",
+        "original": "大根藩馬路城跡",
+        "korean": "다이콘 번 마지성 옛터"
+      },
+      {
+        "tag": "banner",
+        "original": "馬路城 大天守",
+        "korean": "마지성 대천수"
+      },
+      {
+        "tag": "banner",
+        "original": "大根芋畑村",
+        "korean": "다이콘 이모하타 마을"
+      },
+      {
+        "tag": "banner",
+        "original": "西馬路口",
+        "korean": "니시 마지구치"
+      },
+      {
+        "tag": "banner",
+        "original": "鬼ヶ島 大蛇",
+        "korean": "오니가시마 오로치"
+      },
+      {
+        "tag": "box",
+        "original": "茶屋",
+        "korean": "찻집"
+      },
+      {
+        "tag": "box",
+        "original": "船屋",
+        "korean": "배집"
+      },
+      {
+        "tag": "box",
+        "original": "鍛冶",
+        "korean": "대장간"
+      },
+      {
+        "tag": "character",
+        "original": "鳴野豆太夫",
+        "korean": "나루노 마메다유"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "馬路城",
+        "korean": "마지성",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "大天守",
+        "korean": "다이텐슈",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "大根藩馬路城跡",
+        "korean": "다이콘한 마지성터",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "鳴野豆太夫",
+        "korean": "나루노마메다유",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "西馬路口",
+        "korean": "니시마지구치",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "大根芋畑村",
+        "korean": "다이콘 이모바타케무라",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "茶屋",
+        "korean": "차야",
+        "position": "middle",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "船屋",
+        "korean": "후나야",
+        "position": "middle",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "鍛冶",
+        "korean": "가지",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "大根藩馬路城",
+        "korean": "다이콘한 마지성",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "鬼ヶ島 大蛇",
+        "korean": "오니가시마 오로치",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1849,
+        225,
+        2021,
+        1011
+      ],
+      "B1": [
+        975,
+        15,
+        1760,
+        187
+      ],
+      "B2": [
+        1010,
+        831,
+        1748,
+        1003
+      ],
+      "B3": [
+        15,
+        227,
+        984,
+        399
+      ],
+      "B4": [
+        15,
+        427,
+        984,
+        599
+      ],
+      "B5": [
+        709,
+        626,
+        881,
+        1226
+      ],
+      "K0": [
+        1573,
+        229,
+        1819,
+        799
+      ],
+      "K1": [
+        1292,
+        229,
+        1538,
+        797
+      ],
+      "K2": [
+        1012,
+        229,
+        1258,
+        797
+      ],
+      "C0": [
+        1844,
+        222,
+        2026,
+        1016
+      ],
+      "C1": [
+        1876,
+        255,
+        2002,
+        501
+      ],
+      "C2": [
+        0,
+        0,
+        1837,
+        818
+      ],
+      "C3": [
+        1561,
+        217,
+        1831,
+        811
+      ],
+      "C4": [
+        1006,
+        826,
+        1752,
+        1008
+      ],
+      "C5": [
+        1379,
+        37,
+        1627,
+        144
+      ],
+      "C6": [
+        1280,
+        216,
+        1549,
+        809
+      ],
+      "C7": [
+        1000,
+        216,
+        1269,
+        809
+      ],
+      "C8": [
+        10,
+        222,
+        988,
+        404
+      ],
+      "C9": [
+        10,
+        422,
+        988,
+        604
+      ],
+      "C10": [
+        8,
+        619,
+        683,
+        863
+      ],
+      "C11": [
+        347,
+        246,
+        599,
+        353
+      ],
+      "C12": [
+        67,
+        447,
+        315,
+        554
+      ]
+    }
+  },
+  "4709F3E364671D89.png": {
+    "filename": "4709F3E364671D89.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "美濃",
+        "korean": "미노"
+      },
+      {
+        "tag": "banner",
+        "original": "中仙道間道",
+        "korean": "나카센도 사잇길"
+      },
+      {
+        "tag": "banner",
+        "original": "鳴神城内座敷",
+        "korean": "나루카미성 내 거실"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "中仙道間道",
+        "korean": "나카센도 간도",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "鳴神城内座敷",
+        "korean": "나루카미 성내 좌敷",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "稲城",
+        "korean": "이나기",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "城内",
+        "korean": "조나이",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        12,
+        15,
+        954,
+        187
+      ],
+      "B1": [
+        12,
+        819,
+        798,
+        991
+      ],
+      "K0": [
+        712,
+        217,
+        960,
+        788
+      ],
+      "C0": [
+        0,
+        10,
+        978,
+        806
+      ],
+      "C1": [
+        700,
+        204,
+        971,
+        800
+      ],
+      "C2": [
+        8,
+        814,
+        802,
+        996
+      ],
+      "C3": [
+        9,
+        207,
+        682,
+        451
+      ]
+    }
+  },
+  "5882EA68BABF3C63.png": {
+    "filename": "5882EA68BABF3C63.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "何処かの国",
+        "korean": "어딘가의 나라"
+      },
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시"
+      },
+      {
+        "tag": "box",
+        "original": "美濃",
+        "korean": "미노"
+      },
+      {
+        "tag": "banner",
+        "original": "日本堤 新吉原",
+        "korean": "니혼즈츠미 신요시와라"
+      },
+      {
+        "tag": "banner",
+        "original": "菩提寺 虎姫の墓前",
+        "korean": "보리사 토라히메의 묘 앞"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "美濃",
+        "korean": "미노",
+        "position": "middle",
+        "style": "black_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "日本堤",
+        "korean": "니혼즈쓰미",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "新吉原",
+        "korean": "신요시와라",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "菩提寺",
+        "korean": "보다이지",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "虎姫の墓前",
+        "korean": "도라히메노 보젠",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "何処かの国",
+        "korean": "도코카노쿠니",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1853,
+        12,
+        2025,
+        380
+      ],
+      "B1": [
+        1389,
+        12,
+        1561,
+        954
+      ],
+      "B2": [
+        12,
+        295,
+        1364,
+        467
+      ],
+      "B3": [
+        14,
+        497,
+        1068,
+        669
+      ],
+      "K0": [
+        620,
+        701,
+        1192,
+        948
+      ],
+      "K1": [
+        17,
+        701,
+        588,
+        948
+      ],
+      "C0": [
+        1384,
+        8,
+        2048,
+        958
+      ],
+      "C1": [
+        1589,
+        9,
+        1833,
+        684
+      ],
+      "C2": [
+        8,
+        290,
+        1368,
+        471
+      ],
+      "C3": [
+        0,
+        0,
+        1241,
+        966
+      ],
+      "C4": [
+        28,
+        31,
+        1210,
+        252
+      ],
+      "C5": [
+        608,
+        688,
+        1203,
+        960
+      ],
+      "C6": [
+        10,
+        492,
+        1072,
+        674
+      ],
+      "C7": [
+        5,
+        688,
+        599,
+        960
+      ]
+    }
+  },
+  "615858B46587A60E.png": {
+    "filename": "615858B46587A60E.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "美濃",
+        "korean": "미노"
+      },
+      {
+        "tag": "box",
+        "original": "武蔵",
+        "korean": "무사시"
+      },
+      {
+        "tag": "banner",
+        "original": "鳴神城広間の場",
+        "korean": "나루카미성 넓은 방의 장"
+      },
+      {
+        "tag": "banner",
+        "original": "江戸城天守",
+        "korean": "에도성 천수각"
+      },
+      {
+        "tag": "character",
+        "original": "犬神徳川綱吉",
+        "korean": "이누가미 도쿠가와 쓰나요시"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "無垢",
+        "korean": "무쿠",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "鳴神城雲間の場",
+        "korean": "나루카미성 구모마노바",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "犬神徳川綱吉",
+        "korean": "이누가미 도쿠가와 쓰나요시",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "山州宗山城",
+        "korean": "산슈 소잔성",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "船州",
+        "korean": "센슈",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1265,
+        12,
+        1437,
+        954
+      ],
+      "B1": [
+        12,
+        215,
+        1064,
+        387
+      ],
+      "K0": [
+        1732,
+        17,
+        1980,
+        587
+      ],
+      "K1": [
+        16,
+        417,
+        264,
+        988
+      ],
+      "C0": [
+        0,
+        0,
+        1998,
+        1006
+      ],
+      "C1": [
+        1465,
+        9,
+        1709,
+        686
+      ],
+      "C2": [
+        1260,
+        8,
+        1442,
+        958
+      ],
+      "C3": [
+        8,
+        210,
+        1068,
+        392
+      ],
+      "C4": [
+        4,
+        405,
+        276,
+        1000
+      ]
+    }
+  },
+  "6605F569D9389F9C.png": {
+    "filename": "6605F569D9389F9C.png",
+    "translations": [
+      {
+        "tag": "banner",
+        "original": "白川郷 白銀ヶ淵 廃れ社",
+        "korean": "시라카와고 시로가네가후치 폐사"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨国",
+        "korean": "히다국"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨街道",
+        "korean": "히다 가도"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨川",
+        "korean": "히다강"
+      },
+      {
+        "tag": "banner",
+        "original": "美濃国 境木峠",
+        "korean": "미노국 사카이기 고개"
+      },
+      {
+        "tag": "box",
+        "original": "関所",
+        "korean": "관문"
+      },
+      {
+        "tag": "box",
+        "original": "峠道",
+        "korean": "고갯길"
+      },
+      {
+        "tag": "character",
+        "original": "大雪山",
+        "korean": "다이세쓰잔"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "関所",
+        "korean": "세키쇼",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "白川郷 白銀ヶ淵 廃れ社",
+        "korean": "시라카와고 시로가네가후치 스타레야시로",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨街道",
+        "korean": "히다카이도",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "大雪山",
+        "korean": "다이세쓰잔",
+        "position": "middle",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨川",
+        "korean": "히다가와",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨国",
+        "korean": "히다노쿠니",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "美濃国 境木峠",
+        "korean": "미노노쿠니 사카이기토게",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "峠道",
+        "korean": "토게미치",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1720,
+        11,
+        1893,
+        978
+      ],
+      "B1": [
+        1486,
+        983,
+        1657,
+        1579
+      ],
+      "B2": [
+        13,
+        15,
+        1462,
+        187
+      ],
+      "B3": [
+        1267,
+        210,
+        1439,
+        715
+      ],
+      "B4": [
+        10,
+        213,
+        977,
+        386
+      ],
+      "B5": [
+        11,
+        413,
+        977,
+        585
+      ],
+      "B6": [
+        11,
+        608,
+        977,
+        780
+      ],
+      "K0": [
+        1729,
+        1005,
+        1974,
+        1574
+      ],
+      "K1": [
+        17,
+        808,
+        263,
+        1379
+      ],
+      "C0": [
+        0,
+        0,
+        1993,
+        1593
+      ],
+      "C1": [
+        1717,
+        993,
+        1986,
+        1587
+      ],
+      "C2": [
+        9,
+        10,
+        1466,
+        192
+      ],
+      "C3": [
+        1001,
+        208,
+        1245,
+        883
+      ],
+      "C4": [
+        7,
+        208,
+        982,
+        390
+      ],
+      "C5": [
+        7,
+        407,
+        982,
+        589
+      ],
+      "C6": [
+        7,
+        603,
+        982,
+        785
+      ],
+      "C7": [
+        547,
+        39,
+        674,
+        167
+      ],
+      "C8": [
+        5,
+        797,
+        275,
+        1391
+      ]
+    }
+  },
+  "7053B8FFC8B89807.png": {
+    "filename": "7053B8FFC8B89807.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "信濃",
+        "korean": "시나노"
+      },
+      {
+        "tag": "banner",
+        "original": "信濃山奥狐のお宿の場",
+        "korean": "시나노 산속 여우의 여인숙 장"
+      },
+      {
+        "tag": "banner",
+        "original": "八幡原 修羅の戦場",
+        "korean": "하치만바라 수라의 전장"
+      },
+      {
+        "tag": "character",
+        "original": "血狂毘沙門",
+        "korean": "치구루이비샤몬"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "character",
+        "original": "血狂毘沙門",
+        "korean": "혈광비사문",
+        "position": "middle",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "鍛冶",
+        "korean": "가지",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "八幡原 修羅の戦場",
+        "korean": "하치만바라 수라의 전장",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "信濃山奥狐のお宿の場",
+        "korean": "시나노 산속 여우 여관의 장",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        8,
+        11,
+        1514,
+        183
+      ],
+      "B1": [
+        9,
+        203,
+        1361,
+        375
+      ],
+      "K0": [
+        1046,
+        401,
+        1292,
+        971
+      ],
+      "C0": [
+        1528,
+        5,
+        1773,
+        680
+      ],
+      "C1": [
+        0,
+        5,
+        1519,
+        990
+      ],
+      "C2": [
+        4,
+        197,
+        1364,
+        380
+      ],
+      "C3": [
+        1034,
+        388,
+        1304,
+        984
+      ],
+      "C4": [
+        762,
+        228,
+        888,
+        349
+      ]
+    }
+  },
+  "72165D43344F3190.png": {
+    "filename": "72165D43344F3190.png",
+    "translations": [
+      {
+        "tag": "banner",
+        "original": "二人の刺客",
+        "korean": "두 명의 자객"
+      },
+      {
+        "tag": "banner",
+        "original": "赤坂宿 旅籠の部屋",
+        "korean": "아카사카주쿠 여인숙 방"
+      },
+      {
+        "tag": "banner",
+        "original": "東海道 御油吉田間街道",
+        "korean": "도카이도 고유 요시다 사이 가도"
+      },
+      {
+        "tag": "banner",
+        "original": "東海道 藤川赤坂間街道",
+        "korean": "도카이도 후지카와 아카사카 사이 가도"
+      },
+      {
+        "tag": "box",
+        "original": "当川",
+        "korean": "도가와"
+      },
+      {
+        "tag": "character",
+        "original": "参州羅刹助ノ塚",
+        "korean": "산슈 라세쓰스케 무덤"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "character",
+        "original": "二人の刺客",
+        "korean": "두 사람의 자객",
+        "position": "middle",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "赤坂宿 旅籠の部屋",
+        "korean": "아카사카슈쿠 하타고노헤야",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "東海道 御油吉田間街道",
+        "korean": "도카이도 고유 요시다 간 가도",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "東海道 藤川赤坂間街道",
+        "korean": "도카이도 후지카와 아카사카 간 가도",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "当川",
+        "korean": "도센",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "参州羅刹助ノ塚",
+        "korean": "산슈 라세쓰스케노쓰카",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1746,
+        11,
+        1918,
+        850
+      ],
+      "B1": [
+        11,
+        211,
+        1464,
+        384
+      ],
+      "B2": [
+        11,
+        15,
+        1459,
+        187
+      ],
+      "B3": [
+        11,
+        407,
+        1227,
+        581
+      ],
+      "K0": [
+        1493,
+        905,
+        1739,
+        1474
+      ],
+      "C0": [
+        159,
+        7,
+        1923,
+        854
+      ],
+      "C1": [
+        1475,
+        205,
+        1758,
+        1493
+      ],
+      "C2": [
+        1482,
+        893,
+        1751,
+        1487
+      ],
+      "C3": [
+        7,
+        207,
+        1468,
+        389
+      ],
+      "C4": [
+        7,
+        9,
+        1463,
+        191
+      ],
+      "C5": [
+        1183,
+        231,
+        1435,
+        363
+      ],
+      "C6": [
+        1185,
+        35,
+        1430,
+        165
+      ],
+      "C7": [
+        7,
+        403,
+        1232,
+        585
+      ],
+      "C8": [
+        931,
+        435,
+        1185,
+        560
+      ],
+      "C9": [
+        680,
+        237,
+        882,
+        355
+      ],
+      "C10": [
+        553,
+        432,
+        762,
+        561
+      ]
+    }
+  },
+  "7282AD29CF433DA0.png": {
+    "filename": "7282AD29CF433DA0.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "何処かの国",
+        "korean": "어딘가의 나라"
+      },
+      {
+        "tag": "box",
+        "original": "大和",
+        "korean": "야마토"
+      },
+      {
+        "tag": "banner",
+        "original": "峠の茶屋",
+        "korean": "고갯마루 찻집"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山頂高天原入口",
+        "korean": "곤고산 산정 다카마가하라 입구"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "character",
+        "original": "河内",
+        "korean": "가와치",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山麓高天原入口",
+        "korean": "곤고산 산로쿠 다카마가하라 이리구치",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "何処かの国",
+        "korean": "도코카노쿠니",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "大和",
+        "korean": "야마토",
+        "position": "middle",
+        "style": "black_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "剛鉄の岳",
+        "korean": "고테쓰노다케",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1789,
+        289,
+        1961,
+        942
+      ],
+      "B1": [
+        9,
+        291,
+        1516,
+        463
+      ],
+      "K0": [
+        1256,
+        17,
+        1828,
+        264
+      ],
+      "C0": [
+        1784,
+        284,
+        1966,
+        947
+      ],
+      "C1": [
+        0,
+        0,
+        1846,
+        282
+      ],
+      "C2": [
+        1528,
+        284,
+        1773,
+        960
+      ],
+      "C3": [
+        4,
+        285,
+        1520,
+        468
+      ],
+      "C4": [
+        0,
+        7,
+        1233,
+        879
+      ],
+      "C5": [
+        28,
+        31,
+        1210,
+        252
+      ]
+    }
+  },
+  "7358BEAA2EF5F8A8.png": {
+    "filename": "7358BEAA2EF5F8A8.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "美濃",
+        "korean": "미노"
+      },
+      {
+        "tag": "box",
+        "original": "大和",
+        "korean": "야마토"
+      },
+      {
+        "tag": "banner",
+        "original": "柳生城広間の場",
+        "korean": "야규성 넓은 방의 장"
+      },
+      {
+        "tag": "banner",
+        "original": "鳴神城 大手門前",
+        "korean": "나루카미성 오테문 앞"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山頂高天原入口",
+        "korean": "곤고산 산정 다카마가하라 입구"
+      },
+      {
+        "tag": "character",
+        "original": "犬神徳川綱吉",
+        "korean": "이누가미 도쿠가와 쓰나요시"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "美濃",
+        "korean": "미노",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "柳生城広間の場",
+        "korean": "야규성 히로마노바",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "鳴神城大手門前",
+        "korean": "나루카미성 오테몬 앞",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山頂高天原入口",
+        "korean": "곤고산 산정 다카마가하라 입구",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "大谷",
+        "korean": "오타니",
+        "position": "middle",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "駿河",
+        "korean": "스루가",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        9,
+        11,
+        1516,
+        183
+      ],
+      "B1": [
+        8,
+        203,
+        1220,
+        375
+      ],
+      "B2": [
+        9,
+        395,
+        1061,
+        567
+      ],
+      "K0": [
+        1244,
+        209,
+        1491,
+        779
+      ],
+      "K1": [
+        16,
+        593,
+        588,
+        840
+      ],
+      "C0": [
+        0,
+        0,
+        1987,
+        858
+      ],
+      "C1": [
+        1528,
+        5,
+        1979,
+        814
+      ],
+      "C2": [
+        1232,
+        196,
+        1503,
+        792
+      ],
+      "C3": [
+        4,
+        197,
+        1224,
+        380
+      ],
+      "C4": [
+        4,
+        389,
+        1064,
+        572
+      ],
+      "C5": [
+        4,
+        580,
+        600,
+        852
+      ]
+    }
+  },
+  "7E0669E71FCD7B64.png": {
+    "filename": "7E0669E71FCD7B64.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "信濃",
+        "korean": "시나노"
+      },
+      {
+        "tag": "banner",
+        "original": "大根芋畑村",
+        "korean": "다이콘 이모하타 마을"
+      },
+      {
+        "tag": "banner",
+        "original": "大根藩馬蕗城",
+        "korean": "다이콘 번 마후키성"
+      },
+      {
+        "tag": "character",
+        "original": "大根",
+        "korean": "다이콘"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "大根芋畑村",
+        "korean": "다이콘이모바타케무라",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "信濃",
+        "korean": "시나노",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "鴫の藪",
+        "korean": "시기노야부",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "大益謝油源井",
+        "korean": "오마스샤유겐이",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        797,
+        15,
+        969,
+        800
+      ],
+      "B1": [
+        15,
+        775,
+        752,
+        947
+      ],
+      "K0": [
+        16,
+        499,
+        586,
+        744
+      ],
+      "C0": [
+        792,
+        10,
+        974,
+        804
+      ],
+      "C1": [
+        817,
+        419,
+        946,
+        668
+      ],
+      "C2": [
+        0,
+        7,
+        792,
+        762
+      ],
+      "C3": [
+        10,
+        770,
+        756,
+        952
+      ],
+      "C4": [
+        4,
+        486,
+        597,
+        756
+      ]
+    }
+  },
+  "8098AD7E2C438C22.png": {
+    "filename": "8098AD7E2C438C22.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "大和",
+        "korean": "야마토"
+      },
+      {
+        "tag": "banner",
+        "original": "柳生城広間の場",
+        "korean": "야규성 넓은 방의 장"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山腹大仏殿",
+        "korean": "곤고산 산허리 대불전"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山頂高天原入口",
+        "korean": "곤고산 산정 다카마가하라 입구"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "柳生城玄門の場",
+        "korean": "야규성 현문의 장",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山腹大仏殿",
+        "korean": "곤고산 산복 대불전",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "金剛山山麓高天原入口",
+        "korean": "곤고산 산록 다카마가하라 입구",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "若木",
+        "korean": "와카기",
+        "position": "middle",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "出雲嶽寺",
+        "korean": "이즈모다케지",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        9,
+        11,
+        1516,
+        183
+      ],
+      "B1": [
+        8,
+        203,
+        1220,
+        375
+      ],
+      "B2": [
+        9,
+        395,
+        1061,
+        567
+      ],
+      "K0": [
+        1244,
+        209,
+        1491,
+        779
+      ],
+      "C0": [
+        4,
+        0,
+        1987,
+        798
+      ],
+      "C1": [
+        1528,
+        5,
+        1979,
+        814
+      ],
+      "C2": [
+        1232,
+        196,
+        1503,
+        792
+      ],
+      "C3": [
+        4,
+        197,
+        1224,
+        380
+      ],
+      "C4": [
+        4,
+        389,
+        1064,
+        572
+      ]
+    }
+  },
+  "864BD9CBCC496F78.png": {
+    "filename": "864BD9CBCC496F78.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "伊賀",
+        "korean": "이가"
+      },
+      {
+        "tag": "banner",
+        "original": "暗夜城広間の場",
+        "korean": "암야성 넓은 방의 장"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "云中",
+        "korean": "운추",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "暗夜城云間の場",
+        "korean": "안야조 운칸노바",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "云中",
+        "korean": "운추",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        12,
+        15,
+        1064,
+        187
+      ],
+      "K0": [
+        16,
+        217,
+        263,
+        788
+      ],
+      "C0": [
+        0,
+        0,
+        1547,
+        806
+      ],
+      "C1": [
+        8,
+        10,
+        1068,
+        192
+      ],
+      "C2": [
+        4,
+        204,
+        275,
+        800
+      ]
+    }
+  },
+  "A8486C49F76167C3.png": {
+    "filename": "A8486C49F76167C3.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "伊勢",
+        "korean": "이세"
+      },
+      {
+        "tag": "banner",
+        "original": "伊勢天神高天原入口",
+        "korean": "이세 천신 다카마가하라 입구"
+      },
+      {
+        "tag": "banner",
+        "original": "二見浦",
+        "korean": "후타미우라"
+      },
+      {
+        "tag": "banner",
+        "original": "伊勢街道",
+        "korean": "이세 가도"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "殺生",
+        "korean": "셋쇼",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "鮮血川",
+        "korean": "센케쓰가와",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "伊勢天神高天原入口",
+        "korean": "이세텐진 다카마가하라 입구",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "啓蟄境中",
+        "korean": "게이칫쿄추",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "奇崛",
+        "korean": "기굴",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1637,
+        8,
+        1809,
+        662
+      ],
+      "B1": [
+        9,
+        11,
+        1361,
+        183
+      ],
+      "B2": [
+        289,
+        200,
+        461,
+        706
+      ],
+      "K0": [
+        16,
+        209,
+        263,
+        779
+      ],
+      "C0": [
+        0,
+        0,
+        2018,
+        798
+      ],
+      "C1": [
+        1376,
+        5,
+        1621,
+        680
+      ],
+      "C2": [
+        4,
+        5,
+        1366,
+        188
+      ],
+      "C3": [
+        4,
+        196,
+        275,
+        792
+      ]
+    }
+  },
+  "C3848C8E5ED70F7A.png": {
+    "filename": "C3848C8E5ED70F7A.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "美濃",
+        "korean": "미노"
+      },
+      {
+        "tag": "banner",
+        "original": "伊吹山 不破関",
+        "korean": "이부키산 후와노세키"
+      },
+      {
+        "tag": "character",
+        "original": "鬼助",
+        "korean": "키스케"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "近江州",
+        "korean": "오미슈",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "伊吹山",
+        "korean": "이부키야마",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "不破関",
+        "korean": "후와노세키",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "前町",
+        "korean": "마에마치",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        12,
+        15,
+        1064,
+        187
+      ],
+      "K0": [
+        16,
+        217,
+        264,
+        788
+      ],
+      "C0": [
+        0,
+        0,
+        1555,
+        806
+      ],
+      "C1": [
+        8,
+        10,
+        1068,
+        192
+      ],
+      "C2": [
+        4,
+        204,
+        276,
+        800
+      ]
+    }
+  },
+  "C84B5B3A51547DF0.png": {
+    "filename": "C84B5B3A51547DF0.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "遠江",
+        "korean": "토토미"
+      },
+      {
+        "tag": "banner",
+        "original": "秋葉山山腹",
+        "korean": "아키바산 산허리"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "秋葉山山腹",
+        "korean": "아키하산 산복",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "社へ",
+        "korean": "야시로에",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "門前",
+        "korean": "몬젠",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        13,
+        619,
+        798,
+        791
+      ],
+      "K0": [
+        712,
+        17,
+        958,
+        588
+      ],
+      "C0": [
+        694,
+        0,
+        1019,
+        1015
+      ],
+      "C1": [
+        8,
+        614,
+        802,
+        796
+      ],
+      "C2": [
+        9,
+        7,
+        683,
+        251
+      ]
+    }
+  },
+  "C8B2975F2A629F4B.png": {
+    "filename": "C8B2975F2A629F4B.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "駿河",
+        "korean": "스루가"
+      },
+      {
+        "tag": "banner",
+        "original": "富士山頂龍脈",
+        "korean": "후지산 정상 용맥"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "character",
+        "original": "山城",
+        "korean": "야마시로",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "駿河",
+        "korean": "스루가",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "富士山頂龍脈",
+        "korean": "후지산초 류먀쿠",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        12,
+        15,
+        954,
+        187
+      ],
+      "K0": [
+        712,
+        217,
+        959,
+        788
+      ],
+      "C0": [
+        0,
+        10,
+        977,
+        875
+      ],
+      "C1": [
+        700,
+        205,
+        971,
+        800
+      ],
+      "C2": [
+        9,
+        207,
+        682,
+        451
+      ]
+    }
+  },
+  "C8C4589102431759.png": {
+    "filename": "C8C4589102431759.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "大和",
+        "korean": "야마토"
+      },
+      {
+        "tag": "banner",
+        "original": "奈良善祷寺 金堂",
+        "korean": "나라 젠토지 금당"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "吉野",
+        "korean": "요시노",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "奈良善祥寺 金堂",
+        "korean": "나라 젠쇼지 금당",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "深雪",
+        "korean": "미유키",
+        "position": "bottom",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        12,
+        15,
+        1224,
+        187
+      ],
+      "K0": [
+        16,
+        217,
+        263,
+        788
+      ],
+      "C0": [
+        0,
+        0,
+        1714,
+        806
+      ],
+      "C1": [
+        8,
+        10,
+        1228,
+        192
+      ],
+      "C2": [
+        4,
+        204,
+        274,
+        800
+      ]
+    }
+  },
+  "C8E42A56480DB818.png": {
+    "filename": "C8E42A56480DB818.png",
+    "translations": [
+      {
+        "tag": "banner",
+        "original": "江戸 大根藩邸下屋敷",
+        "korean": "에도 다이콘 번저 시모야시키"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "江戸 大根藩邸下屋敷",
+        "korean": "에도 다이콘 번저 시모야시키",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        15,
+        15,
+        1370,
+        187
+      ],
+      "B1": [
+        681,
+        214,
+        853,
+        1000
+      ],
+      "B2": [
+        481,
+        214,
+        653,
+        1000
+      ],
+      "B3": [
+        279,
+        214,
+        451,
+        1000
+      ],
+      "K0": [
+        1617,
+        17,
+        1863,
+        587
+      ],
+      "C0": [
+        1377,
+        0,
+        1882,
+        981
+      ],
+      "C1": [
+        10,
+        10,
+        1374,
+        192
+      ],
+      "C2": [
+        1069,
+        37,
+        1319,
+        165
+      ],
+      "C3": [
+        676,
+        210,
+        858,
+        1004
+      ],
+      "C4": [
+        476,
+        210,
+        658,
+        1004
+      ],
+      "C5": [
+        509,
+        243,
+        634,
+        490
+      ],
+      "C6": [
+        274,
+        210,
+        456,
+        1004
+      ],
+      "C7": [
+        299,
+        818,
+        430,
+        947
+      ],
+      "C8": [
+        13,
+        208,
+        257,
+        882
+      ]
+    }
+  },
+  "E9E834DE4BAFDAB2.png": {
+    "filename": "E9E834DE4BAFDAB2.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "甲斐",
+        "korean": "카이"
+      },
+      {
+        "tag": "banner",
+        "original": "甲府の街道",
+        "korean": "코후의 가도"
+      },
+      {
+        "tag": "banner",
+        "original": "山の中の一軒家",
+        "korean": "산속의 외딴집"
+      },
+      {
+        "tag": "character",
+        "original": "山姥",
+        "korean": "야마우바"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "甲府の街道",
+        "korean": "고후노 가이도",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "山姥",
+        "korean": "야마우바",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "山の中の一軒家",
+        "korean": "야마노 나카노 잇켄야",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "俵田",
+        "korean": "다와라다",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        15,
+        15,
+        984,
+        187
+      ],
+      "B1": [
+        15,
+        819,
+        752,
+        991
+      ],
+      "K0": [
+        716,
+        217,
+        962,
+        787
+      ],
+      "C0": [
+        0,
+        10,
+        988,
+        806
+      ],
+      "C1": [
+        704,
+        205,
+        974,
+        799
+      ],
+      "C2": [
+        10,
+        814,
+        756,
+        996
+      ],
+      "C3": [
+        444,
+        842,
+        689,
+        971
+      ],
+      "C4": [
+        8,
+        207,
+        682,
+        451
+      ]
+    }
+  },
+  "E9F2EC8557984A58.png": {
+    "filename": "E9F2EC8557984A58.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "駿河",
+        "korean": "스루가"
+      },
+      {
+        "tag": "banner",
+        "original": "三保之松原",
+        "korean": "미호노마츠바라"
+      },
+      {
+        "tag": "banner",
+        "original": "駿府の旅籠",
+        "korean": "슨푸의 여인숙"
+      },
+      {
+        "tag": "character",
+        "original": "雪之丞",
+        "korean": "유키노조"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "banner",
+        "original": "駿府の旅籠",
+        "korean": "슨푸노 하타고",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "三保之松原",
+        "korean": "미호노 마쓰바라",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "character",
+        "original": "雪之丞",
+        "korean": "유키노조",
+        "position": "top",
+        "style": "transparent_bg_white_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "box",
+        "original": "凶賊",
+        "korean": "교조쿠",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        13,
+        619,
+        798,
+        791
+      ],
+      "B1": [
+        13,
+        819,
+        798,
+        991
+      ],
+      "K0": [
+        712,
+        17,
+        959,
+        588
+      ],
+      "C0": [
+        0,
+        0,
+        977,
+        606
+      ],
+      "C1": [
+        8,
+        614,
+        802,
+        796
+      ],
+      "C2": [
+        8,
+        814,
+        802,
+        996
+      ],
+      "C3": [
+        9,
+        7,
+        683,
+        251
+      ]
+    }
+  },
+  "FFC64B053648525E.png": {
+    "filename": "FFC64B053648525E.png",
+    "translations": [
+      {
+        "tag": "box",
+        "original": "飛騨",
+        "korean": "히다"
+      },
+      {
+        "tag": "banner",
+        "original": "白川郷 白銀ヶ淵 廃れ社",
+        "korean": "시라카와고 시로가네가후치 폐사"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨街道",
+        "korean": "히다 가도"
+      },
+      {
+        "tag": "banner",
+        "original": "美濃国 境木峠",
+        "korean": "미노국 사카이기 고개"
+      }
+    ],
+    "codex_positions": [
+      {
+        "tag": "box",
+        "original": "関所",
+        "korean": "세키쇼",
+        "position": "top",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "白川郷 白銀ヶ淵 廃れ社",
+        "korean": "시라카와고 시로가네가후치 스타레야시로",
+        "position": "top",
+        "style": "red_bg_black_text",
+        "direction": "vertical_top_to_bottom"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨街道",
+        "korean": "히다카이도",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "character",
+        "original": "大雪山",
+        "korean": "다이세쓰잔",
+        "position": "middle",
+        "style": "transparent_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨川",
+        "korean": "히다가와",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "飛騨国",
+        "korean": "히다노쿠니",
+        "position": "middle",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "banner",
+        "original": "美濃国 境木峠",
+        "korean": "미노노쿠니 사카이기토게",
+        "position": "bottom",
+        "style": "red_bg_black_text",
+        "direction": "horizontal_left_to_right"
+      },
+      {
+        "tag": "box",
+        "original": "峠道",
+        "korean": "토게미치",
+        "position": "bottom",
+        "style": "black_bg_white_text",
+        "direction": "horizontal_left_to_right"
+      }
+    ],
+    "bboxes": {
+      "B0": [
+        1486,
+        10,
+        1658,
+        977
+      ],
+      "B1": [
+        13,
+        15,
+        1462,
+        187
+      ],
+      "B2": [
+        1165,
+        211,
+        1337,
+        715
+      ],
+      "B3": [
+        965,
+        210,
+        1137,
+        715
+      ],
+      "B4": [
+        555,
+        211,
+        728,
+        945
+      ],
+      "K0": [
+        1688,
+        17,
+        1934,
+        587
+      ],
+      "K1": [
+        284,
+        217,
+        530,
+        786
+      ],
+      "C0": [
+        266,
+        0,
+        1952,
+        805
+      ],
+      "C1": [
+        1481,
+        7,
+        1663,
+        982
+      ],
+      "C2": [
+        1510,
+        553,
+        1640,
+        683
+      ],
+      "C3": [
+        1505,
+        173,
+        1637,
+        426
+      ],
+      "C4": [
+        9,
+        10,
+        1466,
+        192
+      ],
+      "C5": [
+        551,
+        207,
+        733,
+        950
+      ],
+      "C6": [
+        547,
+        39,
+        674,
+        167
+      ],
+      "C7": [
+        272,
+        205,
+        539,
+        799
+      ],
+      "C8": [
+        13,
+        208,
+        257,
+        883
+      ]
+    }
+  }
+}
