@@ -747,10 +747,10 @@
       {
         "tag": "banner",
         "original": "江戸 網釜藩邸 上屋敷",
-        "korean": "에도 아미가마 번저 가미야시키",
-        "short_alternative": "아미가마 번저 가미야시키",
-        "medium_alternative": "아미가마 번저 상저택",
-        "reason": "'에도' 생략 가능. 핵심 지명 강조",
+        "korean": "에도 아미가마 번저 상저택",
+        "short_alternative": "아미가마 번저 상저택",
+        "medium_alternative": "아미가마 상저택",
+        "reason": "'에도' 생략 가능. 상저택으로 용어 통일",
         "suggested": true
       },
       {
