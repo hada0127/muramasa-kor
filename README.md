@@ -34,20 +34,24 @@ ux0/app/PCSE00240/NinPriPatch.cpk
 
 #### 본편 (PCSE00240)
 
-| 파일 | 크기 | SHA-256 |
-|---|---|---|
-| `Muramasa Rebirth.pkg` | 450 MB | `339cd06ec0f19bea3c9ce40fe47d4873b365d8ad6f78845f9819edeb0d5d9b71` |
-| `update.pkg` | 33 MB | `1396e08a04a28a41f64f10cc762546139df1eed29cce9ca87363696d13a9388b` |
-| `work.bin` | 512 B | `49e2550c82fe5a61e873682e84cd22b32229d0482150185abc25087b08b6ba48` |
+| 파일 | 버전 | 크기 | SHA-256 |
+|---|---|---|---|
+| `Muramasa Rebirth.pkg` | 1.00 (App) | 450 MB | `339cd06ec0f19bea3c9ce40fe47d4873b365d8ad6f78845f9819edeb0d5d9b71` |
+| `update.pkg` | **1.06** (Patch) | 33 MB | `1396e08a04a28a41f64f10cc762546139df1eed29cce9ca87363696d13a9388b` |
+| `work.bin` | — | 512 B | `49e2550c82fe5a61e873682e84cd22b32229d0482150185abc25087b08b6ba48` |
+
+> 한글 패치는 **본편 1.00 + 업데이트 1.06** 조합 기준으로 검증되었다. 업데이트는 1.06이 마지막 버전이며, 다른 버전이 들어오면 동작이 보장되지 않는다.
 
 #### DLC — Genroku Legends (선택)
 
-| DLC 에피소드 | PKG SHA-256 | work.bin SHA-256 |
-|---|---|---|
-| **A Cause to Daikon For** (69 MB) | `62f46a334f79054a76b4b2644942c2a2ccb4a8271bb553f5208d60f77f922f84` | `9a6ebb5121110ad2f01ca0d0cf05e93b9b742a463746b8eb4c69ec57687b24f0` |
-| **A Spirited Seven Nights' Haunting** (84 MB) | `9c018a639cf631b6babbe2ba48e14a06bca866f752c53a86f9436e39a236a84c` | `9d39ed0c09e446cd852715f87160f0af6882a00504d7ae455089361a879b9d89` |
-| **Fishy Tales of the Nekomata** (76 MB) | `03e660dbf4fbeb848de1650bfe900db346fe711265e42f01a07042a421b657ba` | `9498bd7f4ed205564a46a7f3dbdb8484e156b06ee037030e1b6ab352b57f2439` |
-| **Hell's Where the Heart Is** (83 MB) | `2af2a4de7fd1b1e1233eee86e8a039ae834d015c9ca293e217a047e5292aaf82` | `1ede67a4e510b94682937ca49c1cd7400d0b553a7c5932eac6d3c2a2ef30baa3` |
+DLC는 모두 v1.00이며 추가 업데이트는 없다.
+
+| DLC 에피소드 | 버전 | PKG SHA-256 | work.bin SHA-256 |
+|---|---|---|---|
+| **A Cause to Daikon For** (69 MB) | 1.00 | `62f46a334f79054a76b4b2644942c2a2ccb4a8271bb553f5208d60f77f922f84` | `9a6ebb5121110ad2f01ca0d0cf05e93b9b742a463746b8eb4c69ec57687b24f0` |
+| **A Spirited Seven Nights' Haunting** (84 MB) | 1.00 | `9c018a639cf631b6babbe2ba48e14a06bca866f752c53a86f9436e39a236a84c` | `9d39ed0c09e446cd852715f87160f0af6882a00504d7ae455089361a879b9d89` |
+| **Fishy Tales of the Nekomata** (76 MB) | 1.00 | `03e660dbf4fbeb848de1650bfe900db346fe711265e42f01a07042a421b657ba` | `9498bd7f4ed205564a46a7f3dbdb8484e156b06ee037030e1b6ab352b57f2439` |
+| **Hell's Where the Heart Is** (83 MB) | 1.00 | `2af2a4de7fd1b1e1233eee86e8a039ae834d015c9ca293e217a047e5292aaf82` | `1ede67a4e510b94682937ca49c1cd7400d0b553a7c5932eac6d3c2a2ef30baa3` |
 
 해시 계산 방법:
 
@@ -70,9 +74,9 @@ shasum -a 256 update.pkg
 ### 1단계 — Vita3K에 원본 게임 설치
 
 1. Vita3K를 실행한다.
-2. 메뉴 `File > Install .pkg` 로 본편 `Muramasa Rebirth.pkg`를 설치한다 (`work.bin` 또는 zRIF 필요).
-3. 같은 메뉴로 `update.pkg`를 설치한다 (필수).
-4. (선택) DLC PKG 4개를 같은 방법으로 설치한다.
+2. 메뉴 `File > Install .pkg` 로 본편 `Muramasa Rebirth.pkg` (v1.00)를 설치한다 (`work.bin` 또는 zRIF 필요).
+3. 같은 메뉴로 `update.pkg` (v1.06)를 설치한다 (필수).
+4. (선택) DLC PKG 4개(각 v1.00)를 같은 방법으로 설치한다.
 5. Vita3K 앱 목록에 `Muramasa Rebirth`가 나타나고 정상 부팅되는지 확인한다.
 
 설치 후 다음 경로에 원본 CPK가 생긴다.
