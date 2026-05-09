@@ -46,3 +46,6 @@ __pycache__/
 # === IDE ===
 .vscode/
 .idea/
+
+.DS_Store
+*.DS_Store
