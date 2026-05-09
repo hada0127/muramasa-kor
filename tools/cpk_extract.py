@@ -289,6 +289,9 @@ def extract_cpk(cpk_path: str, output_dir: str, list_only: bool = False):
                     if 'Align' in row and row['Align']:
                         align = row['Align']
 
+                add_offset = min(content_offset or 0, toc_offset or 0)
+                print(f"  Align: {align}, add_offset: 0x{add_offset:X}")
+
                 for row in toc_table.rows:
                     dirname = row.get('DirName', '')
                     filename = row.get('FileName', '')
@@ -301,9 +304,10 @@ def extract_cpk(cpk_path: str, output_dir: str, list_only: bool = False):
                     else:
                         full_path = filename
 
-                    # FileOffset is absolute from file start.
-                    # Some files need +align adjustment; detect by checking for CRILAYLA.
-                    abs_offset = file_offset
+                    # FileOffset is relative to the CPK content base.
+                    # This matches tools/cpk_patch.py; probing nearby offsets can
+                    # accidentally pick an unrelated CRILAYLA block.
+                    abs_offset = file_offset + add_offset
 
                     files.append({
                         'path': full_path,
@@ -339,24 +343,7 @@ def extract_cpk(cpk_path: str, output_dir: str, list_only: bool = False):
             out_path = output_dir / fi['path']
             out_path.parent.mkdir(parents=True, exist_ok=True)
 
-            align = fi.get('align', 2048)
-
-            # Try reading at offset; if not CRILAYLA, try offset + align
             f.seek(fi['offset'])
-            header_check = f.read(8)
-
-            if header_check[:8] == b'CRILAYLA':
-                actual_offset = fi['offset']
-            else:
-                # Try with alignment offset
-                f.seek(fi['offset'] + align)
-                header_check2 = f.read(8)
-                if header_check2[:8] == b'CRILAYLA':
-                    actual_offset = fi['offset'] + align
-                else:
-                    actual_offset = fi['offset']
-
-            f.seek(actual_offset)
             data = f.read(fi['size'])
 
             # Check for CRILAYLA compression

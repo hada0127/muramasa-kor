@@ -47,6 +47,12 @@ def _build_ascii_sjis_map():
 
 ASCII_SJIS_MAP = _build_ascii_sjis_map()
 
+# Decorative markers are not meaningful in-game and several of them land on
+# Korean atlas cells when encoded as raw SJIS. Keep them out at build time so
+# future translations cannot reintroduce the "뼈" style glyph leakage.
+DECORATIVE_REMOVE = set('~〜～◆◇■□●○◎★☆※†‡「」『』［］【】＜＞《》〈〉')
+DECORATIVE_SPACE = {'・'}
+
 
 # Full-width and punctuation chars that would otherwise be encoded to raw SJIS
 # 0x81xx/0x82xx — those bytes get rendered at texture cells 448+ where we placed
@@ -60,8 +66,6 @@ FULLWIDTH_NORMALIZE = {
     '\uFF0A': '*', '\uFF03': '#', '\uFF06': '&', '\uFF20': '@', '\uFF04': '$',
     '\uFF3E': '^', '\uFF1C': '<', '\uFF1E': '>', '\uFF3B': '[', '\uFF3D': ']',
     '\uFF5B': '{', '\uFF5D': '}', '\uFF5C': '|',
-    '\uFF5E': '\u301C',  # ～ fullwidth tilde → 〜 wave dash (SJIS 0x8160)
-    '~': '\u301C',        # ~ ASCII tilde → 〜 wave dash (avoids cell 1054 overflow)
     '\uFF0C': ',', '\uFF0E': '.', '\uFF1B': ';', '\uFF40': '`',
     # Full-width digits
     '\uFF10': '0', '\uFF11': '1', '\uFF12': '2', '\uFF13': '3', '\uFF14': '4',
@@ -84,8 +88,35 @@ def _normalize_text(text: str) -> str:
     """Apply full-width → ASCII normalization before SJIS encoding."""
     out = []
     for c in text:
+        if c in DECORATIVE_REMOVE:
+            continue
+        if c in DECORATIVE_SPACE:
+            out.append(' ')
+            continue
         out.append(FULLWIDTH_NORMALIZE.get(c, c))
     return ''.join(out)
+
+
+def _strip_decorative_text(text: str) -> str:
+    """Remove only decorative markers from original untranslated strings."""
+    out = []
+    for c in text:
+        if c in DECORATIVE_REMOVE:
+            continue
+        if c in DECORATIVE_SPACE:
+            out.append(' ')
+            continue
+        out.append(c)
+    return ''.join(out)
+
+
+def _strip_decorative_raw(raw: bytes) -> bytes:
+    """Strip decorative markers while preserving untranslated SJIS text."""
+    text = raw.decode('shift_jis', errors='replace')
+    cleaned = _strip_decorative_text(text)
+    if cleaned == text:
+        return raw
+    return cleaned.encode('shift_jis', errors='replace')
 
 
 # Unmapped Korean syllable → nearest mappable syllable. Generated from
@@ -331,7 +362,7 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
                     new_parts.append(encode_korean_to_sjis(idx_to_ko[msg_idx], kr_map))
                     matched += 1
                 else:
-                    new_parts.append(orig_raw)
+                    new_parts.append(_strip_decorative_raw(orig_raw))
             else:
                 _, decoded_text = messages[msg_idx]
                 key = _norm(decoded_text)
@@ -339,10 +370,10 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
                     new_parts.append(encode_korean_to_sjis(ja_to_ko[key], kr_map))
                     matched += 1
                 else:
-                    new_parts.append(orig_raw)
+                    new_parts.append(_strip_decorative_raw(orig_raw))
             msg_idx += 1
         else:
-            new_parts.append(orig_raw)
+            new_parts.append(_strip_decorative_raw(orig_raw))
 
     new_text = b''.join(new_parts)
 

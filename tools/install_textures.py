@@ -8,11 +8,31 @@
 
 import shutil
 import sys
+import os
 from pathlib import Path
 
 PROJECT_DIR = Path(__file__).parent.parent
 SRC_DIR = PROJECT_DIR / "kr_textures" / "ui"
-IMPORT_DIR = Path("C:/game/vita3k/textures/import/PCSE00240")
+TITLE_ID = "PCSE00240"
+
+
+def resolve_import_dir() -> Path:
+    explicit = os.environ.get("VITA3K_TEXTURE_IMPORT_DIR")
+    if explicit:
+        return Path(explicit)
+
+    pref_path = os.environ.get("VITA3K_PREF_PATH")
+    if pref_path:
+        return Path(pref_path) / "textures" / "import" / TITLE_ID
+
+    candidates = [
+        Path.home() / "Library" / "Application Support" / "Vita3K" / "Vita3K" / "textures" / "import" / TITLE_ID,
+        Path("C:/game/vita3k/textures/import") / TITLE_ID,
+    ]
+    for candidate in candidates:
+        if candidate.exists() or candidate.parent.exists():
+            return candidate
+    return candidates[0] if sys.platform == "darwin" else candidates[-1]
 
 
 def main():
@@ -23,7 +43,8 @@ def main():
         print(f"ERROR: {SRC_DIR} not found")
         return 1
 
-    IMPORT_DIR.mkdir(parents=True, exist_ok=True)
+    import_dir = resolve_import_dir()
+    import_dir.mkdir(parents=True, exist_ok=True)
 
     files = sorted(SRC_DIR.glob("*.png"))
     if args:
@@ -36,7 +57,7 @@ def main():
 
     copied, skipped = 0, 0
     for src in files:
-        dst = IMPORT_DIR / src.name
+        dst = import_dir / src.name
         # skip if identical
         if dst.exists() and dst.stat().st_size == src.stat().st_size and dst.stat().st_mtime >= src.stat().st_mtime:
             print(f"  SKIP  {src.stem} (up to date)")
