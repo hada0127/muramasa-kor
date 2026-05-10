@@ -6,11 +6,11 @@
 
 ## 사용자 안내
 
-- 지원 대상: Vita3K
+- 지원 대상: Vita3K Windows/macOS, Android 수동 복사
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
 - 현재 릴리즈: `v0.5.0`
-- 배포 형식: Windows/macOS 공용 로컬 패처 zip
+- 배포 형식: Windows/macOS 공용 로컬 패처 zip, Android용 수동 복사 안내
 
 릴리즈 zip에는 다음만 포함된다.
 
@@ -102,6 +102,7 @@ shasum -a 256 update.pkg
 ```text
 Windows: C:/Users/<username>/AppData/Roaming/Vita3K/Vita3K/fs
 macOS:   ~/Library/Application Support/Vita3K/Vita3K/fs
+Android: Android/data/org.vita3k.emulator/files
 ```
 
 패처는 `.../Vita3K/Vita3K`와 `.../Vita3K/Vita3K/fs` 형식을 모두 자동으로 처리한다.
@@ -160,6 +161,46 @@ python3 apply_patch.py --vita3k "$HOME/Library/Application Support/Vita3K/Vita3K
 4. `textures/import/PCSE00240/` 아래로 Vita3K 텍스처 import 복사
 
 폰트/UI 텍스처가 보이지 않으면 Vita3K 설정에서 `Configuration > Settings > GPU > Import Textures`를 켠 뒤 Vita3K를 재시작한다.
+
+### 4단계 - Android Vita3K에 수동 적용
+
+Android에서는 릴리즈 패처를 직접 실행하지 않는다. Windows 또는 macOS에서 3단계까지 먼저 완료한 뒤, 패치가 적용된 결과 파일을 Android Vita3K 저장소로 복사한다.
+
+복사 전 Android Vita3K를 종료하고, Android 쪽 원본 CPK를 따로 백업한다.
+
+PC/macOS에서 가져올 파일:
+
+```text
+<PC/macOS content root>/ux0/app/PCSE00240/NinPri.cpk
+<PC/macOS content root>/ux0/app/PCSE00240/NinPriPatch.cpk
+<PC/macOS content root>/textures/import/PCSE00240/
+```
+
+Android Vita3K에 덮어쓸 위치:
+
+```text
+<Android content root>/ux0/app/PCSE00240/NinPri.cpk
+<Android content root>/ux0/app/PCSE00240/NinPriPatch.cpk
+<Android content root>/textures/import/PCSE00240/
+```
+
+기본 Android content root는 보통 다음 위치다.
+
+```text
+Android/data/org.vita3k.emulator/files
+```
+
+따라서 기본 설치라면 최종 경로는 다음처럼 된다.
+
+```text
+Android/data/org.vita3k.emulator/files/ux0/app/PCSE00240/NinPri.cpk
+Android/data/org.vita3k.emulator/files/ux0/app/PCSE00240/NinPriPatch.cpk
+Android/data/org.vita3k.emulator/files/textures/import/PCSE00240/*.png
+```
+
+Android Vita3K의 저장소 위치를 바꿨다면, Android 기기에서 `ux0/app/PCSE00240` 폴더를 찾아 그 상위 폴더를 content root로 사용한다. `textures/import/PCSE00240` 폴더가 없으면 직접 만든다.
+
+복사 후 Android Vita3K에서 `Import Textures` 옵션을 켜고 게임을 실행한다. Android 빌드에서 텍스처 import 옵션이 없거나 동작하지 않으면 CPK 텍스트 패치는 적용되지만 한글 폰트/UI 텍스처가 정상 표시되지 않을 수 있다.
 
 ### 원본 복원
 

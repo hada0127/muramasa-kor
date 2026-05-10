@@ -205,6 +205,15 @@ def write_release_notes(notes_path: Path, version: str, zip_name: str) -> None:
         f"4. macOS/Linux: run `python3 apply_patch.py`, or double-click `apply_macos.command` on macOS.\n"
         f"5. The patcher verifies original CPK hashes, writes backups, applies CPK binary patches,\n"
         f"   and installs Vita3K texture imports.\n"
+        f"\n"
+        f"Android manual copy:\n"
+        f"1. Run the patcher on Windows or macOS first.\n"
+        f"2. Copy the patched `ux0/app/{TITLE_ID}/NinPri.cpk` and `NinPriPatch.cpk`\n"
+        f"   to Android Vita3K's matching `ux0/app/{TITLE_ID}/` folder.\n"
+        f"3. Copy `textures/import/{TITLE_ID}/` to Android Vita3K's matching\n"
+        f"   `textures/import/{TITLE_ID}/` folder.\n"
+        f"4. The default Android Vita3K content root is usually\n"
+        f"   `Android/data/org.vita3k.emulator/files`.\n"
     )
     notes_path.write_text(notes, encoding="utf-8")
 
