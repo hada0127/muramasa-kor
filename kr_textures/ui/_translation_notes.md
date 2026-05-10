@@ -13,6 +13,17 @@
 
 ## 텍스처별 정보
 
+### `59015B61BFC0B7BC.png` (512×256)
+
+- 원본: `kr_textures/ui/59015B61BFC0B7BC.png`
+- 백업: `textures/place_name_originals/59015B61BFC0B7BC.png`
+- 아라시마루 DLC 시작 지명 텍스처
+
+**번역 매핑 (kind / 일본어 → 한글)**:
+
+- box: `相模` → `사가미`
+- banner: `東海道箱根` → `도카이도하코네`
+
 ### `00B61B564A5FD289.png` (2048×2048)
 
 - 원본: `kr_textures/ui/00B61B564A5FD289.png` (현재 일본어 원본 상태)

@@ -30,7 +30,7 @@ release/manifest.json
 
 ## 원본 게임 준비
 
-본편 + 업데이트 PKG는 필수, DLC PKG는 4개 에피소드를 추가로 즐기려면 필요하다. 모든 PKG는 정품 소유자가 합법적으로 확보한 파일을 사용할 것.
+영문판 본편 + 1.06 업데이트 PKG, DLC PKG는 4개를 전부 설치가 필요하다. 모든 PKG는 정품 소유자가 합법적으로 확보한 파일을 사용할 것.
 
 > 본편만 설치하고 업데이트를 적용하지 않으면 한글 패치가 정상 동작하지 않는다. 본편 + 업데이트 PKG를 모두 설치한 뒤 패처를 실행할 것.
 
@@ -160,6 +160,8 @@ python3 apply_patch.py --vita3k "$HOME/Library/Application Support/Vita3K/Vita3K
 3. binary patch 적용 후 결과 SHA-256 재검증
 4. `textures/import/PCSE00240/` 아래로 Vita3K 텍스처 import 복사
 
+Vita3K 설치가 `fs` content root를 쓰는 경우, 패처는 `fs/textures/import/PCSE00240/`와 상위 Vita3K root의 `textures/import/PCSE00240/`를 함께 갱신한다.
+
 폰트/UI 텍스처가 보이지 않으면 Vita3K 설정에서 `Configuration > Settings > GPU > Import Textures`를 켠 뒤 Vita3K를 재시작한다.
 
 ### 4단계 - Android Vita3K에 수동 적용
@@ -173,7 +175,7 @@ PC/macOS에서 가져올 파일:
 ```text
 <PC/macOS content root>/ux0/app/PCSE00240/NinPri.cpk
 <PC/macOS content root>/ux0/app/PCSE00240/NinPriPatch.cpk
-<PC/macOS content root>/textures/import/PCSE00240/
+<릴리즈 압축 해제 폴더>/textures/import/PCSE00240/
 ```
 
 Android Vita3K에 덮어쓸 위치:

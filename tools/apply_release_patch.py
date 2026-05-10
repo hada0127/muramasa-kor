@@ -164,25 +164,43 @@ def apply_file_patch(root: Path, content_root: Path, manifest: dict, file_entry:
     return f"PATCH {file_entry['name']} -> {target_path}"
 
 
+def texture_import_roots(content_root: Path) -> list[Path]:
+    roots = [content_root]
+    if content_root.name == "fs":
+        roots.append(content_root.parent)
+
+    seen: set[Path] = set()
+    unique = []
+    for root in roots:
+        if root not in seen:
+            unique.append(root)
+            seen.add(root)
+    return unique
+
+
 def install_textures(root: Path, content_root: Path, title_id: str, dry_run: bool) -> str:
     source_dir = root / "textures" / "import" / title_id
     if not source_dir.exists():
         return "SKIP  texture import files not included"
 
-    dest_dir = content_root / "textures" / "import" / title_id
     files = sorted(source_dir.glob("*.png"))
     if dry_run:
-        return f"WOULD copy {len(files)} texture imports -> {dest_dir}"
+        dests = ", ".join(str(base / "textures" / "import" / title_id) for base in texture_import_roots(content_root))
+        return f"WOULD copy {len(files)} texture imports -> {dests}"
 
-    dest_dir.mkdir(parents=True, exist_ok=True)
-    copied = 0
-    for source in files:
-        dest = dest_dir / source.name
-        if dest.exists() and sha256_file(dest) == sha256_file(source):
-            continue
-        shutil.copy2(source, dest)
-        copied += 1
-    return f"COPY  {copied}/{len(files)} texture imports -> {dest_dir}"
+    parts = []
+    for base in texture_import_roots(content_root):
+        dest_dir = base / "textures" / "import" / title_id
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        copied = 0
+        for source in files:
+            dest = dest_dir / source.name
+            if dest.exists() and sha256_file(dest) == sha256_file(source):
+                continue
+            shutil.copy2(source, dest)
+            copied += 1
+        parts.append(f"{copied}/{len(files)} -> {dest_dir}")
+    return "COPY  texture imports: " + "; ".join(parts)
 
 
 def restore_originals(content_root: Path, manifest: dict, dry_run: bool) -> int:
