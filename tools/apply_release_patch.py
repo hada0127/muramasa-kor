@@ -47,11 +47,26 @@ def default_pref_candidates(title_id: str) -> list[Path]:
     return unique
 
 
-def resolve_pref_path(arg_path: str | None, title_id: str) -> Path:
-    if arg_path:
-        return Path(arg_path).expanduser()
+def content_root_candidates(paths: list[Path]) -> list[Path]:
+    candidates: list[Path] = []
+    for path in paths:
+        expanded = path.expanduser()
+        candidates.append(expanded)
+        if expanded.name != "fs":
+            candidates.append(expanded / "fs")
 
-    candidates = default_pref_candidates(title_id)
+    seen: set[Path] = set()
+    unique = []
+    for candidate in candidates:
+        if candidate not in seen:
+            unique.append(candidate)
+            seen.add(candidate)
+    return unique
+
+
+def resolve_content_root(arg_path: str | None, title_id: str) -> Path:
+    raw_candidates = [Path(arg_path).expanduser()] if arg_path else default_pref_candidates(title_id)
+    candidates = content_root_candidates(raw_candidates)
     installed = [
         path for path in candidates
         if (path / "ux0" / "app" / title_id / "NinPri.cpk").exists()
@@ -62,8 +77,8 @@ def resolve_pref_path(arg_path: str | None, title_id: str) -> Path:
     listed = "\n".join(f"  - {path}" for path in candidates)
     raise FileNotFoundError(
         "Could not find a Vita3K installation with Muramasa Rebirth installed.\n"
-        "Pass the pref_path explicitly:\n"
-        "  python3 apply_patch.py --vita3k /path/to/Vita3K\n"
+        "Pass the Vita3K root or content root explicitly:\n"
+        "  python3 apply_patch.py --vita3k /path/to/Vita3K/Vita3K/fs\n"
         f"\nChecked:\n{listed}"
     )
 
@@ -80,9 +95,9 @@ def backup_path_for(target: Path, version: str) -> Path:
     return backup_dir / f"{target.name}.v{version}.original"
 
 
-def apply_file_patch(root: Path, pref_path: Path, manifest: dict, file_entry: dict, dry_run: bool) -> str:
+def apply_file_patch(root: Path, content_root: Path, manifest: dict, file_entry: dict, dry_run: bool) -> str:
     version = manifest["version"]
-    target_path = pref_path / file_entry["install_path"]
+    target_path = content_root / file_entry["install_path"]
     if not target_path.exists():
         raise FileNotFoundError(f"Missing installed file: {target_path}")
 
@@ -149,12 +164,12 @@ def apply_file_patch(root: Path, pref_path: Path, manifest: dict, file_entry: di
     return f"PATCH {file_entry['name']} -> {target_path}"
 
 
-def install_textures(root: Path, pref_path: Path, title_id: str, dry_run: bool) -> str:
+def install_textures(root: Path, content_root: Path, title_id: str, dry_run: bool) -> str:
     source_dir = root / "textures" / "import" / title_id
     if not source_dir.exists():
         return "SKIP  texture import files not included"
 
-    dest_dir = pref_path / "textures" / "import" / title_id
+    dest_dir = content_root / "textures" / "import" / title_id
     files = sorted(source_dir.glob("*.png"))
     if dry_run:
         return f"WOULD copy {len(files)} texture imports -> {dest_dir}"
@@ -170,11 +185,11 @@ def install_textures(root: Path, pref_path: Path, title_id: str, dry_run: bool) 
     return f"COPY  {copied}/{len(files)} texture imports -> {dest_dir}"
 
 
-def restore_originals(pref_path: Path, manifest: dict, dry_run: bool) -> int:
+def restore_originals(content_root: Path, manifest: dict, dry_run: bool) -> int:
     restored = 0
     version = manifest["version"]
     for file_entry in manifest["files"]:
-        target_path = pref_path / file_entry["install_path"]
+        target_path = content_root / file_entry["install_path"]
         backup_path = backup_path_for(target_path, version)
         if not backup_path.exists():
             print(f"SKIP  no backup for {file_entry['name']}: {backup_path}")
@@ -190,7 +205,10 @@ def restore_originals(pref_path: Path, manifest: dict, dry_run: bool) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Apply Muramasa Rebirth Korean patch to Vita3K.")
-    parser.add_argument("--vita3k", help="Vita3K pref_path. Uses platform defaults when omitted.")
+    parser.add_argument(
+        "--vita3k",
+        help="Vita3K root or content root. Uses platform defaults when omitted.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Validate paths and hashes without writing files.")
     parser.add_argument("--no-textures", action="store_true", help="Patch CPK files only.")
     parser.add_argument("--restore", action="store_true", help="Restore original CPK backups for this patch version.")
@@ -199,21 +217,21 @@ def main() -> int:
     root = Path(__file__).resolve().parent
     manifest = load_manifest(root)
     title_id = manifest["title_id"]
-    pref_path = resolve_pref_path(args.vita3k, title_id)
+    content_root = resolve_content_root(args.vita3k, title_id)
 
     print(f"Muramasa Korean Patch v{manifest['version']}")
-    print(f"Vita3K pref_path: {pref_path}")
+    print(f"Vita3K content root: {content_root}")
 
     if args.restore:
-        restored = restore_originals(pref_path, manifest, args.dry_run)
+        restored = restore_originals(content_root, manifest, args.dry_run)
         print(f"Done. Restored {restored} file(s).")
         return 0
 
     for file_entry in manifest["files"]:
-        print(apply_file_patch(root, pref_path, manifest, file_entry, args.dry_run))
+        print(apply_file_patch(root, content_root, manifest, file_entry, args.dry_run))
 
     if not args.no_textures:
-        print(install_textures(root, pref_path, title_id, args.dry_run))
+        print(install_textures(root, content_root, title_id, args.dry_run))
 
     print("Done. Enable Vita3K GPU texture import if UI/font textures do not appear.")
     return 0

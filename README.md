@@ -84,16 +84,18 @@ shasum -a 256 update.pkg
 설치 후 다음 경로에 원본 CPK가 생긴다.
 
 ```text
-<Vita3K pref_path>/ux0/app/PCSE00240/NinPri.cpk
-<Vita3K pref_path>/ux0/app/PCSE00240/NinPriPatch.cpk
+<Vita3K content root>/ux0/app/PCSE00240/NinPri.cpk
+<Vita3K content root>/ux0/app/PCSE00240/NinPriPatch.cpk
 ```
 
-기본 `pref_path` 예시:
+기본 `content root` 예시:
 
 ```text
-Windows: C:/Users/<username>/AppData/Roaming/Vita3K/Vita3K
-macOS:   ~/Library/Application Support/Vita3K/Vita3K
+Windows: C:/Users/<username>/AppData/Roaming/Vita3K/Vita3K/fs
+macOS:   ~/Library/Application Support/Vita3K/Vita3K/fs
 ```
+
+패처는 `.../Vita3K/Vita3K`와 `.../Vita3K/Vita3K/fs` 형식을 모두 자동으로 처리한다.
 
 ### 2단계 - 한글 패치 zip 다운로드 및 검증
 
@@ -129,16 +131,16 @@ python3 apply_patch.py
 
 또는 Finder에서 `apply_macos.command`를 실행한다.
 
-패처가 Vita3K 경로를 자동으로 찾지 못하면 직접 지정한다.
+패처가 Vita3K 경로를 자동으로 찾지 못하면 직접 지정한다. `--vita3k`에는 `ux0`가 들어 있는 content root 또는 그 상위 Vita3K 루트를 넣을 수 있다.
 
 ```powershell
 # Windows
-py -3 apply_patch.py --vita3k "C:\Users\<username>\AppData\Roaming\Vita3K\Vita3K"
+py -3 apply_patch.py --vita3k "C:\Users\<username>\AppData\Roaming\Vita3K\Vita3K\fs"
 ```
 
 ```bash
 # macOS
-python3 apply_patch.py --vita3k "$HOME/Library/Application Support/Vita3K/Vita3K"
+python3 apply_patch.py --vita3k "$HOME/Library/Application Support/Vita3K/Vita3K/fs"
 ```
 
 패처는 다음 작업을 수행한다.
