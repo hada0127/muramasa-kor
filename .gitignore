@@ -27,6 +27,9 @@ screenshots/
 debug_*.png
 # Temp workspace (upscaled textures, realesrgan, export_backup, etc.)
 temp/
+# Local-only FHD upscale cache (Real-ESRGAN output of Vita3K export textures).
+# Not distributed: large + derived from copyrighted textures. See texture-upscale plan.
+upscaled/
 # Scratch files at repo root
 tmp_*.png
 # Extracted Wii intermediate binaries
