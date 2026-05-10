@@ -29,7 +29,10 @@ DIST_DIR = PROJECT_DIR / "dist"
 OUTPUT_DIR = PROJECT_DIR / "output"
 PATCH_MAIN_DIR = PROJECT_DIR / "patch_main"
 PATCH_PATCH_DIR = PROJECT_DIR / "patch_patch"
-TEXTURE_DIR = PROJECT_DIR / "kr_textures" / "ui"
+TEXTURE_DIRS = [
+    PROJECT_DIR / "kr_textures" / "ui",
+    PROJECT_DIR / "kr_textures" / "font",
+]
 PATCHER_TEMPLATE = PROJECT_DIR / "tools" / "apply_release_patch.py"
 MAIN_CPK = PROJECT_DIR / "backup" / "NinPri.cpk"
 PATCH_CPK = PROJECT_DIR / "backup" / "NinPriPatch.cpk"
@@ -60,6 +63,19 @@ def collect_replacements(mod_dir: Path) -> dict[str, bytes]:
         rel = file_path.relative_to(mod_dir).as_posix()
         replacements[rel] = file_path.read_bytes()
     return replacements
+
+
+def collect_texture_files() -> list[Path]:
+    texture_by_name: dict[str, Path] = {}
+    for texture_dir in TEXTURE_DIRS:
+        if not texture_dir.exists():
+            continue
+        for texture in sorted(texture_dir.glob("*.png")):
+            existing = texture_by_name.get(texture.name)
+            if existing is not None:
+                raise ValueError(f"Duplicate texture import name: {texture.name} in {existing} and {texture}")
+            texture_by_name[texture.name] = texture
+    return [texture_by_name[name] for name in sorted(texture_by_name)]
 
 
 def require_inputs() -> None:
@@ -236,7 +252,7 @@ def package_release(version: str, main_cpk: Path, patch_cpk_path: Path) -> tuple
         patch_work_dir / "NinPriPatch.cpk.patch.bin",
     )
 
-    texture_files = sorted(TEXTURE_DIR.glob("*.png"))
+    texture_files = collect_texture_files()
     texture_size = sum(path.stat().st_size for path in texture_files)
     write_release_notes(notes_path, version, zip_path.name)
 

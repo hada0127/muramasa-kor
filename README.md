@@ -24,6 +24,8 @@ textures/import/PCSE00240/*.png
 release/manifest.json
 ```
 
+`textures/import/PCSE00240/*.png`에는 한글 폰트와 UI 텍스처 import가 포함된다.
+
 `NinPri.cpk`, `NinPriPatch.cpk`, 원본 PKG, DLC 데이터는 포함하지 않는다.
 
 ## 원본 게임 준비
@@ -72,6 +74,13 @@ shasum -a 256 update.pkg
 ```
 
 ## 설치 방법
+
+### 0단계 - Python 준비
+
+패처 실행에는 Python 3.9 이상이 필요하다.
+
+- Windows: Python 3.9 이상을 설치하고 `py -3 --version` 또는 `python --version`으로 확인한다.
+- macOS: `python3 --version`으로 Python 3.9 이상인지 확인한다.
 
 ### 1단계 - Vita3K에 원본 게임 설치
 

@@ -48,6 +48,21 @@ Copy-Item output/NinPriPatch_final.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPriPa
 
 버전은 `release/version.json`에서 관리한다.
 
+릴리즈 zip은 `kr_textures/ui/*.png`와 `kr_textures/font/*.png`를 `textures/import/PCSE00240/`로 포장한다. 한글 시스템 메시지는 폰트 import가 없으면 깨지므로, 폰트나 문자 매핑을 바꾼 뒤에는 폰트 import를 갱신하고 repo에 동기화해야 한다.
+
+폰트 import 갱신:
+
+```powershell
+python tools/hd_font_import.py
+New-Item -ItemType Directory -Path kr_textures/font -Force
+Copy-Item C:/game/vita3k/textures/import/PCSE00240/6706A53E1D94C16E.png kr_textures/font/6706A53E1D94C16E.png -Force
+Copy-Item C:/game/vita3k/textures/import/PCSE00240/8665CE082D339B33.png kr_textures/font/8665CE082D339B33.png -Force
+```
+
+UI 텍스처를 바꾼 경우 먼저 `python tools/texture_localize.py`를 실행해 `kr_textures/ui/`를 최신 상태로 만든다.
+
+릴리즈 생성:
+
 ```powershell
 python tools/build_release.py
 ```
@@ -59,6 +74,27 @@ python tools/build_release.py
 - `dist/muramasa-kor-vX.Y.Z-vita3k-patcher-sha256.txt`
 
 배포 zip에는 완성 CPK를 넣지 않는다. 사용자의 Vita3K 설치본에 있는 원본 CPK를 검증한 뒤 로컬에서 binary patch를 적용하는 패처와 텍스처 import 파일만 포함한다.
+
+최종 사용자용 클린 설치 검증은 기존 Vita3K 상태에 의존하지 않도록 다음 순서로 수행한다.
+
+```powershell
+python tools/vita3k_ctrl.py close
+Copy-Item backup/NinPri.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPri.cpk -Force
+Copy-Item backup/NinPriPatch.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPriPatch.cpk -Force
+if (Test-Path C:/game/vita3k/textures/import/PCSE00240) {
+  Remove-Item C:/game/vita3k/textures/import/PCSE00240 -Recurse -Force
+}
+Expand-Archive dist/muramasa-kor-vX.Y.Z-vita3k-patcher.zip C:/tmp/muramasa-release-test -Force
+cd C:/tmp/muramasa-release-test
+py -3 apply_patch.py --vita3k C:/game/vita3k
+```
+
+검증 기준:
+
+- 패처가 `PATCH NinPri.cpk`, `PATCH NinPriPatch.cpk`, `COPY 76/76 texture imports`를 출력한다.
+- 설치된 CPK SHA-256이 manifest의 `target_sha256`과 일치한다.
+- Vita3K 설정의 `import-textures`가 켜져 있다.
+- 게임을 실행해 시스템 메시지와 메뉴 글자가 깨지지 않는지 확인한다.
 
 ## GitHub Release
 
