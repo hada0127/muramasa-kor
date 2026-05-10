@@ -178,17 +178,19 @@ def main() -> int:
     elapsed = time.time() - start
     print(f"\nDone: {ok} ok, {fail} failed in {elapsed:.0f}s")
 
-    if args.install and ok:
+    if args.install:
         installed = 0
-        for _, dst in todo:
-            if not dst.exists():
-                continue
-            rel = dst.relative_to(args.output)
+        skipped_existing = 0
+        for src_file in args.output.rglob("*.png"):
+            rel = src_file.relative_to(args.output)
             target = args.install_dir / rel
+            if target.exists() and not args.force:
+                skipped_existing += 1
+                continue
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(dst, target)
+            shutil.copy2(src_file, target)
             installed += 1
-        print(f"Installed to {args.install_dir}: {installed} file(s)")
+        print(f"Installed to {args.install_dir}: {installed} new, {skipped_existing} preserved (use --force to overwrite)")
 
     return 0 if fail == 0 else 2
 
