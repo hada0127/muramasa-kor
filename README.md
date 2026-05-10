@@ -2,31 +2,35 @@
 
 `Muramasa Rebirth` PS Vita US판(`PCSE00240`)용 한국어 패치 프로젝트다.
 
-이 저장소는 원본 게임 데이터를 포함하지 않는다. 배포물은 Vita3K 기준으로 만든 패치 zip이며, 사용자는 합법적으로 보유한 원본 게임이 필요하다.
+이 저장소와 릴리즈는 원본 게임 PKG/CPK를 포함하지 않는다. 사용자는 본인이 합법적으로 보유한 원본 게임을 Vita3K에 먼저 설치한 뒤, 릴리즈에 포함된 로컬 패처로 본인 PC의 원본 CPK에 패치를 적용한다.
 
 ## 사용자 안내
 
 - 지원 대상: Vita3K
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
-- 배포 형식: Vita3K 폴더에 덮어쓰는 zip
+- 현재 릴리즈: `v0.5.0`
+- 배포 형식: Windows/macOS 공용 로컬 패처 zip
 
-패치 zip 내부 구조:
+릴리즈 zip에는 다음만 포함된다.
 
 ```text
-ux0/app/PCSE00240/NinPri.cpk
-ux0/app/PCSE00240/NinPriPatch.cpk
+apply_patch.py
+apply_windows.bat
+apply_macos.command
+patches/*.patch.json
+patches/*.patch.bin
+textures/import/PCSE00240/*.png
+release/manifest.json
 ```
+
+`NinPri.cpk`, `NinPriPatch.cpk`, 원본 PKG, DLC 데이터는 포함하지 않는다.
 
 ## 원본 게임 준비
 
-이 패치는 본인이 합법적으로 보유한 원본 게임에 적용하는 용도다. 저장소나 릴리즈에는 원본 PKG/CPK가 포함되지 않는다.
-
-### 필요한 PKG 파일
-
 본편 + 업데이트 PKG는 필수, DLC PKG는 4개 에피소드를 추가로 즐기려면 필요하다. 모든 PKG는 정품 소유자가 합법적으로 확보한 파일을 사용할 것.
 
-> 본편만 설치하고 업데이트를 적용하지 않으면 한글 패치가 정상 동작하지 않는다. 본편 + 업데이트 PKG를 모두 설치한 뒤 한글 패치를 덮어쓸 것.
+> 본편만 설치하고 업데이트를 적용하지 않으면 한글 패치가 정상 동작하지 않는다. 본편 + 업데이트 PKG를 모두 설치한 뒤 패처를 실행할 것.
 
 ### 해시 검증
 
@@ -38,11 +42,11 @@ ux0/app/PCSE00240/NinPriPatch.cpk
 |---|---|---|---|
 | `Muramasa Rebirth.pkg` | 1.00 (App) | 450 MB | `339cd06ec0f19bea3c9ce40fe47d4873b365d8ad6f78845f9819edeb0d5d9b71` |
 | `update.pkg` | **1.06** (Patch) | 33 MB | `1396e08a04a28a41f64f10cc762546139df1eed29cce9ca87363696d13a9388b` |
-| `work.bin` | — | 512 B | `49e2550c82fe5a61e873682e84cd22b32229d0482150185abc25087b08b6ba48` |
+| `work.bin` | - | 512 B | `49e2550c82fe5a61e873682e84cd22b32229d0482150185abc25087b08b6ba48` |
 
-> 한글 패치는 **본편 1.00 + 업데이트 1.06** 조합 기준으로 검증되었다. 업데이트는 1.06이 마지막 버전이며, 다른 버전이 들어오면 동작이 보장되지 않는다.
+> 한글 패치는 **본편 1.00 + 업데이트 1.06** 조합 기준으로 검증되었다. 다른 리전판이나 다른 버전에서는 패처가 원본 해시 불일치로 중단된다.
 
-#### DLC — Genroku Legends (선택)
+#### DLC - Genroku Legends (선택)
 
 DLC는 모두 v1.00이며 추가 업데이트는 없다.
 
@@ -57,8 +61,8 @@ DLC는 모두 v1.00이며 추가 업데이트는 없다.
 
 ```powershell
 # Windows PowerShell
-Get-FileHash -Algorithm SHA256 .\Muramasa Rebirth.pkg
-Get-FileHash -Algorithm SHA256 .\update.pkg
+Get-FileHash -Algorithm SHA256 ".\Muramasa Rebirth.pkg"
+Get-FileHash -Algorithm SHA256 ".\update.pkg"
 ```
 
 ```bash
@@ -67,11 +71,9 @@ shasum -a 256 "Muramasa Rebirth.pkg"
 shasum -a 256 update.pkg
 ```
 
-해시가 위 표와 다르면 손상된 파일이거나 다른 리전판일 수 있다. 한글 패치는 US판(`PCSE00240`) 전용이며, JP판(`PCSH00211` 등)에는 적용되지 않는다.
-
 ## 설치 방법
 
-### 1단계 — Vita3K에 원본 게임 설치
+### 1단계 - Vita3K에 원본 게임 설치
 
 1. Vita3K를 실행한다.
 2. 메뉴 `File > Install .pkg` 로 본편 `Muramasa Rebirth.pkg` (v1.00)를 설치한다 (`work.bin` 또는 zRIF 필요).
@@ -86,74 +88,101 @@ shasum -a 256 update.pkg
 <Vita3K pref_path>/ux0/app/PCSE00240/NinPriPatch.cpk
 ```
 
-Windows 기본 경로 예시:
+기본 `pref_path` 예시:
 
 ```text
-C:/Users/<username>/AppData/Roaming/Vita3K/Vita3K
+Windows: C:/Users/<username>/AppData/Roaming/Vita3K/Vita3K
+macOS:   ~/Library/Application Support/Vita3K/Vita3K
 ```
 
-> 한글 패치를 덮어쓰기 전에 위 두 CPK의 원본 백업을 권장한다. 문제가 생기면 그대로 복원하면 된다.
+### 2단계 - 한글 패치 zip 다운로드 및 검증
 
-### 2단계 — 한글 패치 zip 다운로드 및 검증
-
-1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-vX.Y.Z-vita3k.zip`을 받는다.
-2. 같은 릴리즈의 `muramasa-kor-vX.Y.Z-vita3k-sha256.txt`로 zip 무결성을 검증한다.
+1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.5.0-vita3k-patcher.zip`을 받는다.
+2. 같은 릴리즈의 `muramasa-kor-v0.5.0-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
 
 ```powershell
 # Windows
-Get-FileHash -Algorithm SHA256 .\muramasa-kor-vX.Y.Z-vita3k.zip
+Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.5.0-vita3k-patcher.zip
 ```
 
 ```bash
 # macOS / Linux
-shasum -a 256 muramasa-kor-vX.Y.Z-vita3k.zip
-# 또는
-shasum -a 256 -c muramasa-kor-vX.Y.Z-vita3k-sha256.txt
+shasum -a 256 muramasa-kor-v0.5.0-vita3k-patcher.zip
+shasum -a 256 -c muramasa-kor-v0.5.0-vita3k-patcher-sha256.txt
 ```
 
-### 3단계 — 패치 적용
+### 3단계 - 로컬 패처 실행
 
-1. Vita3K가 실행 중이면 종료한다.
-2. zip을 Vita3K `pref_path` 폴더에 풀어 **덮어쓴다**.
-3. 다음 두 파일이 한글 패치 버전으로 교체되었는지 확인한다.
+패처 실행 전 Vita3K를 종료한다.
+
+Windows:
 
 ```text
-ux0/app/PCSE00240/NinPri.cpk
-ux0/app/PCSE00240/NinPriPatch.cpk
+apply_windows.bat
 ```
 
-### 4단계 — 동작 확인
+macOS:
 
-1. Vita3K를 실행하고 `Muramasa Rebirth`를 시작한다.
-2. 타이틀 화면, 메뉴, 대사가 한글로 표시되는지 확인한다.
-3. 폰트가 깨져 보이면 Vita3K를 한 번 재시작한다 (텍스처 import 적용).
+```bash
+python3 apply_patch.py
+```
+
+또는 Finder에서 `apply_macos.command`를 실행한다.
+
+패처가 Vita3K 경로를 자동으로 찾지 못하면 직접 지정한다.
+
+```powershell
+# Windows
+py -3 apply_patch.py --vita3k "C:\Users\<username>\AppData\Roaming\Vita3K\Vita3K"
+```
+
+```bash
+# macOS
+python3 apply_patch.py --vita3k "$HOME/Library/Application Support/Vita3K/Vita3K"
+```
+
+패처는 다음 작업을 수행한다.
+
+1. `NinPri.cpk`, `NinPriPatch.cpk` 원본 SHA-256 확인
+2. 원본 백업 생성: `ux0/app/PCSE00240/.muramasa-kor-backup/`
+3. binary patch 적용 후 결과 SHA-256 재검증
+4. `textures/import/PCSE00240/` 아래로 Vita3K 텍스처 import 복사
+
+폰트/UI 텍스처가 보이지 않으면 Vita3K 설정에서 `Configuration > Settings > GPU > Import Textures`를 켠 뒤 Vita3K를 재시작한다.
 
 ### 원본 복원
 
-문제가 생기면 백업해 둔 원본 CPK를 다시 덮어쓰면 된다.
+같은 릴리즈 폴더에서 다음 명령을 실행한다.
 
-```text
-ux0/app/PCSE00240/NinPri.cpk        ← 원본 본편 CPK 복사
-ux0/app/PCSE00240/NinPriPatch.cpk   ← 원본 업데이트 CPK 복사
+```bash
+python3 apply_patch.py --restore
 ```
 
-PKG부터 다시 설치하는 방법도 동일하게 동작한다.
+Windows에서는 다음처럼 실행할 수 있다.
+
+```powershell
+py -3 apply_patch.py --restore
+```
+
+복원이 되지 않거나 백업이 없다면, Vita3K에서 원본 PKG와 업데이트 PKG를 다시 설치하면 된다.
 
 ## 릴리즈 파일
 
 릴리즈에는 보통 다음 파일이 포함된다.
 
-- `muramasa-kor-vX.Y.Z-vita3k.zip`
-- `muramasa-kor-vX.Y.Z-vita3k-manifest.json`
-- `muramasa-kor-vX.Y.Z-vita3k-sha256.txt`
+- `muramasa-kor-v0.5.0-vita3k-patcher.zip`
+- `muramasa-kor-v0.5.0-vita3k-patcher-manifest.json`
+- `muramasa-kor-v0.5.0-vita3k-patcher-sha256.txt`
+- `muramasa-kor-v0.5.0-vita3k-patcher-release-notes.txt`
 
 ## 주의
 
-- 원본 `pkg`, `cpk`, DLC 데이터는 포함하지 않는다.
-- 실기용 패키지 설치본이 아니라 Vita3K 덮어쓰기용 배포를 기준으로 한다.
-- 문제가 생기면 원본 `NinPri.cpk`, `NinPriPatch.cpk`로 복원하면 된다.
+- 이 패치는 Vita3K 전용이다.
+- 실기용 PKG나 VPK가 아니다.
+- 원본 `pkg`, `cpk`, DLC 데이터는 릴리즈에 포함하지 않는다.
+- 패처는 US판 `PCSE00240` 본편 1.00 + 업데이트 1.06의 원본 CPK 해시와 일치할 때만 적용된다.
+- 텍스처 import는 Vita3K의 해시 기반 교체 기능을 사용한다.
 
 ## 기여 및 개발
 
 기여자용 빌드/배포/워크플로 문서는 [CONTRIBUTING.md](CONTRIBUTING.md)를 본다.
-

@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Build a versioned Vita3K patch release into dist/.
+Build a versioned Vita3K local-patcher release into dist/.
 
-This wraps the existing patch pipeline:
-1. build_patch.py
-2. cpk_patch.py for NinPri.cpk
-3. cpk_patch.py for NinPriPatch.cpk
-4. Package the patched CPKs into a Vita3K overwrite zip
+The release zip intentionally does not contain full CPK files. It contains:
+1. small binary patch data generated from original CPK -> patched CPK
+2. a standalone Python patcher for Windows/macOS/Linux
+3. Vita3K texture import PNGs
 """
 
 from __future__ import annotations
@@ -15,6 +14,7 @@ import argparse
 import hashlib
 import json
 import shutil
+import stat
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,8 +29,11 @@ DIST_DIR = PROJECT_DIR / "dist"
 OUTPUT_DIR = PROJECT_DIR / "output"
 PATCH_MAIN_DIR = PROJECT_DIR / "patch_main"
 PATCH_PATCH_DIR = PROJECT_DIR / "patch_patch"
+TEXTURE_DIR = PROJECT_DIR / "kr_textures" / "ui"
+PATCHER_TEMPLATE = PROJECT_DIR / "tools" / "apply_release_patch.py"
 MAIN_CPK = PROJECT_DIR / "backup" / "NinPri.cpk"
 PATCH_CPK = PROJECT_DIR / "backup" / "NinPriPatch.cpk"
+PATCH_FORMAT = "muramasa-kor-binary-patch-v1"
 
 
 def load_version() -> str:
@@ -52,6 +55,8 @@ def sha256_file(path: Path) -> str:
 def collect_replacements(mod_dir: Path) -> dict[str, bytes]:
     replacements: dict[str, bytes] = {}
     for file_path in sorted(p for p in mod_dir.rglob("*") if p.is_file()):
+        if file_path.name == ".DS_Store":
+            continue
         rel = file_path.relative_to(mod_dir).as_posix()
         replacements[rel] = file_path.read_bytes()
     return replacements
@@ -62,6 +67,7 @@ def require_inputs() -> None:
         VERSION_FILE,
         MAIN_CPK,
         PATCH_CPK,
+        PATCHER_TEMPLATE,
         PROJECT_DIR / "translations" / "jp_messages.json",
     ]
     missing = [str(path) for path in required if not path.exists()]
@@ -84,63 +90,243 @@ def build_cpks() -> tuple[Path, Path]:
     return main_out, patch_out
 
 
+def _flush_chunk(chunks: list[dict[str, int]], blob, offset: int | None, data: bytearray) -> int | None:
+    if offset is None or not data:
+        return None
+    blob_offset = blob.tell()
+    blob.write(data)
+    chunks.append({"offset": offset, "length": len(data), "blob_offset": blob_offset})
+    return None
+
+
+def build_binary_patch(source: Path, target: Path, patch_json: Path, blob_path: Path) -> dict[str, object]:
+    """Create a simple sparse binary patch: write target bytes at changed offsets."""
+    source_size = source.stat().st_size
+    target_size = target.stat().st_size
+    min_size = min(source_size, target_size)
+    chunks: list[dict[str, int]] = []
+    changed_bytes = 0
+    active_offset: int | None = None
+    active_data = bytearray()
+    max_chunk = 1024 * 1024
+
+    patch_json.parent.mkdir(parents=True, exist_ok=True)
+    with source.open("rb") as old, target.open("rb") as new, blob_path.open("wb") as blob:
+        pos = 0
+        while pos < min_size:
+            old_block = old.read(max_chunk)
+            new_block = new.read(max_chunk)
+            if old_block == new_block:
+                active_offset = _flush_chunk(chunks, blob, active_offset, active_data)
+                active_data.clear()
+                pos += len(old_block)
+                continue
+
+            for index, (old_byte, new_byte) in enumerate(zip(old_block, new_block)):
+                current = pos + index
+                if old_byte != new_byte:
+                    if active_offset is None:
+                        active_offset = current
+                    active_data.append(new_byte)
+                    changed_bytes += 1
+                elif active_offset is not None:
+                    active_offset = _flush_chunk(chunks, blob, active_offset, active_data)
+                    active_data.clear()
+            pos += len(old_block)
+
+        active_offset = _flush_chunk(chunks, blob, active_offset, active_data)
+        active_data.clear()
+
+        if target_size > source_size:
+            new.seek(source_size)
+            offset = source_size
+            blob_offset = blob.tell()
+            remaining = target_size - source_size
+            while remaining:
+                data = new.read(min(max_chunk, remaining))
+                if not data:
+                    break
+                blob.write(data)
+                remaining -= len(data)
+            length = target_size - source_size
+            chunks.append({"offset": offset, "length": length, "blob_offset": blob_offset})
+            changed_bytes += length
+
+    patch = {
+        "format": PATCH_FORMAT,
+        "source_name": source.name,
+        "source_size": source_size,
+        "source_sha256": sha256_file(source),
+        "target_name": target.name,
+        "target_size": target_size,
+        "target_sha256": sha256_file(target),
+        "blob_file": blob_path.name,
+        "blob_size": blob_path.stat().st_size,
+        "blob_sha256": sha256_file(blob_path),
+        "changed_bytes": changed_bytes,
+        "chunks": chunks,
+    }
+    patch_json.write_text(json.dumps(patch, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(
+        f"  {source.name}: {len(chunks)} chunks, "
+        f"{changed_bytes:,} changed bytes, blob {blob_path.stat().st_size:,} bytes"
+    )
+    return patch
+
+
 def write_release_notes(notes_path: Path, version: str, zip_name: str) -> None:
     notes = (
         f"Muramasa Rebirth Korean patch {version}\n"
         f"\n"
         f"Install target: Vita3K\n"
         f"Title ID: {TITLE_ID}\n"
+        f"Release type: local patcher, no full CPK files included\n"
         f"\n"
         f"Usage:\n"
-        f"1. Back up your Vita3K files.\n"
-        f"2. Extract `{zip_name}` into your Vita3K pref path.\n"
-        f"3. Allow overwrite for `ux0/app/{TITLE_ID}/NinPri.cpk` and `NinPriPatch.cpk`.\n"
+        f"1. Install the original US game and update 1.06 in Vita3K first.\n"
+        f"2. Extract `{zip_name}` anywhere.\n"
+        f"3. Windows: run `apply_windows.bat`.\n"
+        f"4. macOS/Linux: run `python3 apply_patch.py`, or double-click `apply_macos.command` on macOS.\n"
+        f"5. The patcher verifies original CPK hashes, writes backups, applies CPK binary patches,\n"
+        f"   and installs Vita3K texture imports.\n"
     )
     notes_path.write_text(notes, encoding="utf-8")
 
 
+def _write_zip_file(archive: zipfile.ZipFile, source: Path, arcname: str, executable: bool = False) -> None:
+    if not executable:
+        archive.write(source, arcname)
+        return
+    info = zipfile.ZipInfo.from_file(source, arcname)
+    info.external_attr = (stat.S_IFREG | 0o755) << 16
+    with source.open("rb") as handle:
+        archive.writestr(info, handle.read())
+
+
+def _write_zip_text(archive: zipfile.ZipFile, arcname: str, text: str, executable: bool = False) -> None:
+    info = zipfile.ZipInfo(arcname)
+    info.external_attr = (stat.S_IFREG | (0o755 if executable else 0o644)) << 16
+    archive.writestr(info, text)
+
+
 def package_release(version: str, main_cpk: Path, patch_cpk_path: Path) -> tuple[Path, Path, Path]:
     DIST_DIR.mkdir(parents=True, exist_ok=True)
+    patch_work_dir = DIST_DIR / "_patch_work"
+    if patch_work_dir.exists():
+        shutil.rmtree(patch_work_dir)
+    patch_work_dir.mkdir(parents=True)
 
-    base_name = f"muramasa-kor-v{version}-vita3k"
+    base_name = f"muramasa-kor-v{version}-vita3k-patcher"
     zip_path = DIST_DIR / f"{base_name}.zip"
     manifest_path = DIST_DIR / f"{base_name}-manifest.json"
     checksums_path = DIST_DIR / f"{base_name}-sha256.txt"
     notes_path = DIST_DIR / f"{base_name}-release-notes.txt"
 
+    print("\n== Building binary patch data ==")
+    main_patch = build_binary_patch(
+        MAIN_CPK,
+        main_cpk,
+        patch_work_dir / "NinPri.cpk.patch.json",
+        patch_work_dir / "NinPri.cpk.patch.bin",
+    )
+    update_patch = build_binary_patch(
+        PATCH_CPK,
+        patch_cpk_path,
+        patch_work_dir / "NinPriPatch.cpk.patch.json",
+        patch_work_dir / "NinPriPatch.cpk.patch.bin",
+    )
+
+    texture_files = sorted(TEXTURE_DIR.glob("*.png"))
+    texture_size = sum(path.stat().st_size for path in texture_files)
     write_release_notes(notes_path, version, zip_path.name)
 
     manifest = {
         "name": "muramasa-kor",
         "version": version,
         "title_id": TITLE_ID,
+        "release_type": "vita3k-local-patcher",
         "built_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "artifacts": {
             "zip": zip_path.name,
             "notes": notes_path.name,
         },
+        "requirements": {
+            "python": "3.9+",
+            "vita3k_game": "PCSE00240 app v1.00 + patch v1.06",
+        },
         "files": [
             {
-                "source": str(main_cpk.relative_to(PROJECT_DIR)).replace("\\", "/"),
-                "archive_path": f"ux0/app/{TITLE_ID}/NinPri.cpk",
-                "sha256": sha256_file(main_cpk),
-                "size": main_cpk.stat().st_size,
+                "name": "NinPri.cpk",
+                "install_path": f"ux0/app/{TITLE_ID}/NinPri.cpk",
+                "patch_file": "patches/NinPri.cpk.patch.json",
+                "blob_file": "patches/NinPri.cpk.patch.bin",
+                "source_sha256": main_patch["source_sha256"],
+                "source_size": main_patch["source_size"],
+                "target_sha256": main_patch["target_sha256"],
+                "target_size": main_patch["target_size"],
+                "changed_bytes": main_patch["changed_bytes"],
+                "chunk_count": len(main_patch["chunks"]),
             },
             {
-                "source": str(patch_cpk_path.relative_to(PROJECT_DIR)).replace("\\", "/"),
-                "archive_path": f"ux0/app/{TITLE_ID}/NinPriPatch.cpk",
-                "sha256": sha256_file(patch_cpk_path),
-                "size": patch_cpk_path.stat().st_size,
+                "name": "NinPriPatch.cpk",
+                "install_path": f"ux0/app/{TITLE_ID}/NinPriPatch.cpk",
+                "patch_file": "patches/NinPriPatch.cpk.patch.json",
+                "blob_file": "patches/NinPriPatch.cpk.patch.bin",
+                "source_sha256": update_patch["source_sha256"],
+                "source_size": update_patch["source_size"],
+                "target_sha256": update_patch["target_sha256"],
+                "target_size": update_patch["target_size"],
+                "changed_bytes": update_patch["changed_bytes"],
+                "chunk_count": len(update_patch["chunks"]),
             },
         ],
+        "textures": {
+            "archive_path": f"textures/import/{TITLE_ID}",
+            "count": len(texture_files),
+            "size": texture_size,
+        },
     }
 
+    windows_bat = (
+        "@echo off\r\n"
+        "cd /d \"%~dp0\"\r\n"
+        "where py >nul 2>nul\r\n"
+        "if %errorlevel%==0 (\r\n"
+        "  py -3 apply_patch.py %*\r\n"
+        "  goto end\r\n"
+        ")\r\n"
+        "where python >nul 2>nul\r\n"
+        "if %errorlevel%==0 (\r\n"
+        "  python apply_patch.py %*\r\n"
+        "  goto end\r\n"
+        ")\r\n"
+        "echo Python 3 was not found. Install Python 3.9 or later, then run this again.\r\n"
+        ":end\r\n"
+        "pause\r\n"
+    )
+    mac_command = (
+        "#!/bin/sh\n"
+        "cd \"$(dirname \"$0\")\"\n"
+        "if command -v python3 >/dev/null 2>&1; then\n"
+        "  python3 apply_patch.py \"$@\"\n"
+        "else\n"
+        "  echo \"Python 3 was not found. Install Python 3.9 or later, then run this again.\"\n"
+        "fi\n"
+        "printf 'Press Enter to close...'\n"
+        "read _\n"
+    )
+
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        archive.write(main_cpk, f"ux0/app/{TITLE_ID}/NinPri.cpk")
-        archive.write(patch_cpk_path, f"ux0/app/{TITLE_ID}/NinPriPatch.cpk")
+        _write_zip_file(archive, PATCHER_TEMPLATE, "apply_patch.py", executable=True)
+        _write_zip_text(archive, "apply_windows.bat", windows_bat)
+        _write_zip_text(archive, "apply_macos.command", mac_command, executable=True)
+        archive.write(notes_path, "README.txt")
         archive.writestr("release/manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
         archive.writestr("release/version.txt", version + "\n")
-        archive.write(notes_path, "release/README.txt")
+        for patch_file in sorted(patch_work_dir.iterdir()):
+            archive.write(patch_file, f"patches/{patch_file.name}")
+        for texture in texture_files:
+            archive.write(texture, f"textures/import/{TITLE_ID}/{texture.name}")
 
     zip_sha = sha256_file(zip_path)
     manifest["artifacts"]["zip_sha256"] = zip_sha
@@ -149,14 +335,14 @@ def package_release(version: str, main_cpk: Path, patch_cpk_path: Path) -> tuple
         "\n".join(
             [
                 f"{zip_sha}  {zip_path.name}",
-                f"{manifest['files'][0]['sha256']}  NinPri.cpk",
-                f"{manifest['files'][1]['sha256']}  NinPriPatch.cpk",
+                f"{sha256_file(manifest_path)}  {manifest_path.name}",
+                f"{sha256_file(notes_path)}  {notes_path.name}",
             ]
         )
         + "\n",
         encoding="utf-8",
     )
-
+    shutil.rmtree(patch_work_dir)
     return zip_path, manifest_path, checksums_path
 
 
@@ -166,7 +352,7 @@ def clean_dist() -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build a versioned Vita3K release zip into dist/.")
+    parser = argparse.ArgumentParser(description="Build a versioned Vita3K local patcher release into dist/.")
     parser.add_argument("--version", help="Override release/version.json for this build only.")
     parser.add_argument("--keep-dist", action="store_true", help="Keep existing dist/ contents.")
     args = parser.parse_args()

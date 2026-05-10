@@ -54,9 +54,11 @@ python tools/build_release.py
 
 생성물:
 
-- `dist/muramasa-kor-vX.Y.Z-vita3k.zip`
-- `dist/muramasa-kor-vX.Y.Z-vita3k-manifest.json`
-- `dist/muramasa-kor-vX.Y.Z-vita3k-sha256.txt`
+- `dist/muramasa-kor-vX.Y.Z-vita3k-patcher.zip`
+- `dist/muramasa-kor-vX.Y.Z-vita3k-patcher-manifest.json`
+- `dist/muramasa-kor-vX.Y.Z-vita3k-patcher-sha256.txt`
+
+배포 zip에는 완성 CPK를 넣지 않는다. 사용자의 Vita3K 설치본에 있는 원본 CPK를 검증한 뒤 로컬에서 binary patch를 적용하는 패처와 텍스처 import 파일만 포함한다.
 
 ## GitHub Release
 

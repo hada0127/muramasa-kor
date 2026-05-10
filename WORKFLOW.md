@@ -25,7 +25,7 @@
    python tools/cpk_patch.py backup/NinPri.cpk patch_main output/NinPri_final.cpk --append
    python tools/cpk_patch.py backup/NinPriPatch.cpk patch_patch output/NinPriPatch_final.cpk --append
    ```
-4. 배포용 zip 생성
+4. 배포용 로컬 패처 zip 생성
    ```powershell
    python tools/build_release.py
    ```
@@ -42,6 +42,8 @@
 
 1. `release/version.json` 갱신
 2. `python tools/build_release.py`
+   - 생성물은 CPK 전체가 아니라 `*-vita3k-patcher.zip`
+   - zip 내부 패처가 사용자 Vita3K 설치본의 원본 CPK에 binary patch를 적용
 3. Git 태그 생성
    ```powershell
    git tag vX.Y.Z

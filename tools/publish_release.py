@@ -37,7 +37,7 @@ def main() -> int:
 
     version = args.version or load_version()
     tag = f"v{version}"
-    base_name = f"muramasa-kor-v{version}-vita3k"
+    base_name = f"muramasa-kor-v{version}-vita3k-patcher"
     zip_path = DIST_DIR / f"{base_name}.zip"
     manifest_path = DIST_DIR / f"{base_name}-manifest.json"
     checksums_path = DIST_DIR / f"{base_name}-sha256.txt"
