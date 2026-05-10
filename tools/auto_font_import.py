@@ -239,11 +239,12 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         pos += 1
 
     # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
-    # integers, ':' separators in stat labels, '-' placeholders in empty
+    # integers, ':' separators in stat labels, '?' placeholders in hidden blade
+    # names, square brackets in blade category labels, '-' placeholders in empty
     # effect slots) it reads cells 192+code in this texture. Those cells
     # originally held Korean glyphs that we relocated in kr_sjis_mapping.json.
     # We overlay the actual ASCII glyph here so runtime output renders cleanly.
-    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x2D, 0x2E, 0x2F]
+    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2E, 0x2F]
     for code in RUNTIME_OVERLAY_CODES:
         cell = 192 + code
         row = cell // cols

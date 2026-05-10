@@ -121,8 +121,8 @@ def _strip_decorative_raw(raw: bytes) -> bytes:
 
 # Unmapped Korean syllable → nearest mappable syllable. Generated from
 # translations/char_substitutions.json. Without this, unmapped chars fall
-# through to `?` (0x3F), which renders as `등` through the Korean atlas at
-# cell 255, producing dialogue corruption (e.g. `따윈 요만큼도` → `따등요만큼도`).
+# through to `?` (0x3F), which collides with the runtime question-mark cell and
+# produces placeholder-looking corruption.
 _CHAR_SUBS_CACHE = None
 def _load_char_subs():
     global _CHAR_SUBS_CACHE
@@ -237,7 +237,7 @@ def parse_nms_raw(filepath: str):
     return messages, data, text_start, original_text_section
 
 
-def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_path: str, match_mode: str = 'content', jp_source_path: str = None, index_range: tuple = None, skip_indices: set = None, custom_idx_to_ko: dict = None):
+def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_path: str, match_mode: str = 'content', jp_source_path: str = None, index_range: tuple = None, skip_indices: set = None, custom_idx_to_ko: dict = None, jp_skip_indices: set = None):
     """Rebuild NMS file, preserving exact original structure.
 
     Only replaces messages that have Korean translations.
@@ -301,8 +301,9 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
             return not s or s.strip('\u3000 \n\r\t') == ''
         jp_to_us = {}
         us_idx = 0
+        jp_skip_indices = jp_skip_indices or set()
         for jp_i, (_, jp_text) in enumerate(jp_messages):
-            if _is_empty(jp_text):
+            if _is_empty(jp_text) or jp_i in jp_skip_indices:
                 continue  # US skipped this placeholder
             jp_to_us[jp_i] = us_idx
             us_idx += 1
@@ -499,6 +500,10 @@ def build_korean_patch():
                 # scemsg: content-match against JP source, apply by matched index
                 us_entry['match_mode'] = 'jp_index'
                 us_entry['jp_source'] = src_jp
+                # JP full scemsg has one non-empty Gonbe opening line that the
+                # US script omits ("ここもカラスに..."). Without this skip, the
+                # entire A Cause to Daikon For block is shifted by one line.
+                us_entry['jp_skip_indices'] = {1350}
             elif name == '_itemdata':
                 # US _itemdata.nms has a hybrid layout:
                 #   0-369  : items + descriptions (align with JP _itemdata)
@@ -537,8 +542,9 @@ def build_korean_patch():
 
         msgs = translations[trans_key]['messages']
         mode = info.get('match_mode', 'content')
+        skip_idx = info.get('skip_indices')
         try:
-            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode)
+            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, skip_indices=skip_idx)
             print(f"  {name}: {matched}/{count} matched ({mode}), {size} bytes")
         except Exception as e:
             print(f"  {name}: ERROR - {e}")
@@ -562,14 +568,16 @@ def build_korean_patch():
         custom_idx_ko = None
         if info.get('custom_idx_builder') == 'us_itemdata_hybrid':
             # Build US _itemdata hybrid translation map:
-            #  • [0, 594)     : _itemdata[i].ko (all — blade descriptions too)
-            #  • [595, 1177)  : _itemdata_main[i-8].ko  (empirically verified +8 shift)
-            # Blade descriptions at odd 371-593 used to be skipped because the
-            # Ability screen parser found 'Secret Art: …' markers in the English
-            # text. After shipping the skill-name table in Korean at 595-1176,
-            # the Ability screen reads skills by ID directly (confirmed by user),
-            # so Korean blade descriptions are safe and needed for Forge/Equip
-            # detail screens.
+            #  • [0, 594): _itemdata[i].ko for items, blade names, and blade
+            #      descriptions. Leaving descriptions as raw English makes the
+            #      forge/training detail panes render garbage because raw ASCII
+            #      uses cells that overlap the Korean font atlas.
+            #  • [595, 705): _itemdata_main[i-8].ko for the compact skill
+            #      name table, which was empirically verified.
+            #  • [705, 1177): DLC effect/training table. US is compact English;
+            #      JP stores the same strings in sparse ranges with placeholders.
+            #      Map each compact US run to the matching JP run and reuse the
+            #      existing Korean _itemdata translations.
             main_msgs = translations.get('_itemdata_main', {}).get('messages', [])
             # US _itemdata separators ('-') that must not be overwritten:
             #   [0],[1]  : placeholder dashes at file start
@@ -585,7 +593,7 @@ def build_korean_patch():
                 ko = msgs[i].get('ko', '')
                 if ko:
                     custom_idx_ko[i] = ko
-            for i in range(595, 1177):
+            for i in range(595, 705):
                 if i in us_separators:
                     continue
                 main_i = i - 8
@@ -593,8 +601,46 @@ def build_korean_patch():
                     ko = main_msgs[main_i].get('ko', '')
                     if ko:
                         custom_idx_ko[i] = ko
+
+            def _jp_dlc_entries(jp_start, jp_end, skip_ranges=()):
+                """Yield translated JP DLC entries, omitting sparse placeholders."""
+                skip_ranges = tuple(skip_ranges)
+                for jp_i in range(jp_start, min(jp_end, len(msgs))):
+                    if any(start <= jp_i <= end for start, end in skip_ranges):
+                        continue
+                    msg = msgs[jp_i]
+                    ja = msg.get('ja', '')
+                    if not ja or not ja.strip():
+                        continue
+                    if ja == '---' or ja == '未使用':
+                        continue
+                    # Debug/development-only entries in the JP table are not
+                    # present in the compact US table.
+                    if 'アビリティ' in ja or ja.startswith('アビリティ'):
+                        continue
+                    ko = msg.get('ko', '')
+                    if ko:
+                        yield jp_i, ko
+
+            def _add_dlc_us_range(us_start, jp_start, jp_end, expected_count, skip_ranges=()):
+                added = 0
+                for offset, (_, ko) in enumerate(_jp_dlc_entries(jp_start, jp_end, skip_ranges)):
+                    custom_idx_ko[us_start + offset] = ko
+                    added += 1
+                if added != expected_count:
+                    print(
+                        f"    WARN: DLC _itemdata map US[{us_start}] "
+                        f"from JP[{jp_start}:{jp_end}] added {added}, "
+                        f"expected {expected_count}"
+                    )
+
+            _add_dlc_us_range(705, 1757, 1994, 212)
+            _add_dlc_us_range(917, 2005, 2315, 64)
+            _add_dlc_us_range(981, 2377, 2701, 66)
+            _add_dlc_us_range(1047, 2761, 3034, 56)
+            _add_dlc_us_range(1103, 3040, 3467, 74, skip_ranges=((3085, 3141),))
         try:
-            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, jp_source_path=jp_src, index_range=idx_range, skip_indices=skip_idx, custom_idx_to_ko=custom_idx_ko)
+            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, jp_source_path=jp_src, index_range=idx_range, skip_indices=skip_idx, custom_idx_to_ko=custom_idx_ko, jp_skip_indices=info.get('jp_skip_indices'))
             print(f"  {name}: {matched}/{count} matched ({mode}), {size} bytes")
         except Exception as e:
             print(f"  {name}: ERROR - {e}")
