@@ -96,12 +96,19 @@ def process_texture(hash_id, tex_config, preview=False):
 
         # 1. 영역 클리어 (원본 텍스트 제거)
         if clear:
-            clear_area = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+            clear_rect = region.get("clear_rect")
+            if clear_rect:
+                cx = clear_rect["x"]
+                cy = clear_rect["y"]
+                cw = clear_rect["w"]
+                ch = clear_rect["h"]
+            else:
+                cx, cy, cw, ch = x, y, w, h
             # RGB를 원본과 동일하게 유지하되 alpha만 0으로
-            orig_region = result.crop((x, y, x + w, y + h))
+            orig_region = result.crop((cx, cy, cx + cw, cy + ch))
             orig_arr = np.array(orig_region)
             orig_arr[:, :, 3] = 0  # alpha to 0
-            result.paste(Image.fromarray(orig_arr), (x, y))
+            result.paste(Image.fromarray(orig_arr), (cx, cy))
 
         # 2. 한글 텍스트 렌더링
         text_img = render_text_to_image(w, h, text, font_path, font_size,

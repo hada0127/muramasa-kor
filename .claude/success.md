@@ -526,3 +526,89 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 ### 미해결 / 보류
 - 매핑 없는 흰 글자 영역 (일부 텍스처): 빈 영역으로 처리됨
 - E210275AFFF0A8D8 (이즈): 식별 후 매핑됨
+
+## 2026-05-10 — Vita3K export에서 신규 텍스트 텍스처 6개 발견·이동
+- 게임 진행 후 export 폴더에 246개 텍스처 (이전 기준 대비 236개 신규)
+- alpha-text 휴리스틱 + 컨택시트 검토로 텍스트 후보 식별
+- 사용자 작업 폴더(`textures/originals/` + `textures/text/`)에 복사 완료:
+  - **04110A0F74BE6991** (256×256) — 지명 한자 아틀라스 (尾張/武蔵/伊賀 등 16개)
+  - **15CF750523FBB7C6** (512×512) — 鬼 한자 + UI 심볼
+  - **17BBEF37CC65904A** (512×512) — Hashimoto/Basiscape 크레딧
+  - **9F518FC3E233B9DE** (256×256) — 상점/툴팁 UI 패널 (開/罠 한자 + 보물상자/검)
+  - **ECB628336E68D6AA** (256×128) — Clear/X UI 버튼 + 한자 심볼
+  - **EDA6F03EC4E141EE** (128×128) — PS Vita SELECT/START 라벨
+- `translations/texture_localize_catalog.json`에 6개 항목 추가, summary high=12/med=4/low=1로 갱신
+- 한글화 불필요 항목 6개도 catalog `_recent_additions.skipped`에 기록 (브랜드 로고, 디지트, 폰트 스프라이트 등)
+- 사용자 언급 "식당/상인 메뉴 항목" 자체 텍스트는 미발견 — 동적 폰트 시스템으로 렌더링되는 것으로 추정. 9F518FC3 (상점 UI 패널)이 가장 근접
+
+## 2026-05-10 (2회차) — 식당/상인 메뉴 UI 텍스처 5개 발견·이동
+- 사용자가 식당/상인 화면 진입 후 export 갱신 (246→677개, 431개 신규)
+- 사용자 스크린샷 3장 (저장 UI, 상인 메뉴, 소바 식당 메뉴) 분석
+- 작업 폴더(`textures/originals/` + `textures/text/`)에 복사:
+  - **247C255A400261FF** (256×256) — 식당(Soba Shop) 메뉴 UI: Inventory/Sold Out/Money/Meals/Menu/Price/mon/ryo + 売切
+  - **547720A3B20C12AB** (256×256) — 상인 메뉴 UI: + Restaurant/料亭
+  - **FFFFD99DCD90D546** (256×128) — 상점 외관 노렌/간판 한자 사인
+  - **2E88068C58DD36D5** (1024×1024) — ASCII 폰트 아틀라스 (영문/숫자/기호 그리드)
+  - **A8E6FDD162258699** (1024×1024) — KANJI 폰트 아틀라스 (수백 한자 그리드)
+- catalog summary: high 12→16, med 4→5, total 17→22로 갱신
+- 사용자 요청 'sold out 같은 단어'는 247C255A/547720A3 두 아틀라스 모두에 'Sold Out'으로 사전 렌더링되어 있음 — 한글로 교체 가능
+- A8E6FDD162258699 폰트가 메뉴 항목 한자 렌더링에 사용되는 것으로 추정 — 기존 한글 SJIS 매핑(0x89CD-0x8EE0) 적용 가능성 검증 필요
+
+## 2026-05-10 (3회차) — 식당/상인 메뉴 UI 한글 번역 + A8E6FDD1 한글 폰트 적용
+### 외부 AI 교차 검증 (codex + gemini)
+- 결론 일치: 화폐 단위 냥/문 (existing %d냥%d문 포맷), Sold Out → 품절 (existing translation)
+- A8E6FDD1 가설 일치: 기존 게임 폰트와 동일 데이터, 메뉴 화면 전용 인스턴스 (auto_font_import 적용 가능)
+
+### 폰트 한글화
+- `tools/.font_hashes.json`이 이미 A8E6FDD162258699 포함 → auto_font_import.py 실행으로 한글 글리프 959자 자동 주입
+- 메뉴 항목명 한자(자루소바, 청어소바, 덴푸라소바 등)가 NMS의 한글 SJIS 시퀀스를 통해 한글 출력 예정
+
+### 사전 렌더 메뉴 UI 한글 번역
+- **247C255A400261FF** (식당/Soba Shop): 9개 영문 단어 → 한글
+  - Inventory→보유, Sold Out→품절, Money→소지금, Soba Shop→소바집,
+    Meals→식사, Menu→메뉴, Price→가격, mon→문, ryo→냥
+- **547720A3B20C12AB** (상인/Restaurant): 9개 영문 단어 → 한글
+  - Restaurant→식당, 나머지 247C와 동일 단어는 동일 한글
+- 폰트: Griun_PolSensibility-Rg.ttf (붓글씨 스타일)
+- texture_localize.py로 영역 클리어 + 한글 렌더링 → import + kr_textures/ui/ 양쪽 저장
+- 전체 단어 영역 좌표를 알파 connected-component 검출로 측정 후 v2에서 미세조정
+
+### 구현 위치
+- Vita3K import: `~/Library/Application Support/Vita3K/Vita3K/textures/import/PCSE00240/`
+  - 247C255A400261FF.png (45KB)
+  - 547720A3B20C12AB.png (40KB)
+  - A8E6FDD162258699.png (269KB - Korean overlay)
+- 리포 사본: `kr_textures/ui/` 동일 파일
+
+### 다음 검증 단계
+- 사용자가 Vita3K 재시작 → 식당/상인 메뉴 화면 진입 → 한글 표시 확인
+- 미세 위치 조정이 필요하면 사용자 스크린샷 추가 제공 후 좌표 수정
+
+## 2026-05-10 21:53 — codex 위임으로 메뉴 UI 한글 재작업 완료
+### 위임 사유
+- 247C255A 식당 UI 글씨 잘림 발생 (v2 좌표가 거칠게 측정됨)
+- 547720A3가 사용자 상인 화면(s5)에 미적용 — 다른 hash 의심
+- 사용자 요청: "이미지 편집은 codex가 더 잘하니까 codex한테 시키자"
+
+### codex 작업 결과
+1. **247C255A v3** (식당, Soba Shop): 알파 connected-component bbox 기준 정밀 좌표 + 폰트 재산정. 글씨 잘림 해소. 9개 단어 한글화 유지.
+2. **상인 UI 진짜 hash 식별**: `1D6742BBC0DDB7EC` (256x256). 6개 알파-only-white 후보 중 식별. 사용자 스크린샷 s5의 "Money/Item/Inventory/Price/mon"과 일치
+3. **1D6742BBC0DDB7EC 한글화**: Inventory→보유, Sold Out→품절, Item→품목, Price→가격, Money→소지금, mon→문, ryo→냥
+4. **547720A3 재분류**: Restaurant/Meals 식당류 텍스처(상인 아님)로 description 정정. 한글 번역은 유지(요리집/식당 화면이 등장하면 적용될 예정)
+
+### 출력 파일
+- 식당: `kr_textures/ui/247C255A400261FF.png` (42KB) + Vita3K import 동일
+- 상인: `kr_textures/ui/1D6742BBC0DDB7EC.png` (35KB) + Vita3K import 동일
+- 식당류: `kr_textures/ui/547720A3B20C12AB.png` (40KB) — 변경 없음
+- config: `translations/texture_localize_config.json`에 1D6742BBC0DDB7EC 항목 추가, 247C255A regions v3 갱신
+
+### 검증 (codex 자체 검증)
+- JSON 파싱 정상
+- 모든 PNG 256x256
+- repo/import byte 동일
+- visible RGB는 흰색 일관, alpha=0 픽셀은 (0,0,0,0)
+- macOS의 `tools/vita3k_ctrl.py status`는 windll 의존으로 실패 → 인-게임 검증은 사용자 몫
+
+### 다음 검증
+- 사용자가 Vita3K 재시작 → 소바집 식당 화면 (s3/s6 reproduce) → 글씨 잘림 없는지 확인
+- 상인 화면 (s2/s5 reproduce) → "보유 | 가격 | 품목 | 소지금 | 문" 한글 출력 확인

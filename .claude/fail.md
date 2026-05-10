@@ -22,3 +22,31 @@
 - _itemdata 설명은 원래 라인 수 초과하면 SKIP (173 entries 스킵됨)
 - scename은 1줄 캡, 아이템은 2줄 캡
 
+
+## 2026-05-10 21:30 — auto_font_import이 시스템 폰트 깨뜨림
+### 증상
+- DLC 선택 화면 하단 정보(去/拭/担/抉/抗 등 한자처럼 보이는 깨진 글자) 출력
+- 사용자 스크린샷 s4 (2026-05-10 21:27)
+- 백희전(모모히메) / 귀조전(키스케) 캐릭터 카드의 통계 텍스트가 모두 한자 깨짐
+
+### 원인 추정
+1. `tools/.font_hashes.json`에 A8E6FDD162258699 추가 후 auto_font_import 실행
+2. 6706A53E1D94C16E가 HD pack 베이스(2048x2048, 9.4MB)로 재처리됨 → 게임이 인식 못 한 가능성
+3. A8E6FDD1는 cell layout이 6706A53E와 동일하지 않을 수 있음 → 한글 글리프가 잘못된 cell에 들어감
+4. cleanup 단계에서 8665CE08가 export에 있음에도 일시적으로 import에서 제거됐을 수 있음
+
+### 시도 (성공)
+- 임시 백업: `temp/font_emergency_backup/` (9.4MB 6706A53E + 269KB A8E6FDD1 + 295KB 8665CE08 + 894KB 2E88068C + 936KB 87B72F6D)
+- 6706A53E + 8665CE08를 `kr_textures/font/`의 안정 백업(295KB each)으로 교체
+- A8E6FDD1는 import에서 제거 (rollback)
+- `.font_hashes.json`을 ["6706A53E", "8665CE08"]로 복원
+
+### 미해결 / 추후 검증
+- A8E6FDD1 cell layout이 정말 SJIS 0x89CD부터 시작하는지 별도 분석 필요
+- HD pack 6706A53E.png(2048x2048, 10.9MB)에 한글 오버레이를 입혀도 게임이 정상 인식하는지 미확인
+- 247C255A/547720A3 메뉴 UI 한글 텍스처는 폰트가 아니므로 이번 깨짐과 무관 — 그대로 유지
+
+### 교훈
+- auto_font_import 실행 전에 import 폴더 전체 백업 필수
+- `.font_hashes.json`에 새 폰트 추가 시, 한 번에 하나씩 검증 후 추가
+- HD pack 베이스 vs export 베이스 결과가 다르므로 사이즈 변동 모니터링

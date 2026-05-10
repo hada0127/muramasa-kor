@@ -91,6 +91,92 @@
         {"x": 593, "y": 5, "w": 61, "h": 118, "orient": "V", "text": "이즈", "font_size": 48}
       ],
       "notes": "원본: textures/originals/1823D39C0279886B.png (256x128). kr 버전은 4x 업스케일(1024x512). 알파 전용. v4 변경점: (1) 모든 라벨에 font_size=48 통일 (사가미가 너무 컸던 문제 해결), (2) 각 라벨 bbox를 알파 활성 범위 정밀 측정값으로 교체 (오와리 y=281, 이가 y=140, 이세 y=278 등 — 위/아래 치우침 해결), (3) 야마시로/시나노/무사시 bbox를 실제 letter range(YAMASHIRO x=2..67/y=1..16, SHINANO x=2..50/y=19..32, MUSASHI x=2..75/y=35..51 native)로 타이트하게 교체."
+    },
+    {
+      "hash": "247C255A400261FF",
+      "size": "256x256",
+      "description": "식당(Soba Shop) 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Money/Soba Shop/Meals/Menu/Price/mon/ryo",
+      "status": "done",
+      "method": "원본 알파 connected-component bbox 기준으로 영문 단어를 클리어 후 한글 렌더링. 폰트: Griun_PolSensibility-Rg.ttf",
+      "translations": {
+        "Inventory": "보유",
+        "Sold Out": "품절",
+        "Money": "소지금",
+        "Soba Shop": "소바집",
+        "Meals": "식사",
+        "Menu": "메뉴",
+        "Price": "가격",
+        "mon": "문",
+        "ryo": "냥"
+      },
+      "regions": [
+        {"x": 100, "y": 0,   "w": 112, "h": 27, "clear": true, "text": "보유",   "font_size": 22, "align": "center"},
+        {"x": 100, "y": 49,  "w": 96,  "h": 27, "clear": true, "text": "품절",   "font_size": 21, "align": "center"},
+        {"x": 80,  "y": 72,  "w": 110, "h": 30, "clear": true, "text": "소지금", "font_size": 18, "align": "center"},
+        {"x": 0,   "y": 100, "w": 112, "h": 30, "clear": true, "text": "소바집", "font_size": 23, "align": "center"},
+        {"x": 110, "y": 118, "w": 74,  "h": 30, "clear": true, "text": "식사",   "font_size": 22, "align": "center"},
+        {"x": 202, "y": 118, "w": 44,  "h": 23, "clear": true, "text": "문",     "font_size": 17, "align": "center"},
+        {"x": 110, "y": 141, "w": 60,  "h": 28, "clear": true, "text": "메뉴",   "font_size": 22, "align": "center"},
+        {"x": 168, "y": 148, "w": 40,  "h": 29, "clear": true, "text": "냥",     "font_size": 20, "align": "center"},
+        {"x": 0,   "y": 163, "w": 48,  "h": 32, "clear": true, "clear_rect": {"x": 0, "y": 163, "w": 72, "h": 32}, "text": "가격",   "font_size": 18, "align": "right"}
+      ],
+      "notes": "2026-05-10 신규 발견. 사용자 스크린샷 s3/s6(소바 식당 메뉴)와 일치. 알파 전용 텍스처. v3: 원본 알파 bbox 기준으로 좌표를 재측정하고 font_size를 낮춰 하단 클리핑 여백 확보. v4: s7 검증에서 상단 우측 소지금이 sample 영역에서 잘려 x=80,w=110,font_size=18로 좌측 이동 및 축소. v5: 가격 align을 right로 변경(컬럼 헤더 우측 정렬). v6: s10에서 격 거의 다 잘림 발견 → w 72→48, font 23→18, clear_rect로 원본 72폭 클리어 유지."
+    },
+    {
+      "hash": "547720A3B20C12AB",
+      "size": "256x256",
+      "description": "Restaurant/식당류 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Meals/Restaurant/Price/Money/Menu/mon/ryo",
+      "status": "done",
+      "method": "각 영문 단어 bbox를 알파 클리어 후 동일 bbox에 한글 렌더링. 247C255A와 동일 단어는 같은 한글로 통일.",
+      "translations": {
+        "Inventory": "보유",
+        "Sold Out": "품절",
+        "Meals": "식사",
+        "Restaurant": "식당",
+        "Price": "가격",
+        "Money": "소지금",
+        "Menu": "메뉴",
+        "mon": "문",
+        "ryo": "냥"
+      },
+      "regions": [
+        {"x": 95,  "y": 0,   "w": 130, "h": 28, "clear": true, "text": "보유",   "font_size": 24, "align": "center"},
+        {"x": 95,  "y": 41,  "w": 105, "h": 28, "clear": true, "text": "품절",   "font_size": 24, "align": "center"},
+        {"x": 95,  "y": 64,  "w": 100, "h": 32, "clear": true, "text": "식사",   "font_size": 26, "align": "center"},
+        {"x": 0,   "y": 89,  "w": 220, "h": 38, "clear": true, "text": "식당",   "font_size": 34, "align": "center"},
+        {"x": 30,  "y": 124, "w": 100, "h": 28, "clear": true, "text": "가격",   "font_size": 24, "align": "right"},
+        {"x": 0,   "y": 161, "w": 120, "h": 30, "clear": true, "text": "소지금", "font_size": 24, "align": "center"},
+        {"x": 124, "y": 161, "w": 80,  "h": 30, "clear": true, "text": "메뉴",   "font_size": 24, "align": "center"},
+        {"x": 0,   "y": 184, "w": 60,  "h": 26, "clear": true, "text": "냥",     "font_size": 22, "align": "center"},
+        {"x": 124, "y": 184, "w": 80,  "h": 24, "clear": true, "text": "문",     "font_size": 20, "align": "center"}
+      ],
+      "notes": "2026-05-10 신규 발견. Restaurant/Meals가 있는 식당류 메뉴 텍스처. v2: Restaurant 박스 가로 220px → 식당 font_size=34. 料亭 한자(우측 x=219+, y=91+)는 보존(브랜드 스타일링). s5 상인 화면의 실제 Item/Inventory/Price 텍스처는 1D6742BBC0DDB7EC."
+    },
+    {
+      "hash": "1D6742BBC0DDB7EC",
+      "size": "256x256",
+      "description": "상인(Item/Inventory/Price) 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Item/Price/Money/mon/ryo",
+      "status": "done",
+      "method": "원본 알파 connected-component bbox 기준으로 영문 단어를 클리어 후 한글 렌더링. 폰트: Griun_PolSensibility-Rg.ttf",
+      "translations": {
+        "Inventory": "보유",
+        "Sold Out": "품절",
+        "Item": "품목",
+        "Price": "가격",
+        "Money": "소지금",
+        "mon": "문",
+        "ryo": "냥"
+      },
+      "regions": [
+        {"x": 0,   "y": 100, "w": 112, "h": 32, "clear": true, "text": "보유",   "font_size": 23, "align": "center"},
+        {"x": 47,  "y": 144, "w": 94,  "h": 28, "clear": true, "text": "품절",   "font_size": 21, "align": "center"},
+        {"x": 136, "y": 126, "w": 39,  "h": 22, "clear": true, "text": "문",     "font_size": 17, "align": "center"},
+        {"x": 138, "y": 145, "w": 40,  "h": 44, "clear": true, "text": "냥",     "font_size": 20, "align": "center"},
+        {"x": 158, "y": 181, "w": 90,  "h": 27, "clear": true, "clear_rect": {"x": 178, "y": 181, "w": 78, "h": 27}, "text": "소지금", "font_size": 18, "align": "center"},
+        {"x": 90,  "y": 195, "w": 52,  "h": 30, "clear": true, "text": "품목",   "font_size": 22, "align": "center"},
+        {"x": 0,   "y": 220, "w": 58,  "h": 32, "clear": true, "clear_rect": {"x": 0, "y": 220, "w": 64, "h": 32}, "text": "가격",   "font_size": 20, "align": "right"}
+      ],
+      "notes": "2026-05-10 s5 상인 화면 검증 후보 6개 중 식별. 사용자 스크린샷의 Money/Item/Inventory/Price/mon과 일치하며, 547720A3B20C12AB는 Restaurant/Meals 식당류 텍스처. v4: s8 검증에서 우측 소지금 끝이 살짝 잘려 x=158,w=90,font_size=18로 좌측 이동 및 축소, 원래 Money 영역은 clear_rect로 별도 클리어. v5: 가격 align을 right로 변경(컬럼 헤더 우측 정렬). v6: s9 검증에서 가격의 격 우측 잘림 발견 → w 64→58, font 23→20, clear_rect로 원본 64폭 유지."
     }
   ]
 }
