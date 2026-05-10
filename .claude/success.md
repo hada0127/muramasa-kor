@@ -1,5 +1,46 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-10: texture-upscale — Vita3K export 텍스처 FHD 업스케일 (로컬 전용)
+
+### 배경
+HD 팩(Muramasa Complete 2.0)이 커버하지 못하는 export 텍스처들이 FHD 화면에서 흐림. 273장의 export 자산을 일괄 업스케일하되, 한글 패치를 깨뜨리지 않고 배포에는 영향이 없어야 함.
+
+### 처리
+1. PDCA Plan: `docs/01-plan/features/texture-upscale.plan.md` (제외 정책·엔진 근거)
+2. Real-ESRGAN ncnn-vulkan v0.2.5.0 (universal binary) → `temp/realesrgan/`, arm64 즉시 동작
+3. 신규 도구 `tools/upscale_export.py`:
+   - 모델 `realesr-animevideov3`, max 변 1920px cap (LANCZOS 다운샘플)
+   - 자동 skip: 폰트 4 hash (`tools/.font_hashes.json`) + `kr_textures/ui/` 81종
+   - dry-run / limit / install / force / cache 옵션
+4. `.gitignore` 에 `upscaled/` 등록 + 사유 주석
+5. 샘플 5장 검증 (45s, 9s/장 페이스, 1920 cap 정상)
+6. 본 배치 256장 / 1917s ≈ 32분, 0 실패
+7. Report: `docs/04-report/texture-upscale.report.md`
+
+### 결과
+- 261장 업스케일 (루트 68 + PCSE00240/ 193), 폰트/한글 UI 15장 자동 skip
+- 52MB → 465MB (4x + RGBA + 무손실 PNG)
+- `upscaled/` git status 안 잡힘 (gitignored 검증 완료)
+- 캐시 동작: 재실행 시 신규분만 처리
+
+### 핵심 결정
+- Real-ESRGAN 채택 — 기존 `batch_upscale.py` 통합 경험, universal binary, animevideov3 게임 친화
+- 1920px cap (FHD 단축) — 1024→1920 (2x), 512→1920 (4x cap), 256→1024 (4x cap)
+- 비배포 정책 강제 — `.gitignore` 라인에 사유 주석으로 의도 고정
+- 폰트/한글 UI 자동 제외 — JSON + 디렉토리 글롭 두 소스 활용
+
+### 사용법
+```bash
+python3 tools/upscale_export.py             # 전체 (캐시 스킵)
+python3 tools/upscale_export.py --dry-run   # 사전 확인
+python3 tools/upscale_export.py --install   # Vita3K import/ 자동 복사
+```
+
+### 커밋
+- `a0b235c` Add texture-upscale tool for local FHD upscaling
+
+---
+
 ## 2026-04-26: 1823D39C0279886B 지도 화면 로마자 지명 14개 한글화
 
 ### 배경
