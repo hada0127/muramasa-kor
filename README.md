@@ -9,7 +9,7 @@
 - 지원 대상: Vita3K Windows/macOS, Android 수동 복사
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
-- 현재 릴리즈: `v0.6.1`
+- 현재 릴리즈: `v0.7.1`
 - 배포 형식: Windows/macOS 공용 로컬 패처 zip, Android용 수동 복사 안내
 
 릴리즈 zip에는 다음만 포함된다.
@@ -109,18 +109,18 @@ Android: Android/data/org.vita3k.emulator/files
 
 ### 2단계 - 한글 패치 zip 다운로드 및 검증
 
-1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.6.1-vita3k-patcher.zip`을 받는다.
-2. 같은 릴리즈의 `muramasa-kor-v0.6.1-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
+1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.7.1-vita3k-patcher.zip`을 받는다.
+2. 같은 릴리즈의 `muramasa-kor-v0.7.1-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
 
 ```powershell
 # Windows
-Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.6.1-vita3k-patcher.zip
+Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.7.1-vita3k-patcher.zip
 ```
 
 ```bash
 # macOS / Linux
-shasum -a 256 muramasa-kor-v0.6.1-vita3k-patcher.zip
-shasum -a 256 -c muramasa-kor-v0.6.1-vita3k-patcher-sha256.txt
+shasum -a 256 muramasa-kor-v0.7.1-vita3k-patcher.zip
+shasum -a 256 -c muramasa-kor-v0.7.1-vita3k-patcher-sha256.txt
 ```
 
 ### 3단계 - 로컬 패처 실행
@@ -224,10 +224,10 @@ py -3 apply_patch.py --restore
 
 릴리즈에는 보통 다음 파일이 포함된다.
 
-- `muramasa-kor-v0.6.1-vita3k-patcher.zip`
-- `muramasa-kor-v0.6.1-vita3k-patcher-manifest.json`
-- `muramasa-kor-v0.6.1-vita3k-patcher-sha256.txt`
-- `muramasa-kor-v0.6.1-vita3k-patcher-release-notes.txt`
+- `muramasa-kor-v0.7.1-vita3k-patcher.zip`
+- `muramasa-kor-v0.7.1-vita3k-patcher-manifest.json`
+- `muramasa-kor-v0.7.1-vita3k-patcher-sha256.txt`
+- `muramasa-kor-v0.7.1-vita3k-patcher-release-notes.txt`
 
 ## 주의
 
