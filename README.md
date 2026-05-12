@@ -9,7 +9,7 @@
 - 지원 대상: Vita3K Windows/macOS, Android 수동 복사
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
-- 현재 릴리즈: `v0.7.1`
+- 현재 릴리즈: `v0.7.2`
 - 배포 형식: Windows/macOS 공용 로컬 패처 zip, Android용 수동 복사 안내
 
 릴리즈 zip에는 다음만 포함된다.
@@ -97,6 +97,8 @@ shasum -a 256 update.pkg
 <Vita3K content root>/ux0/app/PCSE00240/NinPriPatch.cpk
 ```
 
+기존 한글 패치를 이미 적용한 상태에서 새 버전을 설치할 때도, 패처는 처음 Vita3K에 원본 게임과 1.06 업데이트를 설치했을 때 생성된 원본 CPK를 기준으로 적용한다. 이전 버전의 패치가 적용된 `NinPri.cpk` / `NinPriPatch.cpk` 위에 다시 덮어씌우지 말고, `python3 apply_patch.py --restore`로 원본 백업을 복원하거나 Vita3K에서 본편과 업데이트를 다시 설치해 원본 CPK를 만든 뒤 새 패처를 실행한다. 원본 해시가 맞지 않으면 패처는 중단된다.
+
 기본 `content root` 예시:
 
 ```text
@@ -109,18 +111,18 @@ Android: Android/data/org.vita3k.emulator/files
 
 ### 2단계 - 한글 패치 zip 다운로드 및 검증
 
-1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.7.1-vita3k-patcher.zip`을 받는다.
-2. 같은 릴리즈의 `muramasa-kor-v0.7.1-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
+1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.7.2-vita3k-patcher.zip`을 받는다.
+2. 같은 릴리즈의 `muramasa-kor-v0.7.2-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
 
 ```powershell
 # Windows
-Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.7.1-vita3k-patcher.zip
+Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.7.2-vita3k-patcher.zip
 ```
 
 ```bash
 # macOS / Linux
-shasum -a 256 muramasa-kor-v0.7.1-vita3k-patcher.zip
-shasum -a 256 -c muramasa-kor-v0.7.1-vita3k-patcher-sha256.txt
+shasum -a 256 muramasa-kor-v0.7.2-vita3k-patcher.zip
+shasum -a 256 -c muramasa-kor-v0.7.2-vita3k-patcher-sha256.txt
 ```
 
 ### 3단계 - 로컬 패처 실행
@@ -224,10 +226,10 @@ py -3 apply_patch.py --restore
 
 릴리즈에는 보통 다음 파일이 포함된다.
 
-- `muramasa-kor-v0.7.1-vita3k-patcher.zip`
-- `muramasa-kor-v0.7.1-vita3k-patcher-manifest.json`
-- `muramasa-kor-v0.7.1-vita3k-patcher-sha256.txt`
-- `muramasa-kor-v0.7.1-vita3k-patcher-release-notes.txt`
+- `muramasa-kor-v0.7.2-vita3k-patcher.zip`
+- `muramasa-kor-v0.7.2-vita3k-patcher-manifest.json`
+- `muramasa-kor-v0.7.2-vita3k-patcher-sha256.txt`
+- `muramasa-kor-v0.7.2-vita3k-patcher-release-notes.txt`
 
 ## 주의
 
