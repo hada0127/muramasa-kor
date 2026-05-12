@@ -95,6 +95,26 @@ def backup_path_for(target: Path, version: str) -> Path:
     return backup_dir / f"{target.name}.v{version}.original"
 
 
+def backup_candidates_for(target: Path, version: str) -> list[Path]:
+    exact = backup_path_for(target, version)
+    candidates = [exact]
+    if exact.parent.exists():
+        for path in sorted(exact.parent.glob(f"{target.name}.v*.original"), reverse=True):
+            if path != exact:
+                candidates.append(path)
+    return candidates
+
+
+def find_original_backup(target: Path, file_entry: dict, version: str) -> Path | None:
+    expected_sha = file_entry["source_sha256"]
+    for candidate in backup_candidates_for(target, version):
+        if not candidate.exists():
+            continue
+        if sha256_file(candidate) == expected_sha:
+            return candidate
+    return None
+
+
 def apply_file_patch(root: Path, content_root: Path, manifest: dict, file_entry: dict, dry_run: bool) -> str:
     version = manifest["version"]
     target_path = content_root / file_entry["install_path"]
@@ -105,13 +125,17 @@ def apply_file_patch(root: Path, content_root: Path, manifest: dict, file_entry:
     if current_sha == file_entry["target_sha256"]:
         return f"SKIP  {file_entry['name']} already patched"
     if current_sha != file_entry["source_sha256"]:
+        backup_dir = target_path.parent / ".muramasa-kor-backup"
         raise RuntimeError(
             f"{file_entry['name']} hash mismatch.\n"
             f"  path: {target_path}\n"
             f"  expected original: {file_entry['source_sha256']}\n"
             f"  expected patched : {file_entry['target_sha256']}\n"
             f"  actual          : {current_sha}\n"
-            "Reinstall the original US game + update 1.06 or restore the original CPK backup."
+            "Restore the original CPK backup before applying this release:\n"
+            "  python3 apply_patch.py --restore\n"
+            f"Backup folder:\n  {backup_dir}\n"
+            "If no matching original backup exists, reinstall the original US game + update 1.06."
         )
 
     patch_path = root / file_entry["patch_file"]
@@ -208,9 +232,10 @@ def restore_originals(content_root: Path, manifest: dict, dry_run: bool) -> int:
     version = manifest["version"]
     for file_entry in manifest["files"]:
         target_path = content_root / file_entry["install_path"]
-        backup_path = backup_path_for(target_path, version)
-        if not backup_path.exists():
-            print(f"SKIP  no backup for {file_entry['name']}: {backup_path}")
+        backup_path = find_original_backup(target_path, file_entry, version)
+        if backup_path is None:
+            backup_dir = target_path.parent / ".muramasa-kor-backup"
+            print(f"SKIP  no matching original backup for {file_entry['name']}: {backup_dir}")
             continue
         if dry_run:
             print(f"WOULD restore {backup_path} -> {target_path}")
@@ -229,7 +254,7 @@ def main() -> int:
     )
     parser.add_argument("--dry-run", action="store_true", help="Validate paths and hashes without writing files.")
     parser.add_argument("--no-textures", action="store_true", help="Patch CPK files only.")
-    parser.add_argument("--restore", action="store_true", help="Restore original CPK backups for this patch version.")
+    parser.add_argument("--restore", action="store_true", help="Restore original CPK backups.")
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parent

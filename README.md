@@ -97,7 +97,27 @@ shasum -a 256 update.pkg
 <Vita3K content root>/ux0/app/PCSE00240/NinPriPatch.cpk
 ```
 
-기존 한글 패치를 이미 적용한 상태에서 새 버전을 설치할 때도, 패처는 처음 Vita3K에 원본 게임과 1.06 업데이트를 설치했을 때 생성된 원본 CPK를 기준으로 적용한다. 이전 버전의 패치가 적용된 `NinPri.cpk` / `NinPriPatch.cpk` 위에 다시 덮어씌우지 말고, `python3 apply_patch.py --restore`로 원본 백업을 복원하거나 Vita3K에서 본편과 업데이트를 다시 설치해 원본 CPK를 만든 뒤 새 패처를 실행한다. 원본 해시가 맞지 않으면 패처는 중단된다.
+기존 한글 패치를 이미 적용한 상태에서 새 버전을 설치할 때도, 패처는 처음 Vita3K에 원본 게임과 1.06 업데이트를 설치했을 때 생성된 원본 CPK를 기준으로 적용한다. 패처는 최초 적용 시 원본 CPK를 다음 폴더에 백업한다.
+
+```text
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/
+```
+
+백업 파일명은 패치를 처음 적용한 버전에 따라 달라진다.
+
+```text
+NinPri.cpk.v<version>.original
+NinPriPatch.cpk.v<version>.original
+```
+
+예를 들어 v0.7.2에서 처음 패치했다면 다음 파일이 생긴다.
+
+```text
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPri.cpk.v0.7.2.original
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPriPatch.cpk.v0.7.2.original
+```
+
+이전 버전의 패치가 적용된 `NinPri.cpk` / `NinPriPatch.cpk` 위에 새 패처를 바로 덮어씌우지 말고, 같은 릴리즈 폴더에서 `python3 apply_patch.py --restore`를 먼저 실행한다. 패처는 `.muramasa-kor-backup` 폴더의 `*.v*.original` 백업 중 원본 해시가 맞는 파일을 찾아 복원한다. 백업이 없거나 원본 해시가 맞지 않는 경우에만 Vita3K에서 본편과 업데이트를 다시 설치해 원본 CPK를 만든 뒤 새 패처를 실행한다.
 
 기본 `content root` 예시:
 
@@ -220,7 +240,14 @@ Windows에서는 다음처럼 실행할 수 있다.
 py -3 apply_patch.py --restore
 ```
 
-복원이 되지 않거나 백업이 없다면, Vita3K에서 원본 PKG와 업데이트 PKG를 다시 설치하면 된다.
+복원에 사용하는 원본 백업 위치는 다음과 같다.
+
+```text
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPri.cpk.v<version>.original
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPriPatch.cpk.v<version>.original
+```
+
+패처는 현재 릴리즈 버전명과 다른 `v*.original` 백업도 원본 해시가 맞으면 복원한다. 복원이 되지 않거나 백업이 없다면, Vita3K에서 원본 PKG와 업데이트 PKG를 다시 설치하면 된다.
 
 ## 릴리즈 파일
 
