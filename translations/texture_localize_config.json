@@ -153,6 +153,25 @@
       "notes": "2026-05-10 신규 발견. Restaurant/Meals가 있는 식당류 메뉴 텍스처. v2: Restaurant 박스 가로 220px → 식당 font_size=34. 料亭 한자(우측 x=219+, y=91+)는 보존(브랜드 스타일링). s5 상인 화면의 실제 Item/Inventory/Price 텍스처는 1D6742BBC0DDB7EC."
     },
     {
+      "hash": "2E2003777A770327",
+      "size": "1024x1024",
+      "description": "DLC 찻집 메뉴 UI HD import 텍스처. Inventory/Sold Out/Meals/Teahouse/Price/Money/Menu/mon/ryo",
+      "status": "done",
+      "method": "Vita3K export에는 없고 HD import에만 존재하던 해시를 OCR contact sheet로 식별. 영문 라벨 영역만 수동 클리어 후 한글 렌더링. 장식용 茶 표기는 보존.",
+      "translations": {
+        "Inventory": "보유",
+        "Sold Out": "품절",
+        "Meals": "식사",
+        "Teahouse": "찻집",
+        "Price": "가격",
+        "Money": "소지금",
+        "Menu": "메뉴",
+        "mon": "문",
+        "ryo": "냥"
+      },
+      "notes": "2026-05-13 사용자 DLC 찻집 export/import 재확인으로 발견. 원본: textures/originals/2E2003777A770327.png. 결과: kr_textures/ui/2E2003777A770327.png 및 Vita3K import/PCSE00240에 설치. HD pack 기반 1024x1024 텍스처라 texture_localize.py의 export 기반 자동 재생성 대상이 아닌 수동 편집으로 관리."
+    },
+    {
       "hash": "1D6742BBC0DDB7EC",
       "size": "256x256",
       "description": "상인(Item/Inventory/Price) 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Item/Price/Money/mon/ryo",

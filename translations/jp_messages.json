@@ -12900,222 +12900,222 @@
       {
         "id": 567,
         "ja": "OKOI_EATING_0",
-        "ko": "OKOI_EATING_0"
+        "ko": "냐냐! 냠냠"
       },
       {
         "id": 568,
         "ja": "OKOI_EATING_1",
-        "ko": "OKOI_EATING_1"
+        "ko": "우물우물"
       },
       {
         "id": 569,
         "ja": "OKOI_EATING_2",
-        "ko": "OKOI_EATING_2"
+        "ko": "낼름낼름, 쪽쪽"
       },
       {
         "id": 570,
         "ja": "OKOI_EATING_3",
-        "ko": "OKOI_EATING_3"
+        "ko": "앗 뜨거워"
       },
       {
         "id": 571,
         "ja": "OKOI_EATING_4",
-        "ko": "OKOI_EATING_4"
+        "ko": "으윽... 혀가 아파"
       },
       {
         "id": 572,
         "ja": "OKOI_EATING_5",
-        "ko": "OKOI_EATING_5"
+        "ko": "뜨거워도 멈출 수 없어"
       },
       {
         "id": 573,
         "ja": "OKOI_EAT_END_0",
-        "ko": "OKOI_EAT_END_0"
+        "ko": "이런, 접시까지 닦으면 안 되지"
       },
       {
         "id": 574,
         "ja": "OKOI_EAT_END_1",
-        "ko": "OKOI_EAT_END_1"
+        "ko": "생선은 곧 삶이다"
       },
       {
         "id": 575,
         "ja": "OKOI_EAT_END_2",
-        "ko": "OKOI_EAT_END_2"
+        "ko": "먹고 있으면 마음이 풀려"
       },
       {
         "id": 576,
         "ja": "OKOI_EAT_END_3",
-        "ko": "OKOI_EAT_END_3"
+        "ko": "다음엔 가쓰오부시도 먹어볼까"
       },
       {
         "id": 577,
         "ja": "OKOI_EAT_END_4",
-        "ko": "OKOI_EAT_END_4"
+        "ko": "다음엔 양념을 덜 해야겠어"
       },
       {
         "id": 578,
         "ja": "OKOI_EAT_END_5",
-        "ko": "OKOI_EAT_END_5"
+        "ko": "아 맞다, 계산해야지"
       },
       {
         "id": 579,
         "ja": "GONBE_EATING_0",
-        "ko": "GONBE_EATING_0"
+        "ko": "젠장, 정말 맛있군"
       },
       {
         "id": 580,
         "ja": "GONBE_EATING_1",
-        "ko": "GONBE_EATING_1"
+        "ko": "다른 이들도 먹었으면"
       },
       {
         "id": 581,
         "ja": "GONBE_EATING_2",
-        "ko": "GONBE_EATING_2"
+        "ko": "지금 죽어도 여한이 없겠군"
       },
       {
         "id": 582,
         "ja": "GONBE_EAT_END_0",
-        "ko": "GONBE_EAT_END_0"
+        "ko": "이렇게 먹으니 좀 미안하군"
       },
       {
         "id": 583,
         "ja": "GONBE_EAT_END_1",
-        "ko": "GONBE_EAT_END_1"
+        "ko": "마지막 밥이라도 여한 없겠군"
       },
       {
         "id": 584,
         "ja": "GONBE_EAT_END_2",
-        "ko": "GONBE_EAT_END_2"
+        "ko": "동료들 몫도 챙겨 가야겠어"
       },
       {
         "id": 585,
         "ja": "ARASHIMARU_EATING_0",
-        "ko": "ARASHIMARU_EATING_0"
+        "ko": "우물우물"
       },
       {
         "id": 586,
         "ja": "ARASHIMARU_EATING_1",
-        "ko": "ARASHIMARU_EATING_1"
+        "ko": "독은 아닌 듯하군"
       },
       {
         "id": 587,
         "ja": "ARASHIMARU_EATING_2",
-        "ko": "ARASHIMARU_EATING_2"
+        "ko": "나쁘지 않군"
       },
       {
         "id": 588,
         "ja": "ARASHIMARU_EATING_3",
-        "ko": "ARASHIMARU_EATING_3"
+        "ko": "흘리지 말도록 해"
       },
       {
         "id": 589,
         "ja": "ARASHIMARU_EATING_4",
-        "ko": "ARASHIMARU_EATING_4"
+        "ko": "입가에 묻었어"
       },
       {
         "id": 590,
         "ja": "ARASHIMARU_EATING_5",
-        "ko": "ARASHIMARU_EATING_5"
+        "ko": "난 됐다니까, 진정해"
       },
       {
         "id": 591,
         "ja": "ARASHIMARU_EATEND_0",
-        "ko": "ARASHIMARU_EATEND_0"
+        "ko": "내가 먹고 있으면 놀라겠군"
       },
       {
         "id": 592,
         "ja": "ARASHIMARU_EATEND_1",
-        "ko": "ARASHIMARU_EATEND_1"
+        "ko": "잘 먹는 것도 사는 길이지"
       },
       {
         "id": 593,
         "ja": "ARASHIMARU_EATEND_2",
-        "ko": "ARASHIMARU_EATEND_2"
+        "ko": "더 음미하고 싶지만 가야겠어"
       },
       {
         "id": 594,
         "ja": "ARASHIMARU_EATEND_3",
-        "ko": "ARASHIMARU_EATEND_3"
+        "ko": "일단 따돌린 모양이군"
       },
       {
         "id": 595,
         "ja": "ARASHIMARU_EATEND_4",
-        "ko": "ARASHIMARU_EATEND_4"
+        "ko": "허겁지겁 먹는군. 저주도 무색해"
       },
       {
         "id": 596,
         "ja": "ARASHIMARU_EATEND_5",
-        "ko": "ARASHIMARU_EATEND_5"
+        "ko": "갑자기 신주가 당기는군"
       },
       {
         "id": 597,
         "ja": "RAJYAKI_EATING_0",
-        "ko": "RAJYAKI_EATING_0"
+        "ko": "냠냠냠"
       },
       {
         "id": 598,
         "ja": "RAJYAKI_EATING_1",
-        "ko": "RAJYAKI_EATING_1"
+        "ko": "안 먹을 거면 내가 먹어도 돼?"
       },
       {
         "id": 599,
         "ja": "RAJYAKI_EATING_2",
-        "ko": "RAJYAKI_EATING_2"
+        "ko": "맛있다!"
       },
       {
         "id": 600,
         "ja": "RAJYAKI_EATING_3",
-        "ko": "RAJYAKI_EATING_3"
+        "ko": "자, 내가 먹여줄게"
       },
       {
         "id": 601,
         "ja": "RAJYAKI_EATING_4",
-        "ko": "RAJYAKI_EATING_4"
+        "ko": "야, 내 것 뺏지 마"
       },
       {
         "id": 602,
         "ja": "RAJYAKI_EATING_5",
-        "ko": "RAJYAKI_EATING_5"
+        "ko": "너무 빨라. 천천히 먹어"
       },
       {
         "id": 603,
         "ja": "RAJYAKI_EATEND_0",
-        "ko": "RAJYAKI_EATEND_0"
+        "ko": "푸짐하게 먹었다!"
       },
       {
         "id": 604,
         "ja": "RAJYAKI_EATEND_1",
-        "ko": "RAJYAKI_EATEND_1"
+        "ko": "아직 배고파. 더 시킬까?"
       },
       {
         "id": 605,
         "ja": "RAJYAKI_EATEND_2",
-        "ko": "RAJYAKI_EATEND_2"
+        "ko": "지옥엔 이런 맛 없어"
       },
       {
         "id": 606,
         "ja": "RAJYAKI_EATEND_3",
-        "ko": "RAJYAKI_EATEND_3"
+        "ko": "아빠에게도 가져가야지"
       },
       {
         "id": 607,
         "ja": "RAJYAKI_EATEND_4",
-        "ko": "RAJYAKI_EATEND_4"
+        "ko": "잠깐! 여긴 계산해야 해"
       },
       {
         "id": 608,
         "ja": "RAJYAKI_EATEND_5",
-        "ko": "RAJYAKI_EATEND_5"
+        "ko": "꼬마야, 그 음식 다 어디로 가니?"
       },
       {
         "id": 609,
         "ja": "SEIKICHI_CRY_0",
-        "ko": "SEIKICHI_CRY_0"
+        "ko": "우와!"
       },
       {
         "id": 610,
         "ja": "SEIKICHI_CRY_1",
-        "ko": "SEIKICHI_CRY_1"
+        "ko": "그게 아니잖아..."
       },
       {
         "id": 611,
