@@ -454,6 +454,10 @@ def build_korean_patch():
             'source': 'extracted/NinPri/msgsheet/scename.nms',
             'output': 'patch_main/msgsheet/scename.nms',
             'trans_key': 'scename_main',
+            # Non-US scename strings are also used as event/cutscene lookup
+            # keys. Translating them makes Momohime's first boss narration
+            # fail to spawn the character layer, so only scename_US is localized.
+            'match_mode': 'copy',
         },
         'scename_US': {
             'source': 'extracted/NinPri/_US/msgsheet/scename_US.nms',
@@ -482,11 +486,12 @@ def build_korean_patch():
         out_name = name if name != 'scename' else 'scename_US'
 
         if os.path.exists(str(base_dir / src_jp)):
+            mode = 'copy' if name == 'scename' else 'content'
             patch_files[name] = {
                 'source': src_jp,
                 'output': f'patch_patch/msgsheet/{name}.nms',
                 'trans_key': trans_key,
-                'match_mode': 'content',
+                'match_mode': mode,
             }
         # _US: match via JP content → apply by index (jp_index mode for scemsg)
         us_path = str(base_dir / src_us)
