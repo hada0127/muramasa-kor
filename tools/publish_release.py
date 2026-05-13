@@ -61,6 +61,7 @@ def main() -> int:
         str(zip_path),
         str(manifest_path),
         str(checksums_path),
+        str(notes_file),
         "--title",
         args.title or f"Muramasa Korean Patch v{version}",
         "--notes-file",

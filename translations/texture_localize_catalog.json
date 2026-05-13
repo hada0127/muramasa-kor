@@ -100,8 +100,19 @@
       "description": "오프닝 나레이션 + 크레딧 혼합 텍스트",
       "content": "Countless, Demon, Blades, strewn, world, Once, blades, drawn, sheath, they immediately, begin thirsting, blood, Witness, fates, fell prey, their power, Yoshifumi Hashimoto, PRODUCER 등",
       "alpha_text": true,
-      "status": "pending",
-      "notes": "오프닝 인트로 영문 나레이션 텍스트. Demon/blood/fates는 게임에서 빨간색으로 렌더링됨"
+      "status": "done",
+      "notes": "오프닝 인트로 영문 나레이션 텍스트. 단어 캐리어 매칭 대신 이 텍스처는 투명 처리하고, 배경 텍스처 4AEC2546371FFF47에 한글 나레이션을 직접 렌더링함."
+    },
+    {
+      "hash": "4AEC2546371FFF47",
+      "size": "1920x960",
+      "category": "opening_background",
+      "priority": "high",
+      "description": "본편 오프닝 산 안개 배경 + 한글 나레이션 직접 렌더링",
+      "content": "헤아릴 수 없이 흩어진 마검들. / 칼집에서 뽑히는 순간, / 피에 굶주린 듯 곧장 생명을 탐한다. / 그 힘에 스러진 이들의 운명을 보라.",
+      "alpha_text": false,
+      "status": "done",
+      "notes": "Vita3K export/upscaled 배경 해시. Griun_PolSensibility-Rg.ttf, 흰 글씨 + 검은 외곽선, font_size 50, HD 기준 원래 중앙 위치에서 y -100px."
     },
     {
       "hash": "3B58B76CBA15E487",
