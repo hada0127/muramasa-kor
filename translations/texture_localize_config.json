@@ -220,7 +220,7 @@
         {"x": 90,  "y": 195, "w": 52,  "h": 30, "clear": true, "text": "품목",   "font_size": 22, "align": "center"},
         {"x": 0,   "y": 220, "w": 58,  "h": 22, "clear": true, "clear_rect": {"x": 0, "y": 220, "w": 64, "h": 25}, "text": "가격",   "font_size": 20, "align": "right"}
       ],
-      "notes": "2026-05-10 s5 상인 화면 검증 후보 6개 중 식별. 사용자 스크린샷의 Money/Item/Inventory/Price/mon과 일치하며, 547720A3B20C12AB는 Restaurant/Meals 식당류 텍스처. v4: s8 검증에서 우측 소지금 끝이 살짝 잘려 x=158,w=90,font_size=18로 좌측 이동 및 축소, 원래 Money 영역은 clear_rect로 별도 클리어. v5: 가격 align을 right로 변경(컬럼 헤더 우측 정렬). v6: s9 검증에서 가격의 격 우측 잘림 발견 → w 64→58, font 23→20, clear_rect로 원본 64폭 유지. v7: 사용자 보고 '숫자 0 출력 안됨' 검증 — 냥 영역(138,145,40,44)에 ryo 영문/所 한자/디지트0 sprite가 함께 있어 h 44→25로 축소(y=145-170 ryo만 클리어). 가격 clear_rect 안전 마진 위해 h 32→25 축소."
+      "notes": "2026-05-10 s5 상인 화면 검증 후보 6개 중 식별. 사용자 스크린샷의 Money/Item/Inventory/Price/mon과 일치하며, 547720A3B20C12AB는 Restaurant/Meals 식당류 텍스처. v4: s8 검증에서 우측 소지금 끝이 살짝 잘려 x=158,w=90,font_size=18로 좌측 이동 및 축소, 원래 Money 영역은 clear_rect로 별도 클리어. v5: 가격 align을 right로 변경(컬럼 헤더 우측 정렬). v6: s9 검증에서 가격의 격 우측 잘림 발견 → w 64→58, font 23→20, clear_rect로 원본 64폭 유지. v7: 사용자 보고 '숫자 0 출력 안됨' 1차 진단 — 냥 영역(138,145,40,44)에 ryo 영문/所 한자/디지트0 sprite가 함께 있어 h 44→25로 축소(y=145-170 ryo만 클리어). 가격 clear_rect 안전 마진 위해 h 32→25 축소. v8: 진짜 원인 확정 — 이전 빌드가 `upscaled/1D6742BBC0DDB7EC.png` (HD 팩 1024x1024) 다운스케일을 베이스로 만들어져서 원본의 디지트 0 sprite (140,168)-(157,186) 및 (160,168)-(171,181)가 손실됨. macOS Vita3K export 폴더에서 진짜 256x256 원본 발견 → `textures/originals/`에 추가 후 재빌드. 손상 픽셀 분석 결과 clear 영역 밖 손상 0개로 검증 통과."
     }
   ]
 }

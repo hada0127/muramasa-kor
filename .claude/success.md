@@ -1,5 +1,27 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-15: digit-0-sprite-fix v8 — 1D6742BB 진짜 원본 베이스로 디지트 0 복구 완료
+
+### 추가 진단
+v7 패치 적용 후 사용자가 Vita3K 상인 화면 스크린샷 재제출. 가격 컬럼에서 끝자리 0이 비어있음 (예: 50푼이 "5 ?"). v7 수정으로도 부족함.
+
+### 핵심 원인
+이전 1D6742BB 빌드는 `upscaled/1D6742BBC0DDB7EC.png` (1024x1024 HD 팩) → LANCZOS 256x256 다운스케일을 베이스로 사용. 그런데 HD 팩 텍스처에는 원본 256x256의 **디지트 0 sprite (140,168)-(157,186)·(160,168)-(171,181) 두 군데가 없음**(또는 다른 형태). 다운스케일 결과에는 그 자리가 비어 있어, 게임이 그 위치에서 디지트 0을 가져올 때 투명 픽셀만 가져옴 → 끝자리 0 누락.
+
+### 해결
+macOS Vita3K export 폴더 `~/Library/Application Support/Vita3K/Vita3K/textures/export/PCSE00240/1D6742BBC0DDB7EC.png`에서 진짜 256x256 원본 발견 → `textures/originals/`에 추가 → 동일 config로 재빌드.
+
+### 검증 (clear 영역 밖 손상)
+`(원본 알파 > 30) & (kr 알파 < 10)` 마스크로 디지트 후보 손상 클러스터 추출 후 우리 clear 영역과 교차.
+- 247C255A: 22개 후보 모두 [정상-clear내]
+- 547720A3: 24개 후보 모두 [정상-clear내]
+- 1D6742BB: 17개 후보 모두 [정상-clear내] (v7까지는 2개 경계밖 손상, v8에서 해결)
+
+### 동기화
+`kr_textures/ui/1D6742BBC0DDB7EC.png` + macOS Vita3K import 폴더 모두 갱신. 사용자 측 Vita3K 재시작 후 상인 화면 검증 부탁 (가격 표시의 끝자리 0 정상 출력 확인).
+
+---
+
 ## 2026-05-14: digit-0-sprite-fix — 소바집/식당/상점 UI 디지트 sprite 손상 복구
 
 ### 배경
