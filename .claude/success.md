@@ -1,5 +1,48 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-14: digit-0-sprite-fix — 소바집/식당/상점 UI 디지트 sprite 손상 복구
+
+### 배경
+사용자 보고: 소바집 화면에서 가격의 "0"이 출력 안 됨 (예: "80"이 "8"로만 보이는 듯). 상점·찻집도 동일 의심.
+
+### 원인
+247C255A·547720A3·1D6742BBC0DDB7EC 텍스처의 한글화 작업에서 사전 렌더 디지트 sprite (0-9) 영역까지 clear가 침범:
+- **247C255A** 가격 clear_rect (0,163,72,32) → 디지트 0 sprite (32,189)-(52,209)의 상단 6px 잘림
+- **547720A3** 가격 region (30,124,100,28) → 디지트 sprite (96,126)-(116,146)와 (38,126)-(52,146) 잘림
+- **547720A3** 냥 region (0,184,60,26) → 우측 디지트/장식 sprite (38,186)-(56,205) 잘림
+- **1D6742BB** 냥 region (138,145,40,44) → 안에 ryo 영문/所 한자/디지트 0이 모두 있는 큰 박스가 모두 클리어됨
+
+### 조사 방법
+- `textures/originals/`의 원본 알파 connected-component 분석으로 디지트 sprite bbox 정밀 측정 (scipy.ndimage)
+- 손상 = `(원본 알파 > 30) & (kr 알파 < 10)` 마스크로 클러스터 분석
+- 1D6742BB는 원본 부재 → `upscaled/1D6742BBC0DDB7EC.png` (1024x1024)을 LANCZOS 256x256 다운스케일로 추정 베이스 사용
+- 시각 검증: `temp/preview/{hash}_price_zone.png`, `_ryo_zone.png` 에 박스 오버레이로 영문/디지트 분리
+
+### 처리
+`translations/texture_localize_config.json` 수정:
+- **247C255A** 가격: text h 32→22, clear_rect h 32→25 (y=163-188까지만 클리어, 디지트 y=189 보호)
+- **547720A3** 가격: x 30→38, w 100→56, clear_rect 신규 추가 (영문 Price만 클리어, x=96+ 디지트 보호)
+- **547720A3** 냥: w 60→38, clear_rect 신규 추가 (디지트/장식 x=38+ 보호)
+- **1D6742BB** 가격: text h 32→22, clear_rect h 32→25 (안전 마진)
+- **1D6742BB** 냥: h 44→25, clear_rect 신규 추가 (y=170+ 所 한자/디지트 0 보호)
+
+### 결과
+- `kr_textures/ui/247C255A400261FF.png` — 디지트 0 링 온전히 복원
+- `kr_textures/ui/547720A3B20C12AB.png` — 가격 옆 디지트들 + 냥 옆 sprite 복원
+- `kr_textures/ui/1D6742BBC0DDB7EC.png` — upscaled 베이스로 디지트/한자 복원
+- 미리보기: `temp/preview/{hash}_after_fix.png` 3개
+
+### 남은 검증 (사용자 측 Windows Vita3K 필요)
+- 실제 게임에서 소바집/식당/상점 가격 표시 "80", "30" 등 디지트 0 출력 확인
+- 1D6742BB는 upscaled 추정 베이스라 인게임 실제 export 원본과 미세 차이 가능 — 차이 발견 시 사용자가 Vita3K export 후 textures/originals/에 저장 → 재빌드
+
+### 참고
+- 사용자 메시지 "소바집, 상점, 찻집 문제는 텍스쳐 문제일 가능성이 제일 큼" → 곧장 정답으로 안내해줌
+- Gemini CLI 분석도 동일 가설 (이슈 #1, "UI 텍스처 한글화 과정에서 숫자 스프라이트 영역이 의도치 않게 지워졌을 가능성")로 수렴
+- Codex CLI는 사용량 한도 도달, 단독 진행
+
+---
+
 ## 2026-05-10: texture-upscale — Vita3K export 텍스처 FHD 업스케일 (로컬 전용)
 
 ### 배경
