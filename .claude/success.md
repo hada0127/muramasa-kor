@@ -1,5 +1,39 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-15: period-glyph-fix — 시스템 대사 마침표가 가운뎃점처럼 보이던 문제 수정
+
+### 증상
+IMG_3111 대사 "넘어가 주지 ·뒤는 나라에 / 맡기는 걸로 해두마 ·" — 마침표가 가운뎃점(·)처럼 글자 라인 중앙에 떠 있음.
+
+### 원인
+HD 폰트 텍스처 `6706A53E1D94C16E` (1024 KANJI 페이지)의 cell 238 (= 192 + 0x2E '.') 글리프가 import에서 (14,14)-(16,16) — cell 정중앙에 size 7픽셀 작은 점으로 그려짐. 게임이 raw byte 0x2E를 이 cell에서 가져와 렌더 → 가운뎃점 시각.
+
+원본 export 글리프는 (4,17)-(12,25) — cell 좌측 중하단에 size 65픽셀의 정상 마침표.
+
+비교:
+- 6706A53E IMPORT cell 238: (14,14)-(16,16) MIDDLE (잘못)
+- 6706A53E EXPORT cell 238: (4,17)-(12,25) BOTTOM-LEFT (정상)
+- 8665CE08 IMPORT cell 238: (2,25)-(4,27) BOTTOM-LEFT (정상, auto_font_import.py 결과)
+
+8665CE08은 정상인데 6706A53E만 잘못된 이유는 미상 (hd_font_import.py가 의도와 다른 위치에 그림). 코드상으로는 `gy = y + cs - gh - 4*scale - bbox[1]` 좌측 하단 정렬 로직.
+
+### 처리
+1. `~/Library/.../import/PCSE00240/6706A53E1D94C16E.png`의 cell 238 영역 (448,224)-(480,256)을 export 원본의 동일 영역으로 덮어쓰기 (다른 한글 글리프는 그대로 유지)
+2. `kr_textures/font/6706A53E1D94C16E.png`도 동기화
+3. `tools/hd_font_import.py`의 `RUNTIME_OVERLAY_CODES`에서 0x2E '.', 0x2C ',' 제거 — 향후 재빌드 시 export 원본 글리프 보존
+4. /tmp/6706A53E_import_backup.png에 이전 import 백업
+
+### 검증
+`temp/preview/period_glyph_fix.png`에서 OLD/EXPORT/NEW 12배 확대 비교: NEW가 EXPORT와 동일한 정상 마침표 모양.
+
+### 남은 확인 (사용자)
+Vita3K 재시작 후 시스템 대사에서 마침표 위치 검증. 만약 여전히 가운뎃점처럼 보이면 (a) 마침표 글리프가 다른 폰트(예: 2E88068C58DD36D5 ASCII 페이지)에서 오는 것 (b) NMSB 텍스트에 실제 ・(U+30FB)가 남아있음 — 어느 쪽인지 추가 분석 필요.
+
+### 외부 AI 협의
+gemini CLI 호출했으나 응답 지연. codex CLI 사용량 한도 도달. 가설이 명확하고 export/import 비교 픽셀 증거가 결정적이라 단독 진행.
+
+---
+
 ## 2026-05-15: digit-0-sprite-fix v8 — 1D6742BB 진짜 원본 베이스로 디지트 0 복구 완료
 
 ### 추가 진단

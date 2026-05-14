@@ -130,11 +130,14 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         pos += 1
 
     # Runtime-ASCII overlay at cells 192+code: digits 0-9, plus ':', '?', '[',
-    # ']', '-', '.', '/' — characters the game emits as raw bytes (e.g.
+    # ']', '-', '/' — characters the game emits as raw bytes (e.g.
     # "힘: 3", hidden blade-name "????", "[Sword]", "Effect -", time formatting
     # "1/13"). Cells originally held Korean glyphs we relocated in
     # kr_sjis_mapping.json.
-    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2E, 0x2F]
+    # NOTE: 0x2E '.' and 0x2C ',' EXCLUDED — RIDIBatang's tiny dot rendered
+    # at cell center looks like middle-dot (·). Game export already has
+    # proper dot at (4,17)-(12,25) in this cell; preserving export base.
+    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2F]
     for code in RUNTIME_OVERLAY_CODES:
         cell = 192 + code
         row = cell // cols
