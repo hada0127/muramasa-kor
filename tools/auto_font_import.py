@@ -4,11 +4,41 @@ Run this AFTER the game has started (textures exported) but BEFORE dialogue.
 
 Safety: only touches font-specific imports, never deletes HD pack textures."""
 
-import json, os, sys, time, numpy as np
+import json, os, sys, time, platform, numpy as np
 from PIL import Image, ImageFont, ImageDraw
 
-# HD texture pack location
-HD_PACK_DIR = "C:/Users/taro1/Downloads/Muramasa Complete 2.0/PCSE00240/Best"
+
+def _default_vita3k_root():
+    sysname = platform.system()
+    if sysname == "Darwin":
+        return os.path.expanduser("~/Library/Application Support/Vita3K/Vita3K")
+    if sysname == "Linux":
+        return os.path.expanduser("~/.local/share/Vita3K/Vita3K")
+    return "C:/game/vita3k"
+
+
+def _default_hd_pack_dir():
+    sysname = platform.system()
+    if sysname == "Darwin":
+        return os.path.expanduser("~/Downloads/Muramasa Complete 2.0/PCSE00240/Best")
+    if sysname == "Linux":
+        return os.path.expanduser("~/Downloads/Muramasa Complete 2.0/PCSE00240/Best")
+    return "C:/Users/taro1/Downloads/Muramasa Complete 2.0/PCSE00240/Best"
+
+
+VITA3K_ROOT = os.environ.get("VITA3K_ROOT", _default_vita3k_root())
+EXPORT_DIR = os.environ.get("VITA3K_EXPORT_DIR", os.path.join(VITA3K_ROOT, "textures", "export", "PCSE00240"))
+IMPORT_DIR = os.environ.get("VITA3K_IMPORT_DIR", os.path.join(VITA3K_ROOT, "textures", "import", "PCSE00240"))
+HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
+
+# Glyph outline: RIDIBatang base font with 2px black stroke for visibility on
+# light backgrounds. Body size reduced from 22→20 (Hangul) and 18→16 (ASCII)
+# to leave room for the stroke within the 32px cell.
+STROKE_WIDTH = 2
+STROKE_FILL = (0, 0, 0, 255)
+KR_BODY_PT = 20
+ASCII_BODY_PT = 16
+
 # File to track which imports are font textures (so we only clean those)
 FONT_HASH_RECORD = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".font_hashes.json")
 
@@ -137,7 +167,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         mapping = json.load(f)
     kr_map = mapping['korean_to_sjis']
 
-    font = ImageFont.truetype(font_path, 22)
+    font = ImageFont.truetype(font_path, KR_BODY_PT)
     cs = 32
     # SJIS code for space glyph (unused Korean char '빕' repurposed as blank)
     SPACE_SJIS = (0x8C, 0x6D)
@@ -178,7 +208,8 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         gh = bbox[3] - bbox[1]
         gx = x + (cs - gw) // 2 - bbox[0]
         gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), kr_char, font=font, fill=color)
+        draw.text((gx, gy), kr_char, font=font, fill=color,
+                  stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
 
     # Clear the space glyph slot (make it transparent = blank space)
     if 0 <= space_local < 1024:
@@ -201,7 +232,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     # Skip cells that Korean was relocated into (e.g. cells 993-1003 for
     # 둔/둘/둠/둥/둬/뒤/뒷/드/득/든). Those Korean glyphs were already drawn
     # above and must not be overwritten by ASCII letters.
-    ascii_font = ImageFont.truetype(font_path, 18)  # slightly smaller for ASCII
+    ascii_font = ImageFont.truetype(font_path, ASCII_BODY_PT)  # smaller for ASCII
     pos = 960
     for code in range(0x20, 0x7F):
         if pos >= 1024:
@@ -235,7 +266,8 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             else:
                 gx = x + (cs - gw) // 2 - bbox[0]
                 gy = y + (cs - gh) // 2 - bbox[1]
-            draw.text((gx, gy), ch, font=ascii_font, fill=acolor)
+            draw.text((gx, gy), ch, font=ascii_font, fill=acolor,
+                      stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
         pos += 1
 
     # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
@@ -278,7 +310,8 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         else:
             gx = x + (cs - gw) // 2 - bbox[0]
             gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), ch, font=ascii_font, fill=dcolor)
+        draw.text((gx, gy), ch, font=ascii_font, fill=dcolor,
+                  stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
 
     # Fullwidth-punctuation overlay: when the game emits raw SJIS 0x81xx bytes
     # (e.g. battle result hh:mm:ss timer hardcoded in game binary using 0x8146
@@ -303,15 +336,16 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         gh = bbox[3] - bbox[1]
         gx = x + (cs - gw) // 2 - bbox[0]
         gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), ch, font=ascii_font, fill=dcolor)
+        draw.text((gx, gy), ch, font=ascii_font, fill=dcolor,
+                  stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
 
     img.save(import_path)
     return len(korean_cells)
 
 if __name__ == '__main__':
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    export_dir = "C:/game/vita3k/textures/export/PCSE00240/"
-    import_dir = "C:/game/vita3k/textures/import/PCSE00240/"
+    export_dir = EXPORT_DIR
+    import_dir = IMPORT_DIR
     mapping_path = os.path.join(base_dir, "translations", "kr_sjis_mapping.json")
     font_path = os.path.join(base_dir, "fonts", "RIDIBatang.otf")
 

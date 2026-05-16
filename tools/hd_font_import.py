@@ -2,9 +2,39 @@
 """Create HD Korean font import textures from HD texture pack base.
 Draws Korean glyphs at full 4096x4096 resolution, then downscales to 2048x2048."""
 
-import json, os, sys, subprocess
+import json, os, sys, platform, subprocess
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
+
+
+def _default_vita3k_root():
+    sysname = platform.system()
+    if sysname == "Darwin":
+        return os.path.expanduser("~/Library/Application Support/Vita3K/Vita3K")
+    if sysname == "Linux":
+        return os.path.expanduser("~/.local/share/Vita3K/Vita3K")
+    return "C:/game/vita3k"
+
+
+def _default_hd_pack_dir():
+    sysname = platform.system()
+    if sysname in ("Darwin", "Linux"):
+        return os.path.expanduser("~/Downloads/Muramasa Complete 2.0/PCSE00240/Best")
+    return "C:/Users/taro1/Downloads/Muramasa Complete 2.0/PCSE00240/Best"
+
+
+VITA3K_ROOT = os.environ.get("VITA3K_ROOT", _default_vita3k_root())
+EXPORT_DIR = os.environ.get("VITA3K_EXPORT_DIR", os.path.join(VITA3K_ROOT, "textures", "export", "PCSE00240"))
+IMPORT_DIR = os.environ.get("VITA3K_IMPORT_DIR", os.path.join(VITA3K_ROOT, "textures", "import", "PCSE00240"))
+HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
+
+# Glyph outline: RIDIBatang base font with 2px black stroke for visibility on
+# light backgrounds (HD scales: stroke_width = 2 * scale). Body size 22→20 (KR),
+# 18→16 (ASCII) leaves room for the stroke within the cell.
+STROKE_FILL = (0, 0, 0, 255)
+KR_BODY_PT = 20
+ASCII_BODY_PT = 16
+STROKE_BASE_PT = 2  # scaled with texture (2px at 1024, 4px at 2048, ...)
 
 
 def sjis_to_cell(b1, b2):
@@ -26,10 +56,11 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
     # Cell size scales with texture: 1024->32px, 2048->64px, 4096->128px
     scale = w // 1024
     cs = 32 * scale
-    font_size_kr = int(22 * scale)
-    font_size_ascii = int(18 * scale)
+    font_size_kr = int(KR_BODY_PT * scale)
+    font_size_ascii = int(ASCII_BODY_PT * scale)
+    stroke_width = STROKE_BASE_PT * scale
 
-    print(f"  Base: {w}x{h}, scale={scale}x, cell={cs}px, font_kr={font_size_kr}px")
+    print(f"  Base: {w}x{h}, scale={scale}x, cell={cs}px, font_kr={font_size_kr}px, stroke={stroke_width}px")
 
     font_kr = ImageFont.truetype(font_path, font_size_kr)
     font_ascii = ImageFont.truetype(font_path, font_size_ascii)
@@ -76,7 +107,8 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         gh = bbox[3] - bbox[1]
         gx = x + (cs - gw) // 2 - bbox[0]
         gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), kr_char, font=font_kr, fill=color)
+        draw.text((gx, gy), kr_char, font=font_kr, fill=color,
+                  stroke_width=stroke_width, stroke_fill=STROKE_FILL)
 
     # Clear space glyph slot
     if 0 <= space_local < 1024:
@@ -126,7 +158,8 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
             else:
                 gx = x + (cs - gw) // 2 - bbox[0]
                 gy = y + (cs - gh) // 2 - bbox[1]
-            draw.text((gx, gy), ch, font=font_ascii, fill=acolor)
+            draw.text((gx, gy), ch, font=font_ascii, fill=acolor,
+                      stroke_width=stroke_width, stroke_fill=STROKE_FILL)
         pos += 1
 
     # Runtime-ASCII overlay at cells 192+code: digits 0-9, plus ':', '?', '[',
@@ -168,7 +201,8 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         else:
             gx = x + (cs - gw) // 2 - bbox[0]
             gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), ch, font=font_ascii, fill=dcolor)
+        draw.text((gx, gy), ch, font=font_ascii, fill=dcolor,
+                  stroke_width=stroke_width, stroke_fill=STROKE_FILL)
 
     # Fullwidth-punctuation overlay: when the game emits raw SJIS 0x81xx bytes
     # (e.g. battle result hh:mm:ss timer hardcoded in eboot.bin using 0x8146
@@ -193,7 +227,8 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         gh = bbox[3] - bbox[1]
         gx = x + (cs - gw) // 2 - bbox[0]
         gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), ch, font=font_ascii, fill=dcolor)
+        draw.text((gx, gy), ch, font=font_ascii, fill=dcolor,
+                  stroke_width=stroke_width, stroke_fill=STROKE_FILL)
 
     # Downscale to max_dim if needed
     if w > max_dim or h > max_dim:
@@ -223,8 +258,8 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
 
 if __name__ == '__main__':
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    hd_dir = "C:/Users/taro1/Downloads/Muramasa Complete 2.0/PCSE00240/Best/"
-    import_dir = "C:/game/vita3k/textures/import/PCSE00240/"
+    hd_dir = HD_PACK_DIR
+    import_dir = IMPORT_DIR
     mapping_path = os.path.join(base_dir, "translations", "kr_sjis_mapping.json")
     font_path = os.path.join(base_dir, "fonts", "RIDIBatang.otf")
 
@@ -235,7 +270,7 @@ if __name__ == '__main__':
     font_hashes = ["6706A53E1D94C16E"]
 
     # Also handle font hashes from Vita3K export (session-dependent)
-    export_dir = "C:/game/vita3k/textures/export/PCSE00240/"
+    export_dir = EXPORT_DIR
 
     print("=== HD Korean Font Import ===\n")
 
