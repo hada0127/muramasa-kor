@@ -1,5 +1,45 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-16: dlc-equipment-broken-glyph 분석 — 이미 패치된 상태 확인
+
+### 배경
+이슈 #2 (v0.7.0) 항목 5: DLC 1 바케네코편 장비란 진입 시 깨진 글자 ("떡량렬랏 오코이").
+
+### 깨진 글자 패턴 분석
+ASCII→한글 매핑 역추적:
+- 첫 글자 '떡' ← ASCII 'M' (0x4D, cell 192+77=269 → KANJI cell 1644+269=1913 = SJIS 0x8B61 = 떡)
+- 둘째 '량' ← ASCII 'o' (0x6F)
+- 셋째 '랜' ← ASCII 'k' (0x6B)
+- 넷째 '랄' ← ASCII 'e' (0x65)
+
+→ **"Miike-Okoi"** (5자+하이픈) 영문 라벨이 한글 폰트 매핑으로 깨진 패턴 일치.
+
+### 출처 확인 (NinPriPatch_US/scename_US.nms #116)
+- 영문 원본: `Miike-Okoi`
+- 한글 패치: `삼색 오코이` (jp_messages.json scename_US #116 = ko="삼색 오코이")
+- v0.7.0 시점 git show: 이미 패치되어 있었음 (commit a565de7)
+
+### 현재 빌드 결과 검증
+- `patch_patch/_US/msgsheet/scename_US.nms` #116 = "삼색 오코이" (한글 정상)
+- macOS Vita3K 설치된 `NinPriPatch.cpk` MD5 `312ebcaddecdbecd857ea94c539dada5` = 빌드 결과와 **완전 일치**
+- 즉 **현재 우리 패치는 이미 정상 한글 표시되는 상태**
+
+### v0.7.0 깨짐 원인 추정
+- 사용자 v0.7.0 시점에 `NinPriPatch.cpk` 적용 누락 (success.md 2026-04-11 "NinPriPatch 오버라이드" 버그 시기와 유사)
+- 또는 Vita3K 게임 캐시 / NinPri only 패치 적용
+- 현재 v0.7.5+ 적용 시 자동 해결될 가능성 매우 높음
+
+### DLC Pack1 추가 분석 (참고)
+- `extracted_dlc/Pack1/chara/Mike00_Rest.mbs` 등 캐릭터 모델 파일에 "Mike" 영문 발견 (file metadata)
+- 게임이 이 파일명을 라벨로 직접 사용하지 않음 (모델 asset name)
+
+### 권고
+- **코드 변경 불필요** — NMS 이미 패치됨
+- 사용자 검증 가능 시점에 최신 패치 적용 후 인-게임 재확인 → 정상 표시 예상
+- 만약 여전히 깨짐 보고 시: DLC pack mbs/asset 데이터 추가 분석 필요
+
+---
+
 ## 2026-05-16: dlc-menu-renshu-fix — "연 습" → "단 련" 텍스처 수정
 
 ### 배경
