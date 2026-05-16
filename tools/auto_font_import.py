@@ -244,7 +244,12 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     # effect slots) it reads cells 192+code in this texture. Those cells
     # originally held Korean glyphs that we relocated in kr_sjis_mapping.json.
     # We overlay the actual ASCII glyph here so runtime output renders cleanly.
-    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2E, 0x2F]
+    # 'F', 'o', 'r', 'm' added 2026-05-16 for DLC bakeneko equipment "Form:%s"
+    # hardcoded in game binary. Korean SJIS for 딱/량/럴/랴 relocated to ASCII
+    # zone (0x8EE2-0x8EE5) so cells 262/303/306/301 can hold English glyphs.
+    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2E, 0x2F,
+        0x46, 0x6F, 0x72, 0x6D,  # F, o, r, m
+    ]
     for code in RUNTIME_OVERLAY_CODES:
         cell = 192 + code
         row = cell // cols
@@ -263,6 +268,13 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         if ch in '.,':
             gx = x + 2 - bbox[0]
             gy = y + cs - gh - 4 - bbox[1]
+        elif ch == ':':
+            # Position colon slightly left of cell center: 'Form:%s' game text
+            # uses raw byte output where the colon's neighbor glyph is rendered
+            # close. Pure left-align made ':' touch 'm'; centered made the
+            # next Hangul touch ':'. ~8px offset balances both sides.
+            gx = x + 8 - bbox[0]
+            gy = y + (cs - gh) // 2 - bbox[1]
         else:
             gx = x + (cs - gw) // 2 - bbox[0]
             gy = y + (cs - gh) // 2 - bbox[1]

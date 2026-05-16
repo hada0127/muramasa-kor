@@ -1,5 +1,57 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-16: form-overlay — DLC 장비란 "Form:" hardcoded 영문 해결
+
+### 배경
+이슈 #2 (v0.7.0) 항목 5: DLC 1 바케네코 장비란에서 "**떡량렬랏 오 코 이**" 같은 깨진 글자.
+1차 분석에서 NMS 모두 한글 패치 완료 확인 — 게임 외부 hardcoded 의심하고 deferred 처리.
+
+### 영문판 검증 (사용자 통찰)
+사용자 제안으로 `tools/vita3k_mode.py english` (스크립트 신규 작성) + import 폴더 전체 임시 rename(`PCSE00240` → `PCSE00240.disabled`)으로 원본 영문판 환경 구성.
+
+영문판 캡처 결과 정확한 원문 확인:
+- "**Form:Okoi**" + 15 (오코이 형태)
+- "**Form:Miike**" + 11 (미케 형태)
+- "**Form:Avatar**" + 17 (화신 형태)
+
+→ 게임 코드(eboot.bin)가 `"Form:%s"` sprintf 포맷으로 출력 (NMS 외부 hardcoded).
+`%s` 자리는 sysmsg lookup (Okoi=#85, Miike=#92, Avatar=#93) — 우리 NMS 패치로 한글 정상.
+
+### 해결 (success.md "봐 재배치" 패턴 차용)
+**SJIS 재배치 + ASCII overlay**:
+1. `kr_sjis_mapping.json`에서 4개 한글 SJIS 이동:
+   - 딱 0x8B5A → 0x8EE2 (cell 962 → 961)
+   - 량 0x8B84 → 0x8EE3 (cell 303 → 962)
+   - 럴 0x8B87 → 0x8EE4 (cell 306 → 963)
+   - 랴 0x8B82 → 0x8EE5 (cell 301 → 964)
+2. `auto_font_import.py` + `hd_font_import.py` `RUNTIME_OVERLAY_CODES`에 'F','o','r','m' (0x46, 0x6F, 0x72, 0x6D) 추가
+3. 한글 cell 262/303/306/301에 영문 'F','o','r','m' 글리프 overlay
+4. NMS 재빌드 → 새 SJIS 0x8EE2-5로 한글 인코딩 (61회 모두 새 위치)
+
+### 콜론 위치 미세조정 (3단계)
+| 단계 | x 위치 | 사용자 보고 |
+|---|---|---|
+| 원래 (중앙) | 15-16 | 다음 글자와 겹침 |
+| 1차 (좌측) | 3-4 | "m에 너무 붙음" |
+| **2차 최종** | **9-10** | "딱 좋다" ✓ |
+
+`if ch == ':':` 분기로 콜론만 좌측 정렬 (x = 8 - bbox[0]).
+
+### 부수 추가
+- jp_messages.json `_itemdata #959/#970` 한글 추가 ("화신 잇기 그 일/이") — 다른 화면 또는 향후 효과 가능성
+- `tools/vita3k_mode.py` 신규: english/korean/status 모드 전환 (한글 자산 개별 백업 방식, 재패치 시 사용)
+
+### 검증 (인-게임)
+- "**Form:오코이**" / "**Form:미케**" / "**Form:화신**" 정상 표시
+- NMS의 딱/량/럴/랴 61회 사용 항목들 다른 화면에서 한글 정상 (사용자 확인)
+
+### 학습 포인트
+- 1차 분석에서 "다른 폰트 사용" 가설로 시간 낭비. 사용자 통찰 "글이라니까 번역 데이터 확인" + "영문판으로 원문 확인"이 결정적
+- 영문 hardcoded 문자열은 `vita3k_mode english`로 원문 확정 → SJIS 재배치 + ASCII overlay 패턴 적용
+- 콜론 위치는 게임 cell 너비 처리에 따라 x=8-10 권장 (좌우 균형)
+
+---
+
 ## 2026-05-16: dlc-equipment-broken-glyph 분석 — 이미 패치된 상태 확인
 
 ### 배경

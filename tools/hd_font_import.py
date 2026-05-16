@@ -137,7 +137,12 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
     # NOTE: 0x2E '.' and 0x2C ',' EXCLUDED — RIDIBatang's tiny dot rendered
     # at cell center looks like middle-dot (·). Game export already has
     # proper dot at (4,17)-(12,25) in this cell; preserving export base.
-    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2F]
+    # 'F', 'o', 'r', 'm' added 2026-05-16 for DLC bakeneko equipment "Form:%s"
+    # hardcoded in game binary. Korean SJIS for 딱/량/럴/랴 relocated to ASCII
+    # zone (0x8EE2-0x8EE5) so cells 262/303/306/301 can hold English glyphs.
+    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2F,
+        0x46, 0x6F, 0x72, 0x6D,  # F, o, r, m
+    ]
     for code in RUNTIME_OVERLAY_CODES:
         cell = 192 + code
         row = cell // cols
@@ -156,6 +161,10 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         if ch in '.,':
             gx = x + int(2 * scale) - bbox[0]
             gy = y + cs - gh - int(4 * scale) - bbox[1]
+        elif ch == ':':
+            # Position colon slightly left of cell center. See auto_font_import.py.
+            gx = x + int(8 * scale) - bbox[0]
+            gy = y + (cs - gh) // 2 - bbox[1]
         else:
             gx = x + (cs - gw) // 2 - bbox[0]
             gy = y + (cs - gh) // 2 - bbox[1]
