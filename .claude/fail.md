@@ -1,5 +1,48 @@
 # FAIL - 실패한 작업 기록
 
+## 2026-05-16: dlc-equipment-broken-glyph — DLC 장비란 캐릭터 라벨 깨짐 (FMBS 한계)
+
+### 배경
+이슈 #2 (v0.7.0) 항목 5: DLC 1 바케네코편 장비란 진입 시 캐릭터 라벨 "**떡량렬랏 화신**" + "17" 형태로 깨짐.
+사용자 v0.7.5+ 적용 + Vita3K 캐시 클리어 후에도 동일하게 깨짐.
+
+### 진단
+- 화면 4글자 "**떡량렬랏**" → ASCII→한글 cell 매핑 역추적
+  - 떡 = 'M' (0x4D, cell 192+77)
+  - 량 = 'o' / 랑 = 'i' (픽셀 모호)
+  - 후보: "Mike", "Mode", "Move", "Most" 등 4글자 영문
+- " 화신" = 일본어 "化身" 한글 패치 정상
+
+### 검증된 한글 패치 항목 (모두 NMS에서 한글로 패치 적용됨)
+- sysmsg #92 ja="三毛" → ko="미케" ✓
+- scename_US #116 ja="Miike-Okoi" → ko="삼색 오코이" ✓
+- staffroll #116 ja="三毛お恋" → ko="삼색 오코이" ✓
+- _itemdata #940/948/950/954 "Adds...Miike..." → "...미케..." ✓
+- 설치된 NinPriPatch.cpk MD5 = 빌드 결과 완전 일치 ✓
+- 설치된 NinPri.cpk MD5 = 빌드 결과 완전 일치 ✓
+
+### 시도한 추가 조치
+1. **Vita3K 셰이더 캐시 + 셰이더 로그 삭제** (`~/.../Vita3K/cache/shaders/PCSE00240`, `~/.../Vita3K/shaderlog/PCSE00240`) 후 재실행 → 동일 깨짐
+2. **NinPriPack1 DLC CPK 내부 검색** — `.nms` 파일 없음 (CLAUDE.md 확인). `chara/Mike**_Rest.mbs`, `chara/Okoi*.mbs` 등 캐릭터 모델 파일에 "Mike" 영문 발견 (file metadata)
+3. **모든 NMS에서 영문 잔존 검색** — staffroll #0-202 모두 한글, #203+ 회사명만 영문 (게임 라벨로 사용 안 됨)
+
+### 한계 (deferred 처리)
+화면 영문 라벨이 **NMS 외부 데이터**에서 옴:
+- `Pack1/chara/Mike**.mbs` (FMBS 포맷) 내부의 압축/인코딩된 라벨 데이터
+- 또는 eboot.bin에 hardcoded 영문 문자열
+
+**FMBS 포맷 완전 역공학** 필요하지만:
+- 시간 비용 매우 큼 (수 시간~수 일)
+- 게임 부팅 실패 위험 (이전 dlc-menu-renshu-fix와 동일 한계)
+- mbs 파일 binary로 압축 SJIS 텍스트 검색 모두 0회
+
+### 권고
+- 우리 NMS 패치는 완벽 적용된 상태로 유지
+- 만약 사용자가 mbs/eboot 분석 의지 있다면 별도 신규 작업으로 진행
+- 향후 비슷한 라벨 패턴 (4글자 영문 깨짐) 발견 시 mbs 출처로 추정 가능
+
+---
+
 ## 2026-05-16: dlc-menu-renshu-fix — DLC 메뉴 "연습" 라벨 출처 식별 실패
 
 ### 배경
