@@ -17,12 +17,20 @@
    - 단, scemsg가 본편+DLC 대사 — 메인 타겟
    - sysmsg 등은 좌측 짧음 케이스만 (상자 작을 수 있어 보수적)
 
+2차 협의 (gemini, codex 부분 의견):
+- 무라마사 대사 박스는 전각 24까지 안전 (JP 원문도 p95≈28자)
+- 3줄→2줄 압축은 페이싱 손상 거의 없음 (3줄 동시 표시 박스)
+- "의도적 페이싱" 보존: 모든 줄 < 8자 (짧은 외침 연속, 예: "죽어라!/사라져라!/으아악!")
+- `--aggressive-short-lines`: 3줄 메시지에 한해 max_w 상한을 aggressive_max_w(기본 24)로
+  공격적 압축. 단어 중간 자르기는 여전히 절대 금지.
+
 사용법:
-  python tools/condense_dialogs.py                   # 미리보기
-  python tools/condense_dialogs.py --apply           # 적용
-  python tools/condense_dialogs.py --sections scemsg # 특정 섹션만
-  python tools/condense_dialogs.py --max-width 22    # 폭 조정
-  python tools/condense_dialogs.py --sample 30       # 샘플 출력 개수
+  python tools/condense_dialogs.py                          # 미리보기
+  python tools/condense_dialogs.py --apply                  # 적용
+  python tools/condense_dialogs.py --sections scemsg        # 특정 섹션만
+  python tools/condense_dialogs.py --max-width 22           # 폭 조정
+  python tools/condense_dialogs.py --aggressive-short-lines # 3줄 짧은 라인 공격적 압축
+  python tools/condense_dialogs.py --sample 30              # 샘플 출력 개수
 """
 
 import argparse
@@ -150,7 +158,29 @@ def try_combine_to_n(words: list, target_n: int, max_w: float):
     return None
 
 
-def should_skip(orig: str, max_w: float) -> bool:
+def is_intentional_pacing(lines: list, threshold: float = 8.0) -> bool:
+    """의도적 페이싱(짧은 외침 연속) 판정.
+
+    모든 줄이 threshold 미만이고, 각 줄이 강조 부호(!?…)로 끝나면
+    의도적 짧은 라인으로 간주하여 보존한다.
+    예: "죽어라!/사라져라!/으아악!", "그래!/좋다!/가자!"
+    """
+    if not lines or len(lines) < 2:
+        return False
+    if not all(line_width(l) < threshold for l in lines):
+        return False
+    # 강조 부호 (!?…)로 끝나는 라인이 다수면 의도적 페이싱
+    emphasis_count = 0
+    for l in lines:
+        stripped = l.rstrip()
+        if not stripped:
+            continue
+        if stripped[-1] in "!?！？…":
+            emphasis_count += 1
+    return emphasis_count >= max(2, len(lines) - 1)
+
+
+def should_skip(orig: str, max_w: float, preserve_pacing: bool = True) -> bool:
     """수정 보류해야 할 메시지인지 판단.
 
     - placeholder 포함 줄은 단어 분할 시 안전 — 단, 줄 사이 placeholder가
@@ -159,6 +189,7 @@ def should_skip(orig: str, max_w: float) -> bool:
       → 너무 강하면 변환 후보가 줄어드므로 placeholder를 단어 토큰으로
         취급해 변환 허용하되, 단순 boolean SKIP은 아래 케이스만:
     - 빈 줄 / 모든 줄이 너무 짧음 (모두 5글자 미만)
+    - 의도적 페이싱(preserve_pacing=True 시): 모든 줄 < 8자 + 강조 부호 종결
     """
     norm = orig.replace("\r\n", "\n").replace("\r", "\n")
     lines = [l for l in norm.split("\n") if l.strip()]
@@ -172,6 +203,9 @@ def should_skip(orig: str, max_w: float) -> bool:
     # 모든 줄이 매우 짧음 → 의도적 짧은 줄 가능성, 합치지 않음
     if all(line_width(l) <= 4.0 for l in lines):
         return True
+    # 의도적 페이싱 (짧은 외침 연속) — preserve_pacing 옵션 시 보존
+    if preserve_pacing and is_intentional_pacing(lines):
+        return True
     # 화자명 라벨 (라인1이 `이름:` 패턴) — 보존
     if re.match(r"^[가-힣A-Za-z]{1,8}\s*[:：]\s*$", lines[0]):
         return True
@@ -182,7 +216,13 @@ def should_skip(orig: str, max_w: float) -> bool:
     return False
 
 
-def reformat(orig: str, max_w: float, max_w_relaxed: float = None):
+def reformat(
+    orig: str,
+    max_w: float,
+    max_w_relaxed: float = None,
+    aggressive_3line_max_w: float = None,
+    preserve_pacing: bool = True,
+):
     """원본 ko 문자열을 압축/재정리한 새 문자열 반환. 변경 없으면 None.
 
     규칙:
@@ -190,8 +230,12 @@ def reformat(orig: str, max_w: float, max_w_relaxed: float = None):
     - 가능한 한 target_n=1 시도 → 안되면 원래 줄 수 - 1 시도 → 균형 재분배.
     - max_w_relaxed: 원본이 max_w를 초과하는 경우(예: DLC) 한정해 더 넓은
       max_w_relaxed로 재시도. 원본보다 늘리지는 않음(원본 max를 상한으로).
+    - aggressive_3line_max_w: 원본이 3줄(이상)일 때 줄 수 축소 시도에서만
+      max_w 상한을 이 값까지 공격적으로 늘린다. 균형 재분배에는 적용 안 함.
+      None이면 비활성. 일반적으로 24~26 권장.
+    - preserve_pacing: 의도적 페이싱(모든 줄 짧음 + 강조부호) 보존 여부.
     """
-    if should_skip(orig, max_w):
+    if should_skip(orig, max_w, preserve_pacing=preserve_pacing):
         return None
 
     norm = orig.replace("\r\n", "\n").replace("\r", "\n")
@@ -221,12 +265,18 @@ def reformat(orig: str, max_w: float, max_w_relaxed: float = None):
         else:
             effective_max_w = min(max_w_relaxed, max(orig_max, max_w_relaxed))
 
+    # 3줄 공격적 압축 — 원본이 3줄 이상일 때만 줄 수 축소 시도에서 한도 상향
+    # (균형 재분배에는 적용 안 함 — 새로운 라인이 원본 max를 초과하지 않도록 보존)
+    aggressive_max_w = effective_max_w
+    if aggressive_3line_max_w is not None and n_lines >= 3:
+        aggressive_max_w = max(effective_max_w, aggressive_3line_max_w)
+
     # 목표: 가능한 최소 줄 수로
     target_orig = n_lines
     chosen = None
 
     for tn in range(1, target_orig):
-        result = try_combine_to_n(words, tn, effective_max_w)
+        result = try_combine_to_n(words, tn, aggressive_max_w)
         if result is not None:
             chosen = "\n".join(result[0])
             break
@@ -252,7 +302,15 @@ def reformat(orig: str, max_w: float, max_w_relaxed: float = None):
     return chosen
 
 
-def process_data(data, sections, max_w, sample_limit=20, max_w_relaxed=None):
+def process_data(
+    data,
+    sections,
+    max_w,
+    sample_limit=20,
+    max_w_relaxed=None,
+    aggressive_3line_max_w=None,
+    preserve_pacing=True,
+):
     stats = {}
     samples = []
     for section in sections:
@@ -278,7 +336,13 @@ def process_data(data, sections, max_w, sample_limit=20, max_w_relaxed=None):
             if orig_n < 2:
                 continue
 
-            new_ko = reformat(ko, max_w, max_w_relaxed=max_w_relaxed)
+            new_ko = reformat(
+                ko,
+                max_w,
+                max_w_relaxed=max_w_relaxed,
+                aggressive_3line_max_w=aggressive_3line_max_w,
+                preserve_pacing=preserve_pacing,
+            )
             if new_ko is None:
                 sec_stats["skipped"] += 1
                 continue
@@ -320,6 +384,24 @@ def main():
         help="원본이 max-width 초과 시 허용할 상한 (DLC 케이스 등)",
     )
     ap.add_argument(
+        "--aggressive-short-lines",
+        action="store_true",
+        help="3줄 메시지 한정으로 max_w 상한을 aggressive-max-width까지 늘려 공격적 압축",
+    )
+    ap.add_argument(
+        "--aggressive-max-width",
+        type=float,
+        default=24.0,
+        help="--aggressive-short-lines 모드에서 사용할 max_w 상한 (default: 24)",
+    )
+    ap.add_argument(
+        "--no-preserve-pacing",
+        dest="preserve_pacing",
+        action="store_false",
+        default=True,
+        help="의도적 페이싱(짧은 외침 + 강조부호) 보존 규칙 해제",
+    )
+    ap.add_argument(
         "--sections",
         default="scemsg,scemsg_patch",
         help="쉼표로 구분된 섹션 목록 (default: 대사 섹션만)",
@@ -332,9 +414,13 @@ def main():
     data = json.loads(raw.decode("utf-8"))
     sections = [s.strip() for s in args.sections.split(",") if s.strip()]
 
+    aggressive_3line = args.aggressive_max_width if args.aggressive_short_lines else None
+
     stats, samples = process_data(
         data, sections, args.max_width, args.sample,
         max_w_relaxed=args.max_width_relaxed,
+        aggressive_3line_max_w=aggressive_3line,
+        preserve_pacing=args.preserve_pacing,
     )
 
     print(f"=== max_width={args.max_width}, sections={sections} ===")

@@ -1,5 +1,48 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-17: dialog-condense 2차 — 짧은 라인 공격적 압축 (3줄 → 2줄 376건 추가)
+
+### 배경
+1차에서 max_width=22 / DLC relaxed 24로 502건 줄 재정리 완료 후, 사용자가
+"3줄인데 각 줄 글자수가 너무 적은 것"을 더 찾으라고 지시.
+
+### 분석
+- 남은 3줄 메시지 966개 — 각 줄 폭 p50: min=14.5 / avg=15.8 / max=17.0, joined p50=48
+- JP 원문 폭 분포: p50=22, p95=28, max=31 (한 줄 24폭 안전)
+- max_w=24로 완화 시 3줄→2줄 가능 후보 **376개** 발견
+
+### 협의 (codex + gemini)
+- gemini: "max_width 24 안전, 합산 ≤ 48 + max ≤ 24 대상 약 300~400건 압축 권장"
+- codex: "기본 22 유지, 남은 3줄에 한해 24 완화. 짧은 외침 + 모든 줄 짧음 보존"
+- 수렴: 3줄 한정 공격 모드 + 페이싱 보존 강화
+
+### 도구 개선 (`tools/condense_dialogs.py`)
+- `--aggressive-short-lines`: 3줄 원본일 때만 max_w 상한을 `--aggressive-max-width`(기본 24)로 상향
+- `--no-preserve-pacing`: 의도적 페이싱(모든 줄 < 8자 + !?… 종결) 보존 규칙 해제
+- 새 함수 `is_intentional_pacing()`: 짧은 외침 연속 판정
+- 단어 중간 자르기·placeholder·화자명·5자 미만 강조 보존은 1차 그대로
+
+### 결과
+- 적용: 본편 scemsg **376건** 3→2 전환 (단어 경계 split, max_w ≤ 24)
+- 줄 수 분포: 1줄 388 / 2줄 1245 (+376) / 3줄 590 (-376)
+- KO 라인 폭 p95: 21.5 → 23.5 (JP p95=28 대비 안전 마진 4.5)
+- OOR 감사: 707개 (변경 전후 동일 — 우리 변경으로 OOR 증가 없음)
+- macOS Vita3K 경로 배포 완료 (NinPri.cpk 455MB / NinPriPatch.cpk 25.7MB)
+
+### 누적 (1차 + 2차)
+| 분포 | 원본 | 1차 후 | 2차 후 |
+|---|---|---|---|
+| 1줄 | 288 | 352 | 388 |
+| 2줄 | 626 | 869 | 1245 |
+| 3줄 | 1273 | 966 | 590 |
+| 총 변경 | - | 502 | +376 (누적 878) |
+
+### 산출물
+- `tools/condense_dialogs.py` (옵션 추가)
+- `tools/analyze_short_lines.py`, `tools/analyze_jp_width.py`, `tools/check_pacing_preservation.py` (분석/검증)
+- `translations/jp_messages.json` (376건 ko 갱신)
+- `output/NinPri_final.cpk`, `output/NinPriPatch_final.cpk` (패치 빌드)
+
 ## 2026-05-17: dialog-condense — 본편+DLC 대사 띄어쓰기 기반 줄 재정리
 
 ### 배경
