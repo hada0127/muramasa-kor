@@ -1,5 +1,47 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-16: dlc-menu-renshu-fix — "연 습" → "단 련" 텍스처 수정
+
+### 배경
+이슈 #2 (v0.7.0) 항목 4: DLC 1 바케네코편 메뉴 화면 하단 "연습" 라벨이 게임 내 설명("단련")과 불일치.
+1차 분석에서 NMS/mbs/git history 모두 출처 식별 실패 (fail.md 기록) → deferred 처리.
+
+### 사용자 단서
+사용자 통찰: "크리타 텍스쳐 파일에 연습 있을꺼야. 중간에 띄어쓰기 되어서 '연 습'으로 되어 있을 수도".
+
+### 발견
+`textures/work/DF66CADDABE022E3.kra` (Krita 파일, 7개 .kra 중 1개) 안 layer14:
+- `<text id="shape0" ...>연 습</text>` (SVG shape layer, viewBox 4096x4096, position 1876,3086, font size 21pt × 8x scale)
+- maindoc.xml에 `name="연 습"` 라벨
+
+같은 파일에 다른 메뉴 라벨도 있음:
+- "능 력", "장 비", "결 정", "뒤 로", "저장하기", "불러오기", "새게임", "설정", "기본 설정", "게임 스타일 선택", "아이템 바로가기", "소유한 칼", "승리!", "전투!", "능력 레벨", "장신구", "효 과", "저장", "기술", "조작" 등 → DLC 메인 UI atlas
+
+### 해결
+1. **.kra 파일 백업**: `textures/work/DF66CADDABE022E3.kra.bak_renshu`
+2. **layer14 SVG 수정**: `<text>연 습</text>` → `<text>단 련</text>`
+3. **maindoc.xml name 수정**: `name="연 습"` → `name="단 련"`
+4. **Krita CLI export**: `/Applications/krita.app/Contents/MacOS/krita --export ... --export-filename ...` → 4096x4096 RGBA PNG
+5. **설치**:
+   - `kr_textures/ui/DF66CADDABE022E3.png` (리포 사본)
+   - `~/.../Vita3K/textures/import/PCSE00240/DF66CADDABE022E3.png` (게임 import)
+
+### 검증
+- 변경 픽셀: 17,333개 (0.1033%) — 의도된 영역만 변경
+- 변경 bbox: x=(1876, 2211), y=(2947, 3122) — 정확히 layer14 위치
+- 시각 확인: "단 련" 글자 깔끔히 렌더링 (temp/preview/danryeon_check.png)
+
+### 사용자 인-게임 검증 (가능해진 시점에)
+- DLC 1 바케네코편 진입 → 메뉴 화면 → "단 련" 라벨 표시 확인
+- 메뉴 선택 시 게임 내 설명 (sysmsg #486-488 "단련에 대하여...") 과 용어 일치
+
+### 1차 분석 실패 → 사용자 단서로 성공한 패턴
+- NMS/mbs 검색만으로는 .kra Krita 작업 파일의 SVG text layer를 검출할 수 없음
+- 사용자가 작업 도구(Krita)에 대한 직관적 단서 제공 → 즉시 발견
+- 향후 텍스처 출처 식별 시 `textures/work/*.kra` SVG layer name 검색 추가 고려
+
+---
+
 ## 2026-05-16: battle-result-time-fix — 결과창 hh:mm:ss 콜론 깨짐 수정 ("봐" SJIS 재배치)
 
 ### 배경
