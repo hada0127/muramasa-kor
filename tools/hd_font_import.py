@@ -161,6 +161,31 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
             gy = y + (cs - gh) // 2 - bbox[1]
         draw.text((gx, gy), ch, font=font_ascii, fill=dcolor)
 
+    # Fullwidth-punctuation overlay: when the game emits raw SJIS 0x81xx bytes
+    # (e.g. battle result hh:mm:ss timer hardcoded in eboot.bin using 0x8146
+    # full-width colon) it reads KANJI texture local cell (b2 - 0x40) + 448.
+    # Cell 454 originally held Korean "봐" — relocated to 0x8EEF (local 974)
+    # in kr_sjis_mapping.json so we can draw the ASCII colon glyph here.
+    FULLWIDTH_OVERLAY = {
+        454: ':',  # 0x8146 fullwidth colon → battle result timer "0:00:19"
+    }
+    for local_cell, ch in FULLWIDTH_OVERLAY.items():
+        row = local_cell // cols
+        col = local_cell % cols
+        x, y = col * cs, row * cs
+        if fmt == "white":
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(255, 255, 255, 0))
+            dcolor = (255, 255, 255, 255)
+        else:
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
+            dcolor = (247, 247, 247, 255)
+        bbox = font_ascii.getbbox(ch)
+        gw = bbox[2] - bbox[0]
+        gh = bbox[3] - bbox[1]
+        gx = x + (cs - gw) // 2 - bbox[0]
+        gy = y + (cs - gh) // 2 - bbox[1]
+        draw.text((gx, gy), ch, font=font_ascii, fill=dcolor)
+
     # Downscale to max_dim if needed
     if w > max_dim or h > max_dim:
         ds = max_dim / max(w, h)

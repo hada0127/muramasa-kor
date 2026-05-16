@@ -1,5 +1,56 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-16: battle-result-time-fix — 결과창 hh:mm:ss 콜론 깨짐 수정 ("봐" SJIS 재배치)
+
+### 배경
+이슈 #2 (v0.7.0) 항목 3: DLC 1 바케네코편 전투 결과창 첫 줄 "시간" 값이 "0봐 0 0봐 1 9" 형태로 깨짐.
+
+### 원인 진단 (PDCA)
+- 화면 분석: 정상 의도 `"0:00:19"` (hh:mm:ss) 시간 표시
+- 게임 코드(eboot.bin)가 시간 출력 포맷 `"%d：%d：%d"`에 **전각 콜론(`：`, SJIS 0x8146) hardcoded**
+- raw 0x8146 → 폰트 KANJI 페이지 local cell 6+448=454로 매핑
+- cell 454 = 한글 "봐" (SJIS 0x8C5E)와 동일 위치 → "봐" 글리프 표시
+- success.md 2026-04-13 fullwidth-normalize와 동일 메커니즘이지만 NMS가 아닌 게임 바이너리 hardcoded라 `_normalize_text()` 적용 불가
+
+### 검증
+- 빌드된 NMS 전체에 raw 0x8146 = 0회 (정규화 완벽)
+- 원본 NinPri _itemdata 595회, sysmsg 4회 — 모두 정규화됨
+- eboot.bin 검색은 압축으로 직접 식별 어려움 — 메커니즘으로 단정
+
+### 해결: A안 (success.md "덴 글자 복구" 패턴 차용)
+1. **"봐" SJIS 재배치**: `kr_sjis_mapping.json`에서 [140, 94] (0x8C5E) → [142, 239] (0x8EEF, local 974, ASCII zone period skip slot)
+2. **cell 454 콜론 오버레이**: `auto_font_import.py`/`hd_font_import.py`에 `FULLWIDTH_OVERLAY = {454: ':'}` 추가
+   - 게임 raw 0x8146 출력 → cell 454 → ":" 글리프 표시 (정상!)
+3. NMS의 "봐" (216회 출현)은 새 SJIS 0x8EEF로 인코딩 → cell 974에 자동 그려진 "봐" 글리프 표시
+
+### 검증 (빌드 후)
+- 빌드된 NMS의 봐(SJIS 0x8EEF) = 216회 (예상치 일치)
+- 옛 봐(SJIS 0x8C5E) = 0회 (완전 마이그레이션)
+- 폰트 텍스처 cell 454 = 콜론 ":" 글리프 (시각 확인)
+- 폰트 텍스처 cell 974 = "봐" 한글 글리프 (시각 확인)
+
+### 적용된 폰트 텍스처
+- A8E6FDD162258699 (메뉴 KANJI 폰트) — auto_font_import 재생성, 959 글리프
+- 8665CE082D339B33 (일반 KANJI 폰트) — auto_font_import 재생성, 959 글리프
+- 6706A53E1D94C16E (HD 폰트) — hd_font_import 재생성, 1024x1024 dark format
+
+### 빌드/패치
+- `python3 tools/build_patch.py` 재빌드 — sysmsg 574+963, _itemdata 878+1426 매칭 유지
+- `python3 tools/cpk_patch.py` 적용 — NinPri +149KB, NinPriPatch +282KB
+- macOS Vita3K 경로 설치: `~/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/`
+- 폰트 textures: macOS 경로 (`~/.../textures/import/PCSE00240/`) + 리포 `kr_textures/font/` 동기화
+
+### 백업
+- `translations/kr_sjis_mapping.json.bak_bwa`
+
+### 남은 검증 (사용자)
+- 결과창 시간: "0:00:19" 정상 표시 확인 (cell 454 콜론 적용)
+- NMS의 "봐" 73회 정상 표시 확인 (cell 974 새 봐 위치)
+- 전각 콜론(`：`)이 추가로 hardcoded인 다른 화면도 동일하게 정상화될 것
+- 다른 전각 punctuation (`！？（）％`) hardcoded 영향은 사용자 보고 발견 시 동일 방식으로 추가 (`FULLWIDTH_OVERLAY`)
+
+---
+
 ## 2026-05-15: currency-unify — 화폐 단위 통일 (A안: 냥/문 + 백분율 %)
 
 ### 배경
