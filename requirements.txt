@@ -3,6 +3,7 @@
 # Image processing
 Pillow>=10.0
 numpy>=1.24
+scipy>=1.10  # texture_localize.py auto_align mode (connected-component sprite mask)
 
 # Vita3K automation (Windows only)
 pyautogui>=0.9.54

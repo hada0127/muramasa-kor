@@ -152,7 +152,8 @@
       "size": "256x256",
       "description": "Restaurant/식당류 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Meals/Restaurant/Price/Money/Menu/mon/ryo",
       "status": "done",
-      "method": "각 영문 단어 bbox를 알파 클리어 후 동일 bbox에 한글 렌더링. 247C255A와 동일 단어는 같은 한글로 통일.",
+      "auto_align": true,
+      "method": "auto_align 모드: clear_rect 안에서 sprite mask(connected-component aspect+area) 제외 후 영문 alpha bbox 측정 → 한글 alpha bbox를 영문에 align/v_align/nudge로 정밀 정렬 + sprite 픽셀 보존. 247C255A와 동일 단어는 같은 한글로 통일.",
       "translations": {
         "Inventory": "보유",
         "Sold Out": "품절",
@@ -165,17 +166,17 @@
         "ryo": "냥"
       },
       "regions": [
-        {"x": 95,  "y": 0,   "w": 130, "h": 28, "clear": true, "text": "보유",   "font_size": 24, "align": "center"},
-        {"x": 95,  "y": 41,  "w": 105, "h": 28, "clear": true, "text": "품절",   "font_size": 24, "align": "center"},
-        {"x": 95,  "y": 64,  "w": 100, "h": 32, "clear": true, "text": "식사",   "font_size": 26, "align": "center"},
-        {"x": 0,   "y": 89,  "w": 220, "h": 38, "clear": true, "text": "식당",   "font_size": 34, "align": "center"},
-        {"x": 38,  "y": 124, "w": 56,  "h": 28, "clear": true, "clear_rect": {"x": 38, "y": 124, "w": 56, "h": 28}, "text": "가격",   "font_size": 24, "align": "right"},
-        {"x": 0,   "y": 161, "w": 120, "h": 30, "clear": true, "text": "소지금", "font_size": 24, "align": "center"},
-        {"x": 124, "y": 161, "w": 80,  "h": 30, "clear": true, "text": "메뉴",   "font_size": 24, "align": "center"},
-        {"x": 0,   "y": 184, "w": 38,  "h": 26, "clear": true, "clear_rect": {"x": 0, "y": 184, "w": 38, "h": 26}, "text": "냥",     "font_size": 22, "align": "center"},
-        {"x": 124, "y": 184, "w": 80,  "h": 24, "clear": true, "text": "문",     "font_size": 20, "align": "center"}
+        {"x": 95,  "y": 0,   "w": 130, "h": 28, "clear": true, "text": "보유",   "font_size": 22, "align": "center", "v_align": "center"},
+        {"x": 95,  "y": 41,  "w": 105, "h": 28, "clear": true, "text": "품절",   "font_size": 21, "align": "center", "v_align": "center"},
+        {"x": 95,  "y": 64,  "w": 100, "h": 32, "clear": true, "text": "식사",   "font_size": 20, "align": "left",   "v_align": "center", "nudge_x": 18, "nudge_y": -2},
+        {"x": 0,   "y": 89,  "w": 126, "h": 38, "clear": true, "clear_rect": {"x": 0, "y": 89, "w": 126, "h": 38}, "text": "식당",   "font_size": 18, "align": "center", "v_align": "center", "nudge_y": 3},
+        {"x": 38,  "y": 124, "w": 56,  "h": 27, "clear": true, "clear_rect": {"x": 38, "y": 124, "w": 56, "h": 27}, "text": "가격",   "font_size": 20, "align": "right",  "v_align": "center"},
+        {"x": 0,   "y": 161, "w": 120, "h": 30, "clear": true, "text": "소지금", "font_size": 18, "align": "left",   "v_align": "center", "nudge_y": -3},
+        {"x": 124, "y": 161, "w": 80,  "h": 30, "clear": true, "text": "메뉴",   "font_size": 20, "align": "left",   "v_align": "center"},
+        {"x": 0,   "y": 184, "w": 38,  "h": 26, "clear": true, "clear_rect": {"x": 0, "y": 184, "w": 38, "h": 26}, "text": "냥",     "font_size": 20, "align": "center", "v_align": "center"},
+        {"x": 124, "y": 184, "w": 80,  "h": 24, "clear": true, "text": "문",     "font_size": 17, "align": "left",   "v_align": "center"}
       ],
-      "notes": "2026-05-10 신규 발견. Restaurant/Meals가 있는 식당류 메뉴 텍스처. v2: Restaurant 박스 가로 220px → 식당 font_size=34. 料亭 한자(우측 x=219+, y=91+)는 보존(브랜드 스타일링). s5 상인 화면의 실제 Item/Inventory/Price 텍스처는 1D6742BBC0DDB7EC. v3: 사용자 보고 '숫자 0 출력 안됨' 검증 — 가격 region(30,124,100,28)가 디지트 sprite (96,126-116,146) 손상, 냥 region(0,184,60,26)가 우측 장식/디지트 sprite (38,186-56,205) 손상 → 가격 x=30→38,w=100→56 (영문 Price만 클리어), 냥 w=60→38 (디지트 보호)."
+      "notes": "2026-05-10 신규 발견. Restaurant/Meals가 있는 식당류 메뉴 텍스처. v2: Restaurant 박스 가로 220px → 식당 font_size=34. 料亭 한자(우측 x=219+, y=91+)는 보존(브랜드 스타일링). s5 상인 화면의 실제 Item/Inventory/Price 텍스처는 1D6742BBC0DDB7EC. v3: 사용자 보고 '숫자 0 출력 안됨' 검증 — 가격 region(30,124,100,28)가 디지트 sprite (96,126-116,146) 손상, 냥 region(0,184,60,26)가 우측 장식/디지트 sprite (38,186-56,205) 손상 → 가격 x=30→38,w=100→56 (영문 Price만 클리어), 냥 w=60→38 (디지트 보호). v4: 2026-05-17 사용자 식당 화면 잘림 보고 — 식당(34→26), 식사(26→22), 소지금(24→18), 문(20→17) 외 보유/품절/가격/메뉴/냥도 1D6742 상인 텍스처 패턴과 통일 (게임 sprite UV가 영문 단어 폭에 맞춰져 있어 한글이 그보다 크면 화면에서 잘림). v5: 사용자 추가 보고 '메뉴 행 하이라이트 박스 아래쪽 잘림' — 원본 Restaurant region(0,89,220,38) 안에 x=120~229,y=89~129의 흰색 가로 띠 sprite(메뉴 행 강조 박스)가 함께 들어있음. 기존 clear가 이 sprite를 손상시켜 게임에서 강조 박스 아래쪽 테두리 누락. 식당 region을 영문 글자 영역만 cover하도록 w=220→126, clear_rect 추가하여 sprite 보존. v6: 인-게임 v5 결과 추가 보고 — (1) 식당 한글 위쪽 잘림 = sprite UV가 텍스처 y 가운데에 매핑됨, top-align이 문제 → texture_localize.py에 v_align 옵션 추가, 모든 region을 v_align=center로 변경 + 식당 fs 26→22. (2) 소지금/문 우측 잘림 = sprite UV가 좌측 좁음 → center→left align. (3) 메뉴 fs 22→20 + left align. (4) 식사 fs 22→20 + left align. (5) 메뉴 행 강조 박스 하단 잘림 추가 = 풀-스캔으로 y=151,x=39~100의 추가 가로 띠 sprite 발견 (가격 region 안) → 가격 region h 28→27로 줄여 y=151 sprite 보존. v8: connected-component 기반 sprite 자동 보존 + 영문 alpha bbox에 한글 alpha bbox 자동 정렬 (텍스처 sprite UV 추정 정확도 ↑). 메뉴/문/강조 박스 잘림 모두 해소. v9: 인-게임 v8 결과 — (1) 식당 fs 22→18 + nudge_y +3 (위쪽 잘림 해결). (2) 식사 nudge_x +18 (좌측 한 글자 우측 이동). (3) 소지금 nudge_y -3 (살짝 위로). 문/강조 박스는 v8에서 이미 해결됨."
     },
     {
       "hash": "2E2003777A770327",

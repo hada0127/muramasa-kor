@@ -114,6 +114,14 @@
 - [x] tools/texture_localize.py에 `clear_rect` 옵션 추가 (한글 박스와 클리어 영역 분리)
 - [x] 사용자 인-게임 검증 통과: 메뉴 항목명(자루소바/청어소바/대나무수통 등) 한글 표시, 컬럼 헤더(보유/가격/품목) 한글, 화폐 단위(문/냥) 한글
 
+### 식당 화면 v4/v5 수정 (2026-05-17 사용자 보고)
+- [x] 547720A3B20C12AB v4: 식당(34→26), 식사(26→22), 소지금(24→18), 문(20→17) 외 보유/품절/가격/메뉴/냥도 1D6742 패턴과 통일 (sprite UV 범위 안에 한글 fit)
+- [x] 547720A3B20C12AB v5: Restaurant region 안의 메뉴 행 강조 박스 흰색 띠 sprite(x=128-229,y=89-129) 보존을 위해 식당 region w=220→126, clear_rect 좁힘 — sprite 픽셀 2077개 100% 보존 검증
+- [x] 547720A3B20C12AB v6: v_align 옵션 추가, 식당 fs 26→22, 소지금/문 left align, 가격 region h 28→27 (y=151 sprite 보존)
+- [x] 547720A3B20C12AB v7-v8: connected-component sprite mask 자동 보존 + 영문 alpha bbox 자동 측정 → 한글 alpha bbox 정밀 정렬
+- [x] 547720A3B20C12AB v9-v10: 잔여 잘림 nudge_x/nudge_y 미세 조정 (식당 fs 22→18 + ny+3, 식사 nx+18 + ny-2, 소지금 ny-3) — 사용자 인-게임 검증 통과
+- [x] **auto_align 로직 정식 통합** (2026-05-17): texture_localize.py에 compute_sprite_mask + _process_region_auto 추가, 텍스처 레벨 `auto_align: true` opt-in. nudge_x/nudge_y/v_align region 옵션. macOS/Linux/Windows Vita3K 경로 platform 분기 + VITA3K_EXPORT_DIR/VITA3K_IMPORT_DIR 환경변수 override 지원. 547720A3 통합 빌드 결과 v10 임시 빌드와 byte-for-byte 동일(md5 21cda33d) 검증. requirements.txt에 scipy 추가
+
 ## 핵심 기술 정보
 - **폰트**: RIDIBatang.otf 22px
 - **한글 매핑**: SJIS 0x89CD-0x8EE0 (960자, 셀 1644-2608)
