@@ -6,6 +6,9 @@ wii/
 /output/*.cpk
 extracted/
 extracted_wii/
+# DLC pack/GUI mbs/ftx extraction (local-only for FMBS/asset analysis,
+# regenerable from CPKs in ~5 minutes)
+extracted_dlc/
 output/
 dist/
 *.wbfs
