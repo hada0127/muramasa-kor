@@ -1,5 +1,56 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-17: 대사 정리 5단계 (2회차 수렴 패스) — Fixed-point 달성
+
+### 사용자 의도
+> "fixed-point 수렴을 위해 2회차(3→1→재빌드)를 한 번 더 돌려야 계산이 정확하다"
+
+1회차에서 마침표가 추가되며 글자 길이가 변동 → 같은 한도(max=40)로 알고리즘 한 번 더 실행하여 줄 분배 정확성을 회복하고, 새 줄 끝에서 발생하는 종결 누락도 다시 보정.
+
+### Step A — greedy max=40 (1차)
+`python3 tools/condense_dialogs.py --greedy-fill --aggressive-short-lines --aggressive-max-width 40 --apply`
+- **605건 적용** (모두 2줄 메시지의 단어 경계 재분배)
+- 줄 수 분포 변동 없음 (1회차에서 3줄→0줄 이미 달성)
+- 한 줄 폭 p50: 40.0 → 33.0 (균일화 진행)
+
+### Step B — fix_punctuation
+`python3 tools/fix_punctuation.py --apply`
+- **21건 적용**
+- 패턴: Step A에서 새로 노출된 첫 줄 끝(어절 경계)에 `…` 또는 `?` 추가
+- 모든 21건이 문장 흐름상 줄임표 종결이 자연스러운 위치 (의미 변경 X)
+
+### Step A 재실행 (2차) — cascading
+- **2건 추가**: Step B가 어절 중간에 부호를 추가하면서 다음 줄로 단어가 밀려 재분배 필요한 케이스
+- scemsg#201, scemsg#361 두 건
+
+### 수렴 검증
+- Step B 재실행: 0건
+- Step A 재실행: 0건
+- **Fixed-point 달성** ✅
+
+### 누적 (2회차 전체)
+- pre-pass2 vs final: **618개 메시지 변경**
+- 줄 수 분포: 1줄 1018 / 2줄 1205 / 3줄 0 (변동 없음)
+- 한 줄 폭 분포: p50=33.0, p95=57.0, p99=58.0, max=59.0
+- OOR 감사: 707개 (변경 없음)
+
+### 빌드 산출물
+- `/Users/tarucy/project/muramasa-kor/output/NinPri_final.cpk` 455,022,056 bytes (MD5 e4ad08f0024d95c583a2290291840930)
+- `/Users/tarucy/project/muramasa-kor/output/NinPriPatch_final.cpk` 25,682,312 bytes (MD5 024c76be7ddd80c8aa4f758922c7fd63)
+- macOS Vita3K 자동 배포 안 함 (사용자가 직접 적용 — `cp` 명령은 보고에 포함)
+
+### 사용자 직접 배포
+```
+cp output/NinPri_final.cpk      "$HOME/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/NinPri.cpk"
+cp output/NinPriPatch_final.cpk "$HOME/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/NinPriPatch.cpk"
+```
+
+### 1회차 경고 그대로 유지
+- 박스 추정 한도(29.5) 초과 줄 1,648 → 1,107로 일부 감소했으나 여전히 다수 존재
+- 인-게임 검증 시 박스 잘림 발견되면 별도 패스 필요
+
+---
+
 ## 2026-05-17: 대사 정리 4단계 — 마침표 보정 + 부호 뒤 공백 + Greedy fill (max=40)
 
 ### 사용자 보고 (정확 인용)
