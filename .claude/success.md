@@ -1,5 +1,56 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-17: 대사 정리 7차 — greedy max=27 + 부호 보정 수렴
+
+### 사용자 지시
+- 6차(max=26) 결과 검토 후 한도 상향: "27 ㄱㄱ"
+- 예시 메시지 "이글이글 타오르는 그 눈 일찍이 나조차 능가하는 괴묘가" = 폭 26.5
+  - max=26으로는 "괴묘가"가 둘째 줄로 밀림
+  - max=27이면 첫 줄에 포함 (사용자 의도)
+
+### 시작 상태
+- HEAD `0820f19` (6차 commit), working tree clean
+
+### 수렴 절차 (3회차에 fixed-point)
+| 라운드 | greedy(max=27) | fix_punc |
+|---|---|---|
+| 1차 | 563건 | 6건 |
+| 2차 | 6건 | 0건 |
+| 3차 | 0건 | 0건 |
+| **누적** | **569건** | **6건** |
+
+CLI:
+```bash
+python3 tools/condense_dialogs.py --greedy-fill \
+  --max-width 27 --greedy-max-width 27 \
+  --aggressive-short-lines --aggressive-max-width 27 --apply
+python3 tools/fix_punctuation.py --apply
+```
+
+### 검증 (scemsg + scemsg_patch)
+- 전체 라인: 4,163개 (max=26 대비 -451 — 줄 수 감소)
+- 라인 폭: p50=23.0 / p95=27.0 / p99=27.0 / max=27.0 (27 초과 0)
+- 줄 수 분포 (6차 → 7차):
+  - 1줄 496 → **514** (+18)
+  - 2줄 1418 → **1479** (+61)
+  - 3줄 308 → **229** (-79)
+  - 4줄+ 1 → **1**
+- OOR 감사: **707** (변경 전후 동일)
+
+### 예시 메시지 검증 (사용자 의도 일치)
+```
+이글이글 타오르는 그 눈 일찍이 나조차 능가하는 괴묘가  (w=26.5)  ← 첫 줄에 "괴묘가" 포함
+되었더냐. 자 시게마츠 놈에게 뼈저리게 알려 주거라,  (w=25.0)
+인간들을 저주하라.  (w=9.0)
+```
+
+### 빌드 + 배포
+- patch_main → NinPri_final.cpk: 455,022,056 bytes  md5 `0400db32aa8c5bb541d13158d95f3ca6`
+- patch_patch → NinPriPatch_final.cpk: 25,682,312 bytes  md5 `ee5c89b8109530048466b4933b791982`
+- macOS Vita3K(`~/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/`) 배포 후 md5 일치 확인
+
+---
+
 ## 2026-05-17: 대사 정리 5단계 (2회차 수렴 패스) — Fixed-point 달성
 
 ### 사용자 의도
