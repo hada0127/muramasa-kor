@@ -1262,3 +1262,24 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 ### 다음 검증
 - 사용자가 Vita3K 재시작 → 소바집 식당 화면 (s3/s6 reproduce) → 글씨 잘림 없는지 확인
 - 상인 화면 (s2/s5 reproduce) → "보유 | 가격 | 품목 | 소지금 | 문" 한글 출력 확인
+
+## 2026-05-17: Dialog cleanup 6th pass (greedy max=26, box-fit)
+
+### 결과
+- 사용자 명시 한도 max_width=26 적용 (예시: "이글이글 타오르는 그 눈 일찍이 나조차 능가하는" = 23폭)
+- 1줄→다줄 wrap, 2줄→3줄 overflow wrap 허용 (greedy 모드 한정)
+- 수렴 회차: greedy 522+309+4=835건, fix_punc 14+3=17건 (총 852건 변경)
+- 라인 폭: p50=22.5 / p95=26.0 / p99=26.0 / **max=26.0** (26 초과 0건)
+- 줄 수 분포: 1줄 496 / 2줄 1418 / 3줄 308 / 4줄 1
+- OOR: 707 (변동 없음)
+
+### 도구 개선 (`tools/condense_dialogs.py`)
+- greedy 모드에서 1줄 메시지의 should_skip 우회 (overflow wrap)
+- process_data: `1toN` / `wrap_grow` 통계 (2줄 → 3줄 등 줄 수 증가 허용)
+- reformat: greedy + 원본 max > target_max일 때 줄 수 증가 허용
+
+### 배포
+- macOS Vita3K: ~/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/
+- NinPri.cpk MD5: da9c971fa01644927e74527ac2cf1f12 (455,022,056 bytes)
+- NinPriPatch.cpk MD5: 605f20b49fe820e91d9a3721af773f5b (25,682,312 bytes)
+- 배포 MD5 = 빌드 MD5 검증 완료

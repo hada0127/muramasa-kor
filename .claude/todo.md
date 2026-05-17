@@ -277,3 +277,14 @@
   - 1줄: 288 → 352 → 388
   - 2줄: 626 → 869 → 1245
   - 3줄: 1273 → 966 → 590
+
+## 6th pass — greedy max=26 + 부호 보정 수렴 (2026-05-17)
+
+### 사용자 지시
+- max_width = 26 (사용자 명시: "이글이글 타오르는 그 눈 일찍이 나조차 능가하는 괴묘가" = 26)
+- greedy first-line fill 유지
+- 단계: greedy → fix_punc 수렴까지 반복 → 빌드 → macOS 배포 → 커밋
+
+### 시작 상태
+- ebd22cd HEAD, working tree clean
+- tools/condense_dialogs.py, fix_punctuation.py = 3321495 상태 (1/2차 검증된 코드)

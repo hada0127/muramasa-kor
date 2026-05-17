@@ -270,13 +270,33 @@ def reformat(
       None이면 비활성. 일반적으로 24~26 권장.
     - preserve_pacing: 의도적 페이싱(모든 줄 짧음 + 강조부호) 보존 여부.
     """
-    if should_skip(orig, max_w, preserve_pacing=preserve_pacing):
-        return None
+    # greedy_fill 모드에서는 1줄 메시지의 should_skip를 우회 (overflow wrap 용도)
+    if not greedy_fill:
+        if should_skip(orig, max_w, preserve_pacing=preserve_pacing):
+            return None
+    else:
+        # greedy 모드: 의도적 페이싱/placeholder/화자라벨/짧은-라인 등 보존만 SKIP
+        norm_chk = orig.replace("\r\n", "\n").replace("\r", "\n")
+        lines_chk = [l for l in norm_chk.split("\n") if l.strip()]
+        if not lines_chk:
+            return None
+        # 1줄 메시지인 경우: 폭이 greedy_max_w 이하라면 그대로 두기 (SKIP)
+        if len(lines_chk) == 1:
+            target_max = greedy_max_w if greedy_max_w is not None else max_w
+            if line_width(lines_chk[0]) <= target_max:
+                return None
+        else:
+            # 2줄 이상은 기존 should_skip 규칙 그대로 (페이싱 보존 등)
+            if should_skip(orig, max_w, preserve_pacing=preserve_pacing):
+                return None
 
     norm = orig.replace("\r\n", "\n").replace("\r", "\n")
     lines = [l for l in norm.split("\n")]
     n_lines = len([l for l in lines if l.strip()])
-    if n_lines < 2:
+    # greedy_fill 모드에서는 1줄도 처리 (overflow wrap 용도)
+    if n_lines < 2 and not greedy_fill:
+        return None
+    if n_lines < 1:
         return None
 
     # 단어 추출 (줄바꿈 제거 + 단어 분리)
@@ -296,9 +316,12 @@ def reformat(
         chosen = "\n".join(greedy_lines)
         if chosen == norm:
             return None
-        # 변경 없는데 줄 수만 늘었다면 거부 (예: 첫 줄이 단어 1개라 늘어남)
+        # 1줄 → N줄 wrap은 원본이 max를 초과하는 경우에만 허용
+        orig_max_width = max((line_width(l) for l in lines if l.strip()), default=0)
         if len(greedy_lines) > n_lines:
-            return None
+            # overflow wrap: 원본이 target_max를 초과하는 경우만 허용
+            if orig_max_width <= target_max:
+                return None
         return chosen
 
     # 원본 줄 폭 측정 (relaxed 한도 결정용)
@@ -387,7 +410,10 @@ def process_data(
                 continue
             sec_stats["total"] += 1
             orig_n = count_lines(ko)
-            if orig_n < 2:
+            # greedy_fill 모드는 1줄 overflow 메시지도 처리 (wrap 용도)
+            if orig_n < 2 and not greedy_fill:
+                continue
+            if orig_n < 1:
                 continue
 
             new_ko = reformat(
@@ -418,6 +444,10 @@ def process_data(
                     sec_stats["3to1"] += 1
                 elif orig_n == 2 and new_n == 1:
                     sec_stats["2to1"] += 1
+                elif new_n > orig_n:
+                    # 줄 수 증가 (overflow wrap): greedy 모드에서만 reformat이 허용
+                    sec_stats.setdefault("wrap_grow", 0)
+                    sec_stats["wrap_grow"] += 1
                 else:
                     sec_stats["skipped"] += 1
                     continue
