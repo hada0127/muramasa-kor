@@ -30,6 +30,9 @@
   python tools/condense_dialogs.py --sections scemsg        # 특정 섹션만
   python tools/condense_dialogs.py --max-width 22           # 폭 조정
   python tools/condense_dialogs.py --aggressive-short-lines # 3줄 짧은 라인 공격적 압축
+  python tools/condense_dialogs.py --greedy-fill --greedy-max-width 40 --apply
+                                                            # Greedy 위쪽부터 채우기
+                                                            # overflow 리포트는 temp/condense_overflow.txt
   python tools/condense_dialogs.py --sample 30              # 샘플 출력 개수
 """
 
@@ -158,6 +161,36 @@ def try_combine_to_n(words: list, target_n: int, max_w: float):
     return None
 
 
+def greedy_fill_words(words: list, max_w: float):
+    """Greedy fill: 첫 줄부터 max_w까지 단어를 채워 다음 줄로.
+
+    반환: list of lines. 항상 결과를 만들고, 단어 단위 split만 사용.
+    placeholder는 하나의 word로 들어와 있으므로 그대로 보존됨.
+    """
+    if not words:
+        return []
+    space = 0.5
+    word_w = [line_width(w) for w in words]
+
+    lines = []
+    cur = []
+    cur_w = 0.0
+    for i, w in enumerate(words):
+        # 현재 줄에 추가 가능?
+        add_w = word_w[i] if not cur else word_w[i] + space
+        if cur and cur_w + add_w > max_w:
+            # 현재 줄 종료
+            lines.append(" ".join(cur))
+            cur = [w]
+            cur_w = word_w[i]
+        else:
+            cur.append(w)
+            cur_w += add_w
+    if cur:
+        lines.append(" ".join(cur))
+    return lines
+
+
 def is_intentional_pacing(lines: list, threshold: float = 8.0) -> bool:
     """의도적 페이싱(짧은 외침 연속) 판정.
 
@@ -222,6 +255,8 @@ def reformat(
     max_w_relaxed: float = None,
     aggressive_3line_max_w: float = None,
     preserve_pacing: bool = True,
+    greedy_fill: bool = False,
+    greedy_max_w: float = None,
 ):
     """원본 ko 문자열을 압축/재정리한 새 문자열 반환. 변경 없으면 None.
 
@@ -250,6 +285,21 @@ def reformat(
     words = flat.split(" ")
     if not words:
         return None
+
+    # Greedy fill 모드: 첫 줄을 greedy_max_w까지 채우는 단순 wrap
+    if greedy_fill:
+        target_max = greedy_max_w if greedy_max_w is not None else max_w
+        # 너무 큰 단어가 있으면 한 줄에 못 넣음 → 그래도 그 단어는 자체 줄에 둠
+        greedy_lines = greedy_fill_words(words, target_max)
+        if not greedy_lines:
+            return None
+        chosen = "\n".join(greedy_lines)
+        if chosen == norm:
+            return None
+        # 변경 없는데 줄 수만 늘었다면 거부 (예: 첫 줄이 단어 1개라 늘어남)
+        if len(greedy_lines) > n_lines:
+            return None
+        return chosen
 
     # 원본 줄 폭 측정 (relaxed 한도 결정용)
     orig_widths = [line_width(l) for l in lines if l.strip()]
@@ -310,9 +360,13 @@ def process_data(
     max_w_relaxed=None,
     aggressive_3line_max_w=None,
     preserve_pacing=True,
+    greedy_fill=False,
+    greedy_max_w=None,
+    overflow_threshold=29.5,
 ):
     stats = {}
     samples = []
+    overflow = []  # (section, id, max_w_in_msg, lines)
     for section in sections:
         sd = data.get(section)
         if not sd or "messages" not in sd:
@@ -342,6 +396,8 @@ def process_data(
                 max_w_relaxed=max_w_relaxed,
                 aggressive_3line_max_w=aggressive_3line_max_w,
                 preserve_pacing=preserve_pacing,
+                greedy_fill=greedy_fill,
+                greedy_max_w=greedy_max_w,
             )
             if new_ko is None:
                 sec_stats["skipped"] += 1
@@ -366,11 +422,18 @@ def process_data(
                     sec_stats["skipped"] += 1
                     continue
             sec_stats["modified"] += 1
+            # overflow 검사
+            new_lines = new_ko.split("\n")
+            new_widths = [line_width(l) for l in new_lines if l.strip()]
+            if new_widths and max(new_widths) > overflow_threshold:
+                overflow.append(
+                    (section, m.get("id"), max(new_widths), new_lines)
+                )
             if len(samples) < sample_limit:
                 samples.append((section, m.get("id"), m.get("ja", ""), ko, new_ko))
             m["_new_ko"] = new_ko  # apply 단계에서 사용
         stats[section] = sec_stats
-    return stats, samples
+    return stats, samples, overflow
 
 
 def main():
@@ -406,6 +469,23 @@ def main():
         default="scemsg,scemsg_patch",
         help="쉼표로 구분된 섹션 목록 (default: 대사 섹션만)",
     )
+    ap.add_argument(
+        "--greedy-fill",
+        action="store_true",
+        help="Greedy 위쪽부터 채움 모드 (첫 줄을 max까지 채우고 다음 줄로). 균형 분배 대신 사용.",
+    )
+    ap.add_argument(
+        "--greedy-max-width",
+        type=float,
+        default=None,
+        help="--greedy-fill 모드의 한 줄 max 폭 (기본: --max-width-relaxed)",
+    )
+    ap.add_argument(
+        "--overflow-threshold",
+        type=float,
+        default=29.5,
+        help="이 폭 초과 줄은 별도 리포트로 기록 (default: 29.5, 박스 추정 한도)",
+    )
     ap.add_argument("--sample", type=int, default=15)
     args = ap.parse_args()
 
@@ -416,11 +496,18 @@ def main():
 
     aggressive_3line = args.aggressive_max_width if args.aggressive_short_lines else None
 
-    stats, samples = process_data(
+    greedy_max_w = args.greedy_max_width
+    if args.greedy_fill and greedy_max_w is None:
+        greedy_max_w = args.max_width_relaxed
+
+    stats, samples, overflow = process_data(
         data, sections, args.max_width, args.sample,
         max_w_relaxed=args.max_width_relaxed,
         aggressive_3line_max_w=aggressive_3line,
         preserve_pacing=args.preserve_pacing,
+        greedy_fill=args.greedy_fill,
+        greedy_max_w=greedy_max_w,
+        overflow_threshold=args.overflow_threshold,
     )
 
     print(f"=== max_width={args.max_width}, sections={sections} ===")
@@ -442,6 +529,24 @@ def main():
         print(f"  ko new ({count_lines(new_ko)}줄):")
         for l in new_ko.split("\n"):
             print(f"    | {l}  (w={line_width(l):.1f})")
+
+    # Overflow 리포트
+    if overflow:
+        ovf_path = PROJECT / "temp" / "condense_overflow.txt"
+        ovf_path.parent.mkdir(exist_ok=True)
+        with ovf_path.open("w", encoding="utf-8") as f:
+            f.write(f"# condense_dialogs overflow report (threshold={args.overflow_threshold})\n")
+            f.write(f"# 총 {len(overflow)}개 메시지의 변환 결과가 box 한도 초과\n\n")
+            for sec, mid, mw, lines in overflow:
+                f.write(f"[{sec}#{mid}] max_w={mw:.1f}\n")
+                for l in lines:
+                    if not l.strip():
+                        continue
+                    w = line_width(l)
+                    mark = " ← OVF" if w > args.overflow_threshold else ""
+                    f.write(f"  | {l}  (w={w:.1f}){mark}\n")
+                f.write("\n")
+        print(f"\n[OVERFLOW] {len(overflow)}개 메시지 → {ovf_path}")
 
     if args.apply:
         applied = 0

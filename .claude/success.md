@@ -1,5 +1,97 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-17: 대사 정리 4단계 — 마침표 보정 + 부호 뒤 공백 + Greedy fill (max=40)
+
+### 사용자 보고 (정확 인용)
+> "위와 같이 줄 바뀜이 바뀌면서, 마침표가 없어서 가독성이 떨어지는 경우들이 굉장히 많이 생김. ... 결정 아래 우측 기준까지 닿을려면 한참 더 남아 보임. ... 40 기준으로 위쪽부터 채우는 알고리즘으로 가는게 맞을꺼 같다. 그리고 점 3개(...)뒤와 마침표 뒤에 같은 줄에 문장이 더 있을 경우는 공백 한칸씩 추가해주는게 가독성에 더 좋을듯."
+
+### 외부 AI 협의 결과 (codex + gemini — 수렴)
+- 부호 매핑: `。→.` `！→!` `？→?` `…→…`
+- `か` 종결: KO 어미가 명확 의문형(까/느냐/더냐/는가/인가/리오/이오 등)일 때만 `?`. 평서면 `.`
+- 줄 내 두 문장 결합: 매핑 확실 시 `. ` 삽입. 의심 케이스는 자동 보류 + 별도 리포트
+- 부호 뒤 공백: `. ` `… ` `! ` `? ` `, ` 권장. 연속 부호는 마지막 뒤에만
+- greedy fill: 새 옵션 `--greedy-fill` 추가. 기본 동작 변경 X
+- max_w=40 위험: ≥29.5 줄은 별도 리포트
+- orphan: greedy 그대로 유지 (사용자 의도)
+
+### Step 1+2 — 마침표 보정 + 부호 뒤 공백 (`tools/fix_punctuation.py` 신규)
+**적용 결과**: scemsg 519개 메시지 변경
+- step1_changed: 130 (종결 부호 보정)
+- step2_changed: 401 (부호 뒤 공백 추가)
+- both_changed: 12
+- overflow_after: 47 (공백 추가 후 폭 28 초과) → `temp/punctuation_overflow.txt`
+
+**룰 요약**:
+- JP 줄말미 부호 → KO 대응 줄에 부호 추가 (마지막 줄 / JP-KO 줄 수 같을 때 중간 줄)
+- JP「か」 종결 + KO 의문 종결어미면 `?`, KO 평서/명령 종결이면 `.`
+- JP 평서 종결(のじゃ/だ/だぞ 등) + KO 평서/명령 종결이면 `.`
+- 줄 안 두 문장 결합(보수적 화이트리스트): 종결어미 + 공백 + 한글 → `. ` 삽입
+- 연결어미(그리고/면서/지만 등)로 끝나는 줄에는 부호 추가 보류
+- 따옴표 불균형, placeholder 포함 메시지는 자동 수정 SKIP
+
+**사용자 예시 케이스 정상 처리**:
+```
+化猫(괴묘) 메시지
+OLD: "...되었더냐 자 시게마츠 놈에게... / 저주하라"
+NEW: "...되었더냐. 자 시게마츠 놈에게... / 저주하라."
+```
+
+### Step 3 — Greedy fill 알고리즘 + max=40 (`tools/condense_dialogs.py` 개선)
+**개선 사항**:
+- 새 옵션 `--greedy-fill` + `--greedy-max-width 40` 추가
+- 기존 균형 분배 대신 첫 줄을 max까지 채우고 다음 줄로 단어 단위 wrap
+- `--overflow-threshold 29.5` (박스 추정 한도) 초과 줄은 별도 리포트
+- placeholder/화자 라벨/짧은 외침/페이싱 보존 로직 그대로
+
+**적용 결과**: scemsg 1,835개 메시지 변경
+- 2→1줄: 630
+- 3→2줄: 120
+- balance(같은 줄 수, 재분배): 1085
+
+**줄 수 분포** (scemsg):
+| 분포 | 적용 전 (2차) | 적용 후 (4차) |
+|---|---|---|
+| 1줄 | 388 | 982 (+594) |
+| 2줄 | 1245 | 1205 (-40) |
+| 3줄 | 590 | 0 (-590) |
+
+**라인 폭 분포**:
+| 통계 | 적용 전 | 적용 후 |
+|---|---|---|
+| p50 | 17.0 | 37.0 |
+| p95 | 23.5 | 40.0 |
+| max | 29.5 | 40.0 |
+
+**위험 (overflow)**: 박스 한도(29.5) 초과 **1648 메시지** → `temp/condense_overflow.txt`
+- 사용자가 명시한 max=40 한도 그대로 적용
+- 게임 박스 실제 가용 폭은 인-게임 확인 필요
+
+### Step 4 — 빌드 (자동 배포 X)
+**OOR 감사**: 707개 (변경 전후 동일)
+
+**CPK 패치 결과**:
+- `output/NinPri_final.cpk`: 455,022,056 bytes  
+  MD5: `14b092fe835ba697364c00516fff96d4`
+- `output/NinPriPatch_final.cpk`: 25,682,312 bytes  
+  MD5: `626cce4a590f9c38d51b539b52e411aa`
+
+**macOS Vita3K 배포**: 사용자 직접 (자동 cp 금지)
+```bash
+cp output/NinPri_final.cpk      "$HOME/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/NinPri.cpk"
+cp output/NinPriPatch_final.cpk "$HOME/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/NinPriPatch.cpk"
+```
+
+### 산출물
+- `tools/fix_punctuation.py` (신규)
+- `tools/condense_dialogs.py` (`--greedy-fill` + overflow 리포트)
+- `translations/jp_messages.json` (519 + 1835 갱신)
+- `output/NinPri_final.cpk`, `output/NinPriPatch_final.cpk`
+- `temp/punctuation_overflow.txt` (47 메시지)
+- `temp/condense_overflow.txt` (1648 메시지)
+- `patch_main/`, `patch_patch/` NMS 갱신
+
+---
+
 ## 2026-05-17: place-name-consistency — 지명 텍스처 ↔ 시스템 메시지 한글 표기 통일
 
 ### 사용자 보고
