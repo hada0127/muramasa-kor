@@ -31,13 +31,66 @@ EXPORT_DIR = os.environ.get("VITA3K_EXPORT_DIR", os.path.join(VITA3K_ROOT, "text
 IMPORT_DIR = os.environ.get("VITA3K_IMPORT_DIR", os.path.join(VITA3K_ROOT, "textures", "import", "PCSE00240"))
 HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
 
-# Glyph outline: RIDIBatang base font with 2px black stroke for visibility on
-# light backgrounds. Body size reduced from 22→20 (Hangul) and 18→16 (ASCII)
-# to leave room for the stroke within the 32px cell.
-STROKE_WIDTH = 2
-STROKE_FILL = (0, 0, 0, 255)
+# Glyph outline: 1.5px black stroke at 50% opacity (alpha=128). Since PIL only
+# accepts integer stroke widths, fractional strokes are rendered via 2x
+# supersampling (glyph drawn at 2x with stroke=3, then LANCZOS-downsampled to
+# the target cell size). 1.5px sits between the too-thick 2px and too-thin 1px
+# in small-cell rendering. Body kept at 20pt (Hangul) / 16pt (ASCII).
+STROKE_WIDTH = 1.5
+STROKE_FILL = (0, 0, 0, 128)
 KR_BODY_PT = 20
 ASCII_BODY_PT = 16
+
+_FONT_CACHE = {}
+
+def _get_font(font_path, size):
+    key = (font_path, size)
+    if key not in _FONT_CACHE:
+        _FONT_CACHE[key] = ImageFont.truetype(font_path, size)
+    return _FONT_CACHE[key]
+
+
+def draw_centered_glyph(img, x, y, cs, ch, font_path, body_pt, fill, stroke_fp,
+                        stroke_fill, align="center"):
+    """Draw a glyph centered in cell (x..x+cs, y..y+cs) on RGBA img.
+
+    align:
+      "center"       — centered in cell
+      "bottom-left"  — Korean punctuation '.'/',' (2px from left, 4px from bottom)
+      "colon-left"   — ':' slightly left of center (8px from left edge)
+
+    Fractional stroke_fp is rendered via 2x supersampling so non-integer
+    strokes like 1.5px get a clean AA edge after downsample.
+    """
+    ss = 1 if float(stroke_fp).is_integer() else 2
+    s_cs = int(cs * ss)
+    s_pt = int(round(body_pt * ss))
+    s_stroke = int(round(stroke_fp * ss))
+
+    glyph = Image.new("RGBA", (s_cs, s_cs), (0, 0, 0, 0))
+    gd = ImageDraw.Draw(glyph)
+    f = _get_font(font_path, s_pt)
+    tb = gd.textbbox((0, 0), ch, font=f, stroke_width=s_stroke)
+    gw = tb[2] - tb[0]
+    gh = tb[3] - tb[1]
+    # Padding scales with cs so HD bases (cs=128) match 1x semantics (cs=32)
+    if align == "bottom-left":
+        pad_l = (cs // 16) * ss   # 2px@32 / 8px@128
+        pad_b = (cs // 8) * ss    # 4px@32 / 16px@128
+        gx = pad_l - tb[0]
+        gy = s_cs - gh - pad_b - tb[1]
+    elif align == "colon-left":
+        pad_l = (cs // 4) * ss    # 8px@32 / 32px@128
+        gx = pad_l - tb[0]
+        gy = (s_cs - gh) // 2 - tb[1]
+    else:
+        gx = (s_cs - gw) // 2 - tb[0]
+        gy = (s_cs - gh) // 2 - tb[1]
+    gd.text((gx, gy), ch, font=f, fill=fill, stroke_width=s_stroke,
+            stroke_fill=stroke_fill)
+    if ss > 1:
+        glyph = glyph.resize((cs, cs), Image.LANCZOS)
+    img.alpha_composite(glyph, (x, y))
 
 # File to track which imports are font textures (so we only clean those)
 FONT_HASH_RECORD = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".font_hashes.json")
@@ -167,7 +220,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         mapping = json.load(f)
     kr_map = mapping['korean_to_sjis']
 
-    font = ImageFont.truetype(font_path, KR_BODY_PT)
+    # font/ascii_font no longer used directly — draw_centered_glyph caches them.
     cs = 32
     # SJIS code for space glyph (unused Korean char '빕' repurposed as blank)
     SPACE_SJIS = (0x8C, 0x6D)
@@ -203,13 +256,8 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
             color = (247,247,247,255)
 
-        bbox = font.getbbox(kr_char)
-        gw = bbox[2] - bbox[0]
-        gh = bbox[3] - bbox[1]
-        gx = x + (cs - gw) // 2 - bbox[0]
-        gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), kr_char, font=font, fill=color,
-                  stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
+        draw_centered_glyph(img, x, y, cs, kr_char, font_path, KR_BODY_PT,
+                            color, STROKE_WIDTH, STROKE_FILL)
 
     # Clear the space glyph slot (make it transparent = blank space)
     if 0 <= space_local < 1024:
@@ -232,7 +280,6 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     # Skip cells that Korean was relocated into (e.g. cells 993-1003 for
     # 둔/둘/둠/둥/둬/뒤/뒷/드/득/든). Those Korean glyphs were already drawn
     # above and must not be overwritten by ASCII letters.
-    ascii_font = ImageFont.truetype(font_path, ASCII_BODY_PT)  # smaller for ASCII
     pos = 960
     for code in range(0x20, 0x7F):
         if pos >= 1024:
@@ -256,18 +303,9 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             else:
                 draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
                 acolor = (247,247,247,255)
-            bbox = ascii_font.getbbox(ch)
-            gw = bbox[2] - bbox[0]
-            gh = bbox[3] - bbox[1]
-            if ch in '.,':
-                # Korean punctuation: bottom-left aligned
-                gx = x + 2 - bbox[0]
-                gy = y + cs - gh - 4 - bbox[1]
-            else:
-                gx = x + (cs - gw) // 2 - bbox[0]
-                gy = y + (cs - gh) // 2 - bbox[1]
-            draw.text((gx, gy), ch, font=ascii_font, fill=acolor,
-                      stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
+            align = "bottom-left" if ch in '.,' else "center"
+            draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
+                                acolor, STROKE_WIDTH, STROKE_FILL, align=align)
         pos += 1
 
     # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
@@ -294,24 +332,18 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
             dcolor = (247,247,247,255)
         ch = chr(code)
-        bbox = ascii_font.getbbox(ch)
-        gw = bbox[2] - bbox[0]
-        gh = bbox[3] - bbox[1]
         if ch in '.,':
-            gx = x + 2 - bbox[0]
-            gy = y + cs - gh - 4 - bbox[1]
+            align = "bottom-left"
         elif ch == ':':
             # Position colon slightly left of cell center: 'Form:%s' game text
             # uses raw byte output where the colon's neighbor glyph is rendered
             # close. Pure left-align made ':' touch 'm'; centered made the
             # next Hangul touch ':'. ~8px offset balances both sides.
-            gx = x + 8 - bbox[0]
-            gy = y + (cs - gh) // 2 - bbox[1]
+            align = "colon-left"
         else:
-            gx = x + (cs - gw) // 2 - bbox[0]
-            gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), ch, font=ascii_font, fill=dcolor,
-                  stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
+            align = "center"
+        draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
+                            dcolor, STROKE_WIDTH, STROKE_FILL, align=align)
 
     # Fullwidth-punctuation overlay: when the game emits raw SJIS 0x81xx bytes
     # (e.g. battle result hh:mm:ss timer hardcoded in game binary using 0x8146
@@ -331,13 +363,8 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         else:
             draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
             dcolor = (247,247,247,255)
-        bbox = ascii_font.getbbox(ch)
-        gw = bbox[2] - bbox[0]
-        gh = bbox[3] - bbox[1]
-        gx = x + (cs - gw) // 2 - bbox[0]
-        gy = y + (cs - gh) // 2 - bbox[1]
-        draw.text((gx, gy), ch, font=ascii_font, fill=dcolor,
-                  stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
+        draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
+                            dcolor, STROKE_WIDTH, STROKE_FILL)
 
     img.save(import_path)
     return len(korean_cells)
