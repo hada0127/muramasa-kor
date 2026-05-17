@@ -171,6 +171,138 @@ KO_INTRA_SAFE_Q_ENDINGS = [
     "이오",
 ]
 
+
+# ===== KO-only 분류 (JP 원문과 무관하게 자동 부호 추가) =====
+# codex + gemini 협의 수렴 (2026-05-17): 줄바꿈 재배치 후 종결어미만 명확하면 자동 추가.
+# Q 의문(?)/DECL 평서(.)/CMD 명령(.). 명사·호칭·짧은 감탄사는 SKIP.
+
+# 자동 의문(?) — 의문 종결어미가 매우 강한 케이스
+AUTO_Q_KO_ENDINGS = [
+    # 기존 strict
+    "더냐", "느냐", "는가", "는고", "런가", "인가", "인고",
+    "을까", "을꼬", "는지", "런지", "리오", "이오",
+    "리까", "리이까", "ㅂ니까", "습니까", "쏘냐", "이뇨", "느뇨",
+    # 협의 확장
+    "이냐", "거냐", "것이냐", "겠나", "잖나", "라니",
+    "이랴", "으랴", "랴",
+    # 어말 단음절 (보수적 — 분류 우선순위 마지막에 둠)
+    "까",
+    "느뇨", "이뇨",
+]
+
+# 자동 평서(.) — 명확한 평서 종결
+AUTO_DECL_KO_ENDINGS = [
+    # 기존 strict
+    "이로다", "되었다", "하였다", "되었더라", "하였더라", "되었더냐",
+    "구나", "도다", "노라", "리라", "이라네", "이라오",
+    "구먼", "구려", "ㅂ니다", "습니다", "니라", "이니라", "느니라",
+    # 협의 확장: 정중 평서
+    "합니다", "옵니다", "입니다", "답니다", "였답니다", "이옵니다",
+    "이올시다", "올시다",
+    # 의지·약속·추측·확인
+    "주마", "리다", "이리다", "겠지", "겠소", "겠어요",
+    "이로군", "로군", "이로세", "로세",
+    # 감탄·반어·존속어미
+    "지요", "이지요", "잖아", "지롱",
+    "다오", "거다", "이거다",
+    # 과거형
+    "는다", "었다",  # "있었다", "갔었다" 등
+    # 명령형 평서 (목적어 + 끝)
+    "마라", "해라",
+    # 단정
+    "었네", "였네", "다네", "이라네",
+]
+
+# 자동 명령(.)
+AUTO_CMD_KO_ENDINGS = [
+    "주거라", "거라", "어라", "아라", "오라",
+    "오너라", "셔라", "옵소서", "하라", "가라",
+    "있거라", "보거라", "들거라",
+]
+
+# 명사형 종결 SKIP — 인명·고유명사 어말 (호칭은 마침표 어색)
+HONORIFIC_NAMES_NOPUNCT = set([
+    # 인물 (이름 끝 마침표 어색)
+    "모모히메", "토라히메", "키스케", "오코이", "오보로",
+    "젠고로", "토모에", "단자부로", "야지로", "키치베에",
+    "마타이치", "사덴", "이치베에", "후타바", "쿠즈류",
+    "스이세이", "텐류", "타이로", "쇼군", "타이코",
+    # 호칭
+    "님", "씨", "공", "전",
+])
+
+# 평서로 자동 적용 시 false-positive 위험 — 길이 가드 적용 (10자 이상에서만)
+RISKY_DECL_ENDINGS = set([
+    "이다", "한다", "있다", "없다", "같다", "겠다", "이라",
+])
+
+# 명사/조사로 끝나는 경우 → SKIP (어절 마지막 글자 검사)
+KO_PARTICLES_END = set(["을", "를", "은", "는", "이", "가", "에", "의",
+                         "도", "만", "와", "과", "로", "랑", "께", "께서"])
+
+# 줄 중간/한 줄 두 문장 결합용 — 매우 보수적 강한 종결만
+# 연결어미·인용 충돌 가능한 어미(까/라니/이라/는다/었다)는 제외
+KO_INTRA_AUTO_DECL = [
+    "이로다", "되었다", "하였다", "되었더라", "하였더라", "되었더냐",
+    "주거라", "구나", "도다", "노라", "오너라",
+    "합니다", "옵니다", "입니다", "ㅂ니다", "습니다",
+    "리라", "이라오", "이라네",
+    "하라", "셔라", "옵소서",
+]
+
+KO_INTRA_AUTO_Q = [
+    "더냐", "느냐", "는가", "런가", "인가", "리오", "이오",
+    "습니까", "ㅂ니까",
+]
+
+
+def classify_ko_ending(line: str):
+    """KO 줄 끝 종결어미 분류. ('Q'|'DECL'|'CMD'|'RISKY_DECL'|None, end_str).
+
+    - 가장 긴 어미 우선 매칭
+    - 부호 이미 있으면 None
+    - 짧은 메시지 (1-2글자) 감탄사면 None
+    - 명사/조사 끝이면 None
+    """
+    s = line.rstrip()
+    if not s:
+        return (None, None)
+    last_ch = s[-1]
+    # 부호 이미 있음
+    if last_ch in ".!?…,)」』]":
+        return (None, None)
+    # 한글 아니면 SKIP
+    if not ("가" <= last_ch <= "힣"):
+        return (None, None)
+    # 너무 짧은 (1-2글자) — 보수적 SKIP
+    if len(s.replace(" ", "")) < 3:
+        return (None, None)
+    # 조사 끝
+    if last_ch in KO_PARTICLES_END:
+        return (None, None)
+    # 호칭/이름 끝 (마지막 어절이 화이트리스트)
+    last_word = s.split()[-1] if s.split() else ""
+    if last_word in HONORIFIC_NAMES_NOPUNCT:
+        return (None, None)
+    # 종결어미 매칭 (가장 긴 것 우선)
+    # CMD 우선 (가장 명확)
+    for end in sorted(AUTO_CMD_KO_ENDINGS, key=len, reverse=True):
+        if s.endswith(end):
+            return ("CMD", end)
+    for end in sorted(AUTO_Q_KO_ENDINGS, key=len, reverse=True):
+        if s.endswith(end):
+            return ("Q", end)
+    for end in sorted(AUTO_DECL_KO_ENDINGS, key=len, reverse=True):
+        if s.endswith(end):
+            return ("DECL", end)
+    for end in sorted(RISKY_DECL_ENDINGS, key=len, reverse=True):
+        if s.endswith(end):
+            # 길이 가드 (10자 이상) — 짧은 단일 단어 명사 종결 회피
+            if len(s.replace(" ", "")) >= 10:
+                return ("RISKY_DECL", end)
+            return (None, None)
+    return (None, None)
+
 # Placeholder 패턴
 PLACEHOLDER_RE = re.compile(r"@#?[c#]?\([\d,]+\)|@/[#c]|%[sd]")
 
@@ -362,10 +494,13 @@ def safe_append_punct_to_line(line: str, punct: str) -> str:
 # 종결어미 + 공백 + 한국어 새 문장 시작
 # 보수적 화이트리스트만 사용 (false positive 회피)
 INTRA_LINE_PATTERNS = []
-for end in KO_INTRA_SAFE_DECL_ENDINGS:
+# 기존 strict + 확장 AUTO 종결어미 모두 결합
+_intra_decl = list(dict.fromkeys(KO_INTRA_SAFE_DECL_ENDINGS + KO_INTRA_AUTO_DECL))
+_intra_q = list(dict.fromkeys(KO_INTRA_SAFE_Q_ENDINGS + KO_INTRA_AUTO_Q))
+for end in _intra_decl:
     pat = re.compile(r"(?<![가-힣])(" + re.escape(end) + r") +(?=[가-힣])")
     INTRA_LINE_PATTERNS.append(("D", end, pat))
-for end in KO_INTRA_SAFE_Q_ENDINGS:
+for end in _intra_q:
     pat = re.compile(r"(?<![가-힣])(" + re.escape(end) + r") +(?=[가-힣])")
     INTRA_LINE_PATTERNS.append(("Q", end, pat))
 
@@ -421,13 +556,22 @@ def fix_punct_for_message(ko: str, ja: str, audit_log: list, msg_key: str):
                     elif any(ko_last_stripped.endswith(e) for e in ("주거라", "오라", "아라", "어라", "거라", "하라", "오너라")):
                         target_punct = "."
 
+                # 케이스 A-2: KO-only 분류 (codex+gemini 협의 수렴)
+                # JP 부호 없거나 줄 수 불일치라도 KO 종결어미만 명확하면 자동 추가
+                if not target_punct:
+                    kind, end = classify_ko_ending(ko_last_stripped)
+                    if kind == "Q":
+                        target_punct = "?"
+                    elif kind in ("DECL", "CMD", "RISKY_DECL"):
+                        target_punct = "."
+
                 if target_punct:
                     new_l = safe_append_punct_to_line(ko_last, target_punct)
                     if new_l != ko_last:
                         new_lines[ko_last_idx] = new_l
                         changed = True
 
-    # 케이스 B: KO 중간 줄 (개행 직전) 부호 — JP/KO 줄 수가 같을 때만 정렬
+    # 케이스 B: KO 중간 줄 (개행 직전) 부호 — JP/KO 줄 수가 같을 때 정렬
     if (
         len(ja_lines) == len(ko_lines)
         and len(ja_lines) >= 2
@@ -458,6 +602,48 @@ def fix_punct_for_message(ko: str, ja: str, audit_log: list, msg_key: str):
                     new_lines[i] = new_l
                     changed = True
 
+    # 케이스 B-2: KO-only 중간 줄 — 매우 보수적
+    # KO_INTRA_AUTO_DECL/Q 강한 종결어미만 자동 추가 (연결어미 충돌 회피)
+    # JP/KO 줄 수 무관, 다음 줄이 한글로 시작 + 조사/연결구가 아닐 때만
+    _intra_auto_set = set(KO_INTRA_AUTO_DECL + KO_INTRA_AUTO_Q)
+    for i in range(len(new_lines) - 1):
+        ko_l = new_lines[i]
+        ko_l_stripped = ko_l.rstrip()
+        if not ko_l_stripped:
+            continue
+        if ko_line_end_punct(ko_l_stripped):
+            continue
+        # 다음 비어있지 않은 줄 찾기
+        next_line = ""
+        for j in range(i + 1, len(new_lines)):
+            if new_lines[j].strip():
+                next_line = new_lines[j].lstrip()
+                break
+        if not next_line:
+            continue
+        first_ch = next_line[0]
+        if not ("가" <= first_ch <= "힣"):
+            continue
+        # 조사·연결어미로 시작하면 SKIP (의미상 줄 끝이 절 끝이 아님)
+        if any(next_line.startswith(p) for p in
+               ("그리고", "그러나", "그래도", "그러니", "그래서", "그러므로",
+                "허나", "하지만", "라면", "라도", "이라도",
+                "만큼", "처럼", "보다", "한테", "에게", "에서",
+                # 종결-연결 충돌 회피용 추가
+                "말", "생각", "이야기")):
+            continue
+        if next_line[:1] in KO_PARTICLES_END:
+            continue
+        # 종결어미 일치 + intra_auto 화이트리스트 안에 있어야 자동 추가
+        kind, end = classify_ko_ending(ko_l_stripped)
+        if not kind or end not in _intra_auto_set:
+            continue
+        target = "?" if kind == "Q" else "."
+        new_l = safe_append_punct_to_line(ko_l, target)
+        if new_l != ko_l:
+            new_lines[i] = new_l
+            changed = True
+
     # 케이스 C: 한 줄 내 두 문장 (종결어미 + 공백 + 새 한글)
     # 보수적: D-패턴(평서)만 자동 적용. Q-패턴(의문)은 보류 (false positive 위험)
     for i, l in enumerate(new_lines):
@@ -468,27 +654,19 @@ def fix_punct_for_message(ko: str, ja: str, audit_log: list, msg_key: str):
             continue
         new_l = l
         for kind, end, pat in INTRA_LINE_PATTERNS:
-            if kind != "D":
-                continue
-            # 매칭 후 → "{end}. " 으로 치환. 단 false positive 방지를 위해
+            # 매칭 후 → "{end}{punct} " 으로 치환. 단 false positive 방지를 위해
             # 매칭된 종결어미 다음 시작 단어가 조사/연결어미 등이면 SKIP.
-            # 우선 1회 치환만 시도
-            def _repl(m):
+            punct = "?" if kind == "Q" else "."
+
+            def _repl(m, _p=punct):
                 # 종결어미 매칭 뒤 단어 시작 검사
                 start_after = m.end()
-                # m.end() 직후가 한글이면 (이미 lookahead 보장)
-                # 안전 룰: 종결어미 다음 한글이 조사("고/면/니/네/노라/도/만/지/네요")이면 false positive
                 rest = new_l[start_after : start_after + 4]
-                # 흔한 false positive: "있다고/있다면/없다고/없다면/한다고/한다면/없다네/있다네/없다니/있다니/있더라도/같다고"
-                # 종결어미 다음 첫 글자가 "고|면|니|네|지|도|만|랑|라|구|랴" 시작이면 조사/연결어미일 가능성 → SKIP
-                # 안전: 자동 치환은 다음 글자가 다른 시작(예: "자", "이", "그", "허", "또" 등)일 때만
                 first_after = rest[0:1]
-                # 안전한 마침표 추가 케이스만:
-                # "되었다" "하였다" "되었더라" 같은 강한 종결 + 다음 시작이 한글이면 자동
-                # 흔한 false positive 단어 시작은 SKIP
+                # false positive 단어 시작은 SKIP: "있다고/이라며/이라고/한다면 ..."
                 if first_after in ("고", "면", "니", "네", "지", "도", "만", "랑", "라", "구", "랴", "오"):
                     return m.group(0)
-                return m.group(1) + ". "
+                return m.group(1) + _p + " "
 
             replaced = pat.sub(_repl, new_l)
             new_l = replaced

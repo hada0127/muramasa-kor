@@ -1,5 +1,41 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-17: 마침표 누락 전수 보정 (KO-only 분류 자동화)
+
+### 사용자 보고
+"줄바꿈 바뀌면서 아직도 마침표가 안 들어간 곳들이 많이 보임. 전수 조사 및 해결 필요. 여러 번 루프 돌려서 누락되는 게 없도록 철저하게 조사."
+
+### 전수 조사 결과 (KO 종결어미로 끝나면서 부호 없음)
+- Q 의문 35건 + DECL 평서 251건 + CMD 명령 44건 + OTHER 미분류 624건 = 954건 후보
+- 기존 fix_punctuation.py는 JP/KO 줄 수 같을 때만 또는 JP 부호 있을 때만 처리 → 너무 보수적
+
+### 외부 AI 협의 (codex + gemini 수렴)
+- 안전 Auto-Q (?): 까/느냐/더냐/는가/런가/인가/인고/을까/을꼬/는지/런지/리오/이오/리까/리이까/ㅂ니까/습니까 + 이냐/거냐/겠나/잖나/라니
+- 안전 Auto-DECL (.): 이로다/되었다/하였다/구나/도다/노라/리라/이라네/이라오/구먼/구려/ㅂ니다/습니다/니라/이니라/느니라 + 합니다/옵니다/입니다/답니다/주마/리다/이로군/로군/지요/다오/는다/었다/마라/해라
+- 안전 Auto-CMD (.): 주거라/거라/어라/아라/오라/오너라/셔라/옵소서/하라/가라
+- RISKY (10자 이상 길이 가드): 이다/한다/있다/없다/같다/겠다/이라
+- SKIP+리포트: 명사형 표제어, 호칭(모모히메/토라히메/키스케/오코이/오보로 등), 조사 끝, placeholder
+
+### 코드 변경 (tools/fix_punctuation.py)
+- `classify_ko_ending()` 헬퍼 추가: KO-only 종결어미 분류 (Q/DECL/CMD/RISKY_DECL/None)
+- 케이스 A-2 신설: JP 부호/줄 수와 무관하게 KO 종결어미 매칭만으로 마지막 줄 부호 자동 추가
+- 케이스 B-2 신설: 줄 중간(KO_INTRA_AUTO_DECL/Q 강한 종결만, 연결구·조사 시작 SKIP)
+- INTRA_LINE_PATTERNS: Q 패턴도 자동 적용 (기존 D만)
+- AUTO_Q/AUTO_DECL/AUTO_CMD/RISKY_DECL/HONORIFIC_NAMES_NOPUNCT 상수 추가
+
+### Fixed-point 루프
+- Loop 1: fix_punctuation → 491건 (DECL 426, Q 67) 적용
+- Loop 2: condense → 11건 (한 줄 메시지 2줄 분할, 부호 추가로 폭 변동 보정)
+- Loop 3: fix_punctuation → 0건
+- Loop 4: condense → 0건 → **Fixed-point 달성**
+
+### 검증·배포
+- OOR 감사: 707개 (변경 전후 동일)
+- NMS 빌드 정상
+- NinPri_final.cpk 455,022,056 bytes (md5 84fd7a0941d2cc0f6035e87ddb2fd9d5)
+- NinPriPatch_final.cpk 25,686,408 bytes (md5 6a81945d5aa65bef94f2f36ae759c13c)
+- macOS Vita3K 배포 완료
+
 ## 2026-05-17: 폰트 외곽선 6차 — 1.5px (supersampling) + 50% opacity
 
 ### 사용자 보고
