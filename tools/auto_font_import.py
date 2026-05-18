@@ -39,19 +39,14 @@ HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
 STROKE_WIDTH = 0
 STROKE_FILL = (0, 0, 0, 128)
 
-# 메뉴 폰트(A8E6FDD1)는 검정 외곽선 대신 흰색 stroke로 본체 두께 증가만.
-# 사용자 보고(2026-05-18): 가격 "10"의 "1"이 안 보임. 분석 결과 RIDIBatang "1" 글리프 본체가
-# 가는 직선이라 cell 241 alpha mean=4.7로 매우 약해 게임 화면에서 안 보임.
-# 검정 외곽선은 메뉴판에 어울리지 않음 → 흰색 stroke(본체와 동일 색)로 두께만 키움.
-# 시각적으로 외곽선 효과 없고 본체만 두꺼워 보임.
-WHITESTROKE_FONT_HASHES = {"A8E6FDD162258699"}
+WHITESTROKE_FONT_HASHES = set()
 WHITESTROKE_FILL = (255, 255, 255, 200)
 KR_BODY_PT = 20
 ASCII_BODY_PT = 16
 MENU_FONT_HASHES = {"A8E6FDD162258699"}
 MENU_FONT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..',
                               'fonts', 'Griun_PolSensibility-Rg.ttf')
-MENU_STROKE_WIDTH = 1
+MENU_STROKE_WIDTH = 0
 MENU_KR_BODY_PT = 20
 MENU_ASCII_BODY_PT = 18
 MENU_PRESERVE_ASCII_HASHES = {"A8E6FDD162258699"}
