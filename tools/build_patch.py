@@ -119,6 +119,23 @@ def _strip_decorative_raw(raw: bytes) -> bytes:
     return cleaned.encode('shift_jis', errors='replace')
 
 
+def _is_jp_non_dialogue_placeholder(s):
+    """Return True for JP cue-only entries such as voice/SE placeholders.
+
+    These entries are not normal dialogue. Re-encoding them as Korean text can
+    make cutscenes wait for input or lose a cue marker, so JP-path NMS keeps the
+    original bytes and US jp_index mapping skips them.
+    """
+    stripped = s.strip('\u3000 \n\r\t') if s else ''
+    if not (stripped.startswith('\uff08') and stripped.endswith('\uff09')):
+        return False
+    return (
+        '\u30dc\u30a4\u30b9' in stripped  # ボイス
+        or 'SE' in stripped
+        or '\uff33\uff25' in stripped  # ＳＥ
+    )
+
+
 # Unmapped Korean syllable → nearest mappable syllable. Generated from
 # translations/char_substitutions.json. Without this, unmapped chars fall
 # through to `?` (0x3F), which collides with the runtime question-mark cell and
@@ -303,7 +320,7 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
         us_idx = 0
         jp_skip_indices = jp_skip_indices or set()
         for jp_i, (_, jp_text) in enumerate(jp_messages):
-            if _is_empty(jp_text) or jp_i in jp_skip_indices:
+            if _is_empty(jp_text) or _is_jp_non_dialogue_placeholder(jp_text) or jp_i in jp_skip_indices:
                 continue  # US skipped this placeholder
             jp_to_us[jp_i] = us_idx
             us_idx += 1
@@ -358,6 +375,11 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
         orig_raw = orig_text_section[start:i]
 
         if msg_idx < orig_count:
+            _, decoded_text = messages[msg_idx]
+            if _is_jp_non_dialogue_placeholder(decoded_text):
+                new_parts.append(orig_raw)
+                msg_idx += 1
+                continue
             if match_mode == 'index':
                 if msg_idx in idx_to_ko:
                     new_parts.append(encode_korean_to_sjis(idx_to_ko[msg_idx], kr_map))
@@ -365,7 +387,6 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
                 else:
                     new_parts.append(_strip_decorative_raw(orig_raw))
             else:
-                _, decoded_text = messages[msg_idx]
                 key = _norm(decoded_text)
                 if key in ja_to_ko:
                     new_parts.append(encode_korean_to_sjis(ja_to_ko[key], kr_map))
@@ -505,10 +526,6 @@ def build_korean_patch():
                 # scemsg: content-match against JP source, apply by matched index
                 us_entry['match_mode'] = 'jp_index'
                 us_entry['jp_source'] = src_jp
-                # JP full scemsg has one non-empty Gonbe opening line that the
-                # US script omits ("ここもカラスに..."). Without this skip, the
-                # entire A Cause to Daikon For block is shifted by one line.
-                us_entry['jp_skip_indices'] = {1350}
             elif name == '_itemdata':
                 # US _itemdata.nms has a hybrid layout:
                 #   0-369  : items + descriptions (align with JP _itemdata)

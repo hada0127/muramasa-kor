@@ -48,6 +48,13 @@ WHITESTROKE_FONT_HASHES = {"A8E6FDD162258699"}
 WHITESTROKE_FILL = (255, 255, 255, 200)
 KR_BODY_PT = 20
 ASCII_BODY_PT = 16
+MENU_FONT_HASHES = {"A8E6FDD162258699"}
+MENU_FONT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..',
+                              'fonts', 'Griun_PolSensibility-Rg.ttf')
+MENU_STROKE_WIDTH = 1
+MENU_KR_BODY_PT = 20
+MENU_ASCII_BODY_PT = 18
+MENU_PRESERVE_ASCII_HASHES = {"A8E6FDD162258699"}
 
 _FONT_CACHE = {}
 
@@ -232,11 +239,14 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     fhash = os.path.splitext(os.path.basename(export_path))[0]
     if fhash in WHITESTROKE_FONT_HASHES:
         # 메뉴 폰트: 흰색 stroke로 본체 두께만 증가 (외곽선 시각효과 없음)
-        stroke_w = STROKE_WIDTH
+        stroke_w = MENU_STROKE_WIDTH if fhash in MENU_FONT_HASHES else STROKE_WIDTH
         stroke_f = WHITESTROKE_FILL
     else:
         stroke_w = STROKE_WIDTH
         stroke_f = STROKE_FILL
+    render_font_path = MENU_FONT_PATH if fhash in MENU_FONT_HASHES else font_path
+    kr_body_pt = MENU_KR_BODY_PT if fhash in MENU_FONT_HASHES else KR_BODY_PT
+    ascii_body_pt = MENU_ASCII_BODY_PT if fhash in MENU_FONT_HASHES else ASCII_BODY_PT
 
     # font/ascii_font no longer used directly — draw_centered_glyph caches them.
     cs = 32
@@ -246,12 +256,17 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     space_local = space_cell - 1644
 
     korean_cells = {}
+    protected_cells = set()
+    if fhash in MENU_PRESERVE_ASCII_HASHES:
+        protected_cells.update(192 + code for code in range(0x30, 0x3A))
     for char, (b1, b2) in kr_map.items():
         cell = sjis_to_cell(b1, b2)
         local = cell - 1644
         if 0 <= local < 1024:
             if local == space_local:
                 continue  # reserve this slot as blank space
+            if local in protected_cells:
+                continue  # menu price digits must keep the original glyphs
             korean_cells[local] = char
 
     img = Image.open(export_path).convert("RGBA")
@@ -274,7 +289,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
             color = (247,247,247,255)
 
-        draw_centered_glyph(img, x, y, cs, kr_char, font_path, KR_BODY_PT,
+        draw_centered_glyph(img, x, y, cs, kr_char, render_font_path, kr_body_pt,
                             color, stroke_w, stroke_f)
 
     # Clear the space glyph slot (make it transparent = blank space)
@@ -294,37 +309,38 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         ax, ay = asc * cs, asr * cs
         draw.rectangle([ax, ay, ax+cs-1, ay+cs-1], fill=(0, 0, 0, 0))
 
-    # Render ASCII glyphs at positions 960+ (remapped from Korean overlap zone).
-    # Skip cells that Korean was relocated into (e.g. cells 993-1003 for
-    # 둔/둘/둠/둥/둬/뒤/뒷/드/득/든). Those Korean glyphs were already drawn
-    # above and must not be overwritten by ASCII letters.
-    pos = 960
-    for code in range(0x20, 0x7F):
-        if pos >= 1024:
-            break
-        if pos in korean_cells:
-            # Reserved for a relocated Korean glyph — do not overwrite.
-            pos += 1
-            continue
-        row = pos // cols
-        col = pos % cols
-        x, y = col * cs, row * cs
-        ch = chr(code)
-        if ch == ' ':
-            # Space: clear cell (transparent) — kept for safety even though
-            # build_patch.py no longer emits the 2-byte remapped space.
-            draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0, 0, 0, 0))
-        else:
-            if fmt == "white":
-                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(255,255,255,0))
-                acolor = (255,255,255,255)
+    if fhash not in MENU_PRESERVE_ASCII_HASHES:
+        # Render ASCII glyphs at positions 960+ (remapped from Korean overlap zone).
+        # Skip cells that Korean was relocated into (e.g. cells 993-1003 for
+        # 둔/둘/둠/둥/둬/뒤/뒷/드/득/든). Those Korean glyphs were already drawn
+        # above and must not be overwritten by ASCII letters.
+        pos = 960
+        for code in range(0x20, 0x7F):
+            if pos >= 1024:
+                break
+            if pos in korean_cells:
+                # Reserved for a relocated Korean glyph — do not overwrite.
+                pos += 1
+                continue
+            row = pos // cols
+            col = pos % cols
+            x, y = col * cs, row * cs
+            ch = chr(code)
+            if ch == ' ':
+                # Space: clear cell (transparent) — kept for safety even though
+                # build_patch.py no longer emits the 2-byte remapped space.
+                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0, 0, 0, 0))
             else:
-                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
-                acolor = (247,247,247,255)
-            align = "bottom-left" if ch in '.,' else "center"
-            draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
-                                acolor, stroke_w, stroke_f, align=align)
-        pos += 1
+                if fmt == "white":
+                    draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(255,255,255,0))
+                    acolor = (255,255,255,255)
+                else:
+                    draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
+                    acolor = (247,247,247,255)
+                align = "bottom-left" if ch in '.,' else "center"
+                draw_centered_glyph(img, x, y, cs, ch, render_font_path, ascii_body_pt,
+                                    acolor, stroke_w, stroke_f, align=align)
+            pos += 1
 
     # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
     # integers, ':' separators in stat labels, '?' placeholders in hidden blade
@@ -335,9 +351,11 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     # 'F', 'o', 'r', 'm' added 2026-05-16 for DLC bakeneko equipment "Form:%s"
     # hardcoded in game binary. Korean SJIS for 딱/량/럴/랴 relocated to ASCII
     # zone (0x8EE2-0x8EE5) so cells 262/303/306/301 can hold English glyphs.
-    RUNTIME_OVERLAY_CODES = list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2E, 0x2F,
-        0x46, 0x6F, 0x72, 0x6D,  # F, o, r, m
-    ]
+    RUNTIME_OVERLAY_CODES = [] if fhash in MENU_PRESERVE_ASCII_HASHES else (
+        list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2E, 0x2F,
+            0x46, 0x6F, 0x72, 0x6D,  # F, o, r, m
+        ]
+    )
     for code in RUNTIME_OVERLAY_CODES:
         cell = 192 + code
         row = cell // cols
@@ -360,7 +378,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             align = "colon-left"
         else:
             align = "center"
-        draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
+        draw_centered_glyph(img, x, y, cs, ch, render_font_path, ascii_body_pt,
                             dcolor, stroke_w, stroke_f, align=align)
 
     # Fullwidth-punctuation overlay: when the game emits raw SJIS 0x81xx bytes
@@ -368,7 +386,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     # full-width colon) it reads KANJI texture local cell (b2 - 0x40) + 448.
     # Cell 454 originally held Korean "봐" — relocated to 0x8EEF (local 974)
     # in kr_sjis_mapping.json so we can draw the ASCII colon glyph here.
-    FULLWIDTH_OVERLAY = {
+    FULLWIDTH_OVERLAY = {} if fhash in MENU_PRESERVE_ASCII_HASHES else {
         454: ':',  # 0x8146 fullwidth colon → battle result timer "0:00:19"
     }
     for local_cell, ch in FULLWIDTH_OVERLAY.items():
@@ -381,7 +399,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         else:
             draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
             dcolor = (247,247,247,255)
-        draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
+        draw_centered_glyph(img, x, y, cs, ch, render_font_path, ascii_body_pt,
                             dcolor, stroke_w, stroke_f)
 
     img.save(import_path)
