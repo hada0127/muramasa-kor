@@ -1,5 +1,94 @@
 # TODO - 진행 예정 작업
 
+## 🔴 2026-05-18: codex 위임 작업 (Claude 3일 시도 실패)
+
+### Task #1: 찻집 메뉴 가격 "10"의 "1" 누락 + 메뉴 한글 폰트 RIDIBatang 문제
+
+**증상:**
+- 한글 패치 모드에서 찻집(Teahouse) 메뉴 진입 시 가격 "10문"의 "1" 안 보이고 "0문"만 표시
+- 메뉴 헤더 한글(찻집/메뉴/식사/보유/가격)이 RIDIBatang 명조체로 표시됨 — 사용자는 그리운경찰체(우리 텍스처 한글)를 기대
+
+**확정된 사실:**
+- 영문판(backup CPK + import 비활성화): 같은 화면 "10 mon" 정상 표시
+- 메뉴판 UI 텍스처 hash: `2E2003777A770327` (게임 원본 256x256, HD pack 1024x1024, 우리 한글화 1024x1024)
+- import에서 2E20 제거 시: 가격 정상 + 메뉴 한글 RIDIBatang (NMS dynamic으로 추정)
+- A8E6FDD162258699 폰트 제거 시: 메뉴 항목명(삼색단자 등) 한자 원문으로 표시 → A8E6FDD1가 메뉴 항목명 dynamic 한글 렌더링 트리거
+- c8322ee (2026-05-13) 시점 사용자 검증: 그리운경찰체 메뉴 + 가격 정상 보였음. 그 시점 `kr_textures/ui/2E2003777A770327.png` MD5와 현재 MD5 동일
+
+**핵심 의문 (codex가 풀어야 할 부분):**
+1. 동일 텍스처 MD5인데 c8322ee 시점에는 그리운경찰체 한글 라벨 보였고 지금은 RIDIBatang dynamic. 환경 변경 요인은?
+   - c8322ee 이후 변경: sysmsg currency unify(89af7c9), 폰트 stroke 추가(c3566d9, 1244fb6), 대사 정리(다수), Restaurant texture auto-align(acc95a3)
+   - 폰트 텍스처(6706A53E/8665CE08/A8E6FDD1) git 추적 안 됨 — c8322ee 시점 폰트 텍스처는 모름
+2. 게임이 우리 2E20 텍스처를 sprite 자원으로만 사용 + 한글 라벨은 폰트 dynamic. c8322ee 시점에는 라벨도 텍스처에서. 어떤 메커니즘이 변경?
+
+**Claude 시도(모두 실패):**
+- NOSTROKE_FONT_HASHES = {A8E6FDD1} 외곽선 제거: 효과 없음
+- WHITESTROKE_FONT_HASHES = {A8E6FDD1} 흰색 stroke: 효과 없음
+- A8E6FDD1 import 제거 + 2E20 유지: 메뉴 항목명 원문, 가격 여전히 안 보임, 메뉴 헤더 RIDIBatang 유지
+- 폰트 STROKE_WIDTH=0/STROKE_BASE_PT=0 재생성: 미검증
+- textures/import → fs/textures/import 2059개 동기화: 효과 없음
+- 마지막: 게임 원본 256 nearest 1024 업스케일하여 sprite 픽셀 정확 보존 + 한글 라벨 영역만 우리 작업 적용 → kr_textures/ui/2E2003777A770327.png MD5 `ebbf5fd29d88dc2638667f3025cf3ae8`로 재구성 (sprite '1' 영역 128/128 블록 검증). **사용자 인게임 검증 안 함**
+
+**codex 권장 첫 단계:**
+- c8322ee 시점으로 git checkout → 빌드 → 사용자 인게임 검증해서 실제로 그 시점에 정상이었는지 확인
+- 정상이었다면 c8322ee→현재 사이 commit 이분 검색으로 정확한 깨짐 시점 식별
+- 폰트 텍스처 dump (c8322ee와 현재) 비교
+- 게임이 메뉴 헤더 라벨을 어디서 가져오는지 추적 (NMS인지 텍스처인지) — RenderDoc 또는 Vita3K shader log
+
+**관련 파일/경로:**
+- `kr_textures/ui/2E2003777A770327.png` — 한글화 텍스처 (현재 sprite 보존 버전)
+- `textures/originals/2E2003777A770327.png` — HD pack 1024x1024 (sprite 모양 왜곡 가능)
+- `$HOME/Library/Application Support/Vita3K/Vita3K/textures/export/PCSE00240/2E2003777A770327.png` — 게임 원본 256x256
+- `tools/auto_font_import.py`, `tools/hd_font_import.py` — STROKE_WIDTH=0/STROKE_BASE_PT=0 상태
+- 백업: `/tmp/2E20_kr_backup_before_restore.png`, `/tmp/A8E6_kr_backup*.png` (현 세션)
+
+**메모리 파일:**
+- `.claude/projects/-Users-tarucy-project-muramasa-kor/memory/project_price_one_invisible.md`
+
+---
+
+### Task #2: DLC1 바케네코(化猫)편 결말 컷씬 화면 멈춤
+
+**증상:**
+- DLC1 결말 컷씬에서 음성/음악은 진행되는데 화면이 정지
+- X 버튼 입력으로도 진행 안 됨
+
+**핵심 가설 (Gemini 검증 "거의 확실"로 확정):**
+- `build_patch.py`의 `jp_index` 매칭 모드가 JP의 음성 placeholder('　（...ボイス）') 형태 메시지를 한국어로 매핑
+- US 영문판은 그 인덱스에 다른 대사 사용 (시퀀스 다름) — 영문판 game이 그 자리를 자동 진행 (X 입력 불요) cutscene cue로 처리
+- 한글 패치 후 그 자리에 한국어 텍스트 들어가면 일반 대사로 인식 → X 입력 대기 → 멈춤
+- 구체적: JP[1339] = '　（お恋が瓢箪の霊薬を飲むボイス）' (jp_messages.json scemsg#1354), KO 매핑됨 → US[1339] "Looks like the crows..." 자리에 한국어 voice placeholder 삽입
+
+**제안 해결 (Gemini)**:
+- `build_patch.py`에서 음성 placeholder 패턴 매칭 시 매핑 skip:
+  - 정규식: `^[　\s]*[（(].*(ボイス|ボ[ィｨ]ス|ＳＥ|SE|効果|声|音).*[）)][　\s]*$`
+  - jp_to_us 매핑 시 empty와 동일하게 처리
+- 또는 jp_messages.json에서 voice placeholder 메시지의 ko를 ja와 동일하게 설정
+
+**Claude 시도:**
+- 가설 발견 + codex/gemini 협의로 확정
+- **코드 수정 미완** (사용자 검증 우선순위에 따라 보류됨)
+
+**비슷한 위험 영역(Gemini 지적):**
+- 본편 보스 후 컷씬
+- 엔딩 크레딧 직전
+- sysmsg "(Don't translate)" 패턴
+
+**codex 권장 첫 단계:**
+- `tools/build_patch.py` `parse_nms_raw`/`rebuild_nms`의 jp_index 매칭 로직에서 voice placeholder 패턴 추가 skip
+- 빌드 후 US scemsg.nms #1339 인덱스가 영문판 원본("Looks like the crows...") 그대로 유지되는지 NMS 파서로 검증
+- 사용자 인게임 DLC1 결말 컷씬 진행 검증
+
+**관련 파일:**
+- `tools/build_patch.py` (`_is_empty` 함수 확장 필요)
+- `translations/jp_messages.json` scemsg#1354
+- `extracted/NinPriPatch_full/msgsheet/scemsg_full.nms`
+
+**메모리 파일:**
+- `.claude/projects/-Users-tarucy-project-muramasa-kor/memory/project_dlc_cutscene_freeze.md`
+
+---
+
 ## 2026-05-17: 대사 정리 7차 — greedy max=27 + 부호 보정 수렴 ✅ 완료
 - 시작: HEAD `0820f19` (6차 max=26 fixed-point 상태)
 - 사용자 지시: 한도 26→27 (예시 메시지의 "괴묘가"를 첫 줄에 포함)

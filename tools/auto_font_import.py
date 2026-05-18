@@ -36,8 +36,16 @@ HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
 # supersampling (glyph drawn at 2x with stroke=3, then LANCZOS-downsampled to
 # the target cell size). 1.5px sits between the too-thick 2px and too-thin 1px
 # in small-cell rendering. Body kept at 20pt (Hangul) / 16pt (ASCII).
-STROKE_WIDTH = 1.5
+STROKE_WIDTH = 0
 STROKE_FILL = (0, 0, 0, 128)
+
+# 메뉴 폰트(A8E6FDD1)는 검정 외곽선 대신 흰색 stroke로 본체 두께 증가만.
+# 사용자 보고(2026-05-18): 가격 "10"의 "1"이 안 보임. 분석 결과 RIDIBatang "1" 글리프 본체가
+# 가는 직선이라 cell 241 alpha mean=4.7로 매우 약해 게임 화면에서 안 보임.
+# 검정 외곽선은 메뉴판에 어울리지 않음 → 흰색 stroke(본체와 동일 색)로 두께만 키움.
+# 시각적으로 외곽선 효과 없고 본체만 두꺼워 보임.
+WHITESTROKE_FONT_HASHES = {"A8E6FDD162258699"}
+WHITESTROKE_FILL = (255, 255, 255, 200)
 KR_BODY_PT = 20
 ASCII_BODY_PT = 16
 
@@ -220,6 +228,16 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         mapping = json.load(f)
     kr_map = mapping['korean_to_sjis']
 
+    # 폰트 hash별 stroke 적용 여부 결정
+    fhash = os.path.splitext(os.path.basename(export_path))[0]
+    if fhash in WHITESTROKE_FONT_HASHES:
+        # 메뉴 폰트: 흰색 stroke로 본체 두께만 증가 (외곽선 시각효과 없음)
+        stroke_w = STROKE_WIDTH
+        stroke_f = WHITESTROKE_FILL
+    else:
+        stroke_w = STROKE_WIDTH
+        stroke_f = STROKE_FILL
+
     # font/ascii_font no longer used directly — draw_centered_glyph caches them.
     cs = 32
     # SJIS code for space glyph (unused Korean char '빕' repurposed as blank)
@@ -257,7 +275,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             color = (247,247,247,255)
 
         draw_centered_glyph(img, x, y, cs, kr_char, font_path, KR_BODY_PT,
-                            color, STROKE_WIDTH, STROKE_FILL)
+                            color, stroke_w, stroke_f)
 
     # Clear the space glyph slot (make it transparent = blank space)
     if 0 <= space_local < 1024:
@@ -305,7 +323,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
                 acolor = (247,247,247,255)
             align = "bottom-left" if ch in '.,' else "center"
             draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
-                                acolor, STROKE_WIDTH, STROKE_FILL, align=align)
+                                acolor, stroke_w, stroke_f, align=align)
         pos += 1
 
     # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
@@ -343,7 +361,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         else:
             align = "center"
         draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
-                            dcolor, STROKE_WIDTH, STROKE_FILL, align=align)
+                            dcolor, stroke_w, stroke_f, align=align)
 
     # Fullwidth-punctuation overlay: when the game emits raw SJIS 0x81xx bytes
     # (e.g. battle result hh:mm:ss timer hardcoded in game binary using 0x8146
@@ -364,7 +382,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
             draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
             dcolor = (247,247,247,255)
         draw_centered_glyph(img, x, y, cs, ch, font_path, ASCII_BODY_PT,
-                            dcolor, STROKE_WIDTH, STROKE_FILL)
+                            dcolor, stroke_w, stroke_f)
 
     img.save(import_path)
     return len(korean_cells)
