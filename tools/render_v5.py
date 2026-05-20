@@ -119,9 +119,10 @@ def detect_all_regions(img):
                 merged_bbox[3] = max(merged_bbox[3], wy1)
                 merged_with.append(j)
         for j in merged_with: used_whites.add(j)
-        characters.append({'bbox': merged_bbox, 'brush_area': br['area'],
-                           'cx': (merged_bbox[0] + merged_bbox[2]) // 2,
-                           'cy': (merged_bbox[1] + merged_bbox[3]) // 2})
+        if merged_with:
+            characters.append({'bbox': merged_bbox, 'brush_area': br['area'],
+                               'cx': (merged_bbox[0] + merged_bbox[2]) // 2,
+                               'cy': (merged_bbox[1] + merged_bbox[3]) // 2})
 
     for j, w in enumerate(white_blobs):
         if j in used_whites: continue
@@ -258,6 +259,7 @@ def main():
         # Get manual override for this hash
         m_h = manual.get(h, {})
         manual_banners_idx = m_h.get('banner_idx')  # list of detect indices
+        manual_banner_bbox = m_h.get('banner_bbox')
         manual_boxes_idx = m_h.get('box_idx')
         manual_chars_idx = m_h.get('char_idx')
         manual_box_bbox = m_h.get('box_bbox')  # explicit bboxes for boxes
@@ -265,7 +267,10 @@ def main():
 
         # Render banners (background)
         for i, mb in enumerate(map_banners):
-            if manual_banners_idx is not None and i < len(manual_banners_idx):
+            if manual_banner_bbox is not None and i < len(manual_banner_bbox):
+                bbox = tuple(manual_banner_bbox[i])
+                img = clear_region(img, bbox, (204, 66, 58, 255))
+            elif manual_banners_idx is not None and i < len(manual_banners_idx):
                 idx = manual_banners_idx[i]
                 if idx is None or idx >= len(db_sorted): continue
                 bbox = tuple(db_sorted[idx]['bbox'])

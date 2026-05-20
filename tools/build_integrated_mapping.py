@@ -30,15 +30,14 @@ atlases = {
         {"kind":"banner", "ja":"杉林 大きな蜘蛛の巣", "ko":"삼나무 숲 커다란 거미집"},
         {"kind":"banner", "ja":"鬼の潜む洞窟", "ko":"귀신이 숨은 동굴"},
         {"kind":"banner", "ja":"鬼の潜む洞窟前", "ko":"귀신이 숨은 동굴 앞"},
-        {"kind":"banner", "ja":"花街海蓮座敷", "ko":"하나마치 카이렌자시키"},
-        {"kind":"banner", "ja":"祝言の場", "ko":"혼례식 장"},
-        {"kind":"banner", "ja":"花嫁行列", "ko":"신부 행렬"},
+        {"kind":"banner", "ja":"花街海蓮座敷", "ko":"유곽 카이렌자시키"},
+        {"kind":"banner", "ja":"祝言の場", "ko":"혼례식장"},
+        {"kind":"banner", "ja":"花嫁行列", "ko":"혼례 행렬"},
         {"kind":"banner", "ja":"茶店前", "ko":"찻집 앞"},
         {"kind":"box", "ja":"何処かの国", "ko":"어딘가의 나라"},
         {"kind":"box", "ja":"武蔵", "ko":"무사시"},
         {"kind":"box", "ja":"伊豆", "ko":"이즈"},
-        {"kind":"character", "ja":"唐木清兵衛宅", "ko":"가라키 세이베에 댁"},
-        {"kind":"character", "ja":"鬼助", "ko":"키스케"},
+        {"kind":"banner", "ja":"唐木清兵衛宅", "ko":"카라키 세이베에 댁"},
     ],
     "464E370EF865D0AC": [
         {"kind":"banner", "ja":"大根藩馬路城", "ko":"다이콘 번 마지성"},
@@ -89,7 +88,7 @@ non_atlas = {
     "0AA74C448087838A": [
         {"kind":"box", "ja":"相模", "ko":"사가미"},
         {"kind":"banner", "ja":"六国見山 鎌倉墓所", "ko":"로쿠코쿠미야마 가마쿠라 묘소"},
-        {"kind":"character", "ja":"州浜", "ko":"스하마"},
+        {"kind":"character", "ja":"青坊主", "ko":"아오보즈"},
     ],
     "3ECF3B0D2C2907BE": [
         {"kind":"box", "ja":"武蔵", "ko":"무사시"},

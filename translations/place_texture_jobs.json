@@ -1,0 +1,5185 @@
+{
+  "version": 1,
+  "description": "Explicit per-file jobs for Muramasa place-name texture rendering. Edit one hash entry, then render only that file with tools/render_place_texture_job.py.",
+  "font": "fonts/Griun_PolSensibility-Rg.ttf",
+  "status_meaning": {
+    "ready": "safe to render by default",
+    "needs_review": "known issue; skipped unless --include-needs-review is passed",
+    "preserve": "no render job yet; skipped"
+  },
+  "textures": {
+    "00B61B564A5FD289": {
+      "source": "textures/place_name_originals/00B61B564A5FD289.png",
+      "output": "kr_textures/ui/00B61B564A5FD289.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "杉林 大きな蜘蛛の巣",
+          "ko": "삼나무 숲 커다란 거미집",
+          "bbox": [
+            15,
+            15,
+            1370,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "鬼の潜む洞窟",
+          "ko": "귀신이 숨은 동굴",
+          "bbox": [
+            15,
+            415,
+            892,
+            587
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "鬼の潜む洞窟前",
+          "ko": "귀신이 숨은 동굴 앞",
+          "bbox": [
+            15,
+            215,
+            984,
+            387
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "花街海蓮座敷",
+          "ko": "유곽 카이렌자시키",
+          "bbox": [
+            1677,
+            15,
+            1849,
+            984
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B4",
+          "kind": "banner",
+          "ja": "祝言の場",
+          "ko": "혼례식장",
+          "bbox": [
+            13,
+            815,
+            185,
+            1413
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B5",
+          "kind": "banner",
+          "ja": "花嫁行列",
+          "ko": "혼례 행렬",
+          "bbox": [
+            1397,
+            1446,
+            1569,
+            2008
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B6",
+          "kind": "banner",
+          "ja": "茶店前",
+          "ko": "찻집 앞",
+          "bbox": [
+            1009,
+            1499,
+            1181,
+            2005
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "何処かの国",
+          "ko": "어딘가의 나라",
+          "bbox": [
+            1400,
+            17,
+            1646,
+            809
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            1681,
+            1013,
+            1927,
+            1583
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K2",
+          "kind": "box",
+          "ja": "伊豆",
+          "ko": "이즈",
+          "bbox": [
+            1401,
+            845,
+            1647,
+            1416
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B7",
+          "kind": "banner",
+          "ja": "唐木清兵衛宅",
+          "ko": "카라키 세이베에 댁",
+          "bbox": [
+            15,
+            615,
+            856,
+            787
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "CLEAR_C0",
+          "kind": "clear",
+          "ja": "総新婦",
+          "ko": "",
+          "bbox": [
+            900,
+            850,
+            1320,
+            1560
+          ],
+          "background": "none",
+          "clear": "alpha",
+          "source": "audit_clear_white",
+          "render": true,
+          "notes": "원본 흰 글자 잔존 제거용. 번역하기로 결정하면 ko와 bbox를 조정한다."
+        }
+      ],
+      "notes": [
+        "uses explicit manual bbox mapping",
+        "audit clear-only region added for untranslated white glyph",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "0130920C24D1E53C": {
+      "source": "textures/place_name_originals/0130920C24D1E53C.png",
+      "output": "kr_textures/ui/0130920C24D1E53C.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "相模",
+          "ko": "사가미",
+          "bbox": [
+            1396,
+            17,
+            1644,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "足柄下郡 お五ヶ池",
+          "ko": "아시가라시모군 오고가이케",
+          "bbox": [
+            15,
+            16,
+            1368,
+            188
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "05D6F7C75F32325B": {
+      "source": "textures/place_name_originals/05D6F7C75F32325B.png",
+      "output": "kr_textures/ui/05D6F7C75F32325B.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            1088,
+            17,
+            1336,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "日本堤 新吉原",
+          "ko": "니혼즈츠미 신요시와라",
+          "bbox": [
+            10,
+            9,
+            1064,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "0770DFDD08479BD2": {
+      "source": "textures/place_name_originals/0770DFDD08479BD2.png",
+      "output": "kr_textures/ui/0770DFDD08479BD2.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "信濃",
+          "ko": "시나노",
+          "bbox": [
+            1257,
+            17,
+            1504,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "安曇郡 童返の滝",
+          "ko": "아즈미군 와라베가에리노타키",
+          "bbox": [
+            14,
+            14,
+            1228,
+            186
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "0912E45A567A41C9": {
+      "source": "textures/place_name_originals/0912E45A567A41C9.png",
+      "output": "kr_textures/ui/0912E45A567A41C9.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            16,
+            217,
+            264,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "新吉原 衣紋坂",
+          "ko": "신요시와라 에몬자카",
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "輪入道",
+          "ko": "와뉴도",
+          "bbox": [
+            1335,
+            0,
+            1560,
+            630
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "audit_manual",
+          "render": true,
+          "clear": "white",
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "audit manual correction applied",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "0AA74C448087838A": {
+      "source": "textures/place_name_originals/0AA74C448087838A.png",
+      "output": "kr_textures/ui/0AA74C448087838A.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "相模",
+          "ko": "사가미",
+          "bbox": [
+            16,
+            217,
+            264,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "六国見山 鎌倉墓所",
+          "ko": "로쿠코쿠미야마 가마쿠라 묘소",
+          "bbox": [
+            12,
+            14,
+            1364,
+            186
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "青坊主",
+          "ko": "아오보즈",
+          "bbox": [
+            1389,
+            9,
+            1836,
+            682
+          ],
+          "background": "black",
+          "clear": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "manual_bbox_mapping",
+          "render": true,
+          "background_mode": "fill",
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "uses explicit manual bbox mapping",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "244AED1DB11AD6DC": {
+      "source": "textures/place_name_originals/244AED1DB11AD6DC.png",
+      "output": "kr_textures/ui/244AED1DB11AD6DC.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "飛騨",
+          "ko": "히다",
+          "bbox": [
+            1245,
+            17,
+            1492,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "高山 乗鞍岳間道",
+          "ko": "다카야마 노리쿠라다케 사잇길",
+          "bbox": [
+            7,
+            10,
+            1220,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "2611666E71A8181A": {
+      "source": "textures/place_name_originals/2611666E71A8181A.png",
+      "output": "kr_textures/ui/2611666E71A8181A.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "天上道",
+          "ko": "천상도",
+          "bbox": [
+            1268,
+            17,
+            1514,
+            792
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            1268,
+            825,
+            1516,
+            1396
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "江戸城 天守",
+          "ko": "에도성 천수각",
+          "bbox": [
+            1753,
+            11,
+            1925,
+            954
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "武蔵街道 祠の場",
+          "ko": "무사시 가도 사당의 장",
+          "bbox": [
+            12,
+            215,
+            1224,
+            387
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "天門の先 仏界",
+          "ko": "천문 너머 불계",
+          "bbox": [
+            12,
+            415,
+            1064,
+            587
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "sysmsg_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "阿弥陀如来",
+          "ko": "아미타여래",
+          "bbox": [
+            1530,
+            0,
+            1748,
+            1010
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.05,
+          "font_ratio": 0.78,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C1",
+          "kind": "character",
+          "ja": "武蔵街道 祠の場",
+          "ko": "무사시 가도 사당의 장",
+          "bbox": [
+            0,
+            0,
+            1258,
+            205
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.08,
+          "font_ratio": 0.62,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: original labels are 天上道/武蔵/江戸城 天守, not 仏界.",
+        "Codex visual correction: disabled risky region(s) after v2 compare: K1.",
+        "Codex status: not ready for bulk apply; needs manual bbox/source confirmation.",
+        "Codex visual correction: enabled 武蔵 box after confirming bbox in original.",
+        "Codex visual correction: added black-background rendering for white brush 阿弥陀如来 label.",
+        "Codex visual correction: fixed 天上道/武蔵 black-box bboxes to the original boxes.",
+        "Codex visual correction: merged 天門の先 仏界 into one system-message banner label.",
+        "Codex visual correction: black-background render for top white brush 武蔵街道 祠の場 label.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "2D3A29BE9B32D34A": {
+      "source": "textures/place_name_originals/2D3A29BE9B32D34A.png",
+      "output": "kr_textures/ui/2D3A29BE9B32D34A.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "大和",
+          "ko": "야마토",
+          "bbox": [
+            1660,
+            17,
+            1907,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "金剛山真言蓮華宗総本山",
+          "ko": "곤고산 진언연화종 총본산",
+          "bbox": [
+            7,
+            9,
+            1633,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "30033EF8FD9CC4EB": {
+      "source": "textures/place_name_originals/30033EF8FD9CC4EB.png",
+      "output": "kr_textures/ui/30033EF8FD9CC4EB.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "大和",
+          "ko": "야마토",
+          "bbox": [
+            16,
+            17,
+            588,
+            264
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "曽爾村付近",
+          "ko": "소니무라 부근",
+          "bbox": [
+            14,
+            296,
+            797,
+            469
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "31710FB73B2686EF": {
+      "source": "textures/place_name_originals/31710FB73B2686EF.png",
+      "output": "kr_textures/ui/31710FB73B2686EF.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "地獄",
+          "ko": "지옥",
+          "bbox": [
+            1452,
+            17,
+            1700,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "山城",
+          "ko": "야마시로",
+          "bbox": [
+            280,
+            217,
+            526,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "地獄八景 大焦熱",
+          "ko": "지옥팔경 대초열",
+          "bbox": [
+            1249,
+            12,
+            1421,
+            954
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "地獄八景 等活",
+          "ko": "지옥팔경 등활",
+          "bbox": [
+            12,
+            15,
+            1224,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "東山六道ヶ辻",
+          "ko": "히가시야마 로쿠도가쓰지",
+          "bbox": [
+            13,
+            208,
+            257,
+            886
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "大鬼",
+          "ko": "대귀",
+          "bbox": [
+            1715,
+            0,
+            2048,
+            430
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.1,
+          "font_ratio": 0.68,
+          "source": "proper_nouns",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: added missing white-brush 大鬼 label.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "3302A86BDC50A780": {
+      "source": "textures/place_name_originals/3302A86BDC50A780.png",
+      "output": "kr_textures/ui/3302A86BDC50A780.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "山城",
+          "ko": "야마시로",
+          "bbox": [
+            1292,
+            17,
+            1539,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_mapping.bbox_indices",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "伏見山 仏坂峠",
+          "ko": "후시미야마 불탄자카 고개",
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_mapping.bbox_indices",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "伏見山祠の場",
+          "ko": "후시미야마 사당의 장",
+          "bbox": [
+            1089,
+            12,
+            1261,
+            954
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "place_name_mapping.bbox_indices",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "黒猿",
+          "ko": "쿠로자루",
+          "bbox": [
+            230,
+            160,
+            610,
+            700
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.54,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "complex_multi mapping with bbox_indices",
+        "Codex visual correction: white brush label renders without synthetic black fill.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "3B7BDFB1087549B8": {
+      "source": "textures/place_name_originals/3B7BDFB1087549B8.png",
+      "output": "kr_textures/ui/3B7BDFB1087549B8.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "飛騨",
+          "ko": "히다",
+          "bbox": [
+            1305,
+            17,
+            1552,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_mapping.bbox_indices",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "高山山麓",
+          "ko": "다카야마 산기슭",
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_mapping.bbox_indices",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "高山山麓 秘湯",
+          "ko": "다카야마 산기슭 비탕",
+          "bbox": [
+            277,
+            212,
+            449,
+            866
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "place_name_mapping.bbox_indices",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "一本だたら",
+          "ko": "잇본다타라",
+          "bbox": [
+            1060,
+            0,
+            1290,
+            930
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.52,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "complex_multi mapping with bbox_indices",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "3ECF3B0D2C2907BE": {
+      "source": "textures/place_name_originals/3ECF3B0D2C2907BE.png",
+      "output": "kr_textures/ui/3ECF3B0D2C2907BE.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            17,
+            213,
+            263,
+            783
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "江戸 綱釜藩邸 上屋敷",
+          "ko": "에도 츠나가마 번저 카미야시키",
+          "bbox": [
+            10,
+            12,
+            1364,
+            185
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "証城寺跡",
+          "ko": "쇼조지 절터",
+          "bbox": [
+            292,
+            206,
+            464,
+            803
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "お化け屋敷",
+          "ko": "요괴 저택",
+          "bbox": [
+            1370,
+            0,
+            1838,
+            868
+          ],
+          "background": "black",
+          "background_mode": "fill",
+          "clear": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.54,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "4633B92FBA1371F4": {
+      "source": "textures/place_name_originals/4633B92FBA1371F4.png",
+      "output": "kr_textures/ui/4633B92FBA1371F4.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "相模",
+          "ko": "사가미",
+          "bbox": [
+            1457,
+            1041,
+            1703,
+            1611
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "三河",
+          "ko": "미카와",
+          "bbox": [
+            881,
+            409,
+            1127,
+            978
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K2",
+          "kind": "box",
+          "ja": "陸奥",
+          "ko": "무츠",
+          "bbox": [
+            20,
+            808,
+            266,
+            1378
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "戸塚宿観念寺",
+          "ko": "도쓰카주쿠 간넨지",
+          "bbox": [
+            1253,
+            11,
+            1425,
+            981
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "綱谷藩勝尾城",
+          "ko": "츠나야 번 가쓰오성",
+          "bbox": [
+            1253,
+            1003,
+            1425,
+            1738
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "綱谷藩勝尾城回廊",
+          "ko": "츠나야 번 가쓰오성 회랑",
+          "bbox": [
+            11,
+            13,
+            1227,
+            185
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "綱谷藩葛銀字庭",
+          "ko": "츠나야 번 갈은자 정원",
+          "bbox": [
+            11,
+            208,
+            1127,
+            381
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B4",
+          "kind": "banner",
+          "ja": "由比ヶ浜",
+          "ko": "유이가하마",
+          "bbox": [
+            11,
+            406,
+            850,
+            578
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B5",
+          "kind": "banner",
+          "ja": "釣船川船着場",
+          "ko": "쓰리부네강 선착장",
+          "bbox": [
+            11,
+            607,
+            850,
+            779
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "重松新左衛門",
+          "ko": "시게마츠 신자에몬",
+          "bbox": [
+            1430,
+            0,
+            1665,
+            1020
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "script_lookup",
+          "render": true,
+          "clear": "white",
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: C0 is 重松新左衛門 / 시게마츠 신자에몬 white brush label, not 堺港町.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "464E370EF865D0AC": {
+      "source": "textures/place_name_originals/464E370EF865D0AC.png",
+      "output": "kr_textures/ui/464E370EF865D0AC.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "大根藩馬路城",
+          "ko": "다이콘 번 마지성",
+          "bbox": [
+            1849,
+            225,
+            2021,
+            1011
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "大根藩馬路城跡",
+          "ko": "다이콘 번 마지성 옛터",
+          "bbox": [
+            975,
+            15,
+            1760,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "馬路城 大天守",
+          "ko": "마지성 대천수",
+          "bbox": [
+            1010,
+            831,
+            1748,
+            1003
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "大根芋畑村",
+          "ko": "다이콘 이모바타케 마을",
+          "bbox": [
+            15,
+            227,
+            984,
+            399
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B4",
+          "kind": "banner",
+          "ja": "西馬路口",
+          "ko": "니시 마지구치",
+          "bbox": [
+            15,
+            427,
+            984,
+            599
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B5",
+          "kind": "banner",
+          "ja": "鬼ヶ島 大蛇",
+          "ko": "오니가시마 오로치",
+          "bbox": [
+            709,
+            626,
+            881,
+            1226
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "茶屋",
+          "ko": "찻집",
+          "bbox": [
+            1573,
+            229,
+            1819,
+            799
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "船屋",
+          "ko": "배집",
+          "bbox": [
+            1292,
+            229,
+            1538,
+            797
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K2",
+          "kind": "box",
+          "ja": "鍛冶",
+          "ko": "대장간",
+          "bbox": [
+            1012,
+            229,
+            1258,
+            797
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "鳴野豆太夫",
+          "ko": "나루노 마메다유",
+          "bbox": [
+            1844,
+            222,
+            2026,
+            1016
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "map_notes",
+          "render": true,
+          "clear": "none",
+          "background_mode": "fill",
+          "layout": "vertical"
+        },
+        {
+          "id": "C1",
+          "kind": "character",
+          "ja": "大根藩馬路城",
+          "ko": "다이콘 번 마지성",
+          "bbox": [
+            0,
+            0,
+            960,
+            220
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.56,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "4709F3E364671D89": {
+      "source": "textures/place_name_originals/4709F3E364671D89.png",
+      "output": "kr_textures/ui/4709F3E364671D89.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            712,
+            217,
+            960,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "中仙道間道",
+          "ko": "나카센도 사잇길",
+          "bbox": [
+            12,
+            15,
+            954,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "鳴神城内座敷",
+          "ko": "나루카미성 내 거실",
+          "bbox": [
+            12,
+            819,
+            798,
+            991
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "鵺",
+          "ko": "누에",
+          "bbox": [
+            0,
+            460,
+            240,
+            700
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.7,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "48AA5B2EBC6C43B1": {
+      "source": "textures/place_name_originals/48AA5B2EBC6C43B1.png",
+      "output": "kr_textures/ui/48AA5B2EBC6C43B1.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "大和",
+          "ko": "야마토",
+          "bbox": [
+            1244,
+            17,
+            1491,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "奈良善祷寺大仏殿",
+          "ko": "나라 젠토지 대불전",
+          "bbox": [
+            7,
+            10,
+            1219,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "5329BF3C3BF9B18C": {
+      "source": "textures/place_name_originals/5329BF3C3BF9B18C.png",
+      "output": "kr_textures/ui/5329BF3C3BF9B18C.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "山城",
+          "ko": "야마시로",
+          "bbox": [
+            16,
+            221,
+            588,
+            468
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "嵯峨嵐山近郊",
+          "ko": "사가아라시야마 근교",
+          "bbox": [
+            14,
+            17,
+            981,
+            189
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "5882EA68BABF3C63": {
+      "source": "textures/place_name_originals/5882EA68BABF3C63.png",
+      "output": "kr_textures/ui/5882EA68BABF3C63.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "何処かの国",
+          "ko": "어딘가의 나라",
+          "bbox": [
+            0,
+            0,
+            1241,
+            266
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            17,
+            701,
+            588,
+            948
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "K2",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            620,
+            701,
+            1192,
+            948
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "江戸城天守",
+          "ko": "에도성 천수각",
+          "bbox": [
+            1389,
+            12,
+            1561,
+            954
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "質屋",
+          "ko": "전당포",
+          "bbox": [
+            1853,
+            12,
+            2025,
+            380
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "菩提寺 虎姫の墓前",
+          "ko": "보리사 토라히메의 묘 앞",
+          "bbox": [
+            12,
+            295,
+            1364,
+            467
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "日本堤 新吉原",
+          "ko": "니혼즈츠미 신요시와라",
+          "bbox": [
+            14,
+            497,
+            1068,
+            669
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "百姫",
+          "ko": "모모히메",
+          "bbox": [
+            1840,
+            390,
+            2048,
+            805
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "audit_manual",
+          "render": true,
+          "clear": "white",
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: removed false extra red banner region.",
+        "Codex visual correction: fixed top/corner black boxes and added missing red labels seen in original atlas.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "59015B61BFC0B7BC": {
+      "source": "textures/place_name_originals/59015B61BFC0B7BC.png",
+      "output": "kr_textures/ui/59015B61BFC0B7BC.png",
+      "status": "ready",
+      "output_scale": 4,
+      "regions": [
+        {
+          "id": "K0_CLEAR",
+          "kind": "clear",
+          "ja": "相模",
+          "ko": "",
+          "bbox": [
+            183,
+            8,
+            239,
+            120
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.0,
+          "font_ratio": 0.1,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "相模",
+          "ko": "사가미",
+          "bbox": [
+            186,
+            12,
+            235,
+            116
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.06,
+          "font_ratio": 0.72,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical",
+          "clear": "none"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "東海道箱根",
+          "ko": "도카이도 하코네",
+          "bbox": [
+            250,
+            4,
+            292,
+            178
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.58,
+          "source": "place_name_textures",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "嵐丸",
+          "ko": "아라시마루",
+          "bbox": [
+            0,
+            126,
+            210,
+            222
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.08,
+          "font_ratio": 0.68,
+          "source": "script_lookup",
+          "render": true,
+          "clear": "alpha",
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "Codex visual correction: converted from preserve to explicit regions.",
+        "Original 512x256 place texture is rendered at 4x output scale to match HD import scale.",
+        "C0 lower white label is 嵐丸 / 아라시마루 based on script terminology.",
+        "Codex visual correction: K0 clears only the original white glyph inside the province box to preserve the white frame."
+      ]
+    },
+    "615858B46587A60E": {
+      "source": "textures/place_name_originals/615858B46587A60E.png",
+      "output": "kr_textures/ui/615858B46587A60E.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            1732,
+            17,
+            1980,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            16,
+            417,
+            264,
+            988
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "鳴神城広間の場",
+          "ko": "나루카미성 넓은 방의 장",
+          "bbox": [
+            1265,
+            12,
+            1437,
+            954
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "江戸城天守",
+          "ko": "에도성 천수각",
+          "bbox": [
+            12,
+            215,
+            1064,
+            387
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "犬神徳川綱吉",
+          "ko": "이누가미 도쿠가와 쓰나요시",
+          "bbox": [
+            0,
+            0,
+            1260,
+            205
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.58,
+          "source": "audit_manual",
+          "render": true,
+          "clear": "alpha",
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: long white title uses horizontal fitted layout.",
+        "Codex visual correction: disabled risky region(s) after v2 compare: C0.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill.",
+        "Codex visual correction: use alpha clear for white brush label residue."
+      ]
+    },
+    "6605F569D9389F9C": {
+      "source": "textures/place_name_originals/6605F569D9389F9C.png",
+      "output": "kr_textures/ui/6605F569D9389F9C.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "白川郷 白銀ヶ淵 廃れ社",
+          "ko": "시라카와고 시로가네가후치 폐사",
+          "bbox": [
+            1720,
+            11,
+            1893,
+            978
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "飛騨国",
+          "ko": "히다국",
+          "bbox": [
+            1486,
+            983,
+            1657,
+            1579
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "飛騨街道",
+          "ko": "히다 가도",
+          "bbox": [
+            13,
+            15,
+            1462,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "飛騨川",
+          "ko": "히다강",
+          "bbox": [
+            1267,
+            210,
+            1439,
+            715
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B4",
+          "kind": "banner",
+          "ja": "美濃国 境木峠",
+          "ko": "미노국 사카이기 고개",
+          "bbox": [
+            10,
+            213,
+            977,
+            386
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B5",
+          "kind": "banner",
+          "ja": "飛騨山中",
+          "ko": "히다 산중",
+          "bbox": [
+            11,
+            413,
+            977,
+            585
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B6",
+          "kind": "banner",
+          "ja": "大雪山",
+          "ko": "다이세쓰잔",
+          "bbox": [
+            11,
+            608,
+            977,
+            780
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "関所",
+          "ko": "관문",
+          "bbox": [
+            1729,
+            1005,
+            1974,
+            1574
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "峠道",
+          "ko": "고갯길",
+          "bbox": [
+            17,
+            808,
+            263,
+            1379
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "がしゃ髑髏",
+          "ko": "갓샤도쿠로",
+          "bbox": [
+            1440,
+            0,
+            1730,
+            970
+          ],
+          "background": "none",
+          "clear": "alpha",
+          "text_color": "white",
+          "padding": 0.08,
+          "font_ratio": 0.58,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: moved white-brush character label to cover the original glyph position.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill.",
+        "Codex visual correction: use alpha clear for white brush label residue."
+      ]
+    },
+    "6B6116F83EBE7153": {
+      "source": "textures/place_name_originals/6B6116F83EBE7153.png",
+      "output": "kr_textures/ui/6B6116F83EBE7153.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "伊賀",
+          "ko": "이가",
+          "bbox": [
+            1256,
+            17,
+            1503,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "阿閉郡 尼ヶ岳山中",
+          "ko": "아쓰지군 아마가다케 산중",
+          "bbox": [
+            15,
+            16,
+            1228,
+            188
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "6CD92157D6C2502F": {
+      "source": "textures/place_name_originals/6CD92157D6C2502F.png",
+      "output": "kr_textures/ui/6CD92157D6C2502F.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "伊勢",
+          "ko": "이세",
+          "bbox": [
+            1084,
+            17,
+            1331,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "神路山 神宮林",
+          "ko": "카미지야마 신궁림",
+          "bbox": [
+            7,
+            10,
+            1059,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "7053B8FFC8B89807": {
+      "source": "textures/place_name_originals/7053B8FFC8B89807.png",
+      "output": "kr_textures/ui/7053B8FFC8B89807.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "信濃",
+          "ko": "시나노",
+          "bbox": [
+            1046,
+            401,
+            1292,
+            971
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "信濃山奥狐のお宿の場",
+          "ko": "시나노 산속 여우 여인숙의 장",
+          "bbox": [
+            8,
+            11,
+            1514,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "八幡原 修羅の戦場",
+          "ko": "하치만바라 수라의 전장",
+          "bbox": [
+            9,
+            203,
+            1361,
+            375
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "血狂毘沙門",
+          "ko": "피광비사문",
+          "bbox": [
+            0,
+            350,
+            1030,
+            650
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.08,
+          "font_ratio": 0.5,
+          "source": "visual_manual",
+          "render": true,
+          "clear": "alpha",
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: white brush label renders without synthetic black fill and avoids adjacent province box.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: use alpha clear for white brush label residue."
+      ]
+    },
+    "72165D43344F3190": {
+      "source": "textures/place_name_originals/72165D43344F3190.png",
+      "output": "kr_textures/ui/72165D43344F3190.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "二人の刺客",
+          "ko": "두 명의 자객",
+          "bbox": [
+            1746,
+            11,
+            1918,
+            850
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "赤坂宿 旅籠の部屋",
+          "ko": "아카사카주쿠 여인숙 방",
+          "bbox": [
+            11,
+            211,
+            1464,
+            384
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "東海道 御油吉田間街道",
+          "ko": "도카이도 고유 요시다 사이 가도",
+          "bbox": [
+            11,
+            15,
+            1459,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "東海道 藤川赤坂間街道",
+          "ko": "도카이도 후지카와 아카사카 사이 가도",
+          "bbox": [
+            11,
+            407,
+            1227,
+            581
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "三河",
+          "ko": "미카와",
+          "bbox": [
+            1493,
+            905,
+            1739,
+            1474
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "二人の刺客",
+          "ko": "두 명의 자객",
+          "bbox": [
+            0,
+            600,
+            900,
+            805
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.5,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex safety: broad brush label still disabled; needs tighter bbox before black-box render.",
+        "Codex visual correction: white brush label renders without synthetic black fill.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "7282AD29CF433DA0": {
+      "source": "textures/place_name_originals/7282AD29CF433DA0.png",
+      "output": "kr_textures/ui/7282AD29CF433DA0.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "何処かの国",
+          "ko": "어딘가의 나라",
+          "bbox": [
+            0,
+            17,
+            1230,
+            264
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "大和",
+          "ko": "야마토",
+          "bbox": [
+            1256,
+            17,
+            1828,
+            264
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "峠の茶屋",
+          "ko": "고갯마루 찻집",
+          "bbox": [
+            1789,
+            289,
+            1961,
+            942
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "金剛山山頂高天原入口",
+          "ko": "곤고산 산정 다카마가하라 입구",
+          "bbox": [
+            9,
+            291,
+            1516,
+            463
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "鬼助",
+          "ko": "키스케",
+          "bbox": [
+            0,
+            470,
+            270,
+            880
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "audit_manual",
+          "render": true,
+          "clear": "white",
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: fixed swapped/misplaced 何処かの国 and 大和 black boxes.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "7358BEAA2EF5F8A8": {
+      "source": "textures/place_name_originals/7358BEAA2EF5F8A8.png",
+      "output": "kr_textures/ui/7358BEAA2EF5F8A8.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "大和",
+          "ko": "야마토",
+          "bbox": [
+            1244,
+            209,
+            1491,
+            779
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            16,
+            593,
+            588,
+            840
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "柳生城広間の場",
+          "ko": "야규성 넓은 방의 장",
+          "bbox": [
+            9,
+            11,
+            1516,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "鳴神城 大手門前",
+          "ko": "나루카미성 오테문 앞",
+          "bbox": [
+            8,
+            203,
+            1220,
+            375
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "金剛山山頂高天原入口",
+          "ko": "곤고산 산정 다카마가하라 입구",
+          "bbox": [
+            9,
+            395,
+            1061,
+            567
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "不動明王",
+          "ko": "부동명왕",
+          "bbox": [
+            1528,
+            5,
+            1979,
+            814
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "visual_manual",
+          "render": true,
+          "clear": "none",
+          "layout": "vertical",
+          "background_mode": "fill"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: moved white-brush character label to cover the original glyph position.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "75B04DBF5C53AF28": {
+      "source": "textures/place_name_originals/75B04DBF5C53AF28.png",
+      "output": "kr_textures/ui/75B04DBF5C53AF28.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "相模",
+          "ko": "사가미",
+          "bbox": [
+            17,
+            209,
+            588,
+            456
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "六国見山山道",
+          "ko": "로쿠코쿠미야마 산길",
+          "bbox": [
+            8,
+            11,
+            950,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "779C5ABBFCE00424": {
+      "source": "textures/place_name_originals/779C5ABBFCE00424.png",
+      "output": "kr_textures/ui/779C5ABBFCE00424.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "三河",
+          "ko": "미카와",
+          "bbox": [
+            1097,
+            17,
+            1344,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "設楽郡 村落部",
+          "ko": "시타라군 무라오치베",
+          "bbox": [
+            14,
+            15,
+            1068,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "7B49071BF36FC555": {
+      "source": "textures/place_name_originals/7B49071BF36FC555.png",
+      "output": "kr_textures/ui/7B49071BF36FC555.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            1540,
+            17,
+            1788,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "伊吹山 鳴神藩鏡見家",
+          "ko": "이부키산 나루카미 번 카가미케",
+          "bbox": [
+            7,
+            10,
+            1514,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "7E0669E71FCD7B64": {
+      "source": "textures/place_name_originals/7E0669E71FCD7B64.png",
+      "output": "kr_textures/ui/7E0669E71FCD7B64.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "信濃",
+          "ko": "시나노",
+          "bbox": [
+            16,
+            499,
+            586,
+            744
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "大根芋畑村",
+          "ko": "다이콘 이모바타케 마을",
+          "bbox": [
+            797,
+            15,
+            969,
+            800
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "大根藩馬蕗城",
+          "ko": "다이콘 번 마후키성",
+          "bbox": [
+            15,
+            775,
+            752,
+            947
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "大根義民一揆",
+          "ko": "다이콘 의민 잇키",
+          "bbox": [
+            0,
+            250,
+            760,
+            485
+          ],
+          "background": "none",
+          "clear": "alpha",
+          "text_color": "white",
+          "padding": 0.08,
+          "font_ratio": 0.82,
+          "source": "script_lookup",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: C0 is 大根義民一揆 / 다이콘 의민 잇키 white brush label, not a black-box 大根 label.",
+        "Codex visual correction: use alpha clear for white brush label residue."
+      ]
+    },
+    "8098AD7E2C438C22": {
+      "source": "textures/place_name_originals/8098AD7E2C438C22.png",
+      "output": "kr_textures/ui/8098AD7E2C438C22.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "大和",
+          "ko": "야마토",
+          "bbox": [
+            1244,
+            209,
+            1491,
+            779
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "柳生城広間の場",
+          "ko": "야규성 넓은 방의 장",
+          "bbox": [
+            9,
+            11,
+            1516,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "金剛山山腹大仏殿",
+          "ko": "곤고산 산허리 대불전",
+          "bbox": [
+            8,
+            203,
+            1220,
+            375
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "金剛山山頂高天原入口",
+          "ko": "곤고산 산정 다카마가하라 입구",
+          "bbox": [
+            9,
+            395,
+            1061,
+            567
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "不動明王",
+          "ko": "부동명왕",
+          "bbox": [
+            1528,
+            5,
+            1979,
+            814
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "visual_manual",
+          "render": true,
+          "clear": "none",
+          "layout": "vertical",
+          "background_mode": "fill"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: moved white-brush character label to cover the original glyph position.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "85A4D54EE933339D": {
+      "source": "textures/place_name_originals/85A4D54EE933339D.png",
+      "output": "kr_textures/ui/85A4D54EE933339D.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "甲斐",
+          "ko": "카이",
+          "bbox": [
+            1396,
+            17,
+            1643,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "御岳駒ヶ岳 刃渡り",
+          "ko": "미타케 코마가타케 하와타리",
+          "bbox": [
+            14,
+            17,
+            1368,
+            189
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "864BD9CBCC496F78": {
+      "source": "textures/place_name_originals/864BD9CBCC496F78.png",
+      "output": "kr_textures/ui/864BD9CBCC496F78.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "伊賀",
+          "ko": "이가",
+          "bbox": [
+            16,
+            217,
+            263,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "暗夜城広間の場",
+          "ko": "암야성 넓은 방의 장",
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "大百足",
+          "ko": "오오무카데",
+          "bbox": [
+            1320,
+            0,
+            1665,
+            675
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.52,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "Codex visual correction: white brush label renders without synthetic black fill.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "89578D1F704C35E4": {
+      "source": "textures/place_name_originals/89578D1F704C35E4.png",
+      "output": "kr_textures/ui/89578D1F704C35E4.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "信濃",
+          "ko": "시나노",
+          "bbox": [
+            1661,
+            17,
+            1908,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "川中島古戦場跡 八幡原",
+          "ko": "가와나카지마 옛 전장터 하치만바라",
+          "bbox": [
+            7,
+            10,
+            1633,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "919ABD92603E242F": {
+      "source": "textures/place_name_originals/919ABD92603E242F.png",
+      "output": "kr_textures/ui/919ABD92603E242F.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "駿河",
+          "ko": "스루가",
+          "bbox": [
+            17,
+            209,
+            588,
+            456
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.72,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "霊峰富士山麓",
+          "ko": "영봉 후지 산기슭",
+          "bbox": [
+            7,
+            10,
+            950,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "922337BDB8D32D0F": {
+      "source": "textures/place_name_originals/922337BDB8D32D0F.png",
+      "output": "kr_textures/ui/922337BDB8D32D0F.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            1244,
+            17,
+            1492,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "鳴神城 大手門前",
+          "ko": "나루카미성 오테문 앞",
+          "bbox": [
+            7,
+            10,
+            1219,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "A62172B559EED573": {
+      "source": "textures/place_name_originals/A62172B559EED573.png",
+      "output": "kr_textures/ui/A62172B559EED573.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "地獄",
+          "ko": "지옥",
+          "bbox": [
+            1084,
+            17,
+            1332,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "地獄八景 等活",
+          "ko": "지옥팔경 등활",
+          "bbox": [
+            7,
+            10,
+            1060,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "A8486C49F76167C3": {
+      "source": "textures/place_name_originals/A8486C49F76167C3.png",
+      "output": "kr_textures/ui/A8486C49F76167C3.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "伊勢",
+          "ko": "이세",
+          "bbox": [
+            16,
+            209,
+            263,
+            779
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "伊勢天神高天原入口",
+          "ko": "이세 천신 다카마가하라 입구",
+          "bbox": [
+            1637,
+            8,
+            1809,
+            662
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "二見浦",
+          "ko": "후타미우라",
+          "bbox": [
+            9,
+            11,
+            1361,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "伊勢街道",
+          "ko": "이세 가도",
+          "bbox": [
+            289,
+            200,
+            461,
+            706
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "雷神",
+          "ko": "뇌신",
+          "bbox": [
+            1840,
+            0,
+            2048,
+            390
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.64,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "Codex visual correction: white brush label renders without synthetic black fill.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "AF183888BC366FCA": {
+      "source": "textures/place_name_originals/AF183888BC366FCA.png",
+      "output": "kr_textures/ui/AF183888BC366FCA.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            1096,
+            17,
+            1344,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "日本堤 新吉原",
+          "ko": "니혼즈츠미 신요시와라",
+          "bbox": [
+            14,
+            17,
+            1068,
+            189
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "BAD2BDA6C2AE4B16": {
+      "source": "textures/place_name_originals/BAD2BDA6C2AE4B16.png",
+      "output": "kr_textures/ui/BAD2BDA6C2AE4B16.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "山城",
+          "ko": "야마시로",
+          "bbox": [
+            1244,
+            17,
+            1491,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "紀伊郡 伏見山麓",
+          "ko": "기이군 후시미 산기슭",
+          "bbox": [
+            7,
+            10,
+            1219,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "C3848C8E5ED70F7A": {
+      "source": "textures/place_name_originals/C3848C8E5ED70F7A.png",
+      "output": "kr_textures/ui/C3848C8E5ED70F7A.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            16,
+            217,
+            264,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "伊吹山 不破関",
+          "ko": "이부키산 후와노세키",
+          "bbox": [
+            12,
+            15,
+            1064,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "虎姫",
+          "ko": "토라히메",
+          "bbox": [
+            1235,
+            0,
+            1570,
+            520
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.1,
+          "font_ratio": 0.58,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: white brush label renders without synthetic black fill.",
+        "Codex visual correction: moved white-brush character label to cover the original glyph position.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "C84B5B3A51547DF0": {
+      "source": "textures/place_name_originals/C84B5B3A51547DF0.png",
+      "output": "kr_textures/ui/C84B5B3A51547DF0.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "遠江",
+          "ko": "도토미",
+          "bbox": [
+            712,
+            17,
+            958,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "秋葉山山腹",
+          "ko": "아키바산 산허리",
+          "bbox": [
+            13,
+            619,
+            798,
+            791
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "小夜",
+          "ko": "사요",
+          "bbox": [
+            760,
+            560,
+            1024,
+            1024
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.1,
+          "font_ratio": 0.72,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: removed unsafe character overlay that landed on brush art.",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: moved white-brush character label to cover the original glyph position.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "C8B2975F2A629F4B": {
+      "source": "textures/place_name_originals/C8B2975F2A629F4B.png",
+      "output": "kr_textures/ui/C8B2975F2A629F4B.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "駿河",
+          "ko": "스루가",
+          "bbox": [
+            712,
+            217,
+            959,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "富士山頂龍脈",
+          "ko": "후지산 정상 용맥",
+          "bbox": [
+            12,
+            15,
+            954,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "龍神",
+          "ko": "용신",
+          "bbox": [
+            0,
+            450,
+            340,
+            930
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.1,
+          "font_ratio": 0.72,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: removed unsafe character overlay that landed on brush art.",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: moved white-brush character label to cover the original glyph position.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "C8C4589102431759": {
+      "source": "textures/place_name_originals/C8C4589102431759.png",
+      "output": "kr_textures/ui/C8C4589102431759.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "大和",
+          "ko": "야마토",
+          "bbox": [
+            16,
+            217,
+            263,
+            788
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "奈良善祷寺 金堂",
+          "ko": "나라 젠토지 금당",
+          "bbox": [
+            12,
+            15,
+            1224,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "土蜘蛛",
+          "ko": "츠치구모",
+          "bbox": [
+            1250,
+            0,
+            1715,
+            650
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.54,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: added black-box rendering for remaining white brush label.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "C8E42A56480DB818": {
+      "source": "textures/place_name_originals/C8E42A56480DB818.png",
+      "output": "kr_textures/ui/C8E42A56480DB818.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "実録無残五郎",
+          "ko": "실록 무잔 고로",
+          "bbox": [
+            1377,
+            0,
+            1605,
+            981
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.62,
+          "source": "audit_manual",
+          "render": true,
+          "clear": "white",
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "江戸 大根藩邸下屋敷",
+          "ko": "에도 다이콘 번저 시모야시키",
+          "bbox": [
+            15,
+            15,
+            1370,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "江戸 日本橋",
+          "ko": "에도 니혼바시",
+          "bbox": [
+            681,
+            214,
+            853,
+            1000
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "野外れの河原",
+          "ko": "교외의 강가",
+          "bbox": [
+            481,
+            214,
+            653,
+            1000
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "鈴ヶ森刑場",
+          "ko": "스즈가모리 형장",
+          "bbox": [
+            279,
+            214,
+            451,
+            1000
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            1617,
+            17,
+            1863,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "audit_manual",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex visual correction: render white title before the 武蔵 box so it does not erase the box text.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: disabled risky region(s) after v2 compare: C0.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "CB18104E808B56B3": {
+      "source": "textures/place_name_originals/CB18104E808B56B3.png",
+      "output": "kr_textures/ui/CB18104E808B56B3.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "近江",
+          "ko": "오미",
+          "bbox": [
+            1256,
+            17,
+            1504,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "伊吹山 山頂付近",
+          "ko": "이부키산 산정 부근",
+          "bbox": [
+            14,
+            15,
+            1228,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "D35B39CA7FAED5D7": {
+      "source": "textures/place_name_originals/D35B39CA7FAED5D7.png",
+      "output": "kr_textures/ui/D35B39CA7FAED5D7.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "美濃",
+          "ko": "미노",
+          "bbox": [
+            1256,
+            17,
+            1504,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "鳴神城 長屋廊上",
+          "ko": "나루카미성 나가야 복도",
+          "bbox": [
+            14,
+            15,
+            1228,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "DD1F1F1DE2039AAC": {
+      "source": "textures/place_name_originals/DD1F1F1DE2039AAC.png",
+      "output": "kr_textures/ui/DD1F1F1DE2039AAC.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "伊賀",
+          "ko": "이가",
+          "bbox": [
+            1660,
+            17,
+            1907,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "髑髏谷暗夜城 搦手門前",
+          "ko": "해골 골짜기 암야성 뒷문 앞",
+          "bbox": [
+            7,
+            9,
+            1633,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "E210275AFFF0A8D8": {
+      "source": "textures/place_name_originals/E210275AFFF0A8D8.png",
+      "output": "kr_textures/ui/E210275AFFF0A8D8.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "伊豆",
+          "ko": "이즈",
+          "bbox": [
+            1256,
+            17,
+            1503,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "幽雲寺 忌み墓場",
+          "ko": "유운지 이미하카",
+          "bbox": [
+            14,
+            16,
+            1228,
+            188
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "E581194DE2C76C56": {
+      "source": "textures/place_name_originals/E581194DE2C76C56.png",
+      "output": "kr_textures/ui/E581194DE2C76C56.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "駿河",
+          "ko": "스루가",
+          "bbox": [
+            1384,
+            17,
+            1631,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "東海道間道 薩埵峠",
+          "ko": "도카이도 사잇길 삿타 고개",
+          "bbox": [
+            7,
+            9,
+            1359,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "E9E834DE4BAFDAB2": {
+      "source": "textures/place_name_originals/E9E834DE4BAFDAB2.png",
+      "output": "kr_textures/ui/E9E834DE4BAFDAB2.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "甲斐",
+          "ko": "카이",
+          "bbox": [
+            716,
+            217,
+            962,
+            787
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "甲府の街道",
+          "ko": "코후의 가도",
+          "bbox": [
+            15,
+            15,
+            984,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "山の中の一軒家",
+          "ko": "산속의 외딴집",
+          "bbox": [
+            15,
+            819,
+            752,
+            991
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "山姥",
+          "ko": "야마우바",
+          "bbox": [
+            0,
+            461,
+            381,
+            687
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.58,
+          "source": "audit_manual",
+          "render": true,
+          "clear": "white",
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: disabled risky region(s) after v2 compare: C0.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "E9F2EC8557984A58": {
+      "source": "textures/place_name_originals/E9F2EC8557984A58.png",
+      "output": "kr_textures/ui/E9F2EC8557984A58.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "駿河",
+          "ko": "스루가",
+          "bbox": [
+            712,
+            17,
+            959,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "三保之松原",
+          "ko": "미호노마츠바라",
+          "bbox": [
+            13,
+            619,
+            798,
+            791
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "駿府の旅籠",
+          "ko": "슨푸의 여인숙",
+          "bbox": [
+            13,
+            819,
+            798,
+            991
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "雪之丞",
+          "ko": "유키노조",
+          "bbox": [
+            0,
+            262,
+            612,
+            468
+          ],
+          "background": "none",
+          "text_color": "white",
+          "padding": 0.12,
+          "font_ratio": 0.58,
+          "source": "audit_manual",
+          "render": true,
+          "clear": "white",
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: align place texture labels to script/system terminology.",
+        "Codex safety: character/brush label disabled until bbox/layout is manually verified.",
+        "Codex visual correction: disabled risky region(s) after v2 compare: C0.",
+        "Codex visual correction: place-name texture text uses vertical/rotated writing only; no horizontal Korean layout.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "EC585E08CC88B03F": {
+      "source": "textures/place_name_originals/EC585E08CC88B03F.png",
+      "output": "kr_textures/ui/EC585E08CC88B03F.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "武蔵",
+          "ko": "무사시",
+          "bbox": [
+            1244,
+            17,
+            1492,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "江戸城 大手門前",
+          "ko": "에도성 오테문 앞",
+          "bbox": [
+            7,
+            10,
+            1219,
+            183
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "EE60DEFADBDD82C5": {
+      "source": "textures/place_name_originals/EE60DEFADBDD82C5.png",
+      "output": "kr_textures/ui/EE60DEFADBDD82C5.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "飛騨",
+          "ko": "히다",
+          "bbox": [
+            1097,
+            17,
+            1344,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "高山 大鍾乳洞",
+          "ko": "다카야마 대종유동",
+          "bbox": [
+            15,
+            16,
+            1068,
+            188
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "F1C8031232197225": {
+      "source": "textures/place_name_originals/F1C8031232197225.png",
+      "output": "kr_textures/ui/F1C8031232197225.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "伊勢",
+          "ko": "이세",
+          "bbox": [
+            1256,
+            17,
+            1503,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "南伊勢町五ヶ所浦",
+          "ko": "미나미이세초 고카쇼우라",
+          "bbox": [
+            15,
+            15,
+            1228,
+            188
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "F24874ADB9581870": {
+      "source": "textures/place_name_originals/F24874ADB9581870.png",
+      "output": "kr_textures/ui/F24874ADB9581870.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "遠江",
+          "ko": "도토미",
+          "bbox": [
+            1384,
+            17,
+            1630,
+            588
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "周智郡 秋葉山山道",
+          "ko": "슈치군 아키바산 산길",
+          "bbox": [
+            7,
+            9,
+            1359,
+            182
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "place_name_regions",
+          "render": true,
+          "layout": "rotated"
+        }
+      ],
+      "notes": [
+        "simple one-box/one-banner mapping",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation."
+      ]
+    },
+    "FFC64B053648525E": {
+      "source": "textures/place_name_originals/FFC64B053648525E.png",
+      "output": "kr_textures/ui/FFC64B053648525E.png",
+      "status": "ready",
+      "regions": [
+        {
+          "id": "K0",
+          "kind": "box",
+          "ja": "飛騨",
+          "ko": "히다",
+          "bbox": [
+            1688,
+            17,
+            1934,
+            587
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "K1",
+          "kind": "box",
+          "ja": "近江",
+          "ko": "오미",
+          "bbox": [
+            284,
+            217,
+            530,
+            786
+          ],
+          "background": "black",
+          "text_color": "white",
+          "padding": 0.14,
+          "font_ratio": 0.74,
+          "source": "visual_manual",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B0",
+          "kind": "banner",
+          "ja": "白川郷 白銀ヶ淵 廃れ社",
+          "ko": "시라카와고 시로가네가후치 폐사",
+          "bbox": [
+            13,
+            15,
+            1462,
+            187
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "source": "map_notes",
+          "render": true,
+          "layout": "rotated"
+        },
+        {
+          "id": "B1",
+          "kind": "banner",
+          "ja": "美濃国 境木峠",
+          "ko": "미노국 사카이기 고개",
+          "bbox": [
+            1486,
+            10,
+            1658,
+            977
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "map_notes",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B2",
+          "kind": "banner",
+          "ja": "三珠岳",
+          "ko": "미타마 봉우리",
+          "bbox": [
+            965,
+            210,
+            1137,
+            715
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.62,
+          "source": "jp_messages_58_2",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B3",
+          "kind": "banner",
+          "ja": "とある山中",
+          "ko": "어느 산속",
+          "bbox": [
+            555,
+            211,
+            728,
+            945
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "jp_messages_58_5",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "B4",
+          "kind": "banner",
+          "ja": "岡部邸",
+          "ko": "오카베 저택",
+          "bbox": [
+            1165,
+            211,
+            1337,
+            715
+          ],
+          "background": "red",
+          "text_color": "black",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "source": "jp_messages_58_4",
+          "render": true,
+          "layout": "vertical"
+        },
+        {
+          "id": "C0",
+          "kind": "character",
+          "ja": "不知火",
+          "ko": "시라누이",
+          "bbox": [
+            735,
+            205,
+            955,
+            775
+          ],
+          "background": "none",
+          "clear": "white",
+          "text_color": "white",
+          "padding": 0.08,
+          "font_ratio": 0.62,
+          "source": "jp_messages_58_3",
+          "render": true,
+          "layout": "vertical"
+        }
+      ],
+      "notes": [
+        "initially generated from integrated_mapping + map_notes bboxes",
+        "full audit found visible placement or mapping issues; edit this hash before rendering/applying",
+        "Codex audit/manual correction: partial high-risk source; keep as needs_review until visual confirmation.",
+        "Codex status: not ready for bulk apply; needs manual bbox/source confirmation.",
+        "Codex visual correction: rebuilt from original FFC64 atlas; previous 伊賀/伊賀国 mapping was wrong.",
+        "Codex visual correction: added 岡部邸 and 不知火 labels from script/system entries.",
+        "Codex visual correction: black-background render for white brush 不知火 label.",
+        "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
+        "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
+        "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    }
+  }
+}

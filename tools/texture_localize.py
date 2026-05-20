@@ -53,10 +53,28 @@ def load_config():
 
 def render_text_to_image(width, height, text, font_path, font_size,
                          color=(255, 255, 255, 255), align="left",
-                         line_spacing=4, bold=False, v_align="top"):
+                         line_spacing=4, bold=False, v_align="top",
+                         fit_to_box=False):
     """텍스트를 RGBA 이미지로 렌더링"""
     img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
+
+    if fit_to_box:
+        while font_size > 8:
+            font = ImageFont.truetype(font_path, font_size)
+            lines = text.split("\n")
+            widths = []
+            total_h = 0
+            for i, line in enumerate(lines):
+                bbox = font.getbbox(line)
+                widths.append(bbox[2] - bbox[0])
+                total_h += bbox[3] - bbox[1]
+                if i < len(lines) - 1:
+                    total_h += line_spacing
+            if (not widths or max(widths) <= width) and total_h <= height:
+                break
+            font_size -= 1
+
     font = ImageFont.truetype(font_path, font_size)
 
     lines = text.split("\n")
@@ -66,7 +84,7 @@ def render_text_to_image(width, height, text, font_path, font_size,
         bbox = font.getbbox(line)
         text_w = bbox[2] - bbox[0]
         text_h = bbox[3] - bbox[1]
-        line_metrics.append((text_w, text_h))
+        line_metrics.append((bbox, text_w, text_h))
         total_h += text_h
         if i < len(lines) - 1:
             total_h += line_spacing
@@ -78,21 +96,22 @@ def render_text_to_image(width, height, text, font_path, font_size,
     else:
         y = 0
 
-    for line, (text_w, text_h) in zip(lines, line_metrics):
+    for line, (bbox, text_w, text_h) in zip(lines, line_metrics):
         if align == "center":
-            x = (width - text_w) // 2
+            x = (width - text_w) // 2 - bbox[0]
         elif align == "right":
-            x = width - text_w
+            x = width - text_w - bbox[0]
         else:
-            x = 0
+            x = -bbox[0]
+        draw_y = y - bbox[1]
 
         # bold: draw slightly offset copies
         if bold:
             for dx in [-1, 0, 1]:
                 for dy in [-1, 0, 1]:
-                    draw.text((x + dx, y + dy), line, font=font, fill=color)
+                    draw.text((x + dx, draw_y + dy), line, font=font, fill=color)
         else:
-            draw.text((x, y), line, font=font, fill=color)
+            draw.text((x, draw_y), line, font=font, fill=color)
 
         y += text_h + line_spacing
 
@@ -231,7 +250,8 @@ def process_texture(hash_id, tex_config, preview=False):
         print(f"  SKIP {hash_id}: manual edit (no regions) — already in kr_textures/ui/")
         return False
 
-    src_path = EXPORT_DIR / f"{hash_id}.png"
+    source = tex_config.get("source")
+    src_path = PROJECT_DIR / source if source else EXPORT_DIR / f"{hash_id}.png"
     if not src_path.exists():
         print(f"  SKIP {hash_id}: export 파일 없음 ({src_path})")
         return False
@@ -284,11 +304,21 @@ def process_texture(hash_id, tex_config, preview=False):
                 result.paste(Image.fromarray(orig_arr), (cx, cy))
 
             # 2. 한글 텍스트 렌더링
-            text_img = render_text_to_image(w, h, text, font_path, font_size,
-                                            color=color, align=align, bold=bold, v_align=v_align)
+            text_img = render_text_to_image(
+                w, h, text, font_path, font_size,
+                color=color, align=align, bold=bold, v_align=v_align,
+                fit_to_box=bool(region.get("fit_to_box", False)),
+            )
 
             # 3. 합성
             result.paste(text_img, (x, y), text_img)
+
+    output_scale = int(tex_config.get("output_scale", 1))
+    if output_scale > 1:
+        result = result.resize(
+            (result.width * output_scale, result.height * output_scale),
+            Image.Resampling.LANCZOS,
+        )
 
     # 출력
     if preview:
