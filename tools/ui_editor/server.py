@@ -271,9 +271,11 @@ def render_preview(hash_id, system):
             cwd=str(ROOT), capture_output=True, text=True,
         )
     elif system == "place":
+        # kr_textures/ui 에 직접 출력 (temp 경유 없이)
         proc = subprocess.run(
             [sys.executable, str(ROOT / "tools" / "render_place_texture_job.py"),
-             hash_id, "--apply", "--include-needs-review"],
+             hash_id, "--out-dir", str(ROOT / "kr_textures" / "ui"),
+             "--include-needs-review"],
             cwd=str(ROOT), capture_output=True, text=True,
         )
     else:
