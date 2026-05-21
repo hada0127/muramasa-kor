@@ -95,6 +95,15 @@ def _draw_sp(d, x, y, text, font, fill, ls):
         cx += font.getlength(ch) + ls
 
 
+def _off(mode, avail, size, lo="left", hi="right"):
+    """정렬 오프셋: lo=0, center=가운데, hi=끝."""
+    if mode == lo:
+        return 0
+    if mode == hi:
+        return max(0, avail - size)
+    return max(0, (avail - size) // 2)
+
+
 def render_text(
     base_img: Image.Image,
     bbox: list[int],
@@ -105,10 +114,125 @@ def render_text(
     fr: float = 0.85,
     layout: str | None = None,
     letter_spacing: int = 0,
+    align: str = "center",
+    valign: str = "center",
+    pad_x: float | None = None,
+    pad_y: float | None = None,
+    font_px: int | None = None,
 ) -> None:
+    ls = int(letter_spacing)
+    # 정렬/패딩/자간/픽셀폰트 지정이 없으면 기존(비율 자동맞춤) 경로 → 기존 렌더 보존
+    if (font_px is None and align == "center" and valign == "center"
+            and pad_x is None and pad_y is None and ls == 0):
+        _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, ls)
+    else:
+        _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
+                        ls, align, valign, pad_x, pad_y, font_px)
+
+
+def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
+                    ls, align, valign, pad_x, pad_y, font_px):
+    """픽셀 폰트 + H/V 정렬 + 상하/좌우 패딩(px) 기반 렌더.
+    세로/회전에서 자간(ls)은 글자 사이 추가 간격(px)으로 깔끔히 동작."""
     x0, y0, x1, y1 = bbox
     rw, rh = x1 - x0, y1 - y0
-    ls = int(letter_spacing)
+    fp = str(font_path)
+
+    is_rot = layout == "rotated" or (layout is None and rw > rh)
+    is_horiz = layout == "horizontal"
+    chars = [c for c in text if c != " "]
+    n = max(1, len(chars))
+
+    # 방향별 패딩 기본값 (legacy와 동일: 글자가 채우는 축만 padding, 교차축은 0)
+    if is_horiz:
+        dpx, dpy = rw * padding, rh * padding
+    elif is_rot:
+        dpx, dpy = rw * padding, 0          # 가로배너: 좌우(길이) padding, 상하(교차) 0
+    else:
+        dpx, dpy = 0, rh * padding          # 세로: 좌우(교차) 0, 상하(길이) padding
+    pxl = int(pad_x) if pad_x is not None else int(dpx)
+    pyl = int(pad_y) if pad_y is not None else int(dpy)
+    inner_w = max(1, rw - 2 * pxl)
+    inner_h = max(1, rh - 2 * pyl)
+
+    if is_horiz:
+        d = ImageDraw.Draw(base_img)
+        if font_px:
+            fs = int(font_px)
+        else:
+            fs = max(8, int(inner_h * fr))
+            while fs > 8:
+                f = ImageFont.truetype(fp, fs)
+                bb = f.getbbox(text)
+                tw = _sp_width(f, text, ls) if ls else bb[2] - bb[0]
+                if tw <= inner_w and (bb[3] - bb[1]) <= inner_h:
+                    break
+                fs -= 1
+        font = ImageFont.truetype(fp, max(4, fs))
+        bb = font.getbbox(text)
+        tw = _sp_width(font, text, ls) if ls else bb[2] - bb[0]
+        th = bb[3] - bb[1]
+        tx = x0 + pxl + _off(align, inner_w, tw) - bb[0]
+        ty = y0 + pyl + _off(valign, inner_h, th, "top", "bottom") - bb[1]
+        if ls:
+            _draw_sp(d, tx, ty, text, font, fill, ls)
+        else:
+            d.text((tx, ty), text, font=font, fill=fill)
+        return
+
+    # 세로/회전 공통: 글자 픽셀 크기 + (글자높이+ls) 피치로 쌓기
+    if is_rot:
+        # 회전 캔버스: width=rh(최종 높이=cross), height=rw(최종 너비=length)
+        canvas = Image.new("RGBA", (rh, rw), (0, 0, 0, 0))
+        d = ImageDraw.Draw(canvas)
+        len_avail, cross_avail = inner_w, inner_h  # length=rw축, cross=rh축
+        len_pad, cross_pad = pxl, pyl
+    else:
+        d = ImageDraw.Draw(base_img)
+        len_avail, cross_avail = inner_h, inner_w  # length=rh축(세로), cross=rw축
+        len_pad, cross_pad = pyl, pxl
+
+    if font_px:
+        fs = int(font_px)
+    else:
+        # 글자 크기는 자간과 무관 (자간은 간격만 추가) → 자간 늘려도 글자 안 줄어듦
+        fs = max(8, int(min(cross_avail, len_avail / n) * fr))
+    font = ImageFont.truetype(fp, max(4, fs))
+    metrics = [font.getbbox(c) for c in chars] or [font.getbbox("가")]
+    gh = max(m[3] - m[1] for m in metrics)
+    gw = max(m[2] - m[0] for m in metrics)
+    pitch = gh + ls
+    block_len = n * gh + (n - 1) * ls
+    # length축: align(=가로 정렬, 회전이면 배너 길이 방향) / 세로면 valign이 길이방향
+    len_mode = align if is_rot else valign
+    cross_mode = valign if is_rot else align
+    start_len = len_pad + _off(len_mode, len_avail, block_len, "top" if not is_rot else "left",
+                               "bottom" if not is_rot else "right")
+    cross_left = cross_pad + _off(cross_mode, cross_avail, gw, "left", "right")
+    cross_cx = cross_left + gw // 2
+    i = 0
+    for ch in chars:
+        m = font.getbbox(ch)
+        cw, chh = m[2] - m[0], m[3] - m[1]
+        cx = cross_cx - (cw // 2 + m[0])
+        cy = start_len + i * pitch + (gh - chh) // 2 - m[1]
+        d.text((cx, cy), ch, font=font, fill=fill)
+        i += 1
+
+    if is_rot:
+        rot = canvas.rotate(90, expand=True)
+        if rot.size != (rw, rh):
+            rot = rot.resize((rw, rh))
+        region = base_img.crop(tuple(bbox)).convert("RGBA")
+        region = Image.alpha_composite(region, rot)
+        base_img.paste(region, (x0, y0))
+
+
+def _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, ls):
+    """기존 비율(fr) 자동맞춤 렌더 (정렬/패딩 미지정 시) — 기존 출력 보존."""
+    x0, y0, x1, y1 = bbox
+    rw, rh = x1 - x0, y1 - y0
+
     if layout == "vertical_columns":
         d = ImageDraw.Draw(base_img)
         words = [w for w in text.split(" ") if w]
@@ -272,6 +396,10 @@ def render_job(hash_id: str, job: dict, out_dir: Path, apply_dir: Path | None, f
                 fr=float(region.get("font_ratio", 0.85)),
                 layout=region.get("layout"),
                 letter_spacing=int(region.get("letter_spacing", 0)),
+                align=region.get("align", "center"),
+                valign=region.get("valign", "center"),
+                pad_x=region.get("pad_x"),
+                pad_y=region.get("pad_y"),
             )
 
     scale = int(job.get("output_scale", 1))
