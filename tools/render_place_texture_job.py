@@ -207,11 +207,15 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
     gw = max(m[2] - m[0] for m in metrics)
     pitch = cell0 + ls
     block_len = (ncells - 1) * pitch + cell0
-    len_mode = align if is_rot else valign
-    cross_mode = valign if is_rot else align
-    start_len = len_pad + _off(len_mode, len_avail, block_len,
-                               "left" if is_rot else "top", "right" if is_rot else "bottom")
-    cross_left = cross_pad + _off(cross_mode, cross_avail, gw, "left", "right")
+    if is_rot:
+        # 회전 배너: align=가로(길이), valign=세로(교차). 90° CCW 회전으로 세로축이
+        # 뒤집히므로 valign top↔bottom 반전.
+        start_len = len_pad + _off(align, len_avail, block_len, "left", "right")
+        cross_left = cross_pad + _off(valign, cross_avail, gw, "bottom", "top")
+    else:
+        # 세로쓰기: valign=세로(길이), align=가로(교차)
+        start_len = len_pad + _off(valign, len_avail, block_len, "top", "bottom")
+        cross_left = cross_pad + _off(align, cross_avail, gw, "left", "right")
     cross_cx = cross_left + gw // 2
     for i, ch in enumerate(cells):
         if ch == " ":
