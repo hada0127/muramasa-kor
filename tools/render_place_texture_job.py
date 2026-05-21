@@ -192,22 +192,22 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
         len_avail, cross_avail = inner_h, inner_w  # length=rh축(세로), cross=rw축
         len_pad, cross_pad = pyl, pxl
 
+    # 셀(slot) 기반: 글자를 길이축에 균등 분배. 자간 0이면 박스를 채움(=기존 렌더와 동일),
+    # 자간은 셀 간격에 더해지되 글자 크기는 자간과 무관(안 줄어듦).
+    cell0 = max(1, len_avail // n)
     if font_px:
         fs = int(font_px)
     else:
-        # 글자 크기는 자간과 무관 (자간은 간격만 추가) → 자간 늘려도 글자 안 줄어듦
-        fs = max(8, int(min(cross_avail, len_avail / n) * fr))
+        fs = max(8, int(min(cross_avail, cell0) * fr))
     font = ImageFont.truetype(fp, max(4, fs))
     metrics = [font.getbbox(c) for c in chars] or [font.getbbox("가")]
-    gh = max(m[3] - m[1] for m in metrics)
     gw = max(m[2] - m[0] for m in metrics)
-    pitch = gh + ls
-    block_len = n * gh + (n - 1) * ls
-    # length축: align(=가로 정렬, 회전이면 배너 길이 방향) / 세로면 valign이 길이방향
+    pitch = cell0 + ls
+    block_len = (n - 1) * pitch + cell0
     len_mode = align if is_rot else valign
     cross_mode = valign if is_rot else align
-    start_len = len_pad + _off(len_mode, len_avail, block_len, "top" if not is_rot else "left",
-                               "bottom" if not is_rot else "right")
+    start_len = len_pad + _off(len_mode, len_avail, block_len,
+                               "left" if is_rot else "top", "right" if is_rot else "bottom")
     cross_left = cross_pad + _off(cross_mode, cross_avail, gw, "left", "right")
     cross_cx = cross_left + gw // 2
     i = 0
@@ -215,7 +215,7 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
         m = font.getbbox(ch)
         cw, chh = m[2] - m[0], m[3] - m[1]
         cx = cross_cx - (cw // 2 + m[0])
-        cy = start_len + i * pitch + (gh - chh) // 2 - m[1]
+        cy = start_len + i * pitch + cell0 // 2 - (chh // 2 + m[1])
         d.text((cx, cy), ch, font=font, fill=fill)
         i += 1
 

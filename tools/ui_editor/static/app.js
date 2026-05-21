@@ -193,29 +193,37 @@ function makeTextLayer(r, w, h) {
   }
   const lsPx = ls * SCALE;
 
-  if (mode === "v") {            // 세로: 글자별 세로 스택
+  const realChars = [...txt].filter((c) => c !== " ");
+  if (mode === "v") {            // 세로: 셀 슬롯에 글자 균등 분배 (자간0=박스 채움)
+    const cellPx = (innerH / n) * SCALE;
     t.style.flexDirection = "column";
     t.style.justifyContent = _flex(valign);  // 세로축 = 길이
     t.style.alignItems = _flex(align);       // 가로축 = 교차
-    for (const ch of txt) {
-      if (ch === " ") continue;
+    realChars.forEach((ch, idx) => {
       const s = document.createElement("span");
       s.textContent = ch;
-      if (ls) s.style.marginBottom = lsPx + "px";
+      s.style.height = cellPx + "px";
+      s.style.display = "flex";
+      s.style.alignItems = "center";
+      s.style.justifyContent = "center";
+      if (ls && idx < realChars.length - 1) s.style.marginBottom = lsPx + "px";
       t.appendChild(s);
-    }
-  } else if (mode === "rot") {   // 회전 배너: 글자 90° 눕혀 가로 배열
+    });
+  } else if (mode === "rot") {   // 회전 배너: 셀 슬롯, 글자 90° 눕혀 가로 배열
+    const cellPx = (innerW / n) * SCALE;
     t.style.justifyContent = _flex(align);   // 가로축 = 길이
     t.style.alignItems = _flex(valign);      // 세로축 = 교차
-    for (const ch of txt) {
-      if (ch === " ") { const sp = document.createElement("span"); sp.style.width = fontPx * 0.4 + "px"; t.appendChild(sp); continue; }
+    realChars.forEach((ch, idx) => {
       const s = document.createElement("span");
       s.textContent = ch;
-      s.style.display = "inline-block";
+      s.style.width = cellPx + "px";
+      s.style.display = "inline-flex";
+      s.style.alignItems = "center";
+      s.style.justifyContent = "center";
       s.style.transform = "rotate(-90deg)";  // PIL rotate(90)=CCW
-      if (ls) s.style.marginRight = lsPx + "px";
+      if (ls && idx < realChars.length - 1) s.style.marginRight = lsPx + "px";
       t.appendChild(s);
-    }
+    });
   } else {                        // 가로
     t.style.letterSpacing = lsPx + "px";
     t.style.justifyContent = _flex(align);
