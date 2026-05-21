@@ -87,15 +87,17 @@ def save_regions(hash_id, system, regions):
             tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
             if tex is None:
                 return {"ok": False, "error": "localize hash not found"}
+            # regions 우선, 없으면 수동 편집 기록(manual_regions)에 되돌려 씀
+            region_key = "regions" if tex.get("regions") else (
+                "manual_regions" if tex.get("manual_regions") else "regions")
             native = []
             for r in regions:
                 x, y, w, h = [int(round(v)) for v in r["box"]]
                 nr = dict(r.get("native") or {})
-                nr.update({
-                    "x": x, "y": y, "w": w, "h": h,
-                    "text": r.get("text", ""),
-                    "font_size": int(r.get("font_size", 24)),
-                })
+                nr.update({"x": x, "y": y, "w": w, "h": h, "text": r.get("text", "")})
+                # font_size: 텍스트가 있거나 원래 있던 영역에만 (빈 클리어 영역엔 미기록)
+                if r.get("text") or "font_size" in nr:
+                    nr["font_size"] = int(r.get("font_size", 24))
                 # 선택적 필드: 기존 키는 갱신, 없던 키는 비기본값만 추가
                 _upd(nr, "color", _color_list(r.get("color")), [255, 255, 255, 255])
                 _upd(nr, "align", r.get("align", "left"), "left")
@@ -108,7 +110,7 @@ def save_regions(hash_id, system, regions):
                 # 사용자가 박스를 옮겼으면 stale clear_rect 제거
                 nr.pop("clear_rect", None)
                 native.append(nr)
-            tex["regions"] = native
+            tex[region_key] = native
             save_json(LOCALIZE_CONFIG, cfg)
 
         elif system == "place":
@@ -162,6 +164,12 @@ def render_preview(hash_id, system):
     """실제 렌더러를 호출하여 미리보기 PNG 생성. (kr_textures 덮어쓰지 않음)"""
     PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
     if system == "localize":
+        cfg = load_json(LOCALIZE_CONFIG)
+        tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
+        if tex is not None and not tex.get("regions") and tex.get("manual_regions"):
+            return {"ok": False, "error":
+                    "수동 편집(Krita) 텍스처입니다. 좌표·텍스트는 manual_regions에 "
+                    "저장되지만 PNG는 자동 생성되지 않습니다 — kr_textures/ui/의 파일을 직접 편집하세요."}
         proc = subprocess.run(
             [sys.executable, str(ROOT / "tools" / "texture_localize.py"),
              hash_id, "--preview"],

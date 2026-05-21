@@ -1005,6 +1005,7 @@
       "description": "지도 화면 로마자 지명 아틀라스 (YAMASHIRO/SHINANO/MUSASHI/HIDA/YAMATO/TOTOMI/MIKAWA/SAGAMI/SURUGA/OWARI/KAI/MINO/OMIGAISE/IZU → 한글)",
       "output_scale": 1,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [
         {
           "box": [
@@ -1517,6 +1518,7 @@
       "description": "상인(Item/Inventory/Price) 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Item/Price/Money/mon/ryo",
       "output_scale": 4,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [
         {
           "box": [
@@ -1861,6 +1863,7 @@
       "description": "식당(Soba Shop) 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Money/Soba Shop/Meals/Menu/Price/mon/ryo",
       "output_scale": 4,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [
         {
           "box": [
@@ -2550,6 +2553,7 @@
       "description": "DLC 찻집 메뉴 UI HD import 텍스처. Inventory/Sold Out/Meals/Teahouse/Price/Money/Menu/mon/ryo",
       "output_scale": 1,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [
         {
           "box": [
@@ -3366,7 +3370,70 @@
       "description": "시스템 UI 아틀라스 (Please/press/X/Return/시작/새게임/뒤로 등 조합 텍스트)",
       "output_scale": 1,
       "auto_align": false,
-      "regions": [],
+      "region_key": "manual_regions",
+      "regions": [
+        {
+          "box": [
+            940,
+            0,
+            1285,
+            550
+          ],
+          "text": "O를 누르세요",
+          "font_size": 178,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "left",
+          "v_align": "top",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "native": {
+            "x": 940,
+            "y": 0,
+            "w": 1285,
+            "h": 550,
+            "clear": true,
+            "text": "O를 누르세요",
+            "font_size": 178
+          }
+        },
+        {
+          "box": [
+            0,
+            1260,
+            1390,
+            255
+          ],
+          "text": "",
+          "font_size": 24,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "left",
+          "v_align": "top",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "native": {
+            "x": 0,
+            "y": 1260,
+            "w": 1390,
+            "h": 255,
+            "clear": true,
+            "text": ""
+          }
+        }
+      ],
       "memo": ""
     },
     {
@@ -4780,6 +4847,7 @@
       "description": "본편 오프닝 산 안개 배경 텍스처 + 한글 나레이션 직접 렌더링",
       "output_scale": 1,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [],
       "memo": ""
     },
@@ -4885,6 +4953,7 @@
       "description": "Restaurant/식당류 메뉴 UI 사전 렌더 영문 → 한글. Inventory/Sold Out/Meals/Restaurant/Price/Money/Menu/mon/ryo",
       "output_scale": 4,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [
         {
           "box": [
@@ -7061,6 +7130,7 @@
       "description": "본편 타이틀 선택 상태 (MURAMASA REBIRTH → 오보로 무라마사)",
       "output_scale": 1,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [],
       "memo": ""
     },
@@ -7509,6 +7579,7 @@
       "description": "본편 오프닝 나레이션 영문 단어 아틀라스. 단어 캐리어 매칭이 어려워 투명 처리하고 배경 텍스처에 한글을 직접 렌더링.",
       "output_scale": 1,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [],
       "memo": ""
     },
@@ -8329,6 +8400,7 @@
       "description": "게임 로고 그림자/미선택 상태. GENROKU LEGENDS + OBOROMURAMASA 텍스트 삭제",
       "output_scale": 1,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [],
       "memo": ""
     },
@@ -8842,6 +8914,7 @@
       "description": "DLC 부제 선택 상태 (GENROKU LEGENDS → 겐로쿠 괴기담)",
       "output_scale": 1,
       "auto_align": false,
+      "region_key": "regions",
       "regions": [
         {
           "box": [

@@ -47,10 +47,21 @@ def _resolve_source(value, hash_id):
     return None
 
 
+def localize_region_key(tex):
+    """이 텍스처가 region 을 담는 키 (regions 우선, 없으면 manual_regions)."""
+    if tex.get("regions"):
+        return "regions"
+    if tex.get("manual_regions"):
+        return "manual_regions"
+    return "regions"
+
+
 def localize_regions(tex):
-    """texture_localize 스키마 region → 통합 region (box + native)."""
+    """texture_localize 스키마 region → 통합 region (box + native).
+    regions 가 없으면 manual_regions(수동 편집 기록)도 읽는다."""
+    rows = tex.get("regions") or tex.get("manual_regions") or []
     out = []
-    for r in tex.get("regions", []):
+    for r in rows:
         box = [r.get("x", 0), r.get("y", 0), r.get("w", 0), r.get("h", 0)]
         out.append({
             "box": box,
@@ -137,6 +148,7 @@ def build():
                 "description": tex.get("description", ""),
                 "output_scale": tex.get("output_scale", 1),
                 "auto_align": tex.get("auto_align", False),
+                "region_key": localize_region_key(tex),
                 "regions": localize_regions(tex),
             }
         elif h in place_by_hash:
