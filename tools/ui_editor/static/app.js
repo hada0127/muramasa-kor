@@ -203,7 +203,7 @@ function makeTextLayer(r, w, h) {
     cells.forEach((ch, idx) => {
       const s = document.createElement("span");
       s.textContent = ch === " " ? "" : ch;
-      s.style.height = cellPx + "px";
+      s.style.height = (ch === " " ? cellPx * 0.5 : cellPx) + "px";  // 공백 반 칸
       s.style.flexShrink = "0";
       s.style.display = "flex";
       s.style.alignItems = "center";
@@ -218,7 +218,7 @@ function makeTextLayer(r, w, h) {
     cells.forEach((ch, idx) => {
       const s = document.createElement("span");
       s.textContent = ch === " " ? "" : ch;
-      s.style.width = cellPx + "px";
+      s.style.width = (ch === " " ? cellPx * 0.5 : cellPx) + "px";  // 공백 반 칸
       s.style.flexShrink = "0";
       s.style.display = "inline-flex";
       s.style.alignItems = "center";

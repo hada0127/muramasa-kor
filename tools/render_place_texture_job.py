@@ -206,7 +206,14 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
     metrics = [font.getbbox(c) for c in cells if c != " "] or [font.getbbox("가")]
     gw = max(m[2] - m[0] for m in metrics)
     pitch = cell0 + ls
-    block_len = (ncells - 1) * pitch + cell0
+    # 누적 오프셋: 공백은 반 칸(0.5)만 차지 (세로쓰기 공백이 가로보다 크던 문제)
+    SPACE_RATIO = 0.5
+    offs = []
+    acc = 0.0
+    for ch in cells:
+        offs.append(acc)
+        acc += pitch * (SPACE_RATIO if ch == " " else 1.0)
+    block_len = max(cell0, int(round(acc - ls)))  # 마지막 글자 뒤 자간 제외
     if is_rot:
         # 회전 배너: align=가로(길이), valign=세로(교차). 90° CCW 회전으로 세로축이
         # 뒤집히므로 valign top↔bottom 반전.
@@ -219,11 +226,11 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
     cross_cx = cross_left + gw // 2
     for i, ch in enumerate(cells):
         if ch == " ":
-            continue  # 공백 셀은 비우고 슬롯만 차지
+            continue  # 공백은 반 칸만 차지(위 offs에 반영)
         m = font.getbbox(ch)
         cw, chh = m[2] - m[0], m[3] - m[1]
         cx = cross_cx - (cw // 2 + m[0])
-        cy = start_len + i * pitch + cell0 // 2 - (chh // 2 + m[1])
+        cy = start_len + int(offs[i]) + cell0 // 2 - (chh // 2 + m[1])
         d.text((cx, cy), ch, font=font, fill=fill)
 
     if is_rot:
