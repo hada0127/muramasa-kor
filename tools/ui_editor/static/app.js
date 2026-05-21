@@ -173,13 +173,15 @@ function makeTextLayer(r, w, h) {
   else { pxl = r.pad_x ?? 0; pyl = r.pad_y ?? h * padR; }
   const innerW = Math.max(1, w - 2 * pxl), innerH = Math.max(1, h - 2 * pyl);
 
-  // 글씨 크기 (자간과 무관 — 렌더러와 동일)
+  // 셀 크기: 자간 고려해 박스에 맞춤(렌더러와 동일 공식) → 항상 박스 안
+  const cellV = Math.max(1, (innerH - ls * (n - 1)) / n);
+  const cellR = Math.max(1, (innerW - ls * (n - 1)) / n);
   let fontCoord;
   if (isLoc) fontCoord = r.font_size || 24;
   else {
     const fr = r.font_ratio || 0.85;
-    if (mode === "v") fontCoord = Math.min(innerW, innerH / n) * fr;
-    else if (mode === "rot") fontCoord = Math.min(innerH, innerW / n) * fr;
+    if (mode === "v") fontCoord = Math.min(innerW, cellV) * fr;
+    else if (mode === "rot") fontCoord = Math.min(innerH, cellR) * fr;
     else fontCoord = innerH * fr;
   }
   const fontPx = Math.max(2, fontCoord * SCALE);
@@ -192,8 +194,8 @@ function makeTextLayer(r, w, h) {
   const lsPx = ls * SCALE;
 
   const cells = [...txt];  // 공백 포함 (빈 셀로 간격 반영)
-  if (mode === "v") {            // 세로: 셀 슬롯에 글자 균등 분배 (자간0=박스 채움)
-    const cellPx = (innerH / n) * SCALE;
+  if (mode === "v") {            // 세로: 셀 슬롯에 글자 균등 분배 (박스에 맞춤)
+    const cellPx = cellV * SCALE;
     t.style.flexDirection = "column";
     t.style.justifyContent = _flex(valign);  // 세로축 = 길이
     t.style.alignItems = _flex(align);       // 가로축 = 교차
@@ -201,6 +203,7 @@ function makeTextLayer(r, w, h) {
       const s = document.createElement("span");
       s.textContent = ch === " " ? "" : ch;
       s.style.height = cellPx + "px";
+      s.style.flexShrink = "0";
       s.style.display = "flex";
       s.style.alignItems = "center";
       s.style.justifyContent = "center";
@@ -208,13 +211,14 @@ function makeTextLayer(r, w, h) {
       t.appendChild(s);
     });
   } else if (mode === "rot") {   // 회전 배너: 셀 슬롯, 글자 90° 눕혀 가로 배열
-    const cellPx = (innerW / n) * SCALE;
+    const cellPx = cellR * SCALE;
     t.style.justifyContent = _flex(align);   // 가로축 = 길이
     t.style.alignItems = _flex(valign);      // 세로축 = 교차
     cells.forEach((ch, idx) => {
       const s = document.createElement("span");
       s.textContent = ch === " " ? "" : ch;
       s.style.width = cellPx + "px";
+      s.style.flexShrink = "0";
       s.style.display = "inline-flex";
       s.style.alignItems = "center";
       s.style.justifyContent = "center";

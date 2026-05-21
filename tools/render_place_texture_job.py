@@ -194,10 +194,10 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
     d = ImageDraw.Draw(canvas)
 
     # 셀(slot) 기반: 글자를 길이축에 균등 분배. 공백도 한 셀 차지(띄어쓰기 반영).
-    # 자간 0이면 박스를 채움(=기존), 자간은 셀 간격에 가산, 글자 크기는 자간과 무관.
+    # 자간을 고려해 박스에 맞춤(블록=길이) → 항상 박스 안에 들어감(편집창과 동일).
     cells = list(text)
     ncells = max(1, len(cells))
-    cell0 = max(1, len_avail // ncells)
+    cell0 = max(1, (len_avail - ls * (ncells - 1)) // ncells)
     if font_px:
         fs = int(font_px)
     else:
