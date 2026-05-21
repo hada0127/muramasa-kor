@@ -41,6 +41,8 @@ MIME = {
     ".png": "image/png",
     ".jpg": "image/jpeg",
     ".json": "application/json; charset=utf-8",
+    ".ttf": "font/ttf",
+    ".otf": "font/otf",
 }
 
 
@@ -100,6 +102,7 @@ def save_regions(hash_id, system, regions):
                 _upd(nr, "v_align", r.get("v_align", "top"), "top")
                 _upd(nr, "clear", bool(r.get("clear", True)), True)
                 _upd(nr, "fit_to_box", bool(r.get("fit_to_box", False)), False)
+                _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
                 if r.get("orient"):
                     nr["orient"] = r["orient"]
                 # 사용자가 박스를 옮겼으면 stale clear_rect 제거
@@ -122,6 +125,7 @@ def save_regions(hash_id, system, regions):
                 _upd(nr, "text_color", r.get("text_color", "black"), "black")
                 _upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
                 _upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
+                _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
                 _upd(nr, "render", bool(r.get("render", True)), True)
                 bg = r.get("background")
                 if bg in ("red", "black"):

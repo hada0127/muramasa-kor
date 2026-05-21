@@ -51,13 +51,34 @@ def load_config():
         return json.load(f)
 
 
+def _spaced_width(font, line, ls):
+    """자간(ls) 포함 라인 폭."""
+    if not line:
+        return 0
+    return sum(font.getlength(ch) for ch in line) + ls * (len(line) - 1)
+
+
+def _draw_spaced(draw, x, y, line, font, fill, ls, bold=False):
+    """글자별로 자간(ls)을 두며 그린다."""
+    cx = x
+    for ch in line:
+        if bold:
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    draw.text((cx + dx, y + dy), ch, font=font, fill=fill)
+        else:
+            draw.text((cx, y), ch, font=font, fill=fill)
+        cx += font.getlength(ch) + ls
+
+
 def render_text_to_image(width, height, text, font_path, font_size,
                          color=(255, 255, 255, 255), align="left",
                          line_spacing=4, bold=False, v_align="top",
-                         fit_to_box=False):
+                         fit_to_box=False, letter_spacing=0):
     """텍스트를 RGBA 이미지로 렌더링"""
     img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
+    ls = letter_spacing
 
     if fit_to_box:
         while font_size > 8:
@@ -67,7 +88,7 @@ def render_text_to_image(width, height, text, font_path, font_size,
             total_h = 0
             for i, line in enumerate(lines):
                 bbox = font.getbbox(line)
-                widths.append(bbox[2] - bbox[0])
+                widths.append(_spaced_width(font, line, ls) if ls else bbox[2] - bbox[0])
                 total_h += bbox[3] - bbox[1]
                 if i < len(lines) - 1:
                     total_h += line_spacing
@@ -82,7 +103,7 @@ def render_text_to_image(width, height, text, font_path, font_size,
     total_h = 0
     for i, line in enumerate(lines):
         bbox = font.getbbox(line)
-        text_w = bbox[2] - bbox[0]
+        text_w = _spaced_width(font, line, ls) if ls else bbox[2] - bbox[0]
         text_h = bbox[3] - bbox[1]
         line_metrics.append((bbox, text_w, text_h))
         total_h += text_h
@@ -105,8 +126,10 @@ def render_text_to_image(width, height, text, font_path, font_size,
             x = -bbox[0]
         draw_y = y - bbox[1]
 
-        # bold: draw slightly offset copies
-        if bold:
+        if ls:
+            _draw_spaced(draw, x, draw_y, line, font, color, ls, bold=bold)
+        elif bold:
+            # bold: draw slightly offset copies
             for dx in [-1, 0, 1]:
                 for dy in [-1, 0, 1]:
                     draw.text((x + dx, draw_y + dy), line, font=font, fill=color)
@@ -181,12 +204,15 @@ def _process_region_auto(region, orig_arr, sprite_mask, result_arr):
     nudge_x = int(region.get("nudge_x", 0))
     nudge_y = int(region.get("nudge_y", 0))
     bold = region.get("bold", False)
+    ls = int(region.get("letter_spacing", 0))
 
     # 한글을 큰 캔버스에 렌더 후 alpha bbox 측정
     big = Image.new("RGBA", (400, 200), (0, 0, 0, 0))
     big_draw = ImageDraw.Draw(big)
     font = ImageFont.truetype(font_path, font_size)
-    if bold:
+    if ls:
+        _draw_spaced(big_draw, 50, 50, text, font, color, ls, bold=bold)
+    elif bold:
         for dx in (-1, 0, 1):
             for dy in (-1, 0, 1):
                 big_draw.text((50 + dx, 50 + dy), text, font=font, fill=color)
@@ -308,6 +334,7 @@ def process_texture(hash_id, tex_config, preview=False):
                 w, h, text, font_path, font_size,
                 color=color, align=align, bold=bold, v_align=v_align,
                 fit_to_box=bool(region.get("fit_to_box", False)),
+                letter_spacing=int(region.get("letter_spacing", 0)),
             )
 
             # 3. 합성

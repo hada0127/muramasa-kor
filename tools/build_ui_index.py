@@ -61,6 +61,7 @@ def localize_regions(tex):
             "v_align": r.get("v_align", "top"),
             "clear": r.get("clear", True),
             "fit_to_box": r.get("fit_to_box", False),
+            "letter_spacing": r.get("letter_spacing", 0),
             "orient": r.get("orient"),
             "native": r,
         })
@@ -96,6 +97,7 @@ def place_regions(job):
             "layout": r.get("layout"),
             "padding": r.get("padding", 0.08),
             "font_ratio": r.get("font_ratio", 0.85),
+            "letter_spacing": r.get("letter_spacing", 0),
             "render": r.get("render", True),
             "native": r,
         })

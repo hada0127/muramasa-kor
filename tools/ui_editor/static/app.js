@@ -115,8 +115,8 @@ function drawRegions() {
     el.style.top = y * SCALE + "px";
     el.style.width = w * SCALE + "px";
     el.style.height = h * SCALE + "px";
-    const label = r.text || r.id || "(빈 텍스트)";
-    el.innerHTML = `<span class="rlabel">${escapeHtml(label.slice(0, 16))}</span>`;
+    el.innerHTML = `<span class="rlabel">${escapeHtml(r.id || "#" + i)}</span>`;
+    el.appendChild(makeTextLayer(r, w, h));
     if (i === SEL) {
       for (const hp of ["nw", "ne", "sw", "se", "n", "s", "w", "e"]) {
         const hd = document.createElement("div");
@@ -128,6 +128,44 @@ function drawRegions() {
     el.onmousedown = (e) => startDrag(e, i);
     ov.appendChild(el);
   });
+}
+
+// 그리운 경찰감성체 웹폰트로 region 텍스트를 캔버스에 근사 렌더 (실제 출력은 생성 미리보기)
+function isVertical(r) {
+  return CUR.system === "place" && r.layout !== "horizontal";
+}
+function cssTextColor(r) {
+  if (CUR.system === "place") return r.text_color === "white" ? "#fff" : "#000";
+  const c = r.color || [255, 255, 255, 255];
+  return `rgba(${c[0]},${c[1]},${c[2]},${(c[3] ?? 255) / 255})`;
+}
+function makeTextLayer(r, w, h) {
+  const t = document.createElement("div");
+  t.className = "region-text";
+  t.textContent = r.text || "";
+  t.style.color = cssTextColor(r);
+  t.style.letterSpacing = (r.letter_spacing || 0) * SCALE + "px";
+  let fontPx;
+  if (CUR.system === "place") {
+    const fr = r.font_ratio || 0.85;
+    fontPx = isVertical(r) ? w * SCALE * fr * 0.9 : h * SCALE * fr;
+    if (r.background === "red") t.style.background = "rgba(204,66,58,0.85)";
+    else if (r.background === "black") t.style.background = "rgba(0,0,0,0.85)";
+  } else {
+    fontPx = (r.font_size || 24) * SCALE;
+  }
+  t.style.fontSize = Math.max(4, fontPx) + "px";
+  if (isVertical(r)) {
+    t.style.writingMode = "vertical-rl";
+    t.style.justifyContent = "center";
+    t.style.alignItems = "center";
+  } else {
+    const align = CUR.system === "localize" ? (r.align || "left") : "center";
+    const v = CUR.system === "localize" ? (r.v_align || "top") : "center";
+    t.style.justifyContent = align === "center" ? "center" : align === "right" ? "flex-end" : "flex-start";
+    t.style.alignItems = v === "center" ? "center" : v === "bottom" ? "flex-end" : "flex-start";
+  }
+  return t;
 }
 
 // ===== 드래그/리사이즈 =====
@@ -184,6 +222,7 @@ function renderProps() {
     html += selField("align", "가로 정렬", r.align || "left", [["left", "왼쪽"], ["center", "가운데"], ["right", "오른쪽"]]);
     html += selField("v_align", "세로 정렬", r.v_align || "top", [["top", "위"], ["center", "가운데"], ["bottom", "아래"]]);
     html += checkField("fit_to_box", "박스에 맞춰 축소", r.fit_to_box);
+    html += field("letter_spacing", "자간 (px, 음수 가능)", `<input type="number" data-k="letter_spacing" value="${r.letter_spacing || 0}">`);
     html += selField("bgLoc", "배경 처리", r.clear ? "clear" : "transparent",
       [["transparent", "투명(원본 유지)"], ["clear", "기존 영역 삭제"]]);
   } else if (CUR.system === "place") {
@@ -195,6 +234,7 @@ function renderProps() {
       [["auto", "자동"], ["horizontal", "가로쓰기"], ["vertical_columns", "세로쓰기(열)"], ["rotated", "회전 90°(세로배너)"]]);
     html += field("font_ratio", "글씨 비율", `<input type="number" step="0.01" data-k="font_ratio" value="${r.font_ratio ?? 0.85}">`);
     html += field("padding", "안쪽 여백", `<input type="number" step="0.01" data-k="padding" value="${r.padding ?? 0.08}">`);
+    html += field("letter_spacing", "자간 (px, 음수 가능)", `<input type="number" data-k="letter_spacing" value="${r.letter_spacing || 0}">`);
     html += checkField("render", "이 영역 렌더링", r.render !== false);
   }
   form.innerHTML = html;
@@ -243,6 +283,8 @@ function readProps() {
       r.clear = v === "clear";
     } else if (k === "font_size") {
       r.font_size = parseInt(v) || 24;
+    } else if (k === "letter_spacing") {
+      r.letter_spacing = parseInt(v) || 0;
     } else if (k === "font_ratio" || k === "padding") {
       r[k] = parseFloat(v) || 0;
     } else if (k === "background") {

@@ -80,6 +80,21 @@ def clear_alpha_in_bbox(img: Image.Image, bbox: list[int]) -> Image.Image:
     return Image.fromarray(arr, "RGBA")
 
 
+def _sp_width(font, text, ls):
+    """자간(ls) 포함 가로 텍스트 폭."""
+    if not text:
+        return 0
+    return sum(font.getlength(ch) for ch in text) + ls * (len(text) - 1)
+
+
+def _draw_sp(d, x, y, text, font, fill, ls):
+    """글자별 자간(ls)을 두며 가로로 그린다."""
+    cx = x
+    for ch in text:
+        d.text((cx, y), ch, font=font, fill=fill)
+        cx += font.getlength(ch) + ls
+
+
 def render_text(
     base_img: Image.Image,
     bbox: list[int],
@@ -89,9 +104,11 @@ def render_text(
     padding: float = 0.08,
     fr: float = 0.85,
     layout: str | None = None,
+    letter_spacing: int = 0,
 ) -> None:
     x0, y0, x1, y1 = bbox
     rw, rh = x1 - x0, y1 - y0
+    ls = int(letter_spacing)
     if layout == "vertical_columns":
         d = ImageDraw.Draw(base_img)
         words = [w for w in text.split(" ") if w]
@@ -109,7 +126,7 @@ def render_text(
             metrics = [font.getbbox(ch) for ch in chars]
             max_cw = max((bb[2] - bb[0] for bb in metrics), default=fs)
             max_ch = max((bb[3] - bb[1] for bb in metrics), default=fs)
-            row_h = max(1, int(max_ch * 1.18))
+            row_h = max(1, int(max_ch * 1.18) + ls)
             col_w = max(1, int(max_cw * 1.28))
             rows = max(1, max_h // row_h)
             columns: list[str] = []
@@ -157,16 +174,21 @@ def render_text(
         while fs > 8:
             font = ImageFont.truetype(str(font_path), fs)
             bb = d.textbbox((0, 0), text, font=font)
-            tw, th = bb[2] - bb[0], bb[3] - bb[1]
+            tw = _sp_width(font, text, ls) if ls else bb[2] - bb[0]
+            th = bb[3] - bb[1]
             if tw <= max_w and th <= max_h:
                 break
             fs -= 1
         font = ImageFont.truetype(str(font_path), fs)
         bb = d.textbbox((0, 0), text, font=font)
-        tw, th = bb[2] - bb[0], bb[3] - bb[1]
+        tw = _sp_width(font, text, ls) if ls else bb[2] - bb[0]
+        th = bb[3] - bb[1]
         tx = x0 + (rw - tw) // 2 - bb[0]
         ty = y0 + (rh - th) // 2 - bb[1]
-        d.text((tx, ty), text, font=font, fill=fill)
+        if ls:
+            _draw_sp(d, tx, ty, text, font, fill, ls)
+        else:
+            d.text((tx, ty), text, font=font, fill=fill)
         return
 
     rotated = layout == "rotated" or (layout is None and rw > rh)
@@ -177,7 +199,7 @@ def render_text(
         canvas = Image.new("RGBA", (rh, rw), (0, 0, 0, 0))
         d = ImageDraw.Draw(canvas)
         pad = int(rw * padding)
-        cell = max(1, (rw - 2 * pad) // n)
+        cell = max(1, (rw - 2 * pad - ls * (n - 1)) // n)
         fs = max(8, int(min(rh, cell) * fr))
         font = ImageFont.truetype(str(font_path), fs)
         i = 0
@@ -187,7 +209,7 @@ def render_text(
             bb = font.getbbox(ch)
             cw, chh = bb[2] - bb[0], bb[3] - bb[1]
             cx = rh // 2 - (cw // 2 + bb[0])
-            cy = pad + i * cell + cell // 2 - (chh // 2 + bb[1])
+            cy = pad + i * (cell + ls) + cell // 2 - (chh // 2 + bb[1])
             d.text((cx, cy), ch, font=font, fill=fill)
             i += 1
         rot = canvas.rotate(90, expand=True)
@@ -200,7 +222,7 @@ def render_text(
 
     d = ImageDraw.Draw(base_img)
     pad = int(rh * padding)
-    cell = max(1, (rh - 2 * pad) // n)
+    cell = max(1, (rh - 2 * pad - ls * (n - 1)) // n)
     fs = max(8, int(min(rw, cell) * fr))
     font = ImageFont.truetype(str(font_path), fs)
     yt = y0 + pad
@@ -211,7 +233,7 @@ def render_text(
         bb = font.getbbox(ch)
         cw, chh = bb[2] - bb[0], bb[3] - bb[1]
         cx = x0 + rw // 2 - (cw // 2 + bb[0])
-        cy = yt + i * cell + cell // 2 - (chh // 2 + bb[1])
+        cy = yt + i * (cell + ls) + cell // 2 - (chh // 2 + bb[1])
         d.text((cx, cy), ch, font=font, fill=fill)
         i += 1
 
@@ -249,6 +271,7 @@ def render_job(hash_id: str, job: dict, out_dir: Path, apply_dir: Path | None, f
                 padding=float(region.get("padding", 0.08)),
                 fr=float(region.get("font_ratio", 0.85)),
                 layout=region.get("layout"),
+                letter_spacing=int(region.get("letter_spacing", 0)),
             )
 
     scale = int(job.get("output_scale", 1))
