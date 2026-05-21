@@ -2073,10 +2073,10 @@
           "ja": "相模",
           "ko": "",
           "bbox": [
-            183,
+            184,
             8,
-            239,
-            120
+            233,
+            122
           ],
           "background": "black",
           "text_color": "white",
@@ -2093,9 +2093,9 @@
           "ko": "사가미",
           "bbox": [
             186,
-            12,
-            235,
-            116
+            14,
+            232,
+            120
           ],
           "background": "none",
           "text_color": "white",
@@ -2150,7 +2150,8 @@
         "Codex visual correction: converted from preserve to explicit regions.",
         "Original 512x256 place texture is rendered at 4x output scale to match HD import scale.",
         "C0 lower white label is 嵐丸 / 아라시마루 based on script terminology.",
-        "Codex visual correction: K0 clears only the original white glyph inside the province box to preserve the white frame."
+        "Codex visual correction: K0 clears only the original white glyph inside the province box to preserve the white frame.",
+        "2026-05-22: 박스 프레임 깨짐 수정 — K0_CLEAR가 흰 프레임 우측/하단을 침범하던 bbox [183,8,239,120]를 글자(相模) 실제 범위 [184,8,233,122]로 축소(connected-component로 프레임 vs 글자 분리, 하단 프레임 막대 HD y≈520 보존). tools/localize_hd_textures.py로 HD팩 2048x1024 베이스에 렌더."
       ]
     },
     "615858B46587A60E": {

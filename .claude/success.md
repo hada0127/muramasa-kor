@@ -1492,3 +1492,33 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - NinPri.cpk MD5: da9c971fa01644927e74527ac2cf1f12 (455,022,056 bytes)
 - NinPriPatch.cpk MD5: 605f20b49fe820e91d9a3721af773f5b (25,682,312 bytes)
 - 배포 MD5 = 빌드 MD5 검증 완료
+
+## 2026-05-22 UI 텍스처 HD 베이스 재한글화 (메뉴 4 + 지명 1)
+
+대상: 247C255A400261FF(소바집), 1D6742BBC0DDB7EC(상인), 547720A3B20C12AB(식당),
+2E2003777A770327(찻집), 59015B61BFC0B7BC(相模 지명).
+
+### 문제
+- 메뉴 3개(247C/1D67/547)는 256 export를 LANCZOS 4배 확대 → 글자 흐림.
+- 지명(59015B)은 K0_CLEAR bbox [183,8,239,120]가 흰 프레임 우측(x≈237)·하단(y≈130)을
+  침범해 박스 프레임이 ㄷ자로 열림(확대가 아니라 좌표 데이터 자체 결함).
+
+### 해결
+- 신규 `tools/localize_hd_textures.py`: 기존 좌표(texture_localize_config.json /
+  place_texture_jobs.json)를 그대로 재사용하되, Plaidray HD팩 베이스(메뉴 1024,
+  지명 2048x1024)에 좌표·폰트크기를 (HD크기/원본크기)배 자동 스케일해 직접 렌더.
+  렌더 함수는 texture_localize / render_place_texture_job 에서 import 재사용(중복 0).
+- HD 베이스 == 원본×4 정렬 수치 검증(alpha IoU 0.83~0.99).
+- 지명 박스: connected-component로 프레임(단일 외곽선) vs 글자(相+模, HD y96~480) 분리.
+  K0_CLEAR → [184,8,233,122](글자만, 하단 프레임 막대 HD y≈520 보존), K0 → [186,14,232,120].
+  결과: 닫힌 사각 프레임 + 相模 완전제거 + 사가미 중앙정렬.
+- 설치: kr_textures/ui + Vita3K import + fs/textures/import.
+
+### 외부 협의
+- codex: 사용량 한도 초과로 실패. gemini: 라우팅 에러 후 본문 응답 — 접근법은
+  기존 렌더러 로직 재사용 권장(신규 스크립트가 import로 충족), font×4 + fit_to_box는
+  스케일 좌표계에서 수행(충족), 알파 보존(충족).
+
+### 미검증
+- macOS 환경이라 CLAUDE.md의 Windows용 Vita3K 자동 실행 플로우로 in-game 확인 불가.
+  텍스처는 import에 설치 완료 → 게임 재시작 시 적용. 인게임 육안 확인 권장.
