@@ -35,9 +35,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.02,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -57,10 +57,11 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.02,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 14
           }
         },
         {
@@ -77,9 +78,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.01,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 12,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -99,10 +100,11 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.01,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 12
           }
         },
         {
@@ -119,9 +121,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.13,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 15,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -141,10 +143,11 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.13,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 15
           }
         },
         {
@@ -161,9 +164,9 @@
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 1.26,
+          "font_ratio": 1.02,
           "font_px": null,
-          "letter_spacing": 33,
+          "letter_spacing": 9,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -183,11 +186,11 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 1.26,
+            "font_ratio": 1.02,
             "source": "manual_bbox_mapping",
             "render": true,
             "layout": "vertical",
-            "letter_spacing": 33
+            "letter_spacing": 9
           }
         },
         {
@@ -204,7 +207,7 @@
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 0.76,
           "font_px": null,
           "letter_spacing": 0,
           "align": "center",
@@ -226,7 +229,7 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 0.76,
             "source": "manual_bbox_mapping",
             "render": true,
             "layout": "vertical"
@@ -246,9 +249,9 @@
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 0.99,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 10,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -268,10 +271,11 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 0.99,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 10
           }
         },
         {
@@ -288,9 +292,9 @@
           "text_color": "black",
           "layout": "auto",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 0.94,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 8,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -310,10 +314,11 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 0.94,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "auto"
+            "layout": "auto",
+            "letter_spacing": 8
           }
         },
         {
@@ -330,9 +335,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 1.07,
+          "font_ratio": 1.17,
           "font_px": null,
-          "letter_spacing": 17,
+          "letter_spacing": 24,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -352,11 +357,11 @@
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 1.07,
+            "font_ratio": 1.17,
             "source": "manual_bbox_mapping",
             "render": true,
             "layout": "vertical",
-            "letter_spacing": 17
+            "letter_spacing": 24
           }
         },
         {
@@ -373,7 +378,7 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.84,
           "font_px": null,
           "letter_spacing": 0,
           "align": "center",
@@ -395,7 +400,7 @@
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.84,
             "source": "manual_bbox_mapping",
             "render": true,
             "layout": "vertical"
@@ -415,7 +420,7 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.85,
           "font_px": null,
           "letter_spacing": 0,
           "align": "center",
@@ -437,7 +442,7 @@
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.85,
             "source": "manual_bbox_mapping",
             "render": true,
             "layout": "vertical"
@@ -457,9 +462,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.12,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 15,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -479,10 +484,11 @@
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.12,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 15
           }
         },
         {
@@ -499,7 +505,7 @@
           "text_color": "white",
           "layout": "auto",
           "padding": 0.08,
-          "font_ratio": 0.85,
+          "font_ratio": 0.96,
           "font_px": null,
           "letter_spacing": 0,
           "align": "center",
@@ -523,7 +529,8 @@
             "render": true,
             "notes": "원본 흰 글자 잔존 제거용. 번역하기로 결정하면 ko와 bbox를 조정한다.",
             "text_color": "white",
-            "layout": "auto"
+            "layout": "auto",
+            "font_ratio": 0.96
           }
         }
       ],
@@ -548,10 +555,10 @@
       "regions": [
         {
           "box": [
-            1396,
-            17,
-            248,
-            571
+            1412,
+            33,
+            213,
+            539
           ],
           "id": "K0",
           "ja": "相模",
@@ -560,9 +567,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.89,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 6,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -574,26 +581,27 @@
             "ja": "相模",
             "ko": "사가미",
             "bbox": [
-              1396,
-              17,
-              1644,
-              588
+              1412,
+              33,
+              1625,
+              572
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.89,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 6
           }
         },
         {
           "box": [
-            15,
-            16,
-            1353,
-            172
+            23,
+            20,
+            1339,
+            162
           ],
           "id": "B0",
           "ja": "足柄下郡 お五ヶ池",
@@ -602,9 +610,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.02,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 10,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -616,18 +624,19 @@
             "ja": "足柄下郡 お五ヶ池",
             "ko": "아시가라시모군 오고가이케",
             "bbox": [
-              15,
-              16,
-              1368,
-              188
+              23,
+              20,
+              1362,
+              182
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.02,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 10
           }
         }
       ],
@@ -652,10 +661,10 @@
       "regions": [
         {
           "box": [
-            1088,
-            17,
-            248,
-            571
+            1106,
+            31,
+            209,
+            537
           ],
           "id": "K0",
           "ja": "武蔵",
@@ -664,9 +673,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.82,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 5,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -678,26 +687,27 @@
             "ja": "武蔵",
             "ko": "무사시",
             "bbox": [
-              1088,
-              17,
-              1336,
-              588
+              1106,
+              31,
+              1315,
+              568
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.82,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 5
           }
         },
         {
           "box": [
-            10,
-            9,
-            1054,
-            173
+            20,
+            15,
+            1036,
+            157
           ],
           "id": "B0",
           "ja": "日本堤 新吉原",
@@ -706,9 +716,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.98,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 7,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -720,18 +730,19 @@
             "ja": "日本堤 新吉原",
             "ko": "니혼즈츠미 신요시와라",
             "bbox": [
-              10,
-              9,
-              1064,
-              182
+              20,
+              15,
+              1056,
+              172
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.98,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 7
           }
         }
       ],
@@ -756,10 +767,10 @@
       "regions": [
         {
           "box": [
-            1257,
-            17,
-            247,
-            570
+            1277,
+            37,
+            214,
+            532
           ],
           "id": "K0",
           "ja": "信濃",
@@ -768,9 +779,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.9,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 12,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -782,26 +793,27 @@
             "ja": "信濃",
             "ko": "시나노",
             "bbox": [
-              1257,
-              17,
-              1504,
-              587
+              1277,
+              37,
+              1491,
+              569
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.9,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 12
           }
         },
         {
           "box": [
-            14,
-            14,
-            1214,
-            172
+            20,
+            20,
+            1200,
+            156
           ],
           "id": "B0",
           "ja": "安曇郡 童返の滝",
@@ -810,9 +822,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.99,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 8,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -824,18 +836,19 @@
             "ja": "安曇郡 童返の滝",
             "ko": "아즈미군 와라베가에리노타키",
             "bbox": [
-              14,
-              14,
-              1228,
-              186
+              20,
+              20,
+              1220,
+              176
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.99,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 8
           }
         }
       ],
@@ -860,10 +873,10 @@
       "regions": [
         {
           "box": [
-            16,
-            217,
-            248,
-            571
+            34,
+            235,
+            213,
+            533
           ],
           "id": "K0",
           "ja": "武蔵",
@@ -872,9 +885,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.82,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 5,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -886,26 +899,27 @@
             "ja": "武蔵",
             "ko": "무사시",
             "bbox": [
-              16,
-              217,
-              264,
-              788
+              34,
+              235,
+              247,
+              768
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.82,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 5
           }
         },
         {
           "box": [
-            12,
-            15,
-            1052,
-            172
+            18,
+            21,
+            1040,
+            156
           ],
           "id": "B0",
           "ja": "新吉原 衣紋坂",
@@ -914,9 +928,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.94,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 11,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -928,18 +942,19 @@
             "ja": "新吉原 衣紋坂",
             "ko": "신요시와라 에몬자카",
             "bbox": [
-              12,
-              15,
-              1064,
-              187
+              18,
+              21,
+              1058,
+              177
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.94,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 11
           }
         },
         {
@@ -956,9 +971,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.12,
-          "font_ratio": 0.62,
+          "font_ratio": 0.97,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 30,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -975,14 +990,14 @@
               1560,
               630
             ],
-            "background": "none",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.62,
+            "font_ratio": 0.97,
             "source": "audit_manual",
             "render": true,
             "clear": "white",
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 30
           }
         }
       ],
@@ -1007,10 +1022,10 @@
       "regions": [
         {
           "box": [
-            16,
-            217,
-            248,
-            571
+            36,
+            235,
+            205,
+            539
           ],
           "id": "K0",
           "ja": "相模",
@@ -1019,9 +1034,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.82,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 8,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -1033,26 +1048,27 @@
             "ja": "相模",
             "ko": "사가미",
             "bbox": [
-              16,
-              217,
-              264,
-              788
+              36,
+              235,
+              241,
+              774
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.82,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 8
           }
         },
         {
           "box": [
-            12,
-            14,
-            1352,
-            172
+            22,
+            22,
+            1332,
+            154
           ],
           "id": "B0",
           "ja": "六国見山 鎌倉墓所",
@@ -1061,9 +1077,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.0,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 10,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -1075,37 +1091,38 @@
             "ja": "六国見山 鎌倉墓所",
             "ko": "로쿠코쿠미야마 가마쿠라 묘소",
             "bbox": [
-              12,
-              14,
-              1364,
-              186
+              22,
+              22,
+              1354,
+              176
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.0,
             "source": "manual_bbox_mapping",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 10
           }
         },
         {
           "box": [
-            1389,
-            9,
-            447,
-            673
+            1636,
+            0,
+            222,
+            618
           ],
           "id": "C0",
           "ja": "青坊主",
           "text": "아오보즈",
-          "background": "black",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.12,
-          "font_ratio": 0.62,
+          "font_ratio": 1.02,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 31,
           "align": "center",
           "valign": "center",
           "pad_x": null,
@@ -1117,20 +1134,20 @@
             "ja": "青坊主",
             "ko": "아오보즈",
             "bbox": [
-              1389,
-              9,
-              1836,
-              682
+              1636,
+              0,
+              1858,
+              618
             ],
-            "background": "black",
-            "clear": "none",
+            "clear": "alpha",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.62,
+            "font_ratio": 1.02,
             "source": "manual_bbox_mapping",
             "render": true,
             "background_mode": "fill",
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 31
           }
         }
       ],
@@ -1142,47 +1159,56 @@
     },
     {
       "hash": "1823D39C0279886B",
-      "system": "localize",
+      "system": "place",
       "png": "kr_textures/ui/1823D39C0279886B.png",
       "source": "textures/originals/1823D39C0279886B.png",
       "size": [
         1024,
         512
       ],
-      "description": "지도 화면 로마자 지명 아틀라스 (YAMASHIRO/SHINANO/MUSASHI/HIDA/YAMATO/TOTOMI/MIKAWA/SAGAMI/SURUGA/OWARI/KAI/MINO/OMIGAISE/IZU → 한글)",
+      "description": "",
+      "status": "ready",
       "output_scale": 1,
-      "auto_align": false,
-      "region_key": "regions",
       "regions": [
         {
           "box": [
-            8,
-            4,
-            260,
-            60
+            3,
+            1,
+            375,
+            66
           ],
+          "id": "M0",
+          "ja": "",
           "text": "야마시로",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "H_PREROTATED",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 8,
-            "y": 4,
-            "w": 260,
-            "h": 60,
-            "orient": "H_PREROTATED",
-            "text": "야마시로",
-            "font_size": 48
+            "id": "M0",
+            "ja": "",
+            "ko": "야마시로",
+            "bbox": [
+              3,
+              1,
+              378,
+              67
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "horizontal",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1192,28 +1218,38 @@
             192,
             52
           ],
+          "id": "M1",
+          "ja": "",
           "text": "시나노",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "H_PREROTATED",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 8,
-            "y": 76,
-            "w": 192,
-            "h": 52,
-            "orient": "H_PREROTATED",
-            "text": "시나노",
-            "font_size": 48
+            "id": "M1",
+            "ja": "",
+            "ko": "시나노",
+            "bbox": [
+              8,
+              76,
+              200,
+              128
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "horizontal",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1223,28 +1259,38 @@
             292,
             64
           ],
+          "id": "M2",
+          "ja": "",
           "text": "무사시",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "H_PREROTATED",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 8,
-            "y": 140,
-            "w": 292,
-            "h": 64,
-            "orient": "H_PREROTATED",
-            "text": "무사시",
-            "font_size": 48
+            "id": "M2",
+            "ja": "",
+            "ko": "무사시",
+            "bbox": [
+              8,
+              140,
+              300,
+              204
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "horizontal",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1254,28 +1300,38 @@
             52,
             256
           ],
+          "id": "M3",
+          "ja": "",
           "text": "미카와",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 8,
-            "y": 220,
-            "w": 52,
-            "h": 256,
-            "orient": "V",
-            "text": "미카와",
-            "font_size": 48
+            "id": "M3",
+            "ja": "",
+            "ko": "미카와",
+            "bbox": [
+              8,
+              220,
+              60,
+              476
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1285,28 +1341,38 @@
             52,
             252
           ],
+          "id": "M4",
+          "ja": "",
           "text": "야마토",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 80,
-            "y": 220,
-            "w": 52,
-            "h": 252,
-            "orient": "V",
-            "text": "야마토",
-            "font_size": 48
+            "id": "M4",
+            "ja": "",
+            "ko": "야마토",
+            "bbox": [
+              80,
+              220,
+              132,
+              472
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1316,28 +1382,38 @@
             52,
             240
           ],
+          "id": "M5",
+          "ja": "",
           "text": "토토미",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 152,
-            "y": 232,
-            "w": 52,
-            "h": 240,
-            "orient": "V",
-            "text": "토토미",
-            "font_size": 48
+            "id": "M5",
+            "ja": "",
+            "ko": "토토미",
+            "bbox": [
+              152,
+              232,
+              204,
+              472
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1347,28 +1423,38 @@
             52,
             168
           ],
+          "id": "M6",
+          "ja": "",
           "text": "히다",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 220,
-            "y": 220,
-            "w": 52,
-            "h": 168,
-            "orient": "V",
-            "text": "히다",
-            "font_size": 48
+            "id": "M6",
+            "ja": "",
+            "ko": "히다",
+            "bbox": [
+              220,
+              220,
+              272,
+              388
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1378,28 +1464,38 @@
             86,
             280
           ],
+          "id": "M7",
+          "ja": "",
           "text": "사가미",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 290,
-            "y": 148,
-            "w": 86,
-            "h": 280,
-            "orient": "V",
-            "text": "사가미",
-            "font_size": 48
+            "id": "M7",
+            "ja": "",
+            "ko": "사가미",
+            "bbox": [
+              290,
+              148,
+              376,
+              428
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1409,28 +1505,38 @@
             61,
             264
           ],
+          "id": "M8",
+          "ja": "",
           "text": "스루가",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 385,
-            "y": 6,
-            "w": 61,
-            "h": 264,
-            "orient": "V",
-            "text": "스루가",
-            "font_size": 48
+            "id": "M8",
+            "ja": "",
+            "ko": "스루가",
+            "bbox": [
+              385,
+              6,
+              446,
+              270
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1440,28 +1546,38 @@
             61,
             216
           ],
+          "id": "M9",
+          "ja": "",
           "text": "오와리",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 385,
-            "y": 281,
-            "w": 61,
-            "h": 216,
-            "orient": "V",
-            "text": "오와리",
-            "font_size": 48
+            "id": "M9",
+            "ja": "",
+            "ko": "오와리",
+            "bbox": [
+              385,
+              281,
+              446,
+              497
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1471,28 +1587,38 @@
             64,
             164
           ],
+          "id": "M10",
+          "ja": "",
           "text": "미노",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 453,
-            "y": 4,
-            "w": 64,
-            "h": 164,
-            "orient": "V",
-            "text": "미노",
-            "font_size": 48
+            "id": "M10",
+            "ja": "",
+            "ko": "미노",
+            "bbox": [
+              453,
+              4,
+              517,
+              168
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1502,28 +1628,38 @@
             64,
             123
           ],
+          "id": "M11",
+          "ja": "",
           "text": "카이",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 453,
-            "y": 281,
-            "w": 64,
-            "h": 123,
-            "orient": "V",
-            "text": "카이",
-            "font_size": 48
+            "id": "M11",
+            "ja": "",
+            "ko": "카이",
+            "bbox": [
+              453,
+              281,
+              517,
+              404
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1533,28 +1669,38 @@
             61,
             125
           ],
+          "id": "M12",
+          "ja": "",
           "text": "오미",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 525,
-            "y": 5,
-            "w": 61,
-            "h": 125,
-            "orient": "V",
-            "text": "오미",
-            "font_size": 48
+            "id": "M12",
+            "ja": "",
+            "ko": "오미",
+            "bbox": [
+              525,
+              5,
+              586,
+              130
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1564,28 +1710,38 @@
             61,
             124
           ],
+          "id": "M13",
+          "ja": "",
           "text": "이가",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 525,
-            "y": 140,
-            "w": 61,
-            "h": 124,
-            "orient": "V",
-            "text": "이가",
-            "font_size": 48
+            "id": "M13",
+            "ja": "",
+            "ko": "이가",
+            "bbox": [
+              525,
+              140,
+              586,
+              264
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1595,28 +1751,38 @@
             61,
             122
           ],
+          "id": "M14",
+          "ja": "",
           "text": "이세",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 525,
-            "y": 278,
-            "w": 61,
-            "h": 122,
-            "orient": "V",
-            "text": "이세",
-            "font_size": 48
+            "id": "M14",
+            "ja": "",
+            "ko": "이세",
+            "bbox": [
+              525,
+              278,
+              586,
+              400
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         },
         {
@@ -1626,28 +1792,38 @@
             61,
             118
           ],
+          "id": "M15",
+          "ja": "",
           "text": "이즈",
-          "font_size": 48,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "left",
-          "v_align": "top",
-          "clear": true,
-          "fit_to_box": false,
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "vertical",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 48,
           "letter_spacing": 0,
-          "orient": "V",
+          "align": "center",
+          "valign": "center",
+          "pad_x": null,
+          "pad_y": null,
+          "render": true,
           "native": {
-            "x": 593,
-            "y": 5,
-            "w": 61,
-            "h": 118,
-            "orient": "V",
-            "text": "이즈",
-            "font_size": 48
+            "id": "M15",
+            "ja": "",
+            "ko": "이즈",
+            "bbox": [
+              593,
+              5,
+              654,
+              123
+            ],
+            "text_color": "white",
+            "font_px": 48,
+            "align": "center",
+            "valign": "center",
+            "layout": "vertical",
+            "clear": "alpha",
+            "render": true
           }
         }
       ],
@@ -10294,15 +10470,15 @@
         },
         {
           "box": [
-            27,
+            5,
             1029,
-            365,
+            551,
             92
           ],
           "id": "K38",
           "ja": "",
           "text": "영방 반혼단",
-          "background": "transparent",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
@@ -10319,9 +10495,9 @@
             "ja": "",
             "ko": "영방 반혼단",
             "bbox": [
-              27,
+              5,
               1029,
-              392,
+              556,
               1121
             ],
             "text_color": "white",
@@ -10330,7 +10506,8 @@
             "align": "center",
             "valign": "center",
             "render": true,
-            "source": "kra_extract"
+            "source": "kra_extract",
+            "clear": "alpha"
           }
         },
         {

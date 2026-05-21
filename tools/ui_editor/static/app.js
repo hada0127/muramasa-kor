@@ -314,6 +314,7 @@ function renderProps() {
       <div>${selField("align", "가로 정렬", r.align || "center", [["left", "왼쪽"], ["center", "가운데"], ["right", "오른쪽"]])}</div>
       <div>${selField("valign", "세로 정렬", r.valign || "center", [["top", "위"], ["center", "가운데"], ["bottom", "아래"]])}</div></div>`;
     html += sliderField("font_ratio", "글씨 비율", r.font_ratio ?? 0.85, 0.1, 1.5, 0.01);
+    html += field("font_px", "글씨 크기(px, 0=비율 사용)", `<input type="number" data-k="font_px" value="${r.font_px || 0}">`);
     html += sliderField("letter_spacing", "자간 (px)", r.letter_spacing || 0, -20, 120, 1);
     html += `<div class="field-row">
       <div>${sliderField("pad_x", "좌우 여백(px)", r.pad_x ?? 0, 0, 200, 1)}</div>
@@ -376,6 +377,9 @@ function readProps() {
       r.font_size = parseInt(v) || 24;
     } else if (k === "letter_spacing") {
       r.letter_spacing = parseInt(v) || 0;
+    } else if (k === "font_px") {
+      const n = parseInt(v);
+      r.font_px = n > 0 ? n : null;   // 0 = 글씨 비율 사용
     } else if (k === "pad_x" || k === "pad_y") {
       const n = parseInt(v);
       r[k] = n > 0 ? n : null;   // 0 = 기본 여백 사용(미지정)
