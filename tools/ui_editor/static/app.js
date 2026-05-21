@@ -173,9 +173,9 @@ function makeTextLayer(r, w, h) {
   else { pxl = r.pad_x ?? 0; pyl = r.pad_y ?? h * padR; }
   const innerW = Math.max(1, w - 2 * pxl), innerH = Math.max(1, h - 2 * pyl);
 
-  // 셀 크기: 자간 고려해 박스에 맞춤(렌더러와 동일 공식) → 항상 박스 안
-  const cellV = Math.max(1, (innerH - ls * (n - 1)) / n);
-  const cellR = Math.max(1, (innerW - ls * (n - 1)) / n);
+  // 셀 크기: 자간과 무관(고정). 자간은 간격만 추가 → 넘치면 클리핑(렌더러와 동일)
+  const cellV = Math.max(1, innerH / n);
+  const cellR = Math.max(1, innerW / n);
   let fontCoord;
   if (isLoc) fontCoord = r.font_size || 24;
   else if (r.font_px) fontCoord = r.font_px;   // 절대 글씨크기(.kra 변환 등)
