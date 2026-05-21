@@ -10028,6 +10028,676 @@
           "render": true
         }
       ]
+    },
+    "ADE2B8B5998887A9": {
+      "source": "textures/originals/ADE2B8B5998887A9.png",
+      "output_scale": 1,
+      "status": "ready",
+      "_from": "localize_migrated",
+      "regions": [
+        {
+          "id": "L0",
+          "ja": "",
+          "ko": "겐로쿠 괴기담",
+          "bbox": [
+            0,
+            0,
+            800,
+            240
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_px": 112
+        }
+      ]
+    },
+    "247C255A400261FF": {
+      "source": "textures/originals/247C255A400261FF.png",
+      "output_scale": 1,
+      "status": "ready",
+      "_from": "localize_migrated",
+      "regions": [
+        {
+          "id": "L0",
+          "ja": "",
+          "ko": "보유",
+          "bbox": [
+            400,
+            0,
+            848,
+            108
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L1",
+          "ja": "",
+          "ko": "품절",
+          "bbox": [
+            400,
+            196,
+            784,
+            304
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L2",
+          "ja": "",
+          "ko": "소지금",
+          "bbox": [
+            392,
+            288,
+            696,
+            408
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L3",
+          "ja": "",
+          "ko": "소바집",
+          "bbox": [
+            0,
+            400,
+            448,
+            520
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L4",
+          "ja": "",
+          "ko": "식사",
+          "bbox": [
+            440,
+            472,
+            736,
+            592
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L5",
+          "ja": "",
+          "ko": "문",
+          "bbox": [
+            808,
+            472,
+            984,
+            564
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L6",
+          "ja": "",
+          "ko": "메뉴",
+          "bbox": [
+            440,
+            564,
+            680,
+            676
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L7",
+          "ja": "",
+          "ko": "냥",
+          "bbox": [
+            672,
+            592,
+            832,
+            708
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L8",
+          "ja": "",
+          "ko": "가격",
+          "bbox": [
+            0,
+            652,
+            232,
+            740
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        }
+      ]
+    },
+    "547720A3B20C12AB": {
+      "source": "textures/originals/547720A3B20C12AB.png",
+      "output_scale": 1,
+      "status": "ready",
+      "_from": "localize_migrated",
+      "regions": [
+        {
+          "id": "L0",
+          "ja": "",
+          "ko": "보유",
+          "bbox": [
+            400,
+            0,
+            864,
+            108
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L1",
+          "ja": "",
+          "ko": "품절",
+          "bbox": [
+            404,
+            192,
+            796,
+            304
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L2",
+          "ja": "",
+          "ko": "식사",
+          "bbox": [
+            416,
+            272,
+            704,
+            376
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L3",
+          "ja": "",
+          "ko": "식당",
+          "bbox": [
+            0,
+            364,
+            504,
+            508
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L4",
+          "ja": "",
+          "ko": "가격",
+          "bbox": [
+            152,
+            496,
+            384,
+            604
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L5",
+          "ja": "",
+          "ko": "소지금",
+          "bbox": [
+            0,
+            644,
+            416,
+            764
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L6",
+          "ja": "",
+          "ko": "메뉴",
+          "bbox": [
+            496,
+            644,
+            816,
+            764
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L7",
+          "ja": "",
+          "ko": "냥",
+          "bbox": [
+            0,
+            736,
+            152,
+            840
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L8",
+          "ja": "",
+          "ko": "문",
+          "bbox": [
+            496,
+            736,
+            784,
+            832
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        }
+      ]
+    },
+    "2E2003777A770327": {
+      "source": "textures/originals/2E2003777A770327.png",
+      "output_scale": 1,
+      "status": "ready",
+      "_from": "localize_migrated",
+      "regions": [
+        {
+          "id": "L0",
+          "ja": "",
+          "ko": "식사",
+          "bbox": [
+            760,
+            88,
+            990,
+            198
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L1",
+          "ja": "",
+          "ko": "품절",
+          "bbox": [
+            400,
+            168,
+            770,
+            278
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L2",
+          "ja": "",
+          "ko": "보유",
+          "bbox": [
+            0,
+            410,
+            420,
+            510
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L3",
+          "ja": "",
+          "ko": "찻집",
+          "bbox": [
+            380,
+            418,
+            915,
+            522
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L4",
+          "ja": "",
+          "ko": "가격",
+          "bbox": [
+            100,
+            520,
+            400,
+            615
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L5",
+          "ja": "",
+          "ko": "소지금",
+          "bbox": [
+            0,
+            650,
+            360,
+            745
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L6",
+          "ja": "",
+          "ko": "메뉴",
+          "bbox": [
+            480,
+            642,
+            810,
+            742
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L7",
+          "ja": "",
+          "ko": "문",
+          "bbox": [
+            760,
+            642,
+            880,
+            742
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L8",
+          "ja": "",
+          "ko": "냥",
+          "bbox": [
+            0,
+            735,
+            125,
+            820
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        }
+      ]
+    },
+    "1D6742BBC0DDB7EC": {
+      "source": "textures/originals/1D6742BBC0DDB7EC.png",
+      "output_scale": 1,
+      "status": "ready",
+      "_from": "localize_migrated",
+      "regions": [
+        {
+          "id": "L0",
+          "ja": "",
+          "ko": "보유",
+          "bbox": [
+            0,
+            400,
+            448,
+            528
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L1",
+          "ja": "",
+          "ko": "품절",
+          "bbox": [
+            188,
+            576,
+            564,
+            688
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L2",
+          "ja": "",
+          "ko": "문",
+          "bbox": [
+            544,
+            504,
+            700,
+            592
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L3",
+          "ja": "",
+          "ko": "냥",
+          "bbox": [
+            552,
+            580,
+            712,
+            680
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L4",
+          "ja": "",
+          "ko": "소지금",
+          "bbox": [
+            712,
+            724,
+            1024,
+            832
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L5",
+          "ja": "",
+          "ko": "품목",
+          "bbox": [
+            360,
+            780,
+            568,
+            900
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        },
+        {
+          "id": "L6",
+          "ja": "",
+          "ko": "가격",
+          "bbox": [
+            0,
+            880,
+            232,
+            968
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "render": true,
+          "clear": "alpha",
+          "font_ratio": 0.85
+        }
+      ]
     }
   }
 }
