@@ -71,8 +71,7 @@ function selectTexture(hash) {
 
 function loadImage() {
   const img = $("#tex-img");
-  $("#show-original").checked = true;  // 기본: 원본 아트 배경 표시
-  img.style.visibility = "visible";
+  applyOrigOpacity();  // 원본 투명도(기본 50%) 적용
   // NAT = region 좌표 기준 공간 (kr PNG 자연크기가 아님 — output_scale 등으로 다를 수 있음)
   NAT = CUR.coord_size || CUR.size || [1, 1];
   img.onload = () => applyZoom();
@@ -80,9 +79,10 @@ function loadImage() {
   img.src = `/api/image?path=${encodeURIComponent(CUR.source || CUR.png)}`;
 }
 
-function curImagePath() {
-  if ($("#show-original").checked && CUR.source) return CUR.source;
-  return CUR.png;
+function applyOrigOpacity() {
+  const v = $("#orig-opacity").value;
+  $("#tex-img").style.opacity = v / 100;
+  $("#orig-opacity-val").textContent = v + "%";
 }
 
 function applyZoom() {
@@ -476,10 +476,8 @@ async function init() {
   };
   $("#bg-color").onchange();
   $("#zoom").onchange = applyZoom;
-  // 원본 보기 토글 = 배경 레이어(원본 아트) 가시성만. 텍스트 오버레이는 그대로 → 위치 불변
-  $("#show-original").onchange = () => {
-    $("#tex-img").style.visibility = $("#show-original").checked ? "visible" : "hidden";
-  };
+  // 원본 투명도 슬라이더 = 배경 레이어(원본 아트) opacity만. 텍스트 오버레이는 그대로
+  $("#orig-opacity").oninput = applyOrigOpacity;
   $("#btn-add").onclick = addRegion;
   $("#btn-del").onclick = delRegion;
   $("#btn-memo").onclick = saveMemo;
