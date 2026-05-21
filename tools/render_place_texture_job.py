@@ -96,12 +96,12 @@ def _draw_sp(d, x, y, text, font, fill, ls):
 
 
 def _off(mode, avail, size, lo="left", hi="right"):
-    """정렬 오프셋: lo=0, center=가운데, hi=끝."""
+    """정렬 오프셋: lo=0, center=가운데, hi=끝. (넘침 시 음수 허용 → 캔버스가 클리핑)"""
     if mode == lo:
         return 0
     if mode == hi:
-        return max(0, avail - size)
-    return max(0, (avail - size) // 2)
+        return avail - size
+    return (avail - size) // 2
 
 
 def render_text(
@@ -180,17 +180,18 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
             d.text((tx, ty), text, font=font, fill=fill)
         return
 
-    # 세로/회전 공통: 글자 픽셀 크기 + (글자높이+ls) 피치로 쌓기
+    # 세로/회전 모두 박스 크기 캔버스에 그린 뒤 합성 → 박스 밖 넘침은 클리핑(편집창과 동일)
     if is_rot:
         # 회전 캔버스: width=rh(최종 높이=cross), height=rw(최종 너비=length)
         canvas = Image.new("RGBA", (rh, rw), (0, 0, 0, 0))
-        d = ImageDraw.Draw(canvas)
         len_avail, cross_avail = inner_w, inner_h  # length=rw축, cross=rh축
         len_pad, cross_pad = pxl, pyl
     else:
-        d = ImageDraw.Draw(base_img)
+        # 세로 캔버스 = 박스 크기 (rw x rh)
+        canvas = Image.new("RGBA", (rw, rh), (0, 0, 0, 0))
         len_avail, cross_avail = inner_h, inner_w  # length=rh축(세로), cross=rw축
         len_pad, cross_pad = pyl, pxl
+    d = ImageDraw.Draw(canvas)
 
     # 셀(slot) 기반: 글자를 길이축에 균등 분배. 공백도 한 셀 차지(띄어쓰기 반영).
     # 자간 0이면 박스를 채움(=기존), 자간은 셀 간격에 가산, 글자 크기는 자간과 무관.
@@ -212,24 +213,24 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
                                "left" if is_rot else "top", "right" if is_rot else "bottom")
     cross_left = cross_pad + _off(cross_mode, cross_avail, gw, "left", "right")
     cross_cx = cross_left + gw // 2
-    ox = 0 if is_rot else x0   # 회전은 별도 캔버스(상대좌표), 세로는 base_img(절대좌표)
-    oy = 0 if is_rot else y0
     for i, ch in enumerate(cells):
         if ch == " ":
             continue  # 공백 셀은 비우고 슬롯만 차지
         m = font.getbbox(ch)
         cw, chh = m[2] - m[0], m[3] - m[1]
-        cx = ox + cross_cx - (cw // 2 + m[0])
-        cy = oy + start_len + i * pitch + cell0 // 2 - (chh // 2 + m[1])
+        cx = cross_cx - (cw // 2 + m[0])
+        cy = start_len + i * pitch + cell0 // 2 - (chh // 2 + m[1])
         d.text((cx, cy), ch, font=font, fill=fill)
 
     if is_rot:
-        rot = canvas.rotate(90, expand=True)
-        if rot.size != (rw, rh):
-            rot = rot.resize((rw, rh))
-        region = base_img.crop(tuple(bbox)).convert("RGBA")
-        region = Image.alpha_composite(region, rot)
-        base_img.paste(region, (x0, y0))
+        layer = canvas.rotate(90, expand=True)
+        if layer.size != (rw, rh):
+            layer = layer.resize((rw, rh))
+    else:
+        layer = canvas
+    region = base_img.crop(tuple(bbox)).convert("RGBA")
+    region = Image.alpha_composite(region, layer)
+    base_img.paste(region, (x0, y0))
 
 
 def _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, ls):
