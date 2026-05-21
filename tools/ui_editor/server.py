@@ -107,6 +107,10 @@ def _to_native_place(r):
     _upd(nr, "text_color", r.get("text_color", "black"), "black")
     _upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
     _upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
+    if r.get("font_px"):
+        nr["font_px"] = int(r["font_px"])
+    else:
+        nr.pop("font_px", None)
     _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
     _upd(nr, "align", r.get("align", "center"), "center")
     _upd(nr, "valign", r.get("valign", "center"), "center")

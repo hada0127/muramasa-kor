@@ -121,6 +121,7 @@ def place_regions(job):
             "layout": r.get("layout"),
             "padding": r.get("padding", 0.08),
             "font_ratio": r.get("font_ratio", 0.85),
+            "font_px": r.get("font_px"),
             "letter_spacing": r.get("letter_spacing", 0),
             "align": r.get("align", "center"),
             "valign": r.get("valign", "center"),

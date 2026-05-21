@@ -178,6 +178,7 @@ function makeTextLayer(r, w, h) {
   const cellR = Math.max(1, (innerW - ls * (n - 1)) / n);
   let fontCoord;
   if (isLoc) fontCoord = r.font_size || 24;
+  else if (r.font_px) fontCoord = r.font_px;   // 절대 글씨크기(.kra 변환 등)
   else {
     const fr = r.font_ratio || 0.85;
     if (mode === "v") fontCoord = Math.min(innerW, cellV) * fr;
