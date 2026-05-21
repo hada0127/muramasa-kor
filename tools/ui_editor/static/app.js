@@ -90,8 +90,10 @@ function applyZoom() {
   const wrap = $("#canvas-wrap");
   let scale;
   if (z === "fit") {
-    const avail = wrap.clientWidth - 40;
-    scale = Math.min(1, avail / NAT[0]);
+    // 창에 맞춤 (가로·세로 모두). 이미지가 작으면 키워서 채움.
+    const aw = wrap.clientWidth - 40;
+    const ah = wrap.clientHeight - 40;
+    scale = Math.max(0.05, Math.min(aw / NAT[0], ah / NAT[1]));
   } else {
     scale = parseFloat(z);
   }
