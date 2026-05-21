@@ -155,18 +155,30 @@ function makeTextLayer(r, w, h) {
   const color = cssTextColor(r);
   t.style.color = color;
   const mode = orientMode(r, w, h);
-  let fontPx;
+  const txt = r.text || "";
+  const n = Math.max(1, [...txt].filter((c) => c !== " ").length);
+  const ls = r.letter_spacing || 0;
+  let fontCoord;  // coord 공간 글씨 크기 (렌더러 공식과 동일)
   if (CUR.system === "place") {
     const fr = r.font_ratio || 0.85;
-    fontPx = mode === "v" ? w * SCALE * fr * 0.9 : h * SCALE * fr;
+    const pad = r.padding ?? 0.08;
+    if (mode === "v") {            // 세로: cell=(h-2pad-ls*(n-1))/n, fs=min(w,cell)*fr
+      const cell = (h - 2 * h * pad - ls * (n - 1)) / n;
+      fontCoord = Math.min(w, cell) * fr;
+    } else if (mode === "rot") {   // rotated: cell=(w-2pad-ls*(n-1))/n, fs=min(h,cell)*fr
+      const cell = (w - 2 * w * pad - ls * (n - 1)) / n;
+      fontCoord = Math.min(h, cell) * fr;
+    } else {                        // horizontal: fs≈(h-2pad)*fr
+      fontCoord = (h - 2 * h * pad) * fr;
+    }
     if (r.background === "red") t.style.background = "rgba(204,66,58,0.85)";
     else if (r.background === "black") t.style.background = "rgba(0,0,0,0.85)";
   } else {
-    fontPx = (r.font_size || 24) * SCALE;
+    fontCoord = r.font_size || 24;
   }
-  fontPx = Math.max(4, fontPx);
+  const fontPx = Math.max(2, fontCoord * SCALE);
   t.style.fontSize = fontPx + "px";
-  const lsPx = (r.letter_spacing || 0) * SCALE;
+  const lsPx = ls * SCALE;
 
   if (mode === "v") {
     t.style.writingMode = "vertical-rl";
