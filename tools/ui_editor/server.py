@@ -128,6 +128,15 @@ def save_regions(hash_id, system, regions):
                 _upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
                 _upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
                 _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
+                _upd(nr, "align", r.get("align", "center"), "center")
+                _upd(nr, "valign", r.get("valign", "center"), "center")
+                # 패딩(px): 지정됐을 때만 기록, 없으면 키 제거
+                for pk in ("pad_x", "pad_y"):
+                    pv = r.get(pk)
+                    if pv is None or pv == "":
+                        nr.pop(pk, None)
+                    else:
+                        nr[pk] = int(pv)
                 _upd(nr, "render", bool(r.get("render", True)), True)
                 bg = r.get("background")
                 if bg in ("red", "black"):

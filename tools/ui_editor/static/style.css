@@ -73,8 +73,8 @@ aside, main { overflow: hidden; display: flex; flex-direction: column; min-heigh
 .region .rlabel { position: absolute; top: -16px; left: 0; background: #000a;
   padding: 0 4px; white-space: nowrap; pointer-events: none; color: #ffd479; }
 .region-text { position: absolute; inset: 0; display: flex; overflow: hidden;
-  font-family: "Griun", sans-serif; line-height: 1; white-space: pre-line;
-  pointer-events: none; }
+  box-sizing: border-box; font-family: "Griun", sans-serif; line-height: 1;
+  white-space: pre-line; pointer-events: none; }
 .handle { position: absolute; width: 9px; height: 9px; background: #2f6df0;
   border: 1px solid #fff; border-radius: 2px; }
 .handle.nw { left: -5px; top: -5px; cursor: nwse-resize; }
@@ -93,7 +93,11 @@ aside, main { overflow: hidden; display: flex; flex-direction: column; min-heigh
 .field input, .field select, .field textarea { width: 100%; }
 .field textarea { resize: vertical; min-height: 48px; font-family: inherit; }
 .field-row { display: flex; gap: 6px; }
-.field-row > div { flex: 1; }
+.field-row > div { flex: 1; min-width: 0; }
+.slider-row { display: flex; gap: 6px; align-items: center; }
+.slider-row input[type=range] { flex: 1; min-width: 0; }
+.slider-row input[type=number] { width: 56px; flex-shrink: 0; }
+[data-out] { font-size: 10px; }
 #props-actions { display: flex; gap: 8px; margin: 12px 0; }
 #props-actions[hidden] { display: none; }
 #props-actions button { flex: 1; }

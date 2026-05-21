@@ -71,11 +71,12 @@ function selectTexture(hash) {
 
 function loadImage() {
   const img = $("#tex-img");
-  $("#show-original").checked = false;
+  // 원본 보기를 기본으로 (원본이 있으면). 원본 위에 텍스트 오버레이로 편집.
+  $("#show-original").checked = !!CUR.source;
   // NAT = region 좌표 기준 공간 (kr PNG 자연크기가 아님 — output_scale 등으로 다를 수 있음)
   NAT = CUR.coord_size || CUR.size || [1, 1];
   img.onload = () => applyZoom();
-  img.src = `/api/image?path=${encodeURIComponent(CUR.png)}`;
+  img.src = `/api/image?path=${encodeURIComponent(curImagePath())}`;
 }
 
 function curImagePath() {
@@ -149,63 +150,77 @@ function cssTextColor(r) {
   const c = r.color || [255, 255, 255, 255];
   return `rgba(${c[0]},${c[1]},${c[2]},${(c[3] ?? 255) / 255})`;
 }
+function _flex(mode) {  // left/top→start, center→center, right/bottom→end
+  if (mode === "center") return "center";
+  if (mode === "right" || mode === "bottom") return "flex-end";
+  return "flex-start";
+}
 function makeTextLayer(r, w, h) {
   const t = document.createElement("div");
   t.className = "region-text";
-  const color = cssTextColor(r);
-  t.style.color = color;
+  t.style.color = cssTextColor(r);
   const mode = orientMode(r, w, h);
   const txt = r.text || "";
   const n = Math.max(1, [...txt].filter((c) => c !== " ").length);
   const ls = r.letter_spacing || 0;
-  let fontCoord;  // coord 공간 글씨 크기 (렌더러 공식과 동일)
-  if (CUR.system === "place") {
+  const isLoc = CUR.system === "localize";
+  const align = isLoc ? (r.align || "left") : (r.align || "center");
+  const valign = isLoc ? (r.v_align || "top") : (r.valign || "center");
+
+  // 패딩(coord px) — 렌더러와 동일한 방향별 기본값
+  const padR = isLoc ? 0 : (r.padding ?? 0.08);
+  let pxl, pyl;
+  if (mode === "h") { pxl = r.pad_x ?? w * padR; pyl = r.pad_y ?? h * padR; }
+  else if (mode === "rot") { pxl = r.pad_x ?? w * padR; pyl = r.pad_y ?? 0; }
+  else { pxl = r.pad_x ?? 0; pyl = r.pad_y ?? h * padR; }
+  const innerW = Math.max(1, w - 2 * pxl), innerH = Math.max(1, h - 2 * pyl);
+
+  // 글씨 크기 (자간과 무관 — 렌더러와 동일)
+  let fontCoord;
+  if (isLoc) fontCoord = r.font_size || 24;
+  else {
     const fr = r.font_ratio || 0.85;
-    const pad = r.padding ?? 0.08;
-    if (mode === "v") {            // 세로: cell=(h-2pad-ls*(n-1))/n, fs=min(w,cell)*fr
-      const cell = (h - 2 * h * pad - ls * (n - 1)) / n;
-      fontCoord = Math.min(w, cell) * fr;
-    } else if (mode === "rot") {   // rotated: cell=(w-2pad-ls*(n-1))/n, fs=min(h,cell)*fr
-      const cell = (w - 2 * w * pad - ls * (n - 1)) / n;
-      fontCoord = Math.min(h, cell) * fr;
-    } else {                        // horizontal: fs≈(h-2pad)*fr
-      fontCoord = (h - 2 * h * pad) * fr;
-    }
-    if (r.background === "red") t.style.background = "rgba(204,66,58,0.85)";
-    else if (r.background === "black") t.style.background = "rgba(0,0,0,0.85)";
-  } else {
-    fontCoord = r.font_size || 24;
+    if (mode === "v") fontCoord = Math.min(innerW, innerH / n) * fr;
+    else if (mode === "rot") fontCoord = Math.min(innerH, innerW / n) * fr;
+    else fontCoord = innerH * fr;
   }
   const fontPx = Math.max(2, fontCoord * SCALE);
   t.style.fontSize = fontPx + "px";
+  t.style.padding = `${pyl * SCALE}px ${pxl * SCALE}px`;
+  if (!isLoc) {
+    if (r.background === "red") t.style.background = "rgba(204,66,58,0.85)";
+    else if (r.background === "black") t.style.background = "rgba(0,0,0,0.85)";
+  }
   const lsPx = ls * SCALE;
 
-  if (mode === "v") {
-    t.style.writingMode = "vertical-rl";
-    t.style.letterSpacing = lsPx + "px";
-    t.style.justifyContent = "center";
-    t.style.alignItems = "center";
-    t.textContent = r.text || "";
-  } else if (mode === "rot") {
-    // 글자를 90° 눕혀 가로로 배열 (rotated 배너)
-    t.style.justifyContent = "center";
-    t.style.alignItems = "center";
-    t.style.gap = lsPx + "px";
-    for (const ch of (r.text || "")) {
+  if (mode === "v") {            // 세로: 글자별 세로 스택
+    t.style.flexDirection = "column";
+    t.style.justifyContent = _flex(valign);  // 세로축 = 길이
+    t.style.alignItems = _flex(align);       // 가로축 = 교차
+    for (const ch of txt) {
+      if (ch === " ") continue;
+      const s = document.createElement("span");
+      s.textContent = ch;
+      if (ls) s.style.marginBottom = lsPx + "px";
+      t.appendChild(s);
+    }
+  } else if (mode === "rot") {   // 회전 배너: 글자 90° 눕혀 가로 배열
+    t.style.justifyContent = _flex(align);   // 가로축 = 길이
+    t.style.alignItems = _flex(valign);      // 세로축 = 교차
+    for (const ch of txt) {
       if (ch === " ") { const sp = document.createElement("span"); sp.style.width = fontPx * 0.4 + "px"; t.appendChild(sp); continue; }
       const s = document.createElement("span");
       s.textContent = ch;
       s.style.display = "inline-block";
-      s.style.transform = "rotate(-90deg)";  // 렌더러 PIL rotate(90)=CCW 와 일치
+      s.style.transform = "rotate(-90deg)";  // PIL rotate(90)=CCW
+      if (ls) s.style.marginRight = lsPx + "px";
       t.appendChild(s);
     }
-  } else {
+  } else {                        // 가로
     t.style.letterSpacing = lsPx + "px";
-    const align = CUR.system === "localize" ? (r.align || "left") : "center";
-    const v = CUR.system === "localize" ? (r.v_align || "top") : "center";
-    t.style.justifyContent = align === "center" ? "center" : align === "right" ? "flex-end" : "flex-start";
-    t.style.alignItems = v === "center" ? "center" : v === "bottom" ? "flex-end" : "flex-start";
-    t.textContent = r.text || "";
+    t.style.justifyContent = _flex(align);
+    t.style.alignItems = _flex(valign);
+    t.textContent = txt;
   }
   return t;
 }
@@ -273,15 +288,20 @@ function renderProps() {
       [["transparent", "투명"], ["black", "블랙"], ["red", "지명 레드"],
        ["clear_alpha", "기존 영역 삭제"], ["clear_white", "흰 글자 제거"]]);
     html += selField("layout", "쓰기 방향", r.layout || "auto",
-      [["auto", "자동"], ["horizontal", "가로쓰기"], ["vertical_columns", "세로쓰기(열)"], ["rotated", "회전 90°(세로배너)"]]);
-    html += field("font_ratio", "글씨 비율", `<input type="number" step="0.01" data-k="font_ratio" value="${r.font_ratio ?? 0.85}">`);
-    html += field("padding", "안쪽 여백", `<input type="number" step="0.01" data-k="padding" value="${r.padding ?? 0.08}">`);
-    html += field("letter_spacing", "자간 (px, 음수 가능)", `<input type="number" data-k="letter_spacing" value="${r.letter_spacing || 0}">`);
+      [["auto", "자동"], ["horizontal", "가로쓰기"], ["vertical", "세로쓰기"], ["vertical_columns", "세로쓰기(열)"], ["rotated", "회전 90°(세로배너)"]]);
+    html += `<div class="field-row">
+      <div>${selField("align", "가로 정렬", r.align || "center", [["left", "왼쪽"], ["center", "가운데"], ["right", "오른쪽"]])}</div>
+      <div>${selField("valign", "세로 정렬", r.valign || "center", [["top", "위"], ["center", "가운데"], ["bottom", "아래"]])}</div></div>`;
+    html += sliderField("font_ratio", "글씨 비율", r.font_ratio ?? 0.85, 0.1, 1.5, 0.01);
+    html += sliderField("letter_spacing", "자간 (px)", r.letter_spacing || 0, -20, 120, 1);
+    html += `<div class="field-row">
+      <div>${sliderField("pad_x", "좌우 여백(px)", r.pad_x ?? 0, 0, 200, 1)}</div>
+      <div>${sliderField("pad_y", "상하 여백(px)", r.pad_y ?? 0, 0, 200, 1)}</div></div>`;
     html += checkField("render", "이 영역 렌더링", r.render !== false);
   }
   form.innerHTML = html;
-  form.oninput = readProps;
-  form.onchange = readProps;
+  form.oninput = onFormInput;
+  form.onchange = onFormInput;
 }
 
 function field(k, label, inner) {
@@ -296,6 +316,13 @@ function selField(k, label, val, opts) {
 }
 function checkField(k, label, checked) {
   return `<div class="field"><label><input type="checkbox" data-k="${k}"${checked ? " checked" : ""}> ${label}</label></div>`;
+}
+function sliderField(k, label, val, min, max, step) {
+  return `<div class="field"><label>${label} <span class="muted" data-out="${k}">${val}</span></label>
+    <div class="slider-row">
+      <input type="range" min="${min}" max="${max}" step="${step}" value="${val}" data-slider="${k}">
+      <input type="number" step="${step}" value="${val}" data-k="${k}" data-num="${k}">
+    </div></div>`;
 }
 function colorToName(c) {
   if (Array.isArray(c) && c[0] < 128 && c[1] < 128 && c[2] < 128) return "black";
@@ -327,6 +354,9 @@ function readProps() {
       r.font_size = parseInt(v) || 24;
     } else if (k === "letter_spacing") {
       r.letter_spacing = parseInt(v) || 0;
+    } else if (k === "pad_x" || k === "pad_y") {
+      const n = parseInt(v);
+      r[k] = n > 0 ? n : null;   // 0 = 기본 여백 사용(미지정)
     } else if (k === "font_ratio" || k === "padding") {
       r[k] = parseFloat(v) || 0;
     } else if (k === "background") {
@@ -336,6 +366,25 @@ function readProps() {
     }
   });
   drawRegions();
+}
+
+// 슬라이더↔숫자 동기화 + 출력 라벨 갱신
+function onFormInput(e) {
+  const t = e.target;
+  const form = $("#props-form");
+  if (t.dataset.slider) {
+    const num = form.querySelector(`[data-num="${t.dataset.slider}"]`);
+    if (num) num.value = t.value;
+  } else if (t.dataset.num) {
+    const sl = form.querySelector(`[data-slider="${t.dataset.num}"]`);
+    if (sl) sl.value = t.value;
+  }
+  const key = t.dataset.slider || t.dataset.num;
+  if (key) {
+    const out = form.querySelector(`[data-out="${key}"]`);
+    if (out) out.textContent = t.value;
+  }
+  readProps();
 }
 
 // ===== 액션 =====
@@ -355,18 +404,14 @@ function addRegion() {
 }
 
 async function applyRegions() {
-  readProps();
+  if (SEL >= 0) readProps();
   const res = await api("/api/regions", { hash: CUR.hash, system: CUR.system, regions: CUR.regions });
-  if (res.ok) {
-    toast("config에 저장됨");
-    INDEX = await api("/api/index");
-    // 작업본 갱신 (native 동기화)
-    const fresh = INDEX.textures.find((t) => t.hash === CUR.hash);
-    if (fresh) { CUR = JSON.parse(JSON.stringify(fresh)); SEL = Math.min(SEL, CUR.regions.length - 1); }
-    drawRegions(); renderProps(); renderList();
-  } else {
-    toast(res.error || "저장 실패", true);
-  }
+  if (!res.ok) { toast(res.error || "저장 실패", true); return false; }
+  INDEX = await api("/api/index");
+  const fresh = INDEX.textures.find((t) => t.hash === CUR.hash);
+  if (fresh) { CUR = JSON.parse(JSON.stringify(fresh)); SEL = Math.min(SEL, CUR.regions.length - 1); }
+  renderList();
+  return true;
 }
 
 function delRegion() {
@@ -374,7 +419,7 @@ function delRegion() {
   CUR.regions.splice(SEL, 1);
   SEL = -1;
   drawRegions(); renderProps();
-  toast("영역 삭제됨 (반영 눌러야 config 저장)");
+  toast("영역 삭제됨 (저장 및 미리보기로 반영)");
 }
 
 async function saveMemo() {
@@ -389,9 +434,9 @@ async function saveMemo() {
 }
 
 async function renderPreview() {
-  toast("렌더링 중…");
-  // 먼저 현재 편집 내용을 저장해야 실제 렌더에 반영됨
-  await applyRegions();
+  toast("저장 후 렌더링 중…");
+  // 이 텍스처의 전체 정보(모든 영역)를 config에 저장한 뒤 실제 렌더
+  if (!(await applyRegions())) return;
   const res = await api("/api/render", { hash: CUR.hash, system: CUR.system });
   if (res.ok) {
     $("#modal-img").src = `/api/image?path=${encodeURIComponent(res.path)}&t=${Date.now()}`;
@@ -419,7 +464,6 @@ async function init() {
     drawRegions();
   };
   $("#btn-add").onclick = addRegion;
-  $("#btn-apply").onclick = applyRegions;
   $("#btn-del").onclick = delRegion;
   $("#btn-memo").onclick = saveMemo;
   $("#btn-render").onclick = renderPreview;
