@@ -19,10 +19,10 @@
           "ja": "杉林 大きな蜘蛛の巣",
           "ko": "삼나무 숲 커다란 거미집",
           "bbox": [
-            15,
-            15,
-            1370,
-            187
+            29,
+            23,
+            1355,
+            181
           ],
           "background": "red",
           "text_color": "black",
@@ -38,10 +38,10 @@
           "ja": "鬼の潜む洞窟",
           "ko": "귀신이 숨은 동굴",
           "bbox": [
-            15,
-            415,
-            892,
-            587
+            23,
+            423,
+            884,
+            583
           ],
           "background": "red",
           "text_color": "black",
@@ -57,10 +57,10 @@
           "ja": "鬼の潜む洞窟前",
           "ko": "귀신이 숨은 동굴 앞",
           "bbox": [
-            15,
-            215,
-            984,
-            387
+            27,
+            223,
+            972,
+            379
           ],
           "background": "red",
           "text_color": "black",
@@ -76,18 +76,19 @@
           "ja": "花街海蓮座敷",
           "ko": "유곽 카이렌자시키",
           "bbox": [
-            1677,
-            15,
-            1849,
-            984
+            1685,
+            19,
+            1839,
+            968
           ],
           "background": "red",
           "text_color": "black",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.26,
           "source": "manual_bbox_mapping",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 33
         },
         {
           "id": "B4",
@@ -95,10 +96,10 @@
           "ja": "祝言の場",
           "ko": "혼례식장",
           "bbox": [
-            13,
-            815,
-            185,
-            1413
+            19,
+            825,
+            181,
+            1403
           ],
           "background": "red",
           "text_color": "black",
@@ -114,10 +115,10 @@
           "ja": "花嫁行列",
           "ko": "혼례 행렬",
           "bbox": [
-            1397,
-            1446,
-            1569,
-            2008
+            1403,
+            1452,
+            1565,
+            2002
           ],
           "background": "red",
           "text_color": "black",
@@ -133,10 +134,10 @@
           "ja": "茶店前",
           "ko": "찻집 앞",
           "bbox": [
-            1009,
-            1499,
-            1181,
-            2005
+            1017,
+            1507,
+            1175,
+            1999
           ],
           "background": "red",
           "text_color": "black",
@@ -144,7 +145,7 @@
           "font_ratio": 0.66,
           "source": "manual_bbox_mapping",
           "render": true,
-          "layout": "vertical"
+          "layout": "auto"
         },
         {
           "id": "K0",
@@ -152,18 +153,19 @@
           "ja": "何処かの国",
           "ko": "어딘가의 나라",
           "bbox": [
-            1400,
-            17,
-            1646,
-            809
+            1420,
+            33,
+            1627,
+            791
           ],
           "background": "black",
           "text_color": "white",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.07,
           "source": "manual_bbox_mapping",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 17
         },
         {
           "id": "K1",
@@ -171,10 +173,10 @@
           "ja": "武蔵",
           "ko": "무사시",
           "bbox": [
-            1681,
-            1013,
-            1927,
-            1583
+            1697,
+            1027,
+            1914,
+            1569
           ],
           "background": "black",
           "text_color": "white",
@@ -190,10 +192,10 @@
           "ja": "伊豆",
           "ko": "이즈",
           "bbox": [
-            1401,
-            845,
-            1647,
-            1416
+            1415,
+            861,
+            1630,
+            1400
           ],
           "background": "black",
           "text_color": "white",
@@ -209,10 +211,10 @@
           "ja": "唐木清兵衛宅",
           "ko": "카라키 세이베에 댁",
           "bbox": [
-            15,
-            615,
-            856,
-            787
+            23,
+            621,
+            846,
+            779
           ],
           "background": "red",
           "text_color": "black",
@@ -226,18 +228,19 @@
           "id": "CLEAR_C0",
           "kind": "clear",
           "ja": "総新婦",
-          "ko": "",
+          "ko": "조로구모",
           "bbox": [
-            900,
-            850,
-            1320,
-            1560
+            991,
+            897,
+            1213,
+            1483
           ],
-          "background": "none",
           "clear": "alpha",
           "source": "audit_clear_white",
           "render": true,
-          "notes": "원본 흰 글자 잔존 제거용. 번역하기로 결정하면 ko와 bbox를 조정한다."
+          "notes": "원본 흰 글자 잔존 제거용. 번역하기로 결정하면 ko와 bbox를 조정한다.",
+          "text_color": "white",
+          "layout": "auto"
         }
       ],
       "notes": [
@@ -5180,6 +5183,4536 @@
         "Codex visual correction: all place-name labels render as upright vertical writing; wide boxes use multi-column vertical layout.",
         "Codex visual correction: wide atlas strips use rotated vertical-writing layout to match original texture orientation.",
         "Codex visual correction: white brush character labels render without synthetic black fill."
+      ]
+    },
+    "74EEEC230BEE120C": {
+      "source": "textures/originals/74EEEC230BEE120C.png",
+      "output_scale": 1,
+      "status": "needs_review",
+      "_from": "kra_extract (자동 변환 — 위치 미세조정 필요)",
+      "regions": [
+        {
+          "id": "K0",
+          "ja": "",
+          "ko": "혁 명",
+          "bbox": [
+            713,
+            -2,
+            871,
+            94
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 79,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K1",
+          "ja": "",
+          "ko": "야생아",
+          "bbox": [
+            125,
+            172,
+            325,
+            264
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 79,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K2",
+          "ja": "",
+          "ko": "네코마타",
+          "bbox": [
+            81,
+            83,
+            369,
+            170
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 88,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K3",
+          "ja": "",
+          "ko": "키스케",
+          "bbox": [
+            560,
+            927,
+            722,
+            998
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 67,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        }
+      ]
+    },
+    "7DC6CF5A87DB1312": {
+      "source": "textures/originals/7DC6CF5A87DB1312.png",
+      "output_scale": 1,
+      "status": "needs_review",
+      "_from": "kra_extract (자동 변환 — 위치 미세조정 필요)",
+      "regions": [
+        {
+          "id": "K0",
+          "ja": "",
+          "ko": "5",
+          "bbox": [
+            498,
+            1147,
+            555,
+            1217
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K1",
+          "ja": "",
+          "ko": "4",
+          "bbox": [
+            494,
+            1271,
+            546,
+            1341
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K2",
+          "ja": "",
+          "ko": "3",
+          "bbox": [
+            498,
+            1376,
+            557,
+            1446
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K3",
+          "ja": "",
+          "ko": "2",
+          "bbox": [
+            502,
+            1497,
+            556,
+            1567
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K4",
+          "ja": "",
+          "ko": "2",
+          "bbox": [
+            500,
+            1601,
+            554,
+            1671
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K5",
+          "ja": "",
+          "ko": "오코이",
+          "bbox": [
+            437,
+            1719,
+            513,
+            1892
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K6",
+          "ja": "",
+          "ko": "지옥팽이",
+          "bbox": [
+            1635,
+            1887,
+            1890,
+            1977
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K7",
+          "ja": "",
+          "ko": "성스러운 사면",
+          "bbox": [
+            1069,
+            1869,
+            1472,
+            1956
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 76,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K8",
+          "ja": "",
+          "ko": "성스러운 기도",
+          "bbox": [
+            575,
+            1917,
+            975,
+            2008
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K9",
+          "ja": "",
+          "ko": "자동 회복",
+          "bbox": [
+            15,
+            1942,
+            318,
+            2034
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K10",
+          "ja": "",
+          "ko": "성스러운 축복",
+          "bbox": [
+            9,
+            1822,
+            420,
+            1914
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K11",
+          "ja": "",
+          "ko": "개기일식",
+          "bbox": [
+            1636,
+            1762,
+            1872,
+            1854
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K12",
+          "ja": "",
+          "ko": "화 염",
+          "bbox": [
+            1177,
+            1739,
+            1348,
+            1830
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K13",
+          "ja": "",
+          "ko": "대나무 창",
+          "bbox": [
+            608,
+            1790,
+            903,
+            1880
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K14",
+          "ja": "",
+          "ko": "별 똥 별",
+          "bbox": [
+            58,
+            1701,
+            313,
+            1789
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K15",
+          "ja": "",
+          "ko": "벼락치기",
+          "bbox": [
+            1636,
+            1639,
+            1888,
+            1733
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K16",
+          "ja": "",
+          "ko": "벌 그림자",
+          "bbox": [
+            1126,
+            1628,
+            1419,
+            1720
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K17",
+          "ja": "",
+          "ko": "나나니 벌",
+          "bbox": [
+            618,
+            1661,
+            896,
+            1749
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K18",
+          "ja": "",
+          "ko": "감 주",
+          "bbox": [
+            28,
+            1589,
+            191,
+            1679
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K19",
+          "ja": "",
+          "ko": "아지랑이",
+          "bbox": [
+            1636,
+            1518,
+            1893,
+            1612
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K20",
+          "ja": "",
+          "ko": "자동 회복",
+          "bbox": [
+            1077,
+            1520,
+            1380,
+            1612
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K21",
+          "ja": "",
+          "ko": "오징어 구이",
+          "bbox": [
+            578,
+            1545,
+            902,
+            1637
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K22",
+          "ja": "",
+          "ko": "큰마을 숫돌",
+          "bbox": [
+            21,
+            1478,
+            382,
+            1564
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K23",
+          "ja": "",
+          "ko": "공격 강화",
+          "bbox": [
+            1567,
+            1404,
+            1868,
+            1497
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K24",
+          "ja": "",
+          "ko": "자동 부활",
+          "bbox": [
+            1077,
+            1417,
+            1391,
+            1504
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K25",
+          "ja": "",
+          "ko": "치료 환약",
+          "bbox": [
+            579,
+            1415,
+            876,
+            1507
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K26",
+          "ja": "",
+          "ko": "신 령 주",
+          "bbox": [
+            28,
+            1364,
+            279,
+            1458
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K27",
+          "ja": "",
+          "ko": "흐릿한 숫돌",
+          "bbox": [
+            1566,
+            1294,
+            1913,
+            1385
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K28",
+          "ja": "",
+          "ko": "생선구이",
+          "bbox": [
+            1076,
+            1304,
+            1326,
+            1395
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K29",
+          "ja": "",
+          "ko": "군고구마",
+          "bbox": [
+            578,
+            1311,
+            832,
+            1389
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K30",
+          "ja": "",
+          "ko": "곰 환 약",
+          "bbox": [
+            29,
+            1254,
+            299,
+            1346
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K31",
+          "ja": "",
+          "ko": "닌 자 술",
+          "bbox": [
+            1638,
+            1183,
+            1899,
+            1268
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K32",
+          "ja": "",
+          "ko": "팔척 거울",
+          "bbox": [
+            1076,
+            1190,
+            1368,
+            1279
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K33",
+          "ja": "",
+          "ko": "내화 부적",
+          "bbox": [
+            578,
+            1190,
+            874,
+            1281
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K34",
+          "ja": "",
+          "ko": "의식용 곡옥",
+          "bbox": [
+            28,
+            1139,
+            382,
+            1231
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K35",
+          "ja": "",
+          "ko": "생명 흡수",
+          "bbox": [
+            1586,
+            1069,
+            1878,
+            1161
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K36",
+          "ja": "",
+          "ko": "칼영력 회복",
+          "bbox": [
+            1076,
+            1069,
+            1427,
+            1161
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K37",
+          "ja": "",
+          "ko": "수라 표식",
+          "bbox": [
+            577,
+            1069,
+            867,
+            1161
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K38",
+          "ja": "",
+          "ko": "영방 반혼단",
+          "bbox": [
+            27,
+            1029,
+            392,
+            1121
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K39",
+          "ja": "",
+          "ko": "비취 곡옥",
+          "bbox": [
+            1566,
+            953,
+            1852,
+            1036
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K40",
+          "ja": "",
+          "ko": "수정 곡옥",
+          "bbox": [
+            1075,
+            949,
+            1362,
+            1041
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K41",
+          "ja": "",
+          "ko": "호담 환약",
+          "bbox": [
+            577,
+            949,
+            882,
+            1041
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K42",
+          "ja": "",
+          "ko": "상견사 숫돌",
+          "bbox": [
+            1566,
+            826,
+            1938,
+            917
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K43",
+          "ja": "",
+          "ko": "연령단",
+          "bbox": [
+            1076,
+            825,
+            1264,
+            919
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K44",
+          "ja": "",
+          "ko": "환영 뇌광",
+          "bbox": [
+            578,
+            826,
+            888,
+            918
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K45",
+          "ja": "",
+          "ko": "어백초",
+          "bbox": [
+            1606,
+            708,
+            1789,
+            796
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K46",
+          "ja": "",
+          "ko": "회복 환약",
+          "bbox": [
+            1116,
+            706,
+            1419,
+            798
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K47",
+          "ja": "",
+          "ko": "체 력＋5",
+          "bbox": [
+            578,
+            706,
+            875,
+            798
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K48",
+          "ja": "",
+          "ko": "폭 탄",
+          "bbox": [
+            1765,
+            576,
+            1933,
+            664
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K49",
+          "ja": "",
+          "ko": "악귀 표식",
+          "bbox": [
+            1265,
+            574,
+            1555,
+            666
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K50",
+          "ja": "",
+          "ko": "요술 망치",
+          "bbox": [
+            704,
+            574,
+            993,
+            665
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K51",
+          "ja": "",
+          "ko": "I",
+          "bbox": [
+            2001,
+            389,
+            2031,
+            460
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K52",
+          "ja": "",
+          "ko": "새 끼 줄",
+          "bbox": [
+            1452,
+            380,
+            1714,
+            466
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K53",
+          "ja": "",
+          "ko": "밀 감",
+          "bbox": [
+            953,
+            377,
+            1112,
+            467
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K54",
+          "ja": "",
+          "ko": "영력 환원",
+          "bbox": [
+            1451,
+            260,
+            1749,
+            352
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K55",
+          "ja": "",
+          "ko": "이요 숫돌",
+          "bbox": [
+            952,
+            263,
+            1225,
+            349
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K56",
+          "ja": "",
+          "ko": "이가라시 숫돌",
+          "bbox": [
+            1452,
+            145,
+            1867,
+            231
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K57",
+          "ja": "",
+          "ko": "용뇌 환약",
+          "bbox": [
+            952,
+            142,
+            1258,
+            234
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K58",
+          "ja": "",
+          "ko": "신선 환약",
+          "bbox": [
+            1452,
+            9,
+            1756,
+            101
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K59",
+          "ja": "",
+          "ko": "거합 강화",
+          "bbox": [
+            953,
+            8,
+            1260,
+            101
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K60",
+          "ja": "",
+          "ko": "연기 구슬",
+          "bbox": [
+            1950,
+            75,
+            2035,
+            346
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K61",
+          "ja": "",
+          "ko": "이상 무효화",
+          "bbox": [
+            828,
+            190,
+            919,
+            554
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K62",
+          "ja": "",
+          "ko": "공격 강화",
+          "bbox": [
+            707,
+            247,
+            800,
+            548
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        }
+      ]
+    },
+    "A3BE57CE9854B5CC": {
+      "source": "textures/originals/A3BE57CE9854B5CC.png",
+      "output_scale": 1,
+      "status": "needs_review",
+      "_from": "kra_extract (자동 변환 — 위치 미세조정 필요)",
+      "regions": [
+        {
+          "id": "K0",
+          "ja": "",
+          "ko": "모모히메",
+          "bbox": [
+            3963,
+            2683,
+            4087,
+            3067
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 124,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K1",
+          "ja": "",
+          "ko": "사 광",
+          "bbox": [
+            3738,
+            3170,
+            4014,
+            3746
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 240,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K2",
+          "ja": "",
+          "ko": "수 라",
+          "bbox": [
+            2530,
+            2674,
+            3038,
+            2910
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 240,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K3",
+          "ja": "",
+          "ko": "무 쌍",
+          "bbox": [
+            3002,
+            1502,
+            3522,
+            1770
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 240,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K4",
+          "ja": "",
+          "ko": "인법첩",
+          "bbox": [
+            1516,
+            3305,
+            1920,
+            3513
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 180,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K5",
+          "ja": "",
+          "ko": "오보로 무라마사",
+          "bbox": [
+            6,
+            3909,
+            1042,
+            4073
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 168,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K6",
+          "ja": "",
+          "ko": "백귀야행",
+          "bbox": [
+            250,
+            3714,
+            794,
+            3898
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 164,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K7",
+          "ja": "",
+          "ko": "요 도",
+          "bbox": [
+            360,
+            3539,
+            708,
+            3687
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 180,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K8",
+          "ja": "",
+          "ko": "백사전",
+          "bbox": [
+            339,
+            3301,
+            815,
+            3501
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 180,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K9",
+          "ja": "",
+          "ko": "대의를 위한 무",
+          "bbox": [
+            696,
+            3118,
+            1732,
+            3314
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 180,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K10",
+          "ja": "",
+          "ko": "내세의 안식처",
+          "bbox": [
+            739,
+            2904,
+            1695,
+            3116
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 180,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K11",
+          "ja": "",
+          "ko": "네코마타 괴이담",
+          "bbox": [
+            856,
+            2104,
+            1952,
+            2308
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 180,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K12",
+          "ja": "",
+          "ko": "칠야의 저주",
+          "bbox": [
+            1152,
+            1891,
+            1948,
+            2091
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 180,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        }
+      ]
+    },
+    "DF66CADDABE022E3": {
+      "source": "textures/originals/DF66CADDABE022E3.png",
+      "output_scale": 1,
+      "status": "needs_review",
+      "_from": "kra_extract (자동 변환 — 위치 미세조정 필요)",
+      "regions": [
+        {
+          "id": "K0",
+          "ja": "",
+          "ko": "저장하기",
+          "bbox": [
+            1752,
+            854,
+            2016,
+            1582
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 216,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K1",
+          "ja": "",
+          "ko": "불러오기",
+          "bbox": [
+            2224,
+            568,
+            2864,
+            816
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 216,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K2",
+          "ja": "",
+          "ko": "새 게임",
+          "bbox": [
+            2160,
+            1368,
+            2776,
+            1616
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 216,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K3",
+          "ja": "",
+          "ko": "설 정",
+          "bbox": [
+            504,
+            3218,
+            824,
+            3402
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K4",
+          "ja": "",
+          "ko": "기본 설정",
+          "bbox": [
+            2064,
+            1853,
+            2608,
+            2037
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K5",
+          "ja": "",
+          "ko": "결 정",
+          "bbox": [
+            2864,
+            3192,
+            3168,
+            3376
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K6",
+          "ja": "",
+          "ko": "게임 스타일 선택",
+          "bbox": [
+            1856,
+            2044,
+            2760,
+            2212
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 144,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K7",
+          "ja": "",
+          "ko": "닌자 주머니",
+          "bbox": [
+            1928,
+            2224,
+            2600,
+            2392
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K8",
+          "ja": "",
+          "ko": "소유한 칼",
+          "bbox": [
+            190,
+            2862,
+            774,
+            3038
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K9",
+          "ja": "",
+          "ko": "승 리!",
+          "bbox": [
+            240,
+            1592,
+            832,
+            1864
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 248,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K10",
+          "ja": "",
+          "ko": "전 투!",
+          "bbox": [
+            112,
+            1896,
+            728,
+            2160
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 248,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K11",
+          "ja": "",
+          "ko": "스테이터스",
+          "bbox": [
+            8,
+            2184,
+            600,
+            2344
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K12",
+          "ja": "",
+          "ko": "단 련",
+          "bbox": [
+            1868,
+            2942,
+            2212,
+            3126
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 168,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K13",
+          "ja": "",
+          "ko": "능 력",
+          "bbox": [
+            2846,
+            3000,
+            3158,
+            3184
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K14",
+          "ja": "",
+          "ko": "장신구",
+          "bbox": [
+            2912,
+            2815,
+            3296,
+            2999
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K15",
+          "ja": "",
+          "ko": "장 비",
+          "bbox": [
+            2672,
+            2648,
+            2992,
+            2832
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K16",
+          "ja": "",
+          "ko": "장 비",
+          "bbox": [
+            1144,
+            2376,
+            1464,
+            2560
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K17",
+          "ja": "",
+          "ko": "효 과",
+          "bbox": [
+            3616,
+            3288,
+            3960,
+            3440
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K18",
+          "ja": "",
+          "ko": "뒤 로",
+          "bbox": [
+            2750,
+            2400,
+            3198,
+            2632
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 224,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K19",
+          "ja": "",
+          "ko": "저 장",
+          "bbox": [
+            1008,
+            2592,
+            1488,
+            2856
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 216,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K20",
+          "ja": "",
+          "ko": "결 정",
+          "bbox": [
+            3632,
+            3912,
+            3936,
+            4096
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K21",
+          "ja": "",
+          "ko": "오 의",
+          "bbox": [
+            3357,
+            3011,
+            3509,
+            3323
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K22",
+          "ja": "",
+          "ko": "조 작",
+          "bbox": [
+            160,
+            3912,
+            488,
+            4096
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K23",
+          "ja": "",
+          "ko": "데이터 삭제",
+          "bbox": [
+            118,
+            3031,
+            758,
+            3207
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 144,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K24",
+          "ja": "",
+          "ko": "저 장  일 시",
+          "bbox": [
+            1789,
+            2750,
+            2541,
+            2934
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K25",
+          "ja": "",
+          "ko": "결 과",
+          "bbox": [
+            1168,
+            3064,
+            1496,
+            3240
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K26",
+          "ja": "",
+          "ko": "결 계",
+          "bbox": [
+            394,
+            3400,
+            698,
+            3576
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K27",
+          "ja": "",
+          "ko": "회 복",
+          "bbox": [
+            168,
+            3584,
+            464,
+            3752
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 144,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K28",
+          "ja": "",
+          "ko": "요 리",
+          "bbox": [
+            752,
+            3760,
+            1048,
+            3920
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K29",
+          "ja": "",
+          "ko": "변 경",
+          "bbox": [
+            1848,
+            3880,
+            2152,
+            4064
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K30",
+          "ja": "",
+          "ko": "대장간",
+          "bbox": [
+            2280,
+            3896,
+            2688,
+            4080
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K31",
+          "ja": "",
+          "ko": "소모품",
+          "bbox": [
+            3552,
+            2640,
+            3912,
+            2816
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K32",
+          "ja": "",
+          "ko": "필요 재료",
+          "bbox": [
+            1904,
+            2392,
+            2464,
+            2568
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K33",
+          "ja": "",
+          "ko": "식재료",
+          "bbox": [
+            1968,
+            2568,
+            2344,
+            2744
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K34",
+          "ja": "",
+          "ko": "보너스",
+          "bbox": [
+            2456,
+            3384,
+            2840,
+            3552
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 168,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K35",
+          "ja": "",
+          "ko": "조 사",
+          "bbox": [
+            1136,
+            2872,
+            1504,
+            3040
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 168,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K36",
+          "ja": "",
+          "ko": "전 송",
+          "bbox": [
+            56,
+            2600,
+            496,
+            2840
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 216,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K37",
+          "ja": "",
+          "ko": "전 송",
+          "bbox": [
+            3016,
+            1864,
+            3184,
+            2184
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K38",
+          "ja": "",
+          "ko": "평 가",
+          "bbox": [
+            2688,
+            1144,
+            3048,
+            1344
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 168,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K39",
+          "ja": "",
+          "ko": "아라시마루",
+          "bbox": [
+            3352,
+            2408,
+            4008,
+            2560
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K40",
+          "ja": "",
+          "ko": "악마의 계곡",
+          "bbox": [
+            2840,
+            2208,
+            3544,
+            2384
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K41",
+          "ja": "",
+          "ko": "필요함",
+          "bbox": [
+            128,
+            3760,
+            464,
+            3920
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 136,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K42",
+          "ja": "",
+          "ko": "모모히메",
+          "bbox": [
+            816,
+            3576,
+            1296,
+            3728
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K43",
+          "ja": "",
+          "ko": "라쥬키",
+          "bbox": [
+            1104,
+            3264,
+            1480,
+            3432
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K44",
+          "ja": "",
+          "ko": "오디오",
+          "bbox": [
+            1996,
+            3460,
+            2148,
+            3804
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K45",
+          "ja": "",
+          "ko": "O",
+          "bbox": [
+            65,
+            3229,
+            329,
+            3541
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 372,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K46",
+          "ja": "",
+          "ko": "O",
+          "bbox": [
+            3721,
+            1071,
+            3985,
+            1383
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 372,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K47",
+          "ja": "",
+          "ko": "연 속!",
+          "bbox": [
+            3288,
+            1912,
+            3824,
+            2152
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 224,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K48",
+          "ja": "",
+          "ko": "없 음",
+          "bbox": [
+            3336,
+            312,
+            3744,
+            552
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 208,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K49",
+          "ja": "",
+          "ko": "이동",
+          "bbox": [
+            1752,
+            3152,
+            2144,
+            3424
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 256,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K50",
+          "ja": "",
+          "ko": "아이템",
+          "bbox": [
+            3680,
+            1424,
+            4040,
+            1600
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 152,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        }
+      ]
+    },
+    "E8E01EAF5D41DB52": {
+      "source": "textures/originals/E8E01EAF5D41DB52.png",
+      "output_scale": 1,
+      "status": "needs_review",
+      "_from": "kra_extract (자동 변환 — 위치 미세조정 필요)",
+      "regions": [
+        {
+          "id": "K0",
+          "ja": "",
+          "ko": "복숭아",
+          "bbox": [
+            849,
+            1911,
+            1045,
+            2003
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K1",
+          "ja": "",
+          "ko": "바 람2",
+          "bbox": [
+            431,
+            1857,
+            659,
+            1951
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K2",
+          "ja": "",
+          "ko": "미이케",
+          "bbox": [
+            12,
+            1878,
+            198,
+            1956
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K3",
+          "ja": "",
+          "ko": "기 술",
+          "bbox": [
+            1371,
+            1822,
+            1523,
+            1907
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K4",
+          "ja": "",
+          "ko": "바 람",
+          "bbox": [
+            1145,
+            1804,
+            1320,
+            1898
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K5",
+          "ja": "",
+          "ko": "배부름",
+          "bbox": [
+            847,
+            1802,
+            1043,
+            1889
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K6",
+          "ja": "",
+          "ko": "어 른",
+          "bbox": [
+            459,
+            1751,
+            616,
+            1832
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K7",
+          "ja": "",
+          "ko": "주먹밥",
+          "bbox": [
+            11,
+            1761,
+            207,
+            1852
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K8",
+          "ja": "",
+          "ko": "신\n  규",
+          "bbox": [
+            1634,
+            1704,
+            1842,
+            1772
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 63,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K9",
+          "ja": "",
+          "ko": "두꺼비기름",
+          "bbox": [
+            1366,
+            1722,
+            1606,
+            1791
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 63,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K10",
+          "ja": "",
+          "ko": "술",
+          "bbox": [
+            1145,
+            1704,
+            1209,
+            1789
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K11",
+          "ja": "",
+          "ko": "화 신",
+          "bbox": [
+            878,
+            1703,
+            1053,
+            1788
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K12",
+          "ja": "",
+          "ko": "태 풍",
+          "bbox": [
+            469,
+            1643,
+            635,
+            1734
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K13",
+          "ja": "",
+          "ko": "용오름",
+          "bbox": [
+            51,
+            1658,
+            243,
+            1745
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K14",
+          "ja": "",
+          "ko": "아 이",
+          "bbox": [
+            1694,
+            1610,
+            1849,
+            1686
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K15",
+          "ja": "",
+          "ko": "도깨비",
+          "bbox": [
+            1405,
+            1609,
+            1593,
+            1688
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K16",
+          "ja": "",
+          "ko": "괭이",
+          "bbox": [
+            1202,
+            1587,
+            1331,
+            1678
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K17",
+          "ja": "",
+          "ko": "기 습",
+          "bbox": [
+            934,
+            1589,
+            1088,
+            1674
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K18",
+          "ja": "",
+          "ko": "경험치증가",
+          "bbox": [
+            429,
+            1528,
+            748,
+            1621
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K19",
+          "ja": "",
+          "ko": "화염폭풍",
+          "bbox": [
+            42,
+            1543,
+            312,
+            1634
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K20",
+          "ja": "",
+          "ko": "별똥별",
+          "bbox": [
+            1575,
+            1493,
+            1766,
+            1581
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K21",
+          "ja": "",
+          "ko": "근력",
+          "bbox": [
+            1186,
+            1470,
+            1312,
+            1562
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K22",
+          "ja": "",
+          "ko": "땅달리기",
+          "bbox": [
+            876,
+            1470,
+            1135,
+            1562
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K23",
+          "ja": "",
+          "ko": "십육야",
+          "bbox": [
+            480,
+            1409,
+            674,
+            1501
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K24",
+          "ja": "",
+          "ko": "우렛소리",
+          "bbox": [
+            41,
+            1423,
+            285,
+            1513
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K25",
+          "ja": "",
+          "ko": "홍 시",
+          "bbox": [
+            1745,
+            1379,
+            1908,
+            1468
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K26",
+          "ja": "",
+          "ko": "무 적",
+          "bbox": [
+            1444,
+            1378,
+            1602,
+            1469
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K27",
+          "ja": "",
+          "ko": "효과",
+          "bbox": [
+            1182,
+            1364,
+            1327,
+            1441
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K28",
+          "ja": "",
+          "ko": "벼 락",
+          "bbox": [
+            907,
+            1355,
+            1073,
+            1449
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K29",
+          "ja": "",
+          "ko": "섬 광",
+          "bbox": [
+            520,
+            1303,
+            696,
+            1394
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K30",
+          "ja": "",
+          "ko": "그믐밤",
+          "bbox": [
+            81,
+            1319,
+            281,
+            1408
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K31",
+          "ja": "",
+          "ko": "쿠나이",
+          "bbox": [
+            1766,
+            1278,
+            1952,
+            1355
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K32",
+          "ja": "",
+          "ko": "카마이타치",
+          "bbox": [
+            1380,
+            1278,
+            1717,
+            1357
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K33",
+          "ja": "",
+          "ko": "달 밤",
+          "bbox": [
+            925,
+            1245,
+            1098,
+            1334
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K34",
+          "ja": "",
+          "ko": "바위치기",
+          "bbox": [
+            480,
+            1203,
+            737,
+            1283
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K35",
+          "ja": "",
+          "ko": "강 풍",
+          "bbox": [
+            91,
+            1196,
+            259,
+            1289
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K36",
+          "ja": "",
+          "ko": "초승달",
+          "bbox": [
+            1453,
+            1167,
+            1648,
+            1255
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K37",
+          "ja": "",
+          "ko": "화 염",
+          "bbox": [
+            946,
+            1138,
+            1117,
+            1229
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K38",
+          "ja": "",
+          "ko": "고 월2",
+          "bbox": [
+            510,
+            1090,
+            724,
+            1178
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K39",
+          "ja": "",
+          "ko": "달빛베기",
+          "bbox": [
+            81,
+            1088,
+            332,
+            1179
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K40",
+          "ja": "",
+          "ko": "해 골",
+          "bbox": [
+            1825,
+            1070,
+            1986,
+            1150
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K41",
+          "ja": "",
+          "ko": "원한반사3",
+          "bbox": [
+            1393,
+            1059,
+            1740,
+            1142
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K42",
+          "ja": "",
+          "ko": "초승달2",
+          "bbox": [
+            916,
+            1029,
+            1164,
+            1117
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K43",
+          "ja": "",
+          "ko": "원령날리기",
+          "bbox": [
+            481,
+            981,
+            788,
+            1075
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K44",
+          "ja": "",
+          "ko": "뇌 전",
+          "bbox": [
+            131,
+            986,
+            293,
+            1070
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K45",
+          "ja": "",
+          "ko": "태 풍",
+          "bbox": [
+            1830,
+            942,
+            1996,
+            1033
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K46",
+          "ja": "",
+          "ko": "땅벌레",
+          "bbox": [
+            1439,
+            946,
+            1644,
+            1038
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K47",
+          "ja": "",
+          "ko": "요괴불꽃3",
+          "bbox": [
+            461,
+            872,
+            769,
+            963
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K48",
+          "ja": "",
+          "ko": "천지베기",
+          "bbox": [
+            71,
+            877,
+            321,
+            959
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K49",
+          "ja": "",
+          "ko": "요괴벼락",
+          "bbox": [
+            1374,
+            838,
+            1633,
+            932
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K50",
+          "ja": "",
+          "ko": "질풍베기",
+          "bbox": [
+            956,
+            841,
+            1209,
+            932
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K51",
+          "ja": "",
+          "ko": "채썰기",
+          "bbox": [
+            514,
+            730,
+            707,
+            817
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K52",
+          "ja": "",
+          "ko": "잠자리베기",
+          "bbox": [
+            21,
+            749,
+            356,
+            840
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K53",
+          "ja": "",
+          "ko": "괴물고양이",
+          "bbox": [
+            1404,
+            729,
+            1712,
+            821
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K54",
+          "ja": "",
+          "ko": "요괴벼락",
+          "bbox": [
+            996,
+            729,
+            1255,
+            823
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K55",
+          "ja": "",
+          "ko": "요괴불꽃",
+          "bbox": [
+            484,
+            618,
+            733,
+            709
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K56",
+          "ja": "",
+          "ko": "원한반사4",
+          "bbox": [
+            32,
+            627,
+            372,
+            710
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K57",
+          "ja": "",
+          "ko": "원한반사",
+          "bbox": [
+            1395,
+            621,
+            1684,
+            704
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K58",
+          "ja": "",
+          "ko": "나선은하",
+          "bbox": [
+            1026,
+            623,
+            1292,
+            705
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K59",
+          "ja": "",
+          "ko": "일도양단",
+          "bbox": [
+            508,
+            498,
+            757,
+            590
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K60",
+          "ja": "",
+          "ko": "태 양",
+          "bbox": [
+            101,
+            499,
+            265,
+            591
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K61",
+          "ja": "",
+          "ko": "요괴불꽃4",
+          "bbox": [
+            844,
+            668,
+            935,
+            969
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K62",
+          "ja": "",
+          "ko": "백귀난섬",
+          "bbox": [
+            1309,
+            404,
+            1570,
+            494
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K63",
+          "ja": "",
+          "ko": "요괴벼락3",
+          "bbox": [
+            874,
+            403,
+            1192,
+            497
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K64",
+          "ja": "",
+          "ko": "아지랑이",
+          "bbox": [
+            491,
+            377,
+            748,
+            471
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K65",
+          "ja": "",
+          "ko": "벼락치기2",
+          "bbox": [
+            61,
+            378,
+            367,
+            472
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K66",
+          "ja": "",
+          "ko": "십자베기",
+          "bbox": [
+            1434,
+            240,
+            1699,
+            332
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K67",
+          "ja": "",
+          "ko": "달무리3",
+          "bbox": [
+            1032,
+            231,
+            1279,
+            319
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K68",
+          "ja": "",
+          "ko": "안개숨기",
+          "bbox": [
+            499,
+            260,
+            751,
+            347
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K69",
+          "ja": "",
+          "ko": "톱날리기",
+          "bbox": [
+            79,
+            261,
+            324,
+            350
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K70",
+          "ja": "",
+          "ko": "고 월",
+          "bbox": [
+            1524,
+            131,
+            1686,
+            219
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K71",
+          "ja": "",
+          "ko": "화 염4",
+          "bbox": [
+            1050,
+            130,
+            1271,
+            221
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K72",
+          "ja": "",
+          "ko": "달무리2",
+          "bbox": [
+            511,
+            130,
+            753,
+            218
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K73",
+          "ja": "",
+          "ko": "안개자르기3",
+          "bbox": [
+            16,
+            134,
+            403,
+            215
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K74",
+          "ja": "",
+          "ko": "역기둥",
+          "bbox": [
+            1922,
+            244,
+            2012,
+            425
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K75",
+          "ja": "",
+          "ko": "달무리",
+          "bbox": [
+            1923,
+            627,
+            2011,
+            815
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K76",
+          "ja": "",
+          "ko": "대나무 수통",
+          "bbox": [
+            1811,
+            162,
+            1901,
+            515
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K77",
+          "ja": "",
+          "ko": "월 광",
+          "bbox": [
+            1810,
+            622,
+            1901,
+            802
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K78",
+          "ja": "",
+          "ko": "낫족제비",
+          "bbox": [
+            1754,
+            10,
+            2014,
+            99
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K79",
+          "ja": "",
+          "ko": "안개자르기",
+          "bbox": [
+            1392,
+            14,
+            1720,
+            95
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K80",
+          "ja": "",
+          "ko": "청동 거울",
+          "bbox": [
+            962,
+            10,
+            1243,
+            100
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K81",
+          "ja": "",
+          "ko": "망령 날리기",
+          "bbox": [
+            838,
+            43,
+            932,
+            385
+          ],
+          "text_color": "white",
+          "layout": "vertical",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K82",
+          "ja": "",
+          "ko": "벼락치기4",
+          "bbox": [
+            431,
+            7,
+            735,
+            101
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K83",
+          "ja": "",
+          "ko": "안개자르기2",
+          "bbox": [
+            9,
+            14,
+            391,
+            95
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 80,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        }
+      ]
+    },
+    "8725F040AEE76DFC": {
+      "source": "textures/originals/8725F040AEE76DFC.png",
+      "output_scale": 1,
+      "status": "needs_review",
+      "_from": "kra_extract (자동 변환 — 위치 미세조정 필요)",
+      "regions": [
+        {
+          "id": "K0",
+          "ja": "",
+          "ko": "경험",
+          "bbox": [
+            2040,
+            246,
+            2250,
+            408
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K1",
+          "ja": "",
+          "ko": "이 전",
+          "bbox": [
+            109,
+            856,
+            373,
+            1000
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K2",
+          "ja": "",
+          "ko": "이 후",
+          "bbox": [
+            623,
+            1800,
+            885,
+            1942
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K3",
+          "ja": "",
+          "ko": "책",
+          "bbox": [
+            149,
+            1808,
+            265,
+            1960
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K4",
+          "ja": "",
+          "ko": "칼",
+          "bbox": [
+            169,
+            1636,
+            295,
+            1790
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K5",
+          "ja": "",
+          "ko": "뒤 로",
+          "bbox": [
+            1095,
+            850,
+            1369,
+            988
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K6",
+          "ja": "",
+          "ko": "대 화",
+          "bbox": [
+            55,
+            1194,
+            361,
+            1326
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K7",
+          "ja": "",
+          "ko": "지 도",
+          "bbox": [
+            1224,
+            656,
+            1504,
+            802
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 142,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K8",
+          "ja": "",
+          "ko": "효 과",
+          "bbox": [
+            1055,
+            1144,
+            1361,
+            1278
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K9",
+          "ja": "",
+          "ko": "효 과",
+          "bbox": [
+            1109,
+            468,
+            1415,
+            602
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K10",
+          "ja": "",
+          "ko": "곤 베",
+          "bbox": [
+            603,
+            470,
+            883,
+            600
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K11",
+          "ja": "",
+          "ko": "키스케",
+          "bbox": [
+            1019,
+            18,
+            1355,
+            156
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K12",
+          "ja": "",
+          "ko": "오코이",
+          "bbox": [
+            1716,
+            256,
+            2016,
+            388
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K13",
+          "ja": "",
+          "ko": "추가",
+          "bbox": [
+            2301,
+            450,
+            2529,
+            590
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K14",
+          "ja": "",
+          "ko": "전 체",
+          "bbox": [
+            1963,
+            448,
+            2253,
+            592
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K15",
+          "ja": "",
+          "ko": "요 리",
+          "bbox": [
+            1661,
+            1890,
+            1923,
+            2026
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K16",
+          "ja": "",
+          "ko": "시 간",
+          "bbox": [
+            2001,
+            1432,
+            2283,
+            1578
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K17",
+          "ja": "",
+          "ko": "정 보",
+          "bbox": [
+            2009,
+            1140,
+            2277,
+            1298
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K18",
+          "ja": "",
+          "ko": "돈",
+          "bbox": [
+            689,
+            850,
+            799,
+            984
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K19",
+          "ja": "",
+          "ko": "아이템",
+          "bbox": [
+            1017,
+            1790,
+            1339,
+            1946
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K20",
+          "ja": "",
+          "ko": "소 유",
+          "bbox": [
+            1089,
+            1594,
+            1357,
+            1720
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K21",
+          "ja": "",
+          "ko": "획 득",
+          "bbox": [
+            109,
+            318,
+            389,
+            474
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K22",
+          "ja": "",
+          "ko": "피 해",
+          "bbox": [
+            107,
+            500,
+            397,
+            636
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K23",
+          "ja": "",
+          "ko": "수 량",
+          "bbox": [
+            97,
+            668,
+            387,
+            834
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K24",
+          "ja": "",
+          "ko": "제 작",
+          "bbox": [
+            75,
+            1012,
+            389,
+            1172
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K25",
+          "ja": "",
+          "ko": "장 비",
+          "bbox": [
+            583,
+            1202,
+            873,
+            1364
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K26",
+          "ja": "",
+          "ko": "조 작",
+          "bbox": [
+            1137,
+            990,
+            1429,
+            1150
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K27",
+          "ja": "",
+          "ko": "레 벨",
+          "bbox": [
+            603,
+            1032,
+            887,
+            1182
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K28",
+          "ja": "",
+          "ko": "확인",
+          "bbox": [
+            1477,
+            1154,
+            1677,
+            1288
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 118,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K29",
+          "ja": "",
+          "ko": "강 적",
+          "bbox": [
+            1339,
+            1316,
+            1621,
+            1476
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K30",
+          "ja": "",
+          "ko": "뇨",
+          "bbox": [
+            2318,
+            1218,
+            2462,
+            1352
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 182,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K31",
+          "ja": "",
+          "ko": "아",
+          "bbox": [
+            2216,
+            1789,
+            2372,
+            1957
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 182,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K32",
+          "ja": "",
+          "ko": "네",
+          "bbox": [
+            803,
+            1406,
+            989,
+            1632
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 238,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        },
+        {
+          "id": "K33",
+          "ja": "",
+          "ko": "사용",
+          "bbox": [
+            2201,
+            848,
+            2449,
+            994
+          ],
+          "text_color": "white",
+          "layout": "horizontal",
+          "font_px": 138,
+          "align": "center",
+          "valign": "center",
+          "render": true,
+          "source": "kra_extract"
+        }
       ]
     }
   }
