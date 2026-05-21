@@ -271,11 +271,10 @@ def render_preview(hash_id, system):
             cwd=str(ROOT), capture_output=True, text=True,
         )
     elif system == "place":
-        # kr_textures/ui 에 직접 출력 (temp 경유 없이)
+        # 기본 출력 경로가 kr_textures/ui (render_place_texture_job.DEFAULT_OUT)
         proc = subprocess.run(
             [sys.executable, str(ROOT / "tools" / "render_place_texture_job.py"),
-             hash_id, "--out-dir", str(ROOT / "kr_textures" / "ui"),
-             "--include-needs-review"],
+             hash_id, "--include-needs-review"],
             cwd=str(ROOT), capture_output=True, text=True,
         )
     else:

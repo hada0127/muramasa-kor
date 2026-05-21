@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_JOBS = ROOT / "translations/place_texture_jobs.json"
-DEFAULT_OUT = ROOT / "temp/place_texture_jobs"
+DEFAULT_OUT = ROOT / "kr_textures/ui"
 DEFAULT_FONT = ROOT / "fonts/Griun_PolSensibility-Rg.ttf"
 DEFAULT_SOURCE_DIR = ROOT / "textures/place_name_originals"
 DEFAULT_APPLY_DIR = ROOT / "kr_textures/ui"
