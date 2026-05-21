@@ -1,0 +1,113 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  font-size: 13px; color: #e8e8ea; background: #1c1d21;
+}
+.muted { color: #8a8d96; }
+.spacer { flex: 1; }
+button {
+  background: #34363d; color: #e8e8ea; border: 1px solid #4a4d57;
+  border-radius: 6px; padding: 5px 10px; cursor: pointer; font-size: 12px;
+}
+button:hover { background: #3e424b; }
+button.primary { background: #2f6df0; border-color: #2f6df0; }
+button.primary:hover { background: #3f7bff; }
+button.danger { background: #6d2f2f; border-color: #8a3a3a; }
+select, input[type=text], input[type=number], input[type=search], textarea {
+  background: #26272c; color: #e8e8ea; border: 1px solid #3a3d45;
+  border-radius: 5px; padding: 4px 6px; font-size: 12px;
+}
+label { display: inline-flex; align-items: center; gap: 4px; }
+
+#app { display: grid; grid-template-columns: 280px 1fr 280px; height: 100vh; }
+aside, main { overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+#filelist { border-right: 1px solid #2c2e34; }
+#props { border-left: 1px solid #2c2e34; padding: 0 12px; overflow-y: auto; }
+
+/* 좌측 목록 */
+#filelist header { padding: 10px; border-bottom: 1px solid #2c2e34; display: flex; flex-direction: column; gap: 8px; }
+#search { width: 100%; }
+#filters { display: flex; gap: 10px; font-size: 11px; color: #b8bcc6; }
+#files { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
+.file-row { display: flex; gap: 8px; padding: 8px 10px; border-bottom: 1px solid #25272d; cursor: pointer; }
+.file-row:hover { background: #24262c; }
+.file-row.active { background: #2a3a5c; }
+.file-row img { width: 44px; height: 44px; object-fit: contain; background:
+  repeating-conic-gradient(#3a3a3a 0% 25%, #2a2a2a 0% 50%) 50% / 12px 12px;
+  border-radius: 4px; flex-shrink: 0; }
+.file-meta { min-width: 0; flex: 1; }
+.file-hash { font-family: ui-monospace, monospace; font-size: 11px; color: #cfd3dc; }
+.file-memo { font-size: 12px; color: #ffd479; margin-top: 2px; word-break: break-all; }
+.file-memo:empty::before { content: "메모 없음"; color: #5f636d; }
+.file-desc { font-size: 10px; color: #777b85; margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sys-badge { font-size: 9px; padding: 1px 5px; border-radius: 8px; vertical-align: middle; }
+.sys-localize { background: #2c4a6e; }
+.sys-place { background: #4a2c6e; }
+.sys-manual { background: #555; }
+#liststat { padding: 6px 10px; border-top: 1px solid #2c2e34; font-size: 11px; color: #8a8d96; }
+
+/* 중앙 편집기 */
+#toolbar, #memo-bar { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-bottom: 1px solid #2c2e34; }
+#memo-bar label { color: #b8bcc6; }
+#memo-input { flex: 1; }
+#cur-hash { font-family: ui-monospace, monospace; }
+#canvas-wrap { flex: 1; overflow: auto; background: #161719; position: relative; }
+#stage { position: relative; margin: 20px auto; width: max-content; }
+#tex-img { display: block; }
+#stage.bg-checker { background: repeating-conic-gradient(#444 0% 25%, #333 0% 50%) 50% / 20px 20px; }
+#stage.bg-black { background: #000; }
+#stage.bg-red { background: #cc423a; }
+#stage.bg-blue { background: #2848d0; }
+#overlay { position: absolute; inset: 0; }
+
+.region { position: absolute; border: 1.5px solid #ffd479; background: rgba(255,212,121,0.08);
+  cursor: move; font-size: 10px; color: #fff; }
+.region.selected { border-color: #2f6df0; background: rgba(47,109,240,0.15); z-index: 5; }
+.region .rlabel { position: absolute; top: -16px; left: 0; background: #000a;
+  padding: 0 4px; white-space: nowrap; pointer-events: none; }
+.handle { position: absolute; width: 9px; height: 9px; background: #2f6df0;
+  border: 1px solid #fff; border-radius: 2px; }
+.handle.nw { left: -5px; top: -5px; cursor: nwse-resize; }
+.handle.ne { right: -5px; top: -5px; cursor: nesw-resize; }
+.handle.sw { left: -5px; bottom: -5px; cursor: nesw-resize; }
+.handle.se { right: -5px; bottom: -5px; cursor: nwse-resize; }
+.handle.n { left: 50%; top: -5px; margin-left: -4px; cursor: ns-resize; }
+.handle.s { left: 50%; bottom: -5px; margin-left: -4px; cursor: ns-resize; }
+.handle.w { left: -5px; top: 50%; margin-top: -4px; cursor: ew-resize; }
+.handle.e { right: -5px; top: 50%; margin-top: -4px; cursor: ew-resize; }
+
+/* 우측 속성 */
+#props h2 { font-size: 14px; margin: 12px 0 8px; }
+.field { margin-bottom: 10px; }
+.field > label { display: block; color: #b8bcc6; margin-bottom: 3px; font-size: 11px; }
+.field input, .field select, .field textarea { width: 100%; }
+.field textarea { resize: vertical; min-height: 48px; font-family: inherit; }
+.field-row { display: flex; gap: 6px; }
+.field-row > div { flex: 1; }
+#props-actions { display: flex; gap: 8px; margin: 12px 0; }
+#props-actions button { flex: 1; }
+
+/* 모달 */
+#modal { position: fixed; inset: 0; background: #000b; display: flex;
+  align-items: center; justify-content: center; z-index: 100; }
+.modal-box { background: #222428; border: 1px solid #3a3d45;
+  border-radius: 10px; width: min(90vw, 1000px); max-height: 90vh; display: flex; flex-direction: column; }
+.modal-box header { display: flex; align-items: center; padding: 10px 14px; border-bottom: 1px solid #34363d; }
+.modal-box header span { flex: 1; font-weight: 600; }
+.modal-body { padding: 14px; overflow: auto; }
+.modal-bgsel { display: flex; gap: 6px; align-items: center; margin-bottom: 10px; color: #b8bcc6; }
+.modal-bgsel button.active { background: #2f6df0; border-color: #2f6df0; }
+#modal-imgwrap { text-align: center; background-color: #000; border-radius: 6px; padding: 10px; }
+#modal-imgwrap.bg-checker { background: repeating-conic-gradient(#444 0% 25%, #333 0% 50%) 50% / 20px 20px; }
+#modal-imgwrap.bg-white { background: #fff; }
+#modal-img { max-width: 100%; max-height: 60vh; }
+#modal-log { color: #9aa0ab; font-size: 11px; white-space: pre-wrap; max-height: 120px; overflow: auto; margin-top: 8px; }
+
+/* 토스트 */
+#toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: #2f6df0; color: #fff; padding: 8px 16px; border-radius: 8px;
+  opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 200; }
+#toast.show { opacity: 1; }
+#toast.err { background: #c0392b; }

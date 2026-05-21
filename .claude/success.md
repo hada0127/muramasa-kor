@@ -1522,3 +1522,14 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 ### 미검증
 - macOS 환경이라 CLAUDE.md의 Windows용 Vita3K 자동 실행 플로우로 in-game 확인 불가.
   텍스처는 import에 설치 완료 → 게임 재시작 시 적용. 인게임 육안 확인 권장.
+
+## [2026-05-22] UI 텍스처 편집 웹도구 완성
+- tools/build_ui_index.py → translations/ui_editor_index.json (82개: localize 11 + place 60 + manual 11, 파일별 memo 보존)
+- tools/ui_editor/server.py — stdlib http.server (의존성 0). API: /api/index, /api/image, /api/memo, /api/regions, /api/render
+- tools/ui_editor/static/{index.html,app.js,style.css} — 3분할 UI (목록·캔버스·속성)
+  - 좌: 검색/시스템필터 + 썸네일 + 메모(노란색) + 설명 표시 → 파일 식별 빠르게
+  - 중: 배경색(체커/검정/레드/블루) 토글, 원본/kr 토글, 줌, region 박스 8핸들 드래그/리사이즈, ＋영역, 생성 미리보기 모달
+  - 우: 텍스트/박스/글씨크기/색/정렬/배경/쓰기방향(가로·세로·회전)/비율 등 시스템별 속성 + 반영
+- 검증: 백엔드 전 API curl 통과, 경로탈출 403 차단, 무변경 round-trip = 사실상 0줄(렌더러 무시 필드 1줄 정리만), 실제 렌더러로 localize/place 미리보기 생성 확인(야마시로/시나노 정상)
+- 핵심설계: region 지오메트리/텍스트는 네이티브 config 역기록(기존 키 유지+없던 키는 비기본값만 추가 → 무손실), memo는 인덱스 sidecar. 생성은 실제 texture_localize.py/render_place_texture_job.py 호출 → 게임과 동일 출력
+- 실행: python tools/ui_editor/server.py → http://127.0.0.1:8765

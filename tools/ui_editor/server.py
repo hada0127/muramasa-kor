@@ -1,0 +1,279 @@
+"""UI 텍스처 편집 웹도구 — 경량 서버 (stdlib http.server, 외부 의존성 없음).
+
+실행:
+  python tools/ui_editor/server.py            # http://127.0.0.1:8765
+  python tools/ui_editor/server.py --port 9000
+
+3분할 편집 UI를 제공한다.
+  좌  : kr_textures/ui 파일 목록 (메모 표시)
+  중간: 캔버스 (원본/kr 토글, 배경색, region 박스 드래그/리사이즈)
+  우  : 선택 region 속성 편집
+
+API
+  GET  /api/index                  통합 인덱스 (translations/ui_editor_index.json)
+  GET  /api/image?path=<rel>       레포 내 PNG 직접 서빙
+  POST /api/memo    {hash, memo}   인덱스에 메모 저장
+  POST /api/regions {hash, system, regions[]}  네이티브 config 역기록 + 인덱스 갱신
+  POST /api/render  {hash}         실제 렌더러 호출 → 미리보기 PNG 경로 반환
+"""
+import argparse
+import json
+import subprocess
+import sys
+import threading
+import urllib.parse
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+STATIC = Path(__file__).resolve().parent / "static"
+INDEX_PATH = ROOT / "translations" / "ui_editor_index.json"
+LOCALIZE_CONFIG = ROOT / "translations" / "texture_localize_config.json"
+PLACE_JOBS = ROOT / "translations" / "place_texture_jobs.json"
+PREVIEW_DIR = ROOT / "output" / "texture_preview"
+
+_LOCK = threading.Lock()
+
+MIME = {
+    ".html": "text/html; charset=utf-8",
+    ".js": "application/javascript; charset=utf-8",
+    ".css": "text/css; charset=utf-8",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".json": "application/json; charset=utf-8",
+}
+
+
+def load_json(path):
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def save_json(path, data):
+    Path(path).write_text(
+        json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+
+
+def update_memo(hash_id, memo):
+    with _LOCK:
+        idx = load_json(INDEX_PATH)
+        for t in idx["textures"]:
+            if t["hash"] == hash_id:
+                t["memo"] = memo
+                break
+        save_json(INDEX_PATH, idx)
+    return {"ok": True}
+
+
+def _color_list(c):
+    if isinstance(c, list):
+        return c
+    return [255, 255, 255, 255]
+
+
+def _upd(d, key, value, default):
+    """기존 키는 항상 갱신, 없던 키는 비기본값일 때만 추가 (무변경 round-trip 보장)."""
+    if key in d or value != default:
+        d[key] = value
+
+
+def save_regions(hash_id, system, regions):
+    """편집된 통합 region 목록을 네이티브 config 에 역기록하고 인덱스도 갱신."""
+    with _LOCK:
+        if system == "localize":
+            cfg = load_json(LOCALIZE_CONFIG)
+            tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
+            if tex is None:
+                return {"ok": False, "error": "localize hash not found"}
+            native = []
+            for r in regions:
+                x, y, w, h = [int(round(v)) for v in r["box"]]
+                nr = dict(r.get("native") or {})
+                nr.update({
+                    "x": x, "y": y, "w": w, "h": h,
+                    "text": r.get("text", ""),
+                    "font_size": int(r.get("font_size", 24)),
+                })
+                # 선택적 필드: 기존 키는 갱신, 없던 키는 비기본값만 추가
+                _upd(nr, "color", _color_list(r.get("color")), [255, 255, 255, 255])
+                _upd(nr, "align", r.get("align", "left"), "left")
+                _upd(nr, "v_align", r.get("v_align", "top"), "top")
+                _upd(nr, "clear", bool(r.get("clear", True)), True)
+                _upd(nr, "fit_to_box", bool(r.get("fit_to_box", False)), False)
+                if r.get("orient"):
+                    nr["orient"] = r["orient"]
+                # 사용자가 박스를 옮겼으면 stale clear_rect 제거
+                nr.pop("clear_rect", None)
+                native.append(nr)
+            tex["regions"] = native
+            save_json(LOCALIZE_CONFIG, cfg)
+
+        elif system == "place":
+            doc = load_json(PLACE_JOBS)
+            job = doc["textures"].get(hash_id)
+            if job is None:
+                return {"ok": False, "error": "place hash not found"}
+            native = []
+            for r in regions:
+                x, y, w, h = [int(round(v)) for v in r["box"]]
+                nr = dict(r.get("native") or {})
+                nr["bbox"] = [x, y, x + w, y + h]
+                _upd(nr, "ko", r.get("text", ""), "")
+                _upd(nr, "text_color", r.get("text_color", "black"), "black")
+                _upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
+                _upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
+                _upd(nr, "render", bool(r.get("render", True)), True)
+                bg = r.get("background")
+                if bg in ("red", "black"):
+                    nr["background"] = bg
+                    nr.pop("clear", None)
+                elif bg == "clear_alpha":
+                    nr.pop("background", None)
+                    nr["clear"] = "alpha"
+                elif bg == "clear_white":
+                    nr.pop("background", None)
+                    nr["clear"] = "white"
+                else:  # transparent
+                    nr.pop("background", None)
+                    nr.pop("clear", None)
+                if r.get("layout"):
+                    nr["layout"] = r["layout"]
+                else:
+                    nr.pop("layout", None)
+                native.append(nr)
+            job["regions"] = native
+            save_json(PLACE_JOBS, doc)
+        else:
+            return {"ok": False, "error": f"system '{system}' 은 region 편집 미지원"}
+
+        # 인덱스 재생성 (memo 보존됨)
+        subprocess.run(
+            [sys.executable, str(ROOT / "tools" / "build_ui_index.py")],
+            cwd=str(ROOT), check=False, capture_output=True,
+        )
+    return {"ok": True}
+
+
+def render_preview(hash_id, system):
+    """실제 렌더러를 호출하여 미리보기 PNG 생성. (kr_textures 덮어쓰지 않음)"""
+    PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    if system == "localize":
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "tools" / "texture_localize.py"),
+             hash_id, "--preview"],
+            cwd=str(ROOT), capture_output=True, text=True,
+        )
+        out = PREVIEW_DIR / f"{hash_id}_preview.png"
+    elif system == "place":
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "tools" / "render_place_texture_job.py"),
+             hash_id, "--out-dir", str(PREVIEW_DIR), "--include-needs-review"],
+            cwd=str(ROOT), capture_output=True, text=True,
+        )
+        out = PREVIEW_DIR / f"{hash_id}.png"
+    else:
+        return {"ok": False, "error": "manual 텍스처는 렌더러가 없습니다 (kr png 직접 편집)"}
+
+    if not out.exists():
+        return {"ok": False, "error": (proc.stdout + proc.stderr)[-800:] or "출력 없음"}
+    rel = str(out.relative_to(ROOT))
+    return {"ok": True, "path": rel, "log": (proc.stdout + proc.stderr)[-800:]}
+
+
+class Handler(BaseHTTPRequestHandler):
+    def log_message(self, *args):
+        pass  # 콘솔 조용히
+
+    def _send(self, code, body, content_type="application/json; charset=utf-8"):
+        if isinstance(body, (dict, list)):
+            body = json.dumps(body, ensure_ascii=False).encode("utf-8")
+        elif isinstance(body, str):
+            body = body.encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _send_file(self, path: Path):
+        if not path.exists() or not path.is_file():
+            self._send(404, {"error": "not found"})
+            return
+        data = path.read_bytes()
+        self._send(200, data, MIME.get(path.suffix.lower(), "application/octet-stream"))
+
+    def _safe_repo_path(self, rel):
+        """레포 밖 접근 차단."""
+        p = (ROOT / rel).resolve()
+        if ROOT not in p.parents and p != ROOT:
+            return None
+        return p
+
+    def do_GET(self):
+        parsed = urllib.parse.urlparse(self.path)
+        route = parsed.path
+
+        if route == "/" or route == "/index.html":
+            self._send_file(STATIC / "index.html")
+        elif route.startswith("/static/"):
+            self._send_file(STATIC / route[len("/static/"):])
+        elif route == "/api/index":
+            self._send(200, load_json(INDEX_PATH))
+        elif route == "/api/image":
+            qs = urllib.parse.parse_qs(parsed.query)
+            rel = qs.get("path", [""])[0]
+            p = self._safe_repo_path(rel)
+            if p is None:
+                self._send(403, {"error": "forbidden"})
+            else:
+                self._send_file(p)
+        else:
+            self._send(404, {"error": "unknown route"})
+
+    def do_POST(self):
+        length = int(self.headers.get("Content-Length", 0))
+        raw = self.rfile.read(length) if length else b"{}"
+        try:
+            data = json.loads(raw or b"{}")
+        except json.JSONDecodeError:
+            self._send(400, {"error": "bad json"})
+            return
+
+        route = urllib.parse.urlparse(self.path).path
+        try:
+            if route == "/api/memo":
+                self._send(200, update_memo(data["hash"], data.get("memo", "")))
+            elif route == "/api/regions":
+                self._send(200, save_regions(
+                    data["hash"], data["system"], data.get("regions", [])))
+            elif route == "/api/render":
+                self._send(200, render_preview(data["hash"], data["system"]))
+            else:
+                self._send(404, {"error": "unknown route"})
+        except Exception as e:  # noqa: BLE001
+            self._send(500, {"error": repr(e)})
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--host", default="127.0.0.1")
+    args = ap.parse_args()
+
+    if not INDEX_PATH.exists():
+        print("인덱스가 없습니다. tools/build_ui_index.py 를 먼저 실행하세요.")
+        subprocess.run([sys.executable, str(ROOT / "tools" / "build_ui_index.py")],
+                       cwd=str(ROOT))
+
+    srv = ThreadingHTTPServer((args.host, args.port), Handler)
+    print(f"UI 텍스처 편집기: http://{args.host}:{args.port}")
+    print("  Ctrl+C 로 종료")
+    try:
+        srv.serve_forever()
+    except KeyboardInterrupt:
+        print("\n종료")
+        srv.shutdown()
+
+
+if __name__ == "__main__":
+    main()

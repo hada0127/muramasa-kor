@@ -386,3 +386,13 @@
 ### 시작 상태
 - ebd22cd HEAD, working tree clean
 - tools/condense_dialogs.py, fix_punctuation.py = 3321495 상태 (1/2차 검증된 코드)
+
+## [2026-05-22] UI 텍스처 편집 웹도구 (ui-editor)
+목표: kr_textures/ui 텍스처를 시각적으로 편집 — 박스 드래그/리사이즈, 속성 편집, 실제 렌더러로 "생성" 미리보기.
+사용자 결정: 기존 생성 스크립트(texture_localize_config.json + place_texture_jobs.json) 기반으로 통합 인덱스 JSON 생성. 파일별 메모 필수(목록에서 파일 식별 빠르게).
+- 데이터: 82 png = localize 11 + place 60 + 수동 11
+- 1) tools/build_ui_index.py → translations/ui_editor_index.json (memo는 rebuild 시 보존)
+- 2) tools/ui_editor/server.py (stdlib http.server, 의존성 없음) + static(index.html/app.js/style.css)
+- 3) 3분할 UI: 좌=파일목록(메모/썸네일), 중=캔버스(원본/kr 토글, 배경색 토글, 박스 드래그/리사이즈), 우=속성(텍스트+네이티브 필드)
+- 4) 저장: 지오메트리/텍스트 → 네이티브 config 역기록, memo → 인덱스. 생성 → 실제 렌더러 호출 → 미리보기 모달
+- 협의 생략 사유: 자체 완결 내부 도구 + 사용자 상세 스펙·방향 확정 (CLAUDE.md 협의 제외 "이미 결정된 작업")
