@@ -95,11 +95,13 @@ aside, main { overflow: hidden; display: flex; flex-direction: column; min-heigh
 .field-row { display: flex; gap: 6px; }
 .field-row > div { flex: 1; }
 #props-actions { display: flex; gap: 8px; margin: 12px 0; }
+#props-actions[hidden] { display: none; }
 #props-actions button { flex: 1; }
 
 /* 모달 */
 #modal { position: fixed; inset: 0; background: #000b; display: flex;
   align-items: center; justify-content: center; z-index: 100; }
+#modal[hidden] { display: none; }
 .modal-box { background: #222428; border: 1px solid #3a3d45;
   border-radius: 10px; width: min(90vw, 1000px); max-height: 90vh; display: flex; flex-direction: column; }
 .modal-box header { display: flex; align-items: center; padding: 10px 14px; border-bottom: 1px solid #34363d; }
