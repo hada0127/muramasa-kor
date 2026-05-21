@@ -130,9 +130,16 @@ function drawRegions() {
   });
 }
 
-// 그리운 경찰감성체 웹폰트로 region 텍스트를 캔버스에 근사 렌더 (실제 출력은 생성 미리보기)
-function isVertical(r) {
-  return CUR.system === "place" && r.layout !== "horizontal";
+// 그리운 경찰감성체 웹폰트로 region 텍스트를 캔버스에 근사 렌더 (정확한 출력은 생성 미리보기)
+// place 레이아웃 → 캔버스 표시 방향:
+//   horizontal=가로, vertical_columns/세로 박스=세로쌓기, rotated/넓은박스=글자 90° 눕혀 가로배열
+function orientMode(r, w, h) {
+  if (CUR.system !== "place") return "h";
+  const lay = r.layout;
+  if (lay === "horizontal") return "h";
+  if (lay === "vertical_columns" || lay === "vertical") return "v";
+  if (lay === "rotated") return w >= h ? "rot" : "v";
+  return w > h ? "rot" : "v";  // auto: 렌더러와 동일하게 넓으면 rotated
 }
 function cssTextColor(r) {
   if (CUR.system === "place") return r.text_color === "white" ? "#fff" : "#000";
@@ -142,28 +149,48 @@ function cssTextColor(r) {
 function makeTextLayer(r, w, h) {
   const t = document.createElement("div");
   t.className = "region-text";
-  t.textContent = r.text || "";
-  t.style.color = cssTextColor(r);
-  t.style.letterSpacing = (r.letter_spacing || 0) * SCALE + "px";
+  const color = cssTextColor(r);
+  t.style.color = color;
+  const mode = orientMode(r, w, h);
   let fontPx;
   if (CUR.system === "place") {
     const fr = r.font_ratio || 0.85;
-    fontPx = isVertical(r) ? w * SCALE * fr * 0.9 : h * SCALE * fr;
+    fontPx = mode === "v" ? w * SCALE * fr * 0.9 : h * SCALE * fr;
     if (r.background === "red") t.style.background = "rgba(204,66,58,0.85)";
     else if (r.background === "black") t.style.background = "rgba(0,0,0,0.85)";
   } else {
     fontPx = (r.font_size || 24) * SCALE;
   }
-  t.style.fontSize = Math.max(4, fontPx) + "px";
-  if (isVertical(r)) {
+  fontPx = Math.max(4, fontPx);
+  t.style.fontSize = fontPx + "px";
+  const lsPx = (r.letter_spacing || 0) * SCALE;
+
+  if (mode === "v") {
     t.style.writingMode = "vertical-rl";
+    t.style.letterSpacing = lsPx + "px";
     t.style.justifyContent = "center";
     t.style.alignItems = "center";
+    t.textContent = r.text || "";
+  } else if (mode === "rot") {
+    // 글자를 90° 눕혀 가로로 배열 (rotated 배너)
+    t.style.justifyContent = "center";
+    t.style.alignItems = "center";
+    t.style.gap = lsPx + "px";
+    for (const ch of (r.text || "")) {
+      if (ch === " ") { const sp = document.createElement("span"); sp.style.width = fontPx * 0.4 + "px"; t.appendChild(sp); continue; }
+      const s = document.createElement("span");
+      s.textContent = ch;
+      s.style.display = "inline-block";
+      s.style.transform = "rotate(90deg)";
+      t.appendChild(s);
+    }
   } else {
+    t.style.letterSpacing = lsPx + "px";
     const align = CUR.system === "localize" ? (r.align || "left") : "center";
     const v = CUR.system === "localize" ? (r.v_align || "top") : "center";
     t.style.justifyContent = align === "center" ? "center" : align === "right" ? "flex-end" : "flex-start";
     t.style.alignItems = v === "center" ? "center" : v === "bottom" ? "flex-end" : "flex-start";
+    t.textContent = r.text || "";
   }
   return t;
 }
