@@ -2068,7 +2068,7 @@
       "source": "textures/place_name_originals/59015B61BFC0B7BC.png",
       "output": "kr_textures/ui/59015B61BFC0B7BC.png",
       "status": "ready",
-      "output_scale": 4,
+      "output_scale": 1,
       "regions": [
         {
           "id": "K0_CLEAR",
@@ -2076,10 +2076,10 @@
           "ja": "相模",
           "ko": "",
           "bbox": [
-            184,
-            8,
-            233,
-            122
+            736,
+            32,
+            932,
+            488
           ],
           "background": "black",
           "text_color": "white",
@@ -2095,10 +2095,10 @@
           "ja": "相模",
           "ko": "사가미",
           "bbox": [
-            186,
-            14,
-            232,
-            120
+            744,
+            56,
+            928,
+            480
           ],
           "background": "none",
           "text_color": "white",
@@ -2115,10 +2115,10 @@
           "ja": "東海道箱根",
           "ko": "도카이도 하코네",
           "bbox": [
-            250,
-            4,
-            292,
-            178
+            1000,
+            16,
+            1168,
+            712
           ],
           "background": "red",
           "text_color": "black",
@@ -2135,9 +2135,9 @@
           "ko": "아라시마루",
           "bbox": [
             0,
-            126,
-            210,
-            222
+            504,
+            840,
+            888
           ],
           "background": "none",
           "text_color": "white",
