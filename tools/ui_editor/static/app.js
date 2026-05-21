@@ -72,10 +72,9 @@ function selectTexture(hash) {
 function loadImage() {
   const img = $("#tex-img");
   $("#show-original").checked = false;
-  img.onload = () => {
-    NAT = [img.naturalWidth, img.naturalHeight];
-    applyZoom();
-  };
+  // NAT = region 좌표 기준 공간 (kr PNG 자연크기가 아님 — output_scale 등으로 다를 수 있음)
+  NAT = CUR.coord_size || CUR.size || [1, 1];
+  img.onload = () => applyZoom();
   img.src = `/api/image?path=${encodeURIComponent(CUR.png)}`;
 }
 
@@ -116,7 +115,11 @@ function drawRegions() {
     el.style.width = w * SCALE + "px";
     el.style.height = h * SCALE + "px";
     el.innerHTML = `<span class="rlabel">${escapeHtml(r.id || "#" + i)}</span>`;
-    el.appendChild(makeTextLayer(r, w, h));
+    // kr PNG에는 한글이 이미 구워져 있으므로, 텍스트 오버레이는 원본 보기 중이거나
+    // 편집 중(선택된)인 영역에만 표시 → 이중 표시 방지
+    if ($("#show-original").checked || i === SEL) {
+      el.appendChild(makeTextLayer(r, w, h));
+    }
     if (i === SEL) {
       for (const hp of ["nw", "ne", "sw", "se", "n", "s", "w", "e"]) {
         const hd = document.createElement("div");
@@ -181,7 +184,7 @@ function makeTextLayer(r, w, h) {
       const s = document.createElement("span");
       s.textContent = ch;
       s.style.display = "inline-block";
-      s.style.transform = "rotate(90deg)";
+      s.style.transform = "rotate(-90deg)";  // 렌더러 PIL rotate(90)=CCW 와 일치
       t.appendChild(s);
     }
   } else {
@@ -399,7 +402,10 @@ async function init() {
   };
   $("#bg-color").onchange();
   $("#zoom").onchange = applyZoom;
-  $("#show-original").onchange = () => { $("#tex-img").src = `/api/image?path=${encodeURIComponent(curImagePath())}`; };
+  $("#show-original").onchange = () => {
+    $("#tex-img").src = `/api/image?path=${encodeURIComponent(curImagePath())}`;
+    drawRegions();
+  };
   $("#btn-add").onclick = addRegion;
   $("#btn-apply").onclick = applyRegions;
   $("#btn-del").onclick = delRegion;

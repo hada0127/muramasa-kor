@@ -32,6 +32,19 @@ def _img_size(path: Path):
         return None
 
 
+def _coord_size(regions, src_size, kr_size):
+    """region 좌표가 정의된 기준 공간 크기를 추정.
+    좌표가 소스 크기 안에 들어가면 소스 공간, 아니면 kr(출력) 공간으로 판단.
+    (예: 247C는 256 소스 공간에 정의 후 4x 출력, 1823은 1024 kr 공간에 직접 정의)"""
+    if not regions:
+        return list(kr_size) if kr_size else None
+    mx = max(r["box"][0] + r["box"][2] for r in regions)
+    my = max(r["box"][1] + r["box"][3] for r in regions)
+    if src_size and mx <= src_size[0] and my <= src_size[1]:
+        return list(src_size)
+    return list(kr_size) if kr_size else [mx, my]
+
+
 def _resolve_source(value, hash_id):
     """source 경로(레포 상대) → 존재하면 상대경로 문자열, 없으면 None."""
     candidates = []
@@ -174,6 +187,10 @@ def build():
                 "description": "수동 편집 텍스처 (생성 스크립트 미정의)",
                 "regions": [],
             }
+
+        # region 좌표 기준 공간 크기 (캔버스 정렬용)
+        src_size = _img_size(ROOT / entry["source"]) if entry.get("source") else None
+        entry["coord_size"] = _coord_size(entry["regions"], src_size, size)
 
         entry["memo"] = existing_memo.get(h, "")
         entries.append(entry)
