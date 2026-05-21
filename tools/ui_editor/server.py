@@ -257,8 +257,8 @@ def render_live(hash_id, system, regions, mode="full"):
 
 
 def render_preview(hash_id, system):
-    """실제 렌더러를 호출하여 미리보기 PNG 생성. (kr_textures 덮어쓰지 않음)"""
-    PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    """실제 kr_textures/ui 이미지를 생성하고 그 경로를 반환 (저장 및 미리보기)."""
+    out = ROOT / "kr_textures" / "ui" / f"{hash_id}.png"
     if system == "localize":
         cfg = load_json(LOCALIZE_CONFIG)
         tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
@@ -267,18 +267,15 @@ def render_preview(hash_id, system):
                     "수동 편집(Krita) 텍스처입니다. 좌표·텍스트는 manual_regions에 "
                     "저장되지만 PNG는 자동 생성되지 않습니다 — kr_textures/ui/의 파일을 직접 편집하세요."}
         proc = subprocess.run(
-            [sys.executable, str(ROOT / "tools" / "texture_localize.py"),
-             hash_id, "--preview"],
+            [sys.executable, str(ROOT / "tools" / "texture_localize.py"), hash_id],
             cwd=str(ROOT), capture_output=True, text=True,
         )
-        out = PREVIEW_DIR / f"{hash_id}_preview.png"
     elif system == "place":
         proc = subprocess.run(
             [sys.executable, str(ROOT / "tools" / "render_place_texture_job.py"),
-             hash_id, "--out-dir", str(PREVIEW_DIR), "--include-needs-review"],
+             hash_id, "--apply", "--include-needs-review"],
             cwd=str(ROOT), capture_output=True, text=True,
         )
-        out = PREVIEW_DIR / f"{hash_id}.png"
     else:
         return {"ok": False, "error": "manual 텍스처는 렌더러가 없습니다 (kr png 직접 편집)"}
 

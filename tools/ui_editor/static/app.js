@@ -440,17 +440,24 @@ async function saveMemo() {
 }
 
 async function renderPreview() {
-  toast("저장 후 렌더링 중…");
-  // 이 텍스처의 전체 정보(모든 영역)를 config에 저장한 뒤 실제 렌더
-  if (!(await applyRegions())) return;
-  const res = await api("/api/render", { hash: CUR.hash, system: CUR.system });
-  if (res.ok) {
-    $("#modal-img").src = `/api/image?path=${encodeURIComponent(res.path)}&t=${Date.now()}`;
-    $("#modal-log").textContent = res.log || "";
-    $("#modal").hidden = false;
-  } else {
-    toast(res.error || "렌더 실패", true);
-    $("#modal-log").textContent = res.error || "";
+  $("#spinner").hidden = false;  // 생성 중 스피너
+  try {
+    // 1) 전체 영역을 config에 저장 → 2) 실제 kr_textures 이미지 생성
+    if (!(await applyRegions())) return;
+    const res = await api("/api/render", { hash: CUR.hash, system: CUR.system });
+    if (res.ok) {
+      $("#modal-title").textContent = `생성 완료: ${res.path}`;
+      $("#modal-img").src = `/api/image?path=${encodeURIComponent(res.path)}&t=${Date.now()}`;
+      $("#modal-log").textContent = res.log || "";
+      $("#modal").hidden = false;
+      // 배경 레이어(원본)와 목록 썸네일도 갱신
+      renderList();
+    } else {
+      toast(res.error || "생성 실패", true);
+      $("#modal-log").textContent = res.error || "";
+    }
+  } finally {
+    $("#spinner").hidden = true;
   }
 }
 
