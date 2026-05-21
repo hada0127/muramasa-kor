@@ -58,8 +58,12 @@ function escapeHtml(s) {
 
 // ===== 텍스처 선택 / 캔버스 =====
 function selectTexture(hash) {
-  CUR = JSON.parse(JSON.stringify(INDEX.textures.find((t) => t.hash === hash)));
+  const found = INDEX.textures.find((t) => t.hash === hash);
+  if (!found) return;
+  CUR = JSON.parse(JSON.stringify(found));
   SEL = -1;
+  history.replaceState(null, "", "#" + hash);  // 새로고침해도 이어보기
+
   $("#cur-hash").textContent = `${CUR.hash}  ·  ${CUR.system}  ·  ${(CUR.size || []).join("×")}`;
   $("#memo-input").value = CUR.memo || "";
   $("#btn-render").disabled = CUR.system === "manual";
@@ -407,10 +411,15 @@ function onFormInput(e) {
     const sl = form.querySelector(`[data-slider="${t.dataset.num}"]`);
     if (sl) sl.value = t.value;
   }
-  const key = t.dataset.slider || t.dataset.num;
+  const key = t.dataset.slider || t.dataset.num || t.dataset.k;
   if (key) {
     const out = form.querySelector(`[data-out="${key}"]`);
     if (out) out.textContent = t.value;
+  }
+  // 글씨 비율을 조정하면 글씨 크기(px) 오버라이드 해제 → 비율 적용
+  if (key === "font_ratio") {
+    const fpx = form.querySelector('[data-k="font_px"]');
+    if (fpx) fpx.value = 0;
   }
   readProps();
 }
@@ -551,6 +560,9 @@ async function init() {
   });
   window.addEventListener("resize", () => { if (CUR) applyZoom(); });
   $("#overlay").onmousedown = (e) => { if (e.target.id === "overlay") { SEL = -1; drawRegions(); renderProps(); } };
+  // URL 해시(#hash)로 마지막 편집 텍스처 복원 (핸들러 준비 후)
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h && INDEX.textures.some((t) => t.hash === h)) selectTexture(h);
 }
 
 init();
