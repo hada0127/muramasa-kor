@@ -71,12 +71,13 @@ function selectTexture(hash) {
 
 function loadImage() {
   const img = $("#tex-img");
-  // 원본 보기를 기본으로 (원본이 있으면). 원본 위에 텍스트 오버레이로 편집.
-  $("#show-original").checked = !!CUR.source;
+  $("#show-original").checked = true;  // 기본: 원본 아트 배경 표시
+  img.style.visibility = "visible";
   // NAT = region 좌표 기준 공간 (kr PNG 자연크기가 아님 — output_scale 등으로 다를 수 있음)
   NAT = CUR.coord_size || CUR.size || [1, 1];
   img.onload = () => applyZoom();
-  img.src = `/api/image?path=${encodeURIComponent(curImagePath())}`;
+  // 배경 레이어 = 원본 아트 (한글 텍스트는 별도 CSS 오버레이)
+  img.src = `/api/image?path=${encodeURIComponent(CUR.source || CUR.png)}`;
 }
 
 function curImagePath() {
@@ -116,11 +117,8 @@ function drawRegions() {
     el.style.width = w * SCALE + "px";
     el.style.height = h * SCALE + "px";
     el.innerHTML = `<span class="rlabel">${escapeHtml(r.id || "#" + i)}</span>`;
-    // kr PNG에는 한글이 이미 구워져 있으므로, 텍스트 오버레이는 원본 보기 중이거나
-    // 편집 중(선택된)인 영역에만 표시 → 이중 표시 방지
-    if ($("#show-original").checked || i === SEL) {
-      el.appendChild(makeTextLayer(r, w, h));
-    }
+    // 텍스트는 항상 표시되는 상위 레이어 (배경 토글과 무관 → 위치 안 변함)
+    el.appendChild(makeTextLayer(r, w, h));
     if (i === SEL) {
       for (const hp of ["nw", "ne", "sw", "se", "n", "s", "w", "e"]) {
         const hd = document.createElement("div");
@@ -467,9 +465,9 @@ async function init() {
   };
   $("#bg-color").onchange();
   $("#zoom").onchange = applyZoom;
+  // 원본 보기 토글 = 배경 레이어(원본 아트) 가시성만. 텍스트 오버레이는 그대로 → 위치 불변
   $("#show-original").onchange = () => {
-    $("#tex-img").src = `/api/image?path=${encodeURIComponent(curImagePath())}`;
-    drawRegions();
+    $("#tex-img").style.visibility = $("#show-original").checked ? "visible" : "hidden";
   };
   $("#btn-add").onclick = addRegion;
   $("#btn-del").onclick = delRegion;

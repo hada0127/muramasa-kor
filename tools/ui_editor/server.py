@@ -79,6 +79,64 @@ def _upd(d, key, value, default):
         d[key] = value
 
 
+def _to_native_localize(r):
+    """편집 region → texture_localize 네이티브 region."""
+    x, y, w, h = [int(round(v)) for v in r["box"]]
+    nr = dict(r.get("native") or {})
+    nr.update({"x": x, "y": y, "w": w, "h": h, "text": r.get("text", "")})
+    if r.get("text") or "font_size" in nr:
+        nr["font_size"] = int(r.get("font_size", 24))
+    _upd(nr, "color", _color_list(r.get("color")), [255, 255, 255, 255])
+    _upd(nr, "align", r.get("align", "left"), "left")
+    _upd(nr, "v_align", r.get("v_align", "top"), "top")
+    _upd(nr, "clear", bool(r.get("clear", True)), True)
+    _upd(nr, "fit_to_box", bool(r.get("fit_to_box", False)), False)
+    _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
+    if r.get("orient"):
+        nr["orient"] = r["orient"]
+    nr.pop("clear_rect", None)
+    return nr
+
+
+def _to_native_place(r):
+    """편집 region → place_texture_jobs 네이티브 region."""
+    x, y, w, h = [int(round(v)) for v in r["box"]]
+    nr = dict(r.get("native") or {})
+    nr["bbox"] = [x, y, x + w, y + h]
+    _upd(nr, "ko", r.get("text", ""), "")
+    _upd(nr, "text_color", r.get("text_color", "black"), "black")
+    _upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
+    _upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
+    _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
+    _upd(nr, "align", r.get("align", "center"), "center")
+    _upd(nr, "valign", r.get("valign", "center"), "center")
+    for pk in ("pad_x", "pad_y"):
+        pv = r.get(pk)
+        if pv is None or pv == "":
+            nr.pop(pk, None)
+        else:
+            nr[pk] = int(pv)
+    _upd(nr, "render", bool(r.get("render", True)), True)
+    bg = r.get("background")
+    if bg in ("red", "black"):
+        nr["background"] = bg
+        nr.pop("clear", None)
+    elif bg == "clear_alpha":
+        nr.pop("background", None)
+        nr["clear"] = "alpha"
+    elif bg == "clear_white":
+        nr.pop("background", None)
+        nr["clear"] = "white"
+    else:
+        nr.pop("background", None)
+        nr.pop("clear", None)
+    if r.get("layout"):
+        nr["layout"] = r["layout"]
+    else:
+        nr.pop("layout", None)
+    return nr
+
+
 def save_regions(hash_id, system, regions):
     """편집된 통합 region 목록을 네이티브 config 에 역기록하고 인덱스도 갱신."""
     with _LOCK:
@@ -87,86 +145,115 @@ def save_regions(hash_id, system, regions):
             tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
             if tex is None:
                 return {"ok": False, "error": "localize hash not found"}
-            # regions 우선, 없으면 수동 편집 기록(manual_regions)에 되돌려 씀
             region_key = "regions" if tex.get("regions") else (
                 "manual_regions" if tex.get("manual_regions") else "regions")
-            native = []
-            for r in regions:
-                x, y, w, h = [int(round(v)) for v in r["box"]]
-                nr = dict(r.get("native") or {})
-                nr.update({"x": x, "y": y, "w": w, "h": h, "text": r.get("text", "")})
-                # font_size: 텍스트가 있거나 원래 있던 영역에만 (빈 클리어 영역엔 미기록)
-                if r.get("text") or "font_size" in nr:
-                    nr["font_size"] = int(r.get("font_size", 24))
-                # 선택적 필드: 기존 키는 갱신, 없던 키는 비기본값만 추가
-                _upd(nr, "color", _color_list(r.get("color")), [255, 255, 255, 255])
-                _upd(nr, "align", r.get("align", "left"), "left")
-                _upd(nr, "v_align", r.get("v_align", "top"), "top")
-                _upd(nr, "clear", bool(r.get("clear", True)), True)
-                _upd(nr, "fit_to_box", bool(r.get("fit_to_box", False)), False)
-                _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
-                if r.get("orient"):
-                    nr["orient"] = r["orient"]
-                # 사용자가 박스를 옮겼으면 stale clear_rect 제거
-                nr.pop("clear_rect", None)
-                native.append(nr)
-            tex[region_key] = native
+            tex[region_key] = [_to_native_localize(r) for r in regions]
             save_json(LOCALIZE_CONFIG, cfg)
-
         elif system == "place":
             doc = load_json(PLACE_JOBS)
             job = doc["textures"].get(hash_id)
             if job is None:
                 return {"ok": False, "error": "place hash not found"}
-            native = []
-            for r in regions:
-                x, y, w, h = [int(round(v)) for v in r["box"]]
-                nr = dict(r.get("native") or {})
-                nr["bbox"] = [x, y, x + w, y + h]
-                _upd(nr, "ko", r.get("text", ""), "")
-                _upd(nr, "text_color", r.get("text_color", "black"), "black")
-                _upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
-                _upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
-                _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
-                _upd(nr, "align", r.get("align", "center"), "center")
-                _upd(nr, "valign", r.get("valign", "center"), "center")
-                # 패딩(px): 지정됐을 때만 기록, 없으면 키 제거
-                for pk in ("pad_x", "pad_y"):
-                    pv = r.get(pk)
-                    if pv is None or pv == "":
-                        nr.pop(pk, None)
-                    else:
-                        nr[pk] = int(pv)
-                _upd(nr, "render", bool(r.get("render", True)), True)
-                bg = r.get("background")
-                if bg in ("red", "black"):
-                    nr["background"] = bg
-                    nr.pop("clear", None)
-                elif bg == "clear_alpha":
-                    nr.pop("background", None)
-                    nr["clear"] = "alpha"
-                elif bg == "clear_white":
-                    nr.pop("background", None)
-                    nr["clear"] = "white"
-                else:  # transparent
-                    nr.pop("background", None)
-                    nr.pop("clear", None)
-                if r.get("layout"):
-                    nr["layout"] = r["layout"]
-                else:
-                    nr.pop("layout", None)
-                native.append(nr)
-            job["regions"] = native
+            job["regions"] = [_to_native_place(r) for r in regions]
             save_json(PLACE_JOBS, doc)
         else:
             return {"ok": False, "error": f"system '{system}' 은 region 편집 미지원"}
 
-        # 인덱스 재생성 (memo 보존됨)
         subprocess.run(
             [sys.executable, str(ROOT / "tools" / "build_ui_index.py")],
             cwd=str(ROOT), check=False, capture_output=True,
         )
     return {"ok": True}
+
+
+def _render_place_layer(img, native_regions, font, mode):
+    """place: mode에 따라 clear/bg 와/또는 텍스트를 img(RGBA)에 적용. config 미변경."""
+    import render_place_texture_job as PJ
+    from PIL import Image as _Img
+    for region in native_regions:
+        if not region.get("render", True):
+            continue
+        bbox = region["bbox"]
+        if mode in ("full", "bg"):
+            background = region.get("background")
+            if background in PJ.BACKGROUND_COLORS:
+                if region.get("background_mode") == "fill":
+                    img = PJ.fill_region(img, bbox, PJ.BACKGROUND_COLORS[background])
+                else:
+                    img = PJ.clear_region(img, bbox, PJ.BACKGROUND_COLORS[background])
+            elif region.get("clear") == "white":
+                img = PJ.kill_white_in_bbox(img, bbox)
+            elif region.get("clear") == "alpha":
+                img = PJ.clear_alpha_in_bbox(img, bbox)
+        if mode in ("full", "text"):
+            text = region.get("ko", "")
+            if text:
+                PJ.render_text(
+                    img, bbox, text, PJ.TEXT_COLORS[region.get("text_color", "black")],
+                    font, padding=float(region.get("padding", 0.08)),
+                    fr=float(region.get("font_ratio", 0.85)),
+                    layout=region.get("layout"),
+                    letter_spacing=int(region.get("letter_spacing", 0)),
+                    align=region.get("align", "center"), valign=region.get("valign", "center"),
+                    pad_x=region.get("pad_x"), pad_y=region.get("pad_y"),
+                )
+    return img
+
+
+def render_live(hash_id, system, regions, mode="full"):
+    """현재 편집중 region(미저장)으로 실제 렌더 → 캔버스 표시용 PNG. config 미변경.
+    mode: full=전체, text=한글 텍스트만(투명), bg=배경(원본+clear/bg, 텍스트 제외)."""
+    PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    if str(ROOT / "tools") not in sys.path:
+        sys.path.insert(0, str(ROOT / "tools"))
+    from PIL import Image
+    live = PREVIEW_DIR / f"{hash_id}_live_{mode}.png"
+    try:
+        if system == "place":
+            import render_place_texture_job as PJ
+            doc = load_json(PLACE_JOBS)
+            base = doc["textures"].get(hash_id, {})
+            source = PJ.repo_path(base.get("source"), PJ.DEFAULT_SOURCE_DIR / f"{hash_id}.png")
+            font = PJ.repo_path(doc.get("font"), PJ.DEFAULT_FONT)
+            src_img = Image.open(source).convert("RGBA")
+            img = Image.new("RGBA", src_img.size, (0, 0, 0, 0)) if mode == "text" else src_img
+            img = _render_place_layer(img, [_to_native_place(r) for r in regions], font, mode)
+            scale = int(base.get("output_scale", 1))
+            if scale > 1:
+                img = img.resize((img.width * scale, img.height * scale), Image.Resampling.LANCZOS)
+            img.save(live)
+        elif system == "localize":
+            import texture_localize as TL
+            cfg = load_json(LOCALIZE_CONFIG)
+            tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
+            if tex is None:
+                return {"ok": False, "error": "not found"}
+            tmp = dict(tex)
+            tmp["regions"] = [_to_native_localize(r) for r in regions]
+            if not tmp["regions"]:
+                return {"ok": False, "error": "no regions"}
+            # bg 모드: clear만, text 모드: clear 끄고 텍스트만. (텍스처별 단순화)
+            if mode == "bg":
+                tmp["regions"] = [{**r, "text": ""} for r in tmp["regions"]]
+            elif mode == "text":
+                tmp["regions"] = [{**r, "clear": False} for r in tmp["regions"]]
+            orig_imp, orig_repo = TL.IMPORT_DIR, TL.REPO_KR_DIR
+            TL.IMPORT_DIR = PREVIEW_DIR
+            TL.REPO_KR_DIR = PREVIEW_DIR / "_live_repo"
+            try:
+                TL.process_texture(hash_id, tmp, preview=False)
+            finally:
+                TL.IMPORT_DIR, TL.REPO_KR_DIR = orig_imp, orig_repo
+            out = PREVIEW_DIR / f"{hash_id}.png"
+            if out.exists():
+                out.replace(live)
+        else:
+            return {"ok": False, "error": "unsupported"}
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "error": repr(e)}
+    if not live.exists():
+        return {"ok": False, "error": "render 실패"}
+    return {"ok": True, "path": str(live.relative_to(ROOT))}
 
 
 def render_preview(hash_id, system):
@@ -269,6 +356,10 @@ class Handler(BaseHTTPRequestHandler):
                     data["hash"], data["system"], data.get("regions", [])))
             elif route == "/api/render":
                 self._send(200, render_preview(data["hash"], data["system"]))
+            elif route == "/api/render_live":
+                self._send(200, render_live(
+                    data["hash"], data["system"], data.get("regions", []),
+                    data.get("mode", "full")))
             else:
                 self._send(404, {"error": "unknown route"})
         except Exception as e:  # noqa: BLE001
