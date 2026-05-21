@@ -1,0 +1,171 @@
+{
+  "hash": "A3BE57CE9854B5CC",
+  "source_kra": "textures/work/A3BE57CE9854B5CC.kra",
+  "viewbox": [
+    4096.0,
+    4096.0
+  ],
+  "kr_size": [
+    4096,
+    4096
+  ],
+  "count": 13,
+  "elements": [
+    {
+      "text": "모모히메",
+      "x": 4062.99,
+      "y": 3062.94,
+      "font_size": 31.0,
+      "scale": 4.0,
+      "font_px": 124.0,
+      "rotation": -90,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "사 광",
+      "x": 3949.99,
+      "y": 3741.94,
+      "font_size": 60.0,
+      "scale": 4.0,
+      "font_px": 240.0,
+      "rotation": -90,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "수 라",
+      "x": 2538.06,
+      "y": 2861.99,
+      "font_size": 60.0,
+      "scale": 4.0,
+      "font_px": 240.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "무 쌍",
+      "x": 3006.06,
+      "y": 1709.99,
+      "font_size": 60.0,
+      "scale": 4.0,
+      "font_px": 240.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "인법첩",
+      "x": 1520.06,
+      "y": 3460.99,
+      "font_size": 45.0,
+      "scale": 4.0,
+      "font_px": 180.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "오보로 무라마사",
+      "x": 10.06,
+      "y": 4040.99,
+      "font_size": 42.0,
+      "scale": 4.0,
+      "font_px": 168.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "백귀야행",
+      "x": 254.06,
+      "y": 3857.99,
+      "font_size": 41.0,
+      "scale": 4.0,
+      "font_px": 164.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "요 도",
+      "x": 364.06,
+      "y": 3666.99,
+      "font_size": 45.0,
+      "scale": 4.0,
+      "font_px": 180.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "백사전",
+      "x": 343.06,
+      "y": 3456.99,
+      "font_size": 45.0,
+      "scale": 4.0,
+      "font_px": 180.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "대의를 위한 무",
+      "x": 700.06,
+      "y": 3269.99,
+      "font_size": 45.0,
+      "scale": 4.0,
+      "font_px": 180.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "내세의 안식처",
+      "x": 743.06,
+      "y": 3063.99,
+      "font_size": 45.0,
+      "scale": 4.0,
+      "font_px": 180.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "네코마타 괴이담",
+      "x": 860.06,
+      "y": 2259.99,
+      "font_size": 45.0,
+      "scale": 4.0,
+      "font_px": 180.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "칠야의 저주",
+      "x": 1156.06,
+      "y": 2046.99,
+      "font_size": 45.0,
+      "scale": 4.0,
+      "font_px": 180.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    }
+  ]
+}

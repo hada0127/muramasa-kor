@@ -1,0 +1,87 @@
+{
+  "hash": "3B58B76CBA15E487",
+  "source_kra": "textures/work/3B58B76CBA15E487.kra",
+  "viewbox": [
+    4096.0,
+    2048.0
+  ],
+  "kr_size": [
+    4096,
+    2048
+  ],
+  "count": 6,
+  "elements": [
+    {
+      "text": "누르세요",
+      "x": 17.0,
+      "y": 1449.0,
+      "font_size": 111.0,
+      "scale": 2.0,
+      "font_px": 222.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "2",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "O를",
+      "x": 1538.0,
+      "y": 228.0,
+      "font_size": 96.0,
+      "scale": 2.0,
+      "font_px": 192.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "2",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "이어하기",
+      "x": 387.93,
+      "y": 879.54,
+      "font_size": 89.0,
+      "scale": 2.0,
+      "font_px": 178.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "새게임",
+      "x": 189.93,
+      "y": 1661.54,
+      "font_size": 89.0,
+      "scale": 2.0,
+      "font_px": 178.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "뒤 로",
+      "x": 33.93,
+      "y": 1989.54,
+      "font_size": 89.0,
+      "scale": 2.0,
+      "font_px": 178.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    },
+    {
+      "text": "시 작",
+      "x": 1419.93,
+      "y": 1419.54,
+      "font_size": 89.0,
+      "scale": 2.0,
+      "font_px": 178.0,
+      "rotation": 0,
+      "color": "#ffffff",
+      "stroke_width": "1",
+      "letter_spacing": "0"
+    }
+  ]
+}
