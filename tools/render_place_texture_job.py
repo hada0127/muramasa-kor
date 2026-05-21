@@ -192,32 +192,36 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
         len_avail, cross_avail = inner_h, inner_w  # length=rh축(세로), cross=rw축
         len_pad, cross_pad = pyl, pxl
 
-    # 셀(slot) 기반: 글자를 길이축에 균등 분배. 자간 0이면 박스를 채움(=기존 렌더와 동일),
-    # 자간은 셀 간격에 더해지되 글자 크기는 자간과 무관(안 줄어듦).
-    cell0 = max(1, len_avail // n)
+    # 셀(slot) 기반: 글자를 길이축에 균등 분배. 공백도 한 셀 차지(띄어쓰기 반영).
+    # 자간 0이면 박스를 채움(=기존), 자간은 셀 간격에 가산, 글자 크기는 자간과 무관.
+    cells = list(text)
+    ncells = max(1, len(cells))
+    cell0 = max(1, len_avail // ncells)
     if font_px:
         fs = int(font_px)
     else:
         fs = max(8, int(min(cross_avail, cell0) * fr))
     font = ImageFont.truetype(fp, max(4, fs))
-    metrics = [font.getbbox(c) for c in chars] or [font.getbbox("가")]
+    metrics = [font.getbbox(c) for c in cells if c != " "] or [font.getbbox("가")]
     gw = max(m[2] - m[0] for m in metrics)
     pitch = cell0 + ls
-    block_len = (n - 1) * pitch + cell0
+    block_len = (ncells - 1) * pitch + cell0
     len_mode = align if is_rot else valign
     cross_mode = valign if is_rot else align
     start_len = len_pad + _off(len_mode, len_avail, block_len,
                                "left" if is_rot else "top", "right" if is_rot else "bottom")
     cross_left = cross_pad + _off(cross_mode, cross_avail, gw, "left", "right")
     cross_cx = cross_left + gw // 2
-    i = 0
-    for ch in chars:
+    ox = 0 if is_rot else x0   # 회전은 별도 캔버스(상대좌표), 세로는 base_img(절대좌표)
+    oy = 0 if is_rot else y0
+    for i, ch in enumerate(cells):
+        if ch == " ":
+            continue  # 공백 셀은 비우고 슬롯만 차지
         m = font.getbbox(ch)
         cw, chh = m[2] - m[0], m[3] - m[1]
-        cx = cross_cx - (cw // 2 + m[0])
-        cy = start_len + i * pitch + cell0 // 2 - (chh // 2 + m[1])
+        cx = ox + cross_cx - (cw // 2 + m[0])
+        cy = oy + start_len + i * pitch + cell0 // 2 - (chh // 2 + m[1])
         d.text((cx, cy), ch, font=font, fill=fill)
-        i += 1
 
     if is_rot:
         rot = canvas.rotate(90, expand=True)
@@ -316,8 +320,7 @@ def _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, l
         return
 
     rotated = layout == "rotated" or (layout is None and rw > rh)
-    chars = [c for c in text if c != " "]
-    n = max(1, len(chars))
+    n = max(1, len(text))   # 공백 포함 (띄어쓰기 반영)
 
     if rotated:
         canvas = Image.new("RGBA", (rh, rw), (0, 0, 0, 0))
@@ -326,8 +329,7 @@ def _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, l
         cell = max(1, (rw - 2 * pad - ls * (n - 1)) // n)
         fs = max(8, int(min(rh, cell) * fr))
         font = ImageFont.truetype(str(font_path), fs)
-        i = 0
-        for ch in text:
+        for i, ch in enumerate(text):
             if ch == " ":
                 continue
             bb = font.getbbox(ch)
@@ -335,7 +337,6 @@ def _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, l
             cx = rh // 2 - (cw // 2 + bb[0])
             cy = pad + i * (cell + ls) + cell // 2 - (chh // 2 + bb[1])
             d.text((cx, cy), ch, font=font, fill=fill)
-            i += 1
         rot = canvas.rotate(90, expand=True)
         if rot.size != (rw, rh):
             rot = rot.resize((rw, rh))
@@ -350,8 +351,7 @@ def _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, l
     fs = max(8, int(min(rw, cell) * fr))
     font = ImageFont.truetype(str(font_path), fs)
     yt = y0 + pad
-    i = 0
-    for ch in text:
+    for i, ch in enumerate(text):
         if ch == " ":
             continue
         bb = font.getbbox(ch)
@@ -359,7 +359,6 @@ def _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, l
         cx = x0 + rw // 2 - (cw // 2 + bb[0])
         cy = yt + i * (cell + ls) + cell // 2 - (chh // 2 + bb[1])
         d.text((cx, cy), ch, font=font, fill=fill)
-        i += 1
 
 
 def render_job(hash_id: str, job: dict, out_dir: Path, apply_dir: Path | None, font_path: Path) -> Path:

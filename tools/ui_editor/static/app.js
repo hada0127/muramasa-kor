@@ -159,7 +159,7 @@ function makeTextLayer(r, w, h) {
   t.style.color = cssTextColor(r);
   const mode = orientMode(r, w, h);
   const txt = r.text || "";
-  const n = Math.max(1, [...txt].filter((c) => c !== " ").length);
+  const n = Math.max(1, [...txt].length);  // 공백 포함 셀 수 (띄어쓰기 반영)
   const ls = r.letter_spacing || 0;
   const isLoc = CUR.system === "localize";
   const align = isLoc ? (r.align || "left") : (r.align || "center");
@@ -191,35 +191,35 @@ function makeTextLayer(r, w, h) {
   }
   const lsPx = ls * SCALE;
 
-  const realChars = [...txt].filter((c) => c !== " ");
+  const cells = [...txt];  // 공백 포함 (빈 셀로 간격 반영)
   if (mode === "v") {            // 세로: 셀 슬롯에 글자 균등 분배 (자간0=박스 채움)
     const cellPx = (innerH / n) * SCALE;
     t.style.flexDirection = "column";
     t.style.justifyContent = _flex(valign);  // 세로축 = 길이
     t.style.alignItems = _flex(align);       // 가로축 = 교차
-    realChars.forEach((ch, idx) => {
+    cells.forEach((ch, idx) => {
       const s = document.createElement("span");
-      s.textContent = ch;
+      s.textContent = ch === " " ? "" : ch;
       s.style.height = cellPx + "px";
       s.style.display = "flex";
       s.style.alignItems = "center";
       s.style.justifyContent = "center";
-      if (ls && idx < realChars.length - 1) s.style.marginBottom = lsPx + "px";
+      if (ls && idx < cells.length - 1) s.style.marginBottom = lsPx + "px";
       t.appendChild(s);
     });
   } else if (mode === "rot") {   // 회전 배너: 셀 슬롯, 글자 90° 눕혀 가로 배열
     const cellPx = (innerW / n) * SCALE;
     t.style.justifyContent = _flex(align);   // 가로축 = 길이
     t.style.alignItems = _flex(valign);      // 세로축 = 교차
-    realChars.forEach((ch, idx) => {
+    cells.forEach((ch, idx) => {
       const s = document.createElement("span");
-      s.textContent = ch;
+      s.textContent = ch === " " ? "" : ch;
       s.style.width = cellPx + "px";
       s.style.display = "inline-flex";
       s.style.alignItems = "center";
       s.style.justifyContent = "center";
-      s.style.transform = "rotate(-90deg)";  // PIL rotate(90)=CCW
-      if (ls && idx < realChars.length - 1) s.style.marginRight = lsPx + "px";
+      if (ch !== " ") s.style.transform = "rotate(-90deg)";  // PIL rotate(90)=CCW
+      if (ls && idx < cells.length - 1) s.style.marginRight = lsPx + "px";
       t.appendChild(s);
     });
   } else {                        // 가로
