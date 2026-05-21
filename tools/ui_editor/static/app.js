@@ -425,6 +425,27 @@ async function applyRegions() {
   return true;
 }
 
+// 스타일 복사/붙여넣기 (글씨색·배경색·쓰기방향·정렬·비율·자간·여백만; 텍스트·박스 제외)
+let STYLE_CLIP = null;
+const STYLE_FIELDS = ["text_color", "background", "layout", "align", "valign",
+  "font_ratio", "letter_spacing", "pad_x", "pad_y", "font_px",  // place
+  "color", "v_align", "clear", "fit_to_box", "font_size"];      // localize 대응
+function copyStyle() {
+  if (SEL < 0 || !CUR.regions[SEL]) return;
+  const r = CUR.regions[SEL];
+  STYLE_CLIP = {};
+  for (const k of STYLE_FIELDS) if (k in r) STYLE_CLIP[k] = r[k];
+  toast("스타일 복사됨");
+}
+function pasteStyle() {
+  if (SEL < 0 || !CUR.regions[SEL]) return;
+  if (!STYLE_CLIP) { toast("복사된 스타일이 없습니다", true); return; }
+  Object.assign(CUR.regions[SEL], JSON.parse(JSON.stringify(STYLE_CLIP)));
+  drawRegions();
+  renderProps();
+  toast("스타일 붙여넣기 완료");
+}
+
 function delRegion() {
   if (SEL < 0) return;
   CUR.regions.splice(SEL, 1);
@@ -481,6 +502,8 @@ async function init() {
   $("#orig-opacity").oninput = applyOrigOpacity;
   $("#btn-add").onclick = addRegion;
   $("#btn-del").onclick = delRegion;
+  $("#btn-copy-style").onclick = copyStyle;
+  $("#btn-paste-style").onclick = pasteStyle;
   $("#btn-memo").onclick = saveMemo;
   $("#btn-render").onclick = renderPreview;
   $("#modal-close").onclick = () => ($("#modal").hidden = true);
