@@ -490,6 +490,24 @@ async function init() {
     b.classList.add("active");
     $("#modal-imgwrap").className = "bg-" + b.dataset.bg;
   }));
+  // 방향키로 선택된 영역 이동 (Shift = 크게). 입력창 포커스 시엔 제외.
+  document.addEventListener("keydown", (e) => {
+    if (SEL < 0 || !CUR || !CUR.regions[SEL]) return;
+    const tag = (document.activeElement && document.activeElement.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+    const step = e.shiftKey ? 10 : 1;
+    let dx = 0, dy = 0;
+    if (e.key === "ArrowLeft") dx = -step;
+    else if (e.key === "ArrowRight") dx = step;
+    else if (e.key === "ArrowUp") dy = -step;
+    else if (e.key === "ArrowDown") dy = step;
+    else return;
+    e.preventDefault();
+    const b = CUR.regions[SEL].box;
+    b[0] += dx; b[1] += dy;
+    drawRegions();
+    updateBoxFields();
+  });
   window.addEventListener("resize", () => { if (CUR) applyZoom(); });
   $("#overlay").onmousedown = (e) => { if (e.target.id === "overlay") { SEL = -1; drawRegions(); renderProps(); } };
 }
