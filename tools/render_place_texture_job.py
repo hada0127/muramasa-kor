@@ -45,8 +45,15 @@ def load_jobs(path: Path) -> dict:
         return json.load(f)
 
 
-def clear_region(img: Image.Image, bbox: list[int], color: tuple[int, int, int, int]) -> Image.Image:
+def _clamp_bbox(bbox, w, h):
+    """음수/범위 밖 좌표를 이미지 범위로 클램프 (numpy 슬라이싱 오작동 방지)."""
     x0, y0, x1, y1 = bbox
+    return (max(0, min(int(x0), w)), max(0, min(int(y0), h)),
+            max(0, min(int(x1), w)), max(0, min(int(y1), h)))
+
+
+def clear_region(img: Image.Image, bbox: list[int], color: tuple[int, int, int, int]) -> Image.Image:
+    x0, y0, x1, y1 = _clamp_bbox(bbox, img.width, img.height)
     arr = np.array(img)
     region = arr[y0:y1, x0:x1].copy()
     mask = region[:, :, 3] > 128
@@ -64,7 +71,7 @@ def fill_region(img: Image.Image, bbox: list[int], color: tuple[int, int, int, i
 
 
 def kill_white_in_bbox(img: Image.Image, bbox: list[int]) -> Image.Image:
-    x0, y0, x1, y1 = bbox
+    x0, y0, x1, y1 = _clamp_bbox(bbox, img.width, img.height)
     arr = np.array(img)
     region = arr[y0:y1, x0:x1]
     r, g, b, a = region[:, :, 0], region[:, :, 1], region[:, :, 2], region[:, :, 3]
@@ -74,7 +81,7 @@ def kill_white_in_bbox(img: Image.Image, bbox: list[int]) -> Image.Image:
 
 
 def clear_alpha_in_bbox(img: Image.Image, bbox: list[int]) -> Image.Image:
-    x0, y0, x1, y1 = bbox
+    x0, y0, x1, y1 = _clamp_bbox(bbox, img.width, img.height)
     arr = np.array(img)
     arr[y0:y1, x0:x1, 3] = 0
     return Image.fromarray(arr, "RGBA")

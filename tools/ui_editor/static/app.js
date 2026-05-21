@@ -236,6 +236,14 @@ function makeTextLayer(r, w, h) {
   return t;
 }
 
+// 박스를 텍스처 범위 안으로 클램프 (영역 밖 이탈 방지)
+function clampBox(b) {
+  b[2] = Math.max(4, Math.min(b[2], NAT[0]));
+  b[3] = Math.max(4, Math.min(b[3], NAT[1]));
+  b[0] = Math.max(0, Math.min(b[0], NAT[0] - b[2]));
+  b[1] = Math.max(0, Math.min(b[1], NAT[1] - b[3]));
+}
+
 // ===== 드래그/리사이즈 =====
 function startDrag(e, i) {
   e.preventDefault();
@@ -253,7 +261,9 @@ function startDrag(e, i) {
     if (handle.includes("n")) { y += dy; h -= dy; }
     if (handle.includes("s")) { h += dy; }
     w = Math.max(4, w); h = Math.max(4, h);
-    CUR.regions[i].box = [Math.round(x), Math.round(y), Math.round(w), Math.round(h)];
+    const nb = [Math.round(x), Math.round(y), Math.round(w), Math.round(h)];
+    clampBox(nb);
+    CUR.regions[i].box = nb;
     drawRegions();
     updateBoxFields();
   };
@@ -353,6 +363,7 @@ function readProps() {
   // box
   const map = { bx: 0, by: 1, bw: 2, bh: 3 };
   $$("[data-box]").forEach((el) => (r.box[map[el.dataset.box]] = Math.round(+el.value || 0)));
+  clampBox(r.box);  // 영역 밖 이탈 방지
   // fields
   $$("[data-k]").forEach((el) => {
     const k = el.dataset.k;
@@ -528,6 +539,7 @@ async function init() {
     e.preventDefault();
     const b = CUR.regions[SEL].box;
     b[0] += dx; b[1] += dy;
+    clampBox(b);
     drawRegions();
     updateBoxFields();
   });
