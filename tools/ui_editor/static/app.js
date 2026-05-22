@@ -210,11 +210,12 @@ function drawRegionTextCanvas(ctx, r, w, h) {
   const sx2 = 2 * sw;
 
   const mc = _measCtx();
+  // 절대 폰트 크기 (localize=font_size, place=font_px). 없으면 font_ratio 자동.
+  const absSize = isLoc ? r.font_size : r.font_px;
   let temp;  // 타이트 텍스트 캔버스
   if (isHoriz) {
     let fs;
-    if (isLoc) fs = r.font_size || 24;
-    else if (r.font_px) fs = r.font_px;
+    if (absSize) fs = absSize;
     else {  // PIL: 폭·높이 둘 다 박스 안에 들어올 때까지 축소
       fs = Math.max(8, Math.round(crossBox * fr));
       while (fs > 8) {
@@ -246,7 +247,7 @@ function drawRegionTextCanvas(ctx, r, w, h) {
     tc.fillText(txt, tx, ty);
   } else {
     const cell0 = Math.max(1, Math.floor(lenBox / n));
-    let fs = isLoc ? (r.font_size || 24) : (r.font_px || Math.max(8, Math.round(Math.min(crossBox, cell0) * fr)));
+    let fs = absSize || Math.max(8, Math.round(Math.min(crossBox, cell0) * fr));
     fs = Math.max(4, Math.round(fs));
     mc.font = `${fs}px Griun`; mc.letterSpacing = "0px";
     // 각 글자 잉크 메트릭 (PIL getbbox 대응)
@@ -499,8 +500,8 @@ function readProps() {
       r.rotation = parseInt(v) || 0;
     } else if (k === "font_px") {
       const n = parseInt(v);
-      // localize 는 font_size 절대값, place 는 font_px (0=비율)
-      if (isLoc) r.font_size = n > 0 ? n : (r.font_size || 24);
+      // 0 = 비율 사용 (font_ratio 모드). localize 는 font_size, place 는 font_px 키
+      if (isLoc) r.font_size = n > 0 ? n : null;
       else r.font_px = n > 0 ? n : null;
     } else if (k === "pad_x" || k === "pad_y") {
       const n = parseInt(v);

@@ -318,7 +318,16 @@ def process_texture(hash_id, tex_config, preview=False):
             h = region["h"]
             text = region["text"]
             font_path = region.get("font", DEFAULT_FONT)
-            font_size = region.get("font_size", 24)
+            # font_size 가 명시되어 있으면 절대값. 없거나 0이면 font_ratio 기반 자동 계산.
+            font_size_raw = region.get("font_size")
+            font_ratio = float(region.get("font_ratio") or 0)
+            if font_size_raw and int(font_size_raw) > 0:
+                font_size = int(font_size_raw)
+            elif font_ratio > 0:
+                # 가로/세로 박스 짧은 변 × ratio
+                font_size = max(8, int(min(w, h) * font_ratio))
+            else:
+                font_size = 24  # legacy default
             color = tuple(region.get("color", [255, 255, 255, 255]))
             align = region.get("align", "left")
             v_align = region.get("v_align", "top")
