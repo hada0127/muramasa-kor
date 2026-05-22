@@ -10413,10 +10413,10 @@
       "regions": [
         {
           "box": [
-            1244,
-            209,
-            247,
-            570
+            1262,
+            225,
+            213,
+            536
           ],
           "id": "K0",
           "ja": "大和",
@@ -10425,9 +10425,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.03,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -10447,26 +10447,27 @@
             "ja": "大和",
             "ko": "야마토",
             "bbox": [
-              1244,
-              209,
-              1491,
-              779
+              1262,
+              225,
+              1475,
+              761
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.03,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 18
           }
         },
         {
           "box": [
-            16,
-            593,
-            572,
-            247
+            31,
+            606,
+            541,
+            219
           ],
           "id": "K1",
           "ja": "美濃",
@@ -10475,9 +10476,9 @@
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.14,
-          "font_ratio": 0.72,
+          "font_ratio": 1.15,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 21,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -10497,26 +10498,27 @@
             "ja": "美濃",
             "ko": "미노",
             "bbox": [
-              16,
-              593,
-              588,
-              840
+              31,
+              606,
+              572,
+              825
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.72,
+            "font_ratio": 1.15,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 21
           }
         },
         {
           "box": [
-            9,
-            11,
-            1507,
-            172
+            14,
+            16,
+            1494,
+            161
           ],
           "id": "B0",
           "ja": "金剛山山頂高天原入口",
@@ -10525,9 +10527,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.06,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -10547,26 +10549,27 @@
             "ja": "金剛山山頂高天原入口",
             "ko": "곤고산 산정 다카마가하라 입구",
             "bbox": [
-              9,
-              11,
-              1516,
-              183
+              14,
+              16,
+              1508,
+              177
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.06,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 18
           }
         },
         {
           "box": [
-            8,
-            203,
-            1212,
-            172
+            13,
+            206,
+            1199,
+            165
           ],
           "id": "B1",
           "ja": "鳴神城 大手門前",
@@ -10575,9 +10578,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.0,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 19,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -10597,26 +10600,27 @@
             "ja": "鳴神城 大手門前",
             "ko": "나루카미성 오테문 앞",
             "bbox": [
-              8,
-              203,
-              1220,
-              375
+              13,
+              206,
+              1212,
+              371
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.0,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 19
           }
         },
         {
           "box": [
-            9,
-            395,
-            1052,
-            172
+            12,
+            400,
+            1042,
+            164
           ],
           "id": "B2",
           "ja": "柳生城広間の場",
@@ -10625,9 +10629,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.01,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 25,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -10647,25 +10651,26 @@
             "ja": "柳生城広間の場",
             "ko": "야규성 넓은 방의 장",
             "bbox": [
-              9,
-              395,
-              1061,
-              567
+              12,
+              400,
+              1054,
+              564
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.01,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 25
           }
         },
         {
           "box": [
-            1528,
-            5,
-            451,
+            1779,
+            0,
+            200,
             809
           ],
           "id": "C0",
@@ -10675,9 +10680,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.12,
-          "font_ratio": 0.62,
+          "font_ratio": 0.88,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 13,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -10697,20 +10702,20 @@
             "ja": "不動明王",
             "ko": "부동명왕",
             "bbox": [
-              1528,
-              5,
+              1779,
+              0,
               1979,
-              814
+              809
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.62,
+            "font_ratio": 0.88,
             "source": "visual_manual",
             "render": true,
-            "clear": "none",
             "layout": "vertical",
-            "background_mode": "fill"
+            "background_mode": "fill",
+            "letter_spacing": 13
           }
         }
       ],
@@ -10718,7 +10723,7 @@
         2048,
         1024
       ],
-      "memo": "🔄 [재저장 필요] B0/B2 swap 정정 적용됨 (B0=金剛山山頂高天原入口, B2=柳生城広間の場). 나머지 일치. 편집기에서 확인 후 저장."
+      "memo": "-"
     },
     {
       "hash": "74EEEC230BEE120C",
@@ -10735,10 +10740,10 @@
       "regions": [
         {
           "box": [
-            1426,
-            -4,
-            317,
-            192
+            1119,
+            0,
+            921,
+            182
           ],
           "id": "K0",
           "ja": "",
@@ -10768,10 +10773,10 @@
             "ja": "",
             "ko": "혁 명",
             "bbox": [
-              1426,
-              -4,
-              1743,
-              188
+              1119,
+              0,
+              2040,
+              182
             ],
             "text_color": "white",
             "layout": "horizontal",
@@ -10785,9 +10790,9 @@
         },
         {
           "box": [
-            250,
+            0,
             344,
-            400,
+            896,
             183
           ],
           "id": "K1",
@@ -10818,9 +10823,9 @@
             "ja": "",
             "ko": "야생아",
             "bbox": [
-              250,
+              0,
               344,
-              650,
+              896,
               527
             ],
             "text_color": "white",
@@ -10835,10 +10840,10 @@
         },
         {
           "box": [
-            162,
-            166,
-            575,
-            175
+            0,
+            159,
+            930,
+            182
           ],
           "id": "K2",
           "ja": "",
@@ -10868,9 +10873,9 @@
             "ja": "",
             "ko": "네코마타",
             "bbox": [
-              162,
-              166,
-              737,
+              0,
+              159,
+              930,
               341
             ],
             "text_color": "white",
@@ -10887,8 +10892,8 @@
           "box": [
             1120,
             1855,
-            325,
-            142
+            371,
+            162
           ],
           "id": "K3",
           "ja": "",
@@ -10920,8 +10925,8 @@
             "bbox": [
               1120,
               1855,
-              1445,
-              1997
+              1491,
+              2017
             ],
             "text_color": "white",
             "layout": "horizontal",
@@ -10931,6 +10936,48 @@
             "render": true,
             "source": "kra_extract",
             "clear": "alpha"
+          }
+        },
+        {
+          "box": [
+            897,
+            346,
+            202,
+            608
+          ],
+          "id": null,
+          "ja": "",
+          "text": "",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "bbox": [
+              897,
+              346,
+              1099,
+              954
+            ],
+            "text_color": "white",
+            "clear": "alpha",
+            "layout": "horizontal"
           }
         }
       ],
@@ -10955,10 +11002,10 @@
       "regions": [
         {
           "box": [
-            17,
-            209,
-            571,
-            247
+            30,
+            222,
+            542,
+            220
           ],
           "id": "K0",
           "ja": "相模",
@@ -10967,9 +11014,9 @@
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.14,
-          "font_ratio": 0.72,
+          "font_ratio": 0.89,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 23,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -10989,26 +11036,27 @@
             "ja": "相模",
             "ko": "사가미",
             "bbox": [
-              17,
-              209,
-              588,
-              456
+              30,
+              222,
+              572,
+              442
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.72,
+            "font_ratio": 0.89,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 23
           }
         },
         {
           "box": [
-            8,
-            11,
-            942,
-            172
+            12,
+            14,
+            929,
+            164
           ],
           "id": "B0",
           "ja": "六国見山山道",
@@ -11017,9 +11065,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.0,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -11039,18 +11087,19 @@
             "ja": "六国見山山道",
             "ko": "로쿠코쿠미야마 산길",
             "bbox": [
-              8,
-              11,
-              950,
-              183
+              12,
+              14,
+              941,
+              178
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.0,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 14
           }
         }
       ],
@@ -11058,7 +11107,7 @@
         1024,
         512
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "779C5ABBFCE00424",
@@ -11075,10 +11124,10 @@
       "regions": [
         {
           "box": [
-            1097,
-            17,
-            247,
-            570
+            1113,
+            32,
+            216,
+            539
           ],
           "id": "K0",
           "ja": "三河",
@@ -11087,9 +11136,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.93,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 12,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -11109,26 +11158,27 @@
             "ja": "三河",
             "ko": "미카와",
             "bbox": [
-              1097,
-              17,
-              1344,
-              587
+              1113,
+              32,
+              1329,
+              571
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.93,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 12
           }
         },
         {
           "box": [
-            14,
-            15,
-            1054,
-            172
+            17,
+            17,
+            1042,
+            165
           ],
           "id": "B0",
           "ja": "設楽郡 村落部",
@@ -11137,9 +11187,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.96,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -11159,18 +11209,19 @@
             "ja": "設楽郡 村落部",
             "ko": "시타라군 무라오치베",
             "bbox": [
-              14,
-              15,
-              1068,
-              187
+              17,
+              17,
+              1059,
+              182
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.96,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 14
           }
         }
       ],
@@ -11178,7 +11229,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "79C935AA47DD1810",
@@ -11215,10 +11266,10 @@
       "regions": [
         {
           "box": [
-            1540,
-            17,
-            248,
-            570
+            1556,
+            30,
+            215,
+            539
           ],
           "id": "K0",
           "ja": "美濃",
@@ -11227,9 +11278,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.14,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 12,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -11249,26 +11300,27 @@
             "ja": "美濃",
             "ko": "미노",
             "bbox": [
-              1540,
-              17,
-              1788,
-              587
+              1556,
+              30,
+              1771,
+              569
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.14,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 12
           }
         },
         {
           "box": [
-            7,
-            10,
-            1507,
-            172
+            14,
+            15,
+            1493,
+            159
           ],
           "id": "B0",
           "ja": "伊吹山 鳴神藩鏡見家",
@@ -11277,9 +11329,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.03,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 20,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -11299,18 +11351,19 @@
             "ja": "伊吹山 鳴神藩鏡見家",
             "ko": "이부키산 나루카미 번 카가미케",
             "bbox": [
-              7,
-              10,
-              1514,
-              182
+              14,
+              15,
+              1507,
+              174
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.03,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 20
           }
         }
       ],
@@ -11318,7 +11371,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "7DC6CF5A87DB1312",
@@ -14443,10 +14496,10 @@
       "regions": [
         {
           "box": [
-            16,
-            499,
-            570,
-            245
+            31,
+            512,
+            541,
+            217
           ],
           "id": "K0",
           "ja": "信濃",
@@ -14455,9 +14508,9 @@
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.14,
-          "font_ratio": 0.72,
+          "font_ratio": 1.05,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 28,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14477,26 +14530,27 @@
             "ja": "信濃",
             "ko": "시나노",
             "bbox": [
-              16,
-              499,
-              586,
-              744
+              31,
+              512,
+              572,
+              729
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.72,
+            "font_ratio": 1.05,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 28
           }
         },
         {
           "box": [
-            797,
-            15,
-            172,
-            785
+            801,
+            18,
+            164,
+            778
           ],
           "id": "B0",
           "ja": "大根藩馬路城",
@@ -14505,9 +14559,9 @@
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.17,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 24,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14527,26 +14581,27 @@
             "ja": "大根藩馬路城",
             "ko": "다이콘 번 마지성",
             "bbox": [
-              797,
-              15,
-              969,
-              800
+              801,
+              18,
+              965,
+              796
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 1.17,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 24
           }
         },
         {
           "box": [
-            15,
-            775,
-            737,
-            172
+            18,
+            777,
+            726,
+            166
           ],
           "id": "B1",
           "ja": "大根芋畑村",
@@ -14555,9 +14610,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.14,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 8,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14577,25 +14632,26 @@
             "ja": "大根芋畑村",
             "ko": "다이콘 이모바타케 마을",
             "bbox": [
-              15,
-              775,
-              752,
-              947
+              18,
+              777,
+              744,
+              943
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.14,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 8
           }
         },
         {
           "box": [
             0,
             250,
-            760,
+            784,
             235
           ],
           "id": "C0",
@@ -14605,9 +14661,9 @@
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.82,
+          "font_ratio": 1.11,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 22,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14629,17 +14685,17 @@
             "bbox": [
               0,
               250,
-              760,
+              784,
               485
             ],
-            "background": "none",
             "clear": "alpha",
             "text_color": "white",
             "padding": 0.08,
-            "font_ratio": 0.82,
+            "font_ratio": 1.11,
             "source": "script_lookup",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 22
           }
         }
       ],
@@ -14647,7 +14703,7 @@
         1024,
         1024
       ],
-      "memo": "🔄 [재저장 필요] B0/B1 swap + C0 정정 적용됨 (B0=大根藩馬路城, B1=大根芋畑村, C0=鴉の襲撃 까마귀의 습격). K0 일치. 편집기에서 확인 후 저장."
+      "memo": "-"
     },
     {
       "hash": "8098AD7E2C438C22",
@@ -14664,10 +14720,10 @@
       "regions": [
         {
           "box": [
-            1244,
-            209,
-            247,
-            570
+            1260,
+            225,
+            214,
+            537
           ],
           "id": "K0",
           "ja": "大和",
@@ -14676,9 +14732,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.02,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14698,26 +14754,27 @@
             "ja": "大和",
             "ko": "야마토",
             "bbox": [
-              1244,
-              209,
-              1491,
-              779
+              1260,
+              225,
+              1474,
+              762
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.02,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 18
           }
         },
         {
           "box": [
-            9,
-            11,
-            1507,
-            172
+            16,
+            16,
+            1490,
+            164
           ],
           "id": "B0",
           "ja": "金剛山山頂高天原入口",
@@ -14726,9 +14783,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.97,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 16,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14748,26 +14805,27 @@
             "ja": "金剛山山頂高天原入口",
             "ko": "곤고산 산정 다카마가하라 입구",
             "bbox": [
-              9,
-              11,
-              1516,
-              183
+              16,
+              16,
+              1506,
+              180
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.97,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 16
           }
         },
         {
           "box": [
-            8,
-            203,
-            1212,
-            172
+            13,
+            206,
+            1199,
+            165
           ],
           "id": "B1",
           "ja": "金剛山山腹大仏殿",
@@ -14776,9 +14834,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.97,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 19,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14798,26 +14856,27 @@
             "ja": "金剛山山腹大仏殿",
             "ko": "곤고산 산허리 대불전",
             "bbox": [
-              8,
-              203,
-              1220,
-              375
+              13,
+              206,
+              1212,
+              371
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.97,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 19
           }
         },
         {
           "box": [
-            9,
-            395,
-            1052,
-            172
+            14,
+            400,
+            1039,
+            162
           ],
           "id": "B2",
           "ja": "柳生城広間の場",
@@ -14826,9 +14885,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.04,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 27,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14848,37 +14907,38 @@
             "ja": "柳生城広間の場",
             "ko": "야규성 넓은 방의 장",
             "bbox": [
-              9,
-              395,
-              1061,
-              567
+              14,
+              400,
+              1053,
+              562
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.04,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 27
           }
         },
         {
           "box": [
-            1528,
-            5,
-            451,
-            809
+            1782,
+            0,
+            197,
+            804
           ],
           "id": "C0",
           "ja": "不動明王",
           "text": "부동명왕",
-          "background": "black",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.12,
-          "font_ratio": 0.62,
+          "font_ratio": 0.94,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 54,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14898,20 +14958,20 @@
             "ja": "不動明王",
             "ko": "부동명왕",
             "bbox": [
-              1528,
-              5,
+              1782,
+              0,
               1979,
-              814
+              804
             ],
-            "background": "black",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.62,
+            "font_ratio": 0.94,
             "source": "visual_manual",
             "render": true,
-            "clear": "none",
             "layout": "vertical",
-            "background_mode": "fill"
+            "background_mode": "fill",
+            "letter_spacing": 54,
+            "clear": "alpha"
           }
         }
       ],
@@ -14919,7 +14979,7 @@
         2048,
         1024
       ],
-      "memo": "🔄 [재저장 필요] B0/B2 swap 정정 적용됨 (B0=金剛山山頂高天原入口, B2=柳生城広間の場). 나머지 일치. 편집기에서 확인 후 저장."
+      "memo": "-"
     },
     {
       "hash": "85A4D54EE933339D",
@@ -14936,10 +14996,10 @@
       "regions": [
         {
           "box": [
-            1396,
-            17,
-            247,
-            571
+            1411,
+            30,
+            216,
+            543
           ],
           "id": "K0",
           "ja": "甲斐",
@@ -14948,9 +15008,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.09,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -14970,26 +15030,27 @@
             "ja": "甲斐",
             "ko": "카이",
             "bbox": [
-              1396,
-              17,
-              1643,
-              588
+              1411,
+              30,
+              1627,
+              573
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.09,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 14
           }
         },
         {
           "box": [
-            14,
-            17,
-            1354,
-            172
+            21,
+            22,
+            1338,
+            161
           ],
           "id": "B0",
           "ja": "甲斐駒ヶ岳 刃渡り",
@@ -14998,9 +15059,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.08,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -15020,18 +15081,19 @@
             "ja": "甲斐駒ヶ岳 刃渡り",
             "ko": "카이 코마가타케 하와타리",
             "bbox": [
-              14,
-              17,
-              1368,
-              189
+              21,
+              22,
+              1359,
+              183
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.08,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 18
           }
         }
       ],
@@ -15039,7 +15101,7 @@
         2048,
         1024
       ],
-      "memo": "🔄 [재저장 필요] B0 정정 적용됨 — 御岳駒ヶ岳 刃渡り → 甲斐駒ヶ岳 刃渡り (Gemini 검증: 야마나시현 명산, K0=甲斐와 일치). 편집기에서 확인 후 저장."
+      "memo": "-"
     },
     {
       "hash": "864BD9CBCC496F78",
@@ -15056,10 +15118,10 @@
       "regions": [
         {
           "box": [
-            16,
-            217,
-            247,
-            571
+            31,
+            230,
+            216,
+            542
           ],
           "id": "K0",
           "ja": "伊賀",
@@ -15068,9 +15130,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.99,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 19,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -15090,26 +15152,27 @@
             "ja": "伊賀",
             "ko": "이가",
             "bbox": [
-              16,
-              217,
-              263,
-              788
+              31,
+              230,
+              247,
+              772
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.99,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 19
           }
         },
         {
           "box": [
-            12,
-            15,
-            1052,
-            172
+            17,
+            18,
+            1041,
+            162
           ],
           "id": "B0",
           "ja": "暗夜城広間の場",
@@ -15118,9 +15181,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.05,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 22,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -15140,26 +15203,27 @@
             "ja": "暗夜城広間の場",
             "ko": "암야성 넓은 방의 장",
             "bbox": [
-              12,
-              15,
-              1064,
-              187
+              17,
+              18,
+              1058,
+              180
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.05,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 22
           }
         },
         {
           "box": [
-            1320,
+            1340,
             0,
-            345,
-            675
+            195,
+            621
           ],
           "id": "C0",
           "ja": "大百足",
@@ -15168,9 +15232,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.12,
-          "font_ratio": 0.52,
+          "font_ratio": 1.12,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 27,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -15190,19 +15254,19 @@
             "ja": "大百足",
             "ko": "오오무카데",
             "bbox": [
-              1320,
+              1340,
               0,
-              1665,
-              675
+              1535,
+              621
             ],
-            "background": "none",
             "clear": "white",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.52,
+            "font_ratio": 1.12,
             "source": "visual_manual",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 27
           }
         }
       ],
@@ -15210,7 +15274,7 @@
         2048,
         1024
       ],
-      "memo": "✓ 3개 region 모두 일치 (伊賀/暗夜城広間の場/大百足)."
+      "memo": "-"
     },
     {
       "hash": "8725F040AEE76DFC",
@@ -16930,10 +16994,10 @@
       "regions": [
         {
           "box": [
-            1661,
-            17,
-            247,
-            570
+            1677,
+            32,
+            212,
+            542
           ],
           "id": "K0",
           "ja": "信濃",
@@ -16942,9 +17006,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.97,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 8,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -16964,26 +17028,27 @@
             "ja": "信濃",
             "ko": "시나노",
             "bbox": [
-              1661,
-              17,
-              1908,
-              587
+              1677,
+              32,
+              1889,
+              574
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.97,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 8
           }
         },
         {
           "box": [
-            7,
-            10,
-            1626,
-            172
+            14,
+            15,
+            1610,
+            162
           ],
           "id": "B0",
           "ja": "川中島古戦場跡 八幡原",
@@ -16992,9 +17057,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.09,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -17014,18 +17079,19 @@
             "ja": "川中島古戦場跡 八幡原",
             "ko": "가와나카지마 옛 전장터 하치만바라",
             "bbox": [
-              7,
-              10,
-              1633,
-              182
+              14,
+              15,
+              1624,
+              177
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.09,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 18
           }
         }
       ],
@@ -17033,7 +17099,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "8EFF960FC088FDD7",
@@ -17070,10 +17136,10 @@
       "regions": [
         {
           "box": [
-            17,
-            209,
-            571,
-            247
+            32,
+            223,
+            540,
+            218
           ],
           "id": "K0",
           "ja": "駿河",
@@ -17082,9 +17148,9 @@
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.14,
-          "font_ratio": 0.72,
+          "font_ratio": 0.95,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -17104,26 +17170,27 @@
             "ja": "駿河",
             "ko": "스루가",
             "bbox": [
-              17,
-              209,
-              588,
-              456
+              32,
+              223,
+              572,
+              441
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.72,
+            "font_ratio": 0.95,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 18
           }
         },
         {
           "box": [
-            7,
-            10,
-            943,
-            172
+            14,
+            15,
+            927,
+            161
           ],
           "id": "B0",
           "ja": "霊峰富士山麓",
@@ -17132,9 +17199,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.93,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 20,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -17154,18 +17221,19 @@
             "ja": "霊峰富士山麓",
             "ko": "영봉 후지 산기슭",
             "bbox": [
-              7,
-              10,
-              950,
-              182
+              14,
+              15,
+              941,
+              176
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.93,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 20
           }
         }
       ],
@@ -17173,7 +17241,7 @@
         1024,
         512
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "922337BDB8D32D0F",
@@ -17190,10 +17258,10 @@
       "regions": [
         {
           "box": [
-            1244,
-            17,
-            248,
-            570
+            1259,
+            30,
+            216,
+            537
           ],
           "id": "K0",
           "ja": "美濃",
@@ -17202,9 +17270,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.17,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 22,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -17224,26 +17292,27 @@
             "ja": "美濃",
             "ko": "미노",
             "bbox": [
-              1244,
-              17,
-              1492,
-              587
+              1259,
+              30,
+              1475,
+              567
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.17,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 22
           }
         },
         {
           "box": [
-            7,
-            10,
-            1212,
-            173
+            14,
+            15,
+            1198,
+            158
           ],
           "id": "B0",
           "ja": "鳴神城 大手門前",
@@ -17252,9 +17321,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.04,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 21,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -17274,18 +17343,19 @@
             "ja": "鳴神城 大手門前",
             "ko": "나루카미성 오테문 앞",
             "bbox": [
-              7,
-              10,
-              1219,
-              183
+              14,
+              15,
+              1212,
+              173
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.04,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 21
           }
         }
       ],
@@ -17293,7 +17363,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "A3BE57CE9854B5CC",
