@@ -126,10 +126,13 @@ input[type=color]::-webkit-color-swatch { border: none; border-radius: 3px; }
 .modal-body { padding: 14px; overflow: auto; }
 .modal-bgsel { display: flex; gap: 6px; align-items: center; margin-bottom: 10px; color: #b8bcc6; }
 .modal-bgsel button.active { background: #2f6df0; border-color: #2f6df0; }
-#modal-imgwrap { text-align: center; background-color: #000; border-radius: 6px; padding: 10px; }
+/* 배경(체커/검정/흰)을 이미지 영역에 딱 맞춰 표시 — 실제 PNG의 투명 영역 그대로 가시화 */
+.modal-body { text-align: center; }
+#modal-imgwrap { display: inline-block; padding: 0; line-height: 0;
+  background-color: #000; border-radius: 6px; }
 #modal-imgwrap.bg-checker { background: repeating-conic-gradient(#444 0% 25%, #333 0% 50%) 50% / 20px 20px; }
 #modal-imgwrap.bg-white { background: #fff; }
-#modal-img { max-width: 100%; max-height: 60vh; }
+#modal-img { display: block; max-width: 100%; max-height: 60vh; }
 #modal-log { color: #9aa0ab; font-size: 11px; white-space: pre-wrap; max-height: 120px; overflow: auto; margin-top: 8px; }
 
 /* 로딩 스피너 */
