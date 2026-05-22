@@ -27064,10 +27064,10 @@
       "regions": [
         {
           "box": [
-            716,
-            217,
-            246,
-            570
+            732,
+            231,
+            216,
+            540
           ],
           "id": "K0",
           "ja": "甲斐",
@@ -27076,9 +27076,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.02,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 38,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27098,26 +27098,27 @@
             "ja": "甲斐",
             "ko": "카이",
             "bbox": [
-              716,
-              217,
-              962,
-              787
+              732,
+              231,
+              948,
+              771
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.02,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 38
           }
         },
         {
           "box": [
-            15,
-            15,
-            969,
-            172
+            18,
+            20,
+            959,
+            162
           ],
           "id": "B0",
           "ja": "山の中の一軒家",
@@ -27126,9 +27127,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.99,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 22,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27148,26 +27149,27 @@
             "ja": "山の中の一軒家",
             "ko": "산속의 외딴집",
             "bbox": [
-              15,
-              15,
-              984,
-              187
+              18,
+              20,
+              977,
+              182
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.99,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 22
           }
         },
         {
           "box": [
-            15,
-            819,
-            737,
-            172
+            18,
+            822,
+            726,
+            166
           ],
           "id": "B1",
           "ja": "甲府の街道",
@@ -27176,9 +27178,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.03,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 19,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27198,18 +27200,19 @@
             "ja": "甲府の街道",
             "ko": "코후의 가도",
             "bbox": [
-              15,
-              819,
-              752,
-              991
+              18,
+              822,
+              744,
+              988
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.03,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 19
           }
         },
         {
@@ -27226,9 +27229,9 @@
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.12,
-          "font_ratio": 0.58,
+          "font_ratio": 0.96,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 20,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27253,14 +27256,14 @@
               381,
               687
             ],
-            "background": "none",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.58,
+            "font_ratio": 0.96,
             "source": "audit_manual",
             "render": true,
             "clear": "white",
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 20
           }
         }
       ],
@@ -27268,7 +27271,7 @@
         1024,
         1024
       ],
-      "memo": "🔄 [재저장 필요] B0/B1 swap 정정 적용됨 (B0=山の中の一軒家, B1=甲府の街道). K0/C0 일치. 편집기에서 확인 후 저장."
+      "memo": "-"
     },
     {
       "hash": "E9F2EC8557984A58",
@@ -27285,10 +27288,10 @@
       "regions": [
         {
           "box": [
-            712,
-            17,
-            247,
-            571
+            728,
+            34,
+            217,
+            539
           ],
           "id": "K0",
           "ja": "駿河",
@@ -27297,9 +27300,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.14,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 32,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27319,26 +27322,27 @@
             "ja": "駿河",
             "ko": "스루가",
             "bbox": [
-              712,
-              17,
-              959,
-              588
+              728,
+              34,
+              945,
+              573
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.14,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 32
           }
         },
         {
           "box": [
-            13,
-            619,
-            785,
-            172
+            17,
+            623,
+            774,
+            164
           ],
           "id": "B0",
           "ja": "三保之松原",
@@ -27347,9 +27351,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.95,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 8,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27369,26 +27373,27 @@
             "ja": "三保之松原",
             "ko": "미호노마츠바라",
             "bbox": [
-              13,
-              619,
-              798,
-              791
+              17,
+              623,
+              791,
+              787
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.95,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 8
           }
         },
         {
           "box": [
-            13,
-            819,
-            785,
-            172
+            16,
+            823,
+            775,
+            164
           ],
           "id": "B1",
           "ja": "駿府の旅籠",
@@ -27397,9 +27402,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.99,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27419,18 +27424,19 @@
             "ja": "駿府の旅籠",
             "ko": "슨푸의 여인숙",
             "bbox": [
-              13,
-              819,
-              798,
-              991
+              16,
+              823,
+              791,
+              987
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.99,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 18
           }
         },
         {
@@ -27447,9 +27453,9 @@
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.12,
-          "font_ratio": 0.58,
+          "font_ratio": 1.14,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 36,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27474,14 +27480,14 @@
               612,
               468
             ],
-            "background": "none",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.58,
+            "font_ratio": 1.14,
             "source": "audit_manual",
             "render": true,
             "clear": "white",
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 36
           }
         }
       ],
@@ -27489,7 +27495,7 @@
         1024,
         1024
       ],
-      "memo": "✓ 4개 region 모두 일치 (駿河/三保之松原/駿府の旅籠/雪之丞)."
+      "memo": "-"
     },
     {
       "hash": "EC585E08CC88B03F",
@@ -27506,10 +27512,10 @@
       "regions": [
         {
           "box": [
-            1244,
-            17,
-            248,
-            571
+            1259,
+            32,
+            217,
+            542
           ],
           "id": "K0",
           "ja": "武蔵",
@@ -27518,9 +27524,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.97,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 20,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27540,26 +27546,27 @@
             "ja": "武蔵",
             "ko": "무사시",
             "bbox": [
-              1244,
-              17,
-              1492,
-              588
+              1259,
+              32,
+              1476,
+              574
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.97,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 20
           }
         },
         {
           "box": [
-            7,
-            10,
-            1212,
-            173
+            14,
+            17,
+            1196,
+            158
           ],
           "id": "B0",
           "ja": "江戸城 大手門前",
@@ -27568,9 +27575,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.12,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 32,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27590,18 +27597,19 @@
             "ja": "江戸城 大手門前",
             "ko": "에도성 오테문 앞",
             "bbox": [
-              7,
-              10,
-              1219,
-              183
+              14,
+              17,
+              1210,
+              175
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.12,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 32
           }
         }
       ],
@@ -27609,7 +27617,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "EDA6F03EC4E141EE",
@@ -27643,10 +27651,10 @@
       "regions": [
         {
           "box": [
-            1097,
-            17,
-            247,
-            571
+            1112,
+            32,
+            216,
+            537
           ],
           "id": "K0",
           "ja": "飛騨",
@@ -27655,9 +27663,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.06,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 15,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27677,26 +27685,27 @@
             "ja": "飛騨",
             "ko": "히다",
             "bbox": [
-              1097,
-              17,
-              1344,
-              588
+              1112,
+              32,
+              1328,
+              569
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.06,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 15
           }
         },
         {
           "box": [
-            15,
-            16,
-            1053,
-            172
+            20,
+            21,
+            1037,
+            164
           ],
           "id": "B0",
           "ja": "高山 大鍾乳洞",
@@ -27705,9 +27714,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.04,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 23,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27727,18 +27736,19 @@
             "ja": "高山 大鍾乳洞",
             "ko": "다카야마 대종유동",
             "bbox": [
-              15,
-              16,
-              1068,
-              188
+              20,
+              21,
+              1057,
+              185
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.04,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 23
           }
         }
       ],
@@ -27746,7 +27756,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "F1C8031232197225",
@@ -27763,10 +27773,10 @@
       "regions": [
         {
           "box": [
-            1256,
-            17,
-            247,
-            570
+            1271,
+            32,
+            215,
+            541
           ],
           "id": "K0",
           "ja": "伊勢",
@@ -27775,9 +27785,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.97,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 16,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27797,26 +27807,27 @@
             "ja": "伊勢",
             "ko": "이세",
             "bbox": [
-              1256,
-              17,
-              1503,
-              587
+              1271,
+              32,
+              1486,
+              573
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.97,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 16
           }
         },
         {
           "box": [
-            15,
-            15,
-            1213,
-            173
+            20,
+            20,
+            1198,
+            162
           ],
           "id": "B0",
           "ja": "南伊勢町五ヶ所浦",
@@ -27825,9 +27836,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.02,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 17,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27847,18 +27858,19 @@
             "ja": "南伊勢町五ヶ所浦",
             "ko": "미나미이세초 고카쇼우라",
             "bbox": [
-              15,
-              15,
-              1228,
-              188
+              20,
+              20,
+              1218,
+              182
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.02,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 17
           }
         }
       ],
@@ -27866,7 +27878,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "F24874ADB9581870",
@@ -27883,10 +27895,10 @@
       "regions": [
         {
           "box": [
-            1384,
-            17,
-            246,
-            571
+            1399,
+            33,
+            214,
+            538
           ],
           "id": "K0",
           "ja": "遠江",
@@ -27895,9 +27907,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.92,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27917,26 +27929,27 @@
             "ja": "遠江",
             "ko": "도토미",
             "bbox": [
-              1384,
-              17,
-              1630,
-              588
+              1399,
+              33,
+              1613,
+              571
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.92,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 14
           }
         },
         {
           "box": [
-            7,
-            9,
-            1352,
-            173
+            14,
+            17,
+            1336,
+            158
           ],
           "id": "B0",
           "ja": "周智郡 秋葉山山道",
@@ -27945,9 +27958,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.99,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 22,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -27967,18 +27980,19 @@
             "ja": "周智郡 秋葉山山道",
             "ko": "슈치군 아키바산 산길",
             "bbox": [
-              7,
-              9,
-              1359,
-              182
+              14,
+              17,
+              1350,
+              175
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.99,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 22
           }
         }
       ],
@@ -27986,7 +28000,7 @@
         2048,
         1024
       ],
-      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
+      "memo": "-"
     },
     {
       "hash": "FFC64B053648525E",
@@ -28053,10 +28067,10 @@
         },
         {
           "box": [
-            284,
-            217,
-            246,
-            569
+            299,
+            235,
+            212,
+            533
           ],
           "id": "K1",
           "ja": "近江",
@@ -28065,9 +28079,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.1,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 17,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -28087,26 +28101,27 @@
             "ja": "近江",
             "ko": "오미",
             "bbox": [
-              284,
-              217,
-              530,
-              786
+              299,
+              235,
+              511,
+              768
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.1,
             "source": "visual_manual",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 17
           }
         },
         {
           "box": [
-            13,
-            15,
-            1449,
-            172
+            18,
+            18,
+            1438,
+            164
           ],
           "id": "B0",
           "ja": "白川郷 白銀ヶ淵 廃れ社",
@@ -28115,9 +28130,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.11,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -28137,18 +28152,19 @@
             "ja": "白川郷 白銀ヶ淵 廃れ社",
             "ko": "시라카와고 시로가네가후치 폐사",
             "bbox": [
-              13,
-              15,
-              1462,
-              187
+              18,
+              18,
+              1456,
+              182
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.11,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 18
           }
         },
         {
@@ -28159,8 +28175,8 @@
             967
           ],
           "id": "B1",
-          "ja": "三珠岳",
-          "text": "미타마다케",
+          "ja": "骸衆本陣野槌城",
+          "text": "해골중 본진 노즈치성",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -28184,8 +28200,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "三珠岳",
-            "ko": "미타마다케",
+            "ja": "骸衆本陣野槌城",
+            "ko": "해골중 본진 노즈치성",
             "bbox": [
               1486,
               10,
@@ -28203,21 +28219,21 @@
         },
         {
           "box": [
-            965,
-            210,
-            172,
-            505
+            972,
+            221,
+            158,
+            489
           ],
           "id": "B2",
-          "ja": "とある山中",
-          "text": "어느 산속",
+          "ja": "三珠岳",
+          "text": "미타마다케",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.62,
+          "font_ratio": 1.04,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 15,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -28234,31 +28250,83 @@
           "native": {
             "id": "B2",
             "kind": "banner",
-            "ja": "とある山中",
-            "ko": "어느 산속",
+            "ja": "三珠岳",
+            "ko": "미타마다케",
             "bbox": [
-              965,
-              210,
-              1137,
-              715
+              972,
+              221,
+              1130,
+              710
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.62,
+            "font_ratio": 1.04,
             "source": "jp_messages_58_2",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 15
           }
         },
         {
           "box": [
-            555,
-            211,
-            173,
-            734
+            563,
+            216,
+            158,
+            719
           ],
           "id": "B3",
+          "ja": "とある山中",
+          "text": "어느 산속",
+          "background": "red",
+          "text_color": "black",
+          "layout": "vertical",
+          "padding": 0.1,
+          "font_ratio": 0.98,
+          "font_px": null,
+          "letter_spacing": 12,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B3",
+            "kind": "banner",
+            "ja": "とある山中",
+            "ko": "어느 산속",
+            "bbox": [
+              563,
+              216,
+              721,
+              935
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.1,
+            "font_ratio": 0.98,
+            "source": "jp_messages_58_5",
+            "render": true,
+            "layout": "vertical",
+            "letter_spacing": 12
+          }
+        },
+        {
+          "box": [
+            1170,
+            214,
+            177,
+            504
+          ],
+          "id": "B4",
           "ja": "岡部邸",
           "text": "오카베 저택",
           "background": "red",
@@ -28282,65 +28350,15 @@
           ],
           "render": true,
           "native": {
-            "id": "B3",
+            "id": "B4",
             "kind": "banner",
             "ja": "岡部邸",
             "ko": "오카베 저택",
             "bbox": [
-              555,
-              211,
-              728,
-              945
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.1,
-            "font_ratio": 0.66,
-            "source": "jp_messages_58_5",
-            "render": true,
-            "layout": "vertical"
-          }
-        },
-        {
-          "box": [
-            1165,
-            211,
-            172,
-            504
-          ],
-          "id": "B4",
-          "ja": "白川郷 白銀ヶ淵 廃れ社",
-          "text": "시라카와고 시로가네가후치 폐사",
-          "background": "red",
-          "text_color": "black",
-          "layout": "vertical",
-          "padding": 0.1,
-          "font_ratio": 0.66,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B4",
-            "kind": "banner",
-            "ja": "白川郷 白銀ヶ淵 廃れ社",
-            "ko": "시라카와고 시로가네가후치 폐사",
-            "bbox": [
-              1165,
-              211,
-              1337,
-              715
+              1170,
+              214,
+              1347,
+              718
             ],
             "background": "red",
             "text_color": "black",
@@ -28365,9 +28383,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.08,
-          "font_ratio": 0.62,
+          "font_ratio": 0.93,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 15,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -28392,14 +28410,14 @@
               955,
               775
             ],
-            "background": "none",
             "clear": "white",
             "text_color": "white",
             "padding": 0.08,
-            "font_ratio": 0.62,
+            "font_ratio": 0.93,
             "source": "jp_messages_58_3",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 15
           }
         }
       ],
@@ -28407,7 +28425,7 @@
         2048,
         1024
       ],
-      "memo": "🔄 [재저장 필요] K0/B1~B4 5개 정정 적용됨 (伊賀/三珠岳/とある山中/岡部邸/白川郷 白銀ヶ淵 廃れ社). K1/B0/C0 일치. 편집기에서 확인 후 저장."
+      "memo": "🔄 [재저장 필요] B1~B4 재정정 적용됨 (Gemini 2차 검증):\n B1: 三珠岳 → 骸衆本陣野槌城 (해골중 본진 노즈치성) — DLC 시라누이 핵심\n B2: とある山中 → 三珠岳 (미타마다케)\n B3: 岡部邸 → とある山中 (어느 산속)\n B4: 白川郷... → 岡部邸 (오카베 저택 — 시라누이 생가)\n※ 이전 정정에서 B1 위치를 三珠岳으로 잘못 매핑한 결과 B2~B4가 한 칸씩 밀려 있었음. K0/K1/B0/C0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "FFFFD99DCD90D546",
