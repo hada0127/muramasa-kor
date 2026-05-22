@@ -94,11 +94,14 @@ def _sp_width(font, text, ls):
     return sum(font.getlength(ch) for ch in text) + ls * (len(text) - 1)
 
 
-def _draw_sp(d, x, y, text, font, fill, ls):
-    """글자별 자간(ls)을 두며 가로로 그린다."""
+def _draw_sp(d, x, y, text, font, fill, ls, sw=0, sfill=None):
+    """글자별 자간(ls)을 두며 가로로 그린다. sw>0이면 외곽선(stroke) 함께 렌더."""
     cx = x
     for ch in text:
-        d.text((cx, y), ch, font=font, fill=fill)
+        if sw:
+            d.text((cx, y), ch, font=font, fill=fill, stroke_width=sw, stroke_fill=sfill)
+        else:
+            d.text((cx, y), ch, font=font, fill=fill)
         cx += font.getlength(ch) + ls
 
 
@@ -127,20 +130,24 @@ def render_text(
     pad_y: float | None = None,
     font_px: int | None = None,
     rotation: int = 0,
+    outline_width: int = 0,
+    outline_fill: tuple[int, int, int, int] | None = None,
 ) -> None:
     ls = int(letter_spacing)
-    # 정렬/패딩/자간/픽셀폰트/회전 지정이 없으면 기존(비율 자동맞춤) 경로 → 기존 렌더 보존
+    sw = max(0, int(outline_width or 0))
+    sfill = outline_fill if sw else None
+    # 정렬/패딩/자간/픽셀폰트/회전/외곽선 지정이 없으면 기존(비율 자동맞춤) 경로 → 기존 렌더 보존
     if (int(rotation) == 0 and layout != "rotated" and font_px is None
             and align == "center" and valign == "center"
-            and pad_x is None and pad_y is None and ls == 0):
+            and pad_x is None and pad_y is None and ls == 0 and sw == 0):
         _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, ls)
     else:
         _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
-                        ls, align, valign, pad_x, pad_y, font_px, int(rotation))
+                        ls, align, valign, pad_x, pad_y, font_px, int(rotation), sw, sfill)
 
 
 def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
-                    ls, align, valign, pad_x, pad_y, font_px, rotation=0):
+                    ls, align, valign, pad_x, pad_y, font_px, rotation=0, sw=0, sfill=None):
     """텍스트를 타이트 캔버스에 렌더 → 회전 → 박스 안에 정렬 배치.
     정렬(align/valign)은 항상 최종(회전 후) 프레임 기준 → 가로/세로/회전 모두 직관적."""
     x0, y0, x1, y1 = bbox
@@ -192,10 +199,13 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
         bb = font.getbbox(text)
         tw = int(_sp_width(font, text, ls)) if ls else bb[2] - bb[0]
         th = bb[3] - bb[1]
-        tcv = Image.new("RGBA", (max(1, tw), max(1, th)), (0, 0, 0, 0))
+        # 외곽선이 잉크 박스 밖으로 sw만큼 확장됨 → tcv 캔버스도 확장
+        tcv = Image.new("RGBA", (max(1, tw + 2*sw), max(1, th + 2*sw)), (0, 0, 0, 0))
         td = ImageDraw.Draw(tcv)
         if ls:
-            _draw_sp(td, -bb[0], -bb[1], text, font, fill, ls)
+            _draw_sp(td, -bb[0]+sw, -bb[1]+sw, text, font, fill, ls, sw, sfill)
+        elif sw:
+            td.text((-bb[0]+sw, -bb[1]+sw), text, font=font, fill=fill, stroke_width=sw, stroke_fill=sfill)
         else:
             td.text((-bb[0], -bb[1]), text, font=font, fill=fill)
     else:
@@ -216,6 +226,7 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
             acc += pitch * (SPACE_RATIO if ch == " " else 1.0)
         block_len = max(cell0, int(round(acc - ls)))
         # font_ratio>1로 fs>cell0이면 첫/마지막 글자 잉크가 셀 밖으로 나감 → 캔버스 확장
+        # 외곽선이 있으면 ink box를 sw만큼 좌우상하로 더 키워서 잘림 방지
         ink_top_min = 0
         ink_bot_max = block_len
         for i, ch in enumerate(cells):
@@ -223,24 +234,27 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
                 continue
             m = font.getbbox(ch)
             chh_i = m[3] - m[1]
-            iy_top = int(offs[i]) + cell0 // 2 - chh_i // 2
-            iy_bot = iy_top + chh_i
+            iy_top = int(offs[i]) + cell0 // 2 - chh_i // 2 - sw
+            iy_bot = iy_top + chh_i + 2*sw
             if iy_top < ink_top_min:
                 ink_top_min = iy_top
             if iy_bot > ink_bot_max:
                 ink_bot_max = iy_bot
         y_shift = -ink_top_min  # 첫 글자 잉크가 음수 좌표면 양수로 평행이동
         canv_h = max(block_len, ink_bot_max - ink_top_min)
-        tcv = Image.new("RGBA", (max(1, gw), max(1, canv_h)), (0, 0, 0, 0))
+        tcv = Image.new("RGBA", (max(1, gw + 2*sw), max(1, canv_h)), (0, 0, 0, 0))
         td = ImageDraw.Draw(tcv)
         for i, ch in enumerate(cells):
             if ch == " ":
                 continue
             m = font.getbbox(ch)
             cw, chh = m[2] - m[0], m[3] - m[1]
-            cx = gw // 2 - (cw // 2 + m[0])
+            cx = (gw + 2*sw) // 2 - (cw // 2 + m[0])
             cy = int(offs[i]) + cell0 // 2 - (chh // 2 + m[1]) + y_shift
-            td.text((cx, cy), ch, font=font, fill=fill)
+            if sw:
+                td.text((cx, cy), ch, font=font, fill=fill, stroke_width=sw, stroke_fill=sfill)
+            else:
+                td.text((cx, cy), ch, font=font, fill=fill)
 
     # ---- 회전 (PIL: 양수 = CCW) ----
     if rot:
@@ -426,6 +440,8 @@ def render_job(hash_id: str, job: dict, out_dir: Path, apply_dir: Path | None, f
                 pad_y=region.get("pad_y"),
                 font_px=region.get("font_px"),
                 rotation=int(region.get("rotation", 0)),
+                outline_width=int(region.get("outline_width", 0) or 0),
+                outline_fill=tuple(region["outline_color"]) if region.get("outline_color") else None,
             )
 
     scale = int(job.get("output_scale", 1))

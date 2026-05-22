@@ -202,6 +202,12 @@ function drawRegionTextCanvas(ctx, r, w, h) {
   const ls = r.letter_spacing || 0;
   const fr = r.font_ratio || 0.85;
   const color = cssTextColor(r);
+  // 외곽선
+  const sw = Math.max(0, parseInt(r.outline_width) || 0);
+  const oc = r.outline_color || [0, 0, 0, 255];
+  const sCol = `rgba(${oc[0]|0},${oc[1]|0},${oc[2]|0},${((oc[3]??255)/255).toFixed(3)})`;
+  // 외곽선이 잉크 박스 밖으로 sw만큼 확장됨 → 캔버스도 키워야 잘림 방지
+  const sx2 = 2 * sw;
 
   const mc = _measCtx();
   let temp;  // 타이트 텍스트 캔버스
@@ -227,11 +233,17 @@ function drawRegionTextCanvas(ctx, r, w, h) {
     // PIL: 타이트 캔버스 = 잉크 폭×높이. (자간 시엔 advance 폭 사용)
     const tw = Math.max(1, Math.ceil(ls ? m.width : (inkL + m.actualBoundingBoxRight)));
     const th = Math.max(1, Math.ceil(inkA + inkD));
-    temp = document.createElement("canvas"); temp.width = tw; temp.height = th;
+    temp = document.createElement("canvas"); temp.width = tw + sx2; temp.height = th + sx2;
     const tc = temp.getContext("2d");
     tc.font = `${fs}px Griun`; tc.letterSpacing = ls + "px";
-    tc.fillStyle = color; tc.textBaseline = "alphabetic"; tc.textAlign = "left";
-    tc.fillText(txt, ls ? 0 : inkL, inkA);  // 잉크 좌상단을 (0,0)에 맞춤
+    tc.textBaseline = "alphabetic"; tc.textAlign = "left";
+    const tx = (ls ? 0 : inkL) + sw, ty = inkA + sw;
+    if (sw) {
+      tc.strokeStyle = sCol; tc.lineWidth = sw * 2; tc.lineJoin = "round"; tc.miterLimit = 2;
+      tc.strokeText(txt, tx, ty);
+    }
+    tc.fillStyle = color;
+    tc.fillText(txt, tx, ty);
   } else {
     const cell0 = Math.max(1, Math.floor(lenBox / n));
     let fs = isLoc ? (r.font_size || 24) : (r.font_px || Math.max(8, Math.round(Math.min(crossBox, cell0) * fr)));
@@ -253,29 +265,35 @@ function drawRegionTextCanvas(ctx, r, w, h) {
     for (const ch of cells) { offs.push(acc); acc += pitch * (ch === " " ? 0.5 : 1); }
     const blockLen = Math.max(cell0, Math.round(acc - ls));
     // fs>cell0(font_ratio>1) 일 때 첫/마지막 글자 잉크가 셀 밖으로 나감 → 캔버스 확장
+    // 외곽선이 있으면 잉크 박스를 sw만큼 더 키워서 잘림 방지
     let iyMin = 0, iyMax = blockLen;
     cells.forEach((ch, i) => {
       if (ch === " ") return;
       const g = met[ch]; if (!g) return;
       const chh = g.ia + g.id;
-      const top = offs[i] + cell0 / 2 - chh / 2;
+      const top = offs[i] + cell0 / 2 - chh / 2 - sw;
+      const bot = top + chh + sx2;
       if (top < iyMin) iyMin = top;
-      if (top + chh > iyMax) iyMax = top + chh;
+      if (bot > iyMax) iyMax = bot;
     });
     const yShift = -iyMin;
     const canvH = Math.max(blockLen, Math.ceil(iyMax - iyMin));
-    temp = document.createElement("canvas"); temp.width = gw; temp.height = Math.max(1, canvH);
+    temp = document.createElement("canvas"); temp.width = gw + sx2; temp.height = Math.max(1, canvH);
     const tc = temp.getContext("2d");
-    tc.font = `${fs}px Griun`; tc.fillStyle = color;
+    tc.font = `${fs}px Griun`;
     tc.textBaseline = "alphabetic"; tc.textAlign = "left";
+    if (sw) { tc.strokeStyle = sCol; tc.lineWidth = sw * 2; tc.lineJoin = "round"; tc.miterLimit = 2; }
     cells.forEach((ch, i) => {
       if (ch === " ") return;
       const g = met[ch]; if (!g) return;
       const cw = g.il + g.ir, chh = g.ia + g.id;
       // 잉크를 칸 중앙에 정렬 (PIL cx/cy 식과 동일)
-      const x = gw / 2 - cw / 2 + g.il;
+      const x = (gw + sx2) / 2 - cw / 2 + g.il;
       const inkTop = offs[i] + cell0 / 2 - chh / 2 + yShift;
-      tc.fillText(ch, x, inkTop + g.ia);
+      const py = inkTop + g.ia;
+      if (sw) tc.strokeText(ch, x, py);
+      tc.fillStyle = color;
+      tc.fillText(ch, x, py);
     });
   }
 
@@ -353,6 +371,7 @@ function renderProps() {
     html += field("letter_spacing", "자간 (px, 음수 가능)", `<input type="number" data-k="letter_spacing" value="${r.letter_spacing || 0}">`);
     html += selField("bgLoc", "배경 처리", r.clear ? "clear" : "transparent",
       [["transparent", "투명(원본 유지)"], ["clear", "기존 영역 삭제"]]);
+    html += outlineFields(r);
   } else if (CUR.system === "place") {
     html += selField("text_color", "글씨 색", r.text_color || "black", [["black", "블랙"], ["white", "화이트"]]);
     html += selField("background", "배경 색", r.background || "transparent",
@@ -371,6 +390,7 @@ function renderProps() {
     html += `<div class="field-row">
       <div>${sliderField("pad_x", "좌우 여백(px)", r.pad_x ?? 0, 0, 200, 1)}</div>
       <div>${sliderField("pad_y", "상하 여백(px)", r.pad_y ?? 0, 0, 200, 1)}</div></div>`;
+    html += outlineFields(r);
     html += checkField("render", "이 영역 렌더링", r.render !== false);
   }
   form.innerHTML = html;
@@ -401,6 +421,36 @@ function sliderField(k, label, val, min, max, step) {
 function colorToName(c) {
   if (Array.isArray(c) && c[0] < 128 && c[1] < 128 && c[2] < 128) return "black";
   return "white";
+}
+function rgbaToHex(c) {
+  if (!Array.isArray(c) || c.length < 3) return "#000000";
+  const h = (n) => Math.max(0, Math.min(255, n|0)).toString(16).padStart(2, "0");
+  return "#" + h(c[0]) + h(c[1]) + h(c[2]);
+}
+function rgbaAlphaPct(c) {
+  if (!Array.isArray(c) || c.length < 4) return 100;
+  return Math.round((c[3] / 255) * 100);
+}
+function hexAlphaToRgba(hex, alphaPct) {
+  const h = (hex || "#000000").replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16) || 0;
+  const g = parseInt(h.slice(2, 4), 16) || 0;
+  const b = parseInt(h.slice(4, 6), 16) || 0;
+  const a = Math.round(Math.max(0, Math.min(100, +alphaPct || 0)) * 2.55);
+  return [r, g, b, a];
+}
+// 외곽선 속성 (색 + 투명도 + 두께). 두께=0이면 외곽선 없음.
+function outlineFields(r) {
+  const hex = rgbaToHex(r.outline_color || [0, 0, 0, 255]);
+  const ap = rgbaAlphaPct(r.outline_color || [0, 0, 0, 255]);
+  const w = r.outline_width || 0;
+  return `<div class="field"><label>외곽선</label>
+    <div class="field-row" style="align-items:center">
+      <div style="flex:0 0 auto"><input type="color" data-k="outline_hex" value="${hex}" title="외곽선 색"></div>
+      <div>${sliderField("outline_alpha", "투명도 %", ap, 0, 100, 1)}</div>
+    </div>
+    ${sliderField("outline_width", "두께 (px, 0=없음)", w, 0, 20, 1)}
+  </div>`;
 }
 
 function updateBoxFields() {
@@ -441,6 +491,14 @@ function readProps() {
       r[k] = parseFloat(v) || 0;
     } else if (k === "background") {
       r.background = v;
+    } else if (k === "outline_width") {
+      r.outline_width = parseInt(v) || 0;
+    } else if (k === "outline_alpha" || k === "outline_hex") {
+      // 색·투명도는 한 RGBA로 합쳐 저장
+      const form = $("#props-form");
+      const hex = form.querySelector('[data-k="outline_hex"]')?.value || "#000000";
+      const ap = form.querySelector('[data-k="outline_alpha"]')?.value ?? 100;
+      r.outline_color = hexAlphaToRgba(hex, ap);
     } else {
       r[k] = v;
     }
@@ -504,7 +562,8 @@ async function applyRegions() {
 let STYLE_CLIP = null;
 const STYLE_FIELDS = ["text_color", "background", "layout", "rotation", "align", "valign",
   "font_ratio", "letter_spacing", "pad_x", "pad_y", "font_px",  // place
-  "color", "v_align", "clear", "fit_to_box", "font_size"];      // localize 대응
+  "color", "v_align", "clear", "fit_to_box", "font_size",       // localize 대응
+  "outline_width", "outline_color"];                            // 외곽선 (공통)
 function copyStyle() {
   if (SEL < 0 || !CUR.regions[SEL]) return;
   const r = CUR.regions[SEL];

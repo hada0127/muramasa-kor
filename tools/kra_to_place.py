@@ -76,7 +76,13 @@ def convert(hash_id, doc):
         layout = "horizontal" if rot in (0, 0.0) else "vertical"
         color = el.get("color", "#ffffff")
         text_color = "white" if color.lower() in ("#ffffff", "#fff", "white") else "black"
-        regions.append({
+        # .kra의 stroke-width 그대로 import (있으면 외곽선 적용, 색은 검정 기본)
+        try:
+            sw = int(round(float(el.get("stroke_width", 0))))
+        except (TypeError, ValueError):
+            sw = 0
+        sw_scaled = int(round(sw * krscale)) if sw > 0 else 0
+        reg = {
             "id": f"K{i}",
             "ja": "",
             "ko": el["text"],
@@ -88,7 +94,11 @@ def convert(hash_id, doc):
             "valign": "center",
             "render": True,
             "source": "kra_extract",
-        })
+        }
+        if sw_scaled > 0:
+            reg["outline_width"] = sw_scaled
+            reg["outline_color"] = [0, 0, 0, 255]  # 기본 검정 (편집기에서 변경 가능)
+        regions.append(reg)
     return regions
 
 

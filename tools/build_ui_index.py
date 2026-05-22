@@ -128,6 +128,8 @@ def place_regions(job):
             "rotation": r.get("rotation", 0),
             "pad_x": r.get("pad_x"),
             "pad_y": r.get("pad_y"),
+            "outline_width": r.get("outline_width", 0),
+            "outline_color": r.get("outline_color") or [0, 0, 0, 255],
             "render": r.get("render", True),
             "native": r,
         })

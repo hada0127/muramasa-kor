@@ -122,6 +122,14 @@ def _to_native_place(r):
         else:
             nr[pk] = int(pv)
     _upd(nr, "render", bool(r.get("render", True)), True)
+    ow = int(r.get("outline_width") or 0)
+    oc = r.get("outline_color")
+    if ow > 0:
+        nr["outline_width"] = ow
+        nr["outline_color"] = list(oc) if isinstance(oc, list) and len(oc) >= 3 else [0, 0, 0, 255]
+    else:
+        nr.pop("outline_width", None)
+        nr.pop("outline_color", None)
     bg = r.get("background")
     if bg in ("red", "black"):
         nr["background"] = bg
@@ -202,6 +210,8 @@ def _render_place_layer(img, native_regions, font, mode):
                     align=region.get("align", "center"), valign=region.get("valign", "center"),
                     pad_x=region.get("pad_x"), pad_y=region.get("pad_y"),
                     font_px=region.get("font_px"), rotation=int(region.get("rotation", 0)),
+                    outline_width=int(region.get("outline_width", 0) or 0),
+                    outline_fill=tuple(region["outline_color"]) if region.get("outline_color") else None,
                 )
     return img
 
