@@ -9747,43 +9747,64 @@
             3,
             1,
             378,
-            67
+            70
           ],
           "text_color": "white",
-          "font_px": 48,
           "align": "center",
           "valign": "center",
           "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "font_ratio": 0.89,
+          "letter_spacing": 18
         },
         {
           "id": "M1",
           "ja": "",
           "ko": "시나노",
           "bbox": [
-            8,
-            76,
-            200,
-            128
+            5,
+            74,
+            312,
+            140
           ],
           "text_color": "white",
-          "font_px": 48,
           "align": "center",
           "valign": "center",
           "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "font_ratio": 0.91,
+          "letter_spacing": 18
         },
         {
           "id": "M2",
           "ja": "",
           "ko": "무사시",
           "bbox": [
-            8,
-            140,
-            300,
-            204
+            2,
+            146,
+            295,
+            213
+          ],
+          "text_color": "white",
+          "align": "center",
+          "valign": "center",
+          "layout": "horizontal",
+          "clear": "alpha",
+          "render": true,
+          "font_ratio": 0.91,
+          "letter_spacing": 18
+        },
+        {
+          "id": "M3",
+          "ja": "",
+          "ko": "미카와",
+          "bbox": [
+            5,
+            219,
+            67,
+            477
           ],
           "text_color": "white",
           "font_px": 48,
@@ -9791,97 +9812,89 @@
           "valign": "center",
           "layout": "horizontal",
           "clear": "alpha",
-          "render": true
-        },
-        {
-          "id": "M3",
-          "ja": "",
-          "ko": "미카와",
-          "bbox": [
-            8,
-            220,
-            60,
-            476
-          ],
-          "text_color": "white",
-          "font_px": 48,
-          "align": "center",
-          "valign": "center",
-          "layout": "vertical",
-          "clear": "alpha",
-          "render": true
+          "render": true,
+          "rotation": -90,
+          "letter_spacing": 14
         },
         {
           "id": "M4",
           "ja": "",
           "ko": "야마토",
           "bbox": [
-            80,
-            220,
-            132,
-            472
+            73,
+            219,
+            138,
+            473
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M5",
           "ja": "",
           "ko": "토토미",
           "bbox": [
-            152,
-            232,
-            204,
-            472
+            149,
+            217,
+            210,
+            476
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M6",
           "ja": "",
           "ko": "히다",
           "bbox": [
-            220,
-            220,
-            272,
-            388
+            215,
+            218,
+            278,
+            393
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M7",
           "ja": "",
           "ko": "사가미",
           "bbox": [
-            290,
+            299,
             148,
-            376,
-            428
+            369,
+            412
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M8",
@@ -9891,15 +9904,17 @@
             385,
             6,
             446,
-            270
+            272
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M9",
@@ -9907,17 +9922,19 @@
           "ko": "오와리",
           "bbox": [
             385,
-            281,
+            280,
             446,
-            497
+            500
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M10",
@@ -9926,16 +9943,18 @@
           "bbox": [
             453,
             4,
-            517,
-            168
+            519,
+            171
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M11",
@@ -9943,17 +9962,19 @@
           "ko": "카이",
           "bbox": [
             453,
-            281,
+            279,
             517,
-            404
+            407
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M12",
@@ -9963,15 +9984,17 @@
             525,
             5,
             586,
-            130
+            131
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M13",
@@ -9981,51 +10004,57 @@
             525,
             140,
             586,
-            264
+            265
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M14",
           "ja": "",
           "ko": "이세",
           "bbox": [
-            525,
-            278,
+            523,
+            277,
             586,
-            400
+            401
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         },
         {
           "id": "M15",
           "ja": "",
           "ko": "이즈",
           "bbox": [
-            593,
+            592,
             5,
             654,
-            123
+            125
           ],
           "text_color": "white",
           "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "vertical",
+          "layout": "horizontal",
           "clear": "alpha",
-          "render": true
+          "render": true,
+          "letter_spacing": 14,
+          "rotation": -90
         }
       ]
     },

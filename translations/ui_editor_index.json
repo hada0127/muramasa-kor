@@ -1208,7 +1208,7 @@
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
-          "font_ratio": 0.91,
+          "font_ratio": 0.89,
           "font_px": null,
           "letter_spacing": 18,
           "align": "center",
@@ -1233,7 +1233,7 @@
             "layout": "horizontal",
             "clear": "alpha",
             "render": true,
-            "font_ratio": 0.91,
+            "font_ratio": 0.89,
             "letter_spacing": 18
           }
         },
@@ -1285,7 +1285,7 @@
             2,
             146,
             293,
-            64
+            67
           ],
           "id": "M2",
           "ja": "",
@@ -1311,7 +1311,7 @@
               2,
               146,
               295,
-              210
+              213
             ],
             "text_color": "white",
             "align": "center",
@@ -1339,10 +1339,10 @@
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1362,29 +1362,31 @@
             "valign": "center",
             "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "rotation": -90,
+            "letter_spacing": 14
           }
         },
         {
           "box": [
-            80,
-            220,
-            52,
-            252
+            73,
+            219,
+            65,
+            254
           ],
           "id": "M4",
           "ja": "",
           "text": "야마토",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1393,40 +1395,42 @@
             "ja": "",
             "ko": "야마토",
             "bbox": [
-              80,
-              220,
-              132,
-              472
+              73,
+              219,
+              138,
+              473
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
-            152,
-            232,
-            52,
-            240
+            149,
+            217,
+            61,
+            259
           ],
           "id": "M5",
           "ja": "",
           "text": "토토미",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1435,40 +1439,42 @@
             "ja": "",
             "ko": "토토미",
             "bbox": [
-              152,
-              232,
-              204,
-              472
+              149,
+              217,
+              210,
+              476
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
-            220,
-            220,
-            52,
-            168
+            215,
+            218,
+            63,
+            175
           ],
           "id": "M6",
           "ja": "",
           "text": "히다",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1477,40 +1483,42 @@
             "ja": "",
             "ko": "히다",
             "bbox": [
-              220,
-              220,
-              272,
-              388
+              215,
+              218,
+              278,
+              393
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
-            290,
+            299,
             148,
-            86,
-            280
+            70,
+            264
           ],
           "id": "M7",
           "ja": "",
           "text": "사가미",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1519,18 +1527,20 @@
             "ja": "",
             "ko": "사가미",
             "bbox": [
-              290,
+              299,
               148,
-              376,
-              428
+              369,
+              412
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
@@ -1538,21 +1548,21 @@
             385,
             6,
             61,
-            264
+            266
           ],
           "id": "M8",
           "ja": "",
           "text": "스루가",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1564,37 +1574,39 @@
               385,
               6,
               446,
-              270
+              272
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
             385,
-            281,
+            280,
             61,
-            216
+            220
           ],
           "id": "M9",
           "ja": "",
           "text": "오와리",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1604,39 +1616,41 @@
             "ko": "오와리",
             "bbox": [
               385,
-              281,
+              280,
               446,
-              497
+              500
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
             453,
             4,
-            64,
-            164
+            66,
+            167
           ],
           "id": "M10",
           "ja": "",
           "text": "미노",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1647,38 +1661,40 @@
             "bbox": [
               453,
               4,
-              517,
-              168
+              519,
+              171
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
             453,
-            281,
+            279,
             64,
-            123
+            128
           ],
           "id": "M11",
           "ja": "",
           "text": "카이",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1688,17 +1704,19 @@
             "ko": "카이",
             "bbox": [
               453,
-              281,
+              279,
               517,
-              404
+              407
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
@@ -1706,21 +1724,21 @@
             525,
             5,
             61,
-            125
+            126
           ],
           "id": "M12",
           "ja": "",
           "text": "오미",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1732,15 +1750,17 @@
               525,
               5,
               586,
-              130
+              131
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
@@ -1748,21 +1768,21 @@
             525,
             140,
             61,
-            124
+            125
           ],
           "id": "M13",
           "ja": "",
           "text": "이가",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1774,37 +1794,39 @@
               525,
               140,
               586,
-              264
+              265
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
-            525,
-            278,
-            61,
-            122
+            523,
+            277,
+            63,
+            124
           ],
           "id": "M14",
           "ja": "",
           "text": "이세",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1813,40 +1835,42 @@
             "ja": "",
             "ko": "이세",
             "bbox": [
-              525,
-              278,
+              523,
+              277,
               586,
-              400
+              401
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         },
         {
           "box": [
-            593,
+            592,
             5,
-            61,
-            118
+            62,
+            120
           ],
           "id": "M15",
           "ja": "",
           "text": "이즈",
           "background": "clear_alpha",
           "text_color": "white",
-          "layout": "vertical",
+          "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 48,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
-          "rotation": 0,
+          "rotation": -90,
           "pad_x": null,
           "pad_y": null,
           "render": true,
@@ -1855,18 +1879,20 @@
             "ja": "",
             "ko": "이즈",
             "bbox": [
-              593,
+              592,
               5,
               654,
-              123
+              125
             ],
             "text_color": "white",
             "font_px": 48,
             "align": "center",
             "valign": "center",
-            "layout": "vertical",
+            "layout": "horizontal",
             "clear": "alpha",
-            "render": true
+            "render": true,
+            "letter_spacing": 14,
+            "rotation": -90
           }
         }
       ],
