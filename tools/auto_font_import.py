@@ -257,14 +257,26 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     for char, (b1, b2) in kr_map.items():
         cell = sjis_to_cell(b1, b2)
         local = cell - 1644
-        if 0 <= local < 1024:
+        # Extended atlas: top half (cell 0..1023) = original KANJI page 1;
+        # bottom half (cell 1024..2047) = expansion area for jamo overflow,
+        # ASCII-collision Korean glyphs, hardcoded-kanji refuge slots.
+        if 0 <= local < 2048:
             if local == space_local:
                 continue  # reserve this slot as blank space
             if local in protected_cells:
                 continue  # menu price digits must keep the original glyphs
             korean_cells[local] = char
 
-    img = Image.open(export_path).convert("RGBA")
+    # Load original 1024x1024 font texture and expand height to 1024x2048
+    # so cell index 1024..2047 maps to pixel rows 1024..2047. New SJIS slots
+    # (0x8F64+) land in the expansion area without colliding with ASCII overlay
+    # zone (cell 960..1023) or hardcoded-kanji cells.
+    _src = Image.open(export_path).convert("RGBA")
+    if _src.size[1] == 1024:
+        img = Image.new('RGBA', (_src.size[0], 2048), (0, 0, 0, 0))
+        img.paste(_src, (0, 0))
+    else:
+        img = _src
     arr = np.array(img)
     rgb_mean = arr[:,:,:3].mean()
     fmt = "white" if rgb_mean > 200 else "dark"

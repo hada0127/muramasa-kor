@@ -1,5 +1,34 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-23: 폰트 텍스처 확장 PoC (1024x2048) — 사이클 3+5 롤백 + 확장 영역 시도
+
+### 배경
+사이클 5 신규 매핑 41자(0x8EE9~0x8F03)가 폰트 cell 968~994 영역인데, 이게 ASCII positions 960+ overlay 자리(`(`/`)`/`:` 등)와 충돌. 사이클 9에 8665CE08 import 추가하면서 충돌이 노출(무기 대장간 "캇" = `:` 자리 한글 깨짐).
+
+### 사용자 결정
+- 옵션 A 롤백 + 받침 누락은 폰트 텍스처 **확장 영역** 사용
+- 1024x1024 → 1024x2048로 확장하여 cell 1024~2047 추가 슬롯 1024개 확보
+
+### 진행
+1. 사이클 3+5 매핑 롤백: `git checkout 1eecde3 -- translations/kr_sjis_mapping.json translations/char_substitutions.json` (960자 / 95자 substitutions)
+2. PoC 매핑: 빡 → SJIS 0x8F64 (cell 1024). char_substitutions 빡 제거
+3. `auto_font_import.py` 수정: cell range 0~1024 → 0~2048, 텍스처 1024x1024 로드 후 1024x2048로 확장 (paste 위쪽, 아래쪽 투명)
+4. 빌드 + 배포
+
+### 검증
+- 폰트 텍스처: 18747565/A8E6FDD1/8665CE08 모두 1024x2048로 생성 (6706A53E HD는 4096x4096 그대로 — 확장 미적용)
+- cell 1024 (y=1024~1056, x=0~32) 알파 max=255, mean=26~42 → 빡 글리프 정상 그려짐
+- 시각 확인: "빡" 글리프 표시 (활자체, 손글씨체 둘 다)
+- NMS 인코딩: 빡 0x8F64 = 3회 (scemsg patch_main + patch_patch)
+- NinPri_final.cpk md5 0af5df11fa0da306b00546af6f8e0e38
+- NinPriPatch_final.cpk md5 630893c4d09e9c57aff63592b15aaecd
+
+### 인게임 검증 대상
+사용자가 Vita3K 재시작 후 백희전 어딘가 "빡빡이들 소행인가" (scemsg#414) 메시지 진행. 빡 한글 표시 = 확장 영역 게임 lookup 가능 → 95자 전체를 확장 영역으로 옮겨 모든 충돌 해소 가능.
+
+### 미해결 (HD 폰트 확장)
+6706A53E HD (4096x4096)는 확장 안 됨 — hd_font_import 별도 처리. PoC 검증 성공 후 HD도 4096x8192로 확장.
+
 ## 2026-05-23: 8665CE08 폰트 import 누락 발견 + 해결
 
 ### 증상 (사용자 보고)
