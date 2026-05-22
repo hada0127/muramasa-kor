@@ -28451,13 +28451,13 @@
             210
           ],
           "id": "B0",
-          "ja": "峠の茶屋",
-          "text": "고갯마루 찻집",
+          "ja": "茶屋",
+          "text": "찻집",
           "background": "black",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
-          "font_ratio": 0.6,
+          "font_ratio": 0.85,
           "font_px": null,
           "letter_spacing": 0,
           "align": "center",
@@ -28475,8 +28475,8 @@
           "render": true,
           "native": {
             "id": "B0",
-            "ja": "峠の茶屋",
-            "ko": "고갯마루 찻집",
+            "ja": "茶屋",
+            "ko": "찻집",
             "bbox": [
               40,
               35,
@@ -28487,7 +28487,7 @@
             "background": "black",
             "layout": "horizontal",
             "padding": 0.08,
-            "font_ratio": 0.6,
+            "font_ratio": 0.85,
             "letter_spacing": 0,
             "align": "center",
             "valign": "center",
@@ -28500,7 +28500,7 @@
         1024,
         512
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] manual → place 전환 + B0 추가.\n※ ja \"峠の茶屋\"(4글자) 초기 추정 → Gemini 검수로 \"茶屋\"(2글자) 수정.\n게임 내 상점 노렌은 약식 2글자 표기 일반 패턴 (464E370E 의 茶屋/船屋/鍛冶 와 동일).\nko \"고갯마루 찻집\" → \"찻집\"으로 단축. 사용자 검토 후 저장."
     }
   ]
 }
