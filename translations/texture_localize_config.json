@@ -16,14 +16,14 @@
       "description": "본편 타이틀 선택 상태 (MURAMASA REBIRTH → 오보로 무라마사)",
       "status": "done",
       "method": "MURAMASA REBIRTH 영문 제거 + 오보로 무라마사 한글 렌더링 (흰 글씨 + 검은 테두리). 수동 편집.",
-      "notes": "컬러 텍스처 (RGB+알파). 원본: textures/originals/73420FAEA9F664FD.png",
+      "notes": "v1(c944af1) 의 한글 베이크 PNG 를 originals 로 복원. native 1024×512 크기. 자동 render 비활성(manual_regions).",
       "source": "textures/originals/73420FAEA9F664FD.png",
-      "regions": [
+      "manual_regions": [
         {
           "x": 2045,
-          "y": 281,
-          "w": 1943,
-          "h": 203,
+          "y": 5,
+          "w": 2021,
+          "h": 268,
           "text": "오보로 무라마사",
           "align": "center",
           "v_align": "center",
@@ -34,30 +34,9 @@
         },
         {
           "x": 2041,
-          "y": 480,
-          "w": 1359,
-          "h": 448,
-          "text": "",
-          "font_size": 48,
-          "align": "center",
-          "v_align": "center",
-          "layout": "horizontal",
-          "font_ratio": 0.85,
-          "background": "clear_alpha",
-          "render": true,
-          "outline_width": 3,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ]
-        },
-        {
-          "x": 2051,
-          "y": 0,
-          "w": 2045,
-          "h": 279,
+          "y": 269,
+          "w": 1976,
+          "h": 659,
           "text": "",
           "font_size": 48,
           "align": "center",
@@ -218,10 +197,10 @@
       "notes": ".kra 원본 bbox 복원 + clear=alpha. 13개 region.",
       "regions": [
         {
-          "x": 3181,
+          "x": 3962,
           "y": 2521,
-          "w": 912,
-          "h": 638,
+          "w": 131,
+          "h": 566,
           "text": "모모히메",
           "color": [
             255,
@@ -234,15 +213,18 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K0",
-          "font_ratio": 1.2
+          "font_ratio": 0.92,
+          "render": true,
+          "rotation": 90,
+          "background": "clear_alpha"
         },
         {
-          "x": 2848,
-          "y": 3164,
-          "w": 1235,
-          "h": 909,
+          "x": 3745,
+          "y": 3176,
+          "w": 286,
+          "h": 575,
           "text": "사 광",
           "color": [
             255,
@@ -255,15 +237,18 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K1",
-          "font_ratio": 1.2
+          "font_ratio": 0.73,
+          "render": true,
+          "rotation": 90,
+          "background": "clear_alpha"
         },
         {
-          "x": 2225,
-          "y": 2106,
-          "w": 958,
-          "h": 1823,
+          "x": 2446,
+          "y": 2669,
+          "w": 713,
+          "h": 250,
           "text": "수 라",
           "color": [
             255,
@@ -278,13 +263,15 @@
           "fit_to_box": false,
           "font_size": 240,
           "layout": "horizontal",
-          "_id": "K2"
+          "_id": "K2",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2477,
-          "y": 0,
-          "w": 1617,
-          "h": 1937,
+          "x": 2863,
+          "y": 1517,
+          "w": 861,
+          "h": 283,
           "text": "무 쌍",
           "color": [
             255,
@@ -299,13 +286,15 @@
           "fit_to_box": false,
           "font_size": 240,
           "layout": "horizontal",
-          "_id": "K3"
+          "_id": "K3",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1301,
-          "y": 3210,
-          "w": 1568,
-          "h": 883,
+          "x": 1285,
+          "y": 3310,
+          "w": 1061,
+          "h": 199,
           "text": "인법첩",
           "color": [
             255,
@@ -315,18 +304,20 @@
           ],
           "align": "center",
           "v_align": "center",
-          "letter_spacing": 0,
+          "letter_spacing": 15,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 180,
           "layout": "horizontal",
-          "_id": "K4"
+          "_id": "K4",
+          "font_ratio": 0.7,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 0,
-          "y": 3903,
-          "w": 1542,
-          "h": 187,
+          "y": 3899,
+          "w": 1079,
+          "h": 191,
           "text": "오보로 무라마사",
           "color": [
             255,
@@ -341,12 +332,14 @@
           "fit_to_box": false,
           "font_size": 168,
           "layout": "horizontal",
-          "_id": "K5"
+          "_id": "K5",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
           "y": 3700,
-          "w": 915,
+          "w": 1096,
           "h": 204,
           "text": "백귀야행",
           "color": [
@@ -362,12 +355,14 @@
           "fit_to_box": false,
           "font_size": 164,
           "layout": "horizontal",
-          "_id": "K6"
+          "_id": "K6",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 348,
+          "x": 0,
           "y": 3519,
-          "w": 416,
+          "w": 1108,
           "h": 190,
           "text": "요 도",
           "color": [
@@ -383,13 +378,15 @@
           "fit_to_box": false,
           "font_size": 180,
           "layout": "horizontal",
-          "_id": "K7"
+          "_id": "K7",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
-          "y": 3208,
-          "w": 1112,
-          "h": 312,
+          "y": 3314,
+          "w": 1281,
+          "h": 203,
           "text": "백사전",
           "color": [
             255,
@@ -399,18 +396,20 @@
           ],
           "align": "center",
           "v_align": "center",
-          "letter_spacing": 0,
+          "letter_spacing": 33,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 180,
           "layout": "horizontal",
-          "_id": "K8"
+          "_id": "K8",
+          "font_ratio": 0.75,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
-          "x": 381,
+          "x": 0,
           "y": 3117,
-          "w": 1622,
-          "h": 374,
+          "w": 2422,
+          "h": 197,
           "text": "대의를 위한 무",
           "color": [
             255,
@@ -420,18 +419,20 @@
           ],
           "align": "center",
           "v_align": "center",
-          "letter_spacing": 0,
+          "letter_spacing": 13,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 180,
           "layout": "horizontal",
-          "_id": "K9"
+          "_id": "K9",
+          "font_ratio": 0.78,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 1,
-          "y": 2327,
-          "w": 2109,
-          "h": 790,
+          "y": 2918,
+          "w": 2483,
+          "h": 203,
           "text": "내세의 안식처",
           "color": [
             255,
@@ -441,18 +442,20 @@
           ],
           "align": "center",
           "v_align": "center",
-          "letter_spacing": 0,
+          "letter_spacing": 30,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 180,
           "layout": "horizontal",
-          "_id": "K10"
+          "_id": "K10",
+          "font_ratio": 0.73,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 0,
           "y": 2097,
-          "w": 2241,
-          "h": 394,
+          "w": 2619,
+          "h": 229,
           "text": "네코마타 괴이담",
           "color": [
             255,
@@ -462,18 +465,20 @@
           ],
           "align": "center",
           "v_align": "center",
-          "letter_spacing": 0,
+          "letter_spacing": 20,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 180,
           "layout": "horizontal",
-          "_id": "K11"
+          "_id": "K11",
+          "font_ratio": 0.72,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 1,
-          "y": 0,
-          "w": 2470,
-          "h": 2097,
+          "y": 1871,
+          "w": 3178,
+          "h": 238,
           "text": "칠야의 저주",
           "color": [
             255,
@@ -483,12 +488,36 @@
           ],
           "align": "center",
           "v_align": "center",
-          "letter_spacing": 0,
+          "letter_spacing": 58,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 180,
           "layout": "horizontal",
-          "_id": "K12"
+          "_id": "K12",
+          "font_ratio": 0.6,
+          "render": true,
+          "background": "clear_alpha"
+        },
+        {
+          "x": 1929,
+          "y": 1720,
+          "w": 803,
+          "h": 146,
+          "text": "",
+          "font_size": 48,
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
         }
       ]
     },
@@ -519,7 +548,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K0"
+          "_id": "K0",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 415,
@@ -540,7 +571,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K1"
+          "_id": "K1",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -561,7 +594,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K2"
+          "_id": "K2",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1359,
@@ -582,7 +617,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K3"
+          "_id": "K3",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1136,
@@ -603,7 +640,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K4"
+          "_id": "K4",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 830,
@@ -624,7 +663,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K5"
+          "_id": "K5",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 413,
@@ -645,7 +686,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K6"
+          "_id": "K6",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -666,14 +709,16 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K7"
+          "_id": "K7",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1610,
           "y": 1693,
-          "w": 238,
+          "w": 162,
           "h": 137,
-          "text": "신\n  규",
+          "text": "신규",
           "color": [
             255,
             255,
@@ -685,9 +730,11 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 63,
           "layout": "horizontal",
-          "_id": "K8"
+          "_id": "K8",
+          "font_ratio": 0.57,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1360,
@@ -708,7 +755,9 @@
           "fit_to_box": false,
           "font_size": 63,
           "layout": "horizontal",
-          "_id": "K9"
+          "_id": "K9",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1133,
@@ -729,7 +778,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K10"
+          "_id": "K10",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 829,
@@ -750,7 +801,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K11"
+          "_id": "K11",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 415,
@@ -771,7 +824,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K12"
+          "_id": "K12",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -792,7 +847,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K13"
+          "_id": "K13",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1646,
@@ -813,7 +870,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K14"
+          "_id": "K14",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1357,
@@ -834,7 +893,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K15"
+          "_id": "K15",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1168,
@@ -855,7 +916,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K16"
+          "_id": "K16",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 830,
@@ -876,7 +939,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K17"
+          "_id": "K17",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 415,
@@ -897,7 +962,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K18"
+          "_id": "K18",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -918,13 +985,15 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K19"
+          "_id": "K19",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1359,
+          "x": 1681,
           "y": 1474,
-          "w": 610,
-          "h": 115,
+          "w": 288,
+          "h": 105,
           "text": "별똥별",
           "color": [
             255,
@@ -939,7 +1008,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K20"
+          "_id": "K20",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1180,
@@ -960,12 +1031,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K21"
+          "_id": "K21",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 829,
           "y": 1464,
-          "w": 331,
+          "w": 351,
           "h": 111,
           "text": "땅달리기",
           "color": [
@@ -981,7 +1054,10 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K22"
+          "_id": "K22",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 415,
@@ -1002,7 +1078,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K23"
+          "_id": "K23",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1023,7 +1101,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K24"
+          "_id": "K24",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1729,
@@ -1044,7 +1124,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K25"
+          "_id": "K25",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1358,
@@ -1065,7 +1147,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K26"
+          "_id": "K26",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1175,
@@ -1086,7 +1170,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K27"
+          "_id": "K27",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 832,
@@ -1107,7 +1193,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K28"
+          "_id": "K28",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 414,
@@ -1128,7 +1216,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K29"
+          "_id": "K29",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1149,7 +1239,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K30"
+          "_id": "K30",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1750,
@@ -1170,7 +1262,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K31"
+          "_id": "K31",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1361,
@@ -1191,12 +1285,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K32"
+          "_id": "K32",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 830,
           "y": 1237,
-          "w": 284,
+          "w": 409,
           "h": 109,
           "text": "달 밤",
           "color": [
@@ -1212,7 +1308,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K33"
+          "_id": "K33",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 415,
@@ -1233,7 +1331,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K34"
+          "_id": "K34",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1254,7 +1354,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K35"
+          "_id": "K35",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1358,
@@ -1275,7 +1377,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K36"
+          "_id": "K36",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 829,
@@ -1296,7 +1400,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K37"
+          "_id": "K37",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 413,
@@ -1317,7 +1423,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K38"
+          "_id": "K38",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1338,7 +1446,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K39"
+          "_id": "K39",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1793,
@@ -1359,12 +1469,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K40"
+          "_id": "K40",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1241,
+          "x": 1360,
           "y": 1048,
-          "w": 533,
+          "w": 414,
           "h": 106,
           "text": "원한반사3",
           "color": [
@@ -1380,7 +1492,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K41"
+          "_id": "K41",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 830,
@@ -1401,7 +1515,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K42"
+          "_id": "K42",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 414,
@@ -1422,7 +1538,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K43"
+          "_id": "K43",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1443,7 +1561,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K44"
+          "_id": "K44",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1795,
@@ -1464,7 +1584,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K45"
+          "_id": "K45",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1357,
@@ -1485,7 +1607,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K46"
+          "_id": "K46",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 415,
@@ -1506,7 +1630,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K47"
+          "_id": "K47",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1527,7 +1653,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K48"
+          "_id": "K48",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1359,
@@ -1548,7 +1676,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K49"
+          "_id": "K49",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 943,
@@ -1569,7 +1699,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K50"
+          "_id": "K50",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 412,
@@ -1590,7 +1722,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K51"
+          "_id": "K51",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1611,7 +1745,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K52"
+          "_id": "K52",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1355,
@@ -1632,7 +1768,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K53"
+          "_id": "K53",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 945,
@@ -1653,7 +1791,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K54"
+          "_id": "K54",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 413,
@@ -1674,7 +1814,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K55"
+          "_id": "K55",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1695,7 +1837,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K56"
+          "_id": "K56",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1353,
@@ -1716,7 +1860,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K57"
+          "_id": "K57",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 941,
@@ -1737,7 +1883,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K58"
+          "_id": "K58",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 409,
@@ -1758,7 +1906,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K59"
+          "_id": "K59",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1779,7 +1929,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K60"
+          "_id": "K60",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 829,
@@ -1798,9 +1950,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K61",
-          "font_ratio": 1.2
+          "font_ratio": 0.74,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1241,
@@ -1821,7 +1976,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K62"
+          "_id": "K62",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 827,
@@ -1842,7 +1999,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K63"
+          "_id": "K63",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 409,
@@ -1863,7 +2022,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K64"
+          "_id": "K64",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1884,7 +2045,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K65"
+          "_id": "K65",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1377,
@@ -1905,7 +2068,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K66"
+          "_id": "K66",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 951,
@@ -1926,7 +2091,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K67"
+          "_id": "K67",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 414,
@@ -1947,7 +2114,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K68"
+          "_id": "K68",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -1968,7 +2137,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K69"
+          "_id": "K69",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1379,
@@ -1989,7 +2160,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K70"
+          "_id": "K70",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 949,
@@ -2010,7 +2183,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K71"
+          "_id": "K71",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 412,
@@ -2031,7 +2206,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K72"
+          "_id": "K72",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -2052,7 +2229,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K73"
+          "_id": "K73",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1907,
@@ -2071,9 +2250,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K74",
-          "font_ratio": 1.2
+          "font_ratio": 0.74,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1907,
@@ -2092,14 +2274,17 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K75",
-          "font_ratio": 1.2
+          "font_ratio": 0.74,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 1755,
+          "x": 1803,
           "y": 123,
-          "w": 153,
+          "w": 105,
           "h": 404,
           "text": "대나무 수통",
           "color": [
@@ -2113,9 +2298,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K76",
-          "font_ratio": 1.2
+          "font_ratio": 0.74,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1795,
@@ -2134,9 +2322,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K77",
-          "font_ratio": 1.2
+          "font_ratio": 0.74,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1747,
@@ -2157,7 +2348,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K78"
+          "_id": "K78",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1378,
@@ -2178,7 +2371,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K79"
+          "_id": "K79",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 950,
@@ -2199,7 +2394,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K80"
+          "_id": "K80",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 826,
@@ -2218,9 +2415,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K81",
-          "font_ratio": 1.2
+          "font_ratio": 0.62,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 409,
@@ -2241,7 +2441,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K82"
+          "_id": "K82",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -2262,7 +2464,23 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K83"
+          "_id": "K83",
+          "font_ratio": 0.85,
+          "render": true
+        },
+        {
+          "x": 1355,
+          "y": 1476,
+          "w": 322,
+          "h": 107,
+          "text": "베 기",
+          "font_size": 80,
+          "align": "center",
+          "v_align": "center",
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true
         }
       ]
     },
@@ -2275,10 +2493,10 @@
       "notes": ".kra 원본 bbox 복원 + clear=alpha. 51개 region.",
       "regions": [
         {
-          "x": 1292,
-          "y": 835,
-          "w": 748,
-          "h": 752,
+          "x": 1736,
+          "y": 559,
+          "w": 261,
+          "h": 1291,
           "text": "저장하기",
           "color": [
             255,
@@ -2291,15 +2509,18 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K0",
-          "font_ratio": 1.2
+          "font_ratio": 0.73,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 1386,
-          "y": 6,
-          "w": 1801,
-          "h": 822,
+          "x": 1998,
+          "y": 558,
+          "w": 1219,
+          "h": 270,
           "text": "불러오기",
           "color": [
             255,
@@ -2314,13 +2535,15 @@
           "fit_to_box": false,
           "font_size": 216,
           "layout": "horizontal",
-          "_id": "K1"
+          "_id": "K1",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2088,
-          "y": 1362,
-          "w": 932,
-          "h": 468,
+          "x": 1989,
+          "y": 1358,
+          "w": 1187,
+          "h": 274,
           "text": "새 게임",
           "color": [
             255,
@@ -2335,12 +2558,14 @@
           "fit_to_box": false,
           "font_size": 216,
           "layout": "horizontal",
-          "_id": "K2"
+          "_id": "K2",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 461,
+          "x": 370,
           "y": 3212,
-          "w": 508,
+          "w": 599,
           "h": 196,
           "text": "설 정",
           "color": [
@@ -2354,15 +2579,17 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 152,
           "layout": "horizontal",
-          "_id": "K3"
+          "_id": "K3",
+          "font_ratio": 0.66,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1749,
-          "y": 1687,
-          "w": 1007,
-          "h": 356,
+          "y": 1859,
+          "w": 1223,
+          "h": 188,
           "text": "기본 설정",
           "color": [
             255,
@@ -2377,12 +2604,14 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K4"
+          "_id": "K4",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2852,
+          "x": 2684,
           "y": 3186,
-          "w": 410,
+          "w": 677,
           "h": 194,
           "text": "결 정",
           "color": [
@@ -2398,12 +2627,14 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K5"
+          "_id": "K5",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1661,
+          "x": 1734,
           "y": 2040,
-          "w": 1139,
+          "w": 1273,
           "h": 178,
           "text": "게임 스타일 선택",
           "color": [
@@ -2417,14 +2648,16 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 144,
           "layout": "horizontal",
-          "_id": "K6"
+          "_id": "K6",
+          "font_ratio": 0.77,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 1805,
+          "x": 1740,
           "y": 2218,
-          "w": 880,
+          "w": 983,
           "h": 174,
           "text": "닌자 주머니",
           "color": [
@@ -2440,12 +2673,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K7"
+          "_id": "K7",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
-          "x": 157,
+          "x": 0,
           "y": 2851,
-          "w": 744,
+          "w": 989,
           "h": 193,
           "text": "소유한 칼",
           "color": [
@@ -2461,13 +2697,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K8"
+          "_id": "K8",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 9,
-          "y": 627,
-          "w": 1262,
-          "h": 1253,
+          "y": 1569,
+          "w": 1153,
+          "h": 311,
           "text": "승 리!",
           "color": [
             255,
@@ -2482,12 +2720,14 @@
           "fit_to_box": false,
           "font_size": 248,
           "layout": "horizontal",
-          "_id": "K9"
+          "_id": "K9",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 3,
           "y": 1880,
-          "w": 894,
+          "w": 805,
           "h": 292,
           "text": "전 투!",
           "color": [
@@ -2503,13 +2743,15 @@
           "fit_to_box": false,
           "font_size": 248,
           "layout": "horizontal",
-          "_id": "K10"
+          "_id": "K10",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2,
           "y": 2178,
-          "w": 946,
-          "h": 398,
+          "w": 1110,
+          "h": 182,
           "text": "스테이터스",
           "color": [
             255,
@@ -2524,12 +2766,14 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K11"
+          "_id": "K11",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1747,
           "y": 2938,
-          "w": 518,
+          "w": 630,
           "h": 194,
           "text": "단 련",
           "color": [
@@ -2543,14 +2787,16 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 168,
           "layout": "horizontal",
-          "_id": "K12"
+          "_id": "K12",
+          "font_ratio": 0.75,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 2693,
           "y": 2999,
-          "w": 528,
+          "w": 619,
           "h": 191,
           "text": "능 력",
           "color": [
@@ -2566,13 +2812,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K13"
+          "_id": "K13",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2876,
-          "y": 2676,
-          "w": 569,
-          "h": 323,
+          "x": 2690,
+          "y": 2835,
+          "w": 837,
+          "h": 181,
           "text": "장신구",
           "color": [
             255,
@@ -2585,15 +2833,17 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 152,
           "layout": "horizontal",
-          "_id": "K14"
+          "_id": "K14",
+          "font_ratio": 0.62,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
-          "x": 2596,
+          "x": 2687,
           "y": 2640,
-          "w": 431,
-          "h": 345,
+          "w": 763,
+          "h": 198,
           "text": "장 비",
           "color": [
             255,
@@ -2608,13 +2858,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K15"
+          "_id": "K15",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 887,
-          "y": 2043,
-          "w": 836,
-          "h": 533,
+          "x": 947,
+          "y": 2353,
+          "w": 754,
+          "h": 227,
           "text": "장 비",
           "color": [
             255,
@@ -2629,13 +2881,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K16"
+          "_id": "K16",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 3535,
           "y": 3273,
           "w": 554,
-          "h": 570,
+          "h": 204,
           "text": "효 과",
           "color": [
             255,
@@ -2650,12 +2904,14 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K17"
+          "_id": "K17",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2630,
+          "x": 2677,
           "y": 2392,
-          "w": 643,
+          "w": 596,
           "h": 256,
           "text": "뒤 로",
           "color": [
@@ -2671,12 +2927,14 @@
           "fit_to_box": false,
           "font_size": 224,
           "layout": "horizontal",
-          "_id": "K18"
+          "_id": "K18",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 897,
           "y": 2576,
-          "w": 789,
+          "w": 629,
           "h": 288,
           "text": "저 장",
           "color": [
@@ -2692,13 +2950,15 @@
           "fit_to_box": false,
           "font_size": 216,
           "layout": "horizontal",
-          "_id": "K19"
+          "_id": "K19",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 3259,
-          "y": 3468,
-          "w": 834,
-          "h": 628,
+          "x": 3535,
+          "y": 3916,
+          "w": 558,
+          "h": 180,
           "text": "결 정",
           "color": [
             255,
@@ -2713,12 +2973,14 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K20"
+          "_id": "K20",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 3326,
-          "y": 3005,
-          "w": 195,
+          "x": 3352,
+          "y": 3009,
+          "w": 169,
           "h": 346,
           "text": "오 의",
           "color": [
@@ -2732,15 +2994,18 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K21",
-          "font_ratio": 1.2
+          "font_ratio": 0.75,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 103,
-          "y": 3754,
-          "w": 552,
-          "h": 342,
+          "x": 0,
+          "y": 3931,
+          "w": 637,
+          "h": 165,
           "text": "조 작",
           "color": [
             255,
@@ -2755,13 +3020,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K22"
+          "_id": "K22",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 3,
-          "y": 2872,
-          "w": 803,
-          "h": 340,
+          "y": 3040,
+          "w": 902,
+          "h": 172,
           "text": "데이터 삭제",
           "color": [
             255,
@@ -2776,12 +3043,14 @@
           "fit_to_box": false,
           "font_size": 144,
           "layout": "horizontal",
-          "_id": "K23"
+          "_id": "K23",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1629,
+          "x": 1724,
           "y": 2747,
-          "w": 992,
+          "w": 897,
           "h": 191,
           "text": "저 장  일 시",
           "color": [
@@ -2797,12 +3066,14 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K24"
+          "_id": "K24",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1125,
+          "x": 983,
           "y": 3058,
-          "w": 483,
+          "w": 720,
           "h": 195,
           "text": "결 과",
           "color": [
@@ -2818,13 +3089,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K25"
+          "_id": "K25",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 375,
           "y": 3394,
-          "w": 367,
-          "h": 186,
+          "w": 608,
+          "h": 182,
           "text": "결 계",
           "color": [
             255,
@@ -2837,14 +3110,16 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 152,
           "layout": "horizontal",
-          "_id": "K26"
+          "_id": "K26",
+          "font_ratio": 0.7,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 100,
+          "x": 0,
           "y": 3578,
-          "w": 424,
+          "w": 695,
           "h": 180,
           "text": "회 복",
           "color": [
@@ -2860,13 +3135,15 @@
           "fit_to_box": false,
           "font_size": 144,
           "layout": "horizontal",
-          "_id": "K27"
+          "_id": "K27",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 652,
           "y": 3752,
-          "w": 774,
-          "h": 333,
+          "w": 528,
+          "h": 221,
           "text": "요 리",
           "color": [
             255,
@@ -2881,13 +3158,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K28"
+          "_id": "K28",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1749,
-          "y": 3842,
-          "w": 438,
-          "h": 231,
+          "y": 3894,
+          "w": 520,
+          "h": 179,
           "text": "변 경",
           "color": [
             255,
@@ -2902,13 +3181,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K29"
+          "_id": "K29",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2184,
-          "y": 3573,
-          "w": 705,
-          "h": 522,
+          "x": 2279,
+          "y": 3888,
+          "w": 403,
+          "h": 207,
           "text": "대장간",
           "color": [
             255,
@@ -2923,13 +3204,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K30"
+          "_id": "K30",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 3530,
-          "y": 2634,
-          "w": 519,
-          "h": 279,
+          "x": 3448,
+          "y": 2638,
+          "w": 601,
+          "h": 188,
           "text": "소모품",
           "color": [
             255,
@@ -2944,12 +3227,14 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K31"
+          "_id": "K31",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1749,
           "y": 2392,
-          "w": 846,
+          "w": 932,
           "h": 176,
           "text": "필요 재료",
           "color": [
@@ -2963,14 +3248,16 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 152,
           "layout": "horizontal",
-          "_id": "K32"
+          "_id": "K32",
+          "font_ratio": 0.76,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 1899,
+          "x": 1744,
           "y": 2568,
-          "w": 617,
+          "w": 837,
           "h": 182,
           "text": "식재료",
           "color": [
@@ -2986,13 +3273,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K33"
+          "_id": "K33",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2369,
           "y": 3380,
-          "w": 483,
-          "h": 344,
+          "w": 582,
+          "h": 202,
           "text": "보너스",
           "color": [
             255,
@@ -3007,12 +3296,14 @@
           "fit_to_box": false,
           "font_size": 168,
           "layout": "horizontal",
-          "_id": "K34"
+          "_id": "K34",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 993,
           "y": 2864,
-          "w": 731,
+          "w": 744,
           "h": 199,
           "text": "조 사",
           "color": [
@@ -3028,7 +3319,10 @@
           "fit_to_box": false,
           "font_size": 168,
           "layout": "horizontal",
-          "_id": "K35"
+          "_id": "K35",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 3,
@@ -3049,13 +3343,15 @@
           "fit_to_box": false,
           "font_size": 216,
           "layout": "horizontal",
-          "_id": "K36"
+          "_id": "K36",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2887,
-          "y": 1627,
-          "w": 306,
-          "h": 563,
+          "x": 3025,
+          "y": 1839,
+          "w": 168,
+          "h": 351,
           "text": "전 송",
           "color": [
             255,
@@ -3068,9 +3364,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K37",
-          "font_ratio": 1.2
+          "font_ratio": 0.79,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 2579,
@@ -3091,7 +3390,9 @@
           "fit_to_box": false,
           "font_size": 168,
           "layout": "horizontal",
-          "_id": "K38"
+          "_id": "K38",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 3284,
@@ -3112,13 +3413,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K39"
+          "_id": "K39",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 2800,
-          "y": 2196,
-          "w": 810,
-          "h": 194,
+          "x": 2731,
+          "y": 2205,
+          "w": 935,
+          "h": 185,
           "text": "악마의 계곡",
           "color": [
             255,
@@ -3133,13 +3436,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K40"
+          "_id": "K40",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 5,
-          "y": 3754,
-          "w": 565,
-          "h": 329,
+          "x": 0,
+          "y": 3745,
+          "w": 660,
+          "h": 178,
           "text": "필요함",
           "color": [
             255,
@@ -3154,13 +3459,15 @@
           "fit_to_box": false,
           "font_size": 136,
           "layout": "horizontal",
-          "_id": "K41"
+          "_id": "K41",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 707,
-          "y": 3443,
-          "w": 960,
-          "h": 301,
+          "y": 3568,
+          "w": 710,
+          "h": 176,
           "text": "모모히메",
           "color": [
             255,
@@ -3175,7 +3482,9 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K42"
+          "_id": "K42",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 997,
@@ -3196,13 +3505,15 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K43"
+          "_id": "K43",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1990,
           "y": 3442,
-          "w": 316,
-          "h": 400,
+          "w": 165,
+          "h": 383,
           "text": "오디오",
           "color": [
             255,
@@ -3215,9 +3526,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K44",
-          "font_ratio": 1.2
+          "font_ratio": 0.7,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1,
@@ -3238,13 +3552,15 @@
           "fit_to_box": false,
           "font_size": 372,
           "layout": "horizontal",
-          "_id": "K45"
+          "_id": "K45",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 3673,
-          "y": 570,
+          "y": 1057,
           "w": 409,
-          "h": 840,
+          "h": 353,
           "text": "O",
           "color": [
             255,
@@ -3259,13 +3575,15 @@
           "fit_to_box": false,
           "font_size": 372,
           "layout": "horizontal",
-          "_id": "K46"
+          "_id": "K46",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 3219,
-          "y": 1608,
-          "w": 866,
-          "h": 572,
+          "y": 1910,
+          "w": 706,
+          "h": 270,
           "text": "연 속!",
           "color": [
             255,
@@ -3280,13 +3598,15 @@
           "fit_to_box": false,
           "font_size": 224,
           "layout": "horizontal",
-          "_id": "K47"
+          "_id": "K47",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 3069,
-          "y": 6,
-          "w": 1011,
-          "h": 1041,
+          "x": 3190,
+          "y": 316,
+          "w": 679,
+          "h": 252,
           "text": "없 음",
           "color": [
             255,
@@ -3301,12 +3621,14 @@
           "fit_to_box": false,
           "font_size": 208,
           "layout": "horizontal",
-          "_id": "K48"
+          "_id": "K48",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1594,
+          "x": 1741,
           "y": 3139,
-          "w": 556,
+          "w": 409,
           "h": 303,
           "text": "이동",
           "color": [
@@ -3322,13 +3644,15 @@
           "fit_to_box": false,
           "font_size": 256,
           "layout": "horizontal",
-          "_id": "K49"
+          "_id": "K49",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 3217,
+          "x": 3661,
           "y": 1403,
-          "w": 871,
-          "h": 501,
+          "w": 427,
+          "h": 204,
           "text": "아이템",
           "color": [
             255,
@@ -3343,7 +3667,9 @@
           "fit_to_box": false,
           "font_size": 152,
           "layout": "horizontal",
-          "_id": "K50"
+          "_id": "K50",
+          "font_ratio": 0.85,
+          "render": true
         }
       ]
     },
@@ -3357,9 +3683,9 @@
       "regions": [
         {
           "x": 2032,
-          "y": 0,
-          "w": 564,
-          "h": 438,
+          "y": 238,
+          "w": 270,
+          "h": 200,
           "text": "경험",
           "color": [
             255,
@@ -3374,12 +3700,14 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K0"
+          "_id": "K0",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 7,
           "y": 845,
-          "w": 436,
+          "w": 528,
           "h": 162,
           "text": "이 전",
           "color": [
@@ -3395,13 +3723,16 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K1"
+          "_id": "K1",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 532,
-          "y": 1716,
+          "y": 1781,
           "w": 440,
-          "h": 233,
+          "h": 168,
           "text": "이 후",
           "color": [
             255,
@@ -3416,12 +3747,14 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K2"
+          "_id": "K2",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 7,
           "y": 1799,
-          "w": 335,
+          "w": 420,
           "h": 167,
           "text": "책",
           "color": [
@@ -3437,13 +3770,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K3"
+          "_id": "K3",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2,
-          "y": 1369,
+          "y": 1633,
           "w": 490,
-          "h": 430,
+          "h": 166,
           "text": "칼",
           "color": [
             255,
@@ -3458,12 +3793,14 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K4"
+          "_id": "K4",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1004,
           "y": 842,
-          "w": 440,
+          "w": 508,
           "h": 147,
           "text": "뒤 로",
           "color": [
@@ -3479,7 +3816,9 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K5"
+          "_id": "K5",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 3,
@@ -3500,13 +3839,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K6"
+          "_id": "K6",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 561,
-          "y": 629,
-          "w": 1148,
-          "h": 197,
+          "x": 1226,
+          "y": 622,
+          "w": 274,
+          "h": 204,
           "text": "지 도",
           "color": [
             255,
@@ -3521,7 +3862,10 @@
           "fit_to_box": false,
           "font_size": 142,
           "layout": "horizontal",
-          "_id": "K7"
+          "_id": "K7",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1003,
@@ -3542,7 +3886,9 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K8"
+          "_id": "K8",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1015,
@@ -3563,13 +3909,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K9"
+          "_id": "K9",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 515,
-          "y": 5,
+          "y": 452,
           "w": 485,
-          "h": 617,
+          "h": 173,
           "text": "곤 베",
           "color": [
             255,
@@ -3584,13 +3932,16 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K10"
+          "_id": "K10",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
-          "x": 733,
+          "x": 935,
           "y": 3,
-          "w": 719,
-          "h": 382,
+          "w": 517,
+          "h": 177,
           "text": "키스케",
           "color": [
             255,
@@ -3605,13 +3956,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K11"
+          "_id": "K11",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1461,
-          "y": 5,
-          "w": 567,
-          "h": 400,
+          "x": 1666,
+          "y": 240,
+          "w": 362,
+          "h": 165,
           "text": "오코이",
           "color": [
             255,
@@ -3626,13 +3979,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K12"
+          "_id": "K12",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2276,
-          "y": 1,
-          "w": 499,
-          "h": 604,
+          "y": 438,
+          "w": 300,
+          "h": 167,
           "text": "추가",
           "color": [
             255,
@@ -3647,13 +4002,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K13"
+          "_id": "K13",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1719,
-          "y": 442,
-          "w": 546,
-          "h": 376,
+          "x": 1918,
+          "y": 445,
+          "w": 347,
+          "h": 164,
           "text": "전 체",
           "color": [
             255,
@@ -3666,15 +4023,17 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 138,
           "layout": "horizontal",
-          "_id": "K14"
+          "_id": "K14",
+          "font_ratio": 0.77,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 1469,
-          "y": 1583,
-          "w": 517,
-          "h": 452,
+          "x": 1616,
+          "y": 1880,
+          "w": 370,
+          "h": 158,
           "text": "요 리",
           "color": [
             255,
@@ -3689,7 +4048,10 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K15"
+          "_id": "K15",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 1713,
@@ -3710,13 +4072,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K16"
+          "_id": "K16",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1717,
-          "y": 1067,
-          "w": 586,
-          "h": 237,
+          "x": 1975,
+          "y": 1135,
+          "w": 328,
+          "h": 169,
           "text": "정 보",
           "color": [
             255,
@@ -3731,13 +4095,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K17"
+          "_id": "K17",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 641,
-          "y": 844,
-          "w": 258,
-          "h": 152,
+          "x": 527,
+          "y": 847,
+          "w": 470,
+          "h": 168,
           "text": "돈",
           "color": [
             255,
@@ -3750,9 +4116,11 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 138,
           "layout": "horizontal",
-          "_id": "K18"
+          "_id": "K18",
+          "font_ratio": 0.75,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 981,
@@ -3773,7 +4141,9 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K19"
+          "_id": "K19",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1005,
@@ -3794,13 +4164,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K20"
+          "_id": "K20",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2,
-          "y": 2,
-          "w": 507,
-          "h": 487,
+          "y": 312,
+          "w": 500,
+          "h": 177,
           "text": "획 득",
           "color": [
             255,
@@ -3815,13 +4187,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K21"
+          "_id": "K21",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1,
           "y": 494,
           "w": 489,
-          "h": 158,
+          "h": 178,
           "text": "피 해",
           "color": [
             255,
@@ -3836,7 +4210,10 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K22"
+          "_id": "K22",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 4,
@@ -3857,7 +4234,9 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K23"
+          "_id": "K23",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 5,
@@ -3878,7 +4257,9 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K24"
+          "_id": "K24",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 535,
@@ -3899,12 +4280,14 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K25"
+          "_id": "K25",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1092,
+          "x": 997,
           "y": 989,
-          "w": 361,
+          "w": 593,
           "h": 163,
           "text": "조 작",
           "color": [
@@ -3920,7 +4303,9 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K26"
+          "_id": "K26",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 531,
@@ -3941,13 +4326,15 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K27"
+          "_id": "K27",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1470,
-          "y": 1000,
+          "y": 1140,
           "w": 216,
-          "h": 299,
+          "h": 162,
           "text": "확인",
           "color": [
             255,
@@ -3962,7 +4349,9 @@
           "fit_to_box": false,
           "font_size": 118,
           "layout": "horizontal",
-          "_id": "K28"
+          "_id": "K28",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1285,
@@ -3983,7 +4372,9 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K29"
+          "_id": "K29",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2305,
@@ -4004,7 +4395,9 @@
           "fit_to_box": false,
           "font_size": 182,
           "layout": "horizontal",
-          "_id": "K30"
+          "_id": "K30",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2025,
@@ -4018,19 +4411,22 @@
             255,
             255
           ],
-          "align": "center",
+          "align": "right",
           "v_align": "center",
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
           "font_size": 182,
           "layout": "horizontal",
-          "_id": "K31"
+          "_id": "K31",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 727,
           "y": 1385,
-          "w": 312,
+          "w": 260,
           "h": 261,
           "text": "네",
           "color": [
@@ -4046,7 +4442,9 @@
           "fit_to_box": false,
           "font_size": 238,
           "layout": "horizontal",
-          "_id": "K32"
+          "_id": "K32",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 2191,
@@ -4067,7 +4465,31 @@
           "fit_to_box": false,
           "font_size": 138,
           "layout": "horizontal",
-          "_id": "K33"
+          "_id": "K33",
+          "font_ratio": 0.85,
+          "render": true
+        },
+        {
+          "x": 1921,
+          "y": 616,
+          "w": 248,
+          "h": 194,
+          "text": "",
+          "font_size": 48,
+          "align": "center",
+          "v_align": "center",
+          "clear": false,
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "transparent",
+          "render": true,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
         }
       ]
     },
@@ -4079,90 +4501,6 @@
       "output_scale": 1,
       "notes": ".kra 원본 bbox 복원 + clear=alpha. 63개 region.",
       "regions": [
-        {
-          "x": 492,
-          "y": 1126,
-          "w": 72,
-          "h": 110,
-          "text": "5",
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "center",
-          "v_align": "center",
-          "letter_spacing": 0,
-          "clear": true,
-          "fit_to_box": false,
-          "font_size": 80,
-          "layout": "horizontal",
-          "_id": "K0"
-        },
-        {
-          "x": 396,
-          "y": 1247,
-          "w": 169,
-          "h": 113,
-          "text": "4",
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "center",
-          "v_align": "center",
-          "letter_spacing": 0,
-          "clear": true,
-          "fit_to_box": false,
-          "font_size": 80,
-          "layout": "horizontal",
-          "_id": "K1"
-        },
-        {
-          "x": 307,
-          "y": 1359,
-          "w": 256,
-          "h": 113,
-          "text": "3",
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "center",
-          "v_align": "center",
-          "letter_spacing": 0,
-          "clear": true,
-          "fit_to_box": false,
-          "font_size": 80,
-          "layout": "horizontal",
-          "_id": "K2"
-        },
-        {
-          "x": 495,
-          "y": 1469,
-          "w": 67,
-          "h": 109,
-          "text": "2",
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "center",
-          "v_align": "center",
-          "letter_spacing": 0,
-          "clear": true,
-          "fit_to_box": false,
-          "font_size": 80,
-          "layout": "horizontal",
-          "_id": "K3"
-        },
         {
           "x": 339,
           "y": 1579,
@@ -4182,7 +4520,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K4"
+          "_id": "K4",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 428,
@@ -4201,14 +4541,17 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K5",
-          "font_ratio": 1.2
+          "font_ratio": 0.93,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 1567,
           "y": 1877,
-          "w": 472,
+          "w": 410,
           "h": 128,
           "text": "지옥팽이",
           "color": [
@@ -4224,12 +4567,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K6"
+          "_id": "K6",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 981,
+          "x": 1068,
           "y": 1849,
-          "w": 562,
+          "w": 399,
           "h": 134,
           "text": "성스러운 사면",
           "color": [
@@ -4245,12 +4590,14 @@
           "fit_to_box": false,
           "font_size": 76,
           "layout": "horizontal",
-          "_id": "K7"
+          "_id": "K7",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 566,
           "y": 1901,
-          "w": 456,
+          "w": 418,
           "h": 134,
           "text": "성스러운 기도",
           "color": [
@@ -4266,7 +4613,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K8"
+          "_id": "K8",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -4287,7 +4636,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K9"
+          "_id": "K9",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -4308,12 +4659,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K10"
+          "_id": "K10",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1565,
           "y": 1754,
-          "w": 452,
+          "w": 414,
           "h": 125,
           "text": "개기일식",
           "color": [
@@ -4329,12 +4682,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K11"
+          "_id": "K11",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1063,
-          "y": 1733,
-          "w": 420,
+          "y": 1732,
+          "w": 416,
           "h": 127,
           "text": "화 염",
           "color": [
@@ -4350,7 +4705,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K12"
+          "_id": "K12",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 566,
@@ -4371,7 +4728,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K13"
+          "_id": "K13",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -4392,12 +4751,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K14"
+          "_id": "K14",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1567,
           "y": 1632,
-          "w": 464,
+          "w": 416,
           "h": 115,
           "text": "벼락치기",
           "color": [
@@ -4413,12 +4774,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K15"
+          "_id": "K15",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1062,
           "y": 1620,
-          "w": 509,
+          "w": 414,
           "h": 109,
           "text": "벌 그림자",
           "color": [
@@ -4434,7 +4797,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K16"
+          "_id": "K16",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 567,
@@ -4455,7 +4820,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K17"
+          "_id": "K17",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -4476,12 +4843,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K18"
+          "_id": "K18",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1567,
           "y": 1505,
-          "w": 480,
+          "w": 416,
           "h": 120,
           "text": "아지랑이",
           "color": [
@@ -4497,12 +4866,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K19"
+          "_id": "K19",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 981,
+          "x": 1061,
           "y": 1505,
-          "w": 586,
+          "w": 506,
           "h": 115,
           "text": "자동 회복",
           "color": [
@@ -4518,7 +4889,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K20"
+          "_id": "K20",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 566,
@@ -4539,7 +4912,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K21"
+          "_id": "K21",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -4560,7 +4935,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K22"
+          "_id": "K22",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1556,
@@ -4581,12 +4958,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K23"
+          "_id": "K23",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 997,
+          "x": 1065,
           "y": 1399,
-          "w": 561,
+          "w": 493,
           "h": 112,
           "text": "자동 부활",
           "color": [
@@ -4602,12 +4981,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K24"
+          "_id": "K24",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 565,
           "y": 1402,
-          "w": 497,
+          "w": 435,
           "h": 130,
           "text": "치료 환약",
           "color": [
@@ -4623,12 +5004,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K25"
+          "_id": "K25",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
           "y": 1358,
-          "w": 295,
+          "w": 488,
           "h": 114,
           "text": "신 령 주",
           "color": [
@@ -4644,12 +5027,15 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K26"
+          "_id": "K26",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true
         },
         {
-          "x": 1377,
+          "x": 1554,
           "y": 1287,
-          "w": 671,
+          "w": 494,
           "h": 113,
           "text": "흐릿한 숫돌",
           "color": [
@@ -4665,12 +5051,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K27"
+          "_id": "K27",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1063,
           "y": 1288,
-          "w": 296,
+          "w": 493,
           "h": 113,
           "text": "생선구이",
           "color": [
@@ -4686,12 +5074,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K28"
+          "_id": "K28",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 565,
           "y": 1297,
-          "w": 305,
+          "w": 498,
           "h": 111,
           "text": "군고구마",
           "color": [
@@ -4707,12 +5097,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K29"
+          "_id": "K29",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
           "y": 1248,
-          "w": 305,
+          "w": 490,
           "h": 112,
           "text": "곰 환 약",
           "color": [
@@ -4728,7 +5120,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K30"
+          "_id": "K30",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1555,
@@ -4749,7 +5143,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K31"
+          "_id": "K31",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1061,
@@ -4770,7 +5166,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K32"
+          "_id": "K32",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 566,
@@ -4791,7 +5189,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K33"
+          "_id": "K33",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
@@ -4812,7 +5212,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K34"
+          "_id": "K34",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1572,
@@ -4833,7 +5235,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K35"
+          "_id": "K35",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1062,
@@ -4854,7 +5258,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K36"
+          "_id": "K36",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 566,
@@ -4875,13 +5281,15 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K37"
+          "_id": "K37",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 0,
-          "y": 693,
+          "y": 1021,
           "w": 571,
-          "h": 438,
+          "h": 110,
           "text": "영방 반혼단",
           "color": [
             255,
@@ -4896,7 +5304,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K38"
+          "_id": "K38",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1554,
@@ -4917,7 +5327,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K39"
+          "_id": "K39",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1061,
@@ -4938,7 +5350,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K40"
+          "_id": "K40",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 566,
@@ -4959,7 +5373,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K41"
+          "_id": "K41",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1384,
@@ -4980,7 +5396,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K42"
+          "_id": "K42",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1063,
@@ -5001,7 +5419,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K43"
+          "_id": "K43",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 565,
@@ -5022,12 +5442,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K44"
+          "_id": "K44",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1596,
+          "x": 1595,
           "y": 696,
-          "w": 208,
+          "w": 453,
           "h": 112,
           "text": "어백초",
           "color": [
@@ -5043,7 +5465,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K45"
+          "_id": "K45",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1101,
@@ -5064,14 +5488,16 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K46"
+          "_id": "K46",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 569,
           "y": 696,
           "w": 529,
           "h": 124,
-          "text": "체 력＋5",
+          "text": "체력 강화",
           "color": [
             255,
             255,
@@ -5085,7 +5511,10 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K47"
+          "_id": "K47",
+          "font_ratio": 0.85,
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 1751,
@@ -5106,7 +5535,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K48"
+          "_id": "K48",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1255,
@@ -5127,12 +5558,14 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K49"
+          "_id": "K49",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 0,
+          "x": 700,
           "y": 564,
-          "w": 1259,
+          "w": 559,
           "h": 135,
           "text": "요술 망치",
           "color": [
@@ -5148,34 +5581,15 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K50"
+          "_id": "K50",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
-          "x": 1985,
-          "y": 374,
-          "w": 63,
-          "h": 159,
-          "text": "I",
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "center",
-          "v_align": "center",
-          "letter_spacing": 0,
-          "clear": true,
-          "fit_to_box": false,
-          "font_size": 80,
-          "layout": "horizontal",
-          "_id": "K51"
-        },
-        {
-          "x": 1207,
-          "y": 370,
-          "w": 650,
-          "h": 189,
+          "x": 1430,
+          "y": 366,
+          "w": 558,
+          "h": 119,
           "text": "새 끼 줄",
           "color": [
             255,
@@ -5190,13 +5604,15 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K52"
+          "_id": "K52",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 937,
           "y": 370,
-          "w": 262,
-          "h": 113,
+          "w": 493,
+          "h": 121,
           "text": "밀 감",
           "color": [
             255,
@@ -5211,7 +5627,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K53"
+          "_id": "K53",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1429,
@@ -5232,7 +5650,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K54"
+          "_id": "K54",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 938,
@@ -5253,7 +5673,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K55"
+          "_id": "K55",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1429,
@@ -5274,7 +5696,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K56"
+          "_id": "K56",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 939,
@@ -5295,7 +5719,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K57"
+          "_id": "K57",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1441,
@@ -5316,7 +5742,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K58"
+          "_id": "K58",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 940,
@@ -5337,7 +5765,9 @@
           "fit_to_box": false,
           "font_size": 80,
           "layout": "horizontal",
-          "_id": "K59"
+          "_id": "K59",
+          "font_ratio": 0.85,
+          "render": true
         },
         {
           "x": 1934,
@@ -5356,9 +5786,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K60",
-          "font_ratio": 1.2
+          "font_ratio": 0.7,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 814,
@@ -5377,15 +5810,18 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K61",
-          "font_ratio": 1.2
+          "font_ratio": 0.7,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         },
         {
           "x": 694,
-          "y": 222,
+          "y": 0,
           "w": 126,
-          "h": 344,
+          "h": 575,
           "text": "공격 강화",
           "color": [
             255,
@@ -5398,9 +5834,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "layout": "rotated",
+          "layout": "horizontal",
           "_id": "K62",
-          "font_ratio": 1.2
+          "font_ratio": 0.7,
+          "rotation": 90,
+          "background": "clear_alpha",
+          "render": true
         }
       ]
     }
