@@ -4726,9 +4726,9 @@
         {
           "box": [
             5,
-            1271,
+            1267,
             718,
-            249
+            253
           ],
           "id": "K0",
           "ja": "",
@@ -4740,8 +4740,8 @@
           "font_ratio": 0.92,
           "font_px": null,
           "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
+          "align": "left",
+          "valign": "top",
           "rotation": 0,
           "pad_x": null,
           "pad_y": null,
@@ -4759,14 +4759,14 @@
             "ko": "누르세요",
             "bbox": [
               5,
-              1271,
+              1267,
               723,
               1520
             ],
             "text_color": "white",
             "layout": "horizontal",
-            "align": "center",
-            "valign": "center",
+            "align": "left",
+            "valign": "top",
             "render": true,
             "source": "kra_extract",
             "font_ratio": 0.92,
@@ -4791,7 +4791,7 @@
           "font_px": 192,
           "letter_spacing": 0,
           "align": "right",
-          "valign": "center",
+          "valign": "bottom",
           "rotation": 0,
           "pad_x": null,
           "pad_y": null,
@@ -4817,7 +4817,7 @@
             "layout": "horizontal",
             "font_px": 192,
             "align": "right",
-            "valign": "center",
+            "valign": "bottom",
             "render": true,
             "source": "kra_extract",
             "clear": "alpha"
@@ -5021,6 +5021,90 @@
             "render": true,
             "source": "kra_extract",
             "clear": "alpha"
+          }
+        },
+        {
+          "box": [
+            1977,
+            275,
+            248,
+            269
+          ],
+          "id": null,
+          "ja": "",
+          "text": "",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "bbox": [
+              1977,
+              275,
+              2225,
+              544
+            ],
+            "text_color": "white",
+            "clear": "alpha",
+            "layout": "horizontal"
+          }
+        },
+        {
+          "box": [
+            2033,
+            680,
+            204,
+            178
+          ],
+          "id": null,
+          "ja": "",
+          "text": "",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "bbox": [
+              2033,
+              680,
+              2237,
+              858
+            ],
+            "text_color": "white",
+            "clear": "alpha",
+            "layout": "horizontal"
           }
         }
       ],
@@ -16597,13 +16681,13 @@
         },
         {
           "box": [
-            1713,
-            1365,
-            772,
-            353
+            1972,
+            1443,
+            328,
+            154
           ],
           "text": "시 간",
-          "font_size": 138,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -16629,13 +16713,13 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
-            "x": 1713,
-            "y": 1365,
-            "w": 772,
-            "h": 353,
+            "x": 1972,
+            "y": 1443,
+            "w": 328,
+            "h": 154,
             "text": "시 간",
             "color": [
               255,
@@ -16648,11 +16732,11 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 138,
             "layout": "horizontal",
             "_id": "K16",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha"
           }
         },
         {

@@ -4054,10 +4054,10 @@
           "background": "clear_alpha"
         },
         {
-          "x": 1713,
-          "y": 1365,
-          "w": 772,
-          "h": 353,
+          "x": 1972,
+          "y": 1443,
+          "w": 328,
+          "h": 154,
           "text": "시 간",
           "color": [
             255,
@@ -4070,11 +4070,11 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 138,
           "layout": "horizontal",
           "_id": "K16",
           "font_ratio": 0.85,
-          "render": true
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 1975,

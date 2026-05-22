@@ -6409,14 +6409,14 @@
           "ko": "누르세요",
           "bbox": [
             5,
-            1271,
+            1267,
             723,
             1520
           ],
           "text_color": "white",
           "layout": "horizontal",
-          "align": "center",
-          "valign": "center",
+          "align": "left",
+          "valign": "top",
           "render": true,
           "source": "kra_extract",
           "font_ratio": 0.92,
@@ -6436,7 +6436,7 @@
           "layout": "horizontal",
           "font_px": 192,
           "align": "right",
-          "valign": "center",
+          "valign": "bottom",
           "render": true,
           "source": "kra_extract",
           "clear": "alpha"
@@ -6516,6 +6516,28 @@
           "render": true,
           "source": "kra_extract",
           "clear": "alpha"
+        },
+        {
+          "bbox": [
+            1977,
+            275,
+            2225,
+            544
+          ],
+          "text_color": "white",
+          "clear": "alpha",
+          "layout": "horizontal"
+        },
+        {
+          "bbox": [
+            2033,
+            680,
+            2237,
+            858
+          ],
+          "text_color": "white",
+          "clear": "alpha",
+          "layout": "horizontal"
         }
       ]
     },
