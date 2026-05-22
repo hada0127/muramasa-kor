@@ -41,7 +41,7 @@
         "line4": "그 힘에 스러진 이들의 운명을 보라."
       },
       "notes": "결과 파일: kr_textures/ui/4AEC2546371FFF47.png. Vita3K 실기 확인에서 오프닝 배경 해시로 정상 표시됨.\nmanual_regions 4개 추가 (편집기에서 검토용; 자동 render 대상 아님).",
-      "manual_regions": [
+      "regions": [
         {
           "x": 1408,
           "y": 553,
@@ -146,7 +146,8 @@
             255
           ]
         }
-      ]
+      ],
+      "source": "textures/originals/4AEC2546371FFF47.png"
     }
   ]
 }

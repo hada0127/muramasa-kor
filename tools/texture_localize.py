@@ -74,7 +74,8 @@ def _draw_spaced(draw, x, y, line, font, fill, ls, bold=False):
 def render_text_to_image(width, height, text, font_path, font_size,
                          color=(255, 255, 255, 255), align="left",
                          line_spacing=4, bold=False, v_align="top",
-                         fit_to_box=False, letter_spacing=0):
+                         fit_to_box=False, letter_spacing=0,
+                         outline_width=0, outline_color=(0, 0, 0, 255)):
     """텍스트를 RGBA 이미지로 렌더링"""
     img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
@@ -126,13 +127,24 @@ def render_text_to_image(width, height, text, font_path, font_size,
             x = -bbox[0]
         draw_y = y - bbox[1]
 
+        sw = max(0, int(outline_width or 0))
+        sfill = tuple(outline_color) if sw else None
         if ls:
             _draw_spaced(draw, x, draw_y, line, font, color, ls, bold=bold)
+            # 자간 모드는 stroke 별도 처리 필요 — 글자별 stroke
+            if sw:
+                cx = x
+                for ch in line:
+                    draw.text((cx, draw_y), ch, font=font, fill=color,
+                              stroke_width=sw, stroke_fill=sfill)
+                    cx += font.getlength(ch) + ls
         elif bold:
-            # bold: draw slightly offset copies
             for dx in [-1, 0, 1]:
                 for dy in [-1, 0, 1]:
                     draw.text((x + dx, draw_y + dy), line, font=font, fill=color)
+        elif sw:
+            draw.text((x, draw_y), line, font=font, fill=color,
+                      stroke_width=sw, stroke_fill=sfill)
         else:
             draw.text((x, draw_y), line, font=font, fill=color)
 
@@ -335,6 +347,8 @@ def process_texture(hash_id, tex_config, preview=False):
                 color=color, align=align, bold=bold, v_align=v_align,
                 fit_to_box=bool(region.get("fit_to_box", False)),
                 letter_spacing=int(region.get("letter_spacing", 0)),
+                outline_width=int(region.get("outline_width", 0) or 0),
+                outline_color=tuple(region.get("outline_color") or (0, 0, 0, 255)),
             )
 
             # 3. 합성

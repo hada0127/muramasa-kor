@@ -287,10 +287,10 @@ def render_preview(hash_id, system):
     if system == "localize":
         cfg = load_json(LOCALIZE_CONFIG)
         tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
+        # manual_regions만 있고 사용자가 render를 요청 → regions로 승격 (자동 render 대상)
         if tex is not None and not tex.get("regions") and tex.get("manual_regions"):
-            return {"ok": False, "error":
-                    "수동 편집(Krita) 텍스처입니다. 좌표·텍스트는 manual_regions에 "
-                    "저장되지만 PNG는 자동 생성되지 않습니다 — kr_textures/ui/의 파일을 직접 편집하세요."}
+            tex["regions"] = tex.pop("manual_regions")
+            save_json(LOCALIZE_CONFIG, cfg)
         proc = subprocess.run(
             [sys.executable, str(ROOT / "tools" / "texture_localize.py"), hash_id],
             cwd=str(ROOT), capture_output=True, text=True,
