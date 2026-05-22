@@ -89,6 +89,15 @@ def localize_regions(tex):
             "orient": r.get("orient"),
             "outline_width": r.get("outline_width", 0),
             "outline_color": r.get("outline_color") or [0, 0, 0, 255],
+            # UI 통일로 노출하는 place-style 속성 (기본값으로 자동 채움)
+            "layout": r.get("layout"),
+            "rotation": r.get("rotation", 0),
+            "font_ratio": r.get("font_ratio", 0.85),
+            "font_px": r.get("font_px"),
+            "pad_x": r.get("pad_x"),
+            "pad_y": r.get("pad_y"),
+            "background": r.get("background"),
+            "render": r.get("render", True),
             "native": r,
         })
     return out

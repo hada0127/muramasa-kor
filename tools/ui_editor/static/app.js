@@ -362,37 +362,40 @@ function renderProps() {
   html += `<div class="field"><label>박스 (x, y, w, h)</label><div class="field-row">
     ${boxInput("bx", r.box[0])}${boxInput("by", r.box[1])}${boxInput("bw", r.box[2])}${boxInput("bh", r.box[3])}</div></div>`;
 
-  if (CUR.system === "localize") {
-    html += field("font_size", "글씨 크기 (px)", `<input type="number" data-k="font_size" value="${r.font_size || 24}">`);
-    html += selField("colorPick", "글씨 색", colorToName(r.color), [["white", "화이트"], ["black", "블랙"]]);
-    html += selField("align", "가로 정렬", r.align || "left", [["left", "왼쪽"], ["center", "가운데"], ["right", "오른쪽"]]);
-    html += selField("v_align", "세로 정렬", r.v_align || "top", [["top", "위"], ["center", "가운데"], ["bottom", "아래"]]);
-    html += checkField("fit_to_box", "박스에 맞춰 축소", r.fit_to_box);
-    html += field("letter_spacing", "자간 (px, 음수 가능)", `<input type="number" data-k="letter_spacing" value="${r.letter_spacing || 0}">`);
-    html += selField("bgLoc", "배경 처리", r.clear ? "clear" : "transparent",
-      [["transparent", "투명(원본 유지)"], ["clear", "기존 영역 삭제"]]);
-    html += outlineFields(r);
-  } else if (CUR.system === "place") {
-    html += selField("text_color", "글씨 색", r.text_color || "black", [["black", "블랙"], ["white", "화이트"]]);
-    html += selField("background", "배경 색", r.background || "transparent",
-      [["transparent", "투명"], ["black", "블랙"], ["red", "지명 레드"],
-       ["clear_alpha", "기존 영역 삭제"], ["clear_white", "흰 글자 제거"]]);
-    html += selField("layout", "쓰기 방향", r.layout || "auto",
-      [["auto", "자동"], ["horizontal", "가로쓰기"], ["vertical", "세로쓰기"], ["vertical_columns", "세로쓰기(열)"], ["rotated", "회전 90°(세로배너)"]]);
-    html += selField("rotation", "회전", String(r.rotation || 0),
-      [["0", "0°"], ["90", "90°"], ["-90", "-90°"], ["180", "180°"]]);
-    html += `<div class="field-row">
-      <div>${selField("align", "가로 정렬", r.align || "center", [["left", "왼쪽"], ["center", "가운데"], ["right", "오른쪽"]])}</div>
-      <div>${selField("valign", "세로 정렬", r.valign || "center", [["top", "위"], ["center", "가운데"], ["bottom", "아래"]])}</div></div>`;
-    html += sliderField("font_ratio", "글씨 비율", r.font_ratio ?? 0.85, 0.1, 1.5, 0.01);
-    html += field("font_px", "글씨 크기(px, 0=비율 사용)", `<input type="number" data-k="font_px" value="${r.font_px || 0}">`);
-    html += sliderField("letter_spacing", "자간 (px)", r.letter_spacing || 0, -20, 120, 1);
-    html += `<div class="field-row">
-      <div>${sliderField("pad_x", "좌우 여백(px)", r.pad_x ?? 0, 0, 200, 1)}</div>
-      <div>${sliderField("pad_y", "상하 여백(px)", r.pad_y ?? 0, 0, 200, 1)}</div></div>`;
-    html += outlineFields(r);
-    html += checkField("render", "이 영역 렌더링", r.render !== false);
-  }
+  // 시스템 공통 속성 패널 — localize 와 place 가 같은 항목을 보이도록 통일.
+  // 시스템별 키 차이는 readProps 에서 매핑 (localize: color/v_align/font_size, place: text_color/valign/font_px).
+  const isLoc = CUR.system === "localize";
+  // 글씨 색 — 양쪽 모두 화이트/블랙 enum (단순화). localize 의 RGBA 는 자동 매핑.
+  const colorVal = isLoc ? colorToName(r.color) : (r.text_color || "black");
+  html += selField("text_color", "글씨 색", colorVal, [["black", "블랙"], ["white", "화이트"]]);
+  // 배경 색 / 처리 — 같은 enum 으로 통합. localize 는 clear=true ↔ clear_alpha 로 매핑.
+  let bgVal;
+  if (isLoc) bgVal = r.clear ? "clear_alpha" : "transparent";
+  else bgVal = r.background || "transparent";
+  html += selField("background", "배경 색", bgVal,
+    [["transparent", "투명"], ["black", "블랙"], ["red", "지명 레드"],
+     ["clear_alpha", "기존 영역 삭제"], ["clear_white", "흰 글자 제거"]]);
+  // 쓰기 방향 — localize 도 layout 지원 (default horizontal)
+  html += selField("layout", "쓰기 방향", r.layout || (isLoc ? "horizontal" : "auto"),
+    [["auto", "자동"], ["horizontal", "가로쓰기"], ["vertical", "세로쓰기"], ["vertical_columns", "세로쓰기(열)"], ["rotated", "회전 90°(세로배너)"]]);
+  html += selField("rotation", "회전", String(r.rotation || 0),
+    [["0", "0°"], ["90", "90°"], ["-90", "-90°"], ["180", "180°"]]);
+  // 정렬 — localize 는 v_align 키 사용. UI 는 valign 으로 통일하고 readProps 에서 둘 다 기록.
+  const valignVal = isLoc ? (r.v_align || "center") : (r.valign || "center");
+  html += `<div class="field-row">
+    <div>${selField("align", "가로 정렬", r.align || "center", [["left", "왼쪽"], ["center", "가운데"], ["right", "오른쪽"]])}</div>
+    <div>${selField("valign", "세로 정렬", valignVal, [["top", "위"], ["center", "가운데"], ["bottom", "아래"]])}</div></div>`;
+  html += sliderField("font_ratio", "글씨 비율", r.font_ratio ?? 0.85, 0.1, 1.5, 0.01);
+  // 글씨 크기 — localize 는 font_size (절대값 권장), place 는 font_px (0=비율)
+  const fsVal = isLoc ? (r.font_size || 0) : (r.font_px || 0);
+  html += field("font_px", "글씨 크기(px, 0=비율 사용)", `<input type="number" data-k="font_px" value="${fsVal}">`);
+  html += sliderField("letter_spacing", "자간 (px)", r.letter_spacing || 0, -20, 120, 1);
+  html += `<div class="field-row">
+    <div>${sliderField("pad_x", "좌우 여백(px)", r.pad_x ?? 0, 0, 200, 1)}</div>
+    <div>${sliderField("pad_y", "상하 여백(px)", r.pad_y ?? 0, 0, 200, 1)}</div></div>`;
+  html += outlineFields(r);
+  if (isLoc) html += checkField("fit_to_box", "박스에 맞춰 축소", r.fit_to_box);
+  html += checkField("render", "이 영역 렌더링", r.render !== false);
   form.innerHTML = html;
   form.oninput = onFormInput;
   form.onchange = onFormInput;
@@ -471,30 +474,39 @@ function readProps() {
   const map = { bx: 0, by: 1, bw: 2, bh: 3 };
   $$("[data-box]").forEach((el) => (r.box[map[el.dataset.box]] = Math.round(+el.value || 0)));
   clampBox(r.box);  // 영역 밖 이탈 방지
-  // fields
+  // fields — 시스템별 키 매핑 (UI 는 통일, 데이터는 native 키로 변환)
+  const isLoc = CUR.system === "localize";
   $$("[data-k]").forEach((el) => {
     const k = el.dataset.k;
     const v = el.type === "checkbox" ? el.checked : el.value;
-    if (k === "colorPick") {
-      r.color = v === "black" ? [0, 0, 0, 255] : [255, 255, 255, 255];
-    } else if (k === "bgLoc") {
-      r.clear = v === "clear";
-    } else if (k === "font_size") {
-      r.font_size = parseInt(v) || 24;
+    if (k === "text_color") {
+      if (isLoc) r.color = v === "black" ? [0, 0, 0, 255] : [255, 255, 255, 255];
+      else r.text_color = v;
+    } else if (k === "background") {
+      if (isLoc) {
+        // localize 는 clear true/false 만 표현 가능 → clear_alpha/clear_white 는 clear=true 로 매핑
+        r.clear = (v === "clear_alpha" || v === "clear_white");
+        r.background = v;  // place 호환용도 같이 기록
+      } else {
+        r.background = v;
+      }
+    } else if (k === "valign") {
+      if (isLoc) r.v_align = v;
+      else r.valign = v;
     } else if (k === "letter_spacing") {
       r.letter_spacing = parseInt(v) || 0;
     } else if (k === "rotation") {
       r.rotation = parseInt(v) || 0;
     } else if (k === "font_px") {
       const n = parseInt(v);
-      r.font_px = n > 0 ? n : null;   // 0 = 글씨 비율 사용
+      // localize 는 font_size 절대값, place 는 font_px (0=비율)
+      if (isLoc) r.font_size = n > 0 ? n : (r.font_size || 24);
+      else r.font_px = n > 0 ? n : null;
     } else if (k === "pad_x" || k === "pad_y") {
       const n = parseInt(v);
-      r[k] = n > 0 ? n : null;   // 0 = 기본 여백 사용(미지정)
+      r[k] = n > 0 ? n : null;
     } else if (k === "font_ratio" || k === "padding") {
       r[k] = parseFloat(v) || 0;
-    } else if (k === "background") {
-      r.background = v;
     } else if (k === "outline_width") {
       r.outline_width = parseInt(v) || 0;
     } else if (k === "outline_alpha" || k === "outline_hex") {

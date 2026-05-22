@@ -94,6 +94,14 @@ def _to_native_localize(r):
     _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
     if r.get("orient"):
         nr["orient"] = r["orient"]
+    # UI 통일로 추가된 place-style 속성도 round-trip 보존
+    for k in ("layout", "rotation", "font_ratio", "font_px",
+             "pad_x", "pad_y", "background", "render"):
+        v = r.get(k)
+        if v is None or v == "" or v == 0:
+            nr.pop(k, None)
+        else:
+            nr[k] = v
     # 외곽선
     ow = int(r.get("outline_width") or 0)
     oc = r.get("outline_color")
