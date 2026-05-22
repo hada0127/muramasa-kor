@@ -635,7 +635,7 @@
         2048,
         2048
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] CLEAR_C0 ja \"総新婦\"→\"絡新婦\"(조로구모) 오타 정정 적용됨. 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "0130920C24D1E53C",
@@ -757,7 +757,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "05D6F7C75F32325B",
@@ -879,7 +879,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "0770DFDD08479BD2",
@@ -1001,7 +1001,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "0912E45A567A41C9",
@@ -1174,7 +1174,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "0AA74C448087838A",
@@ -1348,7 +1348,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "1823D39C0279886B",
@@ -2181,7 +2181,7 @@
         1024,
         512
       ],
-      "memo": "지도 화면 지명 라벨 (야마시로 등)"
+      "memo": "-"
     },
     {
       "hash": "1D6742BBC0DDB7EC",
@@ -2666,7 +2666,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "247C255A400261FF",
@@ -3456,15 +3456,15 @@
             205
           ],
           "id": "C1",
-          "ja": "武蔵街道 祠の場",
-          "text": "무사시 가도 사당의 장",
+          "ja": "犬神徳川綱吉",
+          "text": "이누가미 도쿠가와 쓰나요시",
           "background": "clear_white",
           "text_color": "white",
           "layout": "rotated",
           "padding": 0.08,
           "font_ratio": 1.21,
           "font_px": null,
-          "letter_spacing": 30,
+          "letter_spacing": 28,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -3481,8 +3481,8 @@
           "native": {
             "id": "C1",
             "kind": "character",
-            "ja": "武蔵街道 祠の場",
-            "ko": "무사시 가도 사당의 장",
+            "ja": "犬神徳川綱吉",
+            "ko": "이누가미 도쿠가와 쓰나요시",
             "bbox": [
               0,
               0,
@@ -3496,7 +3496,7 @@
             "source": "visual_manual",
             "render": true,
             "layout": "rotated",
-            "letter_spacing": 30
+            "letter_spacing": 28
           }
         }
       ],
@@ -3504,7 +3504,7 @@
         2048,
         2048
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] C1 정정 적용됨 (武蔵街道 祠の場→犬神徳川綱吉). 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "2D3A29BE9B32D34A",
@@ -3626,7 +3626,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "2E2003777A770327",
@@ -4209,7 +4209,7 @@
         1024,
         512
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "31710FB73B2686EF",
@@ -4334,8 +4334,8 @@
             932
           ],
           "id": "B0",
-          "ja": "地獄八景 大焦熱",
-          "text": "지옥팔경 대초열",
+          "ja": "東山六道ヶ辻",
+          "text": "히가시야마 로쿠도가츠지",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -4359,8 +4359,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "地獄八景 大焦熱",
-            "ko": "지옥팔경 대초열",
+            "ja": "東山六道ヶ辻",
+            "ko": "히가시야마 로쿠도가츠지",
             "bbox": [
               1253,
               16,
@@ -4385,8 +4385,8 @@
             161
           ],
           "id": "B1",
-          "ja": "地獄八景 等活",
-          "text": "지옥팔경 등활",
+          "ja": "地獄八景 大焦熱",
+          "text": "지옥팔경 대초열",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -4410,8 +4410,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "地獄八景 等活",
-            "ko": "지옥팔경 등활",
+            "ja": "地獄八景 大焦熱",
+            "ko": "지옥팔경 대초열",
             "bbox": [
               16,
               19,
@@ -4484,7 +4484,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0/B1 정정 적용됨 (B0=東山六道ヶ辻, B1=地獄八景 大焦熱). 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "3302A86BDC50A780",
@@ -4708,7 +4708,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "3B58B76CBA15E487",
@@ -5252,7 +5252,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "3ECF3B0D2C2907BE",
@@ -5477,7 +5477,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ Gemini 검증 완료 — B0 \"江戸 綱釜藩邸 上屋敷\" 확정 (오코이/네코마타 시나리오의 츠나가마 번저, 모모히메의 綱谷와는 다른 번). 변경 없음."
     },
     {
       "hash": "4633B92FBA1371F4",
@@ -5653,8 +5653,8 @@
             956
           ],
           "id": "B0",
-          "ja": "戸塚宿観念寺",
-          "text": "도쓰카주쿠 간넨지",
+          "ja": "東海道 戸塚宿",
+          "text": "도카이도 도쓰카주쿠",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -5678,8 +5678,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "戸塚宿観念寺",
-            "ko": "도쓰카주쿠 간넨지",
+            "ja": "東海道 戸塚宿",
+            "ko": "도카이도 도쓰카주쿠",
             "bbox": [
               1259,
               17,
@@ -5704,8 +5704,8 @@
             721
           ],
           "id": "B1",
-          "ja": "綱谷藩勝尾城",
-          "text": "츠나야 번 가쓰오성",
+          "ja": "とある山中",
+          "text": "어느 산속",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -5729,8 +5729,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "綱谷藩勝尾城",
-            "ko": "츠나야 번 가쓰오성",
+            "ja": "とある山中",
+            "ko": "어느 산속",
             "bbox": [
               1259,
               1009,
@@ -5755,8 +5755,8 @@
             158
           ],
           "id": "B2",
-          "ja": "綱谷藩勝尾城回廊",
-          "text": "츠나야 번 가쓰오성 회랑",
+          "ja": "綱谷藩 若宮邸宅庭",
+          "text": "츠나야 번 와카미야 저택 정원",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -5780,8 +5780,8 @@
           "native": {
             "id": "B2",
             "kind": "banner",
-            "ja": "綱谷藩勝尾城回廊",
-            "ko": "츠나야 번 가쓰오성 회랑",
+            "ja": "綱谷藩 若宮邸宅庭",
+            "ko": "츠나야 번 와카미야 저택 정원",
             "bbox": [
               19,
               19,
@@ -5806,8 +5806,8 @@
             161
           ],
           "id": "B3",
-          "ja": "綱谷藩葛銀字庭",
-          "text": "츠나야 번 갈은자 정원",
+          "ja": "綱谷藩 勝尾城 回廊",
+          "text": "츠나야 번 가쓰오성 회랑",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -5831,8 +5831,8 @@
           "native": {
             "id": "B3",
             "kind": "banner",
-            "ja": "綱谷藩葛銀字庭",
-            "ko": "츠나야 번 갈은자 정원",
+            "ja": "綱谷藩 勝尾城 回廊",
+            "ko": "츠나야 번 가쓰오성 회랑",
             "bbox": [
               17,
               212,
@@ -5857,8 +5857,8 @@
             162
           ],
           "id": "B4",
-          "ja": "由比ヶ浜",
-          "text": "유이가하마",
+          "ja": "綱谷藩 勝尾城",
+          "text": "츠나야 번 가쓰오성",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -5882,8 +5882,8 @@
           "native": {
             "id": "B4",
             "kind": "banner",
-            "ja": "由比ヶ浜",
-            "ko": "유이가하마",
+            "ja": "綱谷藩 勝尾城",
+            "ko": "츠나야 번 가쓰오성",
             "bbox": [
               17,
               412,
@@ -5908,8 +5908,8 @@
             158
           ],
           "id": "B5",
-          "ja": "釣船川船着場",
-          "text": "쓰리부네강 선착장",
+          "ja": "戸塚宿 観念寺",
+          "text": "도쓰카주쿠 간넨지",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -5933,8 +5933,8 @@
           "native": {
             "id": "B5",
             "kind": "banner",
-            "ja": "釣船川船着場",
-            "ko": "쓰리부네강 선착장",
+            "ja": "戸塚宿 観念寺",
+            "ko": "도쓰카주쿠 간넨지",
             "bbox": [
               15,
               613,
@@ -6007,7 +6007,7 @@
         2048,
         2048
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0~B5 6개 region 정정 적용됨 (Gemini 검증). K0/K1/K2/C0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "464E370EF865D0AC",
@@ -6030,8 +6030,8 @@
             162
           ],
           "id": "B1",
-          "ja": "大根藩馬路城跡",
-          "text": "다이콘 번 마지성 옛터",
+          "ja": "大根藩馬路城",
+          "text": "다이콘 번 마지성",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -6055,8 +6055,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "大根藩馬路城跡",
-            "ko": "다이콘 번 마지성 옛터",
+            "ja": "大根藩馬路城",
+            "ko": "다이콘 번 마지성",
             "bbox": [
               979,
               18,
@@ -6081,8 +6081,8 @@
             164
           ],
           "id": "B2",
-          "ja": "馬路城 大天守",
-          "text": "마지성 대천수",
+          "ja": "大根芋畑村",
+          "text": "다이콘 이모바타케 마을",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -6106,8 +6106,8 @@
           "native": {
             "id": "B2",
             "kind": "banner",
-            "ja": "馬路城 大天守",
-            "ko": "마지성 대천수",
+            "ja": "大根芋畑村",
+            "ko": "다이콘 이모바타케 마을",
             "bbox": [
               1014,
               835,
@@ -6132,8 +6132,8 @@
             164
           ],
           "id": "B3",
-          "ja": "大根芋畑村",
-          "text": "다이콘 이모바타케 마을",
+          "ja": "大根藩馬路城跡",
+          "text": "다이콘 번 마지성 옛터",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -6157,8 +6157,8 @@
           "native": {
             "id": "B3",
             "kind": "banner",
-            "ja": "大根芋畑村",
-            "ko": "다이콘 이모바타케 마을",
+            "ja": "大根藩馬路城跡",
+            "ko": "다이콘 번 마지성 옛터",
             "bbox": [
               19,
               231,
@@ -6183,8 +6183,8 @@
             162
           ],
           "id": "B4",
-          "ja": "西馬路口",
-          "text": "니시 마지구치",
+          "ja": "馬路城 大天守",
+          "text": "마지성 대천수",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -6208,8 +6208,8 @@
           "native": {
             "id": "B4",
             "kind": "banner",
-            "ja": "西馬路口",
-            "ko": "니시 마지구치",
+            "ja": "馬路城 大天守",
+            "ko": "마지성 대천수",
             "bbox": [
               20,
               431,
@@ -6234,8 +6234,8 @@
             588
           ],
           "id": "B5",
-          "ja": "鬼ヶ島 大蛇",
-          "text": "오니가시마 오로치",
+          "ja": "閻魔王庁",
+          "text": "염라왕청",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -6259,8 +6259,8 @@
           "native": {
             "id": "B5",
             "kind": "banner",
-            "ja": "鬼ヶ島 大蛇",
-            "ko": "오니가시마 오로치",
+            "ja": "閻魔王庁",
+            "ko": "염라왕청",
             "bbox": [
               715,
               630,
@@ -6285,8 +6285,8 @@
             542
           ],
           "id": "K0",
-          "ja": "茶屋",
-          "text": "찻집",
+          "ja": "武蔵",
+          "text": "무사시",
           "background": "black",
           "text_color": "white",
           "layout": "vertical",
@@ -6310,8 +6310,8 @@
           "native": {
             "id": "K0",
             "kind": "box",
-            "ja": "茶屋",
-            "ko": "찻집",
+            "ja": "武蔵",
+            "ko": "무사시",
             "bbox": [
               1587,
               242,
@@ -6335,8 +6335,8 @@
             538
           ],
           "id": "K1",
-          "ja": "船屋",
-          "text": "배집",
+          "ja": "信濃",
+          "text": "시나노",
           "background": "black",
           "text_color": "white",
           "layout": "vertical",
@@ -6360,8 +6360,8 @@
           "native": {
             "id": "K1",
             "kind": "box",
-            "ja": "船屋",
-            "ko": "배집",
+            "ja": "信濃",
+            "ko": "시나노",
             "bbox": [
               1310,
               245,
@@ -6385,8 +6385,8 @@
             534
           ],
           "id": "K2",
-          "ja": "鍛冶",
-          "text": "대장간",
+          "ja": "地獄",
+          "text": "지옥",
           "background": "black",
           "text_color": "white",
           "layout": "vertical",
@@ -6410,8 +6410,8 @@
           "native": {
             "id": "K2",
             "kind": "box",
-            "ja": "鍛冶",
-            "ko": "대장간",
+            "ja": "地獄",
+            "ko": "지옥",
             "bbox": [
               1026,
               245,
@@ -6436,8 +6436,8 @@
             778
           ],
           "id": "C0",
-          "ja": "鳴野豆太夫",
-          "text": "나루노 마메다유",
+          "ja": "町外れの河原",
+          "text": "마을 변두리 강가",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -6461,8 +6461,8 @@
           "native": {
             "id": "C0",
             "kind": "character",
-            "ja": "鳴野豆太夫",
-            "ko": "나루노 마메다유",
+            "ja": "町外れの河原",
+            "ko": "마을 변두리 강가",
             "bbox": [
               1855,
               229,
@@ -6488,8 +6488,8 @@
             220
           ],
           "id": "C1",
-          "ja": "大根藩馬路城",
-          "text": "다이콘 번 마지성",
+          "ja": "鳩野豆太夫",
+          "text": "하토노 마메다유",
           "background": "clear_white",
           "text_color": "white",
           "layout": "rotated",
@@ -6513,8 +6513,8 @@
           "native": {
             "id": "C1",
             "kind": "character",
-            "ja": "大根藩馬路城",
-            "ko": "다이콘 번 마지성",
+            "ja": "鳩野豆太夫",
+            "ko": "하토노 마메다유",
             "bbox": [
               0,
               0,
@@ -6536,7 +6536,7 @@
         2048,
         2048
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] 10개 region 모두 정정 적용됨 (Gemini 검증 — 武蔵/信濃/地獄/閻魔王庁/鳩野豆太夫 등). 편집기에서 확인 후 저장."
     },
     {
       "hash": "4709F3E364671D89",
@@ -6610,8 +6610,8 @@
             165
           ],
           "id": "B0",
-          "ja": "中仙道間道",
-          "text": "나카센도 사잇길",
+          "ja": "鳴神城内座敷",
+          "text": "나루카미성 내 거실",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -6635,8 +6635,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "中仙道間道",
-            "ko": "나카센도 사잇길",
+            "ja": "鳴神城内座敷",
+            "ko": "나루카미성 내 거실",
             "bbox": [
               15,
               18,
@@ -6661,8 +6661,8 @@
             167
           ],
           "id": "B1",
-          "ja": "鳴神城内座敷",
-          "text": "나루카미성 내 거실",
+          "ja": "中仙道間道",
+          "text": "나카센도 사잇길",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -6686,8 +6686,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "鳴神城内座敷",
-            "ko": "나루카미성 내 거실",
+            "ja": "中仙道間道",
+            "ko": "나카센도 사잇길",
             "bbox": [
               17,
               822,
@@ -6759,7 +6759,7 @@
         1024,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0/B1 swap 정정 적용됨 (B0=鳴神城内座敷, B1=中仙道間道). 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "48AA5B2EBC6C43B1",
@@ -6881,7 +6881,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "4AEC2546371FFF47",
@@ -7244,7 +7244,7 @@
         1024,
         512
       ],
-      "memo": ""
+      "memo": "-"
     },
     {
       "hash": "547720A3B20C12AB",
@@ -8132,7 +8132,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ Gemini 검증 완료 — B2 \"菩提寺 虎姫の墓前\" 확정. 변경 없음."
     },
     {
       "hash": "59015B61BFC0B7BC",
@@ -8256,8 +8256,8 @@
             219
           ],
           "id": "C0",
-          "ja": "嵐丸",
-          "text": "아라시마루",
+          "ja": "月ノ輪熊",
+          "text": "츠키노와구마",
           "background": "clear_alpha",
           "text_color": "white",
           "layout": "rotated",
@@ -8281,8 +8281,8 @@
           "native": {
             "id": "C0",
             "kind": "character",
-            "ja": "嵐丸",
-            "ko": "아라시마루",
+            "ja": "月ノ輪熊",
+            "ko": "츠키노와구마",
             "bbox": [
               0,
               612,
@@ -8304,7 +8304,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] C0 정정 적용됨 (嵐丸→月ノ輪熊 츠키노와구마). K0/B0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "615858B46587A60E",
@@ -8429,8 +8429,8 @@
             926
           ],
           "id": "B0",
-          "ja": "鳴神城広間の場",
-          "text": "나루카미성 넓은 방의 장",
+          "ja": "江戸城天守",
+          "text": "에도성 천수각",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -8454,8 +8454,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "鳴神城広間の場",
-            "ko": "나루카미성 넓은 방의 장",
+            "ja": "江戸城天守",
+            "ko": "에도성 천수각",
             "bbox": [
               1272,
               19,
@@ -8480,8 +8480,8 @@
             161
           ],
           "id": "B1",
-          "ja": "江戸城天守",
-          "text": "에도성 천수각",
+          "ja": "鳴神城広間の場",
+          "text": "나루카미성 넓은 방의 장",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -8505,8 +8505,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "江戸城天守",
-            "ko": "에도성 천수각",
+            "ja": "鳴神城広間の場",
+            "ko": "나루카미성 넓은 방의 장",
             "bbox": [
               17,
               220,
@@ -8579,7 +8579,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0/B1 swap 정정 적용됨 (B0=江戸城天守, B1=鳴神城広間の場). 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "6605F569D9389F9C",
@@ -8596,21 +8596,21 @@
       "regions": [
         {
           "box": [
-            1720,
-            11,
-            173,
-            967
+            1722,
+            17,
+            165,
+            953
           ],
           "id": "B0",
           "ja": "瀧夜叉洞 本堂",
-          "text": "다키야샤동굴 본당",
+          "text": "다키야샤 동굴 본당",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.11,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 21,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8628,39 +8628,40 @@
             "id": "B0",
             "kind": "banner",
             "ja": "瀧夜叉洞 本堂",
-            "ko": "다키야샤동굴 본당",
+            "ko": "다키야샤 동굴 본당",
             "bbox": [
-              1720,
-              11,
-              1893,
-              978
+              1722,
+              17,
+              1887,
+              970
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 1.11,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 21
           }
         },
         {
           "box": [
-            1486,
-            983,
-            171,
-            596
+            1490,
+            989,
+            163,
+            584
           ],
           "id": "B1",
           "ja": "瀧夜叉洞",
-          "text": "다키야샤동굴",
+          "text": "다키야샤 동굴",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.03,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 12,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8678,28 +8679,29 @@
             "id": "B1",
             "kind": "banner",
             "ja": "瀧夜叉洞",
-            "ko": "다키야샤동굴",
+            "ko": "다키야샤 동굴",
             "bbox": [
-              1486,
-              983,
-              1657,
-              1579
+              1490,
+              989,
+              1653,
+              1573
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 1.03,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 12
           }
         },
         {
           "box": [
-            13,
-            15,
-            1449,
-            172
+            23,
+            19,
+            1435,
+            164
           ],
           "id": "B2",
           "ja": "白川郷 白銀ヶ淵 廃れ社",
@@ -8708,9 +8710,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.05,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 11,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8730,26 +8732,27 @@
             "ja": "白川郷 白銀ヶ淵 廃れ社",
             "ko": "시라카와고 시로가네가후치 폐사",
             "bbox": [
-              13,
-              15,
-              1462,
-              187
+              23,
+              19,
+              1458,
+              183
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.05,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 11
           }
         },
         {
           "box": [
-            1267,
-            210,
-            172,
-            505
+            1269,
+            216,
+            164,
+            493
           ],
           "id": "B3",
           "ja": "筑紫城",
@@ -8758,9 +8761,9 @@
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 0.92,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 6,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8780,26 +8783,27 @@
             "ja": "筑紫城",
             "ko": "츠쿠시성",
             "bbox": [
-              1267,
-              210,
-              1439,
-              715
+              1269,
+              216,
+              1433,
+              709
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 0.92,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 6
           }
         },
         {
           "box": [
-            10,
-            213,
-            967,
-            173
+            16,
+            219,
+            955,
+            159
           ],
           "id": "B4",
           "ja": "筑紫城 天守閣",
@@ -8808,9 +8812,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.88,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 13,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8830,26 +8834,27 @@
             "ja": "筑紫城 天守閣",
             "ko": "츠쿠시성 천수각",
             "bbox": [
-              10,
-              213,
-              977,
-              386
+              16,
+              219,
+              971,
+              378
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.88,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 13
           }
         },
         {
           "box": [
-            11,
-            413,
-            966,
-            172
+            15,
+            417,
+            956,
+            160
           ],
           "id": "B5",
           "ja": "白銀ヶ淵 参道",
@@ -8858,9 +8863,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 1.08,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 10,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8880,26 +8885,27 @@
             "ja": "白銀ヶ淵 参道",
             "ko": "시로가네가후치 참배길",
             "bbox": [
-              11,
-              413,
-              977,
-              585
+              15,
+              417,
+              971,
+              577
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 1.08,
             "source": "audit_manual",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 10
           }
         },
         {
           "box": [
-            11,
-            608,
-            966,
-            172
+            15,
+            614,
+            956,
+            162
           ],
           "id": "B6",
           "ja": "不知火の隠れ家",
@@ -8908,9 +8914,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.99,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 9,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8930,26 +8936,27 @@
             "ja": "不知火の隠れ家",
             "ko": "시라누이의 은신처",
             "bbox": [
-              11,
-              608,
-              977,
-              780
+              15,
+              614,
+              971,
+              776
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.99,
             "source": "audit_manual",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 9
           }
         },
         {
           "box": [
-            1729,
-            1005,
-            245,
-            569
+            1743,
+            1015,
+            217,
+            543
           ],
           "id": "K0",
           "ja": "大和",
@@ -8958,9 +8965,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.92,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 12,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -8980,26 +8987,27 @@
             "ja": "大和",
             "ko": "야마토",
             "bbox": [
-              1729,
-              1005,
-              1974,
-              1574
+              1743,
+              1015,
+              1960,
+              1558
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.92,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 12
           }
         },
         {
           "box": [
-            17,
-            808,
-            246,
-            571
+            29,
+            824,
+            214,
+            537
           ],
           "id": "K1",
           "ja": "近江",
@@ -9008,7 +9016,7 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.06,
           "font_px": null,
           "letter_spacing": 0,
           "align": "center",
@@ -9030,15 +9038,15 @@
             "ja": "近江",
             "ko": "오미",
             "bbox": [
-              17,
-              808,
-              263,
-              1379
+              29,
+              824,
+              243,
+              1361
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.06,
             "source": "map_notes",
             "render": true,
             "layout": "vertical"
@@ -9046,9 +9054,9 @@
         },
         {
           "box": [
-            1440,
+            1470,
             0,
-            290,
+            246,
             970
           ],
           "id": "C0",
@@ -9058,9 +9066,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.08,
-          "font_ratio": 0.58,
+          "font_ratio": 0.91,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 11,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -9080,19 +9088,19 @@
             "ja": "がしゃ髑髏",
             "ko": "갓샤도쿠로",
             "bbox": [
-              1440,
+              1470,
               0,
-              1730,
+              1716,
               970
             ],
-            "background": "none",
             "clear": "alpha",
             "text_color": "white",
             "padding": 0.08,
-            "font_ratio": 0.58,
+            "font_ratio": 0.91,
             "source": "visual_manual",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 11
           }
         }
       ],
@@ -9100,7 +9108,7 @@
         2048,
         2048
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] 9개 region ja/ko 정정 적용됨 (다키야샤동굴/筑紫城/大和/近江/白川郷 등). 편집기에서 확인 후 저장."
     },
     {
       "hash": "6B6116F83EBE7153",
@@ -9220,7 +9228,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "6CD92157D6C2502F",
@@ -9340,7 +9348,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "7053B8FFC8B89807",
@@ -9561,7 +9569,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 4개 region 모두 일치 (信濃/信濃山奥狐のお宿の場/八幡原 修羅の戦場/血狂毘沙門)."
     },
     {
       "hash": "72165D43344F3190",
@@ -9584,8 +9592,8 @@
             839
           ],
           "id": "B0",
-          "ja": "二人の刺客",
-          "text": "두 명의 자객",
+          "ja": "綱谷藩勝尾城",
+          "text": "츠나야 번 가쓰오성",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -9609,8 +9617,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "二人の刺客",
-            "ko": "두 명의 자객",
+            "ja": "綱谷藩勝尾城",
+            "ko": "츠나야 번 가쓰오성",
             "bbox": [
               1746,
               11,
@@ -9634,56 +9642,6 @@
             173
           ],
           "id": "B1",
-          "ja": "赤坂宿 旅籠の部屋",
-          "text": "아카사카주쿠 여인숙 방",
-          "background": "red",
-          "text_color": "black",
-          "layout": "rotated",
-          "padding": 0.08,
-          "font_ratio": 0.74,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B1",
-            "kind": "banner",
-            "ja": "赤坂宿 旅籠の部屋",
-            "ko": "아카사카주쿠 여인숙 방",
-            "bbox": [
-              11,
-              211,
-              1464,
-              384
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.08,
-            "font_ratio": 0.74,
-            "source": "map_notes",
-            "render": true,
-            "layout": "rotated"
-          }
-        },
-        {
-          "box": [
-            11,
-            15,
-            1448,
-            172
-          ],
-          "id": "B2",
           "ja": "東海道 御油吉田間街道",
           "text": "도카이도 고유 요시다 사이 가도",
           "background": "red",
@@ -9707,15 +9665,15 @@
           ],
           "render": true,
           "native": {
-            "id": "B2",
+            "id": "B1",
             "kind": "banner",
             "ja": "東海道 御油吉田間街道",
             "ko": "도카이도 고유 요시다 사이 가도",
             "bbox": [
               11,
-              15,
-              1459,
-              187
+              211,
+              1464,
+              384
             ],
             "background": "red",
             "text_color": "black",
@@ -9729,11 +9687,11 @@
         {
           "box": [
             11,
-            407,
-            1216,
-            174
+            15,
+            1448,
+            172
           ],
-          "id": "B3",
+          "id": "B2",
           "ja": "東海道 藤川赤坂間街道",
           "text": "도카이도 후지카와 아카사카 사이 가도",
           "background": "red",
@@ -9757,10 +9715,60 @@
           ],
           "render": true,
           "native": {
-            "id": "B3",
+            "id": "B2",
             "kind": "banner",
             "ja": "東海道 藤川赤坂間街道",
             "ko": "도카이도 후지카와 아카사카 사이 가도",
+            "bbox": [
+              11,
+              15,
+              1459,
+              187
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.08,
+            "font_ratio": 0.74,
+            "source": "map_notes",
+            "render": true,
+            "layout": "rotated"
+          }
+        },
+        {
+          "box": [
+            11,
+            407,
+            1216,
+            174
+          ],
+          "id": "B3",
+          "ja": "赤坂宿 旅籠の部屋",
+          "text": "아카사카주쿠 여인숙 방",
+          "background": "red",
+          "text_color": "black",
+          "layout": "rotated",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B3",
+            "kind": "banner",
+            "ja": "赤坂宿 旅籠の部屋",
+            "ko": "아카사카주쿠 여인숙 방",
             "bbox": [
               11,
               407,
@@ -9882,7 +9890,7 @@
         2048,
         2048
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0~B3 정정 적용됨 (綱谷藩勝尾城/東海道 御油吉田間街道/東海道 藤川赤坂間街道/赤坂宿 旅籠の部屋). K0/C0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "7282AD29CF433DA0",
@@ -10153,7 +10161,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 매칭 OK — 5개 region 모두 일치 (何処かの国/大和/峠の茶屋/金剛山山頂高天原入口/鬼助)."
     },
     {
       "hash": "73420FAEA9F664FD",
@@ -10296,8 +10304,8 @@
             172
           ],
           "id": "B0",
-          "ja": "柳生城広間の場",
-          "text": "야규성 넓은 방의 장",
+          "ja": "金剛山山頂高天原入口",
+          "text": "곤고산 산정 다카마가하라 입구",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -10321,8 +10329,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "柳生城広間の場",
-            "ko": "야규성 넓은 방의 장",
+            "ja": "金剛山山頂高天原入口",
+            "ko": "곤고산 산정 다카마가하라 입구",
             "bbox": [
               9,
               11,
@@ -10396,8 +10404,8 @@
             172
           ],
           "id": "B2",
-          "ja": "金剛山山頂高天原入口",
-          "text": "곤고산 산정 다카마가하라 입구",
+          "ja": "柳生城広間の場",
+          "text": "야규성 넓은 방의 장",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -10421,8 +10429,8 @@
           "native": {
             "id": "B2",
             "kind": "banner",
-            "ja": "金剛山山頂高天原入口",
-            "ko": "곤고산 산정 다카마가하라 입구",
+            "ja": "柳生城広間の場",
+            "ko": "야규성 넓은 방의 장",
             "bbox": [
               9,
               395,
@@ -10495,7 +10503,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0/B2 swap 정정 적용됨 (B0=金剛山山頂高天原入口, B2=柳生城広間の場). 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "74EEEC230BEE120C",
@@ -10835,7 +10843,7 @@
         1024,
         512
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "779C5ABBFCE00424",
@@ -10955,7 +10963,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "79C935AA47DD1810",
@@ -11095,7 +11103,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "7DC6CF5A87DB1312",
@@ -14276,8 +14284,8 @@
             785
           ],
           "id": "B0",
-          "ja": "大根芋畑村",
-          "text": "다이콘 이모바타케 마을",
+          "ja": "大根藩馬路城",
+          "text": "다이콘 번 마지성",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -14301,8 +14309,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "大根芋畑村",
-            "ko": "다이콘 이모바타케 마을",
+            "ja": "大根藩馬路城",
+            "ko": "다이콘 번 마지성",
             "bbox": [
               797,
               15,
@@ -14326,8 +14334,8 @@
             172
           ],
           "id": "B1",
-          "ja": "大根藩馬蕗城",
-          "text": "다이콘 번 마후키성",
+          "ja": "大根芋畑村",
+          "text": "다이콘 이모바타케 마을",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -14351,8 +14359,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "大根藩馬蕗城",
-            "ko": "다이콘 번 마후키성",
+            "ja": "大根芋畑村",
+            "ko": "다이콘 이모바타케 마을",
             "bbox": [
               15,
               775,
@@ -14376,8 +14384,8 @@
             235
           ],
           "id": "C0",
-          "ja": "大根義民一揆",
-          "text": "다이콘 의민 잇키",
+          "ja": "鴉の襲撃",
+          "text": "까마귀의 습격",
           "background": "clear_alpha",
           "text_color": "white",
           "layout": "rotated",
@@ -14401,8 +14409,8 @@
           "native": {
             "id": "C0",
             "kind": "character",
-            "ja": "大根義民一揆",
-            "ko": "다이콘 의민 잇키",
+            "ja": "鴉の襲撃",
+            "ko": "까마귀의 습격",
             "bbox": [
               0,
               250,
@@ -14424,7 +14432,7 @@
         1024,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0/B1 swap + C0 정정 적용됨 (B0=大根藩馬路城, B1=大根芋畑村, C0=鴉の襲撃 까마귀의 습격). K0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "8098AD7E2C438C22",
@@ -14497,8 +14505,8 @@
             172
           ],
           "id": "B0",
-          "ja": "柳生城広間の場",
-          "text": "야규성 넓은 방의 장",
+          "ja": "金剛山山頂高天原入口",
+          "text": "곤고산 산정 다카마가하라 입구",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -14522,8 +14530,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "柳生城広間の場",
-            "ko": "야규성 넓은 방의 장",
+            "ja": "金剛山山頂高天原入口",
+            "ko": "곤고산 산정 다카마가하라 입구",
             "bbox": [
               9,
               11,
@@ -14597,8 +14605,8 @@
             172
           ],
           "id": "B2",
-          "ja": "金剛山山頂高天原入口",
-          "text": "곤고산 산정 다카마가하라 입구",
+          "ja": "柳生城広間の場",
+          "text": "야규성 넓은 방의 장",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -14622,8 +14630,8 @@
           "native": {
             "id": "B2",
             "kind": "banner",
-            "ja": "金剛山山頂高天原入口",
-            "ko": "곤고산 산정 다카마가하라 입구",
+            "ja": "柳生城広間の場",
+            "ko": "야규성 넓은 방의 장",
             "bbox": [
               9,
               395,
@@ -14696,7 +14704,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0/B2 swap 정정 적용됨 (B0=金剛山山頂高天原入口, B2=柳生城広間の場). 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "85A4D54EE933339D",
@@ -14769,8 +14777,8 @@
             172
           ],
           "id": "B0",
-          "ja": "御岳駒ヶ岳 刃渡り",
-          "text": "미타케 코마가타케 하와타리",
+          "ja": "甲斐駒ヶ岳 刃渡り",
+          "text": "카이 코마가타케 하와타리",
           "background": "red",
           "text_color": "black",
           "layout": "rotated",
@@ -14794,8 +14802,8 @@
           "native": {
             "id": "B0",
             "kind": "banner",
-            "ja": "御岳駒ヶ岳 刃渡り",
-            "ko": "미타케 코마가타케 하와타리",
+            "ja": "甲斐駒ヶ岳 刃渡り",
+            "ko": "카이 코마가타케 하와타리",
             "bbox": [
               14,
               17,
@@ -14816,7 +14824,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0 정정 적용됨 — 御岳駒ヶ岳 刃渡り → 甲斐駒ヶ岳 刃渡り (Gemini 검증: 야마나시현 명산, K0=甲斐와 일치). 편집기에서 확인 후 저장."
     },
     {
       "hash": "864BD9CBCC496F78",
@@ -14987,7 +14995,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 3개 region 모두 일치 (伊賀/暗夜城広間の場/大百足)."
     },
     {
       "hash": "8725F040AEE76DFC",
@@ -16810,7 +16818,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "8EFF960FC088FDD7",
@@ -16950,7 +16958,7 @@
         1024,
         512
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "922337BDB8D32D0F",
@@ -17070,7 +17078,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "A3BE57CE9854B5CC",
@@ -17864,7 +17872,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "A8486C49F76167C3",
@@ -17937,106 +17945,6 @@
             654
           ],
           "id": "B0",
-          "ja": "伊勢天神高天原入口",
-          "text": "이세 천신 다카마가하라 입구",
-          "background": "red",
-          "text_color": "black",
-          "layout": "vertical",
-          "padding": 0.1,
-          "font_ratio": 0.66,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B0",
-            "kind": "banner",
-            "ja": "伊勢天神高天原入口",
-            "ko": "이세 천신 다카마가하라 입구",
-            "bbox": [
-              1637,
-              8,
-              1809,
-              662
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.1,
-            "font_ratio": 0.66,
-            "source": "map_notes",
-            "render": true,
-            "layout": "vertical"
-          }
-        },
-        {
-          "box": [
-            9,
-            11,
-            1352,
-            172
-          ],
-          "id": "B1",
-          "ja": "二見浦",
-          "text": "후타미우라",
-          "background": "red",
-          "text_color": "black",
-          "layout": "rotated",
-          "padding": 0.08,
-          "font_ratio": 0.74,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B1",
-            "kind": "banner",
-            "ja": "二見浦",
-            "ko": "후타미우라",
-            "bbox": [
-              9,
-              11,
-              1361,
-              183
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.08,
-            "font_ratio": 0.74,
-            "source": "map_notes",
-            "render": true,
-            "layout": "rotated"
-          }
-        },
-        {
-          "box": [
-            289,
-            200,
-            172,
-            506
-          ],
-          "id": "B2",
           "ja": "伊勢街道",
           "text": "이세 가도",
           "background": "red",
@@ -18060,10 +17968,110 @@
           ],
           "render": true,
           "native": {
-            "id": "B2",
+            "id": "B0",
             "kind": "banner",
             "ja": "伊勢街道",
             "ko": "이세 가도",
+            "bbox": [
+              1637,
+              8,
+              1809,
+              662
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.1,
+            "font_ratio": 0.66,
+            "source": "map_notes",
+            "render": true,
+            "layout": "vertical"
+          }
+        },
+        {
+          "box": [
+            9,
+            11,
+            1352,
+            172
+          ],
+          "id": "B1",
+          "ja": "伊勢天神高天原入口",
+          "text": "이세 천신 다카마가하라 입구",
+          "background": "red",
+          "text_color": "black",
+          "layout": "rotated",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B1",
+            "kind": "banner",
+            "ja": "伊勢天神高天原入口",
+            "ko": "이세 천신 다카마가하라 입구",
+            "bbox": [
+              9,
+              11,
+              1361,
+              183
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.08,
+            "font_ratio": 0.74,
+            "source": "map_notes",
+            "render": true,
+            "layout": "rotated"
+          }
+        },
+        {
+          "box": [
+            289,
+            200,
+            172,
+            506
+          ],
+          "id": "B2",
+          "ja": "二見浦",
+          "text": "후타미우라",
+          "background": "red",
+          "text_color": "black",
+          "layout": "vertical",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B2",
+            "kind": "banner",
+            "ja": "二見浦",
+            "ko": "후타미우라",
             "bbox": [
               289,
               200,
@@ -18135,7 +18143,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0~B2 rotation 정정 적용됨 (B0=伊勢街道, B1=伊勢天神高天原入口, B2=二見浦). K0/C0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "ADE2B8B5998887A9",
@@ -18324,7 +18332,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "BAD2BDA6C2AE4B16",
@@ -18444,7 +18452,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "C3848C8E5ED70F7A",
@@ -18615,7 +18623,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 3개 일치 (美濃/伊吹山 不破関/虎姫)."
     },
     {
       "hash": "C84B5B3A51547DF0",
@@ -18786,7 +18794,7 @@
         1024,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 3개 일치 (遠江/秋葉山山腹/小夜)."
     },
     {
       "hash": "C8B2975F2A629F4B",
@@ -18957,7 +18965,7 @@
         1024,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 3개 일치 (駿河/富士山頂龍脈/龍神)."
     },
     {
       "hash": "C8C4589102431759",
@@ -19128,7 +19136,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 3개 일치 (大和/奈良善祷寺 金堂/土蜘蛛)."
     },
     {
       "hash": "C8E42A56480DB818",
@@ -19252,106 +19260,6 @@
             786
           ],
           "id": "B1",
-          "ja": "江戸 日本橋",
-          "text": "에도 니혼바시",
-          "background": "red",
-          "text_color": "black",
-          "layout": "vertical",
-          "padding": 0.1,
-          "font_ratio": 0.66,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B1",
-            "kind": "banner",
-            "ja": "江戸 日本橋",
-            "ko": "에도 니혼바시",
-            "bbox": [
-              681,
-              214,
-              853,
-              1000
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.1,
-            "font_ratio": 0.66,
-            "source": "audit_manual",
-            "render": true,
-            "layout": "vertical"
-          }
-        },
-        {
-          "box": [
-            481,
-            214,
-            172,
-            786
-          ],
-          "id": "B2",
-          "ja": "野外れの河原",
-          "text": "교외의 강가",
-          "background": "red",
-          "text_color": "black",
-          "layout": "vertical",
-          "padding": 0.1,
-          "font_ratio": 0.66,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B2",
-            "kind": "banner",
-            "ja": "野外れの河原",
-            "ko": "교외의 강가",
-            "bbox": [
-              481,
-              214,
-              653,
-              1000
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.1,
-            "font_ratio": 0.66,
-            "source": "audit_manual",
-            "render": true,
-            "layout": "vertical"
-          }
-        },
-        {
-          "box": [
-            279,
-            214,
-            172,
-            786
-          ],
-          "id": "B3",
           "ja": "鈴ヶ森刑場",
           "text": "스즈가모리 형장",
           "background": "red",
@@ -19375,10 +19283,110 @@
           ],
           "render": true,
           "native": {
-            "id": "B3",
+            "id": "B1",
             "kind": "banner",
             "ja": "鈴ヶ森刑場",
             "ko": "스즈가모리 형장",
+            "bbox": [
+              681,
+              214,
+              853,
+              1000
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.1,
+            "font_ratio": 0.66,
+            "source": "audit_manual",
+            "render": true,
+            "layout": "vertical"
+          }
+        },
+        {
+          "box": [
+            481,
+            214,
+            172,
+            786
+          ],
+          "id": "B2",
+          "ja": "町外れの河原",
+          "text": "마을 변두리 강가",
+          "background": "red",
+          "text_color": "black",
+          "layout": "vertical",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B2",
+            "kind": "banner",
+            "ja": "町外れの河原",
+            "ko": "마을 변두리 강가",
+            "bbox": [
+              481,
+              214,
+              653,
+              1000
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.1,
+            "font_ratio": 0.66,
+            "source": "audit_manual",
+            "render": true,
+            "layout": "vertical"
+          }
+        },
+        {
+          "box": [
+            279,
+            214,
+            172,
+            786
+          ],
+          "id": "B3",
+          "ja": "江戸 日本橋",
+          "text": "에도 니혼바시",
+          "background": "red",
+          "text_color": "black",
+          "layout": "vertical",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B3",
+            "kind": "banner",
+            "ja": "江戸 日本橋",
+            "ko": "에도 니혼바시",
             "bbox": [
               279,
               214,
@@ -19449,7 +19457,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B1/B3 swap + B2 한자 정정 적용됨 (B1=鈴ヶ森刑場, B3=江戸 日本橋, B2 野→町). 나머지 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "CB18104E808B56B3",
@@ -19569,7 +19577,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "D35B39CA7FAED5D7",
@@ -19689,7 +19697,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "DD1F1F1DE2039AAC",
@@ -19809,7 +19817,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "DF66CADDABE022E3",
@@ -22448,7 +22456,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "E4A9FD9D2047280B",
@@ -22585,7 +22593,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "E8E01EAF5D41DB52",
@@ -26794,56 +26802,6 @@
             172
           ],
           "id": "B0",
-          "ja": "甲府の街道",
-          "text": "코후의 가도",
-          "background": "red",
-          "text_color": "black",
-          "layout": "rotated",
-          "padding": 0.08,
-          "font_ratio": 0.74,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B0",
-            "kind": "banner",
-            "ja": "甲府の街道",
-            "ko": "코후의 가도",
-            "bbox": [
-              15,
-              15,
-              984,
-              187
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.08,
-            "font_ratio": 0.74,
-            "source": "map_notes",
-            "render": true,
-            "layout": "rotated"
-          }
-        },
-        {
-          "box": [
-            15,
-            819,
-            737,
-            172
-          ],
-          "id": "B1",
           "ja": "山の中の一軒家",
           "text": "산속의 외딴집",
           "background": "red",
@@ -26867,10 +26825,60 @@
           ],
           "render": true,
           "native": {
-            "id": "B1",
+            "id": "B0",
             "kind": "banner",
             "ja": "山の中の一軒家",
             "ko": "산속의 외딴집",
+            "bbox": [
+              15,
+              15,
+              984,
+              187
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.08,
+            "font_ratio": 0.74,
+            "source": "map_notes",
+            "render": true,
+            "layout": "rotated"
+          }
+        },
+        {
+          "box": [
+            15,
+            819,
+            737,
+            172
+          ],
+          "id": "B1",
+          "ja": "甲府の街道",
+          "text": "코후의 가도",
+          "background": "red",
+          "text_color": "black",
+          "layout": "rotated",
+          "padding": 0.08,
+          "font_ratio": 0.74,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B1",
+            "kind": "banner",
+            "ja": "甲府の街道",
+            "ko": "코후의 가도",
             "bbox": [
               15,
               819,
@@ -26942,7 +26950,7 @@
         1024,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] B0/B1 swap 정정 적용됨 (B0=山の中の一軒家, B1=甲府の街道). K0/C0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "E9F2EC8557984A58",
@@ -27163,7 +27171,7 @@
         1024,
         1024
       ],
-      "memo": ""
+      "memo": "✓ 4개 region 모두 일치 (駿河/三保之松原/駿府の旅籠/雪之丞)."
     },
     {
       "hash": "EC585E08CC88B03F",
@@ -27283,7 +27291,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "EDA6F03EC4E141EE",
@@ -27420,7 +27428,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "F1C8031232197225",
@@ -27540,7 +27548,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "F24874ADB9581870",
@@ -27660,7 +27668,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "✓ K0+B0 매칭 일치 (2-region 단순 텍스처)."
     },
     {
       "hash": "FFC64B053648525E",
@@ -27683,8 +27691,8 @@
             570
           ],
           "id": "K0",
-          "ja": "飛騨",
-          "text": "히다",
+          "ja": "伊賀",
+          "text": "이가",
           "background": "black",
           "text_color": "white",
           "layout": "vertical",
@@ -27708,8 +27716,8 @@
           "native": {
             "id": "K0",
             "kind": "box",
-            "ja": "飛騨",
-            "ko": "히다",
+            "ja": "伊賀",
+            "ko": "이가",
             "bbox": [
               1688,
               17,
@@ -27833,8 +27841,8 @@
             967
           ],
           "id": "B1",
-          "ja": "美濃国 境木峠",
-          "text": "미노국 사카이기 고개",
+          "ja": "三珠岳",
+          "text": "미타마다케",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -27858,8 +27866,8 @@
           "native": {
             "id": "B1",
             "kind": "banner",
-            "ja": "美濃国 境木峠",
-            "ko": "미노국 사카이기 고개",
+            "ja": "三珠岳",
+            "ko": "미타마다케",
             "bbox": [
               1486,
               10,
@@ -27883,8 +27891,8 @@
             505
           ],
           "id": "B2",
-          "ja": "三珠岳",
-          "text": "미타마 봉우리",
+          "ja": "とある山中",
+          "text": "어느 산속",
           "background": "red",
           "text_color": "black",
           "layout": "vertical",
@@ -27908,8 +27916,8 @@
           "native": {
             "id": "B2",
             "kind": "banner",
-            "ja": "三珠岳",
-            "ko": "미타마 봉우리",
+            "ja": "とある山中",
+            "ko": "어느 산속",
             "bbox": [
               965,
               210,
@@ -27933,56 +27941,6 @@
             734
           ],
           "id": "B3",
-          "ja": "とある山中",
-          "text": "어느 산속",
-          "background": "red",
-          "text_color": "black",
-          "layout": "vertical",
-          "padding": 0.1,
-          "font_ratio": 0.66,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true,
-          "native": {
-            "id": "B3",
-            "kind": "banner",
-            "ja": "とある山中",
-            "ko": "어느 산속",
-            "bbox": [
-              555,
-              211,
-              728,
-              945
-            ],
-            "background": "red",
-            "text_color": "black",
-            "padding": 0.1,
-            "font_ratio": 0.66,
-            "source": "jp_messages_58_5",
-            "render": true,
-            "layout": "vertical"
-          }
-        },
-        {
-          "box": [
-            1165,
-            211,
-            172,
-            504
-          ],
-          "id": "B4",
           "ja": "岡部邸",
           "text": "오카베 저택",
           "background": "red",
@@ -28006,10 +27964,60 @@
           ],
           "render": true,
           "native": {
-            "id": "B4",
+            "id": "B3",
             "kind": "banner",
             "ja": "岡部邸",
             "ko": "오카베 저택",
+            "bbox": [
+              555,
+              211,
+              728,
+              945
+            ],
+            "background": "red",
+            "text_color": "black",
+            "padding": 0.1,
+            "font_ratio": 0.66,
+            "source": "jp_messages_58_5",
+            "render": true,
+            "layout": "vertical"
+          }
+        },
+        {
+          "box": [
+            1165,
+            211,
+            172,
+            504
+          ],
+          "id": "B4",
+          "ja": "白川郷 白銀ヶ淵 廃れ社",
+          "text": "시라카와고 시로가네가후치 폐사",
+          "background": "red",
+          "text_color": "black",
+          "layout": "vertical",
+          "padding": 0.1,
+          "font_ratio": 0.66,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B4",
+            "kind": "banner",
+            "ja": "白川郷 白銀ヶ淵 廃れ社",
+            "ko": "시라카와고 시로가네가후치 폐사",
             "bbox": [
               1165,
               211,
@@ -28081,7 +28089,7 @@
         2048,
         1024
       ],
-      "memo": ""
+      "memo": "🔄 [재저장 필요] K0/B1~B4 5개 정정 적용됨 (伊賀/三珠岳/とある山中/岡部邸/白川郷 白銀ヶ淵 廃れ社). K1/B0/C0 일치. 편집기에서 확인 후 저장."
     },
     {
       "hash": "FFFFD99DCD90D546",
