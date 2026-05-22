@@ -74,13 +74,13 @@ function selectTexture(hash) {
 }
 
 function loadImage() {
-  const img = $("#tex-img");
-  applyOrigOpacity();  // 원본 투명도(기본 50%) 적용
-  // NAT = region 좌표 기준 공간 (kr PNG 자연크기가 아님 — output_scale 등으로 다를 수 있음)
+  // NAT = region 좌표 기준 공간
   NAT = CUR.coord_size || CUR.size || [1, 1];
-  img.onload = () => applyZoom();
-  // 배경 레이어 = 원본 아트 (한글 텍스트는 별도 CSS 오버레이)
-  img.src = `/api/image?path=${encodeURIComponent(CUR.source || CUR.png)}`;
+  // 베이스 = 원본 아트 (투명도 슬라이더). 한글은 SVG 오버레이로 표시.
+  const tex = $("#tex-img");
+  tex.onload = () => applyZoom();
+  tex.src = `/api/image?path=${encodeURIComponent(CUR.source || CUR.png)}`;
+  applyOrigOpacity();
 }
 
 function applyOrigOpacity() {
@@ -88,6 +88,7 @@ function applyOrigOpacity() {
   $("#tex-img").style.opacity = v / 100;
   $("#orig-opacity-val").textContent = v + "%";
 }
+function scheduleLive() { /* SVG 오버레이는 즉시 그려져 서버 렌더 불필요 */ }
 
 function applyZoom() {
   const z = $("#zoom").value;
@@ -102,11 +103,12 @@ function applyZoom() {
     scale = parseFloat(z);
   }
   SCALE = scale;
-  const img = $("#tex-img");
-  img.style.width = NAT[0] * scale + "px";
-  img.style.height = NAT[1] * scale + "px";
-  $("#stage").style.width = NAT[0] * scale + "px";
-  $("#stage").style.height = NAT[1] * scale + "px";
+  const wpx = NAT[0] * scale + "px", hpx = NAT[1] * scale + "px";
+  for (const id of ["#tex-img", "#orig-img"]) {
+    $(id).style.width = wpx; $(id).style.height = hpx;
+  }
+  $("#stage").style.width = wpx;
+  $("#stage").style.height = hpx;
   drawRegions();
 }
 
@@ -123,8 +125,7 @@ function drawRegions() {
     el.style.width = w * SCALE + "px";
     el.style.height = h * SCALE + "px";
     el.innerHTML = `<span class="rlabel">${escapeHtml(r.id || "#" + i)}</span>`;
-    // 텍스트는 항상 표시되는 상위 레이어 (배경 토글과 무관 → 위치 안 변함)
-    el.appendChild(makeTextLayer(r, w, h));
+    el.appendChild(makeTextLayer(r, w, h));  // PIL 알고리즘 복제 캔버스 오버레이
     if (i === SEL) {
       for (const hp of ["nw", "ne", "sw", "se", "n", "s", "w", "e"]) {
         const hd = document.createElement("div");
@@ -146,80 +147,130 @@ function cssTextColor(r) {
   const c = r.color || [255, 255, 255, 255];
   return `rgba(${c[0]},${c[1]},${c[2]},${(c[3] ?? 255) / 255})`;
 }
-function _flex(mode) {  // left/top→start, center→center, right/bottom→end
-  if (mode === "center") return "center";
-  if (mode === "right" || mode === "bottom") return "flex-end";
-  return "flex-start";
+function _measCtx() {
+  return (window.__mc ||= document.createElement("canvas").getContext("2d"));
 }
-// 렌더러와 동일 모델: 텍스트 블록(가로줄/세로열)을 만들고 CSS로 회전 → 박스 안에 정렬
+function _offNum(mode, avail, size) {  // 렌더러 _off와 동일 (넘침 음수 허용)
+  if (mode === "left" || mode === "top") return 0;
+  if (mode === "right" || mode === "bottom") return avail - size;
+  return (avail - size) / 2;
+}
+function _rotateCanvas(src, deg) {  // PIL rotate(CCW 양수) 동일
+  const d = ((deg % 360) + 360) % 360;
+  const swap = d === 90 || d === 270;
+  const out = document.createElement("canvas");
+  out.width = Math.max(1, swap ? src.height : src.width);
+  out.height = Math.max(1, swap ? src.width : src.height);
+  const c = out.getContext("2d");
+  c.translate(out.width / 2, out.height / 2);
+  c.rotate(-deg * Math.PI / 180);  // canvas는 CW(+) → PIL CCW에 맞춰 -deg
+  c.drawImage(src, -src.width / 2, -src.height / 2);
+  return out;
+}
+
+// 캔버스로 PIL 렌더러(_render_aligned) 알고리즘을 그대로 복제 → 생성 결과와 거의 동일.
+// 텍스트를 타이트 캔버스에 잉크 기준 렌더 → 회전 → 박스 안에 정렬 배치.
 function makeTextLayer(r, w, h) {
-  const t = document.createElement("div");
-  t.className = "region-text";
+  const cv = document.createElement("canvas");
+  cv.width = Math.max(1, Math.round(w));
+  cv.height = Math.max(1, Math.round(h));
+  cv.className = "region-text";
+  cv.style.width = w * SCALE + "px";
+  cv.style.height = h * SCALE + "px";
+  drawRegionTextCanvas(cv.getContext("2d"), r, w, h);
+  return cv;
+}
+
+function drawRegionTextCanvas(ctx, r, w, h) {
   const isLoc = CUR.system === "localize";
   let rot = parseInt(r.rotation) || 0;
   let layout = r.layout;
   if (layout === "rotated") { layout = "vertical"; if (!rot) rot = 90; }
   const align = isLoc ? (r.align || "left") : (r.align || "center");
   const valign = isLoc ? (r.v_align || "top") : (r.valign || "center");
-  let isHoriz;
-  if (!layout || layout === "auto") isHoriz = w >= h;
-  else isHoriz = (layout === "horizontal");
-
+  const isHoriz = (!layout || layout === "auto") ? (w >= h) : (layout === "horizontal");
   const padR = isLoc ? 0 : (r.padding ?? 0.08);
   const pxl = r.pad_x ?? w * padR, pyl = r.pad_y ?? h * padR;
   const innerW = Math.max(1, w - 2 * pxl), innerH = Math.max(1, h - 2 * pyl);
   const swap = Math.abs(rot) === 90;
   const lenBox = isHoriz ? (swap ? innerH : innerW) : (swap ? innerW : innerH);
   const crossBox = isHoriz ? (swap ? innerW : innerH) : (swap ? innerH : innerW);
-
   const txt = r.text || "";
+  if (!txt) return;
   const cells = [...txt];
   const n = Math.max(1, cells.length);
   const ls = r.letter_spacing || 0;
   const fr = r.font_ratio || 0.85;
+  const color = cssTextColor(r);
 
-  const block = document.createElement("div");
-  block.style.flex = "0 0 auto";  // 컨테이너에서 늘어나지 않음(정렬 적용되게)
-  block.style.color = cssTextColor(r);
-  block.style.fontFamily = '"Griun", sans-serif';
-  block.style.lineHeight = "1";
-  let fontCoord;
+  const mc = _measCtx();
+  let temp;  // 타이트 텍스트 캔버스
   if (isHoriz) {
-    fontCoord = isLoc ? (r.font_size || 24) : (r.font_px || crossBox * fr);
-    block.style.display = "block";
-    block.textContent = txt;
-    block.style.whiteSpace = "pre";
-    block.style.letterSpacing = ls * SCALE + "px";
+    let fs;
+    if (isLoc) fs = r.font_size || 24;
+    else if (r.font_px) fs = r.font_px;
+    else {  // PIL: 폭·높이 둘 다 박스 안에 들어올 때까지 축소
+      fs = Math.max(8, Math.round(crossBox * fr));
+      while (fs > 8) {
+        mc.font = `${fs}px Griun`; mc.letterSpacing = ls + "px";
+        const m = mc.measureText(txt);
+        const tw = ls ? m.width : (m.actualBoundingBoxLeft + m.actualBoundingBoxRight);
+        const th = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+        if (tw <= lenBox && th <= crossBox) break;
+        fs--;
+      }
+    }
+    fs = Math.max(4, Math.round(fs));
+    mc.font = `${fs}px Griun`; mc.letterSpacing = ls + "px";
+    const m = mc.measureText(txt);
+    const inkL = m.actualBoundingBoxLeft, inkA = m.actualBoundingBoxAscent, inkD = m.actualBoundingBoxDescent;
+    // PIL: 타이트 캔버스 = 잉크 폭×높이. (자간 시엔 advance 폭 사용)
+    const tw = Math.max(1, Math.ceil(ls ? m.width : (inkL + m.actualBoundingBoxRight)));
+    const th = Math.max(1, Math.ceil(inkA + inkD));
+    temp = document.createElement("canvas"); temp.width = tw; temp.height = th;
+    const tc = temp.getContext("2d");
+    tc.font = `${fs}px Griun`; tc.letterSpacing = ls + "px";
+    tc.fillStyle = color; tc.textBaseline = "alphabetic"; tc.textAlign = "left";
+    tc.fillText(txt, ls ? 0 : inkL, inkA);  // 잉크 좌상단을 (0,0)에 맞춤
   } else {
-    const cell0 = lenBox / n;
-    fontCoord = isLoc ? (r.font_size || 24) : (r.font_px || Math.min(crossBox, cell0) * fr);
-    block.style.display = "flex";
-    block.style.flexDirection = "column";
-    const cellPx = cell0 * SCALE;
-    cells.forEach((ch, idx) => {
-      const s = document.createElement("div");
-      s.textContent = ch === " " ? "" : ch;
-      s.style.height = (ch === " " ? cellPx * 0.5 : cellPx) + "px";
-      s.style.display = "flex";
-      s.style.alignItems = "center";
-      s.style.justifyContent = "center";
-      if (ls && idx < cells.length - 1) s.style.marginBottom = ls * SCALE + "px";
-      block.appendChild(s);
+    const cell0 = Math.max(1, Math.floor(lenBox / n));
+    let fs = isLoc ? (r.font_size || 24) : (r.font_px || Math.max(8, Math.round(Math.min(crossBox, cell0) * fr)));
+    fs = Math.max(4, Math.round(fs));
+    mc.font = `${fs}px Griun`; mc.letterSpacing = "0px";
+    // 각 글자 잉크 메트릭 (PIL getbbox 대응)
+    const met = {};
+    let gw = 1;
+    for (const ch of cells) {
+      if (ch === " ") continue;
+      const m = mc.measureText(ch);
+      const il = m.actualBoundingBoxLeft, ir = m.actualBoundingBoxRight;
+      met[ch] = { il, ir, ia: m.actualBoundingBoxAscent, id: m.actualBoundingBoxDescent };
+      gw = Math.max(gw, il + ir);
+    }
+    gw = Math.ceil(gw);
+    const pitch = cell0 + ls;  // PIL: pitch = cell0 + ls
+    const offs = []; let acc = 0;
+    for (const ch of cells) { offs.push(acc); acc += pitch * (ch === " " ? 0.5 : 1); }
+    const blockLen = Math.max(cell0, Math.round(acc - ls));
+    temp = document.createElement("canvas"); temp.width = gw; temp.height = Math.max(1, blockLen);
+    const tc = temp.getContext("2d");
+    tc.font = `${fs}px Griun`; tc.fillStyle = color;
+    tc.textBaseline = "alphabetic"; tc.textAlign = "left";
+    cells.forEach((ch, i) => {
+      if (ch === " ") return;
+      const g = met[ch]; if (!g) return;
+      const cw = g.il + g.ir, chh = g.ia + g.id;
+      // 잉크를 칸 중앙에 정렬 (PIL cx/cy 식과 동일)
+      const x = gw / 2 - cw / 2 + g.il;
+      const inkTop = offs[i] + cell0 / 2 - chh / 2;
+      tc.fillText(ch, x, inkTop + g.ia);
     });
   }
-  block.style.fontSize = Math.max(2, fontCoord * SCALE) + "px";
-  if (rot) block.style.transform = `rotate(${-rot}deg)`;  // PIL CCW = CSS -rot
 
-  // 배경 틴트(레드/블랙) — 박스 영역에 표시
-  if (!isLoc) {
-    if (r.background === "red") t.style.background = "rgba(204,66,58,0.6)";
-    else if (r.background === "black") t.style.background = "rgba(0,0,0,0.6)";
-  }
-  // 박스 안에 정렬 배치 (최종 프레임 — 렌더러와 동일)
-  t.style.justifyContent = _flex(align);
-  t.style.alignItems = _flex(valign);
-  t.appendChild(block);
-  return t;
+  const layer = rot ? _rotateCanvas(temp, rot) : temp;
+  const bx = pxl + _offNum(align, innerW, layer.width);
+  const by = pyl + _offNum(valign, innerH, layer.height);
+  ctx.drawImage(layer, Math.round(bx), Math.round(by));
 }
 
 // 박스를 텍스처 범위 안으로 클램프 (영역 밖 이탈 방지)
@@ -256,6 +307,7 @@ function startDrag(e, i) {
   const onUp = () => {
     document.removeEventListener("mousemove", onMove);
     document.removeEventListener("mouseup", onUp);
+    scheduleLive();  // 드래그 끝 → 실제 렌더 갱신
   };
   document.addEventListener("mousemove", onMove);
   document.addEventListener("mouseup", onUp);
@@ -382,6 +434,7 @@ function readProps() {
     }
   });
   drawRegions();
+  scheduleLive();  // 속성 변경 → 실제 렌더 갱신(디바운스)
 }
 
 // 슬라이더↔숫자 동기화 + 출력 라벨 갱신
@@ -499,6 +552,9 @@ async function renderPreview() {
 
 // ===== 초기화 =====
 async function init() {
+  // 캔버스 measureText/fillText 가 폴백 폰트를 쓰지 않도록 Griun 선로딩
+  try { await document.fonts.load('100px Griun'); } catch (e) {}
+  document.fonts.ready.then(() => { if (CUR) drawRegions(); });  // 늦게 로드돼도 재그림
   INDEX = await api("/api/index");
   renderList();
   $("#search").oninput = renderList;

@@ -62,6 +62,7 @@ aside, main { overflow: hidden; display: flex; flex-direction: column; min-heigh
   scrollbar-gutter: stable both-edges; }
 #stage { position: relative; margin: 20px auto; width: max-content; }
 #tex-img { display: block; }
+#orig-img { position: absolute; left: 0; top: 0; pointer-events: none; }
 #stage.bg-checker { background: repeating-conic-gradient(#444 0% 25%, #333 0% 50%) 50% / 20px 20px; }
 #stage.bg-black { background: #000; }
 #stage.bg-red { background: #cc423a; }
