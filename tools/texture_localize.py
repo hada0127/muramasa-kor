@@ -355,7 +355,7 @@ def process_texture(hash_id, tex_config, preview=False):
                 w, h, text, font_path, font_size,
                 color=color, align=align, bold=bold, v_align=v_align,
                 fit_to_box=bool(region.get("fit_to_box", False)),
-                letter_spacing=int(region.get("letter_spacing", 0)),
+                letter_spacing=int(region.get("letter_spacing") or 0),
                 outline_width=int(region.get("outline_width", 0) or 0),
                 outline_color=tuple(region.get("outline_color") or (0, 0, 0, 255)),
             )

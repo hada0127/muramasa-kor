@@ -84,14 +84,18 @@ def _to_native_localize(r):
     x, y, w, h = [int(round(v)) for v in r["box"]]
     nr = dict(r.get("native") or {})
     nr.update({"x": x, "y": y, "w": w, "h": h, "text": r.get("text", "")})
-    if r.get("text") or "font_size" in nr:
-        nr["font_size"] = int(r.get("font_size", 24))
+    # font_size: 명시값이 있으면 절대값으로 저장, None/0 이면 font_ratio 모드 → 키 제거
+    fs = r.get("font_size")
+    if fs is not None and fs != "" and int(fs) > 0:
+        nr["font_size"] = int(fs)
+    else:
+        nr.pop("font_size", None)
     _upd(nr, "color", _color_list(r.get("color")), [255, 255, 255, 255])
     _upd(nr, "align", r.get("align", "left"), "left")
     _upd(nr, "v_align", r.get("v_align", "top"), "top")
     _upd(nr, "clear", bool(r.get("clear", True)), True)
     _upd(nr, "fit_to_box", bool(r.get("fit_to_box", False)), False)
-    _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
+    _upd(nr, "letter_spacing", int(r.get("letter_spacing") or 0), 0)
     if r.get("orient"):
         nr["orient"] = r["orient"]
     # UI 통일로 추가된 place-style 속성도 round-trip 보존
@@ -128,7 +132,7 @@ def _to_native_place(r):
         nr["font_px"] = int(r["font_px"])
     else:
         nr.pop("font_px", None)
-    _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
+    _upd(nr, "letter_spacing", int(r.get("letter_spacing") or 0), 0)
     _upd(nr, "align", r.get("align", "center"), "center")
     _upd(nr, "valign", r.get("valign", "center"), "center")
     _upd(nr, "rotation", int(r.get("rotation", 0) or 0), 0)
@@ -223,10 +227,10 @@ def _render_place_layer(img, native_regions, font, mode):
                     font, padding=float(region.get("padding", 0.08)),
                     fr=float(region.get("font_ratio", 0.85)),
                     layout=region.get("layout"),
-                    letter_spacing=int(region.get("letter_spacing", 0)),
+                    letter_spacing=int(region.get("letter_spacing") or 0),
                     align=region.get("align", "center"), valign=region.get("valign", "center"),
                     pad_x=region.get("pad_x"), pad_y=region.get("pad_y"),
-                    font_px=region.get("font_px"), rotation=int(region.get("rotation", 0)),
+                    font_px=region.get("font_px"), rotation=int(region.get("rotation") or 0),
                     outline_width=int(region.get("outline_width", 0) or 0),
                     outline_fill=tuple(region["outline_color"]) if region.get("outline_color") else None,
                 )
