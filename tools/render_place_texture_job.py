@@ -126,127 +126,117 @@ def render_text(
     pad_x: float | None = None,
     pad_y: float | None = None,
     font_px: int | None = None,
+    rotation: int = 0,
 ) -> None:
     ls = int(letter_spacing)
-    # 정렬/패딩/자간/픽셀폰트 지정이 없으면 기존(비율 자동맞춤) 경로 → 기존 렌더 보존
-    if (font_px is None and align == "center" and valign == "center"
+    # 정렬/패딩/자간/픽셀폰트/회전 지정이 없으면 기존(비율 자동맞춤) 경로 → 기존 렌더 보존
+    if (int(rotation) == 0 and layout != "rotated" and font_px is None
+            and align == "center" and valign == "center"
             and pad_x is None and pad_y is None and ls == 0):
         _render_legacy(base_img, bbox, text, fill, font_path, padding, fr, layout, ls)
     else:
         _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
-                        ls, align, valign, pad_x, pad_y, font_px)
+                        ls, align, valign, pad_x, pad_y, font_px, int(rotation))
 
 
 def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
-                    ls, align, valign, pad_x, pad_y, font_px):
-    """픽셀 폰트 + H/V 정렬 + 상하/좌우 패딩(px) 기반 렌더.
-    세로/회전에서 자간(ls)은 글자 사이 추가 간격(px)으로 깔끔히 동작."""
+                    ls, align, valign, pad_x, pad_y, font_px, rotation=0):
+    """텍스트를 타이트 캔버스에 렌더 → 회전 → 박스 안에 정렬 배치.
+    정렬(align/valign)은 항상 최종(회전 후) 프레임 기준 → 가로/세로/회전 모두 직관적."""
     x0, y0, x1, y1 = bbox
     rw, rh = x1 - x0, y1 - y0
     fp = str(font_path)
-
-    is_rot = layout == "rotated" or (layout is None and rw > rh)
-    is_horiz = layout == "horizontal"
-    chars = [c for c in text if c != " "]
-    n = max(1, len(chars))
-
-    # 방향별 패딩 기본값 (legacy와 동일: 글자가 채우는 축만 padding, 교차축은 0)
-    if is_horiz:
-        dpx, dpy = rw * padding, rh * padding
-    elif is_rot:
-        dpx, dpy = rw * padding, 0          # 가로배너: 좌우(길이) padding, 상하(교차) 0
+    rot = int(rotation) % 360
+    if rot >= 270:
+        rot -= 360
+    # 구버전 호환: layout 'rotated' → 세로쓰기 + 90도 회전
+    if layout == "rotated":
+        layout = "vertical"
+        if rot == 0:
+            rot = 90
+    if layout in (None, "auto"):
+        is_horiz = rw >= rh
     else:
-        dpx, dpy = 0, rh * padding          # 세로: 좌우(교차) 0, 상하(길이) padding
-    pxl = int(pad_x) if pad_x is not None else int(dpx)
-    pyl = int(pad_y) if pad_y is not None else int(dpy)
+        is_horiz = (layout == "horizontal")
+
+    pxl = int(pad_x) if pad_x is not None else int(rw * padding)
+    pyl = int(pad_y) if pad_y is not None else int(rh * padding)
     inner_w = max(1, rw - 2 * pxl)
     inner_h = max(1, rh - 2 * pyl)
-
+    swap = abs(rot) == 90
+    # 텍스트 길이축이 채울 박스 치수 / 교차축 치수 (회전 후 기준)
     if is_horiz:
-        d = ImageDraw.Draw(base_img)
+        len_box = inner_h if swap else inner_w
+        cross_box = inner_w if swap else inner_h
+    else:
+        len_box = inner_w if swap else inner_h
+        cross_box = inner_h if swap else inner_w
+
+    cells = list(text)
+    ncells = max(1, len(cells))
+
+    # ---- 텍스트를 타이트 캔버스(tcv)에 렌더 ----
+    if is_horiz:
         if font_px:
             fs = int(font_px)
         else:
-            fs = max(8, int(inner_h * fr))
+            fs = max(8, int(cross_box * fr))
             while fs > 8:
                 f = ImageFont.truetype(fp, fs)
                 bb = f.getbbox(text)
                 tw = _sp_width(f, text, ls) if ls else bb[2] - bb[0]
-                if tw <= inner_w and (bb[3] - bb[1]) <= inner_h:
+                if tw <= len_box and (bb[3] - bb[1]) <= cross_box:
                     break
                 fs -= 1
         font = ImageFont.truetype(fp, max(4, fs))
         bb = font.getbbox(text)
-        tw = _sp_width(font, text, ls) if ls else bb[2] - bb[0]
+        tw = int(_sp_width(font, text, ls)) if ls else bb[2] - bb[0]
         th = bb[3] - bb[1]
-        tx = x0 + pxl + _off(align, inner_w, tw) - bb[0]
-        ty = y0 + pyl + _off(valign, inner_h, th, "top", "bottom") - bb[1]
+        tcv = Image.new("RGBA", (max(1, tw), max(1, th)), (0, 0, 0, 0))
+        td = ImageDraw.Draw(tcv)
         if ls:
-            _draw_sp(d, tx, ty, text, font, fill, ls)
+            _draw_sp(td, -bb[0], -bb[1], text, font, fill, ls)
         else:
-            d.text((tx, ty), text, font=font, fill=fill)
-        return
+            td.text((-bb[0], -bb[1]), text, font=font, fill=fill)
+    else:
+        cell0 = max(1, len_box // ncells)
+        if font_px:
+            fs = int(font_px)
+        else:
+            fs = max(8, int(min(cross_box, cell0) * fr))
+        font = ImageFont.truetype(fp, max(4, fs))
+        metrics = [font.getbbox(c) for c in cells if c != " "] or [font.getbbox("가")]
+        gw = max(m[2] - m[0] for m in metrics)
+        pitch = cell0 + ls
+        SPACE_RATIO = 0.5  # 공백은 반 칸
+        offs = []
+        acc = 0.0
+        for ch in cells:
+            offs.append(acc)
+            acc += pitch * (SPACE_RATIO if ch == " " else 1.0)
+        block_len = max(cell0, int(round(acc - ls)))
+        tcv = Image.new("RGBA", (max(1, gw), max(1, block_len)), (0, 0, 0, 0))
+        td = ImageDraw.Draw(tcv)
+        for i, ch in enumerate(cells):
+            if ch == " ":
+                continue
+            m = font.getbbox(ch)
+            cw, chh = m[2] - m[0], m[3] - m[1]
+            cx = gw // 2 - (cw // 2 + m[0])
+            cy = int(offs[i]) + cell0 // 2 - (chh // 2 + m[1])
+            td.text((cx, cy), ch, font=font, fill=fill)
 
-    # 세로/회전 모두 박스 크기 캔버스에 그린 뒤 합성 → 박스 밖 넘침은 클리핑(편집창과 동일)
-    if is_rot:
-        # 회전 캔버스: width=rh(최종 높이=cross), height=rw(최종 너비=length)
-        canvas = Image.new("RGBA", (rh, rw), (0, 0, 0, 0))
-        len_avail, cross_avail = inner_w, inner_h  # length=rw축, cross=rh축
-        len_pad, cross_pad = pxl, pyl
-    else:
-        # 세로 캔버스 = 박스 크기 (rw x rh)
-        canvas = Image.new("RGBA", (rw, rh), (0, 0, 0, 0))
-        len_avail, cross_avail = inner_h, inner_w  # length=rh축(세로), cross=rw축
-        len_pad, cross_pad = pyl, pxl
-    d = ImageDraw.Draw(canvas)
+    # ---- 회전 (PIL: 양수 = CCW) ----
+    if rot:
+        tcv = tcv.rotate(rot, expand=True)
+    bw, bh = tcv.size
 
-    # 셀(slot) 기반: 글자를 길이축에 균등 분배. 공백도 한 셀 차지(띄어쓰기 반영).
-    # 글자 크기는 자간과 무관(고정). 자간은 간격만 추가 → 넘치면 박스에 클리핑(가운데).
-    cells = list(text)
-    ncells = max(1, len(cells))
-    cell0 = max(1, len_avail // ncells)
-    if font_px:
-        fs = int(font_px)
-    else:
-        fs = max(8, int(min(cross_avail, cell0) * fr))
-    font = ImageFont.truetype(fp, max(4, fs))
-    metrics = [font.getbbox(c) for c in cells if c != " "] or [font.getbbox("가")]
-    gw = max(m[2] - m[0] for m in metrics)
-    pitch = cell0 + ls
-    # 누적 오프셋: 공백은 반 칸(0.5)만 차지 (세로쓰기 공백이 가로보다 크던 문제)
-    SPACE_RATIO = 0.5
-    offs = []
-    acc = 0.0
-    for ch in cells:
-        offs.append(acc)
-        acc += pitch * (SPACE_RATIO if ch == " " else 1.0)
-    block_len = max(cell0, int(round(acc - ls)))  # 마지막 글자 뒤 자간 제외
-    if is_rot:
-        # 회전 배너: align=가로(길이), valign=세로(교차). 90° CCW 회전으로 세로축이
-        # 뒤집히므로 valign top↔bottom 반전.
-        start_len = len_pad + _off(align, len_avail, block_len, "left", "right")
-        cross_left = cross_pad + _off(valign, cross_avail, gw, "bottom", "top")
-    else:
-        # 세로쓰기: valign=세로(길이), align=가로(교차)
-        start_len = len_pad + _off(valign, len_avail, block_len, "top", "bottom")
-        cross_left = cross_pad + _off(align, cross_avail, gw, "left", "right")
-    cross_cx = cross_left + gw // 2
-    for i, ch in enumerate(cells):
-        if ch == " ":
-            continue  # 공백은 반 칸만 차지(위 offs에 반영)
-        m = font.getbbox(ch)
-        cw, chh = m[2] - m[0], m[3] - m[1]
-        cx = cross_cx - (cw // 2 + m[0])
-        cy = start_len + int(offs[i]) + cell0 // 2 - (chh // 2 + m[1])
-        d.text((cx, cy), ch, font=font, fill=fill)
-
-    if is_rot:
-        layer = canvas.rotate(90, expand=True)
-        if layer.size != (rw, rh):
-            layer = layer.resize((rw, rh))
-    else:
-        layer = canvas
-    region = base_img.crop(tuple(bbox)).convert("RGBA")
+    # ---- 박스 안에 정렬 배치 (최종 프레임) ----
+    bx = pxl + _off(align, inner_w, bw, "left", "right")
+    by = pyl + _off(valign, inner_h, bh, "top", "bottom")
+    layer = Image.new("RGBA", (rw, rh), (0, 0, 0, 0))
+    layer.paste(tcv, (bx, by), tcv)  # 박스 밖은 클리핑
+    region = base_img.crop((x0, y0, x1, y1)).convert("RGBA")
     region = Image.alpha_composite(region, layer)
     base_img.paste(region, (x0, y0))
 
@@ -418,6 +408,8 @@ def render_job(hash_id: str, job: dict, out_dir: Path, apply_dir: Path | None, f
                 valign=region.get("valign", "center"),
                 pad_x=region.get("pad_x"),
                 pad_y=region.get("pad_y"),
+                font_px=region.get("font_px"),
+                rotation=int(region.get("rotation", 0)),
             )
 
     scale = int(job.get("output_scale", 1))

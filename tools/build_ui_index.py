@@ -125,6 +125,7 @@ def place_regions(job):
             "letter_spacing": r.get("letter_spacing", 0),
             "align": r.get("align", "center"),
             "valign": r.get("valign", "center"),
+            "rotation": r.get("rotation", 0),
             "pad_x": r.get("pad_x"),
             "pad_y": r.get("pad_y"),
             "render": r.get("render", True),

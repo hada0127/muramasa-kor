@@ -114,6 +114,7 @@ def _to_native_place(r):
     _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
     _upd(nr, "align", r.get("align", "center"), "center")
     _upd(nr, "valign", r.get("valign", "center"), "center")
+    _upd(nr, "rotation", int(r.get("rotation", 0) or 0), 0)
     for pk in ("pad_x", "pad_y"):
         pv = r.get(pk)
         if pv is None or pv == "":
@@ -200,6 +201,7 @@ def _render_place_layer(img, native_regions, font, mode):
                     letter_spacing=int(region.get("letter_spacing", 0)),
                     align=region.get("align", "center"), valign=region.get("valign", "center"),
                     pad_x=region.get("pad_x"), pad_y=region.get("pad_y"),
+                    font_px=region.get("font_px"), rotation=int(region.get("rotation", 0)),
                 )
     return img
 

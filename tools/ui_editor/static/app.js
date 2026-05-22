@@ -141,14 +141,6 @@ function drawRegions() {
 // 그리운 경찰감성체 웹폰트로 region 텍스트를 캔버스에 근사 렌더 (정확한 출력은 생성 미리보기)
 // place 레이아웃 → 캔버스 표시 방향:
 //   horizontal=가로, vertical_columns/세로 박스=세로쌓기, rotated/넓은박스=글자 90° 눕혀 가로배열
-function orientMode(r, w, h) {
-  if (CUR.system !== "place") return "h";
-  const lay = r.layout;
-  if (lay === "horizontal") return "h";
-  if (lay === "vertical_columns" || lay === "vertical") return "v";
-  if (lay === "rotated") return w >= h ? "rot" : "v";
-  return w > h ? "rot" : "v";  // auto: 렌더러와 동일하게 넓으면 rotated
-}
 function cssTextColor(r) {
   if (CUR.system === "place") return r.text_color === "white" ? "#fff" : "#000";
   const c = r.color || [255, 255, 255, 255];
@@ -159,86 +151,72 @@ function _flex(mode) {  // left/top→start, center→center, right/bottom→end
   if (mode === "right" || mode === "bottom") return "flex-end";
   return "flex-start";
 }
+// 렌더러와 동일 모델: 텍스트 블록(가로줄/세로열)을 만들고 CSS로 회전 → 박스 안에 정렬
 function makeTextLayer(r, w, h) {
   const t = document.createElement("div");
   t.className = "region-text";
-  t.style.color = cssTextColor(r);
-  const mode = orientMode(r, w, h);
-  const txt = r.text || "";
-  const n = Math.max(1, [...txt].length);  // 공백 포함 셀 수 (띄어쓰기 반영)
-  const ls = r.letter_spacing || 0;
   const isLoc = CUR.system === "localize";
+  let rot = parseInt(r.rotation) || 0;
+  let layout = r.layout;
+  if (layout === "rotated") { layout = "vertical"; if (!rot) rot = 90; }
   const align = isLoc ? (r.align || "left") : (r.align || "center");
   const valign = isLoc ? (r.v_align || "top") : (r.valign || "center");
+  let isHoriz;
+  if (!layout || layout === "auto") isHoriz = w >= h;
+  else isHoriz = (layout === "horizontal");
 
-  // 패딩(coord px) — 렌더러와 동일한 방향별 기본값
   const padR = isLoc ? 0 : (r.padding ?? 0.08);
-  let pxl, pyl;
-  if (mode === "h") { pxl = r.pad_x ?? w * padR; pyl = r.pad_y ?? h * padR; }
-  else if (mode === "rot") { pxl = r.pad_x ?? w * padR; pyl = r.pad_y ?? 0; }
-  else { pxl = r.pad_x ?? 0; pyl = r.pad_y ?? h * padR; }
+  const pxl = r.pad_x ?? w * padR, pyl = r.pad_y ?? h * padR;
   const innerW = Math.max(1, w - 2 * pxl), innerH = Math.max(1, h - 2 * pyl);
+  const swap = Math.abs(rot) === 90;
+  const lenBox = isHoriz ? (swap ? innerH : innerW) : (swap ? innerW : innerH);
+  const crossBox = isHoriz ? (swap ? innerW : innerH) : (swap ? innerH : innerW);
 
-  // 셀 크기: 자간과 무관(고정). 자간은 간격만 추가 → 넘치면 클리핑(렌더러와 동일)
-  const cellV = Math.max(1, innerH / n);
-  const cellR = Math.max(1, innerW / n);
+  const txt = r.text || "";
+  const cells = [...txt];
+  const n = Math.max(1, cells.length);
+  const ls = r.letter_spacing || 0;
+  const fr = r.font_ratio || 0.85;
+
+  const block = document.createElement("div");
+  block.style.display = "flex";
+  block.style.color = cssTextColor(r);
+  block.style.fontFamily = '"Griun", sans-serif';
+  block.style.lineHeight = "1";
   let fontCoord;
-  if (isLoc) fontCoord = r.font_size || 24;
-  else if (r.font_px) fontCoord = r.font_px;   // 절대 글씨크기(.kra 변환 등)
-  else {
-    const fr = r.font_ratio || 0.85;
-    if (mode === "v") fontCoord = Math.min(innerW, cellV) * fr;
-    else if (mode === "rot") fontCoord = Math.min(innerH, cellR) * fr;
-    else fontCoord = innerH * fr;
-  }
-  const fontPx = Math.max(2, fontCoord * SCALE);
-  t.style.fontSize = fontPx + "px";
-  t.style.padding = `${pyl * SCALE}px ${pxl * SCALE}px`;
-  if (!isLoc) {
-    if (r.background === "red") t.style.background = "rgba(204,66,58,0.85)";
-    else if (r.background === "black") t.style.background = "rgba(0,0,0,0.85)";
-  }
-  const lsPx = ls * SCALE;
-
-  const cells = [...txt];  // 공백 포함 (빈 셀로 간격 반영)
-  if (mode === "v") {            // 세로: 셀 슬롯에 글자 균등 분배 (박스에 맞춤)
-    const cellPx = cellV * SCALE;
-    t.style.flexDirection = "column";
-    t.style.justifyContent = _flex(valign);  // 세로축 = 길이
-    t.style.alignItems = _flex(align);       // 가로축 = 교차
+  if (isHoriz) {
+    fontCoord = isLoc ? (r.font_size || 24) : (r.font_px || crossBox * fr);
+    block.textContent = txt;
+    block.style.whiteSpace = "pre";
+    block.style.letterSpacing = ls * SCALE + "px";
+  } else {
+    const cell0 = lenBox / n;
+    fontCoord = isLoc ? (r.font_size || 24) : (r.font_px || Math.min(crossBox, cell0) * fr);
+    block.style.flexDirection = "column";
+    const cellPx = cell0 * SCALE;
     cells.forEach((ch, idx) => {
-      const s = document.createElement("span");
+      const s = document.createElement("div");
       s.textContent = ch === " " ? "" : ch;
-      s.style.height = (ch === " " ? cellPx * 0.5 : cellPx) + "px";  // 공백 반 칸
-      s.style.flexShrink = "0";
+      s.style.height = (ch === " " ? cellPx * 0.5 : cellPx) + "px";
       s.style.display = "flex";
       s.style.alignItems = "center";
       s.style.justifyContent = "center";
-      if (ls && idx < cells.length - 1) s.style.marginBottom = lsPx + "px";
-      t.appendChild(s);
+      if (ls && idx < cells.length - 1) s.style.marginBottom = ls * SCALE + "px";
+      block.appendChild(s);
     });
-  } else if (mode === "rot") {   // 회전 배너: 셀 슬롯, 글자 90° 눕혀 가로 배열
-    const cellPx = cellR * SCALE;
-    t.style.justifyContent = _flex(align);   // 가로축 = 길이
-    t.style.alignItems = _flex(valign);      // 세로축 = 교차
-    cells.forEach((ch, idx) => {
-      const s = document.createElement("span");
-      s.textContent = ch === " " ? "" : ch;
-      s.style.width = (ch === " " ? cellPx * 0.5 : cellPx) + "px";  // 공백 반 칸
-      s.style.flexShrink = "0";
-      s.style.display = "inline-flex";
-      s.style.alignItems = "center";
-      s.style.justifyContent = "center";
-      if (ch !== " ") s.style.transform = "rotate(-90deg)";  // PIL rotate(90)=CCW
-      if (ls && idx < cells.length - 1) s.style.marginRight = lsPx + "px";
-      t.appendChild(s);
-    });
-  } else {                        // 가로
-    t.style.letterSpacing = lsPx + "px";
-    t.style.justifyContent = _flex(align);
-    t.style.alignItems = _flex(valign);
-    t.textContent = txt;
   }
+  block.style.fontSize = Math.max(2, fontCoord * SCALE) + "px";
+  if (rot) block.style.transform = `rotate(${-rot}deg)`;  // PIL CCW = CSS -rot
+
+  // 배경 틴트(레드/블랙) — 박스 영역에 표시
+  if (!isLoc) {
+    if (r.background === "red") t.style.background = "rgba(204,66,58,0.6)";
+    else if (r.background === "black") t.style.background = "rgba(0,0,0,0.6)";
+  }
+  // 박스 안에 정렬 배치 (최종 프레임 — 렌더러와 동일)
+  t.style.justifyContent = _flex(align);
+  t.style.alignItems = _flex(valign);
+  t.appendChild(block);
   return t;
 }
 
@@ -316,6 +294,8 @@ function renderProps() {
        ["clear_alpha", "기존 영역 삭제"], ["clear_white", "흰 글자 제거"]]);
     html += selField("layout", "쓰기 방향", r.layout || "auto",
       [["auto", "자동"], ["horizontal", "가로쓰기"], ["vertical", "세로쓰기"], ["vertical_columns", "세로쓰기(열)"], ["rotated", "회전 90°(세로배너)"]]);
+    html += selField("rotation", "회전", String(r.rotation || 0),
+      [["0", "0°"], ["90", "90°"], ["-90", "-90°"], ["180", "180°"]]);
     html += `<div class="field-row">
       <div>${selField("align", "가로 정렬", r.align || "center", [["left", "왼쪽"], ["center", "가운데"], ["right", "오른쪽"]])}</div>
       <div>${selField("valign", "세로 정렬", r.valign || "center", [["top", "위"], ["center", "가운데"], ["bottom", "아래"]])}</div></div>`;
@@ -383,6 +363,8 @@ function readProps() {
       r.font_size = parseInt(v) || 24;
     } else if (k === "letter_spacing") {
       r.letter_spacing = parseInt(v) || 0;
+    } else if (k === "rotation") {
+      r.rotation = parseInt(v) || 0;
     } else if (k === "font_px") {
       const n = parseInt(v);
       r.font_px = n > 0 ? n : null;   // 0 = 글씨 비율 사용
@@ -453,7 +435,7 @@ async function applyRegions() {
 
 // 스타일 복사/붙여넣기 (글씨색·배경색·쓰기방향·정렬·비율·자간·여백만; 텍스트·박스 제외)
 let STYLE_CLIP = null;
-const STYLE_FIELDS = ["text_color", "background", "layout", "align", "valign",
+const STYLE_FIELDS = ["text_color", "background", "layout", "rotation", "align", "valign",
   "font_ratio", "letter_spacing", "pad_x", "pad_y", "font_px",  // place
   "color", "v_align", "clear", "fit_to_box", "font_size"];      // localize 대응
 function copyStyle() {
