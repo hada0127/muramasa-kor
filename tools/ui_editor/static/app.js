@@ -179,19 +179,21 @@ function makeTextLayer(r, w, h) {
   const fr = r.font_ratio || 0.85;
 
   const block = document.createElement("div");
-  block.style.display = "flex";
+  block.style.flex = "0 0 auto";  // 컨테이너에서 늘어나지 않음(정렬 적용되게)
   block.style.color = cssTextColor(r);
   block.style.fontFamily = '"Griun", sans-serif';
   block.style.lineHeight = "1";
   let fontCoord;
   if (isHoriz) {
     fontCoord = isLoc ? (r.font_size || 24) : (r.font_px || crossBox * fr);
+    block.style.display = "block";
     block.textContent = txt;
     block.style.whiteSpace = "pre";
     block.style.letterSpacing = ls * SCALE + "px";
   } else {
     const cell0 = lenBox / n;
     fontCoord = isLoc ? (r.font_size || 24) : (r.font_px || Math.min(crossBox, cell0) * fr);
+    block.style.display = "flex";
     block.style.flexDirection = "column";
     const cellPx = cell0 * SCALE;
     cells.forEach((ch, idx) => {
