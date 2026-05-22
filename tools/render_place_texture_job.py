@@ -156,11 +156,18 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
     rot = int(rotation) % 360
     if rot >= 270:
         rot -= 360
-    # 구버전 호환: layout 'rotated' → 세로쓰기 + 90도 회전
+    # layout 'rotated' → 박스 axis 에 맞춰 분기
+    # - 가로형 박스(rw>=rh): vertical stack → 90° CCW → 가로 누운 글자 일렬 (구버전 호환)
+    # - 세로형 박스(rh>rw): horizontal 그린 후 90° CW → 세로 axis 따라 누운 글자
     if layout == "rotated":
-        layout = "vertical"
-        if rot == 0:
-            rot = 90
+        if rw >= rh:
+            layout = "vertical"
+            if rot == 0:
+                rot = 90
+        else:
+            layout = "horizontal"
+            if rot == 0:
+                rot = -90  # 시계방향 (가로글자가 위→아래 누움)
     if layout in (None, "auto"):
         is_horiz = rw >= rh
     else:
