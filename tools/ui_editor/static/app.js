@@ -540,10 +540,36 @@ function addRegion() {
   if (!CUR || CUR.system === "manual") return;
   const cx = Math.round(NAT[0] / 4), cy = Math.round(NAT[1] / 4);
   const base = { box: [cx, cy, Math.round(NAT[0] / 4), Math.round(NAT[1] / 8)], text: "텍스트" };
+  // 흔한 패턴으로 default 통일 (전체 region 빈도 분석 기반):
+  // localize는 4AEC2546 기준(흰글씨+검정외곽선, clear/fit_to_box=false)
+  // place는 528 region 다수결(horizontal/white/0.85/center, transparent bg)
   if (CUR.system === "localize") {
-    Object.assign(base, { font_size: 24, color: [255, 255, 255, 255], align: "center", v_align: "center", clear: true, fit_to_box: true });
+    Object.assign(base, {
+      font_size: 48,
+      color: [255, 255, 255, 255],
+      align: "center",
+      v_align: "center",
+      clear: false,
+      fit_to_box: false,
+      letter_spacing: 0,
+      outline_width: 3,
+      outline_color: [0, 0, 0, 255],
+    });
   } else {
-    Object.assign(base, { text_color: "black", background: "red", layout: "rotated", padding: 0.08, font_ratio: 0.74, render: true });
+    Object.assign(base, {
+      text_color: "white",
+      background: "transparent",
+      layout: "horizontal",
+      padding: 0.08,
+      font_ratio: 0.85,
+      letter_spacing: 0,
+      align: "center",
+      valign: "center",
+      rotation: 0,
+      outline_width: 0,
+      outline_color: [0, 0, 0, 255],
+      render: true,
+    });
   }
   CUR.regions.push(base);
   SEL = CUR.regions.length - 1;
