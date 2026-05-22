@@ -23021,7 +23021,7 @@
         2048,
         2048
       ],
-      "memo": "✓ 정밀 처리 — .kra 원본 한글 위치 유지 + 영문 clear. 63 한글 + 145 clear."
+      "memo": "✓ .kra mergedimage 와 픽셀 100% 일치."
     },
     {
       "hash": "7E0669E71FCD7B64",
@@ -34169,7 +34169,7 @@
         4096,
         2048
       ],
-      "memo": "✓ 정밀 처리 — .kra 원본 한글 위치 유지 + 영문 clear. 34 한글 + 152 clear."
+      "memo": "✓ .kra mergedimage 와 픽셀 100% 일치."
     },
     {
       "hash": "88A7A10233A61E85",
@@ -51187,7 +51187,7 @@
         4096,
         4096
       ],
-      "memo": "✓ 정밀 처리 — .kra 원본 한글 위치 그대로 유지 + 외부 영문 ink clear. 13 한글 + 288 clear."
+      "memo": "✓ .kra mergedimage 와 픽셀 100% 일치 (originals + kr 둘 다 mergedimage 로 동기화)."
     },
     {
       "hash": "A3CBE285F1E92FCA",
@@ -74097,7 +74097,7 @@
         4096,
         4096
       ],
-      "memo": "✓ 정밀 처리 — .kra 원본 한글 위치 유지 + 영문 clear. 51 한글 + 324 clear."
+      "memo": "✓ .kra mergedimage 와 픽셀 100% 일치."
     },
     {
       "hash": "E210275AFFF0A8D8",
@@ -87721,7 +87721,7 @@
         2048,
         2048
       ],
-      "memo": "✓ 정밀 처리 — .kra 원본 한글 위치 유지 + 영문 clear. 84 한글 + 154 clear."
+      "memo": "✓ .kra mergedimage 와 픽셀 100% 일치."
     },
     {
       "hash": "E9E834DE4BAFDAB2",
