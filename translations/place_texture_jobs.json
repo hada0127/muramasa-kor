@@ -1105,18 +1105,19 @@
           "ja": "飛騨",
           "ko": "히다",
           "bbox": [
-            1305,
-            17,
-            1552,
-            588
+            1323,
+            33,
+            1534,
+            573
           ],
           "background": "black",
           "text_color": "white",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.03,
           "source": "place_name_mapping.bbox_indices",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 21
         },
         {
           "id": "B0",
@@ -1124,18 +1125,19 @@
           "ja": "高山山麓",
           "ko": "다카야마 산기슭",
           "bbox": [
-            12,
-            15,
-            1064,
-            187
+            20,
+            18,
+            1057,
+            179
           ],
           "background": "red",
           "text_color": "black",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.94,
           "source": "place_name_mapping.bbox_indices",
           "render": true,
-          "layout": "rotated"
+          "layout": "rotated",
+          "letter_spacing": 22
         },
         {
           "id": "B1",
@@ -1143,18 +1145,19 @@
           "ja": "高山山麓 秘湯",
           "ko": "다카야마 산기슭 비탕",
           "bbox": [
-            277,
-            212,
-            449,
-            866
+            282,
+            217,
+            444,
+            858
           ],
           "background": "red",
           "text_color": "black",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.25,
           "source": "place_name_mapping.bbox_indices",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 12
         },
         {
           "id": "C0",
@@ -1162,19 +1165,19 @@
           "ja": "一本だたら",
           "ko": "잇본다타라",
           "bbox": [
-            1060,
+            1071,
             0,
             1290,
             930
           ],
-          "background": "none",
           "clear": "white",
           "text_color": "white",
           "padding": 0.12,
-          "font_ratio": 0.52,
+          "font_ratio": 0.95,
           "source": "visual_manual",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 45
         }
       ],
       "notes": [
@@ -5212,72 +5215,76 @@
           "ja": "",
           "ko": "혁 명",
           "bbox": [
-            713,
-            -2,
-            871,
-            94
+            1426,
+            -4,
+            1743,
+            188
           ],
           "text_color": "white",
           "layout": "horizontal",
-          "font_px": 79,
+          "font_px": 158,
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         },
         {
           "id": "K1",
           "ja": "",
           "ko": "야생아",
           "bbox": [
-            125,
-            172,
-            325,
-            264
+            250,
+            344,
+            650,
+            527
           ],
           "text_color": "white",
           "layout": "horizontal",
-          "font_px": 79,
+          "font_px": 158,
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         },
         {
           "id": "K2",
           "ja": "",
           "ko": "네코마타",
           "bbox": [
-            81,
-            83,
-            369,
-            170
+            162,
+            166,
+            737,
+            341
           ],
           "text_color": "white",
           "layout": "horizontal",
-          "font_px": 88,
+          "font_px": 175,
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         },
         {
           "id": "K3",
           "ja": "",
           "ko": "키스케",
           "bbox": [
-            560,
-            927,
-            722,
-            998
+            1120,
+            1855,
+            1445,
+            1997
           ],
           "text_color": "white",
           "layout": "horizontal",
-          "font_px": 67,
+          "font_px": 133,
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         }
       ]
     },
