@@ -1,5 +1,22 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-23: Issue #4/#5/#7 이미지 분석 + RUNTIME_OVERLAY 충돌 진단
+
+### 이미지 분석
+- #5 (ar66hl): "마대로" → PoC c3da314로 '맘' 매핑 추가 → 다음 빌드부터 "맘대로" 정상 (자동)
+- #7 (OLkxWc): "이로 물어[ 어 조각내주마" — scemsg#240 ko "물어뜯어"인데 '뜯' SJIS 0x8B6F가 폰트 cell 283 = RUNTIME_OVERLAY '[' (0x5B) 자리. 영문 '[' overlay가 한글 '뜯'을 덮어씀
+- #7 (v3zaOF): "짜짜한 거" — scemsg#255 ko "쩨쩨한"인데 char_substitutions '쩨'→'짜'. 매핑 추가로 자동 해결
+- #4 (0XPyrT): "이 럴럴 (무기)는 만들 수 없습니다" — sysmsg#225 ## placeholder에 영문 'rm' 등 fill되어 같은 overlay 충돌 메커니즘으로 깨짐
+- #4 (GfqaJc): "둘별" — NMS 0건. char_substitutions/매핑 누락으로 다른 단어가 치환된 결과 (정확 위치 미식별)
+- #4 (3Tkhcr 상단): 무기 아이콘 텍스처 잘림 — 별도 텍스처 이슈
+- #6 (MqQrYf): 레벨 42인데 권장 레벨 9. ja 원본 동일 → 챕터-sysmsg ID 매핑 데이터 영역. 사용자 정보 필요
+
+### RUNTIME_OVERLAY 충돌 메커니즘 일반화
+폰트 cell 192+code (RUNTIME_OVERLAY_CODES = `0x2D/2E/2F/30-39/3A/3F/46/5B/5D/6D/6F/72`)에 매핑된 한글은 영문 overlay에 덮여 깨짐.
+- 알려진 이동 완료: 딱/량/럴/랴 (0x8EE2-5), 봐 (0x8EEF)
+- 신규 발견: 뜯 (0x8B6F → cell 283 = '[' 충돌)
+- 전수조사 + 빈 슬롯 일괄 이동 → 다음 사이클 코어
+
 ## 2026-05-23: Issue #8 3차 — 받침 매핑 확장 PoC (빡/칙/맘 직접 매핑)
 
 ### 분석
