@@ -252,7 +252,19 @@ function drawRegionTextCanvas(ctx, r, w, h) {
     const offs = []; let acc = 0;
     for (const ch of cells) { offs.push(acc); acc += pitch * (ch === " " ? 0.5 : 1); }
     const blockLen = Math.max(cell0, Math.round(acc - ls));
-    temp = document.createElement("canvas"); temp.width = gw; temp.height = Math.max(1, blockLen);
+    // fs>cell0(font_ratio>1) 일 때 첫/마지막 글자 잉크가 셀 밖으로 나감 → 캔버스 확장
+    let iyMin = 0, iyMax = blockLen;
+    cells.forEach((ch, i) => {
+      if (ch === " ") return;
+      const g = met[ch]; if (!g) return;
+      const chh = g.ia + g.id;
+      const top = offs[i] + cell0 / 2 - chh / 2;
+      if (top < iyMin) iyMin = top;
+      if (top + chh > iyMax) iyMax = top + chh;
+    });
+    const yShift = -iyMin;
+    const canvH = Math.max(blockLen, Math.ceil(iyMax - iyMin));
+    temp = document.createElement("canvas"); temp.width = gw; temp.height = Math.max(1, canvH);
     const tc = temp.getContext("2d");
     tc.font = `${fs}px Griun`; tc.fillStyle = color;
     tc.textBaseline = "alphabetic"; tc.textAlign = "left";
@@ -262,7 +274,7 @@ function drawRegionTextCanvas(ctx, r, w, h) {
       const cw = g.il + g.ir, chh = g.ia + g.id;
       // 잉크를 칸 중앙에 정렬 (PIL cx/cy 식과 동일)
       const x = gw / 2 - cw / 2 + g.il;
-      const inkTop = offs[i] + cell0 / 2 - chh / 2;
+      const inkTop = offs[i] + cell0 / 2 - chh / 2 + yShift;
       tc.fillText(ch, x, inkTop + g.ia);
     });
   }

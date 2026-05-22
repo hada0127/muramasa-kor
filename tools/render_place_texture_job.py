@@ -215,7 +215,23 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
             offs.append(acc)
             acc += pitch * (SPACE_RATIO if ch == " " else 1.0)
         block_len = max(cell0, int(round(acc - ls)))
-        tcv = Image.new("RGBA", (max(1, gw), max(1, block_len)), (0, 0, 0, 0))
+        # font_ratio>1로 fs>cell0이면 첫/마지막 글자 잉크가 셀 밖으로 나감 → 캔버스 확장
+        ink_top_min = 0
+        ink_bot_max = block_len
+        for i, ch in enumerate(cells):
+            if ch == " ":
+                continue
+            m = font.getbbox(ch)
+            chh_i = m[3] - m[1]
+            iy_top = int(offs[i]) + cell0 // 2 - chh_i // 2
+            iy_bot = iy_top + chh_i
+            if iy_top < ink_top_min:
+                ink_top_min = iy_top
+            if iy_bot > ink_bot_max:
+                ink_bot_max = iy_bot
+        y_shift = -ink_top_min  # 첫 글자 잉크가 음수 좌표면 양수로 평행이동
+        canv_h = max(block_len, ink_bot_max - ink_top_min)
+        tcv = Image.new("RGBA", (max(1, gw), max(1, canv_h)), (0, 0, 0, 0))
         td = ImageDraw.Draw(tcv)
         for i, ch in enumerate(cells):
             if ch == " ":
@@ -223,7 +239,7 @@ def _render_aligned(base_img, bbox, text, fill, font_path, padding, fr, layout,
             m = font.getbbox(ch)
             cw, chh = m[2] - m[0], m[3] - m[1]
             cx = gw // 2 - (cw // 2 + m[0])
-            cy = int(offs[i]) + cell0 // 2 - (chh // 2 + m[1])
+            cy = int(offs[i]) + cell0 // 2 - (chh // 2 + m[1]) + y_shift
             td.text((cx, cy), ch, font=font, fill=fill)
 
     # ---- 회전 (PIL: 양수 = CCW) ----
