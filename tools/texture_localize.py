@@ -360,6 +360,11 @@ def process_texture(hash_id, tex_config, preview=False):
             (result.width * output_scale, result.height * output_scale),
             Image.Resampling.LANCZOS,
         )
+    # 출력 크기는 항상 source(UHD originals)와 동일해야 함 (정책).
+    # output_size를 명시한 경우에만 그쪽으로 resize. size 메타데이터는 무시.
+    target = tex_config.get("output_size")
+    if target and (result.width, result.height) != tuple(target):
+        result = result.resize(tuple(target), Image.Resampling.LANCZOS)
 
     # 출력
     if preview:

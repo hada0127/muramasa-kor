@@ -7,7 +7,8 @@
       "description": "게임 로고 그림자/미선택 상태. GENROKU LEGENDS + OBOROMURAMASA 텍스트 삭제",
       "status": "done",
       "method": "텍스트 영역 알파를 0으로 설정하여 그림자 제거. 캘리그래피 보존. 수동 편집.",
-      "notes": "원본: textures/originals/8EFF960FC088FDD7.png"
+      "notes": "원본: textures/originals/8EFF960FC088FDD7.png",
+      "source": "textures/originals/8EFF960FC088FDD7.png"
     },
     {
       "hash": "73420FAEA9F664FD",
@@ -15,7 +16,8 @@
       "description": "본편 타이틀 선택 상태 (MURAMASA REBIRTH → 오보로 무라마사)",
       "status": "done",
       "method": "MURAMASA REBIRTH 영문 제거 + 오보로 무라마사 한글 렌더링 (흰 글씨 + 검은 테두리). 수동 편집.",
-      "notes": "컬러 텍스처 (RGB+알파). 원본: textures/originals/73420FAEA9F664FD.png"
+      "notes": "컬러 텍스처 (RGB+알파). 원본: textures/originals/73420FAEA9F664FD.png",
+      "source": "textures/originals/73420FAEA9F664FD.png"
     },
     {
       "hash": "79C935AA47DD1810",
@@ -26,11 +28,12 @@
       "translations": {
         "Countless Demon Blades...": "헤아릴 수 없이 흩어진 마검들. / 칼집에서 뽑히는 순간, / 피에 굶주린 듯 곧장 생명을 탐한다. / 그 힘에 스러진 이들의 운명을 보라."
       },
-      "notes": "2026-05-13 v0.7.4. 원본 79C935 아틀라스는 영문 단어 조각과 크레딧이 혼합되어 있어 나레이션만 배경 텍스처 방식으로 처리."
+      "notes": "2026-05-13 v0.7.4. 원본 79C935 아틀라스는 영문 단어 조각과 크레딧이 혼합되어 있어 나레이션만 배경 텍스처 방식으로 처리.",
+      "source": "textures/originals/79C935AA47DD1810.png"
     },
     {
       "hash": "4AEC2546371FFF47",
-      "size": "1920x960",
+      "size": "4096x2048",
       "description": "본편 오프닝 산 안개 배경 텍스처 + 한글 나레이션 직접 렌더링",
       "status": "done",
       "method": "upscaled/4AEC2546371FFF47.png를 베이스로 Griun_PolSensibility-Rg.ttf 흰 글씨 + 검은 외곽선 + 약한 글로우를 배경에 직접 합성. font_size=50, stroke=3, HD 텍스처 기준 중앙 박스에서 y=-100px.",

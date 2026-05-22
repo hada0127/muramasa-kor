@@ -6888,13 +6888,13 @@
       "png": "kr_textures/ui/4AEC2546371FFF47.png",
       "source": "textures/originals/4AEC2546371FFF47.png",
       "size": [
-        1920,
-        960
+        4096,
+        2048
       ],
       "description": "본편 오프닝 산 안개 배경 텍스처 + 한글 나레이션 직접 렌더링",
       "output_scale": 1,
       "auto_align": false,
-      "region_key": "manual_regions",
+      "region_key": "regions",
       "regions": [
         {
           "box": [
@@ -10198,8 +10198,8 @@
       "png": "kr_textures/ui/73420FAEA9F664FD.png",
       "source": "textures/originals/73420FAEA9F664FD.png",
       "size": [
-        2048,
-        1024
+        4096,
+        2048
       ],
       "description": "본편 타이틀 선택 상태 (MURAMASA REBIRTH → 오보로 무라마사)",
       "output_scale": 1,
@@ -10207,8 +10207,8 @@
       "region_key": "regions",
       "regions": [],
       "coord_size": [
-        2048,
-        1024
+        4096,
+        2048
       ],
       "memo": ""
     },
@@ -11000,8 +11000,8 @@
       "png": "kr_textures/ui/79C935AA47DD1810.png",
       "source": "textures/originals/79C935AA47DD1810.png",
       "size": [
-        512,
-        512
+        2048,
+        2048
       ],
       "description": "본편 오프닝 나레이션 영문 단어 아틀라스. 단어 캐리어 매칭이 어려워 투명 처리하고 배경 텍스처에 한글을 직접 렌더링.",
       "output_scale": 1,
@@ -11009,8 +11009,8 @@
       "region_key": "regions",
       "regions": [],
       "coord_size": [
-        512,
-        512
+        2048,
+        2048
       ],
       "memo": ""
     },
@@ -16718,14 +16718,14 @@
       "png": "kr_textures/ui/88A7A10233A61E85.png",
       "source": "textures/originals/88A7A10233A61E85.png",
       "size": [
-        512,
-        512
+        2048,
+        2048
       ],
       "description": "수동 편집 텍스처 (생성 스크립트 미정의)",
       "regions": [],
       "coord_size": [
-        512,
-        512
+        2048,
+        2048
       ],
       "memo": ""
     },
@@ -16855,8 +16855,8 @@
       "png": "kr_textures/ui/8EFF960FC088FDD7.png",
       "source": "textures/originals/8EFF960FC088FDD7.png",
       "size": [
-        2048,
-        1024
+        4096,
+        2048
       ],
       "description": "게임 로고 그림자/미선택 상태. GENROKU LEGENDS + OBOROMURAMASA 텍스트 삭제",
       "output_scale": 1,
@@ -16864,8 +16864,8 @@
       "region_key": "regions",
       "regions": [],
       "coord_size": [
-        2048,
-        1024
+        4096,
+        2048
       ],
       "memo": ""
     },
@@ -17772,14 +17772,14 @@
       "png": "kr_textures/ui/A3CBE285F1E92FCA.png",
       "source": "textures/originals/A3CBE285F1E92FCA.png",
       "size": [
-        512,
-        256
+        2048,
+        1024
       ],
       "description": "수동 편집 텍스처 (생성 스크립트 미정의)",
       "regions": [],
       "coord_size": [
-        512,
-        256
+        2048,
+        1024
       ],
       "memo": ""
     },
@@ -28126,14 +28126,14 @@
       "png": "kr_textures/ui/FFFFD99DCD90D546.png",
       "source": "textures/originals/FFFFD99DCD90D546.png",
       "size": [
-        256,
-        128
+        1024,
+        512
       ],
       "description": "수동 편집 텍스처 (생성 스크립트 미정의)",
       "regions": [],
       "coord_size": [
-        256,
-        128
+        1024,
+        512
       ],
       "memo": ""
     }
