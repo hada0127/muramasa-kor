@@ -1,5 +1,37 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-23: Issue #8 3차 — 받침 매핑 확장 PoC (빡/칙/맘 직접 매핑)
+
+### 분석
+- 매핑 슬롯 0x89CD~0x8F60 사용 중, 0x8EE6~0x8F63 영역 빈 슬롯 43개 발견
+- char_substitutions.json 95개 글자 빈도 분석 → top 43개 누적 73.5% 커버리지
+- auto_font_import.py ASCII overlay 충돌 검토: line 312 `pos in korean_cells` 체크로 자동 회피됨 (안전)
+- **추가 폰트 텍스처 자동 감지**: 18747565A804E292 (1024×1024, KANJI page) — 사용자 코멘트 "추가로 발견된 폰트 텍스쳐"와 일치 추정
+
+### PoC 적용 (3글자)
+- 빡 → SJIS 0x8EE6 (cell 965)
+- 칙 → SJIS 0x8EE7 (cell 966)
+- 맘 → SJIS 0x8EE8 (cell 967)
+- kr_sjis_mapping.json: 960 → 963 글자
+- char_substitutions.json: 95 → 92 글자
+
+### 검증
+- NMS 인코딩: 빡 3회 / 칙 8회 / 맘 9회 정상
+- 폰트 텍스처 cell 965~967 글리프 그려짐 (A8E6FDD1 / 6706A53E HD / 18747565 신규)
+- 8665CE08은 export missing → import 생성 안 됨 (인게임 사용 화면 확인 후 후속)
+- NinPri_final.cpk md5 22df3fd2d20f962c8c9a87a763b8a57a
+- NinPriPatch_final.cpk md5 8a0bafc5a6546e34b8142cec3a4ba48c
+
+### 인게임 검증 대상 (사용자)
+- scemsg#414 "빡빡이들 소행" (빡 표시)
+- 규칙 표기 (8회) — 닌자의 규칙, 무사의 규칙 등
+- 맘대로 표기 (9회) — 진쿠로 대사 등
+
+### 다음 단계 (확장)
+- PoC 인게임 OK 확인 후 top 43개 일괄 매핑 (커버리지 73.5%)
+- 8665CE08 분석 (사용 화면 식별)
+- 95개 전체는 추가 폰트 텍스처 확보 후
+
 ## 2026-05-23: Issue #8 2차 — 상닌/하닌 → 상급닌자/하급닌자 (9건 + 줄 재정리)
 
 ### 변경
