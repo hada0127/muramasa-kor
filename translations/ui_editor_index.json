@@ -4115,20 +4115,20 @@
       "regions": [
         {
           "box": [
-            15,
-            1277,
-            708,
-            210
+            5,
+            1271,
+            718,
+            249
           ],
           "id": "K0",
           "ja": "",
           "text": "누르세요",
-          "background": "transparent",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
-          "font_ratio": 0.85,
-          "font_px": 222,
+          "font_ratio": 0.92,
+          "font_px": null,
           "letter_spacing": 0,
           "align": "center",
           "valign": "center",
@@ -4141,38 +4141,39 @@
             "ja": "",
             "ko": "누르세요",
             "bbox": [
-              15,
-              1277,
+              5,
+              1271,
               723,
-              1487
+              1520
             ],
             "text_color": "white",
             "layout": "horizontal",
-            "font_px": 222,
             "align": "center",
             "valign": "center",
             "render": true,
-            "source": "kra_extract"
+            "source": "kra_extract",
+            "font_ratio": 0.92,
+            "clear": "alpha"
           }
         },
         {
           "box": [
-            1538,
-            66,
-            296,
-            208
+            1062,
+            0,
+            850,
+            276
           ],
           "id": "K1",
           "ja": "",
           "text": "O를",
-          "background": "transparent",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
           "font_ratio": 0.85,
           "font_px": 192,
           "letter_spacing": 0,
-          "align": "center",
+          "align": "right",
           "valign": "center",
           "rotation": 0,
           "pad_x": null,
@@ -4183,31 +4184,32 @@
             "ja": "",
             "ko": "O를",
             "bbox": [
-              1538,
-              66,
-              1834,
-              274
+              1062,
+              0,
+              1912,
+              276
             ],
             "text_color": "white",
             "layout": "horizontal",
             "font_px": 192,
-            "align": "center",
+            "align": "right",
             "valign": "center",
             "render": true,
-            "source": "kra_extract"
+            "source": "kra_extract",
+            "clear": "alpha"
           }
         },
         {
           "box": [
-            386,
-            740,
-            534,
-            174
+            0,
+            730,
+            1245,
+            197
           ],
           "id": "K2",
           "ja": "",
           "text": "이어하기",
-          "background": "transparent",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
@@ -4225,10 +4227,10 @@
             "ja": "",
             "ko": "이어하기",
             "bbox": [
-              386,
-              740,
-              920,
-              914
+              0,
+              730,
+              1245,
+              927
             ],
             "text_color": "white",
             "layout": "horizontal",
@@ -4236,20 +4238,21 @@
             "align": "center",
             "valign": "center",
             "render": true,
-            "source": "kra_extract"
+            "source": "kra_extract",
+            "clear": "alpha"
           }
         },
         {
           "box": [
-            188,
+            0,
             1508,
-            426,
+            889,
             200
           ],
           "id": "K3",
           "ja": "",
           "text": "새게임",
-          "background": "transparent",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
@@ -4267,9 +4270,9 @@
             "ja": "",
             "ko": "새게임",
             "bbox": [
-              188,
+              0,
               1508,
-              614,
+              889,
               1708
             ],
             "text_color": "white",
@@ -4278,20 +4281,21 @@
             "align": "center",
             "valign": "center",
             "render": true,
-            "source": "kra_extract"
+            "source": "kra_extract",
+            "clear": "alpha"
           }
         },
         {
           "box": [
-            32,
-            1848,
-            354,
-            178
+            0,
+            1824,
+            455,
+            224
           ],
           "id": "K4",
           "ja": "",
           "text": "뒤 로",
-          "background": "transparent",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
@@ -4309,10 +4313,10 @@
             "ja": "",
             "ko": "뒤 로",
             "bbox": [
-              32,
-              1848,
-              386,
-              2026
+              0,
+              1824,
+              455,
+              2048
             ],
             "text_color": "white",
             "layout": "horizontal",
@@ -4320,20 +4324,21 @@
             "align": "center",
             "valign": "center",
             "render": true,
-            "source": "kra_extract"
+            "source": "kra_extract",
+            "clear": "alpha"
           }
         },
         {
           "box": [
-            1418,
+            1373,
             1266,
-            382,
-            204
+            502,
+            227
           ],
           "id": "K5",
           "ja": "",
           "text": "시 작",
-          "background": "transparent",
+          "background": "clear_alpha",
           "text_color": "white",
           "layout": "horizontal",
           "padding": 0.08,
@@ -4351,10 +4356,10 @@
             "ja": "",
             "ko": "시 작",
             "bbox": [
-              1418,
+              1373,
               1266,
-              1800,
-              1470
+              1875,
+              1493
             ],
             "text_color": "white",
             "layout": "horizontal",
@@ -4362,7 +4367,8 @@
             "align": "center",
             "valign": "center",
             "render": true,
-            "source": "kra_extract"
+            "source": "kra_extract",
+            "clear": "alpha"
           }
         }
       ],

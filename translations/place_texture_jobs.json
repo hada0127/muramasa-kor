@@ -10738,46 +10738,48 @@
           "ja": "",
           "ko": "누르세요",
           "bbox": [
-            15,
-            1277,
+            5,
+            1271,
             723,
-            1487
+            1520
           ],
           "text_color": "white",
           "layout": "horizontal",
-          "font_px": 222,
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "font_ratio": 0.92,
+          "clear": "alpha"
         },
         {
           "id": "K1",
           "ja": "",
           "ko": "O를",
           "bbox": [
-            1538,
-            66,
-            1834,
-            274
+            1062,
+            0,
+            1912,
+            276
           ],
           "text_color": "white",
           "layout": "horizontal",
           "font_px": 192,
-          "align": "center",
+          "align": "right",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         },
         {
           "id": "K2",
           "ja": "",
           "ko": "이어하기",
           "bbox": [
-            386,
-            740,
-            920,
-            914
+            0,
+            730,
+            1245,
+            927
           ],
           "text_color": "white",
           "layout": "horizontal",
@@ -10785,16 +10787,17 @@
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         },
         {
           "id": "K3",
           "ja": "",
           "ko": "새게임",
           "bbox": [
-            188,
+            0,
             1508,
-            614,
+            889,
             1708
           ],
           "text_color": "white",
@@ -10803,17 +10806,18 @@
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         },
         {
           "id": "K4",
           "ja": "",
           "ko": "뒤 로",
           "bbox": [
-            32,
-            1848,
-            386,
-            2026
+            0,
+            1824,
+            455,
+            2048
           ],
           "text_color": "white",
           "layout": "horizontal",
@@ -10821,17 +10825,18 @@
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         },
         {
           "id": "K5",
           "ja": "",
           "ko": "시 작",
           "bbox": [
-            1418,
+            1373,
             1266,
-            1800,
-            1470
+            1875,
+            1493
           ],
           "text_color": "white",
           "layout": "horizontal",
@@ -10839,7 +10844,8 @@
           "align": "center",
           "valign": "center",
           "render": true,
-          "source": "kra_extract"
+          "source": "kra_extract",
+          "clear": "alpha"
         }
       ]
     }
