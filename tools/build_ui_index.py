@@ -79,7 +79,8 @@ def localize_regions(tex):
         out.append({
             "box": box,
             "text": r.get("text", ""),
-            "font_size": r.get("font_size", 24),
+            # font_size 가 native 에 없으면 None (font_ratio 모드 활성) — 기본값 채우지 않음
+            "font_size": r.get("font_size"),
             "color": r.get("color", [255, 255, 255, 255]),
             "align": r.get("align", "left"),
             "v_align": r.get("v_align", "top"),

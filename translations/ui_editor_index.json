@@ -10224,7 +10224,174 @@
       "output_scale": 1,
       "auto_align": false,
       "region_key": "regions",
-      "regions": [],
+      "regions": [
+        {
+          "box": [
+            2045,
+            281,
+            1943,
+            203
+          ],
+          "text": "오보로 무라마사",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.86,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "native": {
+            "x": 2045,
+            "y": 281,
+            "w": 1943,
+            "h": 203,
+            "text": "오보로 무라마사",
+            "align": "center",
+            "v_align": "center",
+            "layout": "horizontal",
+            "font_ratio": 0.86,
+            "background": "clear_alpha",
+            "render": true
+          }
+        },
+        {
+          "box": [
+            2041,
+            480,
+            1359,
+            448
+          ],
+          "text": "",
+          "font_size": 48,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "native": {
+            "x": 2041,
+            "y": 480,
+            "w": 1359,
+            "h": 448,
+            "text": "",
+            "font_size": 48,
+            "align": "center",
+            "v_align": "center",
+            "layout": "horizontal",
+            "font_ratio": 0.85,
+            "background": "clear_alpha",
+            "render": true,
+            "outline_width": 3,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        },
+        {
+          "box": [
+            2051,
+            0,
+            2045,
+            279
+          ],
+          "text": "",
+          "font_size": 48,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "native": {
+            "x": 2051,
+            "y": 0,
+            "w": 2045,
+            "h": 279,
+            "text": "",
+            "font_size": 48,
+            "align": "center",
+            "v_align": "center",
+            "layout": "horizontal",
+            "font_ratio": 0.85,
+            "background": "clear_alpha",
+            "render": true,
+            "outline_width": 3,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        }
+      ],
       "coord_size": [
         4096,
         2048
