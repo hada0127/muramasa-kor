@@ -350,18 +350,41 @@ def process_texture(hash_id, tex_config, preview=False):
                 orig_arr[:, :, 3] = 0  # alpha to 0
                 result.paste(Image.fromarray(orig_arr), (cx, cy))
 
-            # 2. 한글 텍스트 렌더링
-            text_img = render_text_to_image(
-                w, h, text, font_path, font_size,
-                color=color, align=align, bold=bold, v_align=v_align,
-                fit_to_box=bool(region.get("fit_to_box", False)),
-                letter_spacing=int(region.get("letter_spacing") or 0),
-                outline_width=int(region.get("outline_width", 0) or 0),
-                outline_color=tuple(region.get("outline_color") or (0, 0, 0, 255)),
-            )
-
-            # 3. 합성
-            result.paste(text_img, (x, y), text_img)
+            # 2. 한글 텍스트 렌더링 — layout 이 rotated/vertical 이면 place 의 render_text 위임
+            layout = region.get("layout")
+            rotation = int(region.get("rotation") or 0)
+            if layout in ("rotated", "vertical", "vertical_columns") or rotation != 0:
+                import render_place_texture_job as PJ
+                # localize 의 align→place 의 align/valign 매핑
+                v_to_valign = {"top":"top","center":"center","bottom":"bottom"}
+                PJ.render_text(
+                    result,
+                    [x, y, x+w, y+h],
+                    text,
+                    color,
+                    Path(font_path),
+                    padding=0.0,
+                    fr=float(region.get("font_ratio") or 0.85),
+                    layout=layout,
+                    letter_spacing=int(region.get("letter_spacing") or 0),
+                    align=align if align in ("left","center","right") else "center",
+                    valign=v_to_valign.get(v_align, "center"),
+                    font_px=font_size if region.get("font_size") else None,
+                    rotation=rotation,
+                    outline_width=int(region.get("outline_width", 0) or 0),
+                    outline_fill=tuple(region.get("outline_color") or (0,0,0,255)) if region.get("outline_width") else None,
+                )
+            else:
+                text_img = render_text_to_image(
+                    w, h, text, font_path, font_size,
+                    color=color, align=align, bold=bold, v_align=v_align,
+                    fit_to_box=bool(region.get("fit_to_box", False)),
+                    letter_spacing=int(region.get("letter_spacing") or 0),
+                    outline_width=int(region.get("outline_width", 0) or 0),
+                    outline_color=tuple(region.get("outline_color") or (0, 0, 0, 255)),
+                )
+                # 3. 합성
+                result.paste(text_img, (x, y), text_img)
 
     output_scale = int(tex_config.get("output_scale", 1))
     if output_scale > 1:
