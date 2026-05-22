@@ -5139,18 +5139,19 @@
           "ja": "伊賀",
           "ko": "이가",
           "bbox": [
-            1688,
-            17,
-            1934,
-            587
+            1704,
+            32,
+            1917,
+            569
           ],
           "background": "black",
           "text_color": "white",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.0,
           "source": "visual_manual",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 16
         },
         {
           "id": "K1",
@@ -5198,18 +5199,19 @@
           "ja": "骸衆本陣野槌城",
           "ko": "해골중 본진 노즈치성",
           "bbox": [
-            1486,
-            10,
-            1658,
-            977
+            1493,
+            18,
+            1652,
+            970
           ],
           "background": "red",
           "text_color": "black",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.0,
           "source": "map_notes",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 16
         },
         {
           "id": "B2",
@@ -5258,17 +5260,18 @@
           "ko": "오카베 저택",
           "bbox": [
             1170,
-            214,
-            1347,
-            718
+            216,
+            1334,
+            710
           ],
           "background": "red",
           "text_color": "black",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.21,
           "source": "jp_messages_58_4",
           "render": true,
-          "layout": "vertical"
+          "layout": "vertical",
+          "letter_spacing": 13
         },
         {
           "id": "C0",
@@ -10964,6 +10967,35 @@
           "render": true,
           "source": "kra_extract",
           "clear": "alpha"
+        }
+      ]
+    },
+    "FFFFD99DCD90D546": {
+      "source": "textures/originals/FFFFD99DCD90D546.png",
+      "output_scale": 1,
+      "status": "needs_review",
+      "_from": "manual → place 전환 (사용자 요청)",
+      "regions": [
+        {
+          "id": "B0",
+          "ja": "峠の茶屋",
+          "ko": "고갯마루 찻집",
+          "bbox": [
+            40,
+            35,
+            565,
+            245
+          ],
+          "text_color": "white",
+          "background": "black",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.6,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "render": true
         }
       ]
     }

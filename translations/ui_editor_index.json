@@ -28017,10 +28017,10 @@
       "regions": [
         {
           "box": [
-            1688,
-            17,
-            246,
-            570
+            1704,
+            32,
+            213,
+            537
           ],
           "id": "K0",
           "ja": "伊賀",
@@ -28029,9 +28029,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.0,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 16,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -28051,18 +28051,19 @@
             "ja": "伊賀",
             "ko": "이가",
             "bbox": [
-              1688,
-              17,
-              1934,
-              587
+              1704,
+              32,
+              1917,
+              569
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.0,
             "source": "visual_manual",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 16
           }
         },
         {
@@ -28169,10 +28170,10 @@
         },
         {
           "box": [
-            1486,
-            10,
-            172,
-            967
+            1493,
+            18,
+            159,
+            952
           ],
           "id": "B1",
           "ja": "骸衆本陣野槌城",
@@ -28181,9 +28182,9 @@
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.0,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 16,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -28203,18 +28204,19 @@
             "ja": "骸衆本陣野槌城",
             "ko": "해골중 본진 노즈치성",
             "bbox": [
-              1486,
-              10,
-              1658,
-              977
+              1493,
+              18,
+              1652,
+              970
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 1.0,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 16
           }
         },
         {
@@ -28322,9 +28324,9 @@
         {
           "box": [
             1170,
-            214,
-            177,
-            504
+            216,
+            164,
+            494
           ],
           "id": "B4",
           "ja": "岡部邸",
@@ -28333,9 +28335,9 @@
           "text_color": "black",
           "layout": "vertical",
           "padding": 0.1,
-          "font_ratio": 0.66,
+          "font_ratio": 1.21,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 13,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -28356,17 +28358,18 @@
             "ko": "오카베 저택",
             "bbox": [
               1170,
-              214,
-              1347,
-              718
+              216,
+              1334,
+              710
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.1,
-            "font_ratio": 0.66,
+            "font_ratio": 1.21,
             "source": "jp_messages_58_4",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 13
           }
         },
         {
@@ -28425,19 +28428,74 @@
         2048,
         1024
       ],
-      "memo": "🔄 [재저장 필요] B1~B4 재정정 적용됨 (Gemini 2차 검증):\n B1: 三珠岳 → 骸衆本陣野槌城 (해골중 본진 노즈치성) — DLC 시라누이 핵심\n B2: とある山中 → 三珠岳 (미타마다케)\n B3: 岡部邸 → とある山中 (어느 산속)\n B4: 白川郷... → 岡部邸 (오카베 저택 — 시라누이 생가)\n※ 이전 정정에서 B1 위치를 三珠岳으로 잘못 매핑한 결과 B2~B4가 한 칸씩 밀려 있었음. K0/K1/B0/C0 일치. 편집기에서 확인 후 저장."
+      "memo": "-"
     },
     {
       "hash": "FFFFD99DCD90D546",
-      "system": "manual",
+      "system": "place",
       "png": "kr_textures/ui/FFFFD99DCD90D546.png",
       "source": "textures/originals/FFFFD99DCD90D546.png",
       "size": [
         1024,
         512
       ],
-      "description": "수동 편집 텍스처 (생성 스크립트 미정의)",
-      "regions": [],
+      "description": "",
+      "status": "needs_review",
+      "output_scale": 1,
+      "regions": [
+        {
+          "box": [
+            40,
+            35,
+            525,
+            210
+          ],
+          "id": "B0",
+          "ja": "峠の茶屋",
+          "text": "고갯마루 찻집",
+          "background": "black",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.6,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true,
+          "native": {
+            "id": "B0",
+            "ja": "峠の茶屋",
+            "ko": "고갯마루 찻집",
+            "bbox": [
+              40,
+              35,
+              565,
+              245
+            ],
+            "text_color": "white",
+            "background": "black",
+            "layout": "horizontal",
+            "padding": 0.08,
+            "font_ratio": 0.6,
+            "letter_spacing": 0,
+            "align": "center",
+            "valign": "center",
+            "rotation": 0,
+            "render": true
+          }
+        }
+      ],
       "coord_size": [
         1024,
         512
