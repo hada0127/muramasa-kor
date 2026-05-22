@@ -87,6 +87,8 @@ def localize_regions(tex):
             "fit_to_box": r.get("fit_to_box", False),
             "letter_spacing": r.get("letter_spacing", 0),
             "orient": r.get("orient"),
+            "outline_width": r.get("outline_width", 0),
+            "outline_color": r.get("outline_color") or [0, 0, 0, 255],
             "native": r,
         })
     return out

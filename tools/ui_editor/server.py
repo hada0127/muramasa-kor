@@ -94,6 +94,15 @@ def _to_native_localize(r):
     _upd(nr, "letter_spacing", int(r.get("letter_spacing", 0)), 0)
     if r.get("orient"):
         nr["orient"] = r["orient"]
+    # 외곽선
+    ow = int(r.get("outline_width") or 0)
+    oc = r.get("outline_color")
+    if ow > 0:
+        nr["outline_width"] = ow
+        nr["outline_color"] = list(oc) if isinstance(oc, list) and len(oc) >= 3 else [0, 0, 0, 255]
+    else:
+        nr.pop("outline_width", None)
+        nr.pop("outline_color", None)
     nr.pop("clear_rect", None)
     return nr
 

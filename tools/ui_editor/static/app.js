@@ -444,10 +444,14 @@ function outlineFields(r) {
   const hex = rgbaToHex(r.outline_color || [0, 0, 0, 255]);
   const ap = rgbaAlphaPct(r.outline_color || [0, 0, 0, 255]);
   const w = r.outline_width || 0;
-  return `<div class="field"><label>외곽선</label>
-    <div class="field-row" style="align-items:center">
-      <div style="flex:0 0 auto"><input type="color" data-k="outline_hex" value="${hex}" title="외곽선 색"></div>
-      <div>${sliderField("outline_alpha", "투명도 %", ap, 0, 100, 1)}</div>
+  return `<div class="outline-box">
+    <label style="color:#b8bcc6; font-size:11px; display:block; margin-bottom:6px;">외곽선</label>
+    <div class="outline-row">
+      <div class="color-cell">
+        <label>색</label>
+        <input type="color" data-k="outline_hex" value="${hex}" title="외곽선 색">
+      </div>
+      <div class="alpha-cell">${sliderField("outline_alpha", "투명도 %", ap, 0, 100, 1)}</div>
     </div>
     ${sliderField("outline_width", "두께 (px, 0=없음)", w, 0, 20, 1)}
   </div>`;
