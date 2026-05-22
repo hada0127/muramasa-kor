@@ -40,7 +40,113 @@
         "line3": "피에 굶주린 듯 곧장 생명을 탐한다.",
         "line4": "그 힘에 스러진 이들의 운명을 보라."
       },
-      "notes": "결과 파일: kr_textures/ui/4AEC2546371FFF47.png. Vita3K 실기 확인에서 오프닝 배경 해시로 정상 표시됨."
+      "notes": "결과 파일: kr_textures/ui/4AEC2546371FFF47.png. Vita3K 실기 확인에서 오프닝 배경 해시로 정상 표시됨.\nmanual_regions 4개 추가 (편집기에서 검토용; 자동 render 대상 아님).",
+      "manual_regions": [
+        {
+          "x": 1408,
+          "y": 553,
+          "w": 1276,
+          "h": 158,
+          "text": "헤아릴 수 없이 흩어진 마검들.",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "letter_spacing": 0,
+          "clear": false,
+          "fit_to_box": false,
+          "outline_width": 6,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "x": 1559,
+          "y": 710,
+          "w": 969,
+          "h": 158,
+          "text": "칼집에서 뽑히는 순간,",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "letter_spacing": 0,
+          "clear": false,
+          "fit_to_box": false,
+          "outline_width": 6,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "x": 1274,
+          "y": 873,
+          "w": 1545,
+          "h": 158,
+          "text": "피에 굶주린 듯 곧장 생명을 탐한다.",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "letter_spacing": 0,
+          "clear": false,
+          "fit_to_box": false,
+          "outline_width": 6,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "x": 1303,
+          "y": 1039,
+          "w": 1485,
+          "h": 158,
+          "text": "그 힘에 스러진 이들의 운명을 보라.",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "letter_spacing": 0,
+          "clear": false,
+          "fit_to_box": false,
+          "outline_width": 6,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        }
+      ]
     }
   ]
 }

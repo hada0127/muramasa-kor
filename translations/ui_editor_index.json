@@ -6552,10 +6552,10 @@
       "regions": [
         {
           "box": [
-            712,
-            217,
-            248,
-            571
+            728,
+            234,
+            216,
+            541
           ],
           "id": "K0",
           "ja": "美濃",
@@ -6564,9 +6564,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 1.12,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 13,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -6586,26 +6586,27 @@
             "ja": "美濃",
             "ko": "미노",
             "bbox": [
-              712,
-              217,
-              960,
-              788
+              728,
+              234,
+              944,
+              775
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 1.12,
             "source": "map_notes",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 13
           }
         },
         {
           "box": [
-            12,
             15,
-            942,
-            172
+            18,
+            934,
+            165
           ],
           "id": "B0",
           "ja": "中仙道間道",
@@ -6614,9 +6615,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.91,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 14,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -6636,26 +6637,27 @@
             "ja": "中仙道間道",
             "ko": "나카센도 사잇길",
             "bbox": [
-              12,
               15,
-              954,
-              187
+              18,
+              949,
+              183
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.91,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 14
           }
         },
         {
           "box": [
-            12,
-            819,
-            786,
-            172
+            17,
+            822,
+            774,
+            167
           ],
           "id": "B1",
           "ja": "鳴神城内座敷",
@@ -6664,9 +6666,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.97,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 13,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -6686,26 +6688,27 @@
             "ja": "鳴神城内座敷",
             "ko": "나루카미성 내 거실",
             "bbox": [
-              12,
-              819,
-              798,
-              991
+              17,
+              822,
+              791,
+              989
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.97,
             "source": "map_notes",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 13
           }
         },
         {
           "box": [
-            0,
-            460,
-            240,
-            240
+            1,
+            462,
+            205,
+            207
           ],
           "id": "C0",
           "ja": "鵺",
@@ -6714,7 +6717,7 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.12,
-          "font_ratio": 0.7,
+          "font_ratio": 0.89,
           "font_px": null,
           "letter_spacing": 0,
           "align": "center",
@@ -6736,16 +6739,15 @@
             "ja": "鵺",
             "ko": "누에",
             "bbox": [
-              0,
-              460,
-              240,
-              700
+              1,
+              462,
+              206,
+              669
             ],
-            "background": "none",
             "clear": "white",
             "text_color": "white",
             "padding": 0.12,
-            "font_ratio": 0.7,
+            "font_ratio": 0.89,
             "source": "visual_manual",
             "render": true,
             "layout": "vertical"
@@ -6773,10 +6775,10 @@
       "regions": [
         {
           "box": [
-            1244,
-            17,
-            247,
-            570
+            1259,
+            32,
+            213,
+            539
           ],
           "id": "K0",
           "ja": "大和",
@@ -6785,9 +6787,9 @@
           "text_color": "white",
           "layout": "vertical",
           "padding": 0.14,
-          "font_ratio": 0.74,
+          "font_ratio": 0.92,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 18,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -6807,26 +6809,27 @@
             "ja": "大和",
             "ko": "야마토",
             "bbox": [
-              1244,
-              17,
-              1491,
-              587
+              1259,
+              32,
+              1472,
+              571
             ],
             "background": "black",
             "text_color": "white",
             "padding": 0.14,
-            "font_ratio": 0.74,
+            "font_ratio": 0.92,
             "source": "place_name_regions",
             "render": true,
-            "layout": "vertical"
+            "layout": "vertical",
+            "letter_spacing": 18
           }
         },
         {
           "box": [
-            7,
-            10,
-            1212,
-            173
+            12,
+            15,
+            1204,
+            160
           ],
           "id": "B0",
           "ja": "奈良善祷寺大仏殿",
@@ -6835,9 +6838,9 @@
           "text_color": "black",
           "layout": "rotated",
           "padding": 0.08,
-          "font_ratio": 0.74,
+          "font_ratio": 0.9,
           "font_px": null,
-          "letter_spacing": 0,
+          "letter_spacing": 22,
           "align": "center",
           "valign": "center",
           "rotation": 0,
@@ -6857,18 +6860,19 @@
             "ja": "奈良善祷寺大仏殿",
             "ko": "나라 젠토지 대불전",
             "bbox": [
-              7,
-              10,
-              1219,
-              183
+              12,
+              15,
+              1216,
+              175
             ],
             "background": "red",
             "text_color": "black",
             "padding": 0.08,
-            "font_ratio": 0.74,
+            "font_ratio": 0.9,
             "source": "place_name_regions",
             "render": true,
-            "layout": "rotated"
+            "layout": "rotated",
+            "letter_spacing": 22
           }
         }
       ],
@@ -6890,11 +6894,204 @@
       "description": "본편 오프닝 산 안개 배경 텍스처 + 한글 나레이션 직접 렌더링",
       "output_scale": 1,
       "auto_align": false,
-      "region_key": "regions",
-      "regions": [],
+      "region_key": "manual_regions",
+      "regions": [
+        {
+          "box": [
+            1408,
+            553,
+            1276,
+            158
+          ],
+          "text": "헤아릴 수 없이 흩어진 마검들.",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": false,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "native": {
+            "x": 1408,
+            "y": 553,
+            "w": 1276,
+            "h": 158,
+            "text": "헤아릴 수 없이 흩어진 마검들.",
+            "font_size": 107,
+            "color": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "align": "center",
+            "v_align": "center",
+            "letter_spacing": 0,
+            "clear": false,
+            "fit_to_box": false,
+            "outline_width": 6,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        },
+        {
+          "box": [
+            1559,
+            710,
+            969,
+            158
+          ],
+          "text": "칼집에서 뽑히는 순간,",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": false,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "native": {
+            "x": 1559,
+            "y": 710,
+            "w": 969,
+            "h": 158,
+            "text": "칼집에서 뽑히는 순간,",
+            "font_size": 107,
+            "color": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "align": "center",
+            "v_align": "center",
+            "letter_spacing": 0,
+            "clear": false,
+            "fit_to_box": false,
+            "outline_width": 6,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        },
+        {
+          "box": [
+            1274,
+            873,
+            1545,
+            158
+          ],
+          "text": "피에 굶주린 듯 곧장 생명을 탐한다.",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": false,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "native": {
+            "x": 1274,
+            "y": 873,
+            "w": 1545,
+            "h": 158,
+            "text": "피에 굶주린 듯 곧장 생명을 탐한다.",
+            "font_size": 107,
+            "color": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "align": "center",
+            "v_align": "center",
+            "letter_spacing": 0,
+            "clear": false,
+            "fit_to_box": false,
+            "outline_width": 6,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        },
+        {
+          "box": [
+            1303,
+            1039,
+            1485,
+            158
+          ],
+          "text": "그 힘에 스러진 이들의 운명을 보라.",
+          "font_size": 107,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": false,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "native": {
+            "x": 1303,
+            "y": 1039,
+            "w": 1485,
+            "h": 158,
+            "text": "그 힘에 스러진 이들의 운명을 보라.",
+            "font_size": 107,
+            "color": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "align": "center",
+            "v_align": "center",
+            "letter_spacing": 0,
+            "clear": false,
+            "fit_to_box": false,
+            "outline_width": 6,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        }
+      ],
       "coord_size": [
-        1920,
-        960
+        4096,
+        2048
       ],
       "memo": ""
     },
