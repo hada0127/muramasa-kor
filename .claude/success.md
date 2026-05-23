@@ -1,5 +1,33 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-23: 받침 폰트 확장 PoC 전체 deferred + 워킹 트리 복원
+
+### 사용자 결정
+- 받침 누락 잔여 54자 매핑 시도(`c08f5fa`~`486e7aa`)는 모두 인게임 검증 실패 또는 자동 검증 막힘.
+- 옵션 1(CPK + import 텍스처) 한계 이론적 확정, 옵션 2(eboot 패치)는 ARM disasm 필요 — 시간 비용 큼.
+- 시도 내용은 문서로 남기고, 실제 파일은 폰트 확장 직전(`d9cad6b`) 상태로 복원하여 안정 배포.
+
+### 문서화
+- `docs/03-analysis/jongseong-expansion-poc.md` 신규: 11개 커밋 PoC 시퀀스, 옵션 1 한계 메커니즘, 향후 재개 진입점 정리.
+
+### 워킹 트리 복원 (커밋 보존)
+- `git checkout d9cad6b -- .gitignore tools/.font_hashes.json translations/{char_substitutions,jp_messages,kr_sjis_mapping}.json patch_main/ patch_patch/`
+- 삭제: `tools/external/sceutils/`, `tools/external/vita3k_sce_utils.cpp`, `tools/external/vita3k_src/` (untracked), `tools/vita3k_macos.py`, `translations/*.bak_*` 5개.
+- 매핑: 1001자 (받침 38자 직접 매핑 유지) + char_substitutions 54자.
+- 8665CE08 폰트 import는 유지(받침 시도 도중 발견한 진짜 버그 수정).
+- sysmsg #40/#267/#268 ko 원본 복원.
+
+### 빌드/배포 검증
+- `NinPri_final.cpk` md5 `1761fc31eb9015f1af6e3d66370a3440` (사이클 9와 동일)
+- `NinPriPatch_final.cpk` md5 `7e72ce68d78b822be20fa2e7a818ca9f` (사이클 9와 동일)
+- macOS Vita3K (`~/Library/Application Support/Vita3K/Vita3K/fs/ux0/app/PCSE00240/`) 설치 완료, 해시 일치 검증.
+
+### 향후
+- 받침 잔여 54자는 char_substitutions로 대체 표기 유지. 다른 이슈 우선.
+- 옵션 2 환경(eboot.elf decrypt, sceutils + keys, Vita3K source 분석)은 git 커밋(`3c54f2e`, `a23b8c6`, `a71636d`)에 보존되어 있어 향후 재개 가능.
+
+---
+
 ## 2026-05-23: 폰트 텍스처 확장 PoC (1024x2048) — 사이클 3+5 롤백 + 확장 영역 시도
 
 ### 배경

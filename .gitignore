@@ -54,5 +54,4 @@ __pycache__/
 .idea/
 
 .DS_Store
-*.DS_Storetemp/decrypted/
-tools/external/vita3k_src/Vita3K/
+*.DS_Store

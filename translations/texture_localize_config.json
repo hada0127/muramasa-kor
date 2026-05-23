@@ -4478,10 +4478,10 @@
           "font_size": 48,
           "align": "center",
           "v_align": "center",
-          "clear": false,
+          "clear": true,
           "layout": "horizontal",
           "font_ratio": 0.85,
-          "background": "transparent",
+          "background": "clear_alpha",
           "render": true,
           "outline_width": 3,
           "outline_color": [
