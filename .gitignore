@@ -55,3 +55,4 @@ __pycache__/
 
 .DS_Store
 *.DS_Storetemp/decrypted/
+tools/external/vita3k_src/Vita3K/
