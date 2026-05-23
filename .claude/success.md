@@ -1,5 +1,24 @@
 # SUCCESS - 성공한 작업 기록
 
+## 2026-05-23: 奥義(필살기) 명칭 번역 통일 — 妖雷/雷光/幻影雷光
+
+### 문제
+- 같은 奥義가 아이템 설명문과 명칭 목록에서 다르게 번역(예: 妖雷 → 설명문 "요뢰" vs 명칭 "요괴벼락").
+- 텍스처 E8E01EAF에서 Faerie Assault가 번호 없는 "요괴벼락"이라 Faerie Bolt와 충돌(둘 다 요괴벼락).
+
+### 조사
+- 奥義 명칭은 `_itemdata`에만 존재(sysmsg/scemsg엔 없음 — 거기 "요괴"는 일반 대사의 괴물 뜻).
+- 영문판(US): 妖雷→Faerie Bolt/Strike/Assault, 雷光二/三/四連→Dual/Triple/Quad Lightning, 幻影雷光→Chaos Roar I/II/III.
+- gemini 검토: 일본어 충실(요뢰/뇌광) 권장. **사용자 최종 결정: 익숙한 순우리말(요괴벼락/벼락치기)로 통일**.
+
+### 적용 (최종)
+| 일본어 | 한국어 |
+| 妖雷 / 三ツ / 四ツ | 요괴벼락 / 요괴벼락 3 / 요괴벼락 4 |
+| 雷光 二/三/四連 | 벼락치기 2 / 3 / 4 |
+| 幻影雷光 / 弐 / 参 | 섬광 / 섬광 2 / 섬광 3 |
+- `_itemdata` 설명문+명칭 36개 통일(jp_messages.json), CPK 재빌드·설치.
+- 텍스처 E8E01EAF: `texture_localize_config.json`+`ui_editor_index.json` 5개 region(K49/K54/K63/K65/K82) 갱신, 원본 영문 크롭으로 region↔奥義 정확 매핑(K49=Assault, K54=Bolt, K63=Strike, K65=Dual, K82=Quad). 렌더 확인 완료.
+
 ## 2026-05-23: 장비창/UI ASCII 깨짐 근본 해결 — scheme-B 충돌, 매핑 v0.9.0 복원
 
 ### 증상

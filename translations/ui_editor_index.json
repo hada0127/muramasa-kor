@@ -11415,69 +11415,9 @@
       "regions": [
         {
           "box": [
-            339,
-            1579,
-            229,
-            111
-          ],
-          "text": "2",
-          "font_size": 80,
-          "color": [
-            255,
-            255,
-            255,
-            255
-          ],
-          "align": "center",
-          "v_align": "center",
-          "clear": true,
-          "fit_to_box": false,
-          "letter_spacing": 0,
-          "orient": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "layout": "horizontal",
-          "rotation": 0,
-          "font_ratio": 0.85,
-          "font_px": null,
-          "pad_x": null,
-          "pad_y": null,
-          "background": null,
-          "render": true,
-          "native": {
-            "x": 339,
-            "y": 1579,
-            "w": 229,
-            "h": 111,
-            "text": "2",
-            "color": [
-              255,
-              255,
-              255,
-              255
-            ],
-            "align": "center",
-            "v_align": "center",
-            "letter_spacing": 0,
-            "clear": true,
-            "fit_to_box": false,
-            "font_size": 80,
-            "layout": "horizontal",
-            "_id": "K4",
-            "font_ratio": 0.85,
-            "render": true
-          }
-        },
-        {
-          "box": [
             428,
             1686,
-            102,
+            98,
             229
           ],
           "text": "오코이",
@@ -11494,7 +11434,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11503,7 +11443,7 @@
           ],
           "layout": "horizontal",
           "rotation": 90,
-          "font_ratio": 0.93,
+          "font_ratio": 0.79,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -11512,7 +11452,7 @@
           "native": {
             "x": 428,
             "y": 1686,
-            "w": 102,
+            "w": 98,
             "h": 229,
             "text": "오코이",
             "color": [
@@ -11528,10 +11468,17 @@
             "fit_to_box": false,
             "layout": "horizontal",
             "_id": "K5",
-            "font_ratio": 0.93,
+            "font_ratio": 0.79,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11542,7 +11489,7 @@
             128
           ],
           "text": "지옥팽이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11555,7 +11502,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11564,11 +11511,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1567,
@@ -11587,11 +11534,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K6",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11602,7 +11556,7 @@
             134
           ],
           "text": "성스러운 사면",
-          "font_size": 76,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11615,7 +11569,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11624,11 +11578,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.53,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1068,
@@ -11647,11 +11601,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 76,
             "layout": "horizontal",
             "_id": "K7",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.53,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11659,10 +11620,10 @@
             566,
             1901,
             418,
-            134
+            125
           ],
           "text": "성스러운 기도",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11675,7 +11636,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11684,17 +11645,17 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.56,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 566,
             "y": 1901,
             "w": 418,
-            "h": 134,
+            "h": 125,
             "text": "성스러운 기도",
             "color": [
               255,
@@ -11707,11 +11668,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K8",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.56,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11722,7 +11690,7 @@
             110
           ],
           "text": "자동 회복",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11735,7 +11703,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11744,11 +11712,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -11767,11 +11735,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K9",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11782,7 +11757,7 @@
             124
           ],
           "text": "성스러운 축복",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11795,7 +11770,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11804,11 +11779,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -11827,11 +11802,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K10",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11842,7 +11824,7 @@
             125
           ],
           "text": "개기일식",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11855,7 +11837,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11864,11 +11846,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1565,
@@ -11887,11 +11869,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K11",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11902,7 +11891,7 @@
             127
           ],
           "text": "화 염",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11915,7 +11904,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11924,11 +11913,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1063,
@@ -11947,11 +11936,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K12",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -11962,7 +11958,7 @@
             126
           ],
           "text": "대나무 창",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -11975,7 +11971,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -11984,11 +11980,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 566,
@@ -12007,11 +12003,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K13",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12022,7 +12025,7 @@
             123
           ],
           "text": "별 똥 별",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12035,7 +12038,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12044,11 +12047,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -12067,11 +12070,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K14",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12082,7 +12092,7 @@
             115
           ],
           "text": "벼락치기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12095,7 +12105,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12104,11 +12114,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1567,
@@ -12127,11 +12137,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K15",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12142,7 +12159,7 @@
             109
           ],
           "text": "벌 그림자",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12155,7 +12172,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12164,11 +12181,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1062,
@@ -12187,11 +12204,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K16",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12202,7 +12226,7 @@
             125
           ],
           "text": "나나니 벌",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12215,7 +12239,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12224,11 +12248,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 567,
@@ -12247,22 +12271,29 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K17",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
           "box": [
             0,
             1579,
-            348,
+            488,
             112
           ],
           "text": "감 주",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12275,7 +12306,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12284,16 +12315,16 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
             "y": 1579,
-            "w": 348,
+            "w": 488,
             "h": 112,
             "text": "감 주",
             "color": [
@@ -12307,11 +12338,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K18",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12322,7 +12360,7 @@
             120
           ],
           "text": "아지랑이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12335,7 +12373,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12344,11 +12382,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1567,
@@ -12367,11 +12405,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K19",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12382,7 +12427,7 @@
             115
           ],
           "text": "자동 회복",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12395,7 +12440,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12404,11 +12449,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1061,
@@ -12427,11 +12472,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K20",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12442,7 +12494,7 @@
             125
           ],
           "text": "오징어 구이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12455,7 +12507,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12464,11 +12516,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 566,
@@ -12487,11 +12539,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K21",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12502,7 +12561,7 @@
             112
           ],
           "text": "큰마을 숫돌",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12515,7 +12574,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12524,11 +12583,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -12547,11 +12606,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K22",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12562,7 +12628,7 @@
             113
           ],
           "text": "공격 강화",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12575,7 +12641,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12584,11 +12650,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1556,
@@ -12607,11 +12673,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K23",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12622,7 +12695,7 @@
             112
           ],
           "text": "자동 부활",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12635,7 +12708,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12644,11 +12717,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1065,
@@ -12667,11 +12740,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K24",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12682,7 +12762,7 @@
             130
           ],
           "text": "치료 환약",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12695,7 +12775,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12704,11 +12784,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 565,
@@ -12727,11 +12807,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K25",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12742,7 +12829,7 @@
             114
           ],
           "text": "신 령 주",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12755,7 +12842,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12764,7 +12851,7 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -12787,12 +12874,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K26",
-            "font_ratio": 0.85,
+            "font_ratio": 0.63,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12803,7 +12896,7 @@
             113
           ],
           "text": "흐릿한 숫돌",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12816,7 +12909,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12825,11 +12918,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1554,
@@ -12848,11 +12941,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K27",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12863,7 +12963,7 @@
             113
           ],
           "text": "생선구이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12876,7 +12976,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12885,11 +12985,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1063,
@@ -12908,11 +13008,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K28",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12923,7 +13030,7 @@
             111
           ],
           "text": "군고구마",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12936,7 +13043,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -12945,11 +13052,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 565,
@@ -12968,11 +13075,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K29",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -12983,7 +13097,7 @@
             112
           ],
           "text": "곰 환 약",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -12996,7 +13110,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13005,11 +13119,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -13028,11 +13142,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K30",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13043,7 +13164,7 @@
             116
           ],
           "text": "닌 자 술",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13056,7 +13177,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13065,11 +13186,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1555,
@@ -13088,11 +13209,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K31",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13103,7 +13231,7 @@
             116
           ],
           "text": "팔척 거울",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13116,7 +13244,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13125,11 +13253,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1061,
@@ -13148,11 +13276,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K32",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13163,7 +13298,7 @@
             116
           ],
           "text": "내화 부적",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13176,7 +13311,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13185,11 +13320,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 566,
@@ -13208,11 +13343,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K33",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13223,7 +13365,7 @@
             123
           ],
           "text": "의식용 곡옥",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13236,7 +13378,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13245,11 +13387,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -13268,11 +13410,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K34",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13283,7 +13432,7 @@
             116
           ],
           "text": "생명 흡수",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13296,7 +13445,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13305,11 +13454,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1572,
@@ -13328,11 +13477,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K35",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13343,7 +13499,7 @@
             113
           ],
           "text": "칼영력 회복",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13356,7 +13512,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13365,11 +13521,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1062,
@@ -13388,11 +13544,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K36",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13403,7 +13566,7 @@
             123
           ],
           "text": "수라 표식",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13416,7 +13579,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13425,11 +13588,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 566,
@@ -13448,11 +13611,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K37",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13463,7 +13633,7 @@
             110
           ],
           "text": "영방 반혼단",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13476,7 +13646,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13485,11 +13655,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -13508,11 +13678,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K38",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13523,7 +13700,7 @@
             122
           ],
           "text": "비취 곡옥",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13536,7 +13713,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13545,11 +13722,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1554,
@@ -13568,11 +13745,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K39",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13583,7 +13767,7 @@
             123
           ],
           "text": "수정 곡옥",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13596,7 +13780,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13605,11 +13789,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1061,
@@ -13628,11 +13812,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K40",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13643,7 +13834,7 @@
             123
           ],
           "text": "호담 환약",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13656,7 +13847,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13665,11 +13856,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 566,
@@ -13688,11 +13879,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K41",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13703,7 +13901,7 @@
             132
           ],
           "text": "상견사 숫돌",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13716,7 +13914,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13725,11 +13923,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1384,
@@ -13748,11 +13946,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K42",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13763,7 +13968,7 @@
             125
           ],
           "text": "연령단",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13776,7 +13981,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13785,11 +13990,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1063,
@@ -13808,11 +14013,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K43",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13823,7 +14035,7 @@
             125
           ],
           "text": "환영 뇌광",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13836,7 +14048,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13845,11 +14057,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 565,
@@ -13868,11 +14080,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K44",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13883,7 +14102,7 @@
             112
           ],
           "text": "어백초",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13896,7 +14115,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13905,11 +14124,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1595,
@@ -13928,11 +14147,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K45",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -13943,7 +14169,7 @@
             124
           ],
           "text": "회복 환약",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -13956,7 +14182,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -13965,11 +14191,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1101,
@@ -13988,11 +14214,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K46",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14003,7 +14236,7 @@
             124
           ],
           "text": "체력 강화",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14016,7 +14249,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14025,7 +14258,7 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -14048,12 +14281,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K47",
-            "font_ratio": 0.85,
+            "font_ratio": 0.63,
             "render": true,
-            "background": "clear_alpha"
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14064,7 +14303,7 @@
             113
           ],
           "text": "폭 탄",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14077,7 +14316,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14086,11 +14325,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1751,
@@ -14109,11 +14348,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K48",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14124,7 +14370,7 @@
             123
           ],
           "text": "악귀 표식",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14137,7 +14383,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14146,11 +14392,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1255,
@@ -14169,11 +14415,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K49",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14184,7 +14437,7 @@
             135
           ],
           "text": "요술 망치",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14197,7 +14450,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14206,11 +14459,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 700,
@@ -14229,11 +14482,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K50",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14244,7 +14504,7 @@
             119
           ],
           "text": "새 끼 줄",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14257,7 +14517,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14266,11 +14526,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1430,
@@ -14289,11 +14549,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K52",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14304,7 +14571,7 @@
             121
           ],
           "text": "밀 감",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14317,7 +14584,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14326,11 +14593,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 937,
@@ -14349,11 +14616,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K53",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14364,7 +14638,7 @@
             125
           ],
           "text": "영력 환원",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14377,7 +14651,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14386,11 +14660,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1429,
@@ -14409,11 +14683,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K54",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14424,7 +14705,7 @@
             124
           ],
           "text": "이요 숫돌",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14437,7 +14718,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14446,11 +14727,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 938,
@@ -14469,11 +14750,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K55",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14484,7 +14772,7 @@
             124
           ],
           "text": "이가라시 숫돌",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14497,7 +14785,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14506,11 +14794,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1429,
@@ -14529,11 +14817,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K56",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14544,7 +14839,7 @@
             125
           ],
           "text": "용뇌 환약",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14557,7 +14852,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14566,11 +14861,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 939,
@@ -14589,11 +14884,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K57",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14604,7 +14906,7 @@
             124
           ],
           "text": "신선 환약",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14617,7 +14919,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14626,11 +14928,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1441,
@@ -14649,11 +14951,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K58",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14664,7 +14973,7 @@
             124
           ],
           "text": "거합 강화",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -14677,7 +14986,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14686,11 +14995,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 940,
@@ -14709,11 +15018,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K59",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14737,7 +15053,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14774,7 +15090,14 @@
             "font_ratio": 0.7,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14798,7 +15121,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14835,7 +15158,14 @@
             "font_ratio": 0.7,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -14859,7 +15189,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -14868,7 +15198,7 @@
           ],
           "layout": "horizontal",
           "rotation": 90,
-          "font_ratio": 0.7,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -14893,10 +15223,17 @@
             "fit_to_box": false,
             "layout": "horizontal",
             "_id": "K62",
-            "font_ratio": 0.7,
+            "font_ratio": 0.63,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         }
       ],
@@ -17536,7 +17873,7 @@
             255
           ],
           "align": "center",
-          "v_align": "center",
+          "v_align": "bottom",
           "clear": true,
           "fit_to_box": false,
           "letter_spacing": 0,
@@ -17553,8 +17890,8 @@
           "font_ratio": 0.85,
           "font_px": null,
           "pad_x": null,
-          "pad_y": null,
-          "background": null,
+          "pad_y": 20,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 2305,
@@ -17569,7 +17906,7 @@
               255
             ],
             "align": "center",
-            "v_align": "center",
+            "v_align": "bottom",
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
@@ -17577,7 +17914,9 @@
             "layout": "horizontal",
             "_id": "K30",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "pad_y": 20,
+            "background": "clear_alpha"
           }
         },
         {
@@ -17656,7 +17995,7 @@
             255,
             255
           ],
-          "align": "center",
+          "align": "right",
           "v_align": "center",
           "clear": true,
           "fit_to_box": false,
@@ -17673,9 +18012,9 @@
           "rotation": 0,
           "font_ratio": 0.85,
           "font_px": null,
-          "pad_x": null,
+          "pad_x": 30,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 727,
@@ -17689,7 +18028,7 @@
               255,
               255
             ],
-            "align": "center",
+            "align": "right",
             "v_align": "center",
             "letter_spacing": 0,
             "clear": true,
@@ -17698,7 +18037,9 @@
             "layout": "horizontal",
             "_id": "K32",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "pad_x": 30,
+            "background": "clear_alpha"
           }
         },
         {
@@ -24573,7 +24914,7 @@
             111
           ],
           "text": "복숭아",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -24586,7 +24927,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -24595,11 +24936,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 833,
@@ -24618,11 +24959,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K0",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -24646,7 +24994,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -24659,7 +25007,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 415,
@@ -24682,7 +25030,15 @@
             "layout": "horizontal",
             "_id": "K1",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -24706,7 +25062,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -24719,7 +25075,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -24742,7 +25098,15 @@
             "layout": "horizontal",
             "_id": "K2",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -24753,7 +25117,7 @@
             112
           ],
           "text": "기 술",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -24766,7 +25130,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -24775,11 +25139,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1359,
@@ -24798,11 +25162,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K3",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -24813,7 +25184,7 @@
             111
           ],
           "text": "바 람",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -24826,7 +25197,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -24835,11 +25206,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1136,
@@ -24858,11 +25229,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K4",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -24873,7 +25251,7 @@
             110
           ],
           "text": "배부름",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -24886,7 +25264,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -24895,11 +25273,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 830,
@@ -24918,11 +25296,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K5",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -24946,7 +25331,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -24959,7 +25344,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 413,
@@ -24982,7 +25367,15 @@
             "layout": "horizontal",
             "_id": "K6",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25006,7 +25399,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25019,7 +25412,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -25042,15 +25435,23 @@
             "layout": "horizontal",
             "_id": "K7",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
           "box": [
             1610,
             1693,
-            162,
-            137
+            158,
+            133
           ],
           "text": "신규",
           "font_size": null,
@@ -25066,7 +25467,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25075,7 +25476,7 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.57,
+          "font_ratio": 0.59,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -25084,8 +25485,8 @@
           "native": {
             "x": 1610,
             "y": 1693,
-            "w": 162,
-            "h": 137,
+            "w": 158,
+            "h": 133,
             "text": "신규",
             "color": [
               255,
@@ -25100,9 +25501,16 @@
             "fit_to_box": false,
             "layout": "horizontal",
             "_id": "K8",
-            "font_ratio": 0.57,
+            "font_ratio": 0.59,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25113,7 +25521,7 @@
             113
           ],
           "text": "두꺼비기름",
-          "font_size": 63,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25126,7 +25534,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25135,11 +25543,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.52,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1360,
@@ -25158,11 +25566,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 63,
             "layout": "horizontal",
             "_id": "K9",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.52,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25173,7 +25588,7 @@
             113
           ],
           "text": "술",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25186,7 +25601,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25195,11 +25610,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1133,
@@ -25218,11 +25633,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K10",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25233,7 +25655,7 @@
             109
           ],
           "text": "화 신",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25246,7 +25668,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25255,11 +25677,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 829,
@@ -25278,11 +25700,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K11",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25306,7 +25735,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25319,7 +25748,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 415,
@@ -25342,7 +25771,15 @@
             "layout": "horizontal",
             "_id": "K12",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25366,7 +25803,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25379,7 +25816,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -25402,7 +25839,15 @@
             "layout": "horizontal",
             "_id": "K13",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25413,7 +25858,7 @@
             112
           ],
           "text": "아 이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25426,7 +25871,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25435,11 +25880,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1646,
@@ -25458,11 +25903,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K14",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25473,7 +25925,7 @@
             112
           ],
           "text": "도깨비",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25486,7 +25938,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25495,11 +25947,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1357,
@@ -25518,11 +25970,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K15",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25533,7 +25992,7 @@
             110
           ],
           "text": "괭이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25546,7 +26005,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25555,11 +26014,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1168,
@@ -25578,11 +26037,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K16",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25593,7 +26059,7 @@
             112
           ],
           "text": "기 습",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25606,7 +26072,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25615,11 +26081,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 830,
@@ -25638,11 +26104,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K17",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25653,7 +26126,7 @@
             113
           ],
           "text": "경험치증가",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25666,7 +26139,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25675,11 +26148,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 415,
@@ -25698,11 +26171,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K18",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25726,7 +26206,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25739,7 +26219,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -25762,7 +26242,15 @@
             "layout": "horizontal",
             "_id": "K19",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25773,7 +26261,7 @@
             105
           ],
           "text": "별똥별",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25786,7 +26274,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25795,11 +26283,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1681,
@@ -25818,11 +26306,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K20",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25833,7 +26328,7 @@
             115
           ],
           "text": "근력",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25846,7 +26341,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25855,11 +26350,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1180,
@@ -25878,11 +26373,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K21",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25893,7 +26395,7 @@
             111
           ],
           "text": "땅달리기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -25906,7 +26408,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25915,7 +26417,7 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -25938,12 +26440,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K22",
-            "font_ratio": 0.85,
+            "font_ratio": 0.69,
             "render": true,
-            "background": "clear_alpha"
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -25967,7 +26475,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -25980,7 +26488,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 415,
@@ -26003,7 +26511,15 @@
             "layout": "horizontal",
             "_id": "K23",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26027,7 +26543,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26040,7 +26556,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -26063,7 +26579,15 @@
             "layout": "horizontal",
             "_id": "K24",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26074,7 +26598,7 @@
             112
           ],
           "text": "홍 시",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26087,7 +26611,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26096,11 +26620,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1729,
@@ -26119,11 +26643,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K25",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26134,7 +26665,7 @@
             112
           ],
           "text": "무 적",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26147,7 +26678,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26156,11 +26687,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1358,
@@ -26179,11 +26710,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K26",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26194,7 +26732,7 @@
             115
           ],
           "text": "효과",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26207,7 +26745,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26216,11 +26754,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1175,
@@ -26239,11 +26777,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K27",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26254,7 +26799,7 @@
             125
           ],
           "text": "벼 락",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26267,7 +26812,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26276,11 +26821,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 832,
@@ -26299,11 +26844,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K28",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26314,7 +26866,7 @@
             110
           ],
           "text": "섬 광",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26327,7 +26879,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26336,11 +26888,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.65,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 414,
@@ -26359,11 +26911,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K29",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.65,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26387,7 +26946,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26400,7 +26959,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -26423,7 +26982,15 @@
             "layout": "horizontal",
             "_id": "K30",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26434,7 +27001,7 @@
             114
           ],
           "text": "쿠나이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26447,7 +27014,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26456,11 +27023,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1750,
@@ -26479,11 +27046,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K31",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26494,7 +27068,7 @@
             114
           ],
           "text": "카마이타치",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26507,7 +27081,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26516,11 +27090,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1361,
@@ -26539,11 +27113,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K32",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26554,7 +27135,7 @@
             109
           ],
           "text": "달 밤",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26567,7 +27148,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26576,11 +27157,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 830,
@@ -26599,11 +27180,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K33",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26627,7 +27215,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26640,7 +27228,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 415,
@@ -26663,7 +27251,15 @@
             "layout": "horizontal",
             "_id": "K34",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26687,7 +27283,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26700,7 +27296,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -26723,7 +27319,15 @@
             "layout": "horizontal",
             "_id": "K35",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26734,7 +27338,7 @@
             110
           ],
           "text": "초승달",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26747,7 +27351,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26756,11 +27360,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1358,
@@ -26779,11 +27383,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K36",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26794,7 +27405,7 @@
             107
           ],
           "text": "화 염",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26807,7 +27418,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26816,11 +27427,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 829,
@@ -26839,11 +27450,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K37",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26867,7 +27485,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26880,7 +27498,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 413,
@@ -26903,7 +27521,15 @@
             "layout": "horizontal",
             "_id": "K38",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26927,7 +27553,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26940,7 +27566,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -26963,7 +27589,15 @@
             "layout": "horizontal",
             "_id": "K39",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -26974,7 +27608,7 @@
             112
           ],
           "text": "해 골",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -26987,7 +27621,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -26996,11 +27630,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1793,
@@ -27019,11 +27653,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K40",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27034,7 +27675,7 @@
             106
           ],
           "text": "원한반사3",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27047,7 +27688,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27056,11 +27697,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1360,
@@ -27079,11 +27720,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K41",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27094,7 +27742,7 @@
             110
           ],
           "text": "초승달2",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27107,7 +27755,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27116,11 +27764,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 830,
@@ -27139,11 +27787,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K42",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27154,7 +27809,7 @@
             112
           ],
           "text": "원령날리기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27167,7 +27822,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27176,11 +27831,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 414,
@@ -27199,11 +27854,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K43",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27227,7 +27889,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27240,7 +27902,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -27263,7 +27925,15 @@
             "layout": "horizontal",
             "_id": "K44",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27274,7 +27944,7 @@
             122
           ],
           "text": "태 풍",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27287,7 +27957,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27296,11 +27966,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1795,
@@ -27319,11 +27989,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K45",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27334,7 +28011,7 @@
             110
           ],
           "text": "땅벌레",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27347,7 +28024,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27356,11 +28033,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1357,
@@ -27379,11 +28056,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K46",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27394,7 +28078,7 @@
             116
           ],
           "text": "요괴불꽃3",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27407,7 +28091,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27416,11 +28100,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 415,
@@ -27439,11 +28123,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K47",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27467,7 +28158,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27480,7 +28171,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -27503,7 +28194,15 @@
             "layout": "horizontal",
             "_id": "K48",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27513,8 +28212,8 @@
             419,
             111
           ],
-          "text": "요괴벼락",
-          "font_size": 80,
+          "text": "요괴벼락 4",
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27527,7 +28226,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27536,18 +28235,18 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.62,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1359,
             "y": 829,
             "w": 419,
             "h": 111,
-            "text": "요괴벼락",
+            "text": "요괴벼락 4",
             "color": [
               255,
               255,
@@ -27559,11 +28258,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K49",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.62,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27574,7 +28280,7 @@
             113
           ],
           "text": "질풍베기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27587,7 +28293,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27596,11 +28302,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 943,
@@ -27619,11 +28325,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K50",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27634,7 +28347,7 @@
             113
           ],
           "text": "채썰기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27647,7 +28360,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27656,11 +28369,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 412,
@@ -27679,11 +28392,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K51",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27707,7 +28427,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27720,7 +28440,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -27743,7 +28463,15 @@
             "layout": "horizontal",
             "_id": "K52",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27754,7 +28482,7 @@
             112
           ],
           "text": "괴물고양이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27767,7 +28495,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27776,11 +28504,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.65,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1355,
@@ -27799,11 +28527,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K53",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.65,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27814,7 +28549,7 @@
             113
           ],
           "text": "요괴벼락",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27827,7 +28562,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27836,11 +28571,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.66,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 945,
@@ -27859,11 +28594,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K54",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.66,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27874,7 +28616,7 @@
             113
           ],
           "text": "요괴불꽃",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -27887,7 +28629,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27896,11 +28638,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 413,
@@ -27919,11 +28661,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K55",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27947,7 +28696,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -27960,7 +28709,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -27983,7 +28732,15 @@
             "layout": "horizontal",
             "_id": "K56",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -27994,7 +28751,7 @@
             123
           ],
           "text": "원한반사",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28007,7 +28764,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28016,11 +28773,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.61,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1353,
@@ -28039,11 +28796,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K57",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.61,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28054,7 +28818,7 @@
             112
           ],
           "text": "나선은하",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28067,7 +28831,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28076,11 +28840,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 941,
@@ -28099,11 +28863,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K58",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28114,7 +28885,7 @@
             117
           ],
           "text": "일도양단",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28127,7 +28898,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28136,11 +28907,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 409,
@@ -28159,11 +28930,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K59",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28187,7 +28965,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28200,7 +28978,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -28223,7 +29001,15 @@
             "layout": "horizontal",
             "_id": "K60",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28247,7 +29033,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28256,7 +29042,7 @@
           ],
           "layout": "horizontal",
           "rotation": 90,
-          "font_ratio": 0.74,
+          "font_ratio": 0.68,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -28281,10 +29067,17 @@
             "fit_to_box": false,
             "layout": "horizontal",
             "_id": "K61",
-            "font_ratio": 0.74,
+            "font_ratio": 0.68,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28295,7 +29088,7 @@
             113
           ],
           "text": "백귀난섬",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28308,7 +29101,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28317,11 +29110,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1241,
@@ -28340,11 +29133,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K62",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28354,8 +29154,8 @@
             419,
             113
           ],
-          "text": "요괴벼락3",
-          "font_size": 80,
+          "text": "요괴벼락 3",
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28368,7 +29168,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28377,18 +29177,18 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.63,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 827,
             "y": 394,
             "w": 419,
             "h": 113,
-            "text": "요괴벼락3",
+            "text": "요괴벼락 3",
             "color": [
               255,
               255,
@@ -28400,11 +29200,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K63",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.63,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28415,7 +29222,7 @@
             122
           ],
           "text": "아지랑이",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28428,7 +29235,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28437,11 +29244,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 409,
@@ -28460,11 +29267,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K64",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28474,7 +29288,7 @@
             414,
             125
           ],
-          "text": "벼락치기2",
+          "text": "벼락치기 2",
           "font_size": 80,
           "color": [
             255,
@@ -28488,7 +29302,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28501,14 +29315,14 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
             "y": 371,
             "w": 414,
             "h": 125,
-            "text": "벼락치기2",
+            "text": "벼락치기 2",
             "color": [
               255,
               255,
@@ -28524,7 +29338,15 @@
             "layout": "horizontal",
             "_id": "K65",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28535,7 +29357,7 @@
             112
           ],
           "text": "십자베기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28548,7 +29370,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28557,11 +29379,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1377,
@@ -28580,11 +29402,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K66",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28595,7 +29424,7 @@
             101
           ],
           "text": "달무리3",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28608,7 +29437,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28617,11 +29446,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 951,
@@ -28640,11 +29469,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K67",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28655,7 +29491,7 @@
             123
           ],
           "text": "안개숨기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28668,7 +29504,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28677,11 +29513,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.66,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 414,
@@ -28700,11 +29536,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K68",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.66,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28728,7 +29571,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28741,7 +29584,7 @@
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -28764,7 +29607,15 @@
             "layout": "horizontal",
             "_id": "K69",
             "font_ratio": 0.85,
-            "render": true
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28775,7 +29626,7 @@
             110
           ],
           "text": "고 월",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28788,7 +29639,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28797,11 +29648,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1379,
@@ -28820,11 +29671,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K70",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28835,7 +29693,7 @@
             120
           ],
           "text": "화 염4",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28848,7 +29706,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28857,11 +29715,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 949,
@@ -28880,11 +29738,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K71",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28895,7 +29760,7 @@
             123
           ],
           "text": "달무리2",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28908,7 +29773,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28917,11 +29782,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.66,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 412,
@@ -28940,11 +29805,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K72",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.66,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -28955,7 +29827,7 @@
             126
           ],
           "text": "안개자르기3",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -28968,7 +29840,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -28977,11 +29849,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.61,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -29000,11 +29872,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K73",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.61,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29028,7 +29907,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29065,7 +29944,14 @@
             "font_ratio": 0.74,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29089,7 +29975,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29126,7 +30012,14 @@
             "font_ratio": 0.74,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29150,7 +30043,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29187,7 +30080,14 @@
             "font_ratio": 0.74,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29211,7 +30111,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29248,7 +30148,14 @@
             "font_ratio": 0.74,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29259,7 +30166,7 @@
             111
           ],
           "text": "낫족제비",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -29272,7 +30179,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29281,11 +30188,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1747,
@@ -29304,11 +30211,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K78",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29319,7 +30233,7 @@
             123
           ],
           "text": "안개자르기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -29332,7 +30246,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29341,11 +30255,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.62,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 1378,
@@ -29364,11 +30278,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K79",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.62,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29379,7 +30300,7 @@
             110
           ],
           "text": "청동 거울",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -29392,7 +30313,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29401,11 +30322,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 950,
@@ -29424,11 +30345,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K80",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.69,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29452,7 +30380,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29461,7 +30389,7 @@
           ],
           "layout": "horizontal",
           "rotation": 90,
-          "font_ratio": 0.62,
+          "font_ratio": 0.59,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -29486,10 +30414,17 @@
             "fit_to_box": false,
             "layout": "horizontal",
             "_id": "K81",
-            "font_ratio": 0.62,
+            "font_ratio": 0.59,
             "rotation": 90,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29499,8 +30434,8 @@
             417,
             124
           ],
-          "text": "벼락치기4",
-          "font_size": 80,
+          "text": "벼락치기 4",
+          "font_size": null,
           "color": [
             255,
             255,
@@ -29513,7 +30448,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29522,18 +30457,18 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.64,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 409,
             "y": 0,
             "w": 417,
             "h": 124,
-            "text": "벼락치기4",
+            "text": "벼락치기 4",
             "color": [
               255,
               255,
@@ -29545,11 +30480,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K82",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.64,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29560,7 +30502,7 @@
             124
           ],
           "text": "안개자르기2",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -29573,7 +30515,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29582,11 +30524,11 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.64,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
-          "background": null,
+          "background": "clear_alpha",
           "render": true,
           "native": {
             "x": 0,
@@ -29605,11 +30547,18 @@
             "letter_spacing": 0,
             "clear": true,
             "fit_to_box": false,
-            "font_size": 80,
             "layout": "horizontal",
             "_id": "K83",
-            "font_ratio": 0.85,
-            "render": true
+            "font_ratio": 0.64,
+            "render": true,
+            "background": "clear_alpha",
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         },
         {
@@ -29620,7 +30569,7 @@
             107
           ],
           "text": "베 기",
-          "font_size": 80,
+          "font_size": null,
           "color": [
             255,
             255,
@@ -29633,7 +30582,7 @@
           "fit_to_box": false,
           "letter_spacing": 0,
           "orient": null,
-          "outline_width": 0,
+          "outline_width": 7,
           "outline_color": [
             0,
             0,
@@ -29642,7 +30591,7 @@
           ],
           "layout": "horizontal",
           "rotation": 0,
-          "font_ratio": 0.85,
+          "font_ratio": 0.69,
           "font_px": null,
           "pad_x": null,
           "pad_y": null,
@@ -29654,13 +30603,19 @@
             "w": 322,
             "h": 107,
             "text": "베 기",
-            "font_size": 80,
             "align": "center",
             "v_align": "center",
             "layout": "horizontal",
-            "font_ratio": 0.85,
+            "font_ratio": 0.69,
             "background": "clear_alpha",
-            "render": true
+            "render": true,
+            "outline_width": 7,
+            "outline_color": [
+              0,
+              0,
+              0,
+              255
+            ]
           }
         }
       ],
