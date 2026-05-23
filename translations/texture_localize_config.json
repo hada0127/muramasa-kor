@@ -5003,7 +5003,7 @@
             255
           ],
           "align": "center",
-          "v_align": "bottom",
+          "v_align": "center",
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
@@ -5012,14 +5012,14 @@
           "_id": "K30",
           "font_ratio": 0.85,
           "render": true,
-          "pad_y": 20,
+          "pad_y": 50,
           "background": "clear_alpha"
         },
         {
           "x": 2025,
-          "y": 1720,
+          "y": 1668,
           "w": 353,
-          "h": 291,
+          "h": 343,
           "text": "아",
           "color": [
             255,
@@ -5032,12 +5032,12 @@
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 182,
           "layout": "horizontal",
           "_id": "K31",
-          "font_ratio": 0.85,
+          "font_ratio": 0.49,
           "background": "clear_alpha",
-          "render": true
+          "render": true,
+          "pad_x": 15
         },
         {
           "x": 727,
