@@ -1850,3 +1850,13 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - 검증: 백엔드 전 API curl 통과, 경로탈출 403 차단, 무변경 round-trip = 사실상 0줄(렌더러 무시 필드 1줄 정리만), 실제 렌더러로 localize/place 미리보기 생성 확인(야마시로/시나노 정상)
 - 핵심설계: region 지오메트리/텍스트는 네이티브 config 역기록(기존 키 유지+없던 키는 비기본값만 추가 → 무손실), memo는 인덱스 sidecar. 생성은 실제 texture_localize.py/render_place_texture_job.py 호출 → 게임과 동일 출력
 - 실행: python tools/ui_editor/server.py → http://127.0.0.1:8765
+
+## [2026-05-25] 보스 전용 무기 아이템명 한자 깨짐 수정
+- 증상: 모모히메/키스케 장비창에서 "珞韓集集모모히메 세번째"처럼 아이템명에 한자가 섞여 출력 (Screenshot_20260524-122353.png)
+- 원인: _itemdata 6개(키스케/모모히메 × 첫·두·세번째)의 ko가 "+OSS…" — 원문 "BOSS百姫３本目"의 BOSS가 "+OSS"로 오역됨.
+  ASCII '+OSS'가 아이템 목록 폰트 페이지(960+ 위치 ASCII 글리프 미오버레이)에서 원본 한자 글리프(珞韓集集)로 렌더링됨.
+  cf. 하단 설명 폰트에서는 ASCII가 정상 출력되어 같은 문자열이 화면마다 다르게 보임.
+- 수정: translations/jp_messages.json의 _itemdata·_itemdata_main 12개 엔트리 "+OSS" → "보스 " (순한글, 프로젝트 기존 표기 "보스전" 일치)
+- 검증: build_patch 재빌드 후 4개 _itemdata.nms 모두 "보스"(8c568cb5) 6개·"+OSS" 0개. SJIS 리드바이트 파싱 결과 단일 바이트는 공백뿐 → 한자 깨짐 제거 확정.
+- CPK append 패치 후 fs/ux0/app/PCSE00240에 설치 완료.
+- 미검증: macOS라 Windows용 vita3k_ctrl.py(ctypes.windll) 미동작 + 해당 아이템은 상대전용/사용금지 숨김 아이템이라 인게임 도달 곤란. 인게임 육안 확인 권장.
