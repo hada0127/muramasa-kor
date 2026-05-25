@@ -527,7 +527,7 @@
       "description": ".kra import 기반 한글화 (place → localize 이전됨)",
       "source": "textures/originals/E8E01EAF5D41DB52.png",
       "output_scale": 1,
-      "notes": ".kra 원본 bbox 복원 + clear=alpha. 84개 region.",
+      "notes": ".kra 원본 bbox 복원 + clear=alpha. 84개 region. | [2026-05-25] 奥義명 통일: 카마이타치→낫족제비, 괴물고양이→바케네코, 미이케→미케 (아이템 설명과 일치). 수동 편집 텍스처라 PNG 재편집 필요.",
       "regions": [
         {
           "x": 833,
