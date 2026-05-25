@@ -1,5 +1,48 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-25] README/기여자 문서 갱신 + 작업 로그 정리
+- README: 버전 v0.9.0→v0.9.3, 변경 이력 섹션 + 소개/FAQ + UHD 텍스처 팩 호환 안내 추가 (블로그 girldevstudy.tistory.com/173 기반)
+- 기여자 문서(CONTRIBUTING/WORKFLOW/AGENTS): 텍스처 단일 트리 구조 반영, 웹 UI 에디터를 텍스처 편집 진입점으로 명시(Krita 폐기), import 텍스처 개수 76→87
+- 로그 정리: todo.md를 현재 미해결/진행 항목 중심으로 재작성(완료 이력은 success.md 참조), success.md의 2026-05-25 항목 최신순 정렬, fail.md 경로(kr_textures→textures/kr) 갱신
+
+## [2026-05-25] v0.9.3 — 결과 화면 '평가' 텍스처 클리핑 수정 + 릴리스
+- 증상: 전투 결과 화면의 '평가'(Rating) 라벨이 편집기 박스엔 맞는데 게임에서 잘림 (Screenshot_20260524-120927.png)
+- 원인: DF66CADD K38(평가) region 박스 과대(h=521)로 글자가 게임 UV 영역 밖으로 넘쳐 잘림
+- 수정(사용자 UI 에디터 편집): h=521→203, y=835→1153, background=clear_alpha
+- 릴리스: v0.9.2(보스 아이템) → v0.9.3 순차 배포 (gh release, dist 4종 첨부). 미푸시였던 폴더통합·정리 커밋도 함께 push
+
+## [2026-05-25] 미사용 스크립트·JSON 대량 정리 (의존성 분석 기반)
+- 방법: 활성 루트(build_release/render/font/ui_editor + 문서화 도구)에서 import/subprocess 도달성 분석 → 도달 불가 + 미문서 후보 추출
+- 삭제: 스크립트 42개 + JSON 14개 (총 56)
+  - [A] 루트 실험/scratch 10: apply_modern_fixes, fix_ratios×4, modern_expression_patterns, test_patch, _check_syllables, _place_name_inspect, _verify_oor
+  - [B] 분석/노트/v4-v5 서브시스템 (UI 에디터로 대체): build_translation_notes, build_my_analysis, build_integrated_mapping, compare_analyses, annotate_v5_detect, render_v5, render_integrated, atlas_bbox/{detect_bboxes,render_atlas} + JSON 12 (my_analysis, integrated_mapping, codex_analysis, analysis_diff, detect_v5, v4/v5_codex_verdicts, manual_bbox_mapping, place_name_{mapping,regions,textures,white_kanji}) + atlas_bbox 고아 json
+  - [C] opening_* 나레이션 실험 15 + scene_intros_all.json
+  - [E] HD/텍스처 유틸 9: decode_wii_ftx, downscale_hd_pack, generate_kr_textures, hide_mbs_quads, install_textures, localize_hd_textures, migrate_localize_uhd, populate_uhd_originals
+- 유지(사용자 지정): [D] 텍스트 가공 도구 9 (fix_punctuation/reflow_dialogs/rewrap_all/condense_dialogs/fix_place_names/apply·export_proper_nouns/analyze_jp_width·short_lines) — 번역 변경 시 재실행. 문서화된 upscale_export·publish_release, 참조 데이터 texture_localize_catalog.json
+- 검증: 깨진 import 0, build_release exit 0(텍스처 87 수집), place/localize 렌더 OK, build_ui_index 재생성 동일(82개)
+- 결과: tools/ 75→40, 루트 스크립트 7→0, translations JSON 22→9
+
+## [2026-05-25] 텍스처 폴더 단일 트리 통합 + Krita 폐기
+- 결정: 단일 textures/ 트리 (사용자 선택 A). codex·gemini는 둘 다 B(분리 유지) 권장했으나 사용자가 정보 확인 후 A 선택 → memory/project_texture_folder_consolidation.md 기록
+- 구조: textures/{originals, place_originals, kr/ui, kr/font}
+  - kr_textures/ui → textures/kr/ui, kr_textures/font → textures/kr/font
+  - textures/place_name_originals → textures/place_originals
+- 제거: Krita 자산(.kra 7 + kra_extract.py/kra_to_place.py + kra_extracted/ 7), textures/text/(originals와 100% 중복 23), textures/work/
+- 참조 일괄 수정: 36개 텍스트 파일 sed (kr_textures→textures/kr, place_name_originals→place_originals, textures/text/→textures/originals/). .claude 작업로그 3개는 기록 보존 위해 제외
+- 문서: CLAUDE.md 구조 트리·도구표(ui_editor 추가, Krita 폐기 명시), WORKFLOW.md
+- 검증: render_place_texture_job(place_originals 읽기 OK), texture_localize preview(originals 읽기 OK), build_release(textures/kr에서 87개 텍스처 수집 OK)
+- 주의: build_release TEXTURE_DIRS는 textures/kr/{ui,font} 명시 allowlist — textures/ 전체로 넓히면 원본 혼입. provenance 메타 "source":"kra_extract"는 region 출처 라벨이라 렌더 무관, 그대로 둠
+
+## [2026-05-25] 보스 전용 무기 아이템명 한자 깨짐 수정
+- 증상: 모모히메/키스케 장비창에서 "珞韓集集모모히메 세번째"처럼 아이템명에 한자가 섞여 출력 (Screenshot_20260524-122353.png)
+- 원인: _itemdata 6개(키스케/모모히메 × 첫·두·세번째)의 ko가 "+OSS…" — 원문 "BOSS百姫３本目"의 BOSS가 "+OSS"로 오역됨.
+  ASCII '+OSS'가 아이템 목록 폰트 페이지(960+ 위치 ASCII 글리프 미오버레이)에서 원본 한자 글리프(珞韓集集)로 렌더링됨.
+  cf. 하단 설명 폰트에서는 ASCII가 정상 출력되어 같은 문자열이 화면마다 다르게 보임.
+- 수정: translations/jp_messages.json의 _itemdata·_itemdata_main 12개 엔트리 "+OSS" → "보스 " (순한글, 프로젝트 기존 표기 "보스전" 일치)
+- 검증: build_patch 재빌드 후 4개 _itemdata.nms 모두 "보스"(8c568cb5) 6개·"+OSS" 0개. SJIS 리드바이트 파싱 결과 단일 바이트는 공백뿐 → 한자 깨짐 제거 확정.
+- CPK append 패치 후 fs/ux0/app/PCSE00240에 설치 완료.
+- 미검증: macOS라 Windows용 vita3k_ctrl.py(ctypes.windll) 미동작 + 해당 아이템은 상대전용/사용금지 숨김 아이템이라 인게임 도달 곤란. 인게임 육안 확인 권장.
+
 ## 2026-05-23: 奥義(필살기) 명칭 번역 통일 — 妖雷/雷光/幻影雷光
 
 ### 문제
@@ -1850,35 +1893,3 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - 검증: 백엔드 전 API curl 통과, 경로탈출 403 차단, 무변경 round-trip = 사실상 0줄(렌더러 무시 필드 1줄 정리만), 실제 렌더러로 localize/place 미리보기 생성 확인(야마시로/시나노 정상)
 - 핵심설계: region 지오메트리/텍스트는 네이티브 config 역기록(기존 키 유지+없던 키는 비기본값만 추가 → 무손실), memo는 인덱스 sidecar. 생성은 실제 texture_localize.py/render_place_texture_job.py 호출 → 게임과 동일 출력
 - 실행: python tools/ui_editor/server.py → http://127.0.0.1:8765
-
-## [2026-05-25] 보스 전용 무기 아이템명 한자 깨짐 수정
-- 증상: 모모히메/키스케 장비창에서 "珞韓集集모모히메 세번째"처럼 아이템명에 한자가 섞여 출력 (Screenshot_20260524-122353.png)
-- 원인: _itemdata 6개(키스케/모모히메 × 첫·두·세번째)의 ko가 "+OSS…" — 원문 "BOSS百姫３本目"의 BOSS가 "+OSS"로 오역됨.
-  ASCII '+OSS'가 아이템 목록 폰트 페이지(960+ 위치 ASCII 글리프 미오버레이)에서 원본 한자 글리프(珞韓集集)로 렌더링됨.
-  cf. 하단 설명 폰트에서는 ASCII가 정상 출력되어 같은 문자열이 화면마다 다르게 보임.
-- 수정: translations/jp_messages.json의 _itemdata·_itemdata_main 12개 엔트리 "+OSS" → "보스 " (순한글, 프로젝트 기존 표기 "보스전" 일치)
-- 검증: build_patch 재빌드 후 4개 _itemdata.nms 모두 "보스"(8c568cb5) 6개·"+OSS" 0개. SJIS 리드바이트 파싱 결과 단일 바이트는 공백뿐 → 한자 깨짐 제거 확정.
-- CPK append 패치 후 fs/ux0/app/PCSE00240에 설치 완료.
-- 미검증: macOS라 Windows용 vita3k_ctrl.py(ctypes.windll) 미동작 + 해당 아이템은 상대전용/사용금지 숨김 아이템이라 인게임 도달 곤란. 인게임 육안 확인 권장.
-
-## [2026-05-25] 텍스처 폴더 단일 트리 통합 + Krita 폐기
-- 결정: 단일 textures/ 트리 (사용자 선택 A). codex·gemini는 둘 다 B(분리 유지) 권장했으나 사용자가 정보 확인 후 A 선택 → memory/project_texture_folder_consolidation.md 기록
-- 구조: textures/{originals, place_originals, kr/ui, kr/font}
-  - kr_textures/ui → textures/kr/ui, kr_textures/font → textures/kr/font
-  - textures/place_name_originals → textures/place_originals
-- 제거: Krita 자산(.kra 7 + kra_extract.py/kra_to_place.py + kra_extracted/ 7), textures/text/(originals와 100% 중복 23), textures/work/
-- 참조 일괄 수정: 36개 텍스트 파일 sed (kr_textures→textures/kr, place_name_originals→place_originals, textures/text/→textures/originals/). .claude 작업로그 3개는 기록 보존 위해 제외
-- 문서: CLAUDE.md 구조 트리·도구표(ui_editor 추가, Krita 폐기 명시), WORKFLOW.md
-- 검증: render_place_texture_job(place_originals 읽기 OK), texture_localize preview(originals 읽기 OK), build_release(textures/kr에서 87개 텍스처 수집 OK)
-- 주의: build_release TEXTURE_DIRS는 textures/kr/{ui,font} 명시 allowlist — textures/ 전체로 넓히면 원본 혼입. provenance 메타 "source":"kra_extract"는 region 출처 라벨이라 렌더 무관, 그대로 둠
-
-## [2026-05-25] 미사용 스크립트·JSON 대량 정리 (의존성 분석 기반)
-- 방법: 활성 루트(build_release/render/font/ui_editor + 문서화 도구)에서 import/subprocess 도달성 분석 → 도달 불가 + 미문서 후보 추출
-- 삭제: 스크립트 42개 + JSON 14개 (총 56)
-  - [A] 루트 실험/scratch 10: apply_modern_fixes, fix_ratios×4, modern_expression_patterns, test_patch, _check_syllables, _place_name_inspect, _verify_oor
-  - [B] 분석/노트/v4-v5 서브시스템 (UI 에디터로 대체): build_translation_notes, build_my_analysis, build_integrated_mapping, compare_analyses, annotate_v5_detect, render_v5, render_integrated, atlas_bbox/{detect_bboxes,render_atlas} + JSON 12 (my_analysis, integrated_mapping, codex_analysis, analysis_diff, detect_v5, v4/v5_codex_verdicts, manual_bbox_mapping, place_name_{mapping,regions,textures,white_kanji}) + atlas_bbox 고아 json
-  - [C] opening_* 나레이션 실험 15 + scene_intros_all.json
-  - [E] HD/텍스처 유틸 9: decode_wii_ftx, downscale_hd_pack, generate_kr_textures, hide_mbs_quads, install_textures, localize_hd_textures, migrate_localize_uhd, populate_uhd_originals
-- 유지(사용자 지정): [D] 텍스트 가공 도구 9 (fix_punctuation/reflow_dialogs/rewrap_all/condense_dialogs/fix_place_names/apply·export_proper_nouns/analyze_jp_width·short_lines) — 번역 변경 시 재실행. 문서화된 upscale_export·publish_release, 참조 데이터 texture_localize_catalog.json
-- 검증: 깨진 import 0, build_release exit 0(텍스처 87 수집), place/localize 렌더 OK, build_ui_index 재생성 동일(82개)
-- 결과: tools/ 75→40, 루트 스크립트 7→0, translations JSON 22→9

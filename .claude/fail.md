@@ -117,7 +117,7 @@
 
 ### 시도 (성공)
 - 임시 백업: `temp/font_emergency_backup/` (9.4MB 6706A53E + 269KB A8E6FDD1 + 295KB 8665CE08 + 894KB 2E88068C + 936KB 87B72F6D)
-- 6706A53E + 8665CE08를 `kr_textures/font/`의 안정 백업(295KB each)으로 교체
+- 6706A53E + 8665CE08를 `textures/kr/font/`의 안정 백업(295KB each)으로 교체
 - A8E6FDD1는 import에서 제거 (rollback)
 - `.font_hashes.json`을 ["6706A53E", "8665CE08"]로 복원
 
