@@ -36,7 +36,7 @@ HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
 # supersampling (glyph drawn at 2x with stroke=3, then LANCZOS-downsampled to
 # the target cell size). 1.5px sits between the too-thick 2px and too-thin 1px
 # in small-cell rendering. Body kept at 20pt (Hangul) / 16pt (ASCII).
-STROKE_WIDTH = 0
+STROKE_WIDTH = 1.5
 STROKE_FILL = (0, 0, 0, 128)
 
 WHITESTROKE_FONT_HASHES = set()
@@ -192,6 +192,44 @@ def is_font_grid(img_path):
         return False, {}
 
 
+_PAGE_REFS = None
+def _load_page_refs():
+    global _PAGE_REFS
+    if _PAGE_REFS is None:
+        refdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "font_page_refs")
+        _PAGE_REFS = {}
+        for name in ('p0_ascii', 'p1_ha', 'p2_ju', 'p3_sun'):
+            p = os.path.join(refdir, name + '.png')
+            if os.path.exists(p):
+                _PAGE_REFS[name] = np.array(Image.open(p).convert('L'), dtype=float)
+    return _PAGE_REFS
+
+
+def detect_page_base(export_path):
+    """Identify which SJIS font page a KANJI texture is, return its linear cell base.
+
+    The game splits kanji glyphs across multiple 1024-cell font pages:
+      Page0 河(0x89CD) base=1644, Page1 重(0x8F64) base=2668, Page2 隼(0x94B9) base=3692.
+    Matched by full-image NCC against tools/font_page_refs/. ASCII or ambiguous
+    falls back to 1644 (Page0 behaviour) so legacy HD/ASCII handling is unchanged.
+    """
+    refs = _load_page_refs()
+    if not refs:
+        return 1644
+    im = Image.open(export_path).convert('RGBA')
+    bg = Image.new('RGBA', im.size, (0, 0, 0, 255))
+    L = np.array(Image.alpha_composite(bg, im).convert('L').resize((256, 256), Image.LANCZOS), dtype=float)
+
+    def _ncc(a, b):
+        a = a - a.mean(); b = b - b.mean()
+        d = np.sqrt((a * a).sum() * (b * b).sum())
+        return float((a * b).sum() / d) if d else 0.0
+
+    sc = {k: _ncc(L, v) for k, v in refs.items()}
+    best = max(sc, key=sc.get)
+    return {'p1_ha': 1644, 'p2_ju': 2668, 'p3_sun': 3692}.get(best, 1644)
+
+
 def find_font_textures(export_dir, hd_hashes):
     """Find font textures from exports. Handles HD pack fonts specially."""
     fonts = []       # (filename, rgb_mean, source) — source: 'export' or 'hd'
@@ -208,24 +246,31 @@ def find_font_textures(export_dir, hd_hashes):
             is_font, info = is_font_grid(export_path)
             if is_font:
                 # Both HD pack and export are fonts → use HD as base, overlay Korean
-                fonts.append((fn, info.get('rgb', 0), 'hd'))
-                print(f"  Font: {fn} RGB={info['rgb']:.0f} cell0={info['cell0']:.0f} cell1={info['cell1']:.0f} (KANJI, HD base)")
+                pb = detect_page_base(export_path)
+                fonts.append((fn, info.get('rgb', 0), 'hd', pb))
+                print(f"  Font: {fn} RGB={info['rgb']:.0f} cell0={info['cell0']:.0f} cell1={info['cell1']:.0f} (KANJI, HD base, page_base={pb})")
             # If export is NOT a font, the HD pack has a non-font texture for this hash → skip
             continue
 
         # Not in HD pack — normal font detection
         is_font, info = is_font_grid(export_path)
         if is_font:
-            fonts.append((fn, info.get('rgb', 0), 'export'))
-            print(f"  Font: {fn} RGB={info['rgb']:.0f} cell0={info['cell0']:.0f} cell1={info['cell1']:.0f} (KANJI page)")
+            pb = detect_page_base(export_path)
+            fonts.append((fn, info.get('rgb', 0), 'export', pb))
+            print(f"  Font: {fn} RGB={info['rgb']:.0f} cell0={info['cell0']:.0f} cell1={info['cell1']:.0f} (KANJI page, page_base={pb})")
         elif info:
             reason = "ASCII page" if info.get('cell0', 10) < 5 else f"spread={info.get('channel_spread',0):.0f}"
             print(f"  Skip: {fn} RGB={info.get('rgb',0):.0f} ({reason})")
 
     return fonts
 
-def create_korean_import(export_path, import_path, mapping_path, font_path):
-    """Create Korean font import texture."""
+def create_korean_import(export_path, import_path, mapping_path, font_path, page_base=1644):
+    """Create Korean font import texture.
+
+    page_base: linear cell index of this font page's first cell.
+      1644 = Page0 (河/0x89CD) — the base page with ASCII/runtime overlays.
+      2668 = Page1 (重/0x8F64), 3692 = Page2 (隼/0x94B9) — Korean-only pages.
+    """
     with open(mapping_path, 'r', encoding='utf-8') as f:
         mapping = json.load(f)
     kr_map = mapping['korean_to_sjis']
@@ -248,7 +293,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
     # SJIS code for space glyph (unused Korean char '빕' repurposed as blank)
     SPACE_SJIS = (0x8C, 0x6D)
     space_cell = sjis_to_cell(*SPACE_SJIS)
-    space_local = space_cell - 1644
+    space_local = space_cell - page_base
 
     korean_cells = {}
     protected_cells = set()
@@ -256,7 +301,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
         protected_cells.update(192 + code for code in range(0x30, 0x3A))
     for char, (b1, b2) in kr_map.items():
         cell = sjis_to_cell(b1, b2)
-        local = cell - 1644
+        local = cell - page_base
         if 0 <= local < 1024:
             if local == space_local:
                 continue  # reserve this slot as blank space
@@ -286,6 +331,13 @@ def create_korean_import(export_path, import_path, mapping_path, font_path):
 
         draw_centered_glyph(img, x, y, cs, kr_char, render_font_path, kr_body_pt,
                             color, stroke_w, stroke_f)
+
+    # Non-base pages (Page1 重 / Page2 隼, page_base != 1644) hold Korean glyphs
+    # only. The space-blank / ASCII-960 / runtime-192 / fullwidth-448 overlays are
+    # all Page0(河)-specific lookups, so skip them and finish here.
+    if page_base != 1644:
+        img.save(import_path)
+        return len(korean_cells)
 
     # Clear the space glyph slot (make it transparent = blank space)
     if 0 <= space_local < 1024:
@@ -446,7 +498,7 @@ if __name__ == '__main__':
 
     print(f"\nFound {len(fonts)} font textures. Creating Korean imports...")
     new_font_hashes = set()
-    for fn, rgb, source in fonts:
+    for fn, rgb, source, page_base in fonts:
         if source == 'hd':
             # Use HD pack texture as base (higher resolution)
             hd_path = os.path.join(HD_PACK_DIR, fn)
@@ -454,10 +506,11 @@ if __name__ == '__main__':
         else:
             base_path = os.path.join(export_dir, fn)
         import_path = os.path.join(import_dir, fn)
-        count = create_korean_import(base_path, import_path, mapping_path, font_path)
+        count = create_korean_import(base_path, import_path, mapping_path, font_path, page_base=page_base)
         new_font_hashes.add(fn)
+        ptag = {1644: '河', 2668: '重', 3692: '隼'}.get(page_base, '?')
         tag = " (HD base)" if source == 'hd' else ""
-        print(f"  {fn}: {count} Korean glyphs{tag}")
+        print(f"  {fn}: {count} Korean glyphs [page {ptag}]{tag}")
 
     # Save current font hashes for next session cleanup
     save_font_hashes(new_font_hashes)

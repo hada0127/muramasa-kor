@@ -39,7 +39,7 @@ HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
 STROKE_FILL = (0, 0, 0, 128)
 KR_BODY_PT = 20
 ASCII_BODY_PT = 16
-STROKE_BASE_PT = 0  # scaled with texture (1.5px at 1024, 3px at 2048, 6px at 4096)
+STROKE_BASE_PT = 1.5  # scaled with texture (1.5px at 1024, 3px at 2048, 6px at 4096)
 
 
 def sjis_to_cell(b1, b2):
