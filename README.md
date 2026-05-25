@@ -2,6 +2,10 @@
 
 `Muramasa Rebirth` PS Vita US판(`PCSE00240`)용 한국어 패치 프로젝트다.
 
+## 소개
+
+정식 한글판(스위치 정발 등)을 기다리다 직접 만든 비공식 한글 패치다. 번역·도구 작업에는 Claude·Codex를 활용했고, 그래픽/텍스처 한글화는 직접 작업했다. **정식 한글판이 출시되면 배포를 중단**할 예정인 한시적 프로젝트다.
+
 이 저장소와 릴리즈는 원본 게임 PKG/CPK를 포함하지 않는다. 사용자는 본인이 합법적으로 보유한 원본 게임을 Vita3K에 먼저 설치한 뒤, 릴리즈에 포함된 로컬 패처로 본인 PC의 원본 CPK에 패치를 적용한다.
 
 ## 사용자 안내
@@ -9,7 +13,7 @@
 - 지원 대상: Vita3K Windows/macOS, Android 수동 복사
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
-- 현재 릴리즈: `v0.9.0`
+- 현재 릴리즈: `v0.9.3`
 - 배포 형식: Windows/macOS 공용 로컬 패처 zip, Android용 수동 복사 안내
 
 릴리즈 zip에는 다음만 포함된다.
@@ -110,11 +114,11 @@ NinPri.cpk.v<version>.original
 NinPriPatch.cpk.v<version>.original
 ```
 
-예를 들어 v0.9.0에서 처음 패치했다면 다음 파일이 생긴다.
+예를 들어 v0.9.3에서 처음 패치했다면 다음 파일이 생긴다.
 
 ```text
-<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPri.cpk.v0.9.0.original
-<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPriPatch.cpk.v0.9.0.original
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPri.cpk.v0.9.3.original
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPriPatch.cpk.v0.9.3.original
 ```
 
 이전 버전의 패치가 적용된 `NinPri.cpk` / `NinPriPatch.cpk` 위에 새 패처를 바로 덮어씌우지 말고, 같은 릴리즈 폴더에서 `python3 apply_patch.py --restore`를 먼저 실행한다. 패처는 `.muramasa-kor-backup` 폴더의 `*.v*.original` 백업 중 원본 해시가 맞는 파일을 찾아 복원한다. 백업이 없거나 원본 해시가 맞지 않는 경우에만 Vita3K에서 본편과 업데이트를 다시 설치해 원본 CPK를 만든 뒤 새 패처를 실행한다.
@@ -131,18 +135,18 @@ Android: Android/data/org.vita3k.emulator/files
 
 ### 2단계 - 한글 패치 zip 다운로드 및 검증
 
-1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.9.0-vita3k-patcher.zip`을 받는다.
-2. 같은 릴리즈의 `muramasa-kor-v0.9.0-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
+1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.9.3-vita3k-patcher.zip`을 받는다.
+2. 같은 릴리즈의 `muramasa-kor-v0.9.3-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
 
 ```powershell
 # Windows
-Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.9.0-vita3k-patcher.zip
+Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.9.3-vita3k-patcher.zip
 ```
 
 ```bash
 # macOS / Linux
-shasum -a 256 muramasa-kor-v0.9.0-vita3k-patcher.zip
-shasum -a 256 -c muramasa-kor-v0.9.0-vita3k-patcher-sha256.txt
+shasum -a 256 muramasa-kor-v0.9.3-vita3k-patcher.zip
+shasum -a 256 -c muramasa-kor-v0.9.3-vita3k-patcher-sha256.txt
 ```
 
 ### 3단계 - 로컬 패처 실행
@@ -253,10 +257,10 @@ py -3 apply_patch.py --restore
 
 릴리즈에는 보통 다음 파일이 포함된다.
 
-- `muramasa-kor-v0.9.0-vita3k-patcher.zip`
-- `muramasa-kor-v0.9.0-vita3k-patcher-manifest.json`
-- `muramasa-kor-v0.9.0-vita3k-patcher-sha256.txt`
-- `muramasa-kor-v0.9.0-vita3k-patcher-release-notes.txt`
+- `muramasa-kor-v0.9.3-vita3k-patcher.zip`
+- `muramasa-kor-v0.9.3-vita3k-patcher-manifest.json`
+- `muramasa-kor-v0.9.3-vita3k-patcher-sha256.txt`
+- `muramasa-kor-v0.9.3-vita3k-patcher-release-notes.txt`
 
 ## 주의
 
@@ -265,6 +269,25 @@ py -3 apply_patch.py --restore
 - 원본 `pkg`, `cpk`, DLC 데이터는 릴리즈에 포함하지 않는다.
 - 패처는 US판 `PCSE00240` 본편 1.00 + 업데이트 1.06의 원본 CPK 해시와 일치할 때만 적용된다.
 - 텍스처 import는 Vita3K의 해시 기반 교체 기능을 사용한다.
+- 구글에서 찾을 수 있는 `muramasa rebirth uhd` HD 텍스처 팩과 함께 사용할 수 있다 (한글 폰트/UI는 HD 베이스 위에 오버레이된다).
+
+## 변경 이력
+
+전체 변경 내역과 각 버전 다운로드는 [Releases](../../releases)를 본다. 최근 변경 요약:
+
+- **v0.9.3** — 전투 결과 화면 `평가`(Rating) 텍스처가 잘려 보이던 문제 수정.
+- **v0.9.2** — 보스 전용 무기 아이템명이 한자와 섞여 깨지던 문제 수정(`BOSS` → `보스`) + UI 텍스처 편집.
+- **v0.9.1** — 장비창 숫자·기호 깨짐 긴급 수정, 무기/필살기 명칭 정리, `Yes/No` 잔상 제거 등.
+- **v0.9.0** — 웹 기반 UI 텍스처 편집기 도입, 지명 텍스처 60개 매칭 검수, 박스 단위 한글화 재구축.
+
+## 자주 묻는 질문
+
+- **실기(PS Vita)에서도 되나요?** — 아니다. Vita3K 에뮬레이터 전용이며, 실기 환경이 없어 검증되지 않았다.
+- **본편만 설치하면 되나요?** — 아니다. 본편 1.00 + **업데이트 1.06**을 모두 설치해야 한다.
+- **다른 리전(JP/EU)판도 되나요?** — 아니다. US판 `PCSE00240` 전용이다.
+- **Android는요?** — PC/macOS에서 먼저 패치한 결과 파일을 Android Vita3K로 복사한다(위 4단계 참고).
+- **글자가 깨져 보여요.** — Vita3K 설정의 `Import Textures`가 켜져 있는지 확인하고 재시작한다.
+- **정식 한글판이 나오면요?** — 배포를 중단할 예정이다.
 
 ## 기여 및 개발
 

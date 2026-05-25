@@ -17,7 +17,9 @@ This repository uses `CLAUDE.md` as the primary project handbook. Read it first,
   2. `python tools/cpk_patch.py backup/NinPri.cpk patch_main output/NinPri_final.cpk --append`
   3. `python tools/cpk_patch.py backup/NinPriPatch.cpk patch_patch output/NinPriPatch_final.cpk --append`
 - Texture/UI pipeline:
-  - `python tools/texture_localize.py`
+  - `python tools/ui_editor/server.py` — web UI texture editor (replaces the retired Krita `.kra` workflow); edits write back to `texture_localize_config.json` / `place_texture_jobs.json`
+  - `python tools/texture_localize.py` — render UI textures from config
+  - `python tools/render_place_texture_job.py` — render place-name textures
   - `python tools/auto_font_import.py`
   - `python tools/hd_font_import.py`
 - Vita3K control:

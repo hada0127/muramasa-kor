@@ -59,20 +59,25 @@
 1. 대상 확인
    - 원본/참고: `textures/originals/`, `textures/place_originals/`
    - 결과물: `textures/kr/ui/`
-   - 설정: `translations/texture_localize_config.json`
-2. 자동 생성 작업이면
+   - 설정: `translations/texture_localize_config.json`, `translations/place_texture_jobs.json`
+2. 시각 편집은 웹 UI 에디터 사용 (구 Krita `.kra` 워크플로 폐기)
+   ```powershell
+   python tools/ui_editor/server.py   # http://127.0.0.1:8765
+   ```
+   - region 편집 → config 역기록 → 아래 렌더 단계로 결과물 갱신
+3. 자동 생성 작업이면
    ```powershell
    python tools/texture_localize.py
    ```
-3. 특정 텍스처만 작업하면
+4. 특정 텍스처만 작업하면
    ```powershell
    python tools/texture_localize.py <HASH_PREFIX>
    ```
-4. 미리보기 확인이 필요하면
+5. 미리보기 확인이 필요하면
    ```powershell
    python tools/texture_localize.py --preview
    ```
-5. 수동 편집 텍스처는 기존 `textures/kr/ui/` 결과를 우선 기준으로 취급
+6. 수동 편집 텍스처는 기존 `textures/kr/ui/` 결과를 우선 기준으로 취급
 
 ## 폰트/텍스처 import 작업
 

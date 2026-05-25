@@ -21,11 +21,15 @@
 ## 주요 경로
 
 - 번역 데이터: `translations/`
+- 텍스처(단일 트리):
+  - `textures/originals/` — Vita3K export 원본 (UI 로컬화 소스)
+  - `textures/place_originals/` — 지명 텍스처 원본
+  - `textures/kr/ui/`, `textures/kr/font/` — 한글화 출력 (Vita3K import·릴리스 패키징 단위)
 - NMS 빌드 출력: `patch_main/`, `patch_patch/`
 - 원본 CPK 로컬 보관: `backup/`
 - 중간 산출물: `output/`
 - 배포 산출물: `dist/`
-- 도구 스크립트: `tools/`
+- 도구 스크립트: `tools/` (웹 UI 텍스처 편집기: `tools/ui_editor/`)
 
 ## 개발 빌드
 
@@ -59,7 +63,13 @@ Copy-Item C:/game/vita3k/textures/import/PCSE00240/6706A53E1D94C16E.png textures
 Copy-Item C:/game/vita3k/textures/import/PCSE00240/8665CE082D339B33.png textures/kr/font/8665CE082D339B33.png -Force
 ```
 
-UI 텍스처를 바꾼 경우 먼저 `python tools/texture_localize.py`를 실행해 `textures/kr/ui/`를 최신 상태로 만든다.
+UI 텍스처 편집은 웹 기반 편집기를 사용한다(구 Krita `.kra` 워크플로는 폐기됨).
+
+```powershell
+python tools/ui_editor/server.py   # http://127.0.0.1:8765
+```
+
+편집기에서 region을 수정하면 config(`texture_localize_config.json` / `place_texture_jobs.json`)에 역기록된다. 이후 `python tools/texture_localize.py`(UI) 또는 `python tools/render_place_texture_job.py`(지명)로 `textures/kr/ui/`를 최신 상태로 만든다.
 
 릴리즈 생성:
 
@@ -91,7 +101,7 @@ py -3 apply_patch.py --vita3k C:/game/vita3k
 
 검증 기준:
 
-- 패처가 `PATCH NinPri.cpk`, `PATCH NinPriPatch.cpk`, `COPY 76/76 texture imports`를 출력한다.
+- 패처가 `PATCH NinPri.cpk`, `PATCH NinPriPatch.cpk`, `COPY 87/87 texture imports`를 출력한다 (텍스처 개수는 릴리스마다 다를 수 있다).
 - 설치된 CPK SHA-256이 manifest의 `target_sha256`과 일치한다.
 - Vita3K 설정의 `import-textures`가 켜져 있다.
 - 게임을 실행해 시스템 메시지와 메뉴 글자가 깨지지 않는지 확인한다.
