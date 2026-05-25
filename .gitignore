@@ -41,6 +41,11 @@ extracted_wii/ftx_decomp/
 # === bkit plugin state (session-scoped) ===
 .bkit/
 
+# === Claude Code local state (machine-specific) ===
+# settings.local.json: per-machine overrides; scheduled_tasks.lock: runtime lock
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
 # === Duplicates / editor artifacts ===
 fonts/fonts/
 
