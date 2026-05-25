@@ -3988,9 +3988,9 @@
         },
         {
           "x": 2579,
-          "y": 835,
+          "y": 1153,
           "w": 618,
-          "h": 521,
+          "h": 203,
           "text": "평 가",
           "color": [
             255,
@@ -4007,7 +4007,8 @@
           "layout": "horizontal",
           "_id": "K38",
           "font_ratio": 0.85,
-          "render": true
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 3284,
