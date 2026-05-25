@@ -297,7 +297,7 @@ muramasa-kor/
 | `cpk_patch.py` | CPK 패치 (append 방식, CRILAYLA LZ 재압축) |
 | `crilayla_compress.py` | CRILAYLA LZ 압축기 + 라운드트립 검증 |
 | `nms_parser.py` | NMSB 메시지 파일 파서 |
-| `auto_font_import.py` | Vita3K export에서 폰트 해시 감지 → 한글 import 생성 |
+| `auto_font_import.py` | export 폰트 감지 + 페이지(河/重/隼) 자동 판별 → 한글 import 생성 |
 | `hd_font_import.py` | HD 팩 폰트 위에 한글 오버레이 |
 | `texture_localize.py` | UI 텍스처 한글화 (config JSON → Vita3K import PNG) |
 | `texture_survey.py` | 텍스처 전수조사 컨택시트 |
@@ -325,7 +325,7 @@ muramasa-kor/
 
 - **게임**: Muramasa Rebirth (PCSE00240, US 영문판)
 - **텍스트 파일**: NMSB 형식, Shift-JIS 인코딩
-- **한글 방식**: 한글 955자를 Shift-JIS 코드포인트에 매핑 + Vita3K 텍스처 import
+- **한글 방식**: 한글 완성형 2350자(KS X 1001)를 SJIS 한자 코드포인트 3페이지(河 0x89CD/重 0x8F64/隼 0x94B9)에 매핑 + Vita3K 텍스처 import
 - **CPK**: CRI Middleware, CRILAYLA 압축, XOR 암호화
 - **CPK FileOffset**: 상대 오프셋. 실제 위치 = `FileOffset + add_offset`, `add_offset = min(ContentOffset, TocOffset)` (두 CPK 모두 0x800)
 - **CPK FileSize**: CRILAYLA 블록 전체 크기 (16 + comp_size + 0x100)
@@ -347,43 +347,55 @@ muramasa-kor/
 - **ExtractSize**: `uncomp_size + 0x100`으로 정상 업데이트
 - **게임 부팅 확인**: AKSYS 로고 + 타이틀 화면까지 정상 도달
 
-## 한글 폰트 텍스처 파이프라인 (2026-04-10 확립)
+## 한글 폰트 텍스처 파이프라인 (다중 페이지, 2026-05-25 갱신)
 
 ### 동작 원리
-1. NMS 텍스트 파일에서 한글을 SJIS 코드포인트(0x8DA4~0x8E45 범위)로 인코딩
-2. Vita3K texture export로 현재 세션의 폰트 텍스처 해시를 확인
-3. 해당 해시의 KANJI 페이지에만 한글 글리프를 오버레이한 PNG를 import 폴더에 배치
+1. NMS 텍스트의 한글을 SJIS 코드포인트로 인코딩 (`kr_sjis_mapping.json`, **완성형 2350자**, 0x89CD~0x96AE)
+2. Vita3K texture export로 폰트 텍스처 해시 확인
+3. 각 폰트 텍스처가 어느 SJIS 페이지인지 자동 판별 후, **해당 페이지 기준**으로 한글 글리프를 오버레이한 PNG를 import 폴더에 배치
 4. Vita3K 재시작 시 import 텍스처가 원본 폰트를 대체
 
+### ★ 폰트는 3개 SJIS 한자 페이지로 나뉨 (핵심)
+게임 폰트 FTX(`other/font.ftx` 8장 + `font2a/2b.ftx` 각 4장 = GXT 16페이지)에서 SJIS 한자 페이지는 **3개**:
+
+| 페이지 | cell 0 | SJIS 시작 | linear base | 한글 글자수 | 활자체 텍스처(import) |
+|---|---|---|---|---|---|
+| Page0 | 河 | 0x89CD | **1644** | 960 | 8665CE08·A8E6FDD1·18747565·6706A53E(HD) |
+| Page1 | 重 | 0x8F64 | **2668** | 1024 | E690E190 |
+| Page2 | 隼 | 0x94B9 | **3692** | 366 | 5F01AD86 |
+
+- 완성형 2350자 = 河 960 + 重 1024 + 隼 366. **`char_substitutions.json`은 폐기(빈 dict)** — 모든 한글이 직접 글리프.
+- 번역 후 게임 NMS에 잔여 한자가 0이라 重·隼 페이지가 통째로 미사용 → 한글 슬롯으로 활용.
+- 各 페이지는 폰트 스타일별로 여러 텍스처 존재(활자체 `font0x`, 굵기변형 `font0xb`, 손글씨체 `font2a/2b`). 현재는 활자체 중심으로 확보됨.
+
 ### 핵심 규칙
-- **KANJI 페이지에만 import** — ASCII 페이지(cell 0 비어있음, cell 1='!')에는 절대 import 금지 (공백/기호 깨짐)
-- **폰트 텍스처 해시는 고정됨** — 같은 게임 데이터(CPK)면 Vita3K 재시작해도 해시가 동일. 한번 import 생성하면 재실행 불필요
-- **HD 팩 해시 충돌 방지** — `auto_font_import.py`가 HD 팩 2,139개 해시와 충돌 검사. HD 팩에 있는 해시는 폰트로 오버레이하지 않음 (풀/배경 깨짐 방지). 단, HD 팩 자체가 폰트인 경우 HD 베이스 위에 한글 오버레이
-- **import 폴더 전체 삭제 금지** — HD 팩 텍스처가 손실됨. `auto_font_import.py`는 `.font_hashes.json`으로 폰트 전용 해시만 추적/정리
-- **FTX 직접 패치(DXT5+swizzle)는 비권장** — 인코딩 문제로 글리프 깨짐 발생
-- **셀 공식**: `cell = (b1-0x81)*188 + b2_offset` (offset=0, 0x7F skip)
-- **폰트 페이지 시작**: linear 1644 (= SJIS 0x89CD = 河)
-- **한글 로컬 위치**: local = cell - 1644 (0~954)
+- **페이지 자동 판별**: `auto_font_import.py`의 `detect_page_base()`가 export 텍스처를 `tools/font_page_refs/{p0_ascii,p1_ha,p2_ju,p3_sun}.png`와 전체 NCC 비교 → 河/重/隼 판별. `create_korean_import(page_base=)`로 페이지별 한글 배치. ASCII/모호는 1644(河) 폴백.
+- **한글 로컬 위치**: `local = cell - page_base` (page_base = 河 1644 / 重 2668 / 隼 3692)
+- **셀 공식**: `cell = (b1-0x81)*188 + b2_offset` (0x7F skip)
+- **ASCII/runtime/fullwidth overlay는 河 페이지(base 1644) 전용** — 重/隼 페이지는 한글만 그리고 early return. ASCII 페이지(cell0 빈칸)는 import 안 함
+- **폰트 텍스처 해시는 고정** — 같은 CPK면 재시작해도 동일. 한번 import 생성하면 재실행 불필요
+- **HD 팩 해시 충돌 방지** — HD 팩 2,139개 해시와 충돌 검사. HD 팩 자체가 폰트면 HD 베이스 위에 오버레이
+- **import 폴더 전체 삭제 금지** — `.font_hashes.json`으로 폰트 전용 해시만 추적/정리
+- **FTX 직접 패치(DXT5+swizzle) 비권장** — 글리프 깨짐
+- **외곽선**: `STROKE_WIDTH=1.5`, `STROKE_FILL=(0,0,0,128)` (검정 50%, 슈퍼샘플링)
 
-### 폰트 텍스처 감지 방법
+### 폰트 텍스처 감지/생성
 ```bash
 python tools/auto_font_import.py
 ```
-1. export 폴더에서 1024x1024 + 32px 그리드 패턴(boundary alpha=0) 텍스처 검색
-2. cell 0이 비어있으면 ASCII 페이지 → SKIP
-3. cell 0에 글리프 있으면 KANJI 페이지 → Korean import 생성
+1. export 폴더에서 1024x1024 + 32px 그리드 텍스처 검색 (cell0 빈칸=ASCII → SKIP)
+2. cell0에 글리프 있으면 KANJI → `detect_page_base()`로 河/重/隼 판별
+3. 페이지별 한글 import 생성, `textures/kr/font/`에 동기화(수동 복사)
 
-### 빠른 테스트 절차
-```bash
-# 최초 1회만: export에서 폰트 해시 감지 → import 생성
-# 1. Vita3K 실행 → 게임 진입 (폰트 텍스처 export 유도)
-python tools/vita3k_ctrl.py launch
-# 2. auto_font_import 실행
-python tools/auto_font_import.py
-# 3. Vita3K 재시작 (import 적용)
-python tools/vita3k_ctrl.py close && sleep 2 && python tools/vita3k_ctrl.py launch
-# 이후에는 import가 유지되므로 재실행 불필요
-```
+### 새 페이지/스타일 추가 (重/隼 손글씨체 등 미확보분)
+해당 페이지 한자가 나오는 화면에서 **export 유도** 후 재생성:
+1. 그 페이지의 글자 하나를 `sysmsg` 등에 임시 마커로 삽입(예: 隼 → `쭝쭸쭹`) + 빌드·설치
+2. 게임에서 그 글자가 보이는 화면 진입 → Vita3K가 해당 페이지 텍스처 export
+3. `python tools/auto_font_import.py` 재실행 → `detect_page_base` 자동 판별로 import 생성 → 동기화
+4. Vita3K 재시작 후 한글 확인 → 임시 마커 원복·재빌드
+
+### 주의
+- macOS는 `vita3k_ctrl.py`(ctypes.windll)가 동작하지 않음 → 게임 실행/검증은 사용자가 직접. export 폴더는 `~/Library/Application Support/Vita3K/Vita3K/textures/export/PCSE00240`, import는 `.../import/PCSE00240`
 
 ## UI 텍스처 한글화 파이프라인 (Phase 4)
 
@@ -423,13 +435,14 @@ python tools/texture_localize.py --preview
 ## 현재 진행 상황 (2026-04-13)
 
 ### 완료된 Phase
-- ✅ **Phase 1**: NMS 텍스트 추출·번역 인프라 (955자 매핑, CRILAYLA 재압축)
+- ✅ **Phase 1**: NMS 텍스트 추출·번역 인프라 (한글 SJIS 매핑, CRILAYLA 재압축)
 - ✅ **Phase 2**: DLC 선택 / 시스템 메시지 한글 출력 (Vita3K texture import 파이프라인 확립)
 - ✅ **Phase 3**: 본편 대사 1,116개 scemsg 번역 (Wii USA 한글 기반, NinPriPatch.cpk 오버라이드 해결)
 - ✅ **Phase 3.5**: HD 텍스처 팩(Muramasa Complete 2.0) 적용 + 한글 폰트 고화질 오버레이
 - ✅ **Phase 3.6**: 지명·Act 라벨·`武蔵`/`無事` 오역 대량 수정 (place-name-fix)
 - ✅ 공백 반칸 렌더링 복구 (cell 224 투명 처리)
 - ✅ DLC 난이도 화면 배경 텍스처 깨짐 수정 (87B72F6DB3C3FBDC 제외)
+- ✅ **한글 폰트 완성형 2350자 확장** (河/重/隼 3 SJIS 페이지, `char_substitutions` 폐기, 2026-05-25) — 상세는 success.md
 
 ### 진행 중
 - 🔄 **Phase 3 후속**: DLC 대사 ~1,062개 번역 추가
@@ -438,7 +451,9 @@ python tools/texture_localize.py --preview
 
 ### 기술 부채 / 미해결
 - **LiveArea 자동 조작**: green dot 위치가 세션마다 달라서 전체 범위 검색 필요 (부분 해결)
-- **폰트 오버레이 커버리지**: cell 1024~1053 (lowercase a-z 영역 미처리)
+- **한글 커버리지**: 완성형 2350자 전부 직접 글리프 완료(河/重/隼). 단 손글씨체 重/隼 페이지(`font2a/2b` 계열)는 해당 화면 진입 시 export 후 `auto_font_import` 재실행으로 추가 확보 필요(현재 활자체 중심)
+- **ASCII 소문자 등 일부**: 河 페이지 ASCII overlay(960~1023 = 0x20~0x5F) 밖인 0x60~0x7A는 河 페이지 밖이라 RUNTIME_OVERLAY로 개별 처리(게임이 거의 안 씀)
+- **6706A53E**: ASCII 페이지(HD)인데 河로 처리 중 — 별도 확인 항목
 - **Yes/No 다이얼로그 터치**: 원본 게임에서도 반응 없음 (Vita3K 터치 입력 이슈). 키보드 X 키로 우회
 
 ## CPK 로딩 우선순위 (반드시 숙지)
