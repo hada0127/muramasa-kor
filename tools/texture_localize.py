@@ -39,7 +39,7 @@ else:
 
 EXPORT_DIR = Path(os.environ.get("VITA3K_EXPORT_DIR", _VITA3K_BASE / "export" / "PCSE00240"))
 IMPORT_DIR = Path(os.environ.get("VITA3K_IMPORT_DIR", _VITA3K_BASE / "import" / "PCSE00240"))
-REPO_KR_DIR = PROJECT_DIR / "kr_textures" / "ui"
+REPO_KR_DIR = PROJECT_DIR / "textures/kr" / "ui"
 CONFIG_PATH = PROJECT_DIR / "translations" / "texture_localize_config.json"
 PREVIEW_DIR = PROJECT_DIR / "output" / "texture_preview"
 
@@ -283,9 +283,9 @@ def _process_region_auto(region, orig_arr, sprite_mask, result_arr):
 
 def process_texture(hash_id, tex_config, preview=False):
     """하나의 텍스처를 처리"""
-    # 수동 편집 텍스처는 kr_textures/ui/에 이미 커밋되어 있음 → 덮어쓰기 금지
+    # 수동 편집 텍스처는 textures/kr/ui/에 이미 커밋되어 있음 → 덮어쓰기 금지
     if not tex_config.get("regions"):
-        print(f"  SKIP {hash_id}: manual edit (no regions) — already in kr_textures/ui/")
+        print(f"  SKIP {hash_id}: manual edit (no regions) — already in textures/kr/ui/")
         return False
 
     source = tex_config.get("source")

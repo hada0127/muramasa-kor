@@ -3,9 +3,9 @@
 모든 UI/메뉴 텍스처를 한글화하여 Vita3K import 폴더에 생성한다.
 
 사용법:
-  python tools/generate_kr_textures.py              # 전체 빌드
-  python tools/generate_kr_textures.py --preview     # 미리보기만
-  python tools/generate_kr_textures.py 1823D39C      # 특정 해시만
+  python tools/generate_textures/kr.py              # 전체 빌드
+  python tools/generate_textures/kr.py --preview     # 미리보기만
+  python tools/generate_textures/kr.py 1823D39C      # 특정 해시만
 """
 
 import sys

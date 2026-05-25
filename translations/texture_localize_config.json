@@ -60,7 +60,7 @@
       "size": "512x512",
       "description": "본편 오프닝 나레이션 영문 단어 아틀라스. 단어 캐리어 매칭이 어려워 투명 처리하고 배경 텍스처에 한글을 직접 렌더링.",
       "status": "done",
-      "method": "opening01.mbs carrier UV 영역은 transparent 처리된 기존 kr_textures/ui/79C935AA47DD1810.png 유지. 실제 한글 나레이션은 4AEC2546371FFF47 배경 텍스처에 직접 렌더링.",
+      "method": "opening01.mbs carrier UV 영역은 transparent 처리된 기존 textures/kr/ui/79C935AA47DD1810.png 유지. 실제 한글 나레이션은 4AEC2546371FFF47 배경 텍스처에 직접 렌더링.",
       "translations": {
         "Countless Demon Blades...": "헤아릴 수 없이 흩어진 마검들. / 칼집에서 뽑히는 순간, / 피에 굶주린 듯 곧장 생명을 탐한다. / 그 힘에 스러진 이들의 운명을 보라."
       },
@@ -79,7 +79,7 @@
         "line3": "피에 굶주린 듯 곧장 생명을 탐한다.",
         "line4": "그 힘에 스러진 이들의 운명을 보라."
       },
-      "notes": "결과 파일: kr_textures/ui/4AEC2546371FFF47.png. Vita3K 실기 확인에서 오프닝 배경 해시로 정상 표시됨.\nmanual_regions 4개 추가 (편집기에서 검토용; 자동 render 대상 아님).",
+      "notes": "결과 파일: textures/kr/ui/4AEC2546371FFF47.png. Vita3K 실기 확인에서 오프닝 배경 해시로 정상 표시됨.\nmanual_regions 4개 추가 (편집기에서 검토용; 자동 render 대상 아님).",
       "regions": [
         {
           "x": 1408,

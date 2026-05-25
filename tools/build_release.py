@@ -30,8 +30,8 @@ OUTPUT_DIR = PROJECT_DIR / "output"
 PATCH_MAIN_DIR = PROJECT_DIR / "patch_main"
 PATCH_PATCH_DIR = PROJECT_DIR / "patch_patch"
 TEXTURE_DIRS = [
-    PROJECT_DIR / "kr_textures" / "ui",
-    PROJECT_DIR / "kr_textures" / "font",
+    PROJECT_DIR / "textures/kr" / "ui",
+    PROJECT_DIR / "textures/kr" / "font",
 ]
 PATCHER_TEMPLATE = PROJECT_DIR / "tools" / "apply_release_patch.py"
 MAIN_CPK = PROJECT_DIR / "backup" / "NinPri.cpk"

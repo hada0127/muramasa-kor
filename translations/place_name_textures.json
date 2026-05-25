@@ -1,7 +1,7 @@
 {
-  "_description": "지명(場面/Act) 텍스처 한글화 작업 리스트. 각 텍스처는 붉은 배너 + 세로 세움 직사각형 라벨에 일본 옛 지명(伊豆, 武蔵, 相模 등)을 담는다. 이미지 편집은 수동으로 진행 (kr_textures/ui/<hash>.png 덮어쓰기). 번역이 확정되면 translations.<key>.ko 항목을 채운다.",
+  "_description": "지명(場面/Act) 텍스처 한글화 작업 리스트. 각 텍스처는 붉은 배너 + 세로 세움 직사각형 라벨에 일본 옛 지명(伊豆, 武蔵, 相模 등)을 담는다. 이미지 편집은 수동으로 진행 (textures/kr/ui/<hash>.png 덮어쓰기). 번역이 확정되면 translations.<key>.ko 항목을 채운다.",
   "_source_import_dir": "C:/game/vita3k/textures/import/PCSE00240",
-  "_target_dir": "kr_textures/ui",
+  "_target_dir": "textures/kr/ui",
   "_total": 61,
   "_detection": "붉은 배너 색(RGB ≈ 204,66,58) 비율 필터 + 수동 확인. 37710613E2D5BC80(우산/무기)은 제외. 1823D39C0279886B(로마자 알파 전용)는 별도 포함.",
   "_common_place_names": {

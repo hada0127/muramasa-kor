@@ -16,10 +16,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_JOBS = ROOT / "translations/place_texture_jobs.json"
-DEFAULT_OUT = ROOT / "kr_textures/ui"
+DEFAULT_OUT = ROOT / "textures/kr/ui"
 DEFAULT_FONT = ROOT / "fonts/Griun_PolSensibility-Rg.ttf"
-DEFAULT_SOURCE_DIR = ROOT / "textures/place_name_originals"
-DEFAULT_APPLY_DIR = ROOT / "kr_textures/ui"
+DEFAULT_SOURCE_DIR = ROOT / "textures/place_originals"
+DEFAULT_APPLY_DIR = ROOT / "textures/kr/ui"
 TITLE_ID = "PCSE00240"
 
 BACKGROUND_COLORS = {
@@ -507,7 +507,7 @@ def main() -> None:
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--all", action="store_true", help="Render every ready job")
     ap.add_argument("--include-needs-review", action="store_true", help="Also render jobs marked needs_review")
-    ap.add_argument("--apply", action="store_true", help="Copy rendered output into kr_textures/ui")
+    ap.add_argument("--apply", action="store_true", help="Copy rendered output into textures/kr/ui")
     ap.add_argument("--install", action="store_true", help="Copy rendered output into local Vita3K import folders")
     ap.add_argument("--compare", action="store_true", help="Write original/current/rendered comparison sheets")
     args = ap.parse_args()

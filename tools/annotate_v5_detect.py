@@ -22,8 +22,8 @@ problems_28 = ["00B61B564A5FD289","0AA74C448087838A","3ECF3B0D2C2907BE","7E0669E
     "C8B2975F2A629F4B","C8C4589102431759","C8E42A56480DB818","C84B5B3A51547DF0",
     "C3848C8E5ED70F7A","E9E834DE4BAFDAB2","E9F2EC8557984A58","FFC64B053648525E"]
 
-src_orig = Path('textures/place_name_originals')
-src_kr = Path('kr_textures/ui')
+src_orig = Path('textures/place_originals')
+src_kr = Path('textures/kr/ui')
 out_dir = Path('temp/preview/annotated_v5')
 out_dir.mkdir(parents=True, exist_ok=True)
 

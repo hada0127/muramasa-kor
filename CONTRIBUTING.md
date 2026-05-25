@@ -48,18 +48,18 @@ Copy-Item output/NinPriPatch_final.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPriPa
 
 버전은 `release/version.json`에서 관리한다.
 
-릴리즈 zip은 `kr_textures/ui/*.png`와 `kr_textures/font/*.png`를 `textures/import/PCSE00240/`로 포장한다. 한글 시스템 메시지는 폰트 import가 없으면 깨지므로, 폰트나 문자 매핑을 바꾼 뒤에는 폰트 import를 갱신하고 repo에 동기화해야 한다.
+릴리즈 zip은 `textures/kr/ui/*.png`와 `textures/kr/font/*.png`를 `textures/import/PCSE00240/`로 포장한다. 한글 시스템 메시지는 폰트 import가 없으면 깨지므로, 폰트나 문자 매핑을 바꾼 뒤에는 폰트 import를 갱신하고 repo에 동기화해야 한다.
 
 폰트 import 갱신:
 
 ```powershell
 python tools/hd_font_import.py
-New-Item -ItemType Directory -Path kr_textures/font -Force
-Copy-Item C:/game/vita3k/textures/import/PCSE00240/6706A53E1D94C16E.png kr_textures/font/6706A53E1D94C16E.png -Force
-Copy-Item C:/game/vita3k/textures/import/PCSE00240/8665CE082D339B33.png kr_textures/font/8665CE082D339B33.png -Force
+New-Item -ItemType Directory -Path textures/kr/font -Force
+Copy-Item C:/game/vita3k/textures/import/PCSE00240/6706A53E1D94C16E.png textures/kr/font/6706A53E1D94C16E.png -Force
+Copy-Item C:/game/vita3k/textures/import/PCSE00240/8665CE082D339B33.png textures/kr/font/8665CE082D339B33.png -Force
 ```
 
-UI 텍스처를 바꾼 경우 먼저 `python tools/texture_localize.py`를 실행해 `kr_textures/ui/`를 최신 상태로 만든다.
+UI 텍스처를 바꾼 경우 먼저 `python tools/texture_localize.py`를 실행해 `textures/kr/ui/`를 최신 상태로 만든다.
 
 릴리즈 생성:
 
@@ -112,7 +112,7 @@ python tools/publish_release.py --latest
 
 - 패치 영향을 준 경우 CPK 재생성까지 확인한다.
 - 가능하면 Vita3K 자동 검증까지 수행한다.
-- 텍스처/UI 작업은 `translations/texture_localize_config.json`과 `kr_textures/ui/`를 함께 확인한다.
+- 텍스처/UI 작업은 `translations/texture_localize_config.json`과 `textures/kr/ui/`를 함께 확인한다.
 
 ## 참고 문서
 

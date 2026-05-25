@@ -1860,3 +1860,14 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - 검증: build_patch 재빌드 후 4개 _itemdata.nms 모두 "보스"(8c568cb5) 6개·"+OSS" 0개. SJIS 리드바이트 파싱 결과 단일 바이트는 공백뿐 → 한자 깨짐 제거 확정.
 - CPK append 패치 후 fs/ux0/app/PCSE00240에 설치 완료.
 - 미검증: macOS라 Windows용 vita3k_ctrl.py(ctypes.windll) 미동작 + 해당 아이템은 상대전용/사용금지 숨김 아이템이라 인게임 도달 곤란. 인게임 육안 확인 권장.
+
+## [2026-05-25] 텍스처 폴더 단일 트리 통합 + Krita 폐기
+- 결정: 단일 textures/ 트리 (사용자 선택 A). codex·gemini는 둘 다 B(분리 유지) 권장했으나 사용자가 정보 확인 후 A 선택 → memory/project_texture_folder_consolidation.md 기록
+- 구조: textures/{originals, place_originals, kr/ui, kr/font}
+  - kr_textures/ui → textures/kr/ui, kr_textures/font → textures/kr/font
+  - textures/place_name_originals → textures/place_originals
+- 제거: Krita 자산(.kra 7 + kra_extract.py/kra_to_place.py + kra_extracted/ 7), textures/text/(originals와 100% 중복 23), textures/work/
+- 참조 일괄 수정: 36개 텍스트 파일 sed (kr_textures→textures/kr, place_name_originals→place_originals, textures/text/→textures/originals/). .claude 작업로그 3개는 기록 보존 위해 제외
+- 문서: CLAUDE.md 구조 트리·도구표(ui_editor 추가, Krita 폐기 명시), WORKFLOW.md
+- 검증: render_place_texture_job(place_originals 읽기 OK), texture_localize preview(originals 읽기 OK), build_release(textures/kr에서 87개 텍스처 수집 OK)
+- 주의: build_release TEXTURE_DIRS는 textures/kr/{ui,font} 명시 allowlist — textures/ 전체로 넓히면 원본 혼입. provenance 메타 "source":"kra_extract"는 region 출처 라벨이라 렌더 무관, 그대로 둠

@@ -9,8 +9,8 @@
   },
   "textures": {
     "00B61B564A5FD289": {
-      "source": "textures/place_name_originals/00B61B564A5FD289.png",
-      "output": "kr_textures/ui/00B61B564A5FD289.png",
+      "source": "textures/place_originals/00B61B564A5FD289.png",
+      "output": "textures/kr/ui/00B61B564A5FD289.png",
       "status": "ready",
       "regions": [
         {
@@ -259,8 +259,8 @@
       ]
     },
     "0130920C24D1E53C": {
-      "source": "textures/place_name_originals/0130920C24D1E53C.png",
-      "output": "kr_textures/ui/0130920C24D1E53C.png",
+      "source": "textures/place_originals/0130920C24D1E53C.png",
+      "output": "textures/kr/ui/0130920C24D1E53C.png",
       "status": "ready",
       "regions": [
         {
@@ -311,8 +311,8 @@
       ]
     },
     "05D6F7C75F32325B": {
-      "source": "textures/place_name_originals/05D6F7C75F32325B.png",
-      "output": "kr_textures/ui/05D6F7C75F32325B.png",
+      "source": "textures/place_originals/05D6F7C75F32325B.png",
+      "output": "textures/kr/ui/05D6F7C75F32325B.png",
       "status": "ready",
       "regions": [
         {
@@ -363,8 +363,8 @@
       ]
     },
     "0770DFDD08479BD2": {
-      "source": "textures/place_name_originals/0770DFDD08479BD2.png",
-      "output": "kr_textures/ui/0770DFDD08479BD2.png",
+      "source": "textures/place_originals/0770DFDD08479BD2.png",
+      "output": "textures/kr/ui/0770DFDD08479BD2.png",
       "status": "ready",
       "regions": [
         {
@@ -415,8 +415,8 @@
       ]
     },
     "0912E45A567A41C9": {
-      "source": "textures/place_name_originals/0912E45A567A41C9.png",
-      "output": "kr_textures/ui/0912E45A567A41C9.png",
+      "source": "textures/place_originals/0912E45A567A41C9.png",
+      "output": "textures/kr/ui/0912E45A567A41C9.png",
       "status": "ready",
       "regions": [
         {
@@ -492,8 +492,8 @@
       ]
     },
     "0AA74C448087838A": {
-      "source": "textures/place_name_originals/0AA74C448087838A.png",
-      "output": "kr_textures/ui/0AA74C448087838A.png",
+      "source": "textures/place_originals/0AA74C448087838A.png",
+      "output": "textures/kr/ui/0AA74C448087838A.png",
       "status": "ready",
       "regions": [
         {
@@ -566,8 +566,8 @@
       ]
     },
     "244AED1DB11AD6DC": {
-      "source": "textures/place_name_originals/244AED1DB11AD6DC.png",
-      "output": "kr_textures/ui/244AED1DB11AD6DC.png",
+      "source": "textures/place_originals/244AED1DB11AD6DC.png",
+      "output": "textures/kr/ui/244AED1DB11AD6DC.png",
       "status": "ready",
       "regions": [
         {
@@ -618,8 +618,8 @@
       ]
     },
     "2611666E71A8181A": {
-      "source": "textures/place_name_originals/2611666E71A8181A.png",
-      "output": "kr_textures/ui/2611666E71A8181A.png",
+      "source": "textures/place_originals/2611666E71A8181A.png",
+      "output": "textures/kr/ui/2611666E71A8181A.png",
       "status": "ready",
       "regions": [
         {
@@ -782,8 +782,8 @@
       ]
     },
     "2D3A29BE9B32D34A": {
-      "source": "textures/place_name_originals/2D3A29BE9B32D34A.png",
-      "output": "kr_textures/ui/2D3A29BE9B32D34A.png",
+      "source": "textures/place_originals/2D3A29BE9B32D34A.png",
+      "output": "textures/kr/ui/2D3A29BE9B32D34A.png",
       "status": "ready",
       "regions": [
         {
@@ -834,8 +834,8 @@
       ]
     },
     "30033EF8FD9CC4EB": {
-      "source": "textures/place_name_originals/30033EF8FD9CC4EB.png",
-      "output": "kr_textures/ui/30033EF8FD9CC4EB.png",
+      "source": "textures/place_originals/30033EF8FD9CC4EB.png",
+      "output": "textures/kr/ui/30033EF8FD9CC4EB.png",
       "status": "ready",
       "regions": [
         {
@@ -887,8 +887,8 @@
       ]
     },
     "31710FB73B2686EF": {
-      "source": "textures/place_name_originals/31710FB73B2686EF.png",
-      "output": "kr_textures/ui/31710FB73B2686EF.png",
+      "source": "textures/place_originals/31710FB73B2686EF.png",
+      "output": "textures/kr/ui/31710FB73B2686EF.png",
       "status": "ready",
       "regions": [
         {
@@ -1003,8 +1003,8 @@
       ]
     },
     "3302A86BDC50A780": {
-      "source": "textures/place_name_originals/3302A86BDC50A780.png",
-      "output": "kr_textures/ui/3302A86BDC50A780.png",
+      "source": "textures/place_originals/3302A86BDC50A780.png",
+      "output": "textures/kr/ui/3302A86BDC50A780.png",
       "status": "ready",
       "regions": [
         {
@@ -1096,8 +1096,8 @@
       ]
     },
     "3B7BDFB1087549B8": {
-      "source": "textures/place_name_originals/3B7BDFB1087549B8.png",
-      "output": "kr_textures/ui/3B7BDFB1087549B8.png",
+      "source": "textures/place_originals/3B7BDFB1087549B8.png",
+      "output": "textures/kr/ui/3B7BDFB1087549B8.png",
       "status": "ready",
       "regions": [
         {
@@ -1190,8 +1190,8 @@
       ]
     },
     "3ECF3B0D2C2907BE": {
-      "source": "textures/place_name_originals/3ECF3B0D2C2907BE.png",
-      "output": "kr_textures/ui/3ECF3B0D2C2907BE.png",
+      "source": "textures/place_originals/3ECF3B0D2C2907BE.png",
+      "output": "textures/kr/ui/3ECF3B0D2C2907BE.png",
       "status": "ready",
       "regions": [
         {
@@ -1287,8 +1287,8 @@
       ]
     },
     "4633B92FBA1371F4": {
-      "source": "textures/place_name_originals/4633B92FBA1371F4.png",
-      "output": "kr_textures/ui/4633B92FBA1371F4.png",
+      "source": "textures/place_originals/4633B92FBA1371F4.png",
+      "output": "textures/kr/ui/4633B92FBA1371F4.png",
       "status": "ready",
       "regions": [
         {
@@ -1503,8 +1503,8 @@
       ]
     },
     "464E370EF865D0AC": {
-      "source": "textures/place_name_originals/464E370EF865D0AC.png",
-      "output": "kr_textures/ui/464E370EF865D0AC.png",
+      "source": "textures/place_originals/464E370EF865D0AC.png",
+      "output": "textures/kr/ui/464E370EF865D0AC.png",
       "status": "ready",
       "regions": [
         {
@@ -1720,8 +1720,8 @@
       ]
     },
     "4709F3E364671D89": {
-      "source": "textures/place_name_originals/4709F3E364671D89.png",
-      "output": "kr_textures/ui/4709F3E364671D89.png",
+      "source": "textures/place_originals/4709F3E364671D89.png",
+      "output": "textures/kr/ui/4709F3E364671D89.png",
       "status": "ready",
       "regions": [
         {
@@ -1814,8 +1814,8 @@
       ]
     },
     "48AA5B2EBC6C43B1": {
-      "source": "textures/place_name_originals/48AA5B2EBC6C43B1.png",
-      "output": "kr_textures/ui/48AA5B2EBC6C43B1.png",
+      "source": "textures/place_originals/48AA5B2EBC6C43B1.png",
+      "output": "textures/kr/ui/48AA5B2EBC6C43B1.png",
       "status": "ready",
       "regions": [
         {
@@ -1866,8 +1866,8 @@
       ]
     },
     "5329BF3C3BF9B18C": {
-      "source": "textures/place_name_originals/5329BF3C3BF9B18C.png",
-      "output": "kr_textures/ui/5329BF3C3BF9B18C.png",
+      "source": "textures/place_originals/5329BF3C3BF9B18C.png",
+      "output": "textures/kr/ui/5329BF3C3BF9B18C.png",
       "status": "ready",
       "regions": [
         {
@@ -1919,8 +1919,8 @@
       ]
     },
     "5882EA68BABF3C63": {
-      "source": "textures/place_name_originals/5882EA68BABF3C63.png",
-      "output": "kr_textures/ui/5882EA68BABF3C63.png",
+      "source": "textures/place_originals/5882EA68BABF3C63.png",
+      "output": "textures/kr/ui/5882EA68BABF3C63.png",
       "status": "ready",
       "regions": [
         {
@@ -2096,8 +2096,8 @@
       ]
     },
     "59015B61BFC0B7BC": {
-      "source": "textures/place_name_originals/59015B61BFC0B7BC.png",
-      "output": "kr_textures/ui/59015B61BFC0B7BC.png",
+      "source": "textures/place_originals/59015B61BFC0B7BC.png",
+      "output": "textures/kr/ui/59015B61BFC0B7BC.png",
       "status": "ready",
       "output_scale": 1,
       "regions": [
@@ -2170,8 +2170,8 @@
       ]
     },
     "615858B46587A60E": {
-      "source": "textures/place_name_originals/615858B46587A60E.png",
-      "output": "kr_textures/ui/615858B46587A60E.png",
+      "source": "textures/place_originals/615858B46587A60E.png",
+      "output": "textures/kr/ui/615858B46587A60E.png",
       "status": "ready",
       "regions": [
         {
@@ -2289,8 +2289,8 @@
       ]
     },
     "6605F569D9389F9C": {
-      "source": "textures/place_name_originals/6605F569D9389F9C.png",
-      "output": "kr_textures/ui/6605F569D9389F9C.png",
+      "source": "textures/place_originals/6605F569D9389F9C.png",
+      "output": "textures/kr/ui/6605F569D9389F9C.png",
       "status": "ready",
       "regions": [
         {
@@ -2506,8 +2506,8 @@
       ]
     },
     "6B6116F83EBE7153": {
-      "source": "textures/place_name_originals/6B6116F83EBE7153.png",
-      "output": "kr_textures/ui/6B6116F83EBE7153.png",
+      "source": "textures/place_originals/6B6116F83EBE7153.png",
+      "output": "textures/kr/ui/6B6116F83EBE7153.png",
       "status": "ready",
       "regions": [
         {
@@ -2558,8 +2558,8 @@
       ]
     },
     "6CD92157D6C2502F": {
-      "source": "textures/place_name_originals/6CD92157D6C2502F.png",
-      "output": "kr_textures/ui/6CD92157D6C2502F.png",
+      "source": "textures/place_originals/6CD92157D6C2502F.png",
+      "output": "textures/kr/ui/6CD92157D6C2502F.png",
       "status": "ready",
       "regions": [
         {
@@ -2610,8 +2610,8 @@
       ]
     },
     "7053B8FFC8B89807": {
-      "source": "textures/place_name_originals/7053B8FFC8B89807.png",
-      "output": "kr_textures/ui/7053B8FFC8B89807.png",
+      "source": "textures/place_originals/7053B8FFC8B89807.png",
+      "output": "textures/kr/ui/7053B8FFC8B89807.png",
       "status": "ready",
       "regions": [
         {
@@ -2708,8 +2708,8 @@
       ]
     },
     "72165D43344F3190": {
-      "source": "textures/place_name_originals/72165D43344F3190.png",
-      "output": "kr_textures/ui/72165D43344F3190.png",
+      "source": "textures/place_originals/72165D43344F3190.png",
+      "output": "textures/kr/ui/72165D43344F3190.png",
       "status": "ready",
       "regions": [
         {
@@ -2846,8 +2846,8 @@
       ]
     },
     "7282AD29CF433DA0": {
-      "source": "textures/place_name_originals/7282AD29CF433DA0.png",
-      "output": "kr_textures/ui/7282AD29CF433DA0.png",
+      "source": "textures/place_originals/7282AD29CF433DA0.png",
+      "output": "textures/kr/ui/7282AD29CF433DA0.png",
       "status": "ready",
       "regions": [
         {
@@ -2963,8 +2963,8 @@
       ]
     },
     "7358BEAA2EF5F8A8": {
-      "source": "textures/place_name_originals/7358BEAA2EF5F8A8.png",
-      "output": "kr_textures/ui/7358BEAA2EF5F8A8.png",
+      "source": "textures/place_originals/7358BEAA2EF5F8A8.png",
+      "output": "textures/kr/ui/7358BEAA2EF5F8A8.png",
       "status": "ready",
       "regions": [
         {
@@ -3101,8 +3101,8 @@
       ]
     },
     "75B04DBF5C53AF28": {
-      "source": "textures/place_name_originals/75B04DBF5C53AF28.png",
-      "output": "kr_textures/ui/75B04DBF5C53AF28.png",
+      "source": "textures/place_originals/75B04DBF5C53AF28.png",
+      "output": "textures/kr/ui/75B04DBF5C53AF28.png",
       "status": "ready",
       "regions": [
         {
@@ -3154,8 +3154,8 @@
       ]
     },
     "779C5ABBFCE00424": {
-      "source": "textures/place_name_originals/779C5ABBFCE00424.png",
-      "output": "kr_textures/ui/779C5ABBFCE00424.png",
+      "source": "textures/place_originals/779C5ABBFCE00424.png",
+      "output": "textures/kr/ui/779C5ABBFCE00424.png",
       "status": "ready",
       "regions": [
         {
@@ -3206,8 +3206,8 @@
       ]
     },
     "7B49071BF36FC555": {
-      "source": "textures/place_name_originals/7B49071BF36FC555.png",
-      "output": "kr_textures/ui/7B49071BF36FC555.png",
+      "source": "textures/place_originals/7B49071BF36FC555.png",
+      "output": "textures/kr/ui/7B49071BF36FC555.png",
       "status": "ready",
       "regions": [
         {
@@ -3258,8 +3258,8 @@
       ]
     },
     "7E0669E71FCD7B64": {
-      "source": "textures/place_name_originals/7E0669E71FCD7B64.png",
-      "output": "kr_textures/ui/7E0669E71FCD7B64.png",
+      "source": "textures/place_originals/7E0669E71FCD7B64.png",
+      "output": "textures/kr/ui/7E0669E71FCD7B64.png",
       "status": "ready",
       "regions": [
         {
@@ -3354,8 +3354,8 @@
       ]
     },
     "8098AD7E2C438C22": {
-      "source": "textures/place_name_originals/8098AD7E2C438C22.png",
-      "output": "kr_textures/ui/8098AD7E2C438C22.png",
+      "source": "textures/place_originals/8098AD7E2C438C22.png",
+      "output": "textures/kr/ui/8098AD7E2C438C22.png",
       "status": "ready",
       "regions": [
         {
@@ -3471,8 +3471,8 @@
       ]
     },
     "85A4D54EE933339D": {
-      "source": "textures/place_name_originals/85A4D54EE933339D.png",
-      "output": "kr_textures/ui/85A4D54EE933339D.png",
+      "source": "textures/place_originals/85A4D54EE933339D.png",
+      "output": "textures/kr/ui/85A4D54EE933339D.png",
       "status": "ready",
       "regions": [
         {
@@ -3523,8 +3523,8 @@
       ]
     },
     "864BD9CBCC496F78": {
-      "source": "textures/place_name_originals/864BD9CBCC496F78.png",
-      "output": "kr_textures/ui/864BD9CBCC496F78.png",
+      "source": "textures/place_originals/864BD9CBCC496F78.png",
+      "output": "textures/kr/ui/864BD9CBCC496F78.png",
       "status": "ready",
       "regions": [
         {
@@ -3596,8 +3596,8 @@
       ]
     },
     "89578D1F704C35E4": {
-      "source": "textures/place_name_originals/89578D1F704C35E4.png",
-      "output": "kr_textures/ui/89578D1F704C35E4.png",
+      "source": "textures/place_originals/89578D1F704C35E4.png",
+      "output": "textures/kr/ui/89578D1F704C35E4.png",
       "status": "ready",
       "regions": [
         {
@@ -3648,8 +3648,8 @@
       ]
     },
     "919ABD92603E242F": {
-      "source": "textures/place_name_originals/919ABD92603E242F.png",
-      "output": "kr_textures/ui/919ABD92603E242F.png",
+      "source": "textures/place_originals/919ABD92603E242F.png",
+      "output": "textures/kr/ui/919ABD92603E242F.png",
       "status": "ready",
       "regions": [
         {
@@ -3701,8 +3701,8 @@
       ]
     },
     "922337BDB8D32D0F": {
-      "source": "textures/place_name_originals/922337BDB8D32D0F.png",
-      "output": "kr_textures/ui/922337BDB8D32D0F.png",
+      "source": "textures/place_originals/922337BDB8D32D0F.png",
+      "output": "textures/kr/ui/922337BDB8D32D0F.png",
       "status": "ready",
       "regions": [
         {
@@ -3753,8 +3753,8 @@
       ]
     },
     "A62172B559EED573": {
-      "source": "textures/place_name_originals/A62172B559EED573.png",
-      "output": "kr_textures/ui/A62172B559EED573.png",
+      "source": "textures/place_originals/A62172B559EED573.png",
+      "output": "textures/kr/ui/A62172B559EED573.png",
       "status": "ready",
       "regions": [
         {
@@ -3805,8 +3805,8 @@
       ]
     },
     "A8486C49F76167C3": {
-      "source": "textures/place_name_originals/A8486C49F76167C3.png",
-      "output": "kr_textures/ui/A8486C49F76167C3.png",
+      "source": "textures/place_originals/A8486C49F76167C3.png",
+      "output": "textures/kr/ui/A8486C49F76167C3.png",
       "status": "ready",
       "regions": [
         {
@@ -3918,8 +3918,8 @@
       ]
     },
     "AF183888BC366FCA": {
-      "source": "textures/place_name_originals/AF183888BC366FCA.png",
-      "output": "kr_textures/ui/AF183888BC366FCA.png",
+      "source": "textures/place_originals/AF183888BC366FCA.png",
+      "output": "textures/kr/ui/AF183888BC366FCA.png",
       "status": "ready",
       "regions": [
         {
@@ -3970,8 +3970,8 @@
       ]
     },
     "BAD2BDA6C2AE4B16": {
-      "source": "textures/place_name_originals/BAD2BDA6C2AE4B16.png",
-      "output": "kr_textures/ui/BAD2BDA6C2AE4B16.png",
+      "source": "textures/place_originals/BAD2BDA6C2AE4B16.png",
+      "output": "textures/kr/ui/BAD2BDA6C2AE4B16.png",
       "status": "ready",
       "regions": [
         {
@@ -4022,8 +4022,8 @@
       ]
     },
     "C3848C8E5ED70F7A": {
-      "source": "textures/place_name_originals/C3848C8E5ED70F7A.png",
-      "output": "kr_textures/ui/C3848C8E5ED70F7A.png",
+      "source": "textures/place_originals/C3848C8E5ED70F7A.png",
+      "output": "textures/kr/ui/C3848C8E5ED70F7A.png",
       "status": "ready",
       "regions": [
         {
@@ -4098,8 +4098,8 @@
       ]
     },
     "C84B5B3A51547DF0": {
-      "source": "textures/place_name_originals/C84B5B3A51547DF0.png",
-      "output": "kr_textures/ui/C84B5B3A51547DF0.png",
+      "source": "textures/place_originals/C84B5B3A51547DF0.png",
+      "output": "textures/kr/ui/C84B5B3A51547DF0.png",
       "status": "ready",
       "regions": [
         {
@@ -4175,8 +4175,8 @@
       ]
     },
     "C8B2975F2A629F4B": {
-      "source": "textures/place_name_originals/C8B2975F2A629F4B.png",
-      "output": "kr_textures/ui/C8B2975F2A629F4B.png",
+      "source": "textures/place_originals/C8B2975F2A629F4B.png",
+      "output": "textures/kr/ui/C8B2975F2A629F4B.png",
       "status": "ready",
       "regions": [
         {
@@ -4252,8 +4252,8 @@
       ]
     },
     "C8C4589102431759": {
-      "source": "textures/place_name_originals/C8C4589102431759.png",
-      "output": "kr_textures/ui/C8C4589102431759.png",
+      "source": "textures/place_originals/C8C4589102431759.png",
+      "output": "textures/kr/ui/C8C4589102431759.png",
       "status": "ready",
       "regions": [
         {
@@ -4327,8 +4327,8 @@
       ]
     },
     "C8E42A56480DB818": {
-      "source": "textures/place_name_originals/C8E42A56480DB818.png",
-      "output": "kr_textures/ui/C8E42A56480DB818.png",
+      "source": "textures/place_originals/C8E42A56480DB818.png",
+      "output": "textures/kr/ui/C8E42A56480DB818.png",
       "status": "ready",
       "regions": [
         {
@@ -4465,8 +4465,8 @@
       ]
     },
     "CB18104E808B56B3": {
-      "source": "textures/place_name_originals/CB18104E808B56B3.png",
-      "output": "kr_textures/ui/CB18104E808B56B3.png",
+      "source": "textures/place_originals/CB18104E808B56B3.png",
+      "output": "textures/kr/ui/CB18104E808B56B3.png",
       "status": "ready",
       "regions": [
         {
@@ -4517,8 +4517,8 @@
       ]
     },
     "D35B39CA7FAED5D7": {
-      "source": "textures/place_name_originals/D35B39CA7FAED5D7.png",
-      "output": "kr_textures/ui/D35B39CA7FAED5D7.png",
+      "source": "textures/place_originals/D35B39CA7FAED5D7.png",
+      "output": "textures/kr/ui/D35B39CA7FAED5D7.png",
       "status": "ready",
       "regions": [
         {
@@ -4569,8 +4569,8 @@
       ]
     },
     "DD1F1F1DE2039AAC": {
-      "source": "textures/place_name_originals/DD1F1F1DE2039AAC.png",
-      "output": "kr_textures/ui/DD1F1F1DE2039AAC.png",
+      "source": "textures/place_originals/DD1F1F1DE2039AAC.png",
+      "output": "textures/kr/ui/DD1F1F1DE2039AAC.png",
       "status": "ready",
       "regions": [
         {
@@ -4621,8 +4621,8 @@
       ]
     },
     "E210275AFFF0A8D8": {
-      "source": "textures/place_name_originals/E210275AFFF0A8D8.png",
-      "output": "kr_textures/ui/E210275AFFF0A8D8.png",
+      "source": "textures/place_originals/E210275AFFF0A8D8.png",
+      "output": "textures/kr/ui/E210275AFFF0A8D8.png",
       "status": "ready",
       "regions": [
         {
@@ -4673,8 +4673,8 @@
       ]
     },
     "E581194DE2C76C56": {
-      "source": "textures/place_name_originals/E581194DE2C76C56.png",
-      "output": "kr_textures/ui/E581194DE2C76C56.png",
+      "source": "textures/place_originals/E581194DE2C76C56.png",
+      "output": "textures/kr/ui/E581194DE2C76C56.png",
       "status": "ready",
       "regions": [
         {
@@ -4725,8 +4725,8 @@
       ]
     },
     "E9E834DE4BAFDAB2": {
-      "source": "textures/place_name_originals/E9E834DE4BAFDAB2.png",
-      "output": "kr_textures/ui/E9E834DE4BAFDAB2.png",
+      "source": "textures/place_originals/E9E834DE4BAFDAB2.png",
+      "output": "textures/kr/ui/E9E834DE4BAFDAB2.png",
       "status": "ready",
       "regions": [
         {
@@ -4823,8 +4823,8 @@
       ]
     },
     "E9F2EC8557984A58": {
-      "source": "textures/place_name_originals/E9F2EC8557984A58.png",
-      "output": "kr_textures/ui/E9F2EC8557984A58.png",
+      "source": "textures/place_originals/E9F2EC8557984A58.png",
+      "output": "textures/kr/ui/E9F2EC8557984A58.png",
       "status": "ready",
       "regions": [
         {
@@ -4921,8 +4921,8 @@
       ]
     },
     "EC585E08CC88B03F": {
-      "source": "textures/place_name_originals/EC585E08CC88B03F.png",
-      "output": "kr_textures/ui/EC585E08CC88B03F.png",
+      "source": "textures/place_originals/EC585E08CC88B03F.png",
+      "output": "textures/kr/ui/EC585E08CC88B03F.png",
       "status": "ready",
       "regions": [
         {
@@ -4973,8 +4973,8 @@
       ]
     },
     "EE60DEFADBDD82C5": {
-      "source": "textures/place_name_originals/EE60DEFADBDD82C5.png",
-      "output": "kr_textures/ui/EE60DEFADBDD82C5.png",
+      "source": "textures/place_originals/EE60DEFADBDD82C5.png",
+      "output": "textures/kr/ui/EE60DEFADBDD82C5.png",
       "status": "ready",
       "regions": [
         {
@@ -5025,8 +5025,8 @@
       ]
     },
     "F1C8031232197225": {
-      "source": "textures/place_name_originals/F1C8031232197225.png",
-      "output": "kr_textures/ui/F1C8031232197225.png",
+      "source": "textures/place_originals/F1C8031232197225.png",
+      "output": "textures/kr/ui/F1C8031232197225.png",
       "status": "ready",
       "regions": [
         {
@@ -5077,8 +5077,8 @@
       ]
     },
     "F24874ADB9581870": {
-      "source": "textures/place_name_originals/F24874ADB9581870.png",
-      "output": "kr_textures/ui/F24874ADB9581870.png",
+      "source": "textures/place_originals/F24874ADB9581870.png",
+      "output": "textures/kr/ui/F24874ADB9581870.png",
       "status": "ready",
       "regions": [
         {
@@ -5129,8 +5129,8 @@
       ]
     },
     "FFC64B053648525E": {
-      "source": "textures/place_name_originals/FFC64B053648525E.png",
-      "output": "kr_textures/ui/FFC64B053648525E.png",
+      "source": "textures/place_originals/FFC64B053648525E.png",
+      "output": "textures/kr/ui/FFC64B053648525E.png",
       "status": "ready",
       "regions": [
         {

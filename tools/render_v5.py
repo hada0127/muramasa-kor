@@ -8,8 +8,8 @@ import numpy as np
 from scipy import ndimage
 
 FONT_PATH = 'fonts/Griun_PolSensibility-Rg.ttf'
-SRC_ORIG = Path('textures/place_name_originals')
-SRC_KR = Path('kr_textures/ui')
+SRC_ORIG = Path('textures/place_originals')
+SRC_KR = Path('textures/kr/ui')
 OUT = Path('temp/render_v5')
 
 

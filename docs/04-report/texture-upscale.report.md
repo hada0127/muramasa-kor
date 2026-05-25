@@ -48,12 +48,12 @@
 
 ```python
 skip = set(json.load("tools/.font_hashes.json"))     # 폰트 4종
-skip |= {p.name for p in (kr_textures/ui/).glob("*.png")}  # 한글 UI 81종
+skip |= {p.name for p in (textures/kr/ui/).glob("*.png")}  # 한글 UI 81종
 ```
 
 - 폰트 hash: `6706A53E1D94C16E`, `8665CE082D339B33`, `A8E6FDD162258699`, `E690E190AA5C798F`
   - 32px 그리드 기반 cell 좌표가 깨지면 한글 매핑 전체가 망가짐 → 절대 업스케일 금지
-- `kr_textures/ui/`: 사용자가 수동 편집한 한글 UI 텍스처들. AI 업스케일이 한글 글리프를 뭉개거나 색상을 변형시킬 수 있어 제외
+- `textures/kr/ui/`: 사용자가 수동 편집한 한글 UI 텍스처들. AI 업스케일이 한글 글리프를 뭉개거나 색상을 변형시킬 수 있어 제외
 
 실제 export 폴더에서 매치된 skip 수: **15장** (276 입력 - 261 처리 = 15 skip)
 

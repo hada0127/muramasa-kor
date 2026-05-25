@@ -4,15 +4,15 @@
   "_systems": {
     "localize": "texture_localize_config.json + texture_localize.py",
     "place": "place_texture_jobs.json + render_place_texture_job.py",
-    "manual": "kr_textures/ui에 직접 편집된 파일 (자동 생성 없음)"
+    "manual": "textures/kr/ui에 직접 편집된 파일 (자동 생성 없음)"
   },
   "count": 82,
   "textures": [
     {
       "hash": "00B61B564A5FD289",
       "system": "place",
-      "png": "kr_textures/ui/00B61B564A5FD289.png",
-      "source": "textures/place_name_originals/00B61B564A5FD289.png",
+      "png": "textures/kr/ui/00B61B564A5FD289.png",
+      "source": "textures/place_originals/00B61B564A5FD289.png",
       "size": [
         2048,
         2048
@@ -640,8 +640,8 @@
     {
       "hash": "0130920C24D1E53C",
       "system": "place",
-      "png": "kr_textures/ui/0130920C24D1E53C.png",
-      "source": "textures/place_name_originals/0130920C24D1E53C.png",
+      "png": "textures/kr/ui/0130920C24D1E53C.png",
+      "source": "textures/place_originals/0130920C24D1E53C.png",
       "size": [
         2048,
         1024
@@ -762,8 +762,8 @@
     {
       "hash": "05D6F7C75F32325B",
       "system": "place",
-      "png": "kr_textures/ui/05D6F7C75F32325B.png",
-      "source": "textures/place_name_originals/05D6F7C75F32325B.png",
+      "png": "textures/kr/ui/05D6F7C75F32325B.png",
+      "source": "textures/place_originals/05D6F7C75F32325B.png",
       "size": [
         2048,
         1024
@@ -884,8 +884,8 @@
     {
       "hash": "0770DFDD08479BD2",
       "system": "place",
-      "png": "kr_textures/ui/0770DFDD08479BD2.png",
-      "source": "textures/place_name_originals/0770DFDD08479BD2.png",
+      "png": "textures/kr/ui/0770DFDD08479BD2.png",
+      "source": "textures/place_originals/0770DFDD08479BD2.png",
       "size": [
         2048,
         1024
@@ -1006,8 +1006,8 @@
     {
       "hash": "0912E45A567A41C9",
       "system": "place",
-      "png": "kr_textures/ui/0912E45A567A41C9.png",
-      "source": "textures/place_name_originals/0912E45A567A41C9.png",
+      "png": "textures/kr/ui/0912E45A567A41C9.png",
+      "source": "textures/place_originals/0912E45A567A41C9.png",
       "size": [
         2048,
         1024
@@ -1179,8 +1179,8 @@
     {
       "hash": "0AA74C448087838A",
       "system": "place",
-      "png": "kr_textures/ui/0AA74C448087838A.png",
-      "source": "textures/place_name_originals/0AA74C448087838A.png",
+      "png": "textures/kr/ui/0AA74C448087838A.png",
+      "source": "textures/place_originals/0AA74C448087838A.png",
       "size": [
         2048,
         1024
@@ -1353,7 +1353,7 @@
     {
       "hash": "1823D39C0279886B",
       "system": "place",
-      "png": "kr_textures/ui/1823D39C0279886B.png",
+      "png": "textures/kr/ui/1823D39C0279886B.png",
       "source": "textures/originals/1823D39C0279886B.png",
       "size": [
         1024,
@@ -2189,7 +2189,7 @@
     {
       "hash": "1D6742BBC0DDB7EC",
       "system": "place",
-      "png": "kr_textures/ui/1D6742BBC0DDB7EC.png",
+      "png": "textures/kr/ui/1D6742BBC0DDB7EC.png",
       "source": "textures/originals/1D6742BBC0DDB7EC.png",
       "size": [
         1024,
@@ -2552,8 +2552,8 @@
     {
       "hash": "244AED1DB11AD6DC",
       "system": "place",
-      "png": "kr_textures/ui/244AED1DB11AD6DC.png",
-      "source": "textures/place_name_originals/244AED1DB11AD6DC.png",
+      "png": "textures/kr/ui/244AED1DB11AD6DC.png",
+      "source": "textures/place_originals/244AED1DB11AD6DC.png",
       "size": [
         2048,
         1024
@@ -2674,7 +2674,7 @@
     {
       "hash": "247C255A400261FF",
       "system": "place",
-      "png": "kr_textures/ui/247C255A400261FF.png",
+      "png": "textures/kr/ui/247C255A400261FF.png",
       "source": "textures/originals/247C255A400261FF.png",
       "size": [
         1024,
@@ -3135,8 +3135,8 @@
     {
       "hash": "2611666E71A8181A",
       "system": "place",
-      "png": "kr_textures/ui/2611666E71A8181A.png",
-      "source": "textures/place_name_originals/2611666E71A8181A.png",
+      "png": "textures/kr/ui/2611666E71A8181A.png",
+      "source": "textures/place_originals/2611666E71A8181A.png",
       "size": [
         2048,
         2048
@@ -3512,8 +3512,8 @@
     {
       "hash": "2D3A29BE9B32D34A",
       "system": "place",
-      "png": "kr_textures/ui/2D3A29BE9B32D34A.png",
-      "source": "textures/place_name_originals/2D3A29BE9B32D34A.png",
+      "png": "textures/kr/ui/2D3A29BE9B32D34A.png",
+      "source": "textures/place_originals/2D3A29BE9B32D34A.png",
       "size": [
         2048,
         1024
@@ -3634,7 +3634,7 @@
     {
       "hash": "2E2003777A770327",
       "system": "place",
-      "png": "kr_textures/ui/2E2003777A770327.png",
+      "png": "textures/kr/ui/2E2003777A770327.png",
       "source": "textures/originals/2E2003777A770327.png",
       "size": [
         1024,
@@ -4095,8 +4095,8 @@
     {
       "hash": "30033EF8FD9CC4EB",
       "system": "place",
-      "png": "kr_textures/ui/30033EF8FD9CC4EB.png",
-      "source": "textures/place_name_originals/30033EF8FD9CC4EB.png",
+      "png": "textures/kr/ui/30033EF8FD9CC4EB.png",
+      "source": "textures/place_originals/30033EF8FD9CC4EB.png",
       "size": [
         1024,
         512
@@ -4217,8 +4217,8 @@
     {
       "hash": "31710FB73B2686EF",
       "system": "place",
-      "png": "kr_textures/ui/31710FB73B2686EF.png",
-      "source": "textures/place_name_originals/31710FB73B2686EF.png",
+      "png": "textures/kr/ui/31710FB73B2686EF.png",
+      "source": "textures/place_originals/31710FB73B2686EF.png",
       "size": [
         2048,
         1024
@@ -4492,8 +4492,8 @@
     {
       "hash": "3302A86BDC50A780",
       "system": "place",
-      "png": "kr_textures/ui/3302A86BDC50A780.png",
-      "source": "textures/place_name_originals/3302A86BDC50A780.png",
+      "png": "textures/kr/ui/3302A86BDC50A780.png",
+      "source": "textures/place_originals/3302A86BDC50A780.png",
       "size": [
         2048,
         1024
@@ -4716,7 +4716,7 @@
     {
       "hash": "3B58B76CBA15E487",
       "system": "place",
-      "png": "kr_textures/ui/3B58B76CBA15E487.png",
+      "png": "textures/kr/ui/3B58B76CBA15E487.png",
       "source": "textures/originals/3B58B76CBA15E487.png",
       "size": [
         4096,
@@ -5120,8 +5120,8 @@
     {
       "hash": "3B7BDFB1087549B8",
       "system": "place",
-      "png": "kr_textures/ui/3B7BDFB1087549B8.png",
-      "source": "textures/place_name_originals/3B7BDFB1087549B8.png",
+      "png": "textures/kr/ui/3B7BDFB1087549B8.png",
+      "source": "textures/place_originals/3B7BDFB1087549B8.png",
       "size": [
         2048,
         1024
@@ -5344,8 +5344,8 @@
     {
       "hash": "3ECF3B0D2C2907BE",
       "system": "place",
-      "png": "kr_textures/ui/3ECF3B0D2C2907BE.png",
-      "source": "textures/place_name_originals/3ECF3B0D2C2907BE.png",
+      "png": "textures/kr/ui/3ECF3B0D2C2907BE.png",
+      "source": "textures/place_originals/3ECF3B0D2C2907BE.png",
       "size": [
         2048,
         1024
@@ -5569,8 +5569,8 @@
     {
       "hash": "4633B92FBA1371F4",
       "system": "place",
-      "png": "kr_textures/ui/4633B92FBA1371F4.png",
-      "source": "textures/place_name_originals/4633B92FBA1371F4.png",
+      "png": "textures/kr/ui/4633B92FBA1371F4.png",
+      "source": "textures/place_originals/4633B92FBA1371F4.png",
       "size": [
         2048,
         2048
@@ -6099,8 +6099,8 @@
     {
       "hash": "464E370EF865D0AC",
       "system": "place",
-      "png": "kr_textures/ui/464E370EF865D0AC.png",
-      "source": "textures/place_name_originals/464E370EF865D0AC.png",
+      "png": "textures/kr/ui/464E370EF865D0AC.png",
+      "source": "textures/place_originals/464E370EF865D0AC.png",
       "size": [
         2048,
         2048
@@ -6628,8 +6628,8 @@
     {
       "hash": "4709F3E364671D89",
       "system": "place",
-      "png": "kr_textures/ui/4709F3E364671D89.png",
-      "source": "textures/place_name_originals/4709F3E364671D89.png",
+      "png": "textures/kr/ui/4709F3E364671D89.png",
+      "source": "textures/place_originals/4709F3E364671D89.png",
       "size": [
         1024,
         1024
@@ -6851,8 +6851,8 @@
     {
       "hash": "48AA5B2EBC6C43B1",
       "system": "place",
-      "png": "kr_textures/ui/48AA5B2EBC6C43B1.png",
-      "source": "textures/place_name_originals/48AA5B2EBC6C43B1.png",
+      "png": "textures/kr/ui/48AA5B2EBC6C43B1.png",
+      "source": "textures/place_originals/48AA5B2EBC6C43B1.png",
       "size": [
         2048,
         1024
@@ -6973,7 +6973,7 @@
     {
       "hash": "4AEC2546371FFF47",
       "system": "localize",
-      "png": "kr_textures/ui/4AEC2546371FFF47.png",
+      "png": "textures/kr/ui/4AEC2546371FFF47.png",
       "source": "textures/originals/4AEC2546371FFF47.png",
       "size": [
         4096,
@@ -7246,8 +7246,8 @@
     {
       "hash": "5329BF3C3BF9B18C",
       "system": "place",
-      "png": "kr_textures/ui/5329BF3C3BF9B18C.png",
-      "source": "textures/place_name_originals/5329BF3C3BF9B18C.png",
+      "png": "textures/kr/ui/5329BF3C3BF9B18C.png",
+      "source": "textures/place_originals/5329BF3C3BF9B18C.png",
       "size": [
         1024,
         512
@@ -7368,7 +7368,7 @@
     {
       "hash": "547720A3B20C12AB",
       "system": "place",
-      "png": "kr_textures/ui/547720A3B20C12AB.png",
+      "png": "textures/kr/ui/547720A3B20C12AB.png",
       "source": "textures/originals/547720A3B20C12AB.png",
       "size": [
         1024,
@@ -7829,8 +7829,8 @@
     {
       "hash": "5882EA68BABF3C63",
       "system": "place",
-      "png": "kr_textures/ui/5882EA68BABF3C63.png",
-      "source": "textures/place_name_originals/5882EA68BABF3C63.png",
+      "png": "textures/kr/ui/5882EA68BABF3C63.png",
+      "source": "textures/place_originals/5882EA68BABF3C63.png",
       "size": [
         2048,
         1024
@@ -8256,8 +8256,8 @@
     {
       "hash": "59015B61BFC0B7BC",
       "system": "place",
-      "png": "kr_textures/ui/59015B61BFC0B7BC.png",
-      "source": "textures/place_name_originals/59015B61BFC0B7BC.png",
+      "png": "textures/kr/ui/59015B61BFC0B7BC.png",
+      "source": "textures/place_originals/59015B61BFC0B7BC.png",
       "size": [
         2048,
         1024
@@ -8428,8 +8428,8 @@
     {
       "hash": "615858B46587A60E",
       "system": "place",
-      "png": "kr_textures/ui/615858B46587A60E.png",
-      "source": "textures/place_name_originals/615858B46587A60E.png",
+      "png": "textures/kr/ui/615858B46587A60E.png",
+      "source": "textures/place_originals/615858B46587A60E.png",
       "size": [
         2048,
         1024
@@ -8703,8 +8703,8 @@
     {
       "hash": "6605F569D9389F9C",
       "system": "place",
-      "png": "kr_textures/ui/6605F569D9389F9C.png",
-      "source": "textures/place_name_originals/6605F569D9389F9C.png",
+      "png": "textures/kr/ui/6605F569D9389F9C.png",
+      "source": "textures/place_originals/6605F569D9389F9C.png",
       "size": [
         2048,
         2048
@@ -9232,8 +9232,8 @@
     {
       "hash": "6B6116F83EBE7153",
       "system": "place",
-      "png": "kr_textures/ui/6B6116F83EBE7153.png",
-      "source": "textures/place_name_originals/6B6116F83EBE7153.png",
+      "png": "textures/kr/ui/6B6116F83EBE7153.png",
+      "source": "textures/place_originals/6B6116F83EBE7153.png",
       "size": [
         2048,
         1024
@@ -9354,8 +9354,8 @@
     {
       "hash": "6CD92157D6C2502F",
       "system": "place",
-      "png": "kr_textures/ui/6CD92157D6C2502F.png",
-      "source": "textures/place_name_originals/6CD92157D6C2502F.png",
+      "png": "textures/kr/ui/6CD92157D6C2502F.png",
+      "source": "textures/place_originals/6CD92157D6C2502F.png",
       "size": [
         2048,
         1024
@@ -9476,8 +9476,8 @@
     {
       "hash": "7053B8FFC8B89807",
       "system": "place",
-      "png": "kr_textures/ui/7053B8FFC8B89807.png",
-      "source": "textures/place_name_originals/7053B8FFC8B89807.png",
+      "png": "textures/kr/ui/7053B8FFC8B89807.png",
+      "source": "textures/place_originals/7053B8FFC8B89807.png",
       "size": [
         2048,
         1024
@@ -9700,8 +9700,8 @@
     {
       "hash": "72165D43344F3190",
       "system": "place",
-      "png": "kr_textures/ui/72165D43344F3190.png",
-      "source": "textures/place_name_originals/72165D43344F3190.png",
+      "png": "textures/kr/ui/72165D43344F3190.png",
+      "source": "textures/place_originals/72165D43344F3190.png",
       "size": [
         2048,
         2048
@@ -10026,8 +10026,8 @@
     {
       "hash": "7282AD29CF433DA0",
       "system": "place",
-      "png": "kr_textures/ui/7282AD29CF433DA0.png",
-      "source": "textures/place_name_originals/7282AD29CF433DA0.png",
+      "png": "textures/kr/ui/7282AD29CF433DA0.png",
+      "source": "textures/place_originals/7282AD29CF433DA0.png",
       "size": [
         2048,
         1024
@@ -10301,7 +10301,7 @@
     {
       "hash": "73420FAEA9F664FD",
       "system": "localize",
-      "png": "kr_textures/ui/73420FAEA9F664FD.png",
+      "png": "textures/kr/ui/73420FAEA9F664FD.png",
       "source": "textures/originals/73420FAEA9F664FD.png",
       "size": [
         1024,
@@ -10430,8 +10430,8 @@
     {
       "hash": "7358BEAA2EF5F8A8",
       "system": "place",
-      "png": "kr_textures/ui/7358BEAA2EF5F8A8.png",
-      "source": "textures/place_name_originals/7358BEAA2EF5F8A8.png",
+      "png": "textures/kr/ui/7358BEAA2EF5F8A8.png",
+      "source": "textures/place_originals/7358BEAA2EF5F8A8.png",
       "size": [
         2048,
         1024
@@ -10757,7 +10757,7 @@
     {
       "hash": "74EEEC230BEE120C",
       "system": "place",
-      "png": "kr_textures/ui/74EEEC230BEE120C.png",
+      "png": "textures/kr/ui/74EEEC230BEE120C.png",
       "source": "textures/originals/74EEEC230BEE120C.png",
       "size": [
         4096,
@@ -11019,8 +11019,8 @@
     {
       "hash": "75B04DBF5C53AF28",
       "system": "place",
-      "png": "kr_textures/ui/75B04DBF5C53AF28.png",
-      "source": "textures/place_name_originals/75B04DBF5C53AF28.png",
+      "png": "textures/kr/ui/75B04DBF5C53AF28.png",
+      "source": "textures/place_originals/75B04DBF5C53AF28.png",
       "size": [
         1024,
         512
@@ -11141,8 +11141,8 @@
     {
       "hash": "779C5ABBFCE00424",
       "system": "place",
-      "png": "kr_textures/ui/779C5ABBFCE00424.png",
-      "source": "textures/place_name_originals/779C5ABBFCE00424.png",
+      "png": "textures/kr/ui/779C5ABBFCE00424.png",
+      "source": "textures/place_originals/779C5ABBFCE00424.png",
       "size": [
         2048,
         1024
@@ -11263,7 +11263,7 @@
     {
       "hash": "79C935AA47DD1810",
       "system": "localize",
-      "png": "kr_textures/ui/79C935AA47DD1810.png",
+      "png": "textures/kr/ui/79C935AA47DD1810.png",
       "source": "textures/originals/79C935AA47DD1810.png",
       "size": [
         2048,
@@ -11283,8 +11283,8 @@
     {
       "hash": "7B49071BF36FC555",
       "system": "place",
-      "png": "kr_textures/ui/7B49071BF36FC555.png",
-      "source": "textures/place_name_originals/7B49071BF36FC555.png",
+      "png": "textures/kr/ui/7B49071BF36FC555.png",
+      "source": "textures/place_originals/7B49071BF36FC555.png",
       "size": [
         2048,
         1024
@@ -11405,7 +11405,7 @@
     {
       "hash": "7DC6CF5A87DB1312",
       "system": "localize",
-      "png": "kr_textures/ui/7DC6CF5A87DB1312.png",
+      "png": "textures/kr/ui/7DC6CF5A87DB1312.png",
       "source": "textures/originals/7DC6CF5A87DB1312.png",
       "size": [
         2048,
@@ -15249,8 +15249,8 @@
     {
       "hash": "7E0669E71FCD7B64",
       "system": "place",
-      "png": "kr_textures/ui/7E0669E71FCD7B64.png",
-      "source": "textures/place_name_originals/7E0669E71FCD7B64.png",
+      "png": "textures/kr/ui/7E0669E71FCD7B64.png",
+      "source": "textures/place_originals/7E0669E71FCD7B64.png",
       "size": [
         1024,
         1024
@@ -15473,8 +15473,8 @@
     {
       "hash": "8098AD7E2C438C22",
       "system": "place",
-      "png": "kr_textures/ui/8098AD7E2C438C22.png",
-      "source": "textures/place_name_originals/8098AD7E2C438C22.png",
+      "png": "textures/kr/ui/8098AD7E2C438C22.png",
+      "source": "textures/place_originals/8098AD7E2C438C22.png",
       "size": [
         2048,
         1024
@@ -15749,8 +15749,8 @@
     {
       "hash": "85A4D54EE933339D",
       "system": "place",
-      "png": "kr_textures/ui/85A4D54EE933339D.png",
-      "source": "textures/place_name_originals/85A4D54EE933339D.png",
+      "png": "textures/kr/ui/85A4D54EE933339D.png",
+      "source": "textures/place_originals/85A4D54EE933339D.png",
       "size": [
         2048,
         1024
@@ -15871,8 +15871,8 @@
     {
       "hash": "864BD9CBCC496F78",
       "system": "place",
-      "png": "kr_textures/ui/864BD9CBCC496F78.png",
-      "source": "textures/place_name_originals/864BD9CBCC496F78.png",
+      "png": "textures/kr/ui/864BD9CBCC496F78.png",
+      "source": "textures/place_originals/864BD9CBCC496F78.png",
       "size": [
         2048,
         1024
@@ -16044,7 +16044,7 @@
     {
       "hash": "8725F040AEE76DFC",
       "system": "localize",
-      "png": "kr_textures/ui/8725F040AEE76DFC.png",
+      "png": "textures/kr/ui/8725F040AEE76DFC.png",
       "source": "textures/originals/8725F040AEE76DFC.png",
       "size": [
         4096,
@@ -18174,7 +18174,7 @@
     {
       "hash": "88A7A10233A61E85",
       "system": "manual",
-      "png": "kr_textures/ui/88A7A10233A61E85.png",
+      "png": "textures/kr/ui/88A7A10233A61E85.png",
       "source": "textures/originals/88A7A10233A61E85.png",
       "size": [
         2048,
@@ -18191,8 +18191,8 @@
     {
       "hash": "89578D1F704C35E4",
       "system": "place",
-      "png": "kr_textures/ui/89578D1F704C35E4.png",
-      "source": "textures/place_name_originals/89578D1F704C35E4.png",
+      "png": "textures/kr/ui/89578D1F704C35E4.png",
+      "source": "textures/place_originals/89578D1F704C35E4.png",
       "size": [
         2048,
         1024
@@ -18313,7 +18313,7 @@
     {
       "hash": "8EFF960FC088FDD7",
       "system": "localize",
-      "png": "kr_textures/ui/8EFF960FC088FDD7.png",
+      "png": "textures/kr/ui/8EFF960FC088FDD7.png",
       "source": "textures/originals/8EFF960FC088FDD7.png",
       "size": [
         4096,
@@ -18333,8 +18333,8 @@
     {
       "hash": "919ABD92603E242F",
       "system": "place",
-      "png": "kr_textures/ui/919ABD92603E242F.png",
-      "source": "textures/place_name_originals/919ABD92603E242F.png",
+      "png": "textures/kr/ui/919ABD92603E242F.png",
+      "source": "textures/place_originals/919ABD92603E242F.png",
       "size": [
         1024,
         512
@@ -18455,8 +18455,8 @@
     {
       "hash": "922337BDB8D32D0F",
       "system": "place",
-      "png": "kr_textures/ui/922337BDB8D32D0F.png",
-      "source": "textures/place_name_originals/922337BDB8D32D0F.png",
+      "png": "textures/kr/ui/922337BDB8D32D0F.png",
+      "source": "textures/place_originals/922337BDB8D32D0F.png",
       "size": [
         2048,
         1024
@@ -18577,7 +18577,7 @@
     {
       "hash": "A3BE57CE9854B5CC",
       "system": "localize",
-      "png": "kr_textures/ui/A3BE57CE9854B5CC.png",
+      "png": "textures/kr/ui/A3BE57CE9854B5CC.png",
       "source": "textures/originals/A3BE57CE9854B5CC.png",
       "size": [
         4096,
@@ -19439,7 +19439,7 @@
     {
       "hash": "A3CBE285F1E92FCA",
       "system": "manual",
-      "png": "kr_textures/ui/A3CBE285F1E92FCA.png",
+      "png": "textures/kr/ui/A3CBE285F1E92FCA.png",
       "source": "textures/originals/A3CBE285F1E92FCA.png",
       "size": [
         2048,
@@ -19456,8 +19456,8 @@
     {
       "hash": "A62172B559EED573",
       "system": "place",
-      "png": "kr_textures/ui/A62172B559EED573.png",
-      "source": "textures/place_name_originals/A62172B559EED573.png",
+      "png": "textures/kr/ui/A62172B559EED573.png",
+      "source": "textures/place_originals/A62172B559EED573.png",
       "size": [
         2048,
         1024
@@ -19578,8 +19578,8 @@
     {
       "hash": "A8486C49F76167C3",
       "system": "place",
-      "png": "kr_textures/ui/A8486C49F76167C3.png",
-      "source": "textures/place_name_originals/A8486C49F76167C3.png",
+      "png": "textures/kr/ui/A8486C49F76167C3.png",
+      "source": "textures/place_originals/A8486C49F76167C3.png",
       "size": [
         2048,
         1024
@@ -19853,7 +19853,7 @@
     {
       "hash": "ADE2B8B5998887A9",
       "system": "place",
-      "png": "kr_textures/ui/ADE2B8B5998887A9.png",
+      "png": "textures/kr/ui/ADE2B8B5998887A9.png",
       "source": "textures/originals/ADE2B8B5998887A9.png",
       "size": [
         1024,
@@ -19922,8 +19922,8 @@
     {
       "hash": "AF183888BC366FCA",
       "system": "place",
-      "png": "kr_textures/ui/AF183888BC366FCA.png",
-      "source": "textures/place_name_originals/AF183888BC366FCA.png",
+      "png": "textures/kr/ui/AF183888BC366FCA.png",
+      "source": "textures/place_originals/AF183888BC366FCA.png",
       "size": [
         2048,
         1024
@@ -20044,8 +20044,8 @@
     {
       "hash": "BAD2BDA6C2AE4B16",
       "system": "place",
-      "png": "kr_textures/ui/BAD2BDA6C2AE4B16.png",
-      "source": "textures/place_name_originals/BAD2BDA6C2AE4B16.png",
+      "png": "textures/kr/ui/BAD2BDA6C2AE4B16.png",
+      "source": "textures/place_originals/BAD2BDA6C2AE4B16.png",
       "size": [
         2048,
         1024
@@ -20166,8 +20166,8 @@
     {
       "hash": "C3848C8E5ED70F7A",
       "system": "place",
-      "png": "kr_textures/ui/C3848C8E5ED70F7A.png",
-      "source": "textures/place_name_originals/C3848C8E5ED70F7A.png",
+      "png": "textures/kr/ui/C3848C8E5ED70F7A.png",
+      "source": "textures/place_originals/C3848C8E5ED70F7A.png",
       "size": [
         2048,
         1024
@@ -20339,8 +20339,8 @@
     {
       "hash": "C84B5B3A51547DF0",
       "system": "place",
-      "png": "kr_textures/ui/C84B5B3A51547DF0.png",
-      "source": "textures/place_name_originals/C84B5B3A51547DF0.png",
+      "png": "textures/kr/ui/C84B5B3A51547DF0.png",
+      "source": "textures/place_originals/C84B5B3A51547DF0.png",
       "size": [
         1024,
         1024
@@ -20512,8 +20512,8 @@
     {
       "hash": "C8B2975F2A629F4B",
       "system": "place",
-      "png": "kr_textures/ui/C8B2975F2A629F4B.png",
-      "source": "textures/place_name_originals/C8B2975F2A629F4B.png",
+      "png": "textures/kr/ui/C8B2975F2A629F4B.png",
+      "source": "textures/place_originals/C8B2975F2A629F4B.png",
       "size": [
         1024,
         1024
@@ -20685,8 +20685,8 @@
     {
       "hash": "C8C4589102431759",
       "system": "place",
-      "png": "kr_textures/ui/C8C4589102431759.png",
-      "source": "textures/place_name_originals/C8C4589102431759.png",
+      "png": "textures/kr/ui/C8C4589102431759.png",
+      "source": "textures/place_originals/C8C4589102431759.png",
       "size": [
         2048,
         1024
@@ -20858,8 +20858,8 @@
     {
       "hash": "C8E42A56480DB818",
       "system": "place",
-      "png": "kr_textures/ui/C8E42A56480DB818.png",
-      "source": "textures/place_name_originals/C8E42A56480DB818.png",
+      "png": "textures/kr/ui/C8E42A56480DB818.png",
+      "source": "textures/place_originals/C8E42A56480DB818.png",
       "size": [
         2048,
         1024
@@ -21184,8 +21184,8 @@
     {
       "hash": "CB18104E808B56B3",
       "system": "place",
-      "png": "kr_textures/ui/CB18104E808B56B3.png",
-      "source": "textures/place_name_originals/CB18104E808B56B3.png",
+      "png": "textures/kr/ui/CB18104E808B56B3.png",
+      "source": "textures/place_originals/CB18104E808B56B3.png",
       "size": [
         2048,
         1024
@@ -21306,8 +21306,8 @@
     {
       "hash": "D35B39CA7FAED5D7",
       "system": "place",
-      "png": "kr_textures/ui/D35B39CA7FAED5D7.png",
-      "source": "textures/place_name_originals/D35B39CA7FAED5D7.png",
+      "png": "textures/kr/ui/D35B39CA7FAED5D7.png",
+      "source": "textures/place_originals/D35B39CA7FAED5D7.png",
       "size": [
         2048,
         1024
@@ -21428,8 +21428,8 @@
     {
       "hash": "DD1F1F1DE2039AAC",
       "system": "place",
-      "png": "kr_textures/ui/DD1F1F1DE2039AAC.png",
-      "source": "textures/place_name_originals/DD1F1F1DE2039AAC.png",
+      "png": "textures/kr/ui/DD1F1F1DE2039AAC.png",
+      "source": "textures/place_originals/DD1F1F1DE2039AAC.png",
       "size": [
         2048,
         1024
@@ -21550,7 +21550,7 @@
     {
       "hash": "DF66CADDABE022E3",
       "system": "localize",
-      "png": "kr_textures/ui/DF66CADDABE022E3.png",
+      "png": "textures/kr/ui/DF66CADDABE022E3.png",
       "source": "textures/originals/DF66CADDABE022E3.png",
       "size": [
         4096,
@@ -24639,8 +24639,8 @@
     {
       "hash": "E210275AFFF0A8D8",
       "system": "place",
-      "png": "kr_textures/ui/E210275AFFF0A8D8.png",
-      "source": "textures/place_name_originals/E210275AFFF0A8D8.png",
+      "png": "textures/kr/ui/E210275AFFF0A8D8.png",
+      "source": "textures/place_originals/E210275AFFF0A8D8.png",
       "size": [
         2048,
         1024
@@ -24761,7 +24761,7 @@
     {
       "hash": "E4A9FD9D2047280B",
       "system": "manual",
-      "png": "kr_textures/ui/E4A9FD9D2047280B.png",
+      "png": "textures/kr/ui/E4A9FD9D2047280B.png",
       "source": "textures/originals/E4A9FD9D2047280B.png",
       "size": [
         2048,
@@ -24778,8 +24778,8 @@
     {
       "hash": "E581194DE2C76C56",
       "system": "place",
-      "png": "kr_textures/ui/E581194DE2C76C56.png",
-      "source": "textures/place_name_originals/E581194DE2C76C56.png",
+      "png": "textures/kr/ui/E581194DE2C76C56.png",
+      "source": "textures/place_originals/E581194DE2C76C56.png",
       "size": [
         2048,
         1024
@@ -24900,7 +24900,7 @@
     {
       "hash": "E8E01EAF5D41DB52",
       "system": "localize",
-      "png": "kr_textures/ui/E8E01EAF5D41DB52.png",
+      "png": "textures/kr/ui/E8E01EAF5D41DB52.png",
       "source": "textures/originals/E8E01EAF5D41DB52.png",
       "size": [
         2048,
@@ -30633,8 +30633,8 @@
     {
       "hash": "E9E834DE4BAFDAB2",
       "system": "place",
-      "png": "kr_textures/ui/E9E834DE4BAFDAB2.png",
-      "source": "textures/place_name_originals/E9E834DE4BAFDAB2.png",
+      "png": "textures/kr/ui/E9E834DE4BAFDAB2.png",
+      "source": "textures/place_originals/E9E834DE4BAFDAB2.png",
       "size": [
         1024,
         1024
@@ -30857,8 +30857,8 @@
     {
       "hash": "E9F2EC8557984A58",
       "system": "place",
-      "png": "kr_textures/ui/E9F2EC8557984A58.png",
-      "source": "textures/place_name_originals/E9F2EC8557984A58.png",
+      "png": "textures/kr/ui/E9F2EC8557984A58.png",
+      "source": "textures/place_originals/E9F2EC8557984A58.png",
       "size": [
         1024,
         1024
@@ -31081,8 +31081,8 @@
     {
       "hash": "EC585E08CC88B03F",
       "system": "place",
-      "png": "kr_textures/ui/EC585E08CC88B03F.png",
-      "source": "textures/place_name_originals/EC585E08CC88B03F.png",
+      "png": "textures/kr/ui/EC585E08CC88B03F.png",
+      "source": "textures/place_originals/EC585E08CC88B03F.png",
       "size": [
         2048,
         1024
@@ -31203,7 +31203,7 @@
     {
       "hash": "EDA6F03EC4E141EE",
       "system": "manual",
-      "png": "kr_textures/ui/EDA6F03EC4E141EE.png",
+      "png": "textures/kr/ui/EDA6F03EC4E141EE.png",
       "source": "textures/originals/EDA6F03EC4E141EE.png",
       "size": [
         512,
@@ -31220,8 +31220,8 @@
     {
       "hash": "EE60DEFADBDD82C5",
       "system": "place",
-      "png": "kr_textures/ui/EE60DEFADBDD82C5.png",
-      "source": "textures/place_name_originals/EE60DEFADBDD82C5.png",
+      "png": "textures/kr/ui/EE60DEFADBDD82C5.png",
+      "source": "textures/place_originals/EE60DEFADBDD82C5.png",
       "size": [
         2048,
         1024
@@ -31342,8 +31342,8 @@
     {
       "hash": "F1C8031232197225",
       "system": "place",
-      "png": "kr_textures/ui/F1C8031232197225.png",
-      "source": "textures/place_name_originals/F1C8031232197225.png",
+      "png": "textures/kr/ui/F1C8031232197225.png",
+      "source": "textures/place_originals/F1C8031232197225.png",
       "size": [
         2048,
         1024
@@ -31464,8 +31464,8 @@
     {
       "hash": "F24874ADB9581870",
       "system": "place",
-      "png": "kr_textures/ui/F24874ADB9581870.png",
-      "source": "textures/place_name_originals/F24874ADB9581870.png",
+      "png": "textures/kr/ui/F24874ADB9581870.png",
+      "source": "textures/place_originals/F24874ADB9581870.png",
       "size": [
         2048,
         1024
@@ -31586,8 +31586,8 @@
     {
       "hash": "FFC64B053648525E",
       "system": "place",
-      "png": "kr_textures/ui/FFC64B053648525E.png",
-      "source": "textures/place_name_originals/FFC64B053648525E.png",
+      "png": "textures/kr/ui/FFC64B053648525E.png",
+      "source": "textures/place_originals/FFC64B053648525E.png",
       "size": [
         2048,
         1024
@@ -32014,7 +32014,7 @@
     {
       "hash": "FFFFD99DCD90D546",
       "system": "place",
-      "png": "kr_textures/ui/FFFFD99DCD90D546.png",
+      "png": "textures/kr/ui/FFFFD99DCD90D546.png",
       "source": "textures/originals/FFFFD99DCD90D546.png",
       "size": [
         1024,

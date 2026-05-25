@@ -1,4 +1,4 @@
-"""kr_textures/ui 의 모든 텍스처에 대해 UHD 원본을 textures/originals/ 에 채운다.
+"""textures/kr/ui 의 모든 텍스처에 대해 UHD 원본을 textures/originals/ 에 채운다.
 
 우선순위:
   1) HD팩(Muramasa Complete 2.0/PCSE00240/Best)에 있으면 그 UHD 원본 복사
@@ -19,7 +19,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-KR_DIR = ROOT / "kr_textures" / "ui"
+KR_DIR = ROOT / "textures/kr" / "ui"
 ORIG = ROOT / "textures" / "originals"
 HD_PACK = Path.home() / "Downloads/Muramasa Complete 2.0/PCSE00240/Best"
 REALESRGAN = ROOT / "temp" / "realesrgan" / "realesrgan-ncnn-vulkan"

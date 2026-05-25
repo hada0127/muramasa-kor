@@ -1,4 +1,4 @@
-"""kr_textures/ 의 수동 편집 텍스처를 Vita3K import 폴더에 복사
+"""textures/kr/ 의 수동 편집 텍스처를 Vita3K import 폴더에 복사
 
 사용법:
   python tools/install_textures.py            # 전체 복사
@@ -13,8 +13,8 @@ from pathlib import Path
 
 PROJECT_DIR = Path(__file__).parent.parent
 SRC_DIRS = [
-    PROJECT_DIR / "kr_textures" / "ui",
-    PROJECT_DIR / "kr_textures" / "font",
+    PROJECT_DIR / "textures/kr" / "ui",
+    PROJECT_DIR / "textures/kr" / "font",
 ]
 TITLE_ID = "PCSE00240"
 
@@ -71,7 +71,7 @@ def main():
 
     files = collect_texture_files()
     if not files:
-        print("ERROR: no kr_textures/*.png files found")
+        print("ERROR: no textures/kr/*.png files found")
         return 1
 
     if args:

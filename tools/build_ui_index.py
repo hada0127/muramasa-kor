@@ -1,7 +1,7 @@
 """UI 텍스처 편집 도구용 통합 인덱스 JSON 생성기.
 
 기존 두 렌더 시스템(texture_localize_config.json, place_texture_jobs.json)과
-수동 편집 파일을 한데 모아 kr_textures/ui 전체 목록을 만든다.
+수동 편집 파일을 한데 모아 textures/kr/ui 전체 목록을 만든다.
 편집 웹도구(tools/ui_editor)가 이 인덱스를 읽고, 저장 시 다시 네이티브
 config에 역기록한다.
 
@@ -18,7 +18,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-KR_DIR = ROOT / "kr_textures" / "ui"
+KR_DIR = ROOT / "textures/kr" / "ui"
 LOCALIZE_CONFIG = ROOT / "translations" / "texture_localize_config.json"
 PLACE_JOBS = ROOT / "translations" / "place_texture_jobs.json"
 INDEX_PATH = ROOT / "translations" / "ui_editor_index.json"
@@ -52,7 +52,7 @@ def _resolve_source(value, hash_id):
         candidates.append(ROOT / value)
     candidates += [
         ROOT / "textures" / "originals" / f"{hash_id}.png",
-        ROOT / "textures" / "place_name_originals" / f"{hash_id}.png",
+        ROOT / "textures" / "place_originals" / f"{hash_id}.png",
     ]
     for c in candidates:
         if c.exists():
@@ -221,7 +221,7 @@ def build():
         "_systems": {
             "localize": "texture_localize_config.json + texture_localize.py",
             "place": "place_texture_jobs.json + render_place_texture_job.py",
-            "manual": "kr_textures/ui에 직접 편집된 파일 (자동 생성 없음)",
+            "manual": "textures/kr/ui에 직접 편집된 파일 (자동 생성 없음)",
         },
         "count": len(entries),
         "textures": entries,

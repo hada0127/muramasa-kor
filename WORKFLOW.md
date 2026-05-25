@@ -9,7 +9,7 @@
 3. `git status --short` 확인
 4. 관련 문서 확인
    - 번역/용어: `wii/`, `translations/`
-   - UI 텍스처: `translations/texture_localize_config.json`, `kr_textures/ui/`
+   - UI 텍스처: `translations/texture_localize_config.json`, `textures/kr/ui/`
    - 분석/회귀 이력: `docs/03-analysis/`
 
 ## 텍스트 패치 작업
@@ -57,8 +57,8 @@
 ## UI 텍스처 작업
 
 1. 대상 확인
-   - 원본/참고: `textures/`, `textures/work/`
-   - 결과물: `kr_textures/ui/`
+   - 원본/참고: `textures/originals/`, `textures/place_originals/`
+   - 결과물: `textures/kr/ui/`
    - 설정: `translations/texture_localize_config.json`
 2. 자동 생성 작업이면
    ```powershell
@@ -72,7 +72,7 @@
    ```powershell
    python tools/texture_localize.py --preview
    ```
-5. 수동 편집 텍스처는 기존 `kr_textures/ui/` 결과를 우선 기준으로 취급
+5. 수동 편집 텍스처는 기존 `textures/kr/ui/` 결과를 우선 기준으로 취급
 
 ## 폰트/텍스처 import 작업
 

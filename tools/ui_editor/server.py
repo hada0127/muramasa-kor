@@ -5,7 +5,7 @@
   python tools/ui_editor/server.py --port 9000
 
 3분할 편집 UI를 제공한다.
-  좌  : kr_textures/ui 파일 목록 (메모 표시)
+  좌  : textures/kr/ui 파일 목록 (메모 표시)
   중간: 캔버스 (원본/kr 토글, 배경색, region 박스 드래그/리사이즈)
   우  : 선택 region 속성 편집
 
@@ -294,8 +294,8 @@ def render_live(hash_id, system, regions, mode="full"):
 
 
 def render_preview(hash_id, system):
-    """실제 kr_textures/ui 이미지를 생성하고 그 경로를 반환 (저장 및 미리보기)."""
-    out = ROOT / "kr_textures" / "ui" / f"{hash_id}.png"
+    """실제 textures/kr/ui 이미지를 생성하고 그 경로를 반환 (저장 및 미리보기)."""
+    out = ROOT / "textures/kr" / "ui" / f"{hash_id}.png"
     if system == "localize":
         cfg = load_json(LOCALIZE_CONFIG)
         tex = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
@@ -308,7 +308,7 @@ def render_preview(hash_id, system):
             cwd=str(ROOT), capture_output=True, text=True,
         )
     elif system == "place":
-        # 기본 출력 경로가 kr_textures/ui (render_place_texture_job.DEFAULT_OUT)
+        # 기본 출력 경로가 textures/kr/ui (render_place_texture_job.DEFAULT_OUT)
         proc = subprocess.run(
             [sys.executable, str(ROOT / "tools" / "render_place_texture_job.py"),
              hash_id, "--include-needs-review"],

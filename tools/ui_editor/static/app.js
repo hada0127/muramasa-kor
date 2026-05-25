@@ -645,7 +645,7 @@ async function saveMemo() {
 async function renderPreview() {
   $("#spinner").hidden = false;  // 생성 중 스피너
   try {
-    // 1) 전체 영역을 config에 저장 → 2) 실제 kr_textures 이미지 생성
+    // 1) 전체 영역을 config에 저장 → 2) 실제 textures/kr 이미지 생성
     if (!(await applyRegions())) return;
     const res = await api("/api/render", { hash: CUR.hash, system: CUR.system });
     if (res.ok) {

@@ -35,9 +35,9 @@ import render_place_texture_job as place
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 HD_PACK_DIR = Path.home() / "Downloads" / "Muramasa Complete 2.0" / "PCSE00240" / "Best"
-REPO_KR_DIR = PROJECT_DIR / "kr_textures" / "ui"
+REPO_KR_DIR = PROJECT_DIR / "textures/kr" / "ui"
 PREVIEW_DIR = PROJECT_DIR / "output" / "texture_preview"
-PLACE_ORIG_DIR = PROJECT_DIR / "textures" / "place_name_originals"
+PLACE_ORIG_DIR = PROJECT_DIR / "textures" / "place_originals"
 TEXTURE_ORIG_DIR = PROJECT_DIR / "textures" / "originals"
 
 # texture_localize.py 의 import 경로(OS별 자동 해석)를 그대로 사용

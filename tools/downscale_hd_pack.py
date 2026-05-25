@@ -41,7 +41,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SRC = Path.home() / "Downloads" / "Muramasa Complete 2.0" / "PCSE00240" / "Best"
 DEFAULT_OUT = REPO_ROOT / "upscaled"
 
-KR_UI_DIR = REPO_ROOT / "kr_textures" / "ui"
+KR_UI_DIR = REPO_ROOT / "textures/kr" / "ui"
 FONT_HASHES_FILE = REPO_ROOT / "tools" / ".font_hashes.json"
 
 TARGET_MAX = 2560  # QHD long side cap

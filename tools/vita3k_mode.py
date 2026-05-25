@@ -52,7 +52,7 @@ def md5(path: Path) -> str:
 
 
 def kr_ui_textures() -> list[str]:
-    return [os.path.basename(p) for p in glob.glob(str(REPO / "kr_textures/ui/*.png"))]
+    return [os.path.basename(p) for p in glob.glob(str(REPO / "textures/kr/ui/*.png"))]
 
 
 def kr_assets() -> list[str]:

@@ -39,7 +39,7 @@ MODEL = "realesr-animevideov3"
 TILE = 64
 TARGET_MAX = 1920  # FHD short side
 
-KR_UI_DIR = REPO_ROOT / "kr_textures" / "ui"
+KR_UI_DIR = REPO_ROOT / "textures/kr" / "ui"
 FONT_HASHES_FILE = REPO_ROOT / "tools" / ".font_hashes.json"
 
 
@@ -122,7 +122,7 @@ def main() -> int:
     skip = load_skip_set()
     inputs = collect_inputs(args.input)
     print(f"Found {len(inputs)} PNG(s) under {args.input}")
-    print(f"Skip list: {len(skip)} hashes (fonts + kr_textures/ui)")
+    print(f"Skip list: {len(skip)} hashes (fonts + textures/kr/ui)")
 
     todo: list[tuple[Path, Path]] = []
     skipped_skip = 0

@@ -1,7 +1,7 @@
 # 지명 텍스처 번역 노트
 
 각 텍스처별로 원본 일본어 텍스트와 권장 한글 번역, detect된 영역 좌표 정보를 정리.
-사용자가 Krita 등에서 `kr_textures/ui/<hash>.png`를 편집할 때 참고용.
+사용자가 Krita 등에서 `textures/kr/ui/<hash>.png`를 편집할 때 참고용.
 
 ## 폰트
 - 본문/지명: `fonts/Griun_PolSensibility-Rg.ttf` (그리운 경찰감성체)
@@ -15,8 +15,8 @@
 
 ### `00B61B564A5FD289.png` (2048×2048)
 
-- 원본: `kr_textures/ui/00B61B564A5FD289.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/00B61B564A5FD289.png`
+- 원본: `textures/kr/ui/00B61B564A5FD289.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/00B61B564A5FD289.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -81,8 +81,8 @@
 
 ### `0AA74C448087838A.png` (2048×1024)
 
-- 원본: `kr_textures/ui/0AA74C448087838A.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/0AA74C448087838A.png`
+- 원본: `textures/kr/ui/0AA74C448087838A.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/0AA74C448087838A.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -110,8 +110,8 @@
 
 ### `3ECF3B0D2C2907BE.png` (2048×1024)
 
-- 원본: `kr_textures/ui/3ECF3B0D2C2907BE.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/3ECF3B0D2C2907BE.png`
+- 원본: `textures/kr/ui/3ECF3B0D2C2907BE.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/3ECF3B0D2C2907BE.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -143,8 +143,8 @@
 
 ### `7E0669E71FCD7B64.png` (1024×1024)
 
-- 원본: `kr_textures/ui/7E0669E71FCD7B64.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/7E0669E71FCD7B64.png`
+- 원본: `textures/kr/ui/7E0669E71FCD7B64.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/7E0669E71FCD7B64.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -177,8 +177,8 @@
 
 ### `464E370EF865D0AC.png` (2048×2048)
 
-- 원본: `kr_textures/ui/464E370EF865D0AC.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/464E370EF865D0AC.png`
+- 원본: `textures/kr/ui/464E370EF865D0AC.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/464E370EF865D0AC.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -238,8 +238,8 @@
 
 ### `864BD9CBCC496F78.png` (2048×1024)
 
-- 원본: `kr_textures/ui/864BD9CBCC496F78.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/864BD9CBCC496F78.png`
+- 원본: `textures/kr/ui/864BD9CBCC496F78.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/864BD9CBCC496F78.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -266,8 +266,8 @@
 
 ### `0912E45A567A41C9.png` (2048×1024)
 
-- 원본: `kr_textures/ui/0912E45A567A41C9.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/0912E45A567A41C9.png`
+- 원본: `textures/kr/ui/0912E45A567A41C9.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/0912E45A567A41C9.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -295,8 +295,8 @@
 
 ### `4633B92FBA1371F4.png` (2048×2048)
 
-- 원본: `kr_textures/ui/4633B92FBA1371F4.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/4633B92FBA1371F4.png`
+- 원본: `textures/kr/ui/4633B92FBA1371F4.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/4633B92FBA1371F4.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -353,8 +353,8 @@
 
 ### `4709F3E364671D89.png` (1024×1024)
 
-- 원본: `kr_textures/ui/4709F3E364671D89.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/4709F3E364671D89.png`
+- 원본: `textures/kr/ui/4709F3E364671D89.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/4709F3E364671D89.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -385,8 +385,8 @@
 
 ### `5882EA68BABF3C63.png` (2048×1024)
 
-- 원본: `kr_textures/ui/5882EA68BABF3C63.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/5882EA68BABF3C63.png`
+- 원본: `textures/kr/ui/5882EA68BABF3C63.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/5882EA68BABF3C63.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -429,8 +429,8 @@
 
 ### `6605F569D9389F9C.png` (2048×2048)
 
-- 원본: `kr_textures/ui/6605F569D9389F9C.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/6605F569D9389F9C.png`
+- 원본: `textures/kr/ui/6605F569D9389F9C.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/6605F569D9389F9C.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -481,8 +481,8 @@
 
 ### `7053B8FFC8B89807.png` (2048×1024)
 
-- 원본: `kr_textures/ui/7053B8FFC8B89807.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/7053B8FFC8B89807.png`
+- 원본: `textures/kr/ui/7053B8FFC8B89807.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/7053B8FFC8B89807.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -515,8 +515,8 @@
 
 ### `7282AD29CF433DA0.png` (2048×1024)
 
-- 원본: `kr_textures/ui/7282AD29CF433DA0.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/7282AD29CF433DA0.png`
+- 원본: `textures/kr/ui/7282AD29CF433DA0.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/7282AD29CF433DA0.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -551,8 +551,8 @@
 
 ### `7358BEAA2EF5F8A8.png` (2048×1024)
 
-- 원본: `kr_textures/ui/7358BEAA2EF5F8A8.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/7358BEAA2EF5F8A8.png`
+- 원본: `textures/kr/ui/7358BEAA2EF5F8A8.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/7358BEAA2EF5F8A8.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -591,8 +591,8 @@
 
 ### `8098AD7E2C438C22.png` (2048×1024)
 
-- 원본: `kr_textures/ui/8098AD7E2C438C22.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/8098AD7E2C438C22.png`
+- 원본: `textures/kr/ui/8098AD7E2C438C22.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/8098AD7E2C438C22.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -627,8 +627,8 @@
 
 ### `31710FB73B2686EF.png` (2048×1024)
 
-- 원본: `kr_textures/ui/31710FB73B2686EF.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/31710FB73B2686EF.png`
+- 원본: `textures/kr/ui/31710FB73B2686EF.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/31710FB73B2686EF.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -662,8 +662,8 @@
 
 ### `72165D43344F3190.png` (2048×2048)
 
-- 원본: `kr_textures/ui/72165D43344F3190.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/72165D43344F3190.png`
+- 원본: `textures/kr/ui/72165D43344F3190.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/72165D43344F3190.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -708,8 +708,8 @@
 
 ### `615858B46587A60E.png` (2048×1024)
 
-- 원본: `kr_textures/ui/615858B46587A60E.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/615858B46587A60E.png`
+- 원본: `textures/kr/ui/615858B46587A60E.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/615858B46587A60E.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -745,8 +745,8 @@
 
 ### `2611666E71A8181A.png` (2048×2048)
 
-- 원본: `kr_textures/ui/2611666E71A8181A.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/2611666E71A8181A.png`
+- 원본: `textures/kr/ui/2611666E71A8181A.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/2611666E71A8181A.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -786,8 +786,8 @@
 
 ### `A8486C49F76167C3.png` (2048×1024)
 
-- 원본: `kr_textures/ui/A8486C49F76167C3.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/A8486C49F76167C3.png`
+- 원본: `textures/kr/ui/A8486C49F76167C3.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/A8486C49F76167C3.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -821,8 +821,8 @@
 
 ### `C8B2975F2A629F4B.png` (1024×1024)
 
-- 원본: `kr_textures/ui/C8B2975F2A629F4B.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/C8B2975F2A629F4B.png`
+- 원본: `textures/kr/ui/C8B2975F2A629F4B.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/C8B2975F2A629F4B.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -849,8 +849,8 @@
 
 ### `C8C4589102431759.png` (2048×1024)
 
-- 원본: `kr_textures/ui/C8C4589102431759.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/C8C4589102431759.png`
+- 원본: `textures/kr/ui/C8C4589102431759.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/C8C4589102431759.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -877,8 +877,8 @@
 
 ### `C8E42A56480DB818.png` (2048×1024)
 
-- 원본: `kr_textures/ui/C8E42A56480DB818.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/C8E42A56480DB818.png`
+- 원본: `textures/kr/ui/C8E42A56480DB818.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/C8E42A56480DB818.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -911,8 +911,8 @@
 
 ### `C84B5B3A51547DF0.png` (1024×1024)
 
-- 원본: `kr_textures/ui/C84B5B3A51547DF0.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/C84B5B3A51547DF0.png`
+- 원본: `textures/kr/ui/C84B5B3A51547DF0.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/C84B5B3A51547DF0.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -939,8 +939,8 @@
 
 ### `C3848C8E5ED70F7A.png` (2048×1024)
 
-- 원본: `kr_textures/ui/C3848C8E5ED70F7A.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/C3848C8E5ED70F7A.png`
+- 원본: `textures/kr/ui/C3848C8E5ED70F7A.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/C3848C8E5ED70F7A.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -969,8 +969,8 @@
 
 ### `E9E834DE4BAFDAB2.png` (1024×1024)
 
-- 원본: `kr_textures/ui/E9E834DE4BAFDAB2.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/E9E834DE4BAFDAB2.png`
+- 원본: `textures/kr/ui/E9E834DE4BAFDAB2.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/E9E834DE4BAFDAB2.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -1003,8 +1003,8 @@
 
 ### `E9F2EC8557984A58.png` (1024×1024)
 
-- 원본: `kr_textures/ui/E9F2EC8557984A58.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/E9F2EC8557984A58.png`
+- 원본: `textures/kr/ui/E9F2EC8557984A58.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/E9F2EC8557984A58.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 
@@ -1036,8 +1036,8 @@
 
 ### `FFC64B053648525E.png` (2048×1024)
 
-- 원본: `kr_textures/ui/FFC64B053648525E.png` (현재 일본어 원본 상태)
-- 백업: `textures/place_name_originals/FFC64B053648525E.png`
+- 원본: `textures/kr/ui/FFC64B053648525E.png` (현재 일본어 원본 상태)
+- 백업: `textures/place_originals/FFC64B053648525E.png`
 
 **번역 매핑 (kind / 일본어 → 한글)**:
 

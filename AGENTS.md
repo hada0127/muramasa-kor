@@ -35,7 +35,7 @@ This repository uses `CLAUDE.md` as the primary project handbook. Read it first,
 - `NinPriPatch.cpk` overrides `NinPri.cpk` for `scemsg/sysmsg`; build and install both.
 - Font replacement is Vita3K texture-import based. Do not patch ASCII font pages; Korean overlays belong on KANJI pages only.
 - UI textures often render from alpha only. Preserve alpha semantics when editing.
-- Manual texture edits under `kr_textures/ui/` are authoritative when the config marks them as manual/no-regions.
+- Manual texture edits under `textures/kr/ui/` are authoritative when the config marks them as manual/no-regions.
 
 ## Current Focus Areas
 
@@ -52,7 +52,7 @@ This repository uses `CLAUDE.md` as the primary project handbook. Read it first,
 3. Check `git status --short` before editing anything.
 4. Identify whether the task touches translation, fonts, UI textures, build tooling, or Vita3K automation.
 5. If the task touches wording or terminology, inspect the relevant `wii/` reference files first.
-6. If the task touches UI textures, inspect `translations/texture_localize_config.json` and existing `kr_textures/ui/` outputs before editing.
+6. If the task touches UI textures, inspect `translations/texture_localize_config.json` and existing `textures/kr/ui/` outputs before editing.
 7. If the task touches patch generation, confirm whether both `patch_main/` and `patch_patch/` outputs are affected.
 
 ### During Task

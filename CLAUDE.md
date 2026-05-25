@@ -256,14 +256,16 @@ cp backup/NinPriPatch.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPriPatch.cpk
 muramasa-kor/
 ├── README.md                    # 협업자 입문
 ├── CLAUDE.md                    # AI 에이전트 작업 규칙 (이 파일)
-├── tools/                       # Python 빌드/자동화 스크립트 (28개)
+├── tools/                       # Python 빌드/자동화 스크립트 (70+개)
+│   └── ui_editor/               # 웹 기반 UI 텍스처 편집기 (서버 + static)
 ├── translations/                # 번역 데이터 (JSON)
 ├── fonts/                       # 한글 TTF/OTF (3종)
-├── textures/                    # 게임 텍스처 소스 (Vita3K export 원본 + PSD 작업)
-│   ├── originals/               # Vita3K export 원본 (로컬화 소스)
-│   └── work/                    # PSD 작업 파일
-├── kr_textures/                 # 한글화된 텍스처 (Vita3K import용 PNG) — 별도 관리
-│   └── ui/                      # 한글 UI 텍스처 (73420, 8EFF, ADE2 등)
+├── textures/                    # 모든 텍스처 (소스 + 한글 출력) 단일 트리
+│   ├── originals/               # Vita3K export 원본 (UI 로컬화 소스)
+│   ├── place_originals/         # 지명 텍스처 원본 (place_texture_jobs 소스)
+│   └── kr/                      # 한글화 출력 (Vita3K import용, 릴리스 패키징 단위)
+│       ├── ui/                  # 한글 UI 텍스처 (73420, 8EFF, ADE2 등)
+│       └── font/                # 한글 폰트 텍스처
 ├── wii/                         # Wii USA판 한글 패치 참고 자료
 ├── docs/                        # PDCA 문서 (01-plan, 02-design, 03-analysis, 04-report)
 ├── patch_main/                  # NinPri.cpk용 NMS 빌드 결과 (build_patch.py 출력)
@@ -386,7 +388,9 @@ python tools/vita3k_ctrl.py close && sleep 2 && python tools/vita3k_ctrl.py laun
 ## UI 텍스처 한글화 파이프라인 (Phase 4)
 
 ### 도구
+- `tools/ui_editor/server.py` — **웹 기반 UI 텍스처 편집기** (region 박스 드래그/리사이즈, 속성 편집, 실제 렌더러 미리보기). `python tools/ui_editor/server.py` → http://127.0.0.1:8765. config(localize/place)를 직접 역기록. **텍스처 편집의 기본 진입점** (구 Krita `.kra` 워크플로 폐기됨)
 - `tools/texture_localize.py` — JSON 설정 기반 텍스처 한글화 (영문 클리어 + 한글 렌더링)
+- `tools/render_place_texture_job.py` — 지명 텍스처 렌더 (place_texture_jobs.json + `textures/place_originals` → `textures/kr/ui`)
 - `tools/texture_survey.py` — 전체 텍스처 컨택시트 생성
 - `tools/detect_text_textures.py` — 텍스트 포함 텍스처 자동 감지
 
@@ -401,8 +405,8 @@ python tools/vita3k_ctrl.py close && sleep 2 && python tools/vita3k_ctrl.py laun
 - **한자 붓글씨는 보존** — 영문 텍스트만 한글로 교체
 - **폰트**: Griun_PolSensibility-Rg.ttf (그리운 경찰감성체)
 - **작업 후 반드시 texture_localize_config.json에 기록** — 영역 좌표, 번역 텍스트, 폰트 크기, status 업데이트
-- **출력 위치**: Vita3K `import/` 폴더 + 리포 `kr_textures/ui/` 양쪽에 저장 (`texture_localize.py`가 자동 복사)
-- **수동 편집 텍스처 (regions 없음)**: `kr_textures/ui/`에 커밋된 버전을 권위로 간주. `texture_localize.py`가 자동 SKIP — 덮어쓰기 금지
+- **출력 위치**: Vita3K `import/` 폴더 + 리포 `textures/kr/ui/` 양쪽에 저장 (`texture_localize.py`가 자동 복사)
+- **수동 편집 텍스처 (regions 없음)**: `textures/kr/ui/`에 커밋된 버전을 권위로 간주. `texture_localize.py`가 자동 SKIP — 덮어쓰기 금지
 
 ### 빌드 & 테스트
 ```bash

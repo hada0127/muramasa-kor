@@ -1,6 +1,6 @@
 """Build translation notes file for 28 problem textures.
 For each texture, output: filename, ja_text per region, suggested ko_translation.
-User can edit textures (kr_textures/ui/*.png) directly with this guide.
+User can edit textures (textures/kr/ui/*.png) directly with this guide.
 """
 import json
 import io
@@ -30,7 +30,7 @@ md_lines = [
     "# 지명 텍스처 번역 노트",
     "",
     "각 텍스처별로 원본 일본어 텍스트와 권장 한글 번역, detect된 영역 좌표 정보를 정리.",
-    "사용자가 Krita 등에서 `kr_textures/ui/<hash>.png`를 편집할 때 참고용.",
+    "사용자가 Krita 등에서 `textures/kr/ui/<hash>.png`를 편집할 때 참고용.",
     "",
     "## 폰트",
     "- 본문/지명: `fonts/Griun_PolSensibility-Rg.ttf` (그리운 경찰감성체)",
@@ -45,7 +45,7 @@ md_lines = [
 ]
 
 for h in problems_28:
-    img_path = Path('kr_textures/ui') / f'{h}.png'
+    img_path = Path('textures/kr/ui') / f'{h}.png'
     img_size = (0, 0)
     if img_path.exists():
         with Image.open(img_path) as im:
@@ -58,8 +58,8 @@ for h in problems_28:
 
     md_lines.append(f"### `{h}.png` ({img_size[0]}×{img_size[1]})")
     md_lines.append("")
-    md_lines.append(f"- 원본: `kr_textures/ui/{h}.png` (현재 일본어 원본 상태)")
-    md_lines.append(f"- 백업: `textures/place_name_originals/{h}.png`")
+    md_lines.append(f"- 원본: `textures/kr/ui/{h}.png` (현재 일본어 원본 상태)")
+    md_lines.append(f"- 백업: `textures/place_originals/{h}.png`")
     md_lines.append("")
 
     # Mapping (mine integrated)
@@ -105,13 +105,13 @@ for h in problems_28:
     md_lines.append("")
 
 # Write markdown
-out_md = Path('kr_textures/ui/_translation_notes.md')
+out_md = Path('textures/kr/ui/_translation_notes.md')
 with open(out_md, 'w', encoding='utf-8') as f:
     f.write('\n'.join(md_lines))
 print(f'Saved markdown: {out_md}')
 
 # Also write a concise per-texture txt file for quick reference next to each png
-notes_dir = Path('kr_textures/ui/_notes')
+notes_dir = Path('textures/kr/ui/_notes')
 notes_dir.mkdir(parents=True, exist_ok=True)
 for h in problems_28:
     integ = integrated.get(h, [])
@@ -155,12 +155,12 @@ print(f'Saved per-texture notes: {notes_dir}')
 unified = {}
 for h in problems_28:
     unified[h] = {
-        'png': f'kr_textures/ui/{h}.png',
-        'backup': f'textures/place_name_originals/{h}.png',
+        'png': f'textures/kr/ui/{h}.png',
+        'backup': f'textures/place_originals/{h}.png',
         'integrated_mapping': integrated.get(h, []),
         'codex_analysis': codex.get(h, {}),
         'detect_v5': detect.get(h, {}),
     }
-with open('kr_textures/ui/_translation_data.json', 'w', encoding='utf-8') as f:
+with open('textures/kr/ui/_translation_data.json', 'w', encoding='utf-8') as f:
     json.dump(unified, f, ensure_ascii=False, indent=2)
-print(f'Saved unified JSON: kr_textures/ui/_translation_data.json')
+print(f'Saved unified JSON: textures/kr/ui/_translation_data.json')

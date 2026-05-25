@@ -1,7 +1,7 @@
 {
   "00B61B564A5FD289": {
-    "png": "kr_textures/ui/00B61B564A5FD289.png",
-    "backup": "textures/place_name_originals/00B61B564A5FD289.png",
+    "png": "textures/kr/ui/00B61B564A5FD289.png",
+    "backup": "textures/place_originals/00B61B564A5FD289.png",
     "integrated_mapping": [
       {
         "kind": "banner",
@@ -390,8 +390,8 @@
     }
   },
   "0AA74C448087838A": {
-    "png": "kr_textures/ui/0AA74C448087838A.png",
-    "backup": "textures/place_name_originals/0AA74C448087838A.png",
+    "png": "textures/kr/ui/0AA74C448087838A.png",
+    "backup": "textures/place_originals/0AA74C448087838A.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -492,8 +492,8 @@
     }
   },
   "3ECF3B0D2C2907BE": {
-    "png": "kr_textures/ui/3ECF3B0D2C2907BE.png",
-    "backup": "textures/place_name_originals/3ECF3B0D2C2907BE.png",
+    "png": "textures/kr/ui/3ECF3B0D2C2907BE.png",
+    "backup": "textures/place_originals/3ECF3B0D2C2907BE.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -625,8 +625,8 @@
     }
   },
   "7E0669E71FCD7B64": {
-    "png": "kr_textures/ui/7E0669E71FCD7B64.png",
-    "backup": "textures/place_name_originals/7E0669E71FCD7B64.png",
+    "png": "textures/kr/ui/7E0669E71FCD7B64.png",
+    "backup": "textures/place_originals/7E0669E71FCD7B64.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -767,8 +767,8 @@
     }
   },
   "464E370EF865D0AC": {
-    "png": "kr_textures/ui/464E370EF865D0AC.png",
-    "backup": "textures/place_name_originals/464E370EF865D0AC.png",
+    "png": "textures/kr/ui/464E370EF865D0AC.png",
+    "backup": "textures/place_originals/464E370EF865D0AC.png",
     "integrated_mapping": [
       {
         "kind": "banner",
@@ -1121,8 +1121,8 @@
     }
   },
   "864BD9CBCC496F78": {
-    "png": "kr_textures/ui/864BD9CBCC496F78.png",
-    "backup": "textures/place_name_originals/864BD9CBCC496F78.png",
+    "png": "textures/kr/ui/864BD9CBCC496F78.png",
+    "backup": "textures/place_originals/864BD9CBCC496F78.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -1218,8 +1218,8 @@
     }
   },
   "0912E45A567A41C9": {
-    "png": "kr_textures/ui/0912E45A567A41C9.png",
-    "backup": "textures/place_name_originals/0912E45A567A41C9.png",
+    "png": "textures/kr/ui/0912E45A567A41C9.png",
+    "backup": "textures/place_originals/0912E45A567A41C9.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -1320,8 +1320,8 @@
     }
   },
   "4633B92FBA1371F4": {
-    "png": "kr_textures/ui/4633B92FBA1371F4.png",
-    "backup": "textures/place_name_originals/4633B92FBA1371F4.png",
+    "png": "textures/kr/ui/4633B92FBA1371F4.png",
+    "backup": "textures/place_originals/4633B92FBA1371F4.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -1648,8 +1648,8 @@
     }
   },
   "4709F3E364671D89": {
-    "png": "kr_textures/ui/4709F3E364671D89.png",
-    "backup": "textures/place_name_originals/4709F3E364671D89.png",
+    "png": "textures/kr/ui/4709F3E364671D89.png",
+    "backup": "textures/place_originals/4709F3E364671D89.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -1776,8 +1776,8 @@
     }
   },
   "5882EA68BABF3C63": {
-    "png": "kr_textures/ui/5882EA68BABF3C63.png",
-    "backup": "textures/place_name_originals/5882EA68BABF3C63.png",
+    "png": "textures/kr/ui/5882EA68BABF3C63.png",
+    "backup": "textures/place_originals/5882EA68BABF3C63.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -2001,8 +2001,8 @@
     }
   },
   "6605F569D9389F9C": {
-    "png": "kr_textures/ui/6605F569D9389F9C.png",
-    "backup": "textures/place_name_originals/6605F569D9389F9C.png",
+    "png": "textures/kr/ui/6605F569D9389F9C.png",
+    "backup": "textures/place_originals/6605F569D9389F9C.png",
     "integrated_mapping": [
       {
         "kind": "banner",
@@ -2285,8 +2285,8 @@
     }
   },
   "7053B8FFC8B89807": {
-    "png": "kr_textures/ui/7053B8FFC8B89807.png",
-    "backup": "textures/place_name_originals/7053B8FFC8B89807.png",
+    "png": "textures/kr/ui/7053B8FFC8B89807.png",
+    "backup": "textures/place_originals/7053B8FFC8B89807.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -2427,8 +2427,8 @@
     }
   },
   "7282AD29CF433DA0": {
-    "png": "kr_textures/ui/7282AD29CF433DA0.png",
-    "backup": "textures/place_name_originals/7282AD29CF433DA0.png",
+    "png": "textures/kr/ui/7282AD29CF433DA0.png",
+    "backup": "textures/place_originals/7282AD29CF433DA0.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -2586,8 +2586,8 @@
     }
   },
   "7358BEAA2EF5F8A8": {
-    "png": "kr_textures/ui/7358BEAA2EF5F8A8.png",
-    "backup": "textures/place_name_originals/7358BEAA2EF5F8A8.png",
+    "png": "textures/kr/ui/7358BEAA2EF5F8A8.png",
+    "backup": "textures/place_originals/7358BEAA2EF5F8A8.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -2776,8 +2776,8 @@
     }
   },
   "8098AD7E2C438C22": {
-    "png": "kr_textures/ui/8098AD7E2C438C22.png",
-    "backup": "textures/place_name_originals/8098AD7E2C438C22.png",
+    "png": "textures/kr/ui/8098AD7E2C438C22.png",
+    "backup": "textures/place_originals/8098AD7E2C438C22.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -2935,8 +2935,8 @@
     }
   },
   "31710FB73B2686EF": {
-    "png": "kr_textures/ui/31710FB73B2686EF.png",
-    "backup": "textures/place_name_originals/31710FB73B2686EF.png",
+    "png": "textures/kr/ui/31710FB73B2686EF.png",
+    "backup": "textures/place_originals/31710FB73B2686EF.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -3089,8 +3089,8 @@
     }
   },
   "72165D43344F3190": {
-    "png": "kr_textures/ui/72165D43344F3190.png",
-    "backup": "textures/place_name_originals/72165D43344F3190.png",
+    "png": "textures/kr/ui/72165D43344F3190.png",
+    "backup": "textures/place_originals/72165D43344F3190.png",
     "integrated_mapping": [
       {
         "kind": "banner",
@@ -3329,8 +3329,8 @@
     }
   },
   "615858B46587A60E": {
-    "png": "kr_textures/ui/615858B46587A60E.png",
-    "backup": "textures/place_name_originals/615858B46587A60E.png",
+    "png": "textures/kr/ui/615858B46587A60E.png",
+    "backup": "textures/place_originals/615858B46587A60E.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -3493,8 +3493,8 @@
     }
   },
   "2611666E71A8181A": {
-    "png": "kr_textures/ui/2611666E71A8181A.png",
-    "backup": "textures/place_name_originals/2611666E71A8181A.png",
+    "png": "textures/kr/ui/2611666E71A8181A.png",
+    "backup": "textures/place_originals/2611666E71A8181A.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -3685,8 +3685,8 @@
     }
   },
   "A8486C49F76167C3": {
-    "png": "kr_textures/ui/A8486C49F76167C3.png",
-    "backup": "textures/place_name_originals/A8486C49F76167C3.png",
+    "png": "textures/kr/ui/A8486C49F76167C3.png",
+    "backup": "textures/place_originals/A8486C49F76167C3.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -3835,8 +3835,8 @@
     }
   },
   "C8B2975F2A629F4B": {
-    "png": "kr_textures/ui/C8B2975F2A629F4B.png",
-    "backup": "textures/place_name_originals/C8B2975F2A629F4B.png",
+    "png": "textures/kr/ui/C8B2975F2A629F4B.png",
+    "backup": "textures/place_originals/C8B2975F2A629F4B.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -3932,8 +3932,8 @@
     }
   },
   "C8C4589102431759": {
-    "png": "kr_textures/ui/C8C4589102431759.png",
-    "backup": "textures/place_name_originals/C8C4589102431759.png",
+    "png": "textures/kr/ui/C8C4589102431759.png",
+    "backup": "textures/place_originals/C8C4589102431759.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -4029,8 +4029,8 @@
     }
   },
   "C8E42A56480DB818": {
-    "png": "kr_textures/ui/C8E42A56480DB818.png",
-    "backup": "textures/place_name_originals/C8E42A56480DB818.png",
+    "png": "textures/kr/ui/C8E42A56480DB818.png",
+    "backup": "textures/place_originals/C8E42A56480DB818.png",
     "integrated_mapping": [
       {
         "kind": "banner",
@@ -4186,8 +4186,8 @@
     }
   },
   "C84B5B3A51547DF0": {
-    "png": "kr_textures/ui/C84B5B3A51547DF0.png",
-    "backup": "textures/place_name_originals/C84B5B3A51547DF0.png",
+    "png": "textures/kr/ui/C84B5B3A51547DF0.png",
+    "backup": "textures/place_originals/C84B5B3A51547DF0.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -4283,8 +4283,8 @@
     }
   },
   "C3848C8E5ED70F7A": {
-    "png": "kr_textures/ui/C3848C8E5ED70F7A.png",
-    "backup": "textures/place_name_originals/C3848C8E5ED70F7A.png",
+    "png": "textures/kr/ui/C3848C8E5ED70F7A.png",
+    "backup": "textures/place_originals/C3848C8E5ED70F7A.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -4393,8 +4393,8 @@
     }
   },
   "E9E834DE4BAFDAB2": {
-    "png": "kr_textures/ui/E9E834DE4BAFDAB2.png",
-    "backup": "textures/place_name_originals/E9E834DE4BAFDAB2.png",
+    "png": "textures/kr/ui/E9E834DE4BAFDAB2.png",
+    "backup": "textures/place_originals/E9E834DE4BAFDAB2.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -4535,8 +4535,8 @@
     }
   },
   "E9F2EC8557984A58": {
-    "png": "kr_textures/ui/E9F2EC8557984A58.png",
-    "backup": "textures/place_name_originals/E9F2EC8557984A58.png",
+    "png": "textures/kr/ui/E9F2EC8557984A58.png",
+    "backup": "textures/place_originals/E9F2EC8557984A58.png",
     "integrated_mapping": [
       {
         "kind": "box",
@@ -4668,8 +4668,8 @@
     }
   },
   "FFC64B053648525E": {
-    "png": "kr_textures/ui/FFC64B053648525E.png",
-    "backup": "textures/place_name_originals/FFC64B053648525E.png",
+    "png": "textures/kr/ui/FFC64B053648525E.png",
+    "backup": "textures/place_originals/FFC64B053648525E.png",
     "integrated_mapping": [
       {
         "kind": "box",

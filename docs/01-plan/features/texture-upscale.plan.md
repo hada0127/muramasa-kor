@@ -10,7 +10,7 @@
 | 관점 | 내용 |
 |------|------|
 | **Problem** | Vita3K 가 export 한 게임 텍스처는 PS Vita 원본 해상도(대부분 256~1024px) 그대로라 FHD(1920×1080) 출력 환경에서 흐릿하게 표시됨. Muramasa Complete 2.0 HD 팩이 있지만 export 텍스처(폰트·UI·일부 인게임 에셋)는 그 범위 밖이라 흐려 보이는 자산이 남아 있음. |
-| **Solution** | Vita3K export 폴더의 모든 PNG를 Real-ESRGAN ncnn-vulkan으로 일괄 업스케일하여 최대 변 1920px 로 리사이즈. 결과물은 배포 안 함(라이선스/용량) — repo 내 `upscaled/` 에 저장하고 `.gitignore` 로 제외. 이미 한글화된 UI 텍스처(`kr_textures/ui/`) 와 한글 글리프가 들어간 폰트 hash 는 자동 제외. |
+| **Solution** | Vita3K export 폴더의 모든 PNG를 Real-ESRGAN ncnn-vulkan으로 일괄 업스케일하여 최대 변 1920px 로 리사이즈. 결과물은 배포 안 함(라이선스/용량) — repo 내 `upscaled/` 에 저장하고 `.gitignore` 로 제외. 이미 한글화된 UI 텍스처(`textures/kr/ui/`) 와 한글 글리프가 들어간 폰트 hash 는 자동 제외. |
 | **Function UX Effect** | export 된 273개 텍스처 중 폰트/한글 UI 제외분이 FHD에서 선명하게 표시. 사용자 본인 PC에서만 적용(import 폴더 수동 복사 권장 절차 포함). |
 | **Core Value** | 한글 패치 외에 **개인 플레이 품질** 향상 트랙을 분리. 배포 패치(repo)에는 영향 없음 → 저작권/용량 리스크 없이 로컬 화질 개선. |
 
@@ -20,7 +20,7 @@
 |------|------|
 | **WHY** | HD 팩(Muramasa Complete 2.0)이 커버하지 못하는 export 텍스처에 대해 개인 플레이 품질을 끌어올린다. 동시에 결과물의 비배포 원칙(저작권 + 4GB+ 용량)을 코드/repo 구조로 강제. |
 | **WHO** | 하다(패처) 본인. 다른 협업자/플레이어에게는 절차만 공개. |
-| **RISK** | (1) 폰트 텍스처가 업스케일되면 한글 매핑 cell 좌표가 흐트러져 글자 깨짐 → 폰트 hash 자동 제외 필수. (2) 이미 수동 편집된 `kr_textures/ui/` 텍스처를 덮어쓰면 한글 UI 손상 → 같은 hash 자동 제외. (3) 알파 전용 텍스처가 RGB 보정으로 손상 가능성 → Real-ESRGAN 의 RGBA 처리 검증 필요. |
+| **RISK** | (1) 폰트 텍스처가 업스케일되면 한글 매핑 cell 좌표가 흐트러져 글자 깨짐 → 폰트 hash 자동 제외 필수. (2) 이미 수동 편집된 `textures/kr/ui/` 텍스처를 덮어쓰면 한글 UI 손상 → 같은 hash 자동 제외. (3) 알파 전용 텍스처가 RGB 보정으로 손상 가능성 → Real-ESRGAN 의 RGBA 처리 검증 필요. |
 | **SUCCESS** | (1) 모든 비제외 텍스처가 max 변 1920px 로 출력. (2) `upscaled/` 폴더가 git status 에 안 잡힘. (3) Vita3K import 로 적용 시 게임이 정상 실행되고 UI 한글/폰트가 깨지지 않음. |
 | **SCOPE** | Vita3K `~/Library/Application Support/Vita3K/Vita3K/textures/export/` 의 PNG 만. DLC CPK 내부 텍스처(별도 추출 불가) 는 out-of-scope. 배포 자동화도 out-of-scope. |
 
@@ -39,7 +39,7 @@
 | 카테고리 | 제외 사유 | 식별 방법 |
 |----------|----------|----------|
 | 폰트 텍스처 | 32px 그리드 + 셀 좌표 의존 → 업스케일 시 한글 깨짐 | `auto_font_import.py` 의 `.font_hashes.json`, 알려진 hash (`6706A53E1D94C16E`, `8665CE082D339B33`) |
-| 한글 UI 텍스처 | `kr_textures/ui/` 에 수동 편집본 존재 | 파일명(hash.png) 이 `kr_textures/ui/` 에 있으면 skip |
+| 한글 UI 텍스처 | `textures/kr/ui/` 에 수동 편집본 존재 | 파일명(hash.png) 이 `textures/kr/ui/` 에 있으면 skip |
 | 1024 미만 작은 ASCII 폰트/유틸 | font.png 류 | `batch_upscale.py` 기존 skip 패턴 유지 |
 
 ## 3. 엔진 선택 근거

@@ -13,7 +13,7 @@
       "content": "Victory!, Fight!, Load Game, New Game, Rating, Save, Back, Default, Bestiary, Play, Confirm, Cancel, Warp, Retry, Cooking, Controls, Songs, Proceed, Autumn, Accessories 등",
       "alpha_text": true,
       "status": "pending",
-      "notes": "가장 중요 - 게임 전반 UI 텍스트. 수동 편집 완료 (kr_textures/ui/)"
+      "notes": "가장 중요 - 게임 전반 UI 텍스트. 수동 편집 완료 (textures/kr/ui/)"
     },
     {
       "hash": "7DC6CF5A87DB1312",
@@ -46,7 +46,7 @@
       "content": "Legend, The Story of, A Spirited Seven Nights' Haunting, Fishy Tales of the Nekomata, Chaos, Hell's Where the Heart Is, A Cause to Daikon Foraka, White Serpent, Ninja Scroll, Demon Blade, Pandemonium, Oboro Blade",
       "alpha_text": true,
       "status": "pending",
-      "notes": "한자 붓글씨는 보존, 영문 부제만 한글로 교체. 수동 편집 완료 (kr_textures/ui/)"
+      "notes": "한자 붓글씨는 보존, 영문 부제만 한글로 교체. 수동 편집 완료 (textures/kr/ui/)"
     },
     {
       "hash": "74EEEC230BEE120C",
@@ -123,7 +123,7 @@
       "content": "Please, Seven Lucky Credits, PlayStation® RETURN, 이야하기, ©2009 2013, Licensed to and published, Treasures, press Return 시작, 새게임, by Aksys Games, MarvelousAQL Inc., Store, 뒤로",
       "alpha_text": true,
       "status": "done",
-      "notes": "수동 편집 완료 (kr_textures/ui/). 카탈로그 전수조사 시 미발견 - 별도 세션에서 export"
+      "notes": "수동 편집 완료 (textures/kr/ui/). 카탈로그 전수조사 시 미발견 - 별도 세션에서 export"
     },
     {
       "hash": "E4A9FD9D2047280B",
@@ -134,7 +134,7 @@
       "content": "완 결 (엔딩 화면 표시)",
       "alpha_text": true,
       "status": "done",
-      "notes": "수동 편집 완료 (kr_textures/ui/). 카탈로그 전수조사 시 미발견 - 별도 세션에서 export"
+      "notes": "수동 편집 완료 (textures/kr/ui/). 카탈로그 전수조사 시 미발견 - 별도 세션에서 export"
     },
     {
       "hash": "04110A0F74BE6991",
@@ -233,7 +233,7 @@
       "content": "峠の茶屋 → 고갯마루 찻집",
       "alpha_text": true,
       "status": "done",
-      "notes": "2026-05-20 export 재검토. 시스템/대사 표기 place_name_mapping의 \"고갯마루 찻집\"에 맞춰 수동 편집 완료 (kr_textures/ui/FFFFD99DCD90D546.png)."
+      "notes": "2026-05-20 export 재검토. 시스템/대사 표기 place_name_mapping의 \"고갯마루 찻집\"에 맞춰 수동 편집 완료 (textures/kr/ui/FFFFD99DCD90D546.png)."
     },
     {
       "hash": "2E88068C58DD36D5",

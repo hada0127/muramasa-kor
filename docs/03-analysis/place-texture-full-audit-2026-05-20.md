@@ -1,6 +1,6 @@
 # Place Texture Full Audit 2026-05-20
 
-`textures/place_name_originals/*.png` 60개와 `kr_textures/ui/*.png` 현재본을 전수 대조한 결과이다.
+`textures/place_originals/*.png` 60개와 `textures/kr/ui/*.png` 현재본을 전수 대조한 결과이다.
 
 비교 시트:
 - `temp/preview/place_texture_full_audit/full_audit_page_01.jpg` ... `full_audit_page_10.jpg`

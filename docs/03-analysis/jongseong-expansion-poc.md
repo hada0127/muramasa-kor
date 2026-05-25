@@ -23,7 +23,7 @@
 - **변경**:
   - `tools/auto_font_import.py`: cell range `0..1024` → `0..2048`. 원본 1024x1024 위쪽 paste, 아래쪽(y=1024~2048) 신규 영역.
   - 빡 → SJIS 0x8F64 (cell 1024) PoC 매핑.
-  - `kr_textures/font/{18747565,A8E6FDD1,8665CE08}.png` 모두 1024x2048 생성. 6706A53E HD는 4096x4096 유지(미적용).
+  - `textures/kr/font/{18747565,A8E6FDD1,8665CE08}.png` 모두 1024x2048 생성. 6706A53E HD는 4096x4096 유지(미적용).
 - **검증**:
   - cell 1024 빡 글리프 정상 그려짐 (alpha mean 26~42).
   - NMS 인코딩 빡 0x8F64 = 3회 정상.

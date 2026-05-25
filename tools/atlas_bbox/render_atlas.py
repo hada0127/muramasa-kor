@@ -126,7 +126,7 @@ def main():
     ap.add_argument("hash", help="texture hash (matches JSON and PNG name)")
     ap.add_argument("--catalog-dir", default="tools/atlas_bbox")
     ap.add_argument("--src-dir", default="textures/originals")
-    ap.add_argument("--out-dir", default="kr_textures/ui")
+    ap.add_argument("--out-dir", default="textures/kr/ui")
     args = ap.parse_args()
 
     cat_path = Path(args.catalog_dir) / f"{args.hash}.json"
