@@ -1,7 +1,7 @@
 {
   "_readme": "Proper-noun review file. Edit the `edit` field of any row to override the Korean translation. Leave blank to keep `ko`. Run tools/apply_proper_nouns.py after editing.",
   "counts": {
-    "characters_and_scenes": 111,
+    "characters_and_scenes": 114,
     "items": 500,
     "common_terms": 15
   },
@@ -326,7 +326,7 @@
     },
     {
       "ja": "白狐",
-      "ko": "백호",
+      "ko": "백여우",
       "wii_kr": "백호",
       "edit": ""
     },
@@ -428,7 +428,7 @@
     },
     {
       "ja": "せいたか童子",
-      "ko": "세테카 동자",
+      "ko": "세이타카 동자",
       "wii_kr": "세테카 동자",
       "edit": ""
     },
@@ -670,6 +670,24 @@
       "ja": "村正",
       "ko": "무라마사",
       "wii_kr": "무라마사",
+      "edit": ""
+    },
+    {
+      "ja": "犬飼剣持",
+      "ko": "이누카이 켄모치",
+      "wii_kr": "",
+      "edit": ""
+    },
+    {
+      "ja": "剣持",
+      "ko": "켄모치",
+      "wii_kr": "",
+      "edit": ""
+    },
+    {
+      "ja": "馬蕗",
+      "ko": "우마부키",
+      "wii_kr": "",
       "edit": ""
     }
   ],

@@ -95,6 +95,8 @@ def check(section, ja, ko, kr_map):
             nxt = l[s+1:s+2]; prev = l[s-1] if s > 0 else ''
             if not nxt or nxt.isspace():
                 continue            # 뒤 공백/줄끝 — 정상
+            if not (nxt.isalnum() or '가' <= nxt <= '힣'):
+                continue            # 뒤가 글자가 아니면(부호·괄호: …! …? …）) 공백 불필요
             if s == 0 or prev.isspace():
                 continue            # 문장 시작 줄임표/마침표 (…말 / . …말) — 정상
             if ch == '.' and (nxt.isdigit() or nxt == '.' or prev.isdigit()):
