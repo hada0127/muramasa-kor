@@ -1,5 +1,11 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-25] v1.0.3 릴리즈 발행
+- 이번 세션 작업(대사 '['/']' 깨짐 수정 + 오의명 일본어판 기준 통일 + UI 텍스처 폰트맞춤/문구 보정)을 묶어 배포.
+- version.json 1.0.2→1.0.3, 쉬운 설명 노트 release/NOTES_v1.0.3.md.
+- build_release(dist 패처 zip 64MB + manifest + sha256, 텍스처/폰트 88개 포함) → 4개 세션 커밋 push → tag v1.0.3 push → gh release(--latest).
+- URL: https://github.com/hada0127/muramasa-kor/releases/tag/v1.0.3
+
 ## [2026-05-25] 사용자 보고 2종 — 대사 '['/']' 깨짐 + 오의명/텍스처 일괄 통일
 
 ### #1 대사 '['/']' 깨짐 — 뜯/뜸 RUNTIME_OVERLAY 충돌 재발 (해결)
