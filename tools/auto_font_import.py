@@ -31,16 +31,16 @@ EXPORT_DIR = os.environ.get("VITA3K_EXPORT_DIR", os.path.join(VITA3K_ROOT, "text
 IMPORT_DIR = os.environ.get("VITA3K_IMPORT_DIR", os.path.join(VITA3K_ROOT, "textures", "import", "PCSE00240"))
 HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
 
-# Glyph outline: 1.5px black stroke at 50% opacity (alpha=128). Since PIL only
+# Glyph outline: 1.5px solid black stroke (alpha=255). Since PIL only
 # accepts integer stroke widths, fractional strokes are rendered via 2x
 # supersampling (glyph drawn at 2x with stroke=3, then LANCZOS-downsampled to
 # the target cell size). 1.5px sits between the too-thick 2px and too-thin 1px
 # in small-cell rendering. Body kept at 20pt (Hangul) / 16pt (ASCII).
+# NOTE: the outline applies ONLY to RIDIBatang body/dialogue fonts. Menu fonts
+# rendered in Griun (MENU_FONT_HASHES) get no outline — see create_korean_import.
 STROKE_WIDTH = 1.5
-STROKE_FILL = (0, 0, 0, 128)
+STROKE_FILL = (0, 0, 0, 255)
 
-WHITESTROKE_FONT_HASHES = set()
-WHITESTROKE_FILL = (255, 255, 255, 200)
 KR_BODY_PT = 20
 ASCII_BODY_PT = 16
 MENU_FONT_HASHES = {"A8E6FDD162258699"}
@@ -276,11 +276,12 @@ def create_korean_import(export_path, import_path, mapping_path, font_path, page
     kr_map = mapping['korean_to_sjis']
 
     # 폰트 hash별 stroke 적용 여부 결정
+    # 메뉴 폰트(그리운경찰체, 식당·찻집·상인 등)는 외곽선 미적용.
+    # 리디 바탕체로 렌더링되는 본문/대사 폰트에만 1.5px 외곽선을 입힌다.
     fhash = os.path.splitext(os.path.basename(export_path))[0]
-    if fhash in WHITESTROKE_FONT_HASHES:
-        # 메뉴 폰트: 흰색 stroke로 본체 두께만 증가 (외곽선 시각효과 없음)
-        stroke_w = MENU_STROKE_WIDTH if fhash in MENU_FONT_HASHES else STROKE_WIDTH
-        stroke_f = WHITESTROKE_FILL
+    if fhash in MENU_FONT_HASHES:
+        stroke_w = MENU_STROKE_WIDTH  # 0
+        stroke_f = STROKE_FILL  # stroke_w=0이라 미사용
     else:
         stroke_w = STROKE_WIDTH
         stroke_f = STROKE_FILL

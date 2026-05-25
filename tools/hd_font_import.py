@@ -32,11 +32,12 @@ EXPORT_DIR = os.environ.get("VITA3K_EXPORT_DIR", os.path.join(VITA3K_ROOT, "text
 IMPORT_DIR = os.environ.get("VITA3K_IMPORT_DIR", os.path.join(VITA3K_ROOT, "textures", "import", "PCSE00240"))
 HD_PACK_DIR = os.environ.get("HD_PACK_DIR", _default_hd_pack_dir())
 
-# Glyph outline: 1.5px black stroke at 50% opacity (alpha=128). Fractional
+# Glyph outline: 1.5px solid black stroke (alpha=255). Fractional
 # strokes (1024 base, scale=1 → stroke=1.5) are rendered via 2x supersampling
 # inside draw_centered_glyph. HD bases get integer strokes (2048→3, 4096→6).
-# Body 20pt KR / 16pt ASCII at 1x.
-STROKE_FILL = (0, 0, 0, 128)
+# Body 20pt KR / 16pt ASCII at 1x. HD font bases here are RIDIBatang only
+# (menu/Griun fonts are handled in auto_font_import.py and get no outline).
+STROKE_FILL = (0, 0, 0, 255)
 KR_BODY_PT = 20
 ASCII_BODY_PT = 16
 STROKE_BASE_PT = 1.5  # scaled with texture (1.5px at 1024, 3px at 2048, 6px at 4096)

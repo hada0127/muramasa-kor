@@ -1,5 +1,25 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-25] 폰트 외곽선 정책 정리 — 리디 바탕체 전용 + 불투명화 (v1.0.1)
+
+### 배경
+글자 외곽선 1.5px가 리디 바탕체(본문/대사)뿐 아니라 그리운경찰체 메뉴 폰트
+(식당·찻집·상인, hash `A8E6FDD162258699`)에도 적용되던 문제. 원인은 stroke 분기가
+빈 `WHITESTROKE_FONT_HASHES`에 의존 → 메뉴 폰트가 외곽선 분기를 못 타고 기본 외곽선을 받음.
+
+### 수정
+- `auto_font_import.py`: stroke 결정을 `MENU_FONT_HASHES` 기준으로 변경. 메뉴 폰트는
+  `MENU_STROKE_WIDTH=0`(외곽선 없음), 나머지(리디 바탕체)만 `STROKE_WIDTH=1.5`. 죽은
+  변수 `WHITESTROKE_FONT_HASHES`/`WHITESTROKE_FILL` 제거.
+- `auto_font_import.py`+`hd_font_import.py`: `STROKE_FILL` alpha 128→255 (외곽선 투명도 제거).
+- 폰트 6종 재생성(`auto_font_import.py`) → `textures/kr/font/` 동기화 + import 반영.
+
+### 검증 (픽셀)
+- 메뉴 A8E6FDD1: 반투명 외곽선 107,248 → 0 (완전 제거).
+- 리디 8665CE08: 반투명 139,564 → 불투명(alpha255) 114,157로 전환.
+- 시각: 메뉴 '가' 흰 글자만 / 리디 '가' 흰 글자+또렷한 검정 외곽선 확인.
+- v1.0.1 패치로 배포(릴리즈 노트 "폰트 롤백 문제 해결").
+
 ## [2026-05-25] 🎉 v1.0.0 릴리즈 발행 (정식판)
 
 이번 세션의 대규모 작업을 묶어 정식 1.0.0 배포.
