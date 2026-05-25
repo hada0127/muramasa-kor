@@ -114,11 +114,11 @@ NinPri.cpk.v<version>.original
 NinPriPatch.cpk.v<version>.original
 ```
 
-예를 들어 v0.9.3에서 처음 패치했다면 다음 파일이 생긴다.
+예를 들어 v1.0.0에서 처음 패치했다면 다음 파일이 생긴다.
 
 ```text
-<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPri.cpk.v0.9.3.original
-<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPriPatch.cpk.v0.9.3.original
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPri.cpk.v1.0.0.original
+<Vita3K content root>/ux0/app/PCSE00240/.muramasa-kor-backup/NinPriPatch.cpk.v1.0.0.original
 ```
 
 이전 버전의 패치가 적용된 `NinPri.cpk` / `NinPriPatch.cpk` 위에 새 패처를 바로 덮어씌우지 말고, 같은 릴리즈 폴더에서 `python3 apply_patch.py --restore`를 먼저 실행한다. 패처는 `.muramasa-kor-backup` 폴더의 `*.v*.original` 백업 중 원본 해시가 맞는 파일을 찾아 복원한다. 백업이 없거나 원본 해시가 맞지 않는 경우에만 Vita3K에서 본편과 업데이트를 다시 설치해 원본 CPK를 만든 뒤 새 패처를 실행한다.
@@ -135,18 +135,18 @@ Android: Android/data/org.vita3k.emulator/files
 
 ### 2단계 - 한글 패치 zip 다운로드 및 검증
 
-1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v0.9.3-vita3k-patcher.zip`을 받는다.
-2. 같은 릴리즈의 `muramasa-kor-v0.9.3-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
+1. [Releases](../../releases) 페이지에서 최신 `muramasa-kor-v1.0.0-vita3k-patcher.zip`을 받는다.
+2. 같은 릴리즈의 `muramasa-kor-v1.0.0-vita3k-patcher-sha256.txt`로 zip 무결성을 검증한다.
 
 ```powershell
 # Windows
-Get-FileHash -Algorithm SHA256 .\muramasa-kor-v0.9.3-vita3k-patcher.zip
+Get-FileHash -Algorithm SHA256 .\muramasa-kor-v1.0.0-vita3k-patcher.zip
 ```
 
 ```bash
 # macOS / Linux
-shasum -a 256 muramasa-kor-v0.9.3-vita3k-patcher.zip
-shasum -a 256 -c muramasa-kor-v0.9.3-vita3k-patcher-sha256.txt
+shasum -a 256 muramasa-kor-v1.0.0-vita3k-patcher.zip
+shasum -a 256 -c muramasa-kor-v1.0.0-vita3k-patcher-sha256.txt
 ```
 
 ### 3단계 - 로컬 패처 실행
@@ -257,10 +257,10 @@ py -3 apply_patch.py --restore
 
 릴리즈에는 보통 다음 파일이 포함된다.
 
-- `muramasa-kor-v0.9.3-vita3k-patcher.zip`
-- `muramasa-kor-v0.9.3-vita3k-patcher-manifest.json`
-- `muramasa-kor-v0.9.3-vita3k-patcher-sha256.txt`
-- `muramasa-kor-v0.9.3-vita3k-patcher-release-notes.txt`
+- `muramasa-kor-v1.0.0-vita3k-patcher.zip`
+- `muramasa-kor-v1.0.0-vita3k-patcher-manifest.json`
+- `muramasa-kor-v1.0.0-vita3k-patcher-sha256.txt`
+- `muramasa-kor-v1.0.0-vita3k-patcher-release-notes.txt`
 
 ## 주의
 
@@ -275,6 +275,7 @@ py -3 apply_patch.py --restore
 
 전체 변경 내역과 각 버전 다운로드는 [Releases](../../releases)를 본다. 최근 변경 요약:
 
+- **v1.0.0** — 정식판 🎉 한글 폰트 완성형 2350자 확장으로 받침 깨짐·대체표기 완전 해소, 본편·DLC 대사 전수 재번역(원문 복원·사극 말투 정리), 인명·지명·용어·텍스처 표기 통일.
 - **v0.9.3** — 전투 결과 화면 `평가`(Rating) 텍스처가 잘려 보이던 문제 수정.
 - **v0.9.2** — 보스 전용 무기 아이템명이 한자와 섞여 깨지던 문제 수정(`BOSS` → `보스`) + UI 텍스처 편집.
 - **v0.9.1** — 장비창 숫자·기호 깨짐 긴급 수정, 무기/필살기 명칭 정리, `Yes/No` 잔상 제거 등.

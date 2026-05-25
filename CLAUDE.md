@@ -432,29 +432,36 @@ python tools/texture_localize.py ADE2B8B5
 python tools/texture_localize.py --preview
 ```
 
-## 현재 진행 상황 (2026-04-13)
+## 현재 진행 상황 (2026-05-25, **v1.0.0 정식판**)
 
 ### 완료된 Phase
 - ✅ **Phase 1**: NMS 텍스트 추출·번역 인프라 (한글 SJIS 매핑, CRILAYLA 재압축)
 - ✅ **Phase 2**: DLC 선택 / 시스템 메시지 한글 출력 (Vita3K texture import 파이프라인 확립)
-- ✅ **Phase 3**: 본편 대사 1,116개 scemsg 번역 (Wii USA 한글 기반, NinPriPatch.cpk 오버라이드 해결)
+- ✅ **Phase 3**: 본편 대사 scemsg 번역 (Wii USA 한글 기반, NinPriPatch.cpk 오버라이드 해결)
 - ✅ **Phase 3.5**: HD 텍스처 팩(Muramasa Complete 2.0) 적용 + 한글 폰트 고화질 오버레이
 - ✅ **Phase 3.6**: 지명·Act 라벨·`武蔵`/`無事` 오역 대량 수정 (place-name-fix)
-- ✅ 공백 반칸 렌더링 복구 (cell 224 투명 처리)
-- ✅ DLC 난이도 화면 배경 텍스처 깨짐 수정 (87B72F6DB3C3FBDC 제외)
-- ✅ **한글 폰트 완성형 2350자 확장** (河/重/隼 3 SJIS 페이지, `char_substitutions` 폐기, 2026-05-25) — 상세는 success.md
+- ✅ 공백 반칸 렌더링 복구 / DLC 난이도 배경 텍스처 깨짐 수정
+- ✅ **한글 폰트 완성형 2350자 확장** (河/重/隼 3 SJIS 페이지, `char_substitutions` 폐기)
+- ✅ **본편·DLC 대사 전수 재번역** (scemsg 2187 + scemsg_patch 36, 원문 복원·사극 말투·표기
+  통일·gemini 전수 검증, lint 0). 도구: `lint_dialogs`/`score_candidates`/`retranslate_batch`/`verify_batch`, 가이드 `docs/translation-style-guide.md`
+- ✅ **표기 통일**: 인명(켄모치/우마부키/세이타카/백여우)·용어(규율/해골 골짜기)·텍스처(무기명 낫족제비/바케네코/미케, 지도 도토미)
+- 🎉 **v1.0.0 정식 배포** (gh release, dist 패처). 상세는 success.md.
 
-### 진행 중
-- 🔄 **Phase 3 후속**: DLC 대사 ~1,062개 번역 추가
-- 🔄 **Phase 4**: UI 그래픽 텍스처 한글화 (12개 중 3개 완료 — 73420, 8EFF, ADE2)
-- 🔄 **OOR 전수**: 패치 NMS 전체에 범위 밖 SJIS 바이트 3,328개 감사 (별도 feature)
+### 의도적으로 하지 않음 (사용자 결정)
+- **#9-3 무기명 변수 치환**: 원작은 무기명을 런타임 변수(`##（무기）`)로 출력하나 US 엔진이 토큰을
+  제거("this blade") → 텍스트/폰트 패치로 복원 불가(eboot 역공학 필요). **진행하지 않음.**
 
-### 기술 부채 / 미해결
-- **LiveArea 자동 조작**: green dot 위치가 세션마다 달라서 전체 범위 검색 필요 (부분 해결)
-- **한글 커버리지**: 완성형 2350자 전부 직접 글리프 완료(河/重/隼). 단 손글씨체 重/隼 페이지(`font2a/2b` 계열)는 해당 화면 진입 시 export 후 `auto_font_import` 재실행으로 추가 확보 필요(현재 활자체 중심)
-- **ASCII 소문자 등 일부**: 河 페이지 ASCII overlay(960~1023 = 0x20~0x5F) 밖인 0x60~0x7A는 河 페이지 밖이라 RUNTIME_OVERLAY로 개별 처리(게임이 거의 안 씀)
-- **6706A53E**: ASCII 페이지(HD)인데 河로 처리 중 — 별도 확인 항목
-- **Yes/No 다이얼로그 터치**: 원본 게임에서도 반응 없음 (Vita3K 터치 입력 이슈). 키보드 X 키로 우회
+### 추후 필요 시 (현재 미예정)
+- **Phase 4** UI 그래픽 텍스처 한글화: 주요 완료, 잔여 소수
+- **OOR 전수 감사** (별도 feature)
+- `_itemdata`/`sysmsg` 비대사 섹션 재번역 (필요해지면 대사와 같은 파이프라인으로)
+
+### 기술 메모
+- **LiveArea 자동 조작**: green dot 위치가 세션마다 달라 전체 범위 검색 필요 (부분 해결)
+- **손글씨체 重/隼 페이지**(`font2a/2b` 계열): 해당 화면 진입 시 export → `auto_font_import` 재실행으로 자동 커버
+- **ASCII 소문자 등**: 河 페이지 overlay(0x20~0x5F) 밖 0x60~0x7A는 RUNTIME_OVERLAY 개별 처리(게임이 거의 안 씀)
+- **6706A53E**: ASCII 페이지(HD)인데 河로 처리 중 — 확인 항목
+- **Yes/No 다이얼로그 터치**: 원본 게임에서도 반응 없음(Vita3K 터치 이슈). 키보드 X로 우회
 
 ## CPK 로딩 우선순위 (반드시 숙지)
 
