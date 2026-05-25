@@ -1871,3 +1871,14 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - 문서: CLAUDE.md 구조 트리·도구표(ui_editor 추가, Krita 폐기 명시), WORKFLOW.md
 - 검증: render_place_texture_job(place_originals 읽기 OK), texture_localize preview(originals 읽기 OK), build_release(textures/kr에서 87개 텍스처 수집 OK)
 - 주의: build_release TEXTURE_DIRS는 textures/kr/{ui,font} 명시 allowlist — textures/ 전체로 넓히면 원본 혼입. provenance 메타 "source":"kra_extract"는 region 출처 라벨이라 렌더 무관, 그대로 둠
+
+## [2026-05-25] 미사용 스크립트·JSON 대량 정리 (의존성 분석 기반)
+- 방법: 활성 루트(build_release/render/font/ui_editor + 문서화 도구)에서 import/subprocess 도달성 분석 → 도달 불가 + 미문서 후보 추출
+- 삭제: 스크립트 42개 + JSON 14개 (총 56)
+  - [A] 루트 실험/scratch 10: apply_modern_fixes, fix_ratios×4, modern_expression_patterns, test_patch, _check_syllables, _place_name_inspect, _verify_oor
+  - [B] 분석/노트/v4-v5 서브시스템 (UI 에디터로 대체): build_translation_notes, build_my_analysis, build_integrated_mapping, compare_analyses, annotate_v5_detect, render_v5, render_integrated, atlas_bbox/{detect_bboxes,render_atlas} + JSON 12 (my_analysis, integrated_mapping, codex_analysis, analysis_diff, detect_v5, v4/v5_codex_verdicts, manual_bbox_mapping, place_name_{mapping,regions,textures,white_kanji}) + atlas_bbox 고아 json
+  - [C] opening_* 나레이션 실험 15 + scene_intros_all.json
+  - [E] HD/텍스처 유틸 9: decode_wii_ftx, downscale_hd_pack, generate_kr_textures, hide_mbs_quads, install_textures, localize_hd_textures, migrate_localize_uhd, populate_uhd_originals
+- 유지(사용자 지정): [D] 텍스트 가공 도구 9 (fix_punctuation/reflow_dialogs/rewrap_all/condense_dialogs/fix_place_names/apply·export_proper_nouns/analyze_jp_width·short_lines) — 번역 변경 시 재실행. 문서화된 upscale_export·publish_release, 참조 데이터 texture_localize_catalog.json
+- 검증: 깨진 import 0, build_release exit 0(텍스처 87 수집), place/localize 렌더 OK, build_ui_index 재생성 동일(82개)
+- 결과: tools/ 75→40, 루트 스크립트 7→0, translations JSON 22→9

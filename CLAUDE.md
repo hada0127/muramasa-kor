@@ -256,7 +256,7 @@ cp backup/NinPriPatch.cpk C:/game/vita3k/ux0/app/PCSE00240/NinPriPatch.cpk
 muramasa-kor/
 ├── README.md                    # 협업자 입문
 ├── CLAUDE.md                    # AI 에이전트 작업 규칙 (이 파일)
-├── tools/                       # Python 빌드/자동화 스크립트 (70+개)
+├── tools/                       # Python 빌드/자동화 스크립트 (40개)
 │   └── ui_editor/               # 웹 기반 UI 텍스처 편집기 (서버 + static)
 ├── translations/                # 번역 데이터 (JSON)
 ├── fonts/                       # 한글 TTF/OTF (3종)
