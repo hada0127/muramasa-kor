@@ -3651,15 +3651,16 @@
             255
           ],
           "align": "center",
-          "v_align": "center",
+          "v_align": "top",
           "letter_spacing": 0,
           "clear": true,
           "fit_to_box": false,
-          "font_size": 144,
           "layout": "horizontal",
           "_id": "K23",
-          "font_ratio": 0.85,
-          "render": true
+          "font_ratio": 0.73,
+          "render": true,
+          "pad_y": 6,
+          "background": "clear_alpha"
         },
         {
           "x": 1724,
@@ -4149,9 +4150,9 @@
         },
         {
           "x": 1,
-          "y": 3218,
+          "y": 3206,
           "w": 363,
-          "h": 344,
+          "h": 356,
           "text": "O",
           "color": [
             255,
@@ -4168,7 +4169,8 @@
           "layout": "horizontal",
           "_id": "K45",
           "font_ratio": 0.85,
-          "render": true
+          "render": true,
+          "background": "clear_alpha"
         },
         {
           "x": 3673,

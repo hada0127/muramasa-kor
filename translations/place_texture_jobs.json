@@ -5421,11 +5421,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "font_ratio": 1.5,
-          "letter_spacing": 18
+          "font_ratio": 1.01,
+          "letter_spacing": 0,
+          "rotation": 90
         },
         {
           "id": "M1",
@@ -5440,11 +5441,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "font_ratio": 1.5,
-          "letter_spacing": 18
+          "font_ratio": 1.01,
+          "letter_spacing": 0,
+          "rotation": 90
         },
         {
           "id": "M2",
@@ -5459,11 +5461,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "font_ratio": 1.5,
-          "letter_spacing": 18
+          "font_ratio": 1.01,
+          "letter_spacing": 0,
+          "rotation": 90
         },
         {
           "id": "M3",
@@ -5478,12 +5481,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "rotation": -90,
-          "letter_spacing": 14,
-          "font_ratio": 1.5
+          "rotation": 0,
+          "letter_spacing": -6,
+          "font_ratio": 0.97
         },
         {
           "id": "M4",
@@ -5498,12 +5501,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": -6,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M5",
@@ -5518,12 +5521,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": -6,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M6",
@@ -5538,12 +5541,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": -6,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M7",
@@ -5558,12 +5561,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": -6,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M8",
@@ -5578,12 +5581,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": -6,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M9",
@@ -5598,12 +5601,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": -6,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M10",
@@ -5616,14 +5619,14 @@
             171
           ],
           "text_color": "white",
-          "font_px": 48,
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90
+          "letter_spacing": -6,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M11",
@@ -5638,12 +5641,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": 2,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M12",
@@ -5658,12 +5661,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": 2,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M13",
@@ -5678,12 +5681,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": 2,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M14",
@@ -5698,12 +5701,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": 2,
+          "rotation": 0,
+          "font_ratio": 0.97
         },
         {
           "id": "M15",
@@ -5718,12 +5721,12 @@
           "text_color": "white",
           "align": "center",
           "valign": "center",
-          "layout": "horizontal",
+          "layout": "vertical",
           "clear": "alpha",
           "render": true,
-          "letter_spacing": 14,
-          "rotation": -90,
-          "font_ratio": 1.5
+          "letter_spacing": 2,
+          "rotation": 0,
+          "font_ratio": 0.97
         }
       ]
     },
