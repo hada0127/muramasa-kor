@@ -9,6 +9,7 @@ from PIL import Image, ImageFont, ImageDraw
 # Reuse the shared glyph helper (supports fractional stroke via supersampling)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from auto_font_import import draw_centered_glyph
+import font_mapping
 
 
 def _default_vita3k_root():
@@ -126,33 +127,22 @@ def create_hd_korean_font(hd_base_path, import_path, mapping_path, font_path, ma
         ax, ay = asc * cs, asr * cs
         draw.rectangle([ax, ay, ax + cs - 1, ay + cs - 1], fill=(0, 0, 0, 0))
 
-    # Render ASCII glyphs at positions 960+. Skip cells that Korean was
-    # relocated into (cells 993-1003 for 둔/둘/둠/둥/둬/뒤/뒷/드/득/든) so
-    # their Korean glyphs (drawn above) survive.
-    pos = 960
-    for code in range(0x20, 0x7F):
-        if pos >= 1024:
-            break
-        if pos in korean_cells:
-            pos += 1
-            continue
+    # ASCII 오버플로 글리프: font_mapping(단일 진실 원본)이 정한 {문자: local셀}에
+    # 그린다. build_patch가 인코딩하는 SJIS 셀과 정확히 일치하며, 한글 점유 셀
+    # (960~1023의 21자)은 빈 셀 배정에서 자동 제외된다.
+    for ch, pos in font_mapping.ascii_overflow_cells(kr_map).items():
         row = pos // cols
         col = pos % cols
         x, y = col * cs, row * cs
-        ch = chr(code)
-        if ch == ' ':
-            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
+        if fmt == "white":
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(255, 255, 255, 0))
+            acolor = (255, 255, 255, 255)
         else:
-            if fmt == "white":
-                draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(255, 255, 255, 0))
-                acolor = (255, 255, 255, 255)
-            else:
-                draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
-                acolor = (247, 247, 247, 255)
-            align = "bottom-left" if ch in '.,' else "center"
-            draw_centered_glyph(img, x, y, cs, ch, font_path, font_size_ascii,
-                                acolor, stroke_width, STROKE_FILL, align=align)
-        pos += 1
+            draw.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(0, 0, 0, 0))
+            acolor = (247, 247, 247, 255)
+        align = "bottom-left" if ch in '.,' else "center"
+        draw_centered_glyph(img, x, y, cs, ch, font_path, font_size_ascii,
+                            acolor, stroke_width, STROKE_FILL, align=align)
 
     # Runtime-ASCII overlay at cells 192+code: digits 0-9, plus ':', '?', '[',
     # ']', '-', '/' — characters the game emits as raw bytes (e.g.

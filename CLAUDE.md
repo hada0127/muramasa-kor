@@ -372,7 +372,15 @@ muramasa-kor/
 - **페이지 자동 판별**: `auto_font_import.py`의 `detect_page_base()`가 export 텍스처를 `tools/font_page_refs/{p0_ascii,p1_ha,p2_ju,p3_sun}.png`와 전체 NCC 비교 → 河/重/隼 판별. `create_korean_import(page_base=)`로 페이지별 한글 배치. ASCII/모호는 1644(河) 폴백.
 - **한글 로컬 위치**: `local = cell - page_base` (page_base = 河 1644 / 重 2668 / 隼 3692)
 - **셀 공식**: `cell = (b1-0x81)*188 + b2_offset` (0x7F skip)
+- **★ ASCII 오버플로 배치표는 `tools/font_mapping.py`가 단일 진실 원본** — build_patch(인코딩)·
+  auto_font_import·hd_font_import(글리프 그리기) 셋이 반드시 이 모듈만 사용해야 함. 河-local 960~1023
+  중 **한글 점유 셀을 건너뛴 빈 셀에 실사용 ASCII 우선 배정**. (과거 build는 pos=960 고정, font는 한글
+  셀 skip → 배치표 불일치로 '!'(0x21)이 한글 '딱'(0x8EE2) 셀에 인코딩돼 '!'가 '딱'으로 보이던 버그를
+  근본 해소.) build_patch가 `validate_translation_ascii`로 렌더 불가 ASCII 등장 시 빌드 중단.
 - **ASCII/runtime/fullwidth overlay는 河 페이지(base 1644) 전용** — 重/隼 페이지는 한글만 그리고 early return. ASCII 페이지(cell0 빈칸)는 import 안 함
+- **메뉴 폰트(A8E6FDD1)는 河 페이지만 import** — 메뉴 표시 텍스트(아이템명 등)는 **河 페이지 글자만** 써야
+  깨지지 않음(重/隼 글자는 원본 한자로 렌더). 메뉴에 쓰일 글자가 重/隼에 있으면 미사용 河 글자와
+  kr_sjis_mapping 코드포인트 swap(양방향). 본문/대사는 重(E690E190)·隼(5F01AD86) import라 무관.
 - **폰트 텍스처 해시는 고정** — 같은 CPK면 재시작해도 동일. 한번 import 생성하면 재실행 불필요
 - **HD 팩 해시 충돌 방지** — HD 팩 2,139개 해시와 충돌 검사. HD 팩 자체가 폰트면 HD 베이스 위에 오버레이
 - **import 폴더 전체 삭제 금지** — `.font_hashes.json`으로 폰트 전용 해시만 추적/정리

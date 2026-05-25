@@ -1,5 +1,43 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-25] 사용자 보고 3종 이슈 해결 — 메뉴 한자혼입 / 문장끝 '!'→'딱' / 줄바꿈 top-fill
+
+스크린샷 3장 기반. codex+gemini 협의(세 제안 모두 수렴 → 승인/조건부승인).
+
+### #1 메뉴 아이템명 한자 혼입 ("홍시"→"省시")
+- 원인: 홍=SJIS 0x8FC8(重 페이지). 메뉴 손글씨폰트 A8E6FDD1은 河만 import →
+  重 글자가 동일 코드포인트의 원본 한자(省)로 렌더. 본문폰트는 重(E690E190) import라 정상.
+- 진단: 메뉴(짧은 _itemdata 이름)에 쓰인 重 글자 = 11자(똥 썰 픔 홍 쥐 찜 챵 녁 섣 믐 렛).
+- 수정: kr_sjis_mapping에서 11자를 번역 미사용 河 글자 11자(곯 깹 꺽 껍 낌 땀 뚱 맵 뱌 벙 빵)와
+  코드포인트 swap(korean_to_sjis+sjis_to_korean 양방향). 11자가 河로 이동 → 메뉴/본문 모두 정상.
+- 검증: 메뉴폰트 홍 신규 河셀 NCC 1.00, 重 옛 홍셀(0x8FC8)은 이제 껍 NCC 1.00.
+- 참고: sysmsg 대사형 重 글자(냠/윽/닦/뺏)는 본문폰트 렌더라 안 깨짐 → 메뉴 대상 아님.
+
+### #2 문장 끝 "!"가 "딱"으로 (전체 '!' 314건, '"' 2건)
+- 근본 원인: build_patch는 ASCII를 河-local 960+에 pos=code+928 고정 배치, font_import는
+  한글 점유 셀을 skip — **두 배치표 불일치**. 河-local 960~1023에 옛 한글 21자(덴 딱 량…등)가
+  점유 → '!'(0x21)=cell961=딱, '"'=962=량로 인코딩됨(둘 다 같은 셀).
+  21자 다수가 메뉴 아이템명에도 등장(두부/둘째칼/획득량)→重 이동 불가, 河 유지 필수.
+- 수정: 단일 진실원본 모듈 `tools/font_mapping.py` 신설(sjis_to_cell/cell_to_sjis/
+  build_ascii_overflow_map/ascii_overflow_cells/validate). 한글 점유 셀 제외한 빈 셀(43개)에
+  **실사용 ASCII 우선** 배정. build_patch·auto_font_import·hd_font_import 셋이 이 표만 사용.
+  build_patch에 ASCII 렌더 검증(위반 시 빌드 중단) 추가. + 'with' 미번역(共々 오역)→'와 함께' 수정.
+- 검증: '!'=0x8EE6(local965)/딱=0x8EE2(local961) 분리. 폰트 965셀 NCC('!')=0.96·('딱')=0.37.
+  등장 ASCII 36자 전부 河 빈셀 배정, validate 위반 0.
+
+### #3 줄바꿈 위 비고 아래 몰림 → 구두점 인지 top-fill
+- 원인: reflow_dialogs가 (a)ko>ja줄일때만 (b)DP가 max폭 최소화=균형분배라 top-fill 아님.
+- 수정: reflow_dialogs.py를 구두점 인지 top-fill로 재작성. 윗줄부터 max_width(29.5)까지 채우되
+  강한 구두점(.!?…)으로 끝나고 줄이 충분히 찼으면(>=78%) 조기 줄바꿈(고아단어 방지).
+  scemsg+scemsg_patch 2223건 적용(1125 변경). **단어 시퀀스 100% 보존**(표현 무변형).
+- 검증: over_width 0, 4줄초과 0(전부 ≤3줄), lint error 0. #132·#177 top-fill 확인.
+
+### 공통
+- 폰트 6종 재생성(auto_font_import+hd_font_import, export/HD base). 隼은 영향없어 동일.
+- 빌드+CPK append+설치 완료. 인게임 글리프 조회 시뮬레이션으로 3문제 시각 확인.
+- lint: error 0, warning 1(안 나오는 디버그 placeholder sysmsg#431만 잔존). … 공백 2건 정정.
+- macOS라 실제 게임 실행 검증은 사용자 몫(vita3k_ctrl는 Windows 전용).
+
 ## [2026-05-25] 폰트 외곽선 정책 정리 — 리디 바탕체 전용 + 불투명화 (v1.0.1)
 
 ### 배경

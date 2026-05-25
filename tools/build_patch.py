@@ -10,7 +10,11 @@ using the correct original NMS files as templates for each.
 import json
 import struct
 import os
+import sys
 from pathlib import Path
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import font_mapping
 
 
 def load_mapping(mapping_path: str) -> dict:
@@ -20,32 +24,11 @@ def load_mapping(mapping_path: str) -> dict:
     return data['korean_to_sjis']
 
 
-def _build_ascii_sjis_map():
-    """Map ASCII chars to SJIS 2-byte codes at texture positions 960+.
-
-    Game renders ASCII from KANJI texture at position=192+code, which overlaps
-    Korean glyphs. Remap ASCII to positions 960+ (beyond Korean range 0-959).
-    """
-    ascii_map = {}
-    pos = 960
-    # Codes kept as raw 1-byte so the game renders them half-width at
-    # cell 192+code. Those cells are drawn by font_import's RUNTIME_OVERLAY.
-    # 0x20 (space) — cell 224, cleared transparent.
-    # 0x2E (period) — cell 238, overlay draws '.'.
-    HALFWIDTH_CODES = {0x20, 0x2E}
-    for code in range(0x20, 0x7F):  # space to ~
-        if code in HALFWIDTH_CODES:
-            pos += 1
-            continue
-        cell = 1644 + pos
-        b1 = 0x81 + cell // 188
-        b2_offset = cell % 188
-        b2 = (0x40 + b2_offset) if b2_offset < 63 else (0x41 + b2_offset)
-        ascii_map[chr(code)] = (b1, b2)
-        pos += 1
-    return ascii_map
-
-ASCII_SJIS_MAP = _build_ascii_sjis_map()
+# ASCII → SJIS 배치표는 font_mapping(단일 진실 원본)에서 가져온다. 한글이 점유한
+# 河 셀(960~1023)을 건너뛰고 빈 셀에 실사용 문자 우선 배정 — auto_font_import /
+# hd_font_import가 그리는 셀과 정확히 일치한다. (과거 build/font 배치표 불일치로
+# '!'(0x21)이 한글 '딱' 셀에 인코딩돼 '딱'으로 보이던 버그를 근본 해소.)
+ASCII_SJIS_MAP = font_mapping.build_ascii_overflow_map()
 
 # Decorative markers are not meaningful in-game and several of them land on
 # Korean atlas cells when encoded as raw SJIS. Keep them out at build time so
@@ -434,6 +417,15 @@ def build_korean_patch():
 
     print("Building Korean patch...")
     print(f"Character mapping: {len(kr_map)} Korean chars")
+
+    # ASCII 렌더 안전성 검증: 번역에 등장하는 반각 ASCII가 모두 河 오버플로 셀
+    # 또는 반각(192+code) 경로로 안전하게 렌더되는지 확인. 위반 시 빌드 중단.
+    violations = font_mapping.validate_translation_ascii(kr_map)
+    if violations:
+        raise SystemExit(
+            f"[ASCII 검증 실패] 河 빈 셀 부족으로 렌더 불가한 ASCII: {violations}\n"
+            f"  → 번역에서 해당 문자를 제거하거나 font_mapping 빈 셀 확보 필요.")
+    print(f"ASCII overflow: {len(font_mapping.ascii_overflow_cells(kr_map))} chars on 河 page (검증 OK)")
 
     # === patch_main: goes into NinPri.cpk ===
     # Use NinPri originals as templates

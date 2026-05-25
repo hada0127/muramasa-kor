@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
-"""대사 줄바꿈 재배치 도구.
+"""대사 줄바꿈 재배치 도구 — 구두점 인지 top-fill.
 
-ja(일본어 원본)의 줄 수를 목표로 ko(한국어) 줄 수를 압축.
-마침표·쉼표 우선 분리 + 균형 분배 (DP 기반).
+사용자 요구: "첫 줄이 너무 비고 아래로 몰리는" 균형분배를 버리고, 윗줄부터
+채우되(top-fill) 문장 호흡(구두점)을 존중하는 하이브리드 방식으로 재배치한다.
 
-전각=1.0, 반각=0.5, @#(N) placeholder=1.0 으로 폭 계산.
+알고리즘 (codex+gemini 협의 수렴):
+  - 기본은 top-fill: 다음 단어를 넣어도 max_width 이하이면 현재 줄에 채운다.
+  - 강한 구두점(. ! ? … 」 』 ）)으로 끝나고 현재 줄이 충분히 찼으면(>= 임계폭)
+    여백이 남아도 그 자리에서 조기 줄바꿈 → '고아 단어'(다음 문장 첫 단어만
+    윗줄에 붙는 현상) 방지.
+  - 표현/단어는 절대 변형하지 않고 공백 기준 단어 단위로만 이동.
+
+전각=1.0, 반각=0.5, '…'=1.5(빌드 시 '...'로 전개), @#(N)=1.0.
 
 사용법:
-  python tools/reflow_dialogs.py                    # 미리보기 (jp_messages.json은 그대로)
-  python tools/reflow_dialogs.py --apply             # 실제 적용
-  python tools/reflow_dialogs.py --max-width 22      # max width 조정
-  python tools/reflow_dialogs.py --sample 20         # 샘플 N개 출력
+  python tools/reflow_dialogs.py                 # 미리보기(통계+샘플)
+  python tools/reflow_dialogs.py --apply         # jp_messages.json에 적용
+  python tools/reflow_dialogs.py --max-width 29  # 폭 조정
 """
 
 import json
@@ -18,97 +24,58 @@ import re
 import sys
 import argparse
 from pathlib import Path
-from functools import lru_cache
 
 PROJECT = Path(__file__).resolve().parent.parent
 JP_MSG = PROJECT / "translations" / "jp_messages.json"
 
-PUNCT_STRONG = set("。.!?…」』）)")
-PUNCT_WEAK = set(",、—–-")
+# 강한 구두점: 이 문자로 끝나는 단어 뒤는 (줄이 충분히 찼다면) 조기 줄바꿈 선호.
+STRONG_PUNCT = set("。.!?…」』）)！？")
+# max_width 대비 이 비율 이상 찼을 때만 강한 구두점 조기 줄바꿈 허용.
+FILL_RATIO = 0.78
 
 
 def line_width(s):
-    """전각=1.0, 반각=0.5, @#(N) = 1.0"""
+    """전각=1.0, 반각=0.5, '…'=1.5(→'...'), @#(N)=1.0"""
     s_clean = re.sub(r'@#[（(]\d+[)）]', 'X', s)
     w = 0.0
     for c in s_clean:
-        if ord(c) < 0x80:
+        if c == '…':       # … → 빌드 시 '...' (반각 3개)
+            w += 1.5
+        elif ord(c) < 0x80:
             w += 0.5
         else:
             w += 1.0
     return w
 
 
-def reflow(ko, target_n, max_width):
-    """ko 텍스트를 target_n 줄 이하로 reflow. 안 되면 None.
-
-    DP로 마침표 우선 + 균형 분배."""
+def topfill(ko, max_width=29.0):
+    """ko를 구두점 인지 top-fill로 재배치한 문자열을 반환."""
     full = " ".join(ko.replace("\r\n", "\n").split("\n")).strip()
     full = re.sub(r' +', ' ', full)
     if not full:
         return ko
-
     words = full.split(" ")
-    n = len(words)
-    if n == 0:
-        return ""
+    threshold = max_width * FILL_RATIO
 
-    space_w = 0.5
-    cum = [0.0]
-    for w in words:
-        cum.append(cum[-1] + line_width(w) + space_w)
-
-    def slice_width(i, j):
-        return cum[j] - cum[i] - space_w
-
-    def break_penalty(j):
-        """words[:j]와 words[j:] 사이의 분리 페널티 (작을수록 좋음)."""
-        if j <= 0 or j >= n:
-            return 0
-        last = words[j - 1]
-        if not last:
-            return 5
-        c = last[-1]
-        if c in PUNCT_STRONG:
-            return 0
-        if c in PUNCT_WEAK:
-            return 2
-        return 5
-
-    INF = float('inf')
-
-    @lru_cache(maxsize=None)
-    def solve(start, lines_left):
-        if lines_left == 1:
-            sw = slice_width(start, n)
-            if sw > max_width:
-                return None
-            return (sw, 0, (n,))
-        best = None
-        for j in range(start + 1, n):
-            sw = slice_width(start, j)
-            if sw > max_width:
-                break
-            sub = solve(j, lines_left - 1)
-            if sub is None:
-                continue
-            sub_max, sub_pen, sub_breaks = sub
-            max_w = max(sw, sub_max)
-            pen = sub_pen + break_penalty(j)
-            cost = (pen, max_w)
-            if best is None or cost < (best[1], best[0]):
-                best = (max_w, pen, (j,) + sub_breaks)
-        return best
-
-    r = solve(0, target_n)
-    if r is None:
-        return None
-    breaks = r[2]
     lines = []
-    prev = 0
-    for b in breaks:
-        lines.append(" ".join(words[prev:b]))
-        prev = b
+    cur = ""
+    curw = 0.0
+    n = len(words)
+    for idx, w in enumerate(words):
+        ww = line_width(w)
+        add = ww + (0.5 if cur else 0.0)
+        if cur and curw + add > max_width:
+            lines.append(cur)
+            cur, curw = w, ww
+        else:
+            cur = (cur + " " + w) if cur else w
+            curw += add
+        # 강한 구두점으로 끝나고 줄이 충분히 찼으면 조기 줄바꿈(남은 단어 있을 때).
+        if idx < n - 1 and cur and cur[-1] in STRONG_PUNCT and curw >= threshold:
+            lines.append(cur)
+            cur, curw = "", 0.0
+    if cur:
+        lines.append(cur)
     return "\n".join(lines)
 
 
@@ -118,98 +85,81 @@ def count_lines(text):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--apply", action="store_true", help="jp_messages.json에 실제 적용")
-    ap.add_argument("--max-width", type=float, default=20.0, help="줄당 최대 폭 (전각 단위)")
-    ap.add_argument("--sample", type=int, default=10, help="미리보기 샘플 개수")
-    ap.add_argument("--sections", default="scemsg,scemsg_patch",
-                    help="처리할 섹션 (쉼표 구분)")
+    ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--max-width", type=float, default=29.5)
+    ap.add_argument("--sample", type=int, default=12)
+    ap.add_argument("--sections", default="scemsg,scemsg_patch")
     args = ap.parse_args()
 
     data = json.loads(JP_MSG.read_text())
     sections = args.sections.split(",")
 
-    stats = {
-        "total": 0, "skip_empty": 0,
-        "unchanged_already_le_target": 0,
-        "compressed": 0, "compress_fail": 0,
-    }
+    stats = {"total": 0, "changed": 0, "over_width": 0, "over4_lines": 0}
     samples = []
-    failures = []
+    over_lines = []
+    over_width = []
 
     for section in sections:
         if section not in data:
             continue
         for msg in data[section].get("messages", []):
             ko = msg.get("ko", "")
-            ja = msg.get("ja", "")
             if not ko:
-                stats["skip_empty"] += 1
                 continue
             stats["total"] += 1
-
-            ko_n = count_lines(ko)
-            ja_n = max(1, count_lines(ja))
-
-            if ko_n <= ja_n:
-                stats["unchanged_already_le_target"] += 1
-                continue
-
-            new_ko = reflow(ko, ja_n, args.max_width)
-            if new_ko is None:
-                # 그래도 줄임이 가능한지 시도: target_n + 1 (즉 ko_n - 1)
-                for tn in range(ja_n + 1, ko_n):
-                    new_ko = reflow(ko, tn, args.max_width)
-                    if new_ko is not None:
-                        break
-
-            if new_ko is None:
-                stats["compress_fail"] += 1
-                failures.append((section, msg.get("id"), ja, ko))
-                continue
-
-            new_n = count_lines(new_ko)
-            if new_n >= ko_n:
-                stats["compress_fail"] += 1
-                continue
-
-            stats["compressed"] += 1
+            new_ko = topfill(ko, args.max_width)
+            new_lines = new_ko.split("\n")
+            maxw = max((line_width(l) for l in new_lines), default=0)
+            nlines = len(new_lines)
+            if maxw > args.max_width + 0.01:
+                stats["over_width"] += 1
+                over_width.append((section, msg.get("id"), maxw, new_ko))
+            if nlines >= 4:
+                stats["over4_lines"] += 1
+                if nlines > 4:
+                    over_lines.append((section, msg.get("id"), nlines, new_ko))
+            if new_ko != ko:
+                stats["changed"] += 1
+                if len(samples) < args.sample:
+                    samples.append((section, msg.get("id"), ko, new_ko))
             if args.apply:
                 msg["ko"] = new_ko
-            if len(samples) < args.sample:
-                samples.append((section, msg.get("id"), ja, ko, new_ko))
 
-    print(f"--- 통계 ---")
+    print("--- 통계 ---")
     for k, v in stats.items():
         print(f"  {k}: {v}")
 
     print(f"\n--- 변환 샘플 ({len(samples)}) ---")
-    for s, mid, ja, ko, new_ko in samples:
+    for s, mid, ko, new_ko in samples:
         print(f"\n[{s}#{mid}]")
-        print(f"  ja ({count_lines(ja)}줄):")
-        for l in ja.replace("\r\n", "\n").split("\n"):
-            print(f"    | {l}")
-        print(f"  ko old ({count_lines(ko)}줄):")
+        print("  before:")
         for l in ko.split("\n"):
             print(f"    | {l}  (w={line_width(l):.1f})")
-        print(f"  ko new ({count_lines(new_ko)}줄):")
+        print("  after:")
         for l in new_ko.split("\n"):
             print(f"    | {l}  (w={line_width(l):.1f})")
 
+    if over_width:
+        print(f"\n*** max_width({args.max_width}) 초과 {len(over_width)}건 (단어 1개가 너무 김):")
+        for s, mid, mw, t in over_width[:10]:
+            print(f"  [{s}#{mid}] w={mw:.1f}: {t!r}")
+    if over_lines:
+        print(f"\n*** 4줄 초과 {len(over_lines)}건:")
+        for s, mid, nl, t in over_lines[:10]:
+            print(f"  [{s}#{mid}] {nl}줄: {t!r}")
+
     if args.apply:
-        # 원본 line ending 보존 (CRLF)
         text = json.dumps(data, ensure_ascii=False, indent=2)
-        # 원본 형식 감지
         with open(JP_MSG, "rb") as f:
             head = f.read(64)
         if b"\r\n" in head:
-            text = text.replace("\n", "\r\n")
             with open(JP_MSG, "wb") as f:
-                f.write(text.encode("utf-8"))
+                f.write(text.replace("\n", "\r\n").encode("utf-8"))
         else:
             JP_MSG.write_text(text)
         print(f"\n[APPLIED] {JP_MSG}")
     else:
-        print(f"\n[DRY-RUN] --apply 로 실제 적용")
+        print("\n[DRY-RUN] --apply 로 실제 적용")
 
 
 if __name__ == "__main__":

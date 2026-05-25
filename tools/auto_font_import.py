@@ -7,6 +7,9 @@ Safety: only touches font-specific imports, never deletes HD pack textures."""
 import json, os, sys, time, platform, numpy as np
 from PIL import Image, ImageFont, ImageDraw
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import font_mapping
+
 
 def _default_vita3k_root():
     sysname = platform.system()
@@ -358,37 +361,22 @@ def create_korean_import(export_path, import_path, mapping_path, font_path, page
         draw.rectangle([ax, ay, ax+cs-1, ay+cs-1], fill=(0, 0, 0, 0))
 
     if fhash not in MENU_PRESERVE_ASCII_HASHES:
-        # Render ASCII glyphs at positions 960+ (remapped from Korean overlap zone).
-        # Skip cells that Korean was relocated into (e.g. cells 993-1003 for
-        # 둔/둘/둠/둥/둬/뒤/뒷/드/득/든). Those Korean glyphs were already drawn
-        # above and must not be overwritten by ASCII letters.
-        pos = 960
-        for code in range(0x20, 0x7F):
-            if pos >= 1024:
-                break
-            if pos in korean_cells:
-                # Reserved for a relocated Korean glyph — do not overwrite.
-                pos += 1
-                continue
+        # ASCII 오버플로 글리프: font_mapping(단일 진실 원본)이 정한 {문자: local셀}에
+        # 그린다. build_patch가 인코딩하는 SJIS 셀과 정확히 일치하며, 한글이 점유한
+        # 960~1023 셀(덴/딱/량/… 21자)은 자동으로 빠진다(빈 셀에만 배정).
+        for ch, pos in font_mapping.ascii_overflow_cells(kr_map).items():
             row = pos // cols
             col = pos % cols
             x, y = col * cs, row * cs
-            ch = chr(code)
-            if ch == ' ':
-                # Space: clear cell (transparent) — kept for safety even though
-                # build_patch.py no longer emits the 2-byte remapped space.
-                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0, 0, 0, 0))
+            if fmt == "white":
+                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(255,255,255,0))
+                acolor = (255,255,255,255)
             else:
-                if fmt == "white":
-                    draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(255,255,255,0))
-                    acolor = (255,255,255,255)
-                else:
-                    draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
-                    acolor = (247,247,247,255)
-                align = "bottom-left" if ch in '.,' else "center"
-                draw_centered_glyph(img, x, y, cs, ch, render_font_path, ascii_body_pt,
-                                    acolor, stroke_w, stroke_f, align=align)
-            pos += 1
+                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
+                acolor = (247,247,247,255)
+            align = "bottom-left" if ch in '.,' else "center"
+            draw_centered_glyph(img, x, y, cs, ch, render_font_path, ascii_body_pt,
+                                acolor, stroke_w, stroke_f, align=align)
 
     # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
     # integers, ':' separators in stat labels, '?' placeholders in hidden blade
