@@ -13,7 +13,7 @@
 - 지원 대상: Vita3K Windows/macOS, Android 수동 복사
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
-- 현재 릴리즈: `v1.0.0`
+- 현재 릴리즈: `v1.1.1`
 - 배포 형식: Windows/macOS 공용 로컬 패처 zip, Android용 수동 복사 안내
 
 릴리즈 zip에는 다음만 포함된다.

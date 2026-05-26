@@ -52,7 +52,11 @@ MENU_FONT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..',
 MENU_STROKE_WIDTH = 0
 MENU_KR_BODY_PT = 20
 MENU_ASCII_BODY_PT = 18
-MENU_PRESERVE_ASCII_HASHES = {"A8E6FDD162258699"}
+# 메뉴 폰트는 ASCII 오버플로(960+: '!','?',숫자 등 NMS 텍스트용)는 한글과 함께
+# 그리되, 런타임 경로(192+code)와 풀와이드(448+) 오버레이는 보존한다. 상점 가격
+# 숫자가 192+code 런타임 글리프로 렌더되므로 그 경로만 원본 글리프를 남긴다.
+# (과거엔 ASCII 오버플로까지 통째로 보존해 '!'(0x8EE6) 등이 원본 한자 取로 보였다 — 이슈 #14)
+MENU_PRESERVE_RUNTIME_HASHES = {"A8E6FDD162258699"}
 
 _FONT_CACHE = {}
 
@@ -301,7 +305,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path, page
 
     korean_cells = {}
     protected_cells = set()
-    if fhash in MENU_PRESERVE_ASCII_HASHES:
+    if fhash in MENU_PRESERVE_RUNTIME_HASHES:
         protected_cells.update(192 + code for code in range(0x30, 0x3A))
     for char, (b1, b2) in kr_map.items():
         cell = sjis_to_cell(b1, b2)
@@ -360,23 +364,24 @@ def create_korean_import(export_path, import_path, mapping_path, font_path, page
         ax, ay = asc * cs, asr * cs
         draw.rectangle([ax, ay, ax+cs-1, ay+cs-1], fill=(0, 0, 0, 0))
 
-    if fhash not in MENU_PRESERVE_ASCII_HASHES:
-        # ASCII 오버플로 글리프: font_mapping(단일 진실 원본)이 정한 {문자: local셀}에
-        # 그린다. build_patch가 인코딩하는 SJIS 셀과 정확히 일치하며, 한글이 점유한
-        # 960~1023 셀(덴/딱/량/… 21자)은 자동으로 빠진다(빈 셀에만 배정).
-        for ch, pos in font_mapping.ascii_overflow_cells(kr_map).items():
-            row = pos // cols
-            col = pos % cols
-            x, y = col * cs, row * cs
-            if fmt == "white":
-                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(255,255,255,0))
-                acolor = (255,255,255,255)
-            else:
-                draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
-                acolor = (247,247,247,255)
-            align = "bottom-left" if ch in '.,' else "center"
-            draw_centered_glyph(img, x, y, cs, ch, render_font_path, ascii_body_pt,
-                                acolor, stroke_w, stroke_f, align=align)
+    # ASCII 오버플로 글리프: font_mapping(단일 진실 원본)이 정한 {문자: local셀}에
+    # 그린다. build_patch가 인코딩하는 SJIS 셀과 정확히 일치하며, 한글이 점유한
+    # 960~1023 셀(덴/딱/량/… 21자)은 자동으로 빠진다(빈 셀에만 배정).
+    # 메뉴 폰트도 그린다 — NMS 텍스트의 '!','?',숫자 등이 이 셀을 읽는다. (가격 숫자는
+    # 별개인 192+code 런타임 경로라 RUNTIME_OVERLAY 보존으로 무관.)
+    for ch, pos in font_mapping.ascii_overflow_cells(kr_map).items():
+        row = pos // cols
+        col = pos % cols
+        x, y = col * cs, row * cs
+        if fmt == "white":
+            draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(255,255,255,0))
+            acolor = (255,255,255,255)
+        else:
+            draw.rectangle([x, y, x+cs-1, y+cs-1], fill=(0,0,0,0))
+            acolor = (247,247,247,255)
+        align = "bottom-left" if ch in '.,' else "center"
+        draw_centered_glyph(img, x, y, cs, ch, render_font_path, ascii_body_pt,
+                            acolor, stroke_w, stroke_f, align=align)
 
     # Runtime-ASCII overlay: when the game emits raw ASCII bytes (e.g. %d/%D
     # integers, ':' separators in stat labels, '?' placeholders in hidden blade
@@ -387,7 +392,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path, page
     # 'F', 'o', 'r', 'm' added 2026-05-16 for DLC bakeneko equipment "Form:%s"
     # hardcoded in game binary. Korean SJIS for 딱/량/럴/랴 relocated to ASCII
     # zone (0x8EE2-0x8EE5) so cells 262/303/306/301 can hold English glyphs.
-    RUNTIME_OVERLAY_CODES = [] if fhash in MENU_PRESERVE_ASCII_HASHES else (
+    RUNTIME_OVERLAY_CODES = [] if fhash in MENU_PRESERVE_RUNTIME_HASHES else (
         list(range(0x30, 0x3A)) + [0x3A, 0x3F, 0x5B, 0x5D, 0x2D, 0x2E, 0x2F,
             0x46, 0x6F, 0x72, 0x6D,  # F, o, r, m
         ]
@@ -422,7 +427,7 @@ def create_korean_import(export_path, import_path, mapping_path, font_path, page
     # full-width colon) it reads KANJI texture local cell (b2 - 0x40) + 448.
     # Cell 454 originally held Korean "봐" — relocated to 0x8EEF (local 974)
     # in kr_sjis_mapping.json so we can draw the ASCII colon glyph here.
-    FULLWIDTH_OVERLAY = {} if fhash in MENU_PRESERVE_ASCII_HASHES else {
+    FULLWIDTH_OVERLAY = {} if fhash in MENU_PRESERVE_RUNTIME_HASHES else {
         454: ':',  # 0x8146 fullwidth colon → battle result timer "0:00:19"
     }
     for local_cell, ch in FULLWIDTH_OVERLAY.items():
