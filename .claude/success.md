@@ -1,5 +1,17 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-26] 아이템명 텍스처↔시스템(itemdata) 불일치 통일 (커밋 fabd992)
+- 오의명 통일에 이어, 아이템명 아틀라스 텍스처(7DC6CF5A)가 itemdata와 어긋난 것 전수 통일.
+- **원인**: 원본은 영어판. 영어→추측일본어(src_ja, confidence low 다수)→한글로 번역해 곡옥/장신구가 대거 오매칭.
+- **검증법(사용자 지시)**: 원본 텍스처 크롭으로 영어 확정 → US itemdata(_US/_itemdata.nms) 효과설명 → JP itemdata 효과 매칭 → 우리 ko=정답. (JP/US nms 인덱스는 곡옥구간 비정렬 → 효과내용 매칭 필수.)
+- **codex+gemini 2차 교차검증**: A 9건 양쪽 O 수렴. gemini 조건부(곡옥 전부 띄움/닌자발 대사참조 0건 안전/이중파일/오버플로) → 모두 해소.
+- **단어 오류 9건**: 곡옥 5종(Amber→호박/Hellish→황천/Agate→마노/Ritual→제사/Ghostly→영혼 곡옥),
+  Divine Panacea→영방반혼단·Soul Salvation→영력소비 없음(뒤바뀜), White Lightning(どぶろく)→탁주, Vitality Boost(持久強化)→지구 강화.
+- **표기 통일**: 곡옥 7종 띄어쓰기 통일(수정/비취곡옥도 띄움), 닌자발→닌자술(itemdata 양쪽), 텍스처 형태소 공백 정규화 18건.
+- **JSON 3종 동기화**(직접수정 시 누락 주의): texture_localize_config + ui_editor_index + kr/ui 라벨. CLAUDE.md에 규칙 추가.
+- 적용: config 27건 + itemdata(_itemdata 3565/_itemdata_main 878) 12건 → texture_localize.py 재렌더 + build_patch.py(main/patch). UI 에디터 시각확인 OK.
+- 조사/목록: temp/item_survey/{survey.md, fix_list_final.md}.
+
 ## [2026-05-25] v1.0.3 릴리즈 발행
 - 이번 세션 작업(대사 '['/']' 깨짐 수정 + 오의명 일본어판 기준 통일 + UI 텍스처 폰트맞춤/문구 보정)을 묶어 배포.
 - version.json 1.0.2→1.0.3, 쉬운 설명 노트 release/NOTES_v1.0.3.md.

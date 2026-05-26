@@ -47,8 +47,9 @@
     (수정/비취곡옥도 띄움) ③_itemdata+_itemdata_main+patch 양쪽 반영 ④Soul Salvation=영력소비 없음 유지(효과라벨).
   - codex는 _itemdata/_itemdata_main 이중구조·닌자발 다중엔트리·Interface_shop 존재를 정찰로 확인.
 - **최종 수정 목록 확정**: temp/item_survey/fix_list_final.md.
-- 다음: 사용자 적용 go 받으면 → config(7DC6CF5A regions) 텍스트 수정 + itemdata 곡옥/효과 공백·닌자술 정리
-  → texture_localize.py 7DC6CF5A 재렌더 + build_patch.py(main/patch) → 사용자 Vita3K 시각검증.
+- ✅ **적용·커밋 완료(fabd992)**: config 27건 + itemdata 12건(양쪽) + JSON 3종 동기화 + 재렌더 + NMS 빌드.
+  CLAUDE.md에 "텍스처 직접수정 시 JSON 3종 모두 동기화" 규칙 추가. 사용자 UI 에디터 확인 OK.
+  상세 success.md 참조.
 
 ## 현재 열린 작업 없음 (2026-05-25 사용자 보고 2종 모두 해결)
 
