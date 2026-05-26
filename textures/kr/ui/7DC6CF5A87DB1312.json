@@ -1,66 +1,410 @@
 {
   "_note": "Item-name atlas label list. English → Korean translation reference. 'rot' 0=horizontal, 90=bottom-to-top vertical. 'src_ja' shows inferred Japanese source (from proper_nouns.json). 'confidence': high (matched in proper_nouns/itemdata), med (reasonable inference), low (guess).",
   "image": "7DC6CF5A87DB1312.png",
-  "upscaled_size": [2048, 2048],
-  "original_size": [512, 512],
+  "upscaled_size": [
+    2048,
+    2048
+  ],
+  "original_size": [
+    512,
+    512
+  ],
   "font_suggestion": "fonts/Griun_PolSensibility-Rg.ttf",
   "labels": [
-    {"en": "Strength Boost",      "ko": "공격강화",        "rot": 90, "src_ja": "攻撃強化",    "confidence": "med"},
-    {"en": "Full Immunity",       "ko": "이상 무효화",     "rot": 90, "src_ja": "異常無効化",  "confidence": "high"},
-    {"en": "Ability Boost",       "ko": "거합강화",        "rot": 0,  "src_ja": "居合強化",    "confidence": "low"},
-    {"en": "Sage Elixir",         "ko": "신선환약",        "rot": 0,  "src_ja": "神仙丸",      "confidence": "high"},
-    {"en": "Smoke Bomb",          "ko": "연기구슬",        "rot": 90, "src_ja": "煙玉",        "confidence": "high"},
-    {"en": "Dragon Elixir",       "ko": "용뇌환약",        "rot": 0,  "src_ja": "竜脳丸",      "confidence": "high"},
-    {"en": "Igarashi Whetstone",  "ko": "이가라시 숫돌",   "rot": 0,  "src_ja": "五十嵐の砥石","confidence": "high"},
-    {"en": "Iyo Whetstone",       "ko": "이요 숫돌",       "rot": 0,  "src_ja": "伊予の砥石",  "confidence": "high"},
-    {"en": "Spirit Restored",     "ko": "영력환원",        "rot": 0,  "src_ja": "霊力還元",    "confidence": "med"},
-    {"en": "Satsuma Orange",      "ko": "밀감",            "rot": 0,  "src_ja": "蜜柑",        "confidence": "high"},
-    {"en": "Straw Millionaire I", "ko": "새끼줄 I",        "rot": 0,  "src_ja": "わらしべ",    "confidence": "med"},
-    {"en": "Golden Hammer",       "ko": "요술망치",        "rot": 0,  "src_ja": "打出小槌",    "confidence": "high"},
-    {"en": "Hellish Magatama",    "ko": "악귀표식",        "rot": 0,  "src_ja": "悪鬼の印",    "confidence": "low"},
-    {"en": "Bombs",               "ko": "폭탄",            "rot": 0,  "confidence": "med"},
-    {"en": "Vitality Boost",      "ko": "체력＋5",         "rot": 0,  "src_ja": "体力＋５",    "confidence": "low"},
-    {"en": "Recovery Pellet",     "ko": "회복환약",        "rot": 0,  "src_ja": "回復丸",      "confidence": "high"},
-    {"en": "Herbal Remedy",       "ko": "어백초",          "rot": 0,  "src_ja": "御百草",      "confidence": "high"},
-    {"en": "White Lightning",     "ko": "섬광",            "rot": 0,  "src_ja": "幻影雷光",    "confidence": "low"},
-    {"en": "Longevity Elixir",    "ko": "연령단",          "rot": 0,  "src_ja": "延齢丹",      "confidence": "high"},
-    {"en": "Jyokenji Whetstone",  "ko": "상견사 숫돌",     "rot": 0,  "src_ja": "常見寺の砥石","confidence": "high"},
-    {"en": "Tiger-bile Tablet",   "ko": "호담환약",        "rot": 0,  "src_ja": "虎胆丸",      "confidence": "high"},
-    {"en": "Amber Magatama",      "ko": "수정곡옥",        "rot": 0,  "src_ja": "水晶の勾玉",  "confidence": "low", "notes": "Amber color → 수정? uncertain"},
-    {"en": "Agate Magatama",      "ko": "비취곡옥",        "rot": 0,  "src_ja": "翡翠の勾玉",  "confidence": "low"},
-    {"en": "Soul Salvation",      "ko": "영방반혼단",      "rot": 0,  "src_ja": "霊方反魂丹",  "confidence": "high"},
-    {"en": "Ghostly Magatama",    "ko": "수라표식",        "rot": 0,  "src_ja": "修羅の印",    "confidence": "low"},
-    {"en": "Restore Blade",       "ko": "칼영력 회복",     "rot": 0,  "src_ja": "刀霊力回復",  "confidence": "high"},
-    {"en": "Absorb Life",         "ko": "생명흡수",        "rot": 0,  "src_ja": "生命吸収",    "confidence": "high"},
-    {"en": "Ritual Magatama 5",   "ko": "수정곡옥 5",      "rot": 0,  "confidence": "low"},
-    {"en": "Inferno Amulet",      "ko": "내화부적",        "rot": 0,  "src_ja": "麻布の札",    "confidence": "high"},
-    {"en": "Mirror of Wisdom",    "ko": "팔척거울",        "rot": 0,  "src_ja": "八咫鏡",      "confidence": "high"},
-    {"en": "Ninja Arts",          "ko": "닌자술",          "rot": 0,  "confidence": "med"},
-    {"en": "Bear-bile Tablet 4",  "ko": "곰환약 4",        "rot": 0,  "src_ja": "熊胆丸",      "confidence": "high"},
-    {"en": "Roasted Yams",        "ko": "군고구마",        "rot": 0,  "src_ja": "焼き芋",      "confidence": "high"},
-    {"en": "Broiled Fish",        "ko": "생선구이",        "rot": 0,  "src_ja": "魚の塩焼き",  "confidence": "high"},
-    {"en": "Uchimori Whetstone",  "ko": "흐릿한 숫돌",     "rot": 0,  "src_ja": "内曇り砥石",  "confidence": "high"},
-    {"en": "Blessed Sake 3",      "ko": "신령주 3",        "rot": 0,  "src_ja": "お神酒",      "confidence": "med"},
-    {"en": "Healing Pellet",      "ko": "치료환약",        "rot": 0,  "src_ja": "治癒丸",      "confidence": "high"},
-    {"en": "Divine Panacea",      "ko": "자동부활",        "rot": 0,  "src_ja": "自動復活",    "confidence": "low"},
-    {"en": "Boost Attack",        "ko": "공격강화",        "rot": 0,  "src_ja": "攻撃強化",    "confidence": "high", "notes": "may dup with Strength Boost; EN variants"},
-    {"en": "Omura Whetstone 2",   "ko": "큰마을 숫돌 2",   "rot": 0,  "src_ja": "大村の砥石",  "confidence": "high"},
-    {"en": "Roasted Squid",       "ko": "오징어구이",      "rot": 0,  "src_ja": "焼きイカ",    "confidence": "high"},
-    {"en": "Auto Recover",        "ko": "자동회복",        "rot": 0,  "src_ja": "自動回復",    "confidence": "high"},
-    {"en": "Holy Illusion",       "ko": "아지랑이",        "rot": 0,  "src_ja": "幻影陽炎",    "confidence": "low"},
-    {"en": "Sweet Rice Wine II",  "ko": "감주 II",         "rot": 0,  "src_ja": "甘酒",        "confidence": "high"},
-    {"en": "Okoi",                "ko": "오코이",          "rot": 90, "confidence": "med", "notes": "proper noun, keep transliteration"},
-    {"en": "Wasp Swarm",          "ko": "나나니벌",        "rot": 0,  "src_ja": "地ヶ蜂",      "confidence": "high"},
-    {"en": "Shadow Wasp",         "ko": "벌그림자",        "rot": 0,  "src_ja": "影蜂",        "confidence": "high"},
-    {"en": "Triple Lightning",    "ko": "벼락치기 3",      "rot": 0,  "src_ja": "雷光三連",    "confidence": "high"},
-    {"en": "Holy Comet",          "ko": "별똥별 2",        "rot": 0,  "src_ja": "星天彗星 弐", "confidence": "low"},
-    {"en": "Bamboo Spear",        "ko": "대나무 창",       "rot": 0,  "confidence": "med"},
-    {"en": "Triple Blaze",        "ko": "화염 3",          "rot": 0,  "src_ja": "焔三連",      "confidence": "high"},
-    {"en": "Great Sun Ring",      "ko": "개기일식",        "rot": 0,  "src_ja": "大日輪",      "confidence": "high"},
-    {"en": "Holy Blessing",       "ko": "성스러운 축복",   "rot": 0,  "confidence": "low"},
-    {"en": "Auto Restore",        "ko": "자동회복",        "rot": 0,  "src_ja": "自動回復",    "confidence": "med", "notes": "may dup with Auto Recover"},
-    {"en": "Holy Benediction",    "ko": "성스러운 기도",   "rot": 0,  "confidence": "low"},
-    {"en": "Holy Absolution",     "ko": "성스러운 사면",   "rot": 0,  "confidence": "low"},
-    {"en": "Hell Spinner",        "ko": "지옥팽이",        "rot": 0,  "src_ja": "地獄独楽",    "confidence": "high"}
+    {
+      "en": "Strength Boost",
+      "ko": "공격 강화",
+      "rot": 90,
+      "src_ja": "攻撃強化",
+      "confidence": "med"
+    },
+    {
+      "en": "Full Immunity",
+      "ko": "이상 무효화",
+      "rot": 90,
+      "src_ja": "異常無効化",
+      "confidence": "high"
+    },
+    {
+      "en": "Ability Boost",
+      "ko": "거합 강화",
+      "rot": 0,
+      "src_ja": "居合強化",
+      "confidence": "low"
+    },
+    {
+      "en": "Sage Elixir",
+      "ko": "신선환약",
+      "rot": 0,
+      "src_ja": "神仙丸",
+      "confidence": "high"
+    },
+    {
+      "en": "Smoke Bomb",
+      "ko": "연기구슬",
+      "rot": 90,
+      "src_ja": "煙玉",
+      "confidence": "high"
+    },
+    {
+      "en": "Dragon Elixir",
+      "ko": "용뇌환약",
+      "rot": 0,
+      "src_ja": "竜脳丸",
+      "confidence": "high"
+    },
+    {
+      "en": "Igarashi Whetstone",
+      "ko": "이가라시 숫돌",
+      "rot": 0,
+      "src_ja": "五十嵐の砥石",
+      "confidence": "high"
+    },
+    {
+      "en": "Iyo Whetstone",
+      "ko": "이요 숫돌",
+      "rot": 0,
+      "src_ja": "伊予の砥石",
+      "confidence": "high"
+    },
+    {
+      "en": "Spirit Restored",
+      "ko": "영력환원",
+      "rot": 0,
+      "src_ja": "霊力還元",
+      "confidence": "med"
+    },
+    {
+      "en": "Satsuma Orange",
+      "ko": "밀감",
+      "rot": 0,
+      "src_ja": "蜜柑",
+      "confidence": "high"
+    },
+    {
+      "en": "Straw Millionaire I",
+      "ko": "새끼줄 I",
+      "rot": 0,
+      "src_ja": "わらしべ",
+      "confidence": "med"
+    },
+    {
+      "en": "Golden Hammer",
+      "ko": "요술망치",
+      "rot": 0,
+      "src_ja": "打出小槌",
+      "confidence": "high"
+    },
+    {
+      "en": "Hellish Magatama",
+      "ko": "황천 곡옥",
+      "rot": 0,
+      "src_ja": "悪鬼の印",
+      "confidence": "low"
+    },
+    {
+      "en": "Bombs",
+      "ko": "폭탄",
+      "rot": 0,
+      "confidence": "med"
+    },
+    {
+      "en": "Vitality Boost",
+      "ko": "지구 강화",
+      "rot": 0,
+      "src_ja": "体力＋５",
+      "confidence": "low"
+    },
+    {
+      "en": "Recovery Pellet",
+      "ko": "회복환약",
+      "rot": 0,
+      "src_ja": "回復丸",
+      "confidence": "high"
+    },
+    {
+      "en": "Herbal Remedy",
+      "ko": "어백초",
+      "rot": 0,
+      "src_ja": "御百草",
+      "confidence": "high"
+    },
+    {
+      "en": "White Lightning",
+      "ko": "탁주",
+      "rot": 0,
+      "src_ja": "幻影雷光",
+      "confidence": "low"
+    },
+    {
+      "en": "Longevity Elixir",
+      "ko": "연령단",
+      "rot": 0,
+      "src_ja": "延齢丹",
+      "confidence": "high"
+    },
+    {
+      "en": "Jyokenji Whetstone",
+      "ko": "상견사 숫돌",
+      "rot": 0,
+      "src_ja": "常見寺の砥石",
+      "confidence": "high"
+    },
+    {
+      "en": "Tiger-bile Tablet",
+      "ko": "호담환약",
+      "rot": 0,
+      "src_ja": "虎胆丸",
+      "confidence": "high"
+    },
+    {
+      "en": "Amber Magatama",
+      "ko": "호박 곡옥",
+      "rot": 0,
+      "src_ja": "水晶の勾玉",
+      "confidence": "low",
+      "notes": "Amber color → 수정? uncertain"
+    },
+    {
+      "en": "Agate Magatama",
+      "ko": "마노 곡옥",
+      "rot": 0,
+      "src_ja": "翡翠の勾玉",
+      "confidence": "low"
+    },
+    {
+      "en": "Soul Salvation",
+      "ko": "영력소비 없음",
+      "rot": 0,
+      "src_ja": "霊方反魂丹",
+      "confidence": "high"
+    },
+    {
+      "en": "Ghostly Magatama",
+      "ko": "영혼 곡옥",
+      "rot": 0,
+      "src_ja": "修羅の印",
+      "confidence": "low"
+    },
+    {
+      "en": "Restore Blade",
+      "ko": "칼영력 회복",
+      "rot": 0,
+      "src_ja": "刀霊力回復",
+      "confidence": "high"
+    },
+    {
+      "en": "Absorb Life",
+      "ko": "생명 흡수",
+      "rot": 0,
+      "src_ja": "生命吸収",
+      "confidence": "high"
+    },
+    {
+      "en": "Ritual Magatama 5",
+      "ko": "제사 곡옥 5",
+      "rot": 0,
+      "confidence": "low"
+    },
+    {
+      "en": "Inferno Amulet",
+      "ko": "내화부적",
+      "rot": 0,
+      "src_ja": "麻布の札",
+      "confidence": "high"
+    },
+    {
+      "en": "Mirror of Wisdom",
+      "ko": "팔척거울",
+      "rot": 0,
+      "src_ja": "八咫鏡",
+      "confidence": "high"
+    },
+    {
+      "en": "Ninja Arts",
+      "ko": "닌자술",
+      "rot": 0,
+      "confidence": "med"
+    },
+    {
+      "en": "Bear-bile Tablet 4",
+      "ko": "곰환약 4",
+      "rot": 0,
+      "src_ja": "熊胆丸",
+      "confidence": "high"
+    },
+    {
+      "en": "Roasted Yams",
+      "ko": "군고구마",
+      "rot": 0,
+      "src_ja": "焼き芋",
+      "confidence": "high"
+    },
+    {
+      "en": "Broiled Fish",
+      "ko": "생선구이",
+      "rot": 0,
+      "src_ja": "魚の塩焼き",
+      "confidence": "high"
+    },
+    {
+      "en": "Uchimori Whetstone",
+      "ko": "흐릿한 숫돌",
+      "rot": 0,
+      "src_ja": "内曇り砥石",
+      "confidence": "high"
+    },
+    {
+      "en": "Blessed Sake 3",
+      "ko": "신령주 3",
+      "rot": 0,
+      "src_ja": "お神酒",
+      "confidence": "med"
+    },
+    {
+      "en": "Healing Pellet",
+      "ko": "치료환약",
+      "rot": 0,
+      "src_ja": "治癒丸",
+      "confidence": "high"
+    },
+    {
+      "en": "Divine Panacea",
+      "ko": "영방반혼단",
+      "rot": 0,
+      "src_ja": "自動復活",
+      "confidence": "low"
+    },
+    {
+      "en": "Boost Attack",
+      "ko": "공격 강화",
+      "rot": 0,
+      "src_ja": "攻撃強化",
+      "confidence": "high",
+      "notes": "may dup with Strength Boost; EN variants"
+    },
+    {
+      "en": "Omura Whetstone 2",
+      "ko": "큰마을 숫돌 2",
+      "rot": 0,
+      "src_ja": "大村の砥石",
+      "confidence": "high"
+    },
+    {
+      "en": "Roasted Squid",
+      "ko": "오징어구이",
+      "rot": 0,
+      "src_ja": "焼きイカ",
+      "confidence": "high"
+    },
+    {
+      "en": "Auto Recover",
+      "ko": "자동 회복",
+      "rot": 0,
+      "src_ja": "自動回復",
+      "confidence": "high"
+    },
+    {
+      "en": "Holy Illusion",
+      "ko": "환영 아지랑이",
+      "rot": 0,
+      "src_ja": "幻影陽炎",
+      "confidence": "low"
+    },
+    {
+      "en": "Sweet Rice Wine II",
+      "ko": "감주 II",
+      "rot": 0,
+      "src_ja": "甘酒",
+      "confidence": "high"
+    },
+    {
+      "en": "Okoi",
+      "ko": "오코이",
+      "rot": 90,
+      "confidence": "med",
+      "notes": "proper noun, keep transliteration"
+    },
+    {
+      "en": "Wasp Swarm",
+      "ko": "땅벌",
+      "rot": 0,
+      "src_ja": "地ヶ蜂",
+      "confidence": "high"
+    },
+    {
+      "en": "Shadow Wasp",
+      "ko": "그림자벌",
+      "rot": 0,
+      "src_ja": "影蜂",
+      "confidence": "high"
+    },
+    {
+      "en": "Triple Lightning",
+      "ko": "뇌광 3연",
+      "rot": 0,
+      "src_ja": "雷光三連",
+      "confidence": "high"
+    },
+    {
+      "en": "Holy Comet",
+      "ko": "성천 혜성",
+      "rot": 0,
+      "src_ja": "星天彗星 弐",
+      "confidence": "low"
+    },
+    {
+      "en": "Bamboo Spear",
+      "ko": "대나무 창",
+      "rot": 0,
+      "confidence": "med"
+    },
+    {
+      "en": "Triple Blaze",
+      "ko": "화염 3연",
+      "rot": 0,
+      "src_ja": "焔三連",
+      "confidence": "high"
+    },
+    {
+      "en": "Great Sun Ring",
+      "ko": "대일륜",
+      "rot": 0,
+      "src_ja": "大日輪",
+      "confidence": "high"
+    },
+    {
+      "en": "Holy Blessing",
+      "ko": "성스러운 축복",
+      "rot": 0,
+      "confidence": "low"
+    },
+    {
+      "en": "Auto Restore",
+      "ko": "자동 회복",
+      "rot": 0,
+      "src_ja": "自動回復",
+      "confidence": "med",
+      "notes": "may dup with Auto Recover"
+    },
+    {
+      "en": "Holy Benediction",
+      "ko": "성스러운 기도",
+      "rot": 0,
+      "confidence": "low"
+    },
+    {
+      "en": "Holy Absolution",
+      "ko": "성스러운 사면",
+      "rot": 0,
+      "confidence": "low"
+    },
+    {
+      "en": "Hell Spinner",
+      "ko": "지옥팽이",
+      "rot": 0,
+      "src_ja": "地獄独楽",
+      "confidence": "high"
+    }
   ]
 }

@@ -425,6 +425,11 @@ python tools/auto_font_import.py
 - **한자 붓글씨는 보존** — 영문 텍스트만 한글로 교체
 - **폰트**: Griun_PolSensibility-Rg.ttf (그리운 경찰감성체)
 - **작업 후 반드시 texture_localize_config.json에 기록** — 영역 좌표, 번역 텍스트, 폰트 크기, status 업데이트
+- **★ 텍스처 region 텍스트를 스크립트로 직접 수정하면 관련 JSON 3종을 반드시 모두 동기화할 것 (필수)**:
+  ① `translations/texture_localize_config.json` (네이티브 렌더 권위 — region `text`)
+  ② `translations/ui_editor_index.json` (UI 에디터 표시용 인덱스 — 해당 hash region의 top-level `text` **와** `native.text` 둘 다. `_id`로 매칭)
+  ③ `textures/kr/ui/<hash>.json` (라벨 참조 파일이 있는 텍스처면 `ko`도 갱신)
+  - UI 에디터로 저장(POST /api/regions)하면 ①②는 자동 역기록되나, **스크립트 직접 수정 시엔 ②③이 누락돼 에디터에 옛 값이 보임** (인덱스 캐시 미갱신). 직접 수정 후엔 셋 다 갱신 + `texture_localize.py <hash>` 재렌더.
 - **출력 위치**: Vita3K `import/` 폴더 + 리포 `textures/kr/ui/` 양쪽에 저장 (`texture_localize.py`가 자동 복사)
 - **수동 편집 텍스처 (regions 없음)**: `textures/kr/ui/`에 커밋된 버전을 권위로 간주. `texture_localize.py`가 자동 SKIP — 덮어쓰기 금지
 
