@@ -1,5 +1,19 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-27] 타이틀 화면 텍스처 HD화 (이슈 #11, 커밋 dad8e10)
+- 신고: 오보로 무라마사/겐로쿠 괴기담 타이틀의 한문 배경·로고가 저화질. 8EFF960FC088FDD7이 HD팩과 같은 4096×2048인데 화질 떨어짐.
+- **원인**: 초기에 non-UHD 베이스에 한글을 합성한 잔재. HD팩(Muramasa Complete 2.0, ~/Downloads) 선명본 대신 저화질 업스케일본을 originals로 썼음.
+- **수정**:
+  - 8EFF: originals를 HD팩 선명본으로 교체 + region 방식 전환. 블러 한글(겐로쿠 괴기담/오보로 무라마사) 재합성, OBOROMURAMASA 영어 의도적 유지.
+  - 73420(본편 타이틀): 1024→UHD 4096 베이스, 오보로 무라마사 한글 재렌더(manual_regions→regions 활성화).
+  - 1823D39C(도토미 지명) 갱신.
+- **도구 추가(재사용)**: texture_localize region `blur`(가우시안 글로우, 알파만 블러+RGB 글자색 고정으로 헤일로 제거),
+  ui_editor 속성에 블러(px)·글씨 투명도(%) 슬라이더, build_ui_index blur top-level(리로드 초기화 방지), index.html 캐시버스트.
+- **교훈/한계**: 편집기 미리보기는 브라우저 canvas(measureText) 기반이라 실제 PIL 렌더와 폰트 메트릭이 달라 100% 일치 불가
+  (미세 위치차·박스경계 글로우 잘림). **위치 정밀 확인은 저장 및 미리보기(실제 PIL 렌더) 기준**. 렌더 출력은 정상.
+  렌더러/미리보기 위치는 "박스(w,h) 표준 렌더 → 패딩+블러 → 제자리 합성"으로 단순 통일(fit_to_box로 글자 박스맞춤).
+- 워크플로: HD 베이스↔OLD 배경 스왑으로 위치참고, originals 스왑 후 texture_localize.py 재렌더 + import 복사 → Vita3K 확인.
+
 ## [2026-05-26] 아이템명 텍스처↔시스템(itemdata) 불일치 통일 (커밋 fabd992)
 - 오의명 통일에 이어, 아이템명 아틀라스 텍스처(7DC6CF5A)가 itemdata와 어긋난 것 전수 통일.
 - **원인**: 원본은 영어판. 영어→추측일본어(src_ja, confidence low 다수)→한글로 번역해 곡옥/장신구가 대거 오매칭.
