@@ -3,40 +3,221 @@
   "textures": [
     {
       "hash": "8EFF960FC088FDD7",
-      "size": "1024x512",
-      "description": "게임 로고 그림자/미선택 상태. GENROKU LEGENDS + OBOROMURAMASA 텍스트 삭제",
-      "status": "done",
-      "method": "텍스트 영역 알파를 0으로 설정하여 그림자 제거. 캘리그래피 보존. 수동 편집.",
+      "size": "4096x2048",
+      "description": "타이틀 로고 그림자/배경 한문 레이어(UHD). 블러 한글 부제 겐로쿠 괴기담/오보로 무라마사. 영어 OBOROMURAMASA는 의도적 유지.",
+      "method": "UHD 베이스(source) + region 블러 한글. 그리운 경찰감성체. 위치는 ui_editor에서 미세조정.",
       "notes": "원본: textures/originals/8EFF960FC088FDD7.png",
-      "source": "textures/originals/8EFF960FC088FDD7.png"
+      "source": "textures/originals/8EFF960FC088FDD7.png",
+      "regions": [
+        {
+          "_id": "K1",
+          "x": 404,
+          "y": 1829,
+          "w": 283,
+          "h": 71,
+          "text": "겐로쿠 괴기담",
+          "color": [
+            255,
+            255,
+            255,
+            229
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": true,
+          "font_ratio": 0.78,
+          "render": true,
+          "layout": "horizontal",
+          "background": "clear_alpha",
+          "blur": 4,
+          "letter_spacing": -2,
+          "outline_width": 3,
+          "outline_color": [
+            255,
+            255,
+            255,
+            229
+          ]
+        },
+        {
+          "_id": "K2",
+          "x": 1339,
+          "y": 1789,
+          "w": 383,
+          "h": 173,
+          "text": "오보로 무라마사",
+          "color": [
+            255,
+            255,
+            255,
+            229
+          ],
+          "align": "center",
+          "v_align": "top",
+          "clear": false,
+          "fit_to_box": true,
+          "font_ratio": 0.4,
+          "render": true,
+          "layout": "horizontal",
+          "background": "transparent",
+          "pad_x": 5,
+          "pad_y": 7,
+          "blur": 5,
+          "letter_spacing": -6,
+          "outline_width": 3,
+          "outline_color": [
+            255,
+            255,
+            255,
+            229
+          ]
+        },
+        {
+          "x": 441,
+          "y": 1811,
+          "w": 234,
+          "h": 20,
+          "text": "",
+          "font_size": 48,
+          "align": "center",
+          "v_align": "center",
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "x": 409,
+          "y": 1898,
+          "w": 286,
+          "h": 17,
+          "text": "",
+          "font_size": 48,
+          "align": "center",
+          "v_align": "center",
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "x": 685,
+          "y": 1835,
+          "w": 10,
+          "h": 35,
+          "text": "",
+          "font_size": 48,
+          "align": "center",
+          "v_align": "center",
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "x": 686,
+          "y": 1881,
+          "w": 13,
+          "h": 28,
+          "text": "",
+          "font_size": 48,
+          "align": "center",
+          "v_align": "center",
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ]
+        }
+      ]
     },
     {
       "hash": "73420FAEA9F664FD",
-      "size": "1024x512",
+      "size": "4096x2048",
       "description": "본편 타이틀 선택 상태 (MURAMASA REBIRTH → 오보로 무라마사)",
-      "status": "done",
       "method": "MURAMASA REBIRTH 영문 제거 + 오보로 무라마사 한글 렌더링 (흰 글씨 + 검은 테두리). 수동 편집.",
-      "notes": "v1(c944af1) 의 한글 베이크 PNG 를 originals 로 복원. native 1024×512 크기. 자동 render 비활성(manual_regions).",
+      "notes": "UHD 베이스(source) + region 한글. 오보로 무라마사(선명, 블러X). MURAMASA REBIRTH 영어 제거.",
       "source": "textures/originals/73420FAEA9F664FD.png",
-      "manual_regions": [
+      "regions": [
         {
-          "x": 2045,
+          "x": 2077,
           "y": 5,
-          "w": 2021,
+          "w": 1989,
           "h": 268,
           "text": "오보로 무라마사",
           "align": "center",
           "v_align": "center",
           "layout": "horizontal",
-          "font_ratio": 0.86,
+          "font_ratio": 0.44,
           "background": "clear_alpha",
-          "render": true
+          "render": true,
+          "_id": "K1",
+          "clear": true,
+          "outline_width": 9,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "fit_to_box": true
         },
         {
-          "x": 2041,
+          "x": 2048,
           "y": 269,
-          "w": 1976,
+          "w": 1969,
           "h": 659,
+          "text": "",
+          "font_size": 48,
+          "align": "center",
+          "v_align": "center",
+          "layout": "horizontal",
+          "font_ratio": 0.85,
+          "background": "clear_alpha",
+          "render": true,
+          "outline_width": 3,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "_id": "K2",
+          "clear": true
+        },
+        {
+          "x": 2053,
+          "y": 0,
+          "w": 34,
+          "h": 281,
           "text": "",
           "font_size": 48,
           "align": "center",

@@ -99,6 +99,7 @@ def localize_regions(tex):
             "pad_y": r.get("pad_y"),
             "background": r.get("background"),
             "render": r.get("render", True),
+            "blur": r.get("blur", 0),
             "native": r,
         })
     return out

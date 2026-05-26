@@ -17,9 +17,10 @@ bbox를 자동 측정해서 한글 alpha bbox를 거기에 정확히 정렬하�
 import json
 import sys
 import os
+import math
 import platform
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import numpy as np
 
 try:
@@ -312,10 +313,10 @@ def process_texture(hash_id, tex_config, preview=False):
         result = Image.fromarray(result_arr)
     else:
         for region in tex_config.get("regions", []):
-            x = region["x"]
-            y = region["y"]
-            w = region["w"]
-            h = region["h"]
+            x = int(round(region["x"]))
+            y = int(round(region["y"]))
+            w = int(round(region["w"]))
+            h = int(round(region["h"]))
             text = region["text"]
             font_path = region.get("font", DEFAULT_FONT)
             # font_size 가 명시되어 있으면 절대값. 없거나 0이면 font_ratio 기반 자동 계산.
@@ -375,16 +376,31 @@ def process_texture(hash_id, tex_config, preview=False):
                     outline_fill=tuple(region.get("outline_color") or (0,0,0,255)) if region.get("outline_width") else None,
                 )
             else:
-                text_img = render_text_to_image(
-                    w, h, text, font_path, font_size,
+                rt_kwargs = dict(
                     color=color, align=align, bold=bold, v_align=v_align,
                     fit_to_box=bool(region.get("fit_to_box", False)),
                     letter_spacing=int(region.get("letter_spacing") or 0),
                     outline_width=int(region.get("outline_width", 0) or 0),
                     outline_color=tuple(region.get("outline_color") or (0, 0, 0, 255)),
                 )
-                # 3. 합성
-                result.paste(text_img, (x, y), text_img)
+                # 3. 합성 — 전체 크기 투명 오버레이에 텍스트를 올린 뒤 alpha_composite.
+                #    paste(mask) 는 반투명에서 알파가 비선형으로 깎이므로 사용하지 않는다.
+                # 텍스트를 박스(w,h)에 표준 정렬로 렌더(비블러와 동일 위치) 후, blur 면 패딩+블러.
+                # 위치는 비블러와 동일(=미리보기와 일치). fit_to_box 로 글자가 박스에 맞아 잘리지 않음.
+                blur = float(region.get("blur") or 0)
+                overlay = Image.new("RGBA", result.size, (0, 0, 0, 0))
+                text_img = render_text_to_image(w, h, text, font_path, font_size, **rt_kwargs)
+                if blur > 0:
+                    pad = int(blur * 3) + 8
+                    big = Image.new("RGBA", (w + 2 * pad, h + 2 * pad), (0, 0, 0, 0))
+                    big.paste(text_img, (pad, pad))
+                    a = big.split()[3].filter(ImageFilter.GaussianBlur(blur))  # 알파만 블러
+                    glow = Image.new("RGBA", big.size, (color[0], color[1], color[2], 0))
+                    glow.putalpha(a)  # RGB는 글자색 고정(헤일로 제거)
+                    overlay.paste(glow, (x - pad, y - pad))
+                else:
+                    overlay.paste(text_img, (x, y))
+                result = Image.alpha_composite(result, overlay)
 
     output_scale = int(tex_config.get("output_scale", 1))
     if output_scale > 1:

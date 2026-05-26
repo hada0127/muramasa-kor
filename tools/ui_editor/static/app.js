@@ -171,17 +171,27 @@ function _rotateCanvas(src, deg) {  // PIL rotate(CCW 양수) 동일
 // 캔버스로 PIL 렌더러(_render_aligned) 알고리즘을 그대로 복제 → 생성 결과와 거의 동일.
 // 텍스트를 타이트 캔버스에 잉크 기준 렌더 → 회전 → 박스 안에 정렬 배치.
 function makeTextLayer(r, w, h) {
+  // blur region 은 글로우가 박스 밖으로 번지므로 캔버스를 대칭 패딩만큼 키우고 -pad 로 위치(위치 불변).
+  const blur = parseFloat(r.blur) || 0;
+  const pad = blur > 0 ? Math.ceil(blur * 3) + 8 : 0;
+  const cw = Math.round(w + 2 * pad), ch = Math.round(h + 2 * pad);
   const cv = document.createElement("canvas");
-  cv.width = Math.max(1, Math.round(w));
-  cv.height = Math.max(1, Math.round(h));
+  cv.width = Math.max(1, cw);
+  cv.height = Math.max(1, ch);
   cv.className = "region-text";
-  cv.style.width = w * SCALE + "px";
-  cv.style.height = h * SCALE + "px";
-  drawRegionTextCanvas(cv.getContext("2d"), r, w, h);
+  if (pad) {
+    cv.style.inset = "auto";
+    cv.style.left = (-pad * SCALE) + "px";
+    cv.style.top = (-pad * SCALE) + "px";
+    cv.style.overflow = "visible";
+  }
+  cv.style.width = cw * SCALE + "px";
+  cv.style.height = ch * SCALE + "px";
+  drawRegionTextCanvas(cv.getContext("2d"), r, w, h, pad);
   return cv;
 }
 
-function drawRegionTextCanvas(ctx, r, w, h) {
+function drawRegionTextCanvas(ctx, r, w, h, pad = 0) {
   const isLoc = CUR.system === "localize";
   let rot = parseInt(r.rotation) || 0;
   let layout = r.layout;
@@ -299,9 +309,13 @@ function drawRegionTextCanvas(ctx, r, w, h) {
   }
 
   const layer = rot ? _rotateCanvas(temp, rot) : temp;
-  const bx = pxl + _offNum(align, innerW, layer.width);
-  const by = pyl + _offNum(valign, innerH, layer.height);
+  // pad(대칭) 만큼 밀어 캔버스 안에서 그리되 위치는 박스 기준 정렬 그대로 유지.
+  const bx = pad + pxl + _offNum(align, innerW, layer.width);
+  const by = pad + pyl + _offNum(valign, innerH, layer.height);
+  const blurPx = parseFloat(r.blur) || 0;  // 캔버스가 native 해상도라 그대로 px
+  if (blurPx > 0) ctx.filter = `blur(${blurPx}px)`;
   ctx.drawImage(layer, Math.round(bx), Math.round(by));
+  if (blurPx > 0) ctx.filter = "none";
 }
 
 // 박스를 텍스처 범위 안으로 클램프 (영역 밖 이탈 방지)
@@ -369,6 +383,7 @@ function renderProps() {
   // 글씨 색 — 양쪽 모두 화이트/블랙 enum (단순화). localize 의 RGBA 는 자동 매핑.
   const colorVal = isLoc ? colorToName(r.color) : (r.text_color || "black");
   html += selField("text_color", "글씨 색", colorVal, [["black", "블랙"], ["white", "화이트"]]);
+  if (isLoc) html += sliderField("text_alpha", "글씨 투명도 %", rgbaAlphaPct(r.color || [255, 255, 255, 255]), 0, 100, 1);
   // 배경 색 / 처리 — 같은 enum 으로 통합. localize 는 clear=true ↔ clear_alpha 로 매핑.
   let bgVal;
   if (isLoc) bgVal = r.clear ? "clear_alpha" : "transparent";
@@ -395,6 +410,7 @@ function renderProps() {
     <div>${sliderField("pad_x", "좌우 여백(px)", r.pad_x ?? 0, 0, 200, 1)}</div>
     <div>${sliderField("pad_y", "상하 여백(px)", r.pad_y ?? 0, 0, 200, 1)}</div></div>`;
   html += outlineFields(r);
+  html += sliderField("blur", "블러 (px, 0=없음)", r.blur || 0, 0, 80, 1);
   if (isLoc) html += checkField("fit_to_box", "박스에 맞춰 축소", r.fit_to_box);
   html += checkField("render", "이 영역 렌더링", r.render !== false);
   form.innerHTML = html;
@@ -481,8 +497,16 @@ function readProps() {
     const k = el.dataset.k;
     const v = el.type === "checkbox" ? el.checked : el.value;
     if (k === "text_color") {
-      if (isLoc) r.color = v === "black" ? [0, 0, 0, 255] : [255, 255, 255, 255];
-      else r.text_color = v;
+      if (isLoc) {
+        const a = (Array.isArray(r.color) && r.color.length > 3) ? r.color[3] : 255;
+        r.color = v === "black" ? [0, 0, 0, a] : [255, 255, 255, a];  // 알파 보존
+      } else r.text_color = v;
+    } else if (k === "text_alpha") {
+      if (isLoc) {
+        const c = Array.isArray(r.color) ? r.color.slice() : [255, 255, 255, 255];
+        c[3] = Math.round(Math.max(0, Math.min(100, parseFloat(v) || 0)) * 2.55);
+        r.color = c;
+      }
     } else if (k === "background") {
       if (isLoc) {
         // localize 는 clear true/false 만 표현 가능 → clear_alpha/clear_white 는 clear=true 로 매핑
@@ -508,6 +532,8 @@ function readProps() {
       r[k] = n > 0 ? n : null;
     } else if (k === "font_ratio" || k === "padding") {
       r[k] = parseFloat(v) || 0;
+    } else if (k === "blur") {
+      r.blur = parseFloat(v) || 0;
     } else if (k === "outline_width") {
       r.outline_width = parseInt(v) || 0;
     } else if (k === "outline_alpha" || k === "outline_hex") {

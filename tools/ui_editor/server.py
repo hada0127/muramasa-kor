@@ -100,7 +100,7 @@ def _to_native_localize(r):
         nr["orient"] = r["orient"]
     # UI 통일로 추가된 place-style 속성도 round-trip 보존
     for k in ("layout", "rotation", "font_ratio", "font_px",
-             "pad_x", "pad_y", "background", "render"):
+             "pad_x", "pad_y", "background", "render", "blur"):
         v = r.get(k)
         if v is None or v == "" or v == 0:
             nr.pop(k, None)
