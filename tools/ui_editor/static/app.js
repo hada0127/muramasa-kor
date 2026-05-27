@@ -6,6 +6,8 @@ let CUR = null;              // 현재 선택 텍스처 entry (작업 사본)
 let SEL = -1;                // 선택된 region 인덱스
 let SCALE = 1;               // 텍스처좌표→화면픽셀 배율
 let NAT = [1, 1];            // 텍스처 원본 크기 [w,h]
+let VARIANT_HASHES = new Set(); // ✕ 변형 대상 해시
+let VARIANT_MODE = false;    // ✕ 편집 모드 여부
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -29,20 +31,23 @@ async function api(path, body) {
 function renderList() {
   const q = $("#search").value.trim().toLowerCase();
   const sys = new Set($$(".sysfilter:checked").map((c) => c.value));
+  const xvarOnly = $("#filter-xvariant") && $("#filter-xvariant").checked;
   const ul = $("#files");
   ul.innerHTML = "";
   let shown = 0;
   for (const t of INDEX.textures) {
     if (!sys.has(t.system)) continue;
+    if (xvarOnly && !VARIANT_HASHES.has(t.hash)) continue;
     const hay = (t.hash + " " + (t.memo || "") + " " + (t.description || "")).toLowerCase();
     if (q && !hay.includes(q)) continue;
     shown++;
+    const isVar = VARIANT_HASHES.has(t.hash);
     const li = document.createElement("li");
     li.className = "file-row" + (CUR && CUR.hash === t.hash ? " active" : "");
     li.innerHTML = `
       <img loading="lazy" src="/api/image?path=${encodeURIComponent(t.png)}">
       <div class="file-meta">
-        <div class="file-hash">${t.hash}<span class="sys-badge sys-${t.system}">${t.system}</span></div>
+        <div class="file-hash">${t.hash}<span class="sys-badge sys-${t.system}">${t.system}</span>${isVar ? '<span class="sys-badge xvar-badge">✕변형</span>' : ''}</div>
         <div class="file-memo">${escapeHtml(t.memo || "")}</div>
         <div class="file-desc">${escapeHtml(t.description || "")}</div>
       </div>`;
@@ -62,6 +67,11 @@ function selectTexture(hash) {
   if (!found) return;
   CUR = JSON.parse(JSON.stringify(found));
   SEL = -1;
+  if (VARIANT_MODE) {  // 다른 텍스처 선택 시 ✕ 편집 모드 해제
+    VARIANT_MODE = false;
+    $("#variant-banner").hidden = true;
+    $("#editor").classList.remove("variant-mode");
+  }
   history.replaceState(null, "", "#" + hash);  // 새로고침해도 이어보기
 
   $("#cur-hash").textContent = `${CUR.hash}  ·  ${CUR.system}  ·  ${(CUR.size || []).join("×")}`;
@@ -670,6 +680,7 @@ async function saveMemo() {
 }
 
 async function renderPreview() {
+  if (VARIANT_MODE) { return saveVariantRegions(); }  // ✕ 편집 모드면 변형 저장으로
   $("#spinner").hidden = false;  // 생성 중 스피너
   try {
     // 1) 전체 영역을 config에 저장 → 2) 실제 textures/kr 이미지 생성
@@ -694,7 +705,7 @@ async function renderPreview() {
 // ===== ✕ 버튼 변형 (이슈 #12) =====
 let VT_CAVEAT = "";
 async function refreshVariantPanel() {
-  if (!CUR) { $("#variant-panel").hidden = true; return; }
+  if (!CUR || VARIANT_MODE) { if (!VARIANT_MODE) $("#variant-panel").hidden = true; return; }
   $("#variant-panel").hidden = false;
   const info = await api(`/api/button_variants?hash=${encodeURIComponent(CUR.hash)}`);
   VT_CAVEAT = info.caveat || "";
@@ -705,7 +716,10 @@ async function refreshVariantPanel() {
   $("#vt-body").hidden = !included;
   if (included) {
     $("#vt-memo").value = sel.memo || "";
-    $("#vt-noop").hidden = sel.has_ops;
+    // ops/exclude 둘 다 없을 때만 "수동 PNG 편집" 안내
+    $("#vt-noop").hidden = sel.has_ops || sel.editable;
+    // localize 변형이면 region 편집 모드 제공
+    $("#vt-edit").hidden = !(sel.editable && CUR.system === "localize");
     const bust = "&t=" + Date.now();
     $("#vt-base").src = `/api/image?path=${encodeURIComponent(sel.base_png)}${bust}`;
     $("#vt-variant").src = sel.variant_png
@@ -713,13 +727,55 @@ async function refreshVariantPanel() {
       : "";
   }
 }
+
+// ✕ 편집 모드: 기본(○) region을 캔버스에 띄우고, 현재 exclude된 것은 미리 제거.
+async function enterVariantMode() {
+  if (!CUR) return;
+  const res = await api(`/api/variant_regions?hash=${encodeURIComponent(CUR.hash)}`);
+  if (!res.ok) { toast(res.error || "region 로드 실패", true); return; }
+  const excl = new Set(res.excluded || []);
+  // 이미 exclude된 region은 빼고 표시(현재 ✕ 상태)
+  CUR.regions = (res.regions || []).filter((r) => !excl.has(r.native && r.native._id));
+  VARIANT_MODE = true;
+  SEL = -1;
+  $("#variant-banner").hidden = false;
+  $("#vb-hash").textContent = CUR.hash;
+  $("#variant-panel").hidden = true;
+  $("#editor").classList.add("variant-mode");
+  drawRegions();
+  renderProps();
+  toast("✕ 편집 모드 — text='O' region을 삭제하고 저장하세요");
+}
+function exitVariantMode() {
+  VARIANT_MODE = false;
+  $("#variant-banner").hidden = true;
+  $("#editor").classList.remove("variant-mode");
+  selectTexture(CUR.hash);  // 기본(○) 상태로 복귀
+}
+async function saveVariantRegions() {
+  if (SEL >= 0) readProps();
+  // 남긴 region들의 _id (삭제한 나머지가 서버에서 exclude로 계산됨)
+  const keptIds = CUR.regions.map((r) => r.native && r.native._id).filter(Boolean);
+  $("#spinner").hidden = false;
+  try {
+    const res = await api("/api/save_variant_regions", { hash: CUR.hash, kept_ids: keptIds });
+    if (!res.ok) { toast(res.error || "저장 실패", true); return; }
+    toast("✕판 저장·렌더 완료 (제외 " + (res.excluded || []).join(", ") + ")");
+    $("#modal-title").textContent = `✕ 변형 렌더 완료: ${res.path}`;
+    $("#modal-img").src = `/api/image?path=${encodeURIComponent(res.path)}&t=${Date.now()}`;
+    $("#modal-log").textContent = "제외된 region: " + (res.excluded || []).join(", ");
+    $("#modal").hidden = false;
+  } finally { $("#spinner").hidden = true; }
+}
 async function vtToggle() {
   const include = $("#vt-include").checked;
   const res = await api("/api/button_variant_toggle",
     { hash: CUR.hash, include, label: (CUR.memo || CUR.hash) });
   if (!res.ok) { toast(res.error || "실패", true); return; }
-  if (include) await api("/api/button_variant_build", { hash: CUR.hash });
+  if (include) { VARIANT_HASHES.add(CUR.hash); await api("/api/button_variant_build", { hash: CUR.hash }); }
+  else VARIANT_HASHES.delete(CUR.hash);
   toast(include ? "✕ 변형 대상에 추가" : "✕ 변형 대상에서 제거");
+  renderList();
   refreshVariantPanel();
 }
 async function vtSaveMemo() {
@@ -752,9 +808,14 @@ async function init() {
   try { await document.fonts.load('100px Griun'); } catch (e) {}
   document.fonts.ready.then(() => { if (CUR) drawRegions(); });  // 늦게 로드돼도 재그림
   INDEX = await api("/api/index");
+  try {
+    const vinfo = await api("/api/button_variants");
+    VARIANT_HASHES = new Set((vinfo.variants || []).map((v) => v.hash));
+  } catch (e) {}
   renderList();
   $("#search").oninput = renderList;
   $$(".sysfilter").forEach((c) => (c.onchange = renderList));
+  $("#filter-xvariant").onchange = renderList;
   $("#bg-color").onchange = () => {
     $("#stage").className = "bg-" + $("#bg-color").value;
   };
@@ -772,6 +833,9 @@ async function init() {
   $("#vt-memo-save").onclick = vtSaveMemo;
   $("#vt-rebuild").onclick = vtRebuild;
   $("#vt-export").onclick = vtExport;
+  $("#vt-editmode").onclick = enterVariantMode;
+  $("#vb-save").onclick = saveVariantRegions;
+  $("#vb-exit").onclick = exitVariantMode;
   $("#modal-close").onclick = () => ($("#modal").hidden = true);
   $("#modal").onclick = (e) => { if (e.target.id === "modal") $("#modal").hidden = true; };
   $$(".modal-bgsel button").forEach((b) => (b.onclick = () => {

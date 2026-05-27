@@ -172,3 +172,14 @@ input[type=color]::-webkit-color-swatch { border: none; border-radius: 3px; }
 .vt-actions { display: flex; gap: 8px; margin-top: 8px; }
 .vt-actions button { flex: 1; }
 .vt-caveat { font-size: 11px; line-height: 1.5; margin-top: 10px; color: #8a8f99; }
+
+/* ✕ 변형 목록 뱃지 / 필터 / 편집 모드 (이슈 #15) */
+.xvar-badge { background: #c0392b !important; color: #fff; }
+.xvar-filter { color: #e07a6b; }
+#variant-banner { display: flex; align-items: center; gap: 8px; background: #4a1f1a;
+  border-bottom: 1px solid #c0392b; color: #f3d9d4; padding: 6px 10px; font-size: 12px; }
+#variant-banner[hidden] { display: none; }
+#variant-banner code { background: #2a1210; padding: 1px 4px; border-radius: 3px; }
+#variant-banner .spacer { flex: 1; }
+#editor.variant-mode #overlay { outline: 2px dashed #c0392b; outline-offset: -2px; }
+.vt-edit { margin: 8px 0; padding-top: 8px; border-top: 1px dashed #3a3d45; }
