@@ -1,5 +1,34 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-27] GitHub 이슈 #12 — ○/✕ 선택 버튼 ✕ 추가팩 (구현 완료, 미발행)
+- 신고: 선택/확인 버튼이 ○로 보여 헷갈림. ✕도 골라 쓰게 해달라.
+- **원인/이력**: 커밋 ee37270(EDA6F03E 확인 글리프)·354bbc6/1db34e5(3B58B76C 시작화면)에서
+  의도적 X→O 변경. 메인테이너 환경이 ○ 확인이라 추정.
+- **codex+gemini 병렬 협의(정책)** — 수렴: 게임이 글리프를 자체 텍스처로 직접 그림
+  (codex가 Vita3K 소스 `SCE_SYSTEM_PARAM_ID_ENTER_BUTTON`/`sys_button` 직접 확인).
+  텍스처 교체는 '표시'만 바꾸고 '입력 의미'는 안 바뀜 → ✕판은 **Vita3K Enter Button=Cross**와
+  세트로 써야 함. 스왑(○↔✕)이 단방향 덮기보다 안전. 결론을 패처·릴리스 노트에 명시.
+- **사용자 결정**: 추가 덮어쓰기 팩(작은 별도 zip, 본편은 ○ 유지) + EDA6F03E·3B58B76C 둘 다.
+- **대상 텍스처(픽셀 정밀 분석, 게임은 알파만 사용)**:
+  - EDA6F03E: 확인 글리프 셀(x4-79,y256-351)만 ○로 덮였음 → ✕판=원본 ✕ 복원(box[0,254,82,100]).
+    확인=✕, 취소=○. (큰 ○/✕ 글리프는 원본·kr 동일, 작은 확인 슬롯만 변경됐던 것)
+  - 3B58B76C: ○ 엔소 링 슬롯(x1922-2165,y14-255)이 시작 글리프. 원본엔 ○·✕ 붓글씨 둘 다 있는데
+    kr이 ✕(CC x1977-2190,y281-520)를 지웠음. ✕판=○ 링 slot clear + 원본 ✕ CC를 중앙배치.
+    '누르세요' 텍스트엔 ○ 문자 베이크 없음(글리프 슬롯만 교체). 변경이 ○링 bbox에만 국한 검증.
+- **구현(커밋 4개)**:
+  - `translations/button_variants.json` 레지스트리 + `tools/build_button_variant.py` 데이터기반 생성기
+    (restore_original/clear_box/paste_original_cc, 빈 ops면 수동 PNG 보존/○복제).
+  - `textures/kr/ui_xbutton/` ✕판 2개(main 릴리스 미포함=격리).
+  - `tools/build_release.py` package_button_variant_addon()(--xbutton-only/--no-xbutton) +
+    `tools/apply_xbutton_patch.py` 독립 설치기(✕설치 / --restore로 ○복원, Cross 안내).
+    addon zip=xbutton/(✕)+restore-o/(○)+패처+README, dry-run 검증 OK.
+  - UI에디터 우측 '✕ 버튼 변형' 패널(포함토글·메모·○/✕미리보기·재생성·내보내기) + API 4종.
+  - 문서: CLAUDE.md 섹션/트리/표, README 릴리즈 안내, release/NOTES_xbutton.md.
+- 검증: 생성기 재실행 idempotent(git diff 0), py compile/json valid, 서버 API curl 통과.
+  브라우저 시각검증은 원격 Chrome이 로컬 127.0.0.1 미도달로 막힘(기능은 curl로 갈음).
+  인게임 최종 확인은 사용자(macOS Vita3K 자동화 불가).
+- **미발행**: 버전 표기·`gh release`는 사용자 확인 대기.
+
 ## [2026-05-27] 타이틀 화면 텍스처 HD화 (이슈 #11, 커밋 dad8e10)
 - 신고: 오보로 무라마사/겐로쿠 괴기담 타이틀의 한문 배경·로고가 저화질. 8EFF960FC088FDD7이 HD팩과 같은 4096×2048인데 화질 떨어짐.
 - **원인**: 초기에 non-UHD 베이스에 한글을 합성한 잔재. HD팩(Muramasa Complete 2.0, ~/Downloads) 선명본 대신 저화질 업스케일본을 originals로 썼음.
