@@ -71,6 +71,7 @@ function selectTexture(hash) {
   renderList();
   loadImage();
   renderProps();
+  refreshVariantPanel();
 }
 
 function loadImage() {
@@ -690,6 +691,61 @@ async function renderPreview() {
   }
 }
 
+// ===== ✕ 버튼 변형 (이슈 #12) =====
+let VT_CAVEAT = "";
+async function refreshVariantPanel() {
+  if (!CUR) { $("#variant-panel").hidden = true; return; }
+  $("#variant-panel").hidden = false;
+  const info = await api(`/api/button_variants?hash=${encodeURIComponent(CUR.hash)}`);
+  VT_CAVEAT = info.caveat || "";
+  $("#vt-caveat").textContent = VT_CAVEAT;
+  const sel = info.selected;
+  const included = !!sel;
+  $("#vt-include").checked = included;
+  $("#vt-body").hidden = !included;
+  if (included) {
+    $("#vt-memo").value = sel.memo || "";
+    $("#vt-noop").hidden = sel.has_ops;
+    const bust = "&t=" + Date.now();
+    $("#vt-base").src = `/api/image?path=${encodeURIComponent(sel.base_png)}${bust}`;
+    $("#vt-variant").src = sel.variant_png
+      ? `/api/image?path=${encodeURIComponent(sel.variant_png)}${bust}`
+      : "";
+  }
+}
+async function vtToggle() {
+  const include = $("#vt-include").checked;
+  const res = await api("/api/button_variant_toggle",
+    { hash: CUR.hash, include, label: (CUR.memo || CUR.hash) });
+  if (!res.ok) { toast(res.error || "실패", true); return; }
+  if (include) await api("/api/button_variant_build", { hash: CUR.hash });
+  toast(include ? "✕ 변형 대상에 추가" : "✕ 변형 대상에서 제거");
+  refreshVariantPanel();
+}
+async function vtSaveMemo() {
+  const res = await api("/api/button_variant_memo", { hash: CUR.hash, memo: $("#vt-memo").value });
+  toast(res.ok ? "✕ 변형 메모 저장됨" : (res.error || "실패"), !res.ok);
+}
+async function vtRebuild() {
+  $("#spinner").hidden = false;
+  try {
+    const res = await api("/api/button_variant_build", { hash: CUR.hash });
+    if (res.ok) { toast("✕판 재생성 완료"); refreshVariantPanel(); }
+    else toast(res.error || "재생성 실패", true);
+  } finally { $("#spinner").hidden = true; }
+}
+async function vtExport() {
+  $("#spinner").hidden = false;
+  try {
+    const res = await api("/api/button_variant_export", {});
+    $("#modal-title").textContent = res.ok ? `✕ 추가팩 생성: ${res.zip}` : "✕ 추가팩 내보내기 실패";
+    $("#modal-img").src = "";
+    $("#modal-log").textContent = res.log || "";
+    $("#modal").hidden = false;
+    toast(res.ok ? "✕ 추가팩 zip 생성됨 (dist/)" : "내보내기 실패", !res.ok);
+  } finally { $("#spinner").hidden = true; }
+}
+
 // ===== 초기화 =====
 async function init() {
   // 캔버스 measureText/fillText 가 폴백 폰트를 쓰지 않도록 Griun 선로딩
@@ -712,6 +768,10 @@ async function init() {
   $("#btn-paste-style").onclick = pasteStyle;
   $("#btn-memo").onclick = saveMemo;
   $("#btn-render").onclick = renderPreview;
+  $("#vt-include").onchange = vtToggle;
+  $("#vt-memo-save").onclick = vtSaveMemo;
+  $("#vt-rebuild").onclick = vtRebuild;
+  $("#vt-export").onclick = vtExport;
   $("#modal-close").onclick = () => ($("#modal").hidden = true);
   $("#modal").onclick = (e) => { if (e.target.id === "modal") $("#modal").hidden = true; };
   $$(".modal-bgsel button").forEach((b) => (b.onclick = () => {

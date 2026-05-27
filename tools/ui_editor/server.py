@@ -30,7 +30,11 @@ STATIC = Path(__file__).resolve().parent / "static"
 INDEX_PATH = ROOT / "translations" / "ui_editor_index.json"
 LOCALIZE_CONFIG = ROOT / "translations" / "texture_localize_config.json"
 PLACE_JOBS = ROOT / "translations" / "place_texture_jobs.json"
+BUTTON_VARIANTS = ROOT / "translations" / "button_variants.json"
 PREVIEW_DIR = ROOT / "output" / "texture_preview"
+
+if str(ROOT / "tools") not in sys.path:
+    sys.path.insert(0, str(ROOT / "tools"))
 
 _LOCK = threading.Lock()
 
@@ -323,6 +327,58 @@ def render_preview(hash_id, system):
     return {"ok": True, "path": rel, "log": (proc.stdout + proc.stderr)[-800:]}
 
 
+# ===== ✕ 버튼 변형팩 (이슈 #12) =====
+def button_variants_info(hash_id=None):
+    """변형 레지스트리 + 각 항목의 ✕ PNG 존재 여부. hash_id 주면 해당 항목만."""
+    import build_button_variant as BV
+    cfg = BV.load_config()
+    out_dir = ROOT / cfg["out_dir"]
+    items = []
+    for v in cfg.get("variants", []):
+        png = out_dir / f"{v['hash']}.png"
+        items.append({
+            "hash": v["hash"],
+            "label": v.get("label", ""),
+            "memo": v.get("memo", ""),
+            "has_ops": bool(v.get("ops")),
+            "variant_png": str(png.relative_to(ROOT)) if png.exists() else None,
+            "base_png": f"{cfg['base_dir']}/{v['hash']}.png",
+        })
+    info = {"caveat": cfg.get("_caveat", ""), "out_dir": cfg["out_dir"], "variants": items}
+    if hash_id is not None:
+        info["selected"] = next((i for i in items if i["hash"] == hash_id), None)
+    return info
+
+
+def button_variant_build(hash_id=None):
+    import build_button_variant as BV
+    with _LOCK:
+        prefix = hash_id.upper() if hash_id else None
+        try:
+            BV.build(prefix=prefix)
+        except Exception as e:  # noqa: BLE001
+            return {"ok": False, "error": repr(e)}
+    return {"ok": True, **button_variants_info(hash_id)}
+
+
+def button_variant_export():
+    """✕ 추가팩 zip을 dist/에 빌드(본편 CPK 패치 생략)."""
+    version = "0.0.0"
+    vf = ROOT / "release" / "version.json"
+    if vf.exists():
+        version = str(load_json(vf).get("version", version))
+    with _LOCK:
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "tools" / "build_release.py"),
+             "--xbutton-only", "--keep-dist", "--version", version],
+            cwd=str(ROOT), capture_output=True, text=True,
+        )
+    zip_rel = f"dist/muramasa-kor-xbutton-v{version}.zip"
+    ok = (ROOT / zip_rel).exists() and proc.returncode == 0
+    return {"ok": ok, "zip": zip_rel if ok else None,
+            "log": (proc.stdout + proc.stderr)[-1200:]}
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):
         pass  # 콘솔 조용히
@@ -362,6 +418,9 @@ class Handler(BaseHTTPRequestHandler):
             self._send_file(STATIC / route[len("/static/"):])
         elif route == "/api/index":
             self._send(200, load_json(INDEX_PATH))
+        elif route == "/api/button_variants":
+            qs = urllib.parse.parse_qs(parsed.query)
+            self._send(200, button_variants_info(qs.get("hash", [None])[0]))
         elif route == "/api/image":
             qs = urllib.parse.parse_qs(parsed.query)
             rel = qs.get("path", [""])[0]
@@ -395,6 +454,19 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(200, render_live(
                     data["hash"], data["system"], data.get("regions", []),
                     data.get("mode", "full")))
+            elif route == "/api/button_variant_memo":
+                import build_button_variant as BV
+                with _LOCK:
+                    self._send(200, BV.set_memo(data["hash"], data.get("memo", "")))
+            elif route == "/api/button_variant_toggle":
+                import build_button_variant as BV
+                with _LOCK:
+                    self._send(200, BV.toggle(
+                        data["hash"], bool(data.get("include")), data.get("label", "")))
+            elif route == "/api/button_variant_build":
+                self._send(200, button_variant_build(data.get("hash")))
+            elif route == "/api/button_variant_export":
+                self._send(200, button_variant_export())
             else:
                 self._send(404, {"error": "unknown route"})
         except Exception as e:  # noqa: BLE001

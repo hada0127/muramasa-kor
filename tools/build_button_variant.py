@@ -30,6 +30,42 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "translations" / "button_variants.json"
 
 
+def load_config() -> dict:
+    return json.loads(CONFIG.read_text(encoding="utf-8"))
+
+
+def save_config(cfg: dict) -> None:
+    CONFIG.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def find_variant(cfg: dict, hash_id: str) -> dict | None:
+    return next((v for v in cfg.get("variants", []) if v["hash"] == hash_id), None)
+
+
+def set_memo(hash_id: str, memo: str) -> dict:
+    cfg = load_config()
+    v = find_variant(cfg, hash_id)
+    if v is None:
+        return {"ok": False, "error": "변형 목록에 없는 해시"}
+    v["memo"] = memo
+    save_config(cfg)
+    return {"ok": True}
+
+
+def toggle(hash_id: str, include: bool, label: str = "") -> dict:
+    """해시를 ✕ 변형 대상 목록에 넣거나 뺀다. 새로 넣을 땐 ops 비움(수동 ui_xbutton PNG 사용)."""
+    cfg = load_config()
+    v = find_variant(cfg, hash_id)
+    if include and v is None:
+        cfg.setdefault("variants", []).append(
+            {"hash": hash_id, "label": label or hash_id, "memo": "", "ops": []}
+        )
+    elif not include and v is not None:
+        cfg["variants"] = [x for x in cfg["variants"] if x["hash"] != hash_id]
+    save_config(cfg)
+    return {"ok": True}
+
+
 def load_rgba(path: Path) -> Image.Image:
     return Image.open(path).convert("RGBA")
 
@@ -84,7 +120,7 @@ OPS = {
 
 
 def build(prefix: str | None = None, preview: bool = False) -> list[Path]:
-    cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
+    cfg = load_config()
     base_dir = ROOT / cfg["base_dir"]
     orig_dir = ROOT / cfg["original_dir"]
     out_dir = ROOT / cfg["out_dir"]
@@ -97,8 +133,19 @@ def build(prefix: str | None = None, preview: bool = False) -> list[Path]:
             continue
         base_path = base_dir / f"{h}.png"
         orig_path = orig_dir / f"{h}.png"
+        out_path = out_dir / f"{h}.png"
         if not base_path.exists():
             print(f"  ! 기본 텍스처 없음: {base_path}")
+            continue
+        if not v.get("ops"):
+            # ops가 없으면: 수동 편집한 ✕ PNG가 이미 있으면 보존, 없으면 ○ 복제(편집 시작점)
+            if out_path.exists():
+                print(f"  · {h}  (수동 ✕ PNG 보존, ops 없음)")
+                written.append(out_path)
+            else:
+                load_rgba(base_path).save(out_path)
+                print(f"  · {h}  (ops 없음 → ○ 복제 생성. ui_xbutton PNG를 직접 ✕로 편집하세요)")
+                written.append(out_path)
             continue
         base = load_rgba(base_path)
         original = load_rgba(orig_path) if orig_path.exists() else None
@@ -111,7 +158,6 @@ def build(prefix: str | None = None, preview: bool = False) -> list[Path]:
             if t != "clear_box" and original is None:
                 raise FileNotFoundError(f"{t}에 원본 필요: {orig_path}")
             OPS[t](base, original, op)
-        out_path = out_dir / f"{h}.png"
         base.save(out_path)
         written.append(out_path)
         print(f"  ✓ {h}  ({v.get('label','')}) → {out_path.relative_to(ROOT)}")

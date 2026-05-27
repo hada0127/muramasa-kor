@@ -150,3 +150,25 @@ input[type=color]::-webkit-color-swatch { border: none; border-radius: 3px; }
   opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 200; }
 #toast.show { opacity: 1; }
 #toast.err { background: #c0392b; }
+
+/* ✕ 버튼 변형 패널 (이슈 #12) */
+#variant-panel { margin-top: 18px; border-top: 1px solid #33363e; padding-top: 12px; }
+#variant-panel[hidden] { display: none; }
+#variant-panel h2 { font-size: 14px; margin: 0 0 8px; }
+#variant-panel .vt-toggle { display: block; font-size: 12px; color: #d0d3da; margin-bottom: 8px; }
+#vt-body[hidden] { display: none; }
+#variant-panel .vt-label { display: block; font-size: 11px; color: #b8bcc6; margin: 6px 0 4px; }
+#vt-memo { width: 100%; box-sizing: border-box; resize: vertical; font-size: 12px;
+  background: #1b1d22; color: #e8e8ea; border: 1px solid #3a3d45; border-radius: 6px; padding: 6px; }
+.vt-compare { display: flex; gap: 8px; margin: 10px 0; }
+.vt-compare figure { margin: 0; flex: 1; }
+.vt-compare figcaption { font-size: 11px; color: #9aa0ab; text-align: center; margin-bottom: 4px; }
+.vt-imgbox { background: repeating-conic-gradient(#444 0% 25%, #333 0% 50%) 50% / 14px 14px;
+  border: 1px solid #3a3d45; border-radius: 6px; aspect-ratio: 1; display: flex;
+  align-items: center; justify-content: center; overflow: hidden; }
+.vt-imgbox img { max-width: 100%; max-height: 100%; }
+.vt-noop { font-size: 11px; line-height: 1.5; margin: 4px 0; }
+.vt-noop code { background: #1b1d22; padding: 1px 4px; border-radius: 3px; }
+.vt-actions { display: flex; gap: 8px; margin-top: 8px; }
+.vt-actions button { flex: 1; }
+.vt-caveat { font-size: 11px; line-height: 1.5; margin-top: 10px; color: #8a8f99; }
