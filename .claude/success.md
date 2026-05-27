@@ -1,5 +1,23 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-05-27] GitHub 이슈 #15 — DF66CADD ✕ 누락 + UI에디터 ✕ 편집 모드
+- 신고: ✕ 추가팩에 DF66CADD(메인 UI 아틀라스)의 X판이 빠짐. 사용자: "내가 O로 바꾼 게 남아있는 듯".
+- **원인**: DF66CADD는 `localize` 텍스처. 원본엔 ✕ 2곳(우측 Items 옆·좌하단 Settings 옆)이 있는데,
+  kr이 region **K45·K46**(text='O', clear=true)로 그 ✕를 지우고 'O'를 그려 ○가 됨. (중앙 嵐丸 옆 ✕는 유지)
+  → 그 2 region을 빼면 원본 ✕가 그대로 드러남(사용자가 정확히 파악).
+- **구현(사용자 요청 = UI에디터에서 ✕용 별도 편집 + ui_xbutton 저장)**:
+  - `exclude_region_ids` 방식: localize 변형은 base config에서 지정 _id를 빼고 texture_localize로
+    `ui_xbutton/`에 렌더(작고 재현 가능). DF66CADD exclude=[K45,K46].
+  - `tools/localize_region_io.py`(server의 _to_native_localize 공유 분리),
+    build_button_variant(set_variant_exclude/render_localize_variant/localize_regions),
+    server(/api/variant_regions GET, /api/save_variant_regions: kept_ids→exclude 계산·렌더).
+  - UI에디터: 좌측 '✕변형' 뱃지 + '✕변형만' 필터, 변형 패널의 **✕ 편집 모드**(기본 ○ region 띄움→
+    text='O' region 삭제·저장→exclude 저장+ui_xbutton 렌더, 상단 배너·종료). 저장은 변형용으로 라우팅.
+- 검증: end-to-end(kept_ids→exclude=[K45,K46]) ✕ 렌더, 우/좌 글리프 원본 ✕와 alpha diff≈0(3024).
+  전체 재빌드 idempotent(git clean), 추가팩 zip 3텍스처 포함(14.3MB). 전 엔드포인트 curl 통과.
+  (브라우저 시각검증은 원격 Chrome이 로컬 미도달로 막힘 → 사용자 로컬 에디터에서 확인.)
+- **미발행**: #12의 v1.2.0 추가팩엔 DF66CADD 없음. 재발행(v1.2.1 또는 v1.2.0 자산 갱신)은 사용자 확인 대기.
+
 ## [2026-05-27] GitHub 이슈 #12 — ○/✕ 선택 버튼 ✕ 추가팩 (구현 완료, 미발행)
 - 신고: 선택/확인 버튼이 ○로 보여 헷갈림. ✕도 골라 쓰게 해달라.
 - **원인/이력**: 커밋 ee37270(EDA6F03E 확인 글리프)·354bbc6/1db34e5(3B58B76C 시작화면)에서
