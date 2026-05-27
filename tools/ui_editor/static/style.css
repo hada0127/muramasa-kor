@@ -183,3 +183,8 @@ input[type=color]::-webkit-color-swatch { border: none; border-radius: 3px; }
 #variant-banner .spacer { flex: 1; }
 #editor.variant-mode #overlay { outline: 2px dashed #c0392b; outline-offset: -2px; }
 .vt-edit { margin: 8px 0; padding-top: 8px; border-top: 1px dashed #3a3d45; }
+
+/* ✕용 별도 행 (이슈 #15) */
+.file-row.variant-row { background: #2a1a18; }
+.file-row.variant-row.active { background: #4a1f1a; }
+#cur-hash.variant-cur { color: #f0a090; }

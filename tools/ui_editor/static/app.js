@@ -6,8 +6,7 @@ let CUR = null;              // 현재 선택 텍스처 entry (작업 사본)
 let SEL = -1;                // 선택된 region 인덱스
 let SCALE = 1;               // 텍스처좌표→화면픽셀 배율
 let NAT = [1, 1];            // 텍스처 원본 크기 [w,h]
-let VARIANT_HASHES = new Set(); // ✕ 변형 대상 해시
-let VARIANT_MODE = false;    // ✕ 편집 모드 여부
+let VARIANT_HASHES = new Set(); // ✕ 변형 대상 해시 (패널 표시용)
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -36,22 +35,23 @@ function renderList() {
   ul.innerHTML = "";
   let shown = 0;
   for (const t of INDEX.textures) {
+    const isVar = t.variant === "xbutton";
     if (!sys.has(t.system)) continue;
-    if (xvarOnly && !VARIANT_HASHES.has(t.hash)) continue;
+    if (xvarOnly && !isVar) continue;
     const hay = (t.hash + " " + (t.memo || "") + " " + (t.description || "")).toLowerCase();
     if (q && !hay.includes(q)) continue;
     shown++;
-    const isVar = VARIANT_HASHES.has(t.hash);
+    const tkey = t.key || t.hash;
     const li = document.createElement("li");
-    li.className = "file-row" + (CUR && CUR.hash === t.hash ? " active" : "");
+    li.className = "file-row" + (CUR && (CUR.key || CUR.hash) === tkey ? " active" : "") + (isVar ? " variant-row" : "");
     li.innerHTML = `
       <img loading="lazy" src="/api/image?path=${encodeURIComponent(t.png)}">
       <div class="file-meta">
-        <div class="file-hash">${t.hash}<span class="sys-badge sys-${t.system}">${t.system}</span>${isVar ? '<span class="sys-badge xvar-badge">✕변형</span>' : ''}</div>
+        <div class="file-hash">${t.hash}<span class="sys-badge sys-${t.system}">${t.system}</span>${isVar ? '<span class="sys-badge xvar-badge">✕용</span>' : ''}</div>
         <div class="file-memo">${escapeHtml(t.memo || "")}</div>
         <div class="file-desc">${escapeHtml(t.description || "")}</div>
       </div>`;
-    li.onclick = () => selectTexture(t.hash);
+    li.onclick = () => selectTexture(tkey);
     ul.appendChild(li);
   }
   $("#liststat").textContent = `${shown} / ${INDEX.textures.length} 표시`;
@@ -62,20 +62,21 @@ function escapeHtml(s) {
 }
 
 // ===== 텍스처 선택 / 캔버스 =====
-function selectTexture(hash) {
-  const found = INDEX.textures.find((t) => t.hash === hash);
+function selectTexture(key) {
+  const found = INDEX.textures.find((t) => (t.key || t.hash) === key) ||
+                INDEX.textures.find((t) => t.hash === key);
   if (!found) return;
   CUR = JSON.parse(JSON.stringify(found));
   SEL = -1;
-  if (VARIANT_MODE) {  // 다른 텍스처 선택 시 ✕ 편집 모드 해제
-    VARIANT_MODE = false;
-    $("#variant-banner").hidden = true;
-    $("#editor").classList.remove("variant-mode");
-  }
-  history.replaceState(null, "", "#" + hash);  // 새로고침해도 이어보기
+  const isVar = CUR.variant === "xbutton";
+  history.replaceState(null, "", "#" + (CUR.key || CUR.hash));  // 새로고침해도 이어보기
 
-  $("#cur-hash").textContent = `${CUR.hash}  ·  ${CUR.system}  ·  ${(CUR.size || []).join("×")}`;
+  $("#cur-hash").textContent =
+    `${CUR.hash}${isVar ? "  ·  ✕용(→ui_xbutton)" : ""}  ·  ${CUR.system}  ·  ${(CUR.size || []).join("×")}`;
+  $("#cur-hash").className = isVar ? "variant-cur" : "muted";
   $("#memo-input").value = CUR.memo || "";
+  $("#memo-input").disabled = isVar;          // 변형 항목 메모는 ✕ 패널/레지스트리에서 관리
+  $("#btn-memo").disabled = isVar;
   $("#btn-render").disabled = CUR.system === "manual";
   $("#btn-add").disabled = CUR.system === "manual";
   renderList();
@@ -680,7 +681,7 @@ async function saveMemo() {
 }
 
 async function renderPreview() {
-  if (VARIANT_MODE) { return saveVariantRegions(); }  // ✕ 편집 모드면 변형 저장으로
+  if (CUR && CUR.variant === "xbutton") { return saveVariantRegions(); }  // ✕용 행은 변형 저장으로
   $("#spinner").hidden = false;  // 생성 중 스피너
   try {
     // 1) 전체 영역을 config에 저장 → 2) 실제 textures/kr 이미지 생성
@@ -702,69 +703,50 @@ async function renderPreview() {
   }
 }
 
-// ===== ✕ 버튼 변형 (이슈 #12) =====
+// ===== ✕ 버튼 변형 (이슈 #12/#15) =====
+// 개념: 같은 텍스처가 목록에서 '일반용'과 '✕용'(별도 행, key=<hash>#x) 으로 나뉜다.
+// ✕용 행을 선택해 region을 편집/저장하면 textures/kr/ui_xbutton 에 렌더된다.
 let VT_CAVEAT = "";
 async function refreshVariantPanel() {
-  if (!CUR || VARIANT_MODE) { if (!VARIANT_MODE) $("#variant-panel").hidden = true; return; }
+  if (!CUR) { $("#variant-panel").hidden = true; return; }
+  const isVar = CUR.variant === "xbutton";
   $("#variant-panel").hidden = false;
   const info = await api(`/api/button_variants?hash=${encodeURIComponent(CUR.hash)}`);
   VT_CAVEAT = info.caveat || "";
   $("#vt-caveat").textContent = VT_CAVEAT;
   const sel = info.selected;
   const included = !!sel;
+  // ✕용 행에선 include 토글 숨김(이미 변형 항목). 일반 행에선 토글 노출.
+  $("#vt-include").parentElement.style.display = isVar ? "none" : "";
   $("#vt-include").checked = included;
   $("#vt-body").hidden = !included;
   if (included) {
     $("#vt-memo").value = sel.memo || "";
-    // ops/exclude 둘 다 없을 때만 "수동 PNG 편집" 안내
-    $("#vt-noop").hidden = sel.has_ops || sel.editable;
-    // localize 변형이면 region 편집 모드 제공
-    $("#vt-edit").hidden = !(sel.editable && CUR.system === "localize");
+    $("#vt-noop").hidden = sel.has_ops || sel.region_based;
     const bust = "&t=" + Date.now();
     $("#vt-base").src = `/api/image?path=${encodeURIComponent(sel.base_png)}${bust}`;
     $("#vt-variant").src = sel.variant_png
       ? `/api/image?path=${encodeURIComponent(sel.variant_png)}${bust}`
       : "";
+    // 안내: ✕용 행에서 region 편집→저장하면 ui_xbutton에 렌더
+    $("#vt-edit").hidden = !(isVar && CUR.system !== "manual");
   }
 }
 
-// ✕ 편집 모드: 기본(○) region을 캔버스에 띄우고, 현재 exclude된 것은 미리 제거.
-async function enterVariantMode() {
-  if (!CUR) return;
-  const res = await api(`/api/variant_regions?hash=${encodeURIComponent(CUR.hash)}`);
-  if (!res.ok) { toast(res.error || "region 로드 실패", true); return; }
-  const excl = new Set(res.excluded || []);
-  // 이미 exclude된 region은 빼고 표시(현재 ✕ 상태)
-  CUR.regions = (res.regions || []).filter((r) => !excl.has(r.native && r.native._id));
-  VARIANT_MODE = true;
-  SEL = -1;
-  $("#variant-banner").hidden = false;
-  $("#vb-hash").textContent = CUR.hash;
-  $("#variant-panel").hidden = true;
-  $("#editor").classList.add("variant-mode");
-  drawRegions();
-  renderProps();
-  toast("✕ 편집 모드 — text='O' region을 삭제하고 저장하세요");
-}
-function exitVariantMode() {
-  VARIANT_MODE = false;
-  $("#variant-banner").hidden = true;
-  $("#editor").classList.remove("variant-mode");
-  selectTexture(CUR.hash);  // 기본(○) 상태로 복귀
-}
+// ✕용 행에서 저장: region 세트를 그대로 저장 + ui_xbutton 렌더
 async function saveVariantRegions() {
   if (SEL >= 0) readProps();
-  // 남긴 region들의 _id (삭제한 나머지가 서버에서 exclude로 계산됨)
-  const keptIds = CUR.regions.map((r) => r.native && r.native._id).filter(Boolean);
   $("#spinner").hidden = false;
   try {
-    const res = await api("/api/save_variant_regions", { hash: CUR.hash, kept_ids: keptIds });
+    const res = await api("/api/save_variant_regions",
+      { hash: CUR.hash, system: CUR.system, regions: CUR.regions });
     if (!res.ok) { toast(res.error || "저장 실패", true); return; }
-    toast("✕판 저장·렌더 완료 (제외 " + (res.excluded || []).join(", ") + ")");
+    toast("✕용 저장·렌더 완료 → " + res.path);
     $("#modal-title").textContent = `✕ 변형 렌더 완료: ${res.path}`;
     $("#modal-img").src = `/api/image?path=${encodeURIComponent(res.path)}&t=${Date.now()}`;
-    $("#modal-log").textContent = "제외된 region: " + (res.excluded || []).join(", ");
+    $("#modal-log").textContent = "저장 경로: " + res.path;
     $("#modal").hidden = false;
+    refreshVariantPanel();
   } finally { $("#spinner").hidden = true; }
 }
 async function vtToggle() {
@@ -772,9 +754,9 @@ async function vtToggle() {
   const res = await api("/api/button_variant_toggle",
     { hash: CUR.hash, include, label: (CUR.memo || CUR.hash) });
   if (!res.ok) { toast(res.error || "실패", true); return; }
-  if (include) { VARIANT_HASHES.add(CUR.hash); await api("/api/button_variant_build", { hash: CUR.hash }); }
-  else VARIANT_HASHES.delete(CUR.hash);
-  toast(include ? "✕ 변형 대상에 추가" : "✕ 변형 대상에서 제거");
+  if (include) await api("/api/button_variant_build", { hash: CUR.hash });
+  toast(include ? "✕용 항목 생성 (목록에 ✕용 행 추가)" : "✕용 항목 제거");
+  INDEX = await api("/api/index");  // 변형 항목 행 갱신
   renderList();
   refreshVariantPanel();
 }
@@ -833,9 +815,6 @@ async function init() {
   $("#vt-memo-save").onclick = vtSaveMemo;
   $("#vt-rebuild").onclick = vtRebuild;
   $("#vt-export").onclick = vtExport;
-  $("#vt-editmode").onclick = enterVariantMode;
-  $("#vb-save").onclick = saveVariantRegions;
-  $("#vb-exit").onclick = exitVariantMode;
   $("#modal-close").onclick = () => ($("#modal").hidden = true);
   $("#modal").onclick = (e) => { if (e.target.id === "modal") $("#modal").hidden = true; };
   $$(".modal-bgsel button").forEach((b) => (b.onclick = () => {
@@ -864,9 +843,9 @@ async function init() {
   });
   window.addEventListener("resize", () => { if (CUR) applyZoom(); });
   $("#overlay").onmousedown = (e) => { if (e.target.id === "overlay") { SEL = -1; drawRegions(); renderProps(); } };
-  // URL 해시(#hash)로 마지막 편집 텍스처 복원 (핸들러 준비 후)
+  // URL 해시(#key)로 마지막 편집 텍스처 복원 (핸들러 준비 후). 변형 행은 <hash>#x.
   const h = decodeURIComponent(location.hash.slice(1));
-  if (h && INDEX.textures.some((t) => t.hash === h)) selectTexture(h);
+  if (h && INDEX.textures.some((t) => (t.key || t.hash) === h || t.hash === h)) selectTexture(h);
 }
 
 init();
