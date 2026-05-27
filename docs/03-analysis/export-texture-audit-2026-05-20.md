@@ -43,3 +43,16 @@
 ## Ending 完 Handling
 - `2E88068C58DD36D5`에 임시로 넣었던 `完→완` 오버레이는 구조 불일치로 제거했다.
 - DLC 엔딩의 `完`이 다시 확인되면 실제 해당 텍스처/hash 기준으로 처리해야 한다. 현재 export 기준 독립 엔딩 `完` UI 텍스처는 확인되지 않았다.
+
+### 2026-05-27 출처 확정 (codex+직접 조사)
+- DLC 엔딩 `完`은 export/originals 텍스처가 **아니라**, 설치된 DLC 팩 CPK 내부의 Pack별 GUI 텍스처다.
+  - `OBOROMURAMASAPK1~4/NinPriPackN.cpk` → `GUI/Ending_P1~P4.ftx` (+ `Ending_P*.mbs`)
+  - 경로: `~/Library/Application Support/Vita3K/Vita3K/fs/ux0/addcont/PCSE00240/OBOROMURAMASAPKn/`
+  - 각 1024×1024 캐릭터 일러스트 + 좌하단 큰 흰 붓글씨 `完`(bbox≈x1-320, y430-850). 단일 글리프 아님.
+- export 폴더(747개) 전수 + md5/NCC 매칭 — 일치 텍스처 없음 → **Vita3K import hash 미확보**.
+- 본편 엔딩은 별개: `E4A9FD9D2047280B`(2048×1024) 원본 "The End" → "완 결"로 한글화 완료.
+- sysmsg 엔딩 텍스트(#255 본편, #279~282 DLC)는 이미 "완결" 번역됨(텍스트 OK).
+- **한글화 미완(보류, 2026-05-27 사용자 결정)**. 방법 2가지:
+  (A) 게임에서 각 DLC 엔딩을 texture export 켜고 띄워 4개 hash 확보 → `완 결` 오버레이.
+  (B) DLC 팩 CPK의 `Ending_P*.ftx` 직접 교체 — hash 불필요·전 사용자 적용. 단 **FTX 재인코더(DXT5+PS Vita 스위즐) 신규 제작 필요**(현 repo엔 decoder `ftx_extract.py`만 있음).
+  - FTX SHA-256: P1 `0a88723820badd83…`, P2 `1222f3f0ea4cecb2…`, P3 `b0148bd8f76aaa1e…`, P4 `85e27daa7e03003c…`

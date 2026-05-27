@@ -6,6 +6,18 @@
 
 ---
 
+## [2026-05-27] DLC 엔딩 "完"→"완 결" 한글화 — 위치 확정, 이번 릴리스 보류(사용자 결정)
+- **출처 확정(codex+직접 조사)**: DLC 엔딩 完은 export/originals 텍스처가 아니라, 설치된 DLC 팩
+  CPK 내부 `GUI/Ending_P1~P4.ftx`(에피소드별). 각 1024×1024 캐릭터 일러스트 + 좌하단 큰 붓글씨
+  完(bbox≈x1-320,y430-850). 본편 엔딩 The End(E4A9FD9D)와 별개.
+  - CPK 경로: `~/Library/Application Support/Vita3K/Vita3K/fs/ux0/addcont/PCSE00240/OBOROMURAMASAPK1~4/NinPriPackN.cpk`
+  - 추출본(이번 조사 산출, temp/): `temp/dlc_ftx_png/pack{1..4}/GUI/Ending_P*.png`, 미리보기 `temp/preview/DLC_endings_all4.png`
+  - export 폴더(747개) 전수 확인 — 일치 텍스처 없음 → **Vita3K import hash 미확보**.
+- **남은 방법(둘 중 택1, 다음 작업)**:
+  (A) Vita3K import: 각 DLC 엔딩을 texture export 켜고 띄워 4개 hash 확보 → 完 자리에 완 결 오버레이.
+  (B) DLC 팩 CPK 직접 패치: Ending_P*.ftx 교체. hash 불필요·전 사용자 적용. 단 **FTX 재인코더(DXT5+스위즐) 신규 제작 필요**(현재 decoder ftx_extract.py만 있음).
+- 사용자 결정: **이번 릴리스 보류.** sysmsg 엔딩 텍스트(#255 본편·#279~282 DLC)는 이미 완결 번역됨(텍스트 OK).
+
 ## [2026-05-27] GitHub 이슈 #15 — DF66CADD ✕ 누락 + UI에디터 ✕ 편집 모드 ✅ 구현(재발행 대기)
 - DF66CADD(localize)의 O region K45/K46를 빼면 원본 ✕ 노출 → exclude_region_ids 방식 + UI에디터
   ✕ 편집 모드(뱃지/필터/region 삭제→ui_xbutton 렌더). 커밋 d842d0f/9ffe1af/571ed1e.
