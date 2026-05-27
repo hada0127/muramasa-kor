@@ -16,7 +16,13 @@
 - 검증: end-to-end(kept_ids→exclude=[K45,K46]) ✕ 렌더, 우/좌 글리프 원본 ✕와 alpha diff≈0(3024).
   전체 재빌드 idempotent(git clean), 추가팩 zip 3텍스처 포함(14.3MB). 전 엔드포인트 curl 통과.
   (브라우저 시각검증은 원격 Chrome이 로컬 미도달로 막힘 → 사용자 로컬 에디터에서 확인.)
-- **미발행**: #12의 v1.2.0 추가팩엔 DF66CADD 없음. 재발행(v1.2.1 또는 v1.2.0 자산 갱신)은 사용자 확인 대기.
+- **✅ v1.2.1 발행·클로즈**: '일반용/✕용 분리 항목' 모델로 재구성(사용자 피드백 — region diff 아닌 별도 행).
+  같은 해시가 목록에 일반용(→ui)+✕용(별도 행 key=`<hash>#x`, →ui_xbutton) 2줄, 파일명순 나란히, 패널 단순화.
+  3B58B76C는 place라 'O를'→'X를'(사용자가 ✕ 붓글씨도 복원 편집). DF66CADD는 localize O region 2개 제거.
+  build_release가 ✕ 추가팩 3종 묶음. tag v1.2.1 + gh release(--latest) + 이슈 #15 댓글·클로즈.
+  https://github.com/hada0127/muramasa-kor/releases/tag/v1.2.1
+- **DLC 엔딩 完(보류)**: codex+조사로 DLC 팩 CPK `GUI/Ending_P1~4.ftx`(1024² 일러스트+좌하단 完) 확정.
+  export에 없어 import hash 미확보. 사용자 결정으로 이번 릴리스 보류. 상세 todo.md/audit doc/memory.
 
 ## [2026-05-27] GitHub 이슈 #12 — ○/✕ 선택 버튼 ✕ 추가팩 (구현 완료, 미발행)
 - 신고: 선택/확인 버튼이 ○로 보여 헷갈림. ✕도 골라 쓰게 해달라.

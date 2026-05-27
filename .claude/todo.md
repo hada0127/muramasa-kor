@@ -1,7 +1,7 @@
 # TODO — 진행 예정 작업
 
 > 완료 작업 상세는 [success.md](success.md), 실패·한계는 [fail.md](fail.md).
-> 현재 릴리스: **v1.2.0** 🎉 (2026-05-27 — ✕ 버튼 추가팩, 이슈 #12)
+> 현재 릴리스: **v1.2.1** 🎉 (2026-05-27 — ✕ 추가팩에 메인 메뉴 DF66CADD 포함, 이슈 #15)
 > 텍스처 편집: `python tools/ui_editor/server.py` (http://127.0.0.1:8765)
 
 ---
@@ -18,10 +18,12 @@
   (B) DLC 팩 CPK 직접 패치: Ending_P*.ftx 교체. hash 불필요·전 사용자 적용. 단 **FTX 재인코더(DXT5+스위즐) 신규 제작 필요**(현재 decoder ftx_extract.py만 있음).
 - 사용자 결정: **이번 릴리스 보류.** sysmsg 엔딩 텍스트(#255 본편·#279~282 DLC)는 이미 완결 번역됨(텍스트 OK).
 
-## [2026-05-27] GitHub 이슈 #15 — DF66CADD ✕ 누락 + UI에디터 ✕ 편집 모드 ✅ 구현(재발행 대기)
-- DF66CADD(localize)의 O region K45/K46를 빼면 원본 ✕ 노출 → exclude_region_ids 방식 + UI에디터
-  ✕ 편집 모드(뱃지/필터/region 삭제→ui_xbutton 렌더). 커밋 d842d0f/9ffe1af/571ed1e.
-- 추가팩에 DF66CADD 포함됨(3 텍스처). **재발행(v1.2.1 vs v1.2.0 자산 갱신) 사용자 확인 대기.**
+## [2026-05-27] GitHub 이슈 #15 — DF66CADD ✕ 누락 + UI에디터 ✕ 편집 모드 ✅ v1.2.1 발행·클로즈
+- DF66CADD(localize)·3B58B76C(place=O를→X를)를 '일반용/✕용 분리 항목' 모델로 재구성. UI에디터에
+  같은 해시가 일반용+✕용 2행(✕용 뱃지/붉은틴트, 파일명순 나란히), ✕용 행 저장→ui_xbutton 렌더.
+  패널 단순화(✕용 추가 토글+안내만). 사용자가 3B58B76C ✕용 직접 편집(X를+붓글씨 ✕ 복원)·재저장.
+- **v1.2.1 발행(gh, --latest)**: 본편 무변경, ✕ 추가팩만 3종(EDA6F03E/3B58B76C/DF66CADD).
+  https://github.com/hada0127/muramasa-kor/releases/tag/v1.2.1 · 이슈 #15 댓글+클로즈 완료.
 - 상세 success.md.
 
 ## [2026-05-27] GitHub 이슈 #12 ○/✕ 선택 버튼 — ✕버튼 추가팩 ✅ v1.2.0 발행 완료
