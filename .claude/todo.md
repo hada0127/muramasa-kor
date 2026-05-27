@@ -1,152 +1,38 @@
-# TODO — 진행 예정 작업
+# TODO — 진행 예정 / 미해결 작업
 
 > 완료 작업 상세는 [success.md](success.md), 실패·한계는 [fail.md](fail.md).
+> 이 파일은 **열린/보류/예정** 항목만 둔다. 완료되면 success.md로 옮기고 여기선 지운다.
 > 현재 릴리스: **v1.2.1** 🎉 (2026-05-27 — ✕ 추가팩에 메인 메뉴 DF66CADD 포함, 이슈 #15)
 > 텍스처 편집: `python tools/ui_editor/server.py` (http://127.0.0.1:8765)
 
 ---
 
-## [2026-05-27] DLC 엔딩 "完"→"완 결" 한글화 — 위치 확정, 이번 릴리스 보류(사용자 결정)
+## 보류 — DLC 엔딩 "完" → "완 결" 한글화 (이슈 후속, 2026-05-27 위치 확정)
+
 - **출처 확정(codex+직접 조사)**: DLC 엔딩 完은 export/originals 텍스처가 아니라, 설치된 DLC 팩
   CPK 내부 `GUI/Ending_P1~P4.ftx`(에피소드별). 각 1024×1024 캐릭터 일러스트 + 좌하단 큰 붓글씨
-  完(bbox≈x1-320,y430-850). 본편 엔딩 The End(E4A9FD9D)와 별개.
-  - CPK 경로: `~/Library/Application Support/Vita3K/Vita3K/fs/ux0/addcont/PCSE00240/OBOROMURAMASAPK1~4/NinPriPackN.cpk`
-  - 추출본(이번 조사 산출, temp/): `temp/dlc_ftx_png/pack{1..4}/GUI/Ending_P*.png`, 미리보기 `temp/preview/DLC_endings_all4.png`
-  - export 폴더(747개) 전수 확인 — 일치 텍스처 없음 → **Vita3K import hash 미확보**.
-- **남은 방법(둘 중 택1, 다음 작업)**:
-  (A) Vita3K import: 각 DLC 엔딩을 texture export 켜고 띄워 4개 hash 확보 → 完 자리에 완 결 오버레이.
-  (B) DLC 팩 CPK 직접 패치: Ending_P*.ftx 교체. hash 불필요·전 사용자 적용. 단 **FTX 재인코더(DXT5+스위즐) 신규 제작 필요**(현재 decoder ftx_extract.py만 있음).
-- 사용자 결정: **이번 릴리스 보류.** sysmsg 엔딩 텍스트(#255 본편·#279~282 DLC)는 이미 완결 번역됨(텍스트 OK).
+  完(bbox≈x1-320,y430-850). 본편 엔딩 The End(`E4A9FD9D`)와 별개.
+  - CPK: `~/Library/Application Support/Vita3K/Vita3K/fs/ux0/addcont/PCSE00240/OBOROMURAMASAPK1~4/NinPriPackN.cpk`
+  - 추출본/미리보기(temp/): `temp/dlc_ftx_png/pack{1..4}/GUI/Ending_P*.png`, `temp/preview/DLC_endings_all4.png`
+  - export 폴더(747개) 전수 — 일치 텍스처 없음 → **Vita3K import hash 미확보**.
+- **방법(택1, 다음 작업)**:
+  (A) 인게임에서 각 DLC 엔딩을 texture export 켜고 띄워 4개 hash 확보 → 完 자리에 완 결 오버레이.
+  (B) DLC 팩 CPK의 `Ending_P*.ftx` 직접 교체(hash 불필요·전 사용자 적용). 단 **FTX 재인코더(DXT5+스위즐)
+     신규 제작 필요** — 현재 repo엔 decoder `ftx_extract.py`만 있음.
+- 사용자 결정: **이번 릴리스 보류.** 상세는 `docs/03-analysis/export-texture-audit-2026-05-20.md` "Ending 完 Handling".
+- 참고: sysmsg 엔딩 텍스트(#255 본편·#279~282 DLC)는 이미 "완결"로 번역됨(텍스트는 정상).
 
-## [2026-05-27] GitHub 이슈 #15 — DF66CADD ✕ 누락 + UI에디터 ✕ 편집 모드 ✅ v1.2.1 발행·클로즈
-- DF66CADD(localize)·3B58B76C(place=O를→X를)를 '일반용/✕용 분리 항목' 모델로 재구성. UI에디터에
-  같은 해시가 일반용+✕용 2행(✕용 뱃지/붉은틴트, 파일명순 나란히), ✕용 행 저장→ui_xbutton 렌더.
-  패널 단순화(✕용 추가 토글+안내만). 사용자가 3B58B76C ✕용 직접 편집(X를+붓글씨 ✕ 복원)·재저장.
-- **v1.2.1 발행(gh, --latest)**: 본편 무변경, ✕ 추가팩만 3종(EDA6F03E/3B58B76C/DF66CADD).
-  https://github.com/hada0127/muramasa-kor/releases/tag/v1.2.1 · 이슈 #15 댓글+클로즈 완료.
-- 상세 success.md.
+## 의도적으로 하지 않는 항목 (사용자 결정)
 
-## [2026-05-27] GitHub 이슈 #12 ○/✕ 선택 버튼 — ✕버튼 추가팩 ✅ v1.2.0 발행 완료
+- **#9-3 무기명 변수 치환**: 원작은 무기명을 런타임 변수(`##（무기）`)로 출력하나 US 엔진이 토큰을
+  제거("this blade") → 텍스트/폰트 패치로 복원 불가(eboot 역공학 필요). **진행하지 않음.**
 
-- 생성기/레지스트리/✕텍스처/추가팩빌드/독립패처/UI에디터패널/문서 전부 완료·커밋·발행.
-- **v1.2.0 릴리스 발행**(gh, --latest): 본편 zip + ✕ 추가팩 zip 자산 첨부.
-  https://github.com/hada0127/muramasa-kor/releases/tag/v1.2.0
-- 남은 것(선택): 이슈 #12 댓글+클로즈(사용자 확인 후), 사용자 인게임 ✕ 표시 확인.
-- 상세는 success.md 참조.
+## 추후 필요 시 (현재 미예정)
 
-### (원본 분석 메모 — 보존)
+- `_itemdata`/`sysmsg` 등 비대사 섹션 재번역 (필요해지면 대사와 같은 파이프라인으로).
+- 손글씨체 重/隼 폰트 페이지(`font2a/2b` 계열)는 해당 화면 export 시 `auto_font_import` 재실행으로 자동 커버.
+- 이슈 #11 후속(선택): UI 에디터에 실제 PIL 라이브렌더 표시(서버 `render_live` 연동)로 WYSIWYG화.
+- 이슈 #10 borderline 1건: scemsg#941 "기치를 발휘"(頓智) — 사용자 확인 후 "재치를 발휘" 검토.
 
-- **신고**: 선택(확인) 버튼이 ○로 보여 헷갈림. ✕판도 골라 쓸 수 있게 해달라.
-- **원인/이력**: 커밋 `ee37270`(EDA6F03E 확인 글리프 ✕→○)·`354bbc6/1db34e5`(3B58B76C 시작화면)에서
-  의도적으로 X→O로 바꿨음(메인테이너 환경이 ○ 확인이라 추정).
-- **codex+gemini 병렬 협의(정책)** — 수렴:
-  - codex(Vita3K 소스 직접 확인): 게임이 글리프를 자체 아틀라스로 그림. `SCE_SYSTEM_PARAM_ID_ENTER_BUTTON`
-    (Vita3K `sys_button`)은 존재하나, 게임이 프롬프트 글리프까지 바꾸도록 구현돼야 효과. Muramasa는
-    하드코딩 가능성↑ → **텍스처 교체는 '표시'만 바꾸고 '입력 의미'는 안 바뀜.**
-  - gemini: 동일 결론. 스왑이 맞으나 Vita3K 버튼 할당과 세트로 써야 함. 튜토리얼/메뉴에 베이크 가능성도 언급.
-  - **결론**: ✕판은 **Vita3K Enter Button=Cross**와 함께 써야 실제 ✕가 확인이 됨 → 릴리스 노트에 명시.
-    두 변형(○/✕) 배포가 타당.
-- **사용자 결정**: ①배포=추가 덮어쓰기 팩(작은 별도 zip, 본편은 ○ 유지) ②범위=EDA6F03E+3B58B76C 둘 다.
-- **대상 텍스처(정밀 분석 완료, 게임은 알파만 사용)**:
-  - EDA6F03E: 확인 글리프 셀(x0-80,y256-352)만 ○로 덮였음 → ✕판=원본 ✕ 복원. 확인=✕, 취소=○.
-  - 3B58B76C: ○ 엔소 링 슬롯(x1922-2165,y14-255)이 시작 글리프. kr이 원본 ✕(CC x1977-2190,y281-520)를
-    지웠음. ✕판=○ 링 자리에 원본 ✕ 붓글씨 배치. '누르세요' 텍스트엔 ○ 문자 베이크 없음(글리프만 교체).
-- **구현**: `translations/button_variants.json`(레지스트리+메모) + `tools/build_button_variant.py`(생성기)
-  + `textures/kr/ui_xbutton/` 출력 + UI에디터 메모/미리보기/내보내기 + build_release 추가팩 빌드 + 릴리스 노트.
-
-## [2026-05-27] GitHub 이슈 #11 타이틀 텍스처 화질 — ✅ 해결(커밋 dad8e10)
-- 8EFF/73420 UHD 베이스 전환 + 한글 재합성, 1823D39C 도토미 갱신. UI에디터 블러/투명도 기능 추가.
-- 상세·교훈(미리보기 vs PIL 한계)은 success.md. 사용자 Vita3K 확인 완료.
-- 후속(선택): 편집기에 실제 PIL 라이브렌더 표시(scheduleLive no-op → 서버 render_live 연동)하면 WYSIWYG 가능.
-
-## [2026-05-26] GitHub 이슈 #10 "비스한" 검수 — 구버전 폰트 커버리지 문제(현재 해결)
-
-- 신고: 모모히메 첫 보스 후 저장 장소 대사 "비슷한"이 "비스한"으로 보임(받침 ㅅ 누락).
-- **근본원인**: 소스 오타 아님. git 전 이력상 소스는 항상 "비슷한". 구버전 폰트 매핑이
-  960자(河만)였고 "슷"(0x8F9F, 重 페이지)이 미포함 → 받침 떨어진 "스"로 렌더. 현재 2350자엔 포함.
-  스크린샷 문장도 초기 스냅샷(c944af1) 문구와 일치 → 구버전 패치임. **현재판은 정상.**
-- **codex+gemini 병렬 검수(정책)**: 양쪽 수렴 — 폰트 커버리지 문제로 타당, 미매핑 부류는 구조적 해소.
-- **전수 재검증(코드/데이터)**:
-  - 사용 음절 1114종 전부 현재 2350자 매핑 안(미매핑 0). 구버전 960자엔 그중 177종이 깨졌음.
-  - RUNTIME_OVERLAY 충돌 0(뜯/뜸류 재발 없음), ASCII 오버플로/validate 위반 0.
-  - kiwipiepy 종성탈락 휴리스틱 49건 → 실제 오타 0(전부 고유명사/사투리/게임용어 오탐).
-- **남은 borderline 1건**: scemsg#941 "기치를 발휘"(頓智=재치/기지). 받침탈락 아닌 자음 오타 의심.
-  사용자 확인 후 "재치를 발휘"로 수정 검토.
-- 스크립트: temp/issue10/ (scan_unrenderable.py, audit_typos2.py).
-
-## [2026-05-26] 아이템명 텍스처↔시스템(itemdata) 불일치 통일 (전수조사 중)
-
-- 오의명 통일처럼, 아이템명도 텍스처(7DC6CF5A 아이템 아틀라스)와 itemdata가 어긋난 게 다수.
-- **방법(사용자 지시)**: 원본 텍스처=영어판 → US itemdata 영문 매칭 → 효과 설명문으로 JP itemdata 대조 → 우리 ko=정답.
-  (JP/US nms 인덱스는 곡옥/장신구에서 어긋남. 효과 내용으로 매칭 필수.)
-- **확정 후보**(temp/item_survey/survey.md):
-  - 곡옥 5종 전부 오매칭: Amber→호박곡옥(현 수정곡옥), Hellish→황천곡옥(현 악귀표식),
-    Agate→마노곡옥(현 비취곡옥), Ritual→제사곡옥(현 수정곡옥5), Ghostly→영혼곡옥(현 수라표식).
-  - White Lightning=どぶろく=탁주(현 섬광 오의오인), Divine Panacea=霊方反魂丹=영방반혼단(현 자동부활).
-  - 효과/버프 라벨(공격강화/자동회복 등)·공백 통일은 스코프/규칙 결정 필요.
-- **codex+gemini 병렬 교차검증 완료**:
-  - A(곡옥 5종)·B(탁주·영방반혼단): **둘 다 O 만장일치 수렴** → 확정.
-  - C(효과/버프 라벨 통일): codex=포함 권장 / gemini=제외 권장 → **발산, 사용자 결정 대기**.
-  - D(띄어쓰기): 원칙 수렴(고유수식어+보통명사 띄움, 한자합성어 붙임). gemini는 itemdata 내부 비일관성 선정리 권고.
-  - gemini 위험점: ①한글명 길이로 텍스처 칸 오버플로 시각확인 ②다른 아이템 아틀라스 존재 점검(확인결과 7DC6CF5A 단일, E8엔 곡옥 없음) ③patch_main/patch_patch itemdata 둘 다 반영 여부.
-  - gemini 1차 호출은 API 라우팅 오류로 실패 → `-m gemini-2.5-pro` 재시도로 성공.
-- **확정 수정(7DC6CF5A config region)**: K49 악귀표식→황천 곡옥, K40 수정곡옥→호박 곡옥,
-  K39 비취곡옥→마노 곡옥, K37 수라표식→영혼 곡옥, K34 의식용곡옥→제사 곡옥, K24 자동부활→영방반혼단.
-  White Lightning(どぶろく)→탁주: 현재 섬광/환영뇌광로 오인, region 위치 크롭확인 후 수정.
-- 사용자 결정: 효과명도 포함 / itemdata 내부 공백도 통일 / Ninja Arts는 둘 다 '닌자술'(itemdata 닌자발도 수정) / 적용 전 codex·gemini 엄격검토.
-- **2차 엄격검토 완료**(codex+gemini):
-  - A 9건 매핑 양쪽 O 수렴. 곡옥 티어-어원 일관성 확인.
-  - gemini 조건부 승인 → 조건 해소: ①닌자발 대사참조 0건(안전) ②곡옥 7종 전부 띄움 통일 결정
-    (수정/비취곡옥도 띄움) ③_itemdata+_itemdata_main+patch 양쪽 반영 ④Soul Salvation=영력소비 없음 유지(효과라벨).
-  - codex는 _itemdata/_itemdata_main 이중구조·닌자발 다중엔트리·Interface_shop 존재를 정찰로 확인.
-- **최종 수정 목록 확정**: temp/item_survey/fix_list_final.md.
-- ✅ **적용·커밋 완료(fabd992)**: config 27건 + itemdata 12건(양쪽) + JSON 3종 동기화 + 재렌더 + NMS 빌드.
-  CLAUDE.md에 "텍스처 직접수정 시 JSON 3종 모두 동기화" 규칙 추가. 사용자 UI 에디터 확인 OK.
-  상세 success.md 참조.
-
-## 현재 열린 작업 없음 (2026-05-25 사용자 보고 2종 모두 해결)
-
-상세는 success.md 참조.
-- #1 대사 '['/']' 깨짐(뜯/뜸 RUNTIME_OVERLAY 충돌 재발) → relocate 해결
-- #2 오의명 vs 오의 텍스처 불일치 → 일본어판 기준 일괄 통일(codex+gemini 검수, 사용자 결정 반영)
-
-2026-05-25 **v1.0.0 정식 배포 완료**. 주요 작업이 모두 마무리됐다:
-- 한글 폰트 완성형 2350자(河/重/隼 3페이지) — 받침 깨짐/대체표기 완전 해소
-- 본편 대사(scemsg 2187 + scemsg_patch 36) 전수 재번역 + gemini 검증
-- 인명·용어·지명·텍스처 표기 통일, 마침표/공백 정리, lint 0
-- 세부 이력은 success.md 참조.
-
-### 의도적으로 하지 않는 항목
-- **#9-3 무기명 변수 치환**: 원작은 무기명을 런타임 변수로 출력하나 US 엔진이 토큰을 제거해,
-  텍스트/폰트 패치로는 복원 불가(eboot 역공학 필요). **사용자 결정으로 진행하지 않음.**
-
-### 추후 필요 시 (현재 미예정)
-- `_itemdata`/`sysmsg` 등 비대사 섹션 재번역 (필요해지면 대사와 같은 파이프라인으로)
-- 손글씨체 重/隼 폰트 페이지(font2a/2b 계열)는 해당 화면 export 시 `auto_font_import` 재실행으로 자동 커버
-
-새 작업·이슈가 생기면 이 파일에 추가한다.
-
-## 이슈 #14 — 튜토리얼 "멋지다!" 끝의 '!'가 한자(取)로 보임 (2026-05-27 원인 규명)
-
-- **증상**: 튜토리얼 도전과제 성공 시 "お見事！"(=멋지다!) 팝업의 마지막 '!'가 한자로 표시.
-  사용자 보고: "처음에는 '멋지다 딱' → 패치 후 한자어".
-- **데이터**: `sysmsg`[id=389] "멋지다！"(전각), `sysmsg_main`[#305] "멋지다!"(반각).
-  build_patch가 전각 ！→반각 ! 정규화 → 둘 다 SJIS **8EE6**(河 local965)로 인코딩.
-- **원인 규명**: 8EE6 셀의 원본 폰트 글리프는 한자 **取**. 패치는 폰트 텍스처 cell965에 '!'를
-  덮어써야 하나, **메뉴 폰트 A8E6FDD1만** `MENU_PRESERVE_ASCII_HASHES`(auto_font_import.py:55,363)에
-  걸려 ASCII 오버플로/런타임/풀와이드 오버레이를 전부 skip(상점 가격 숫자 원본 보존 목적).
-  → 메뉴 폰트 cell965 = 한자 取 그대로. 튜토리얼 팝업이 메뉴 폰트로 렌더돼 "멋지다取"로 보임.
-- **교차검증**: 본문 8665CE08·보조 18747565·HD 6706A53E의 cell965 = '!'(정상, ~87px),
-  메뉴 A8E6FDD1만 取(~393px). 옛 '딱'은 '!'가 cell961(0x8EE2=딱)이던 시절 메뉴폰트 한글 오버레이.
-  → 사용자의 "딱→한자" 변화와 정확히 일치.
-- **노출 범위**: '!' 글리프 셀 공유 → 메뉴 폰트로 그려지는 ASCII(!,?,숫자,괄호 등) 전반.
-  '!'는 번역 238개 메시지에 등장하나, 본문/대사 폰트는 정상이라 **메뉴 폰트 렌더 화면에서만** 깨짐.
-- **수정 방향**: 메뉴 폰트에 가격 숫자(192+0x30~0x39)는 보존하되 문장부호('!','?' 등)
-  ASCII 오버플로는 그려넣도록 MENU_PRESERVE 예외 범위 축소.
-- **✅ 적용(텍스처 직접 수정 방식)**: `auto_font_import.py` — `MENU_PRESERVE_ASCII_HASHES`를
-  `MENU_PRESERVE_RUNTIME_HASHES`로 의미 명확화. ASCII 오버플로(960+)는 메뉴 폰트도 그리고,
-  런타임(192+code, 가격 숫자)·풀와이드(448+)만 보존. 재실행 → **A8E6FDD1만 변경**(나머지 5개 동일).
-  cell965=취(取)→'!' 확정. 가격 숫자 경로(cell240·245)는 손대지 않아 원본 글리프 그대로(회귀 없음).
-  번역 JSON·CPK 재빌드 불필요(폰트는 Vita3K texture import 직접 반영). import 폴더 갱신 완료.
-- **✅ v1.1.1 릴리스**: 사용자 확인 후 release/version.json 1.1.0→1.1.1, NOTES_v1.1.1.md 작성,
-  build_release → publish_release(--latest), 이슈 #14 댓글+클로즈.
+---
+새 작업·이슈가 생기면 이 파일에 추가하고, 끝나면 success.md로 옮긴다.

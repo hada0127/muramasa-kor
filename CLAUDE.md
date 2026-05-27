@@ -483,7 +483,14 @@ python tools/build_release.py                    # 본편 + ✕ 추가팩 동시
 - 새 버튼 텍스처 추가: 패널에서 포함 토글(빈 ops) → `button_variants.json`에 ops 추가하거나
   `ui_xbutton/<hash>.png`를 직접 ✕로 편집.
 
-## 현재 진행 상황 (2026-05-25, **v1.0.0 정식판**)
+## 현재 진행 상황 (2026-05-27, **v1.2.1**)
+
+### 최근 릴리스 (상세는 success.md)
+- **v1.2.1** — ✕ 버튼 추가팩에 메인 메뉴(DF66CADD) 포함 (이슈 #15)
+- **v1.2.0** — ○/✕ 선택 버튼 ✕ 추가팩 도입 (이슈 #12). [버튼 변형팩 섹션](#-버튼-변형팩-이슈-12) 참조
+- **v1.1.1** — 튜토리얼 '멋지다!' 느낌표→한자(取) 깨짐 수정 (이슈 #14)
+- **v1.1.0** — 아이템명 표기 통일 + 타이틀 화면 HD화 (이슈 #11)
+- **v1.0.0** — 완성형 2350자 폰트 + 본편·DLC 대사 전수 재번역 + 표기 통일 (정식판)
 
 ### 완료된 Phase
 - ✅ **Phase 1**: NMS 텍스트 추출·번역 인프라 (한글 SJIS 매핑, CRILAYLA 재압축)
@@ -503,6 +510,9 @@ python tools/build_release.py                    # 본편 + ✕ 추가팩 동시
   제거("this blade") → 텍스트/폰트 패치로 복원 불가(eboot 역공학 필요). **진행하지 않음.**
 
 ### 추후 필요 시 (현재 미예정)
+- **DLC 엔딩 "完"→"완 결"** (보류): DLC 팩 CPK 내부 `GUI/Ending_P1~4.ftx`(1024² 일러스트+좌하단 完).
+  export에 없어 import hash 미확보. 방법 A(인게임 hash 확보) / B(FTX 재인코더+CPK 패치). 상세
+  `docs/03-analysis/export-texture-audit-2026-05-20.md` "Ending 完 Handling" + `.claude/todo.md`.
 - **Phase 4** UI 그래픽 텍스처 한글화: 주요 완료, 잔여 소수
 - **OOR 전수 감사** (별도 feature)
 - `_itemdata`/`sysmsg` 비대사 섹션 재번역 (필요해지면 대사와 같은 파이프라인으로)
