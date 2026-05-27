@@ -265,6 +265,7 @@ muramasa-kor/
 │   ├── place_originals/         # 지명 텍스처 원본 (place_texture_jobs 소스)
 │   └── kr/                      # 한글화 출력 (Vita3K import용, 릴리스 패키징 단위)
 │       ├── ui/                  # 한글 UI 텍스처 (73420, 8EFF, ADE2 등)
+│       ├── ui_xbutton/          # ○→✕ 버튼 변형팩 (이슈 #12, 추가팩 전용. main 릴리스 미포함)
 │       └── font/                # 한글 폰트 텍스처
 ├── wii/                         # Wii USA판 한글 패치 참고 자료
 ├── docs/                        # PDCA 문서 (01-plan, 02-design, 03-analysis, 04-report)
@@ -288,6 +289,7 @@ muramasa-kor/
 | `proper_nouns.json` | 고유명사 통일 사전 |
 | `texture_localize_config.json` | 텍스처 한글화 영역/번역 설정 |
 | `texture_localize_catalog.json` | 전수조사 카탈로그 (379개 중 12개 텍스트 텍스처) |
+| `button_variants.json` | ○→✕ 버튼 변형팩 레지스트리 (이슈 #12, 해시·메모·ops) |
 
 ### 주요 도구 (`tools/`)
 | 파일 | 설명 |
@@ -300,6 +302,8 @@ muramasa-kor/
 | `auto_font_import.py` | export 폰트 감지 + 페이지(河/重/隼) 자동 판별 → 한글 import 생성 |
 | `hd_font_import.py` | HD 팩 폰트 위에 한글 오버레이 |
 | `texture_localize.py` | UI 텍스처 한글화 (config JSON → Vita3K import PNG) |
+| `build_button_variant.py` | ○→✕ 버튼 변형팩 생성 (이슈 #12, `button_variants.json` 기반) |
+| `apply_xbutton_patch.py` | ✕ 추가팩 독립 설치기 (배포 zip에 포함, `--restore`로 ○ 복원) |
 | `texture_survey.py` | 텍스처 전수조사 컨택시트 |
 | `detect_text_textures.py` | 텍스트 포함 텍스처 자동 감지 |
 | `ftx_extract.py` | FTX→PNG 디코더 (DXT5/BC3 + Morton unswizzle) |
@@ -444,6 +448,40 @@ python tools/texture_localize.py ADE2B8B5
 # 미리보기 (검은 배경 합성)
 python tools/texture_localize.py --preview
 ```
+
+## ○/✕ 버튼 변형팩 (이슈 #12)
+
+선택/확인 버튼 표시를 기본(○) 대신 ✕로 보고 싶은 사용자를 위한 **추가 덮어쓰기 팩**.
+본편 패치는 ○ 유지, ✕판 텍스처만 따로 zip으로 배포한다.
+
+### ★ 반드시 알 것 (codex+gemini 협의로 확정)
+- 게임이 버튼 글리프를 **자체 텍스처 아틀라스로 직접 그린다** → 텍스처 교체는 화면 '표시'만 ✕로 바꾼다.
+  실제로 ✕가 '확인'이 되게 하려면 **Vita3K 설정 Enter Button Assignment = Cross**와 세트로 써야 한다
+  (Vita3K `SCE_SYSTEM_PARAM_ID_ENTER_BUTTON`). 릴리스 노트·패처에 이 안내를 반드시 포함.
+
+### 대상 텍스처 (현재 2개)
+| hash | 화면 | ✕판 처리 |
+|---|---|---|
+| EDA6F03EC4E141EE | 인게임 메뉴 하단 '확인' 선택 아이콘 | 확인 글리프 셀(원본 ✕)을 복원. 확인=✕, 취소=○ |
+| 3B58B76CBA15E487 | 타이틀 시작화면 '◯ 누르세요' | ○ 엔소 링 슬롯을 원본 ✕ 붓글씨로 교체. '누르세요' 텍스트 유지 |
+
+### 구조
+- `translations/button_variants.json` — 변형 레지스트리(해시·label·memo·ops). 진실 원본.
+- `tools/build_button_variant.py` — 데이터 기반 ✕판 생성기. op: `restore_original`(원본 box 복원),
+  `clear_box`(알파 0), `paste_original_cc`(원본 글리프 연결성분 추출→중앙 배치). 게임은 알파만 쓰므로
+  변경은 해당 셀에만 국한. ops 없으면 `ui_xbutton`의 수동 PNG 보존(없으면 ○ 복제).
+- `textures/kr/ui_xbutton/<hash>.png` — ✕판 출력 (main 릴리스엔 미포함, 격리).
+- `tools/apply_xbutton_patch.py` — 독립 설치기(✕ 설치 / `--restore`로 ○ 복원).
+
+### 명령
+```bash
+python tools/build_button_variant.py            # ✕판 텍스처 생성 (--preview 미리보기)
+python tools/build_release.py --xbutton-only     # ✕ 추가팩 zip만 빌드 (dist/muramasa-kor-xbutton-vX.zip)
+python tools/build_release.py                    # 본편 + ✕ 추가팩 동시 빌드 (--no-xbutton으로 생략)
+```
+- UI 에디터 우측 '✕ 버튼 변형' 패널에서 포함 토글·메모·○/✕ 미리보기·재생성·추가팩 내보내기 가능.
+- 새 버튼 텍스처 추가: 패널에서 포함 토글(빈 ops) → `button_variants.json`에 ops 추가하거나
+  `ui_xbutton/<hash>.png`를 직접 ✕로 편집.
 
 ## 현재 진행 상황 (2026-05-25, **v1.0.0 정식판**)
 

@@ -262,6 +262,16 @@ py -3 apply_patch.py --restore
 - `muramasa-kor-v1.0.0-vita3k-patcher-sha256.txt`
 - `muramasa-kor-v1.0.0-vita3k-patcher-release-notes.txt`
 
+### ✕ 버튼 추가팩 (선택)
+
+선택/확인 버튼을 ○ 대신 **✕로 보고 싶은 분**을 위한 선택형 추가팩 `muramasa-kor-xbutton-vX.zip`이 함께 제공될 수 있다.
+기본 패치는 ○를 그대로 쓰고, 이 팩을 추가로 덮어쓰면 버튼 표시가 ✕로 바뀐다.
+
+- 게임이 버튼 모양을 직접 그리므로 이 팩은 **화면 표시만** 바꾼다. 실제로 ✕가 "확인"이 되게 하려면
+  Vita3K 설정에서 **Enter Button Assignment = Cross** 로도 바꿔야 한다.
+- 설치: 기본 패치 적용 후 `apply_xbutton.py`(또는 `apply_xbutton_windows.bat` / `apply_xbutton_macos.command`) 실행.
+- 되돌리기: `python3 apply_xbutton.py --restore`.
+
 ## 주의
 
 - 이 패치는 Vita3K 전용이다.
