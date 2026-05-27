@@ -34,7 +34,12 @@ function renderList() {
   const ul = $("#files");
   ul.innerHTML = "";
   let shown = 0;
-  for (const t of INDEX.textures) {
+  // 파일명(해시)순 정렬 → 같은 해시의 일반용·✕용 행이 나란히. 같은 해시면 일반용 먼저.
+  const sorted = INDEX.textures.slice().sort((a, b) =>
+    a.hash === b.hash
+      ? (a.variant === "xbutton" ? 1 : 0) - (b.variant === "xbutton" ? 1 : 0)
+      : a.hash.localeCompare(b.hash));
+  for (const t of sorted) {
     const isVar = t.variant === "xbutton";
     if (!sys.has(t.system)) continue;
     if (xvarOnly && !isVar) continue;
