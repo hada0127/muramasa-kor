@@ -53,15 +53,19 @@ def main() -> int:
             f"{missing_list}"
         )
 
+    # ✕ 버튼 추가팩(이슈 #12)이 있으면 같은 릴리스 자산으로 첨부
+    assets = [str(zip_path), str(manifest_path), str(checksums_path), str(notes_file)]
+    xbutton_zip = DIST_DIR / f"muramasa-kor-xbutton-v{version}.zip"
+    if xbutton_zip.exists():
+        assets.append(str(xbutton_zip))
+        print(f"(첨부) ✕ 버튼 추가팩: {xbutton_zip.name}")
+
     cmd = [
         "gh",
         "release",
         "create",
         tag,
-        str(zip_path),
-        str(manifest_path),
-        str(checksums_path),
-        str(notes_file),
+        *assets,
         "--title",
         args.title or f"Muramasa Korean Patch v{version}",
         "--notes-file",
