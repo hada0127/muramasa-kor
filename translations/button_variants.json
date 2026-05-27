@@ -2088,37 +2088,6 @@
         },
         {
           "box": [
-            1977,
-            275,
-            248,
-            269
-          ],
-          "id": null,
-          "ja": "",
-          "text": "",
-          "background": "clear_alpha",
-          "text_color": "white",
-          "layout": "horizontal",
-          "padding": 0.08,
-          "font_ratio": 0.85,
-          "font_px": null,
-          "letter_spacing": 0,
-          "align": "center",
-          "valign": "center",
-          "rotation": 0,
-          "pad_x": null,
-          "pad_y": null,
-          "outline_width": 0,
-          "outline_color": [
-            0,
-            0,
-            0,
-            255
-          ],
-          "render": true
-        },
-        {
-          "box": [
             2033,
             680,
             204,
