@@ -36,6 +36,10 @@ PREVIEW_DIR = ROOT / "output" / "texture_preview"
 if str(ROOT / "tools") not in sys.path:
     sys.path.insert(0, str(ROOT / "tools"))
 
+from localize_region_io import color_list as _color_list  # noqa: E402
+from localize_region_io import to_native_localize as _to_native_localize  # noqa: E402
+from localize_region_io import upd as _upd  # noqa: E402
+
 _LOCK = threading.Lock()
 
 MIME = {
@@ -69,58 +73,6 @@ def update_memo(hash_id, memo):
                 break
         save_json(INDEX_PATH, idx)
     return {"ok": True}
-
-
-def _color_list(c):
-    if isinstance(c, list):
-        return c
-    return [255, 255, 255, 255]
-
-
-def _upd(d, key, value, default):
-    """기존 키는 항상 갱신, 없던 키는 비기본값일 때만 추가 (무변경 round-trip 보장)."""
-    if key in d or value != default:
-        d[key] = value
-
-
-def _to_native_localize(r):
-    """편집 region → texture_localize 네이티브 region."""
-    x, y, w, h = [int(round(v)) for v in r["box"]]
-    nr = dict(r.get("native") or {})
-    nr.update({"x": x, "y": y, "w": w, "h": h, "text": r.get("text", "")})
-    # font_size: 명시값이 있으면 절대값으로 저장, None/0 이면 font_ratio 모드 → 키 제거
-    fs = r.get("font_size")
-    if fs is not None and fs != "" and int(fs) > 0:
-        nr["font_size"] = int(fs)
-    else:
-        nr.pop("font_size", None)
-    _upd(nr, "color", _color_list(r.get("color")), [255, 255, 255, 255])
-    _upd(nr, "align", r.get("align", "left"), "left")
-    _upd(nr, "v_align", r.get("v_align", "top"), "top")
-    _upd(nr, "clear", bool(r.get("clear", True)), True)
-    _upd(nr, "fit_to_box", bool(r.get("fit_to_box", False)), False)
-    _upd(nr, "letter_spacing", int(r.get("letter_spacing") or 0), 0)
-    if r.get("orient"):
-        nr["orient"] = r["orient"]
-    # UI 통일로 추가된 place-style 속성도 round-trip 보존
-    for k in ("layout", "rotation", "font_ratio", "font_px",
-             "pad_x", "pad_y", "background", "render", "blur"):
-        v = r.get(k)
-        if v is None or v == "" or v == 0:
-            nr.pop(k, None)
-        else:
-            nr[k] = v
-    # 외곽선
-    ow = int(r.get("outline_width") or 0)
-    oc = r.get("outline_color")
-    if ow > 0:
-        nr["outline_width"] = ow
-        nr["outline_color"] = list(oc) if isinstance(oc, list) and len(oc) >= 3 else [0, 0, 0, 255]
-    else:
-        nr.pop("outline_width", None)
-        nr.pop("outline_color", None)
-    nr.pop("clear_rect", None)
-    return nr
 
 
 def _to_native_place(r):
@@ -341,6 +293,9 @@ def button_variants_info(hash_id=None):
             "label": v.get("label", ""),
             "memo": v.get("memo", ""),
             "has_ops": bool(v.get("ops")),
+            "system": v.get("system", ""),
+            "editable": v.get("exclude_region_ids") is not None or v.get("system") == "localize",
+            "excluded": v.get("exclude_region_ids", []) or [],
             "variant_png": str(png.relative_to(ROOT)) if png.exists() else None,
             "base_png": f"{cfg['base_dir']}/{v['hash']}.png",
         })
@@ -359,6 +314,38 @@ def button_variant_build(hash_id=None):
         except Exception as e:  # noqa: BLE001
             return {"ok": False, "error": repr(e)}
     return {"ok": True, **button_variants_info(hash_id)}
+
+
+def variant_regions_get(hash_id):
+    """✕ 편집 모드용: 기본(○) region 전체(UI 포맷) + 현재 ✕에서 빼둔(excluded) region _id 목록."""
+    import build_button_variant as BV
+    idx = load_json(INDEX_PATH)
+    tex = next((t for t in idx["textures"] if t["hash"] == hash_id), None)
+    if tex is None:
+        return {"ok": False, "error": "인덱스에 없음"}
+    v = BV.find_variant(BV.load_config(), hash_id)
+    excluded = (v or {}).get("exclude_region_ids", []) or []
+    return {"ok": True, "hash": hash_id, "regions": tex.get("regions", []),
+            "excluded": excluded, "system": tex.get("system", "")}
+
+
+def save_variant_regions(hash_id, kept_ids):
+    """편집기에서 남긴(kept) region _id 목록으로 exclude를 계산·저장하고 ui_xbutton에 렌더.
+
+    kept_ids = ✕ 편집 모드에서 삭제하지 않고 남긴 region들의 _id. 나머지(=삭제한 것)가 exclude.
+    """
+    import build_button_variant as BV
+    with _LOCK:
+        all_regs = BV.localize_regions(hash_id)
+        all_ids = [r.get("_id") for r in all_regs if r.get("_id")]
+        kept = set(kept_ids or [])
+        exclude = [rid for rid in all_ids if rid not in kept]
+        BV.set_variant_exclude(hash_id, exclude, "localize")
+        try:
+            out = BV.render_localize_variant(hash_id, exclude)
+        except Exception as e:  # noqa: BLE001
+            return {"ok": False, "error": repr(e)}
+    return {"ok": True, "path": str(out.relative_to(ROOT)), "excluded": exclude}
 
 
 def button_variant_export():
@@ -421,6 +408,9 @@ class Handler(BaseHTTPRequestHandler):
         elif route == "/api/button_variants":
             qs = urllib.parse.parse_qs(parsed.query)
             self._send(200, button_variants_info(qs.get("hash", [None])[0]))
+        elif route == "/api/variant_regions":
+            qs = urllib.parse.parse_qs(parsed.query)
+            self._send(200, variant_regions_get(qs.get("hash", [""])[0]))
         elif route == "/api/image":
             qs = urllib.parse.parse_qs(parsed.query)
             rel = qs.get("path", [""])[0]
@@ -467,6 +457,8 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(200, button_variant_build(data.get("hash")))
             elif route == "/api/button_variant_export":
                 self._send(200, button_variant_export())
+            elif route == "/api/save_variant_regions":
+                self._send(200, save_variant_regions(data["hash"], data.get("kept_ids", [])))
             else:
                 self._send(404, {"error": "unknown route"})
         except Exception as e:  # noqa: BLE001

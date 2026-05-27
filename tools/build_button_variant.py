@@ -28,6 +28,10 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "translations" / "button_variants.json"
+LOCALIZE_CONFIG = ROOT / "translations" / "texture_localize_config.json"
+
+if str(ROOT / "tools") not in sys.path:
+    sys.path.insert(0, str(ROOT / "tools"))
 
 
 def load_config() -> dict:
@@ -50,6 +54,65 @@ def set_memo(hash_id: str, memo: str) -> dict:
     v["memo"] = memo
     save_config(cfg)
     return {"ok": True}
+
+
+def localize_regions(hash_id: str) -> list:
+    """texture_localize_config의 해당 텍스처 네이티브 region 목록."""
+    import json as _json
+    cfg = _json.loads(LOCALIZE_CONFIG.read_text(encoding="utf-8"))
+    base = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
+    if base is None:
+        return []
+    return base.get("regions") or base.get("manual_regions") or []
+
+
+def set_variant_exclude(hash_id: str, exclude_ids: list, system: str = "localize") -> dict:
+    """localize 변형에서 ✕로 만들기 위해 '빼는' region _id 목록을 저장.
+
+    O를 그리던 region을 빼면 원본 텍스처의 ✕가 그대로 드러난다(config 대비 작고 재현 가능).
+    """
+    cfg = load_config()
+    v = find_variant(cfg, hash_id)
+    if v is None:
+        v = {"hash": hash_id, "label": hash_id, "memo": "", "ops": []}
+        cfg.setdefault("variants", []).append(v)
+    v["system"] = system
+    v["exclude_region_ids"] = list(exclude_ids)
+    v.setdefault("ops", [])
+    v.pop("variant_regions", None)  # 구버전 full-region 저장 방식 정리
+    save_config(cfg)
+    return {"ok": True}
+
+
+def render_localize_variant(hash_id: str, exclude_ids: list, out_dir: Path | None = None) -> Path:
+    """localize 텍스처에서 exclude_ids region을 빼고 렌더 → ui_xbutton(또는 out_dir).
+
+    원본(source)은 그대로 두고, O를 그리던 region만 제거 → 원본 ✕가 드러난다.
+    """
+    import json as _json
+    import texture_localize as TL
+
+    out_dir = out_dir or (ROOT / load_config()["out_dir"])
+    out_dir.mkdir(parents=True, exist_ok=True)
+    cfg = _json.loads(LOCALIZE_CONFIG.read_text(encoding="utf-8"))
+    base = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
+    if base is None:
+        raise ValueError(f"localize config에 {hash_id} 없음")
+    excl = set(exclude_ids or [])
+    regs = base.get("regions") or base.get("manual_regions") or []
+    kept = [r for r in regs if r.get("_id") not in excl]
+    if not kept:
+        raise ValueError("렌더할 region이 없습니다")
+    tmp = dict(base)
+    tmp["regions"] = kept
+    orig_imp, orig_repo = TL.IMPORT_DIR, TL.REPO_KR_DIR
+    TL.IMPORT_DIR = out_dir
+    TL.REPO_KR_DIR = out_dir
+    try:
+        TL.process_texture(hash_id, tmp, preview=False)
+    finally:
+        TL.IMPORT_DIR, TL.REPO_KR_DIR = orig_imp, orig_repo
+    return out_dir / f"{hash_id}.png"
 
 
 def toggle(hash_id: str, include: bool, label: str = "") -> dict:
@@ -136,6 +199,12 @@ def build(prefix: str | None = None, preview: bool = False) -> list[Path]:
         out_path = out_dir / f"{h}.png"
         if not base_path.exists():
             print(f"  ! 기본 텍스처 없음: {base_path}")
+            continue
+        if v.get("exclude_region_ids") is not None:
+            # localize 변형: O를 그리던 region을 빼고 렌더 → 원본 ✕ 노출 → ui_xbutton
+            render_localize_variant(h, v["exclude_region_ids"], out_dir)
+            print(f"  ✓ {h}  ({v.get('label','')}) → localize 변형 렌더 (exclude {v['exclude_region_ids']})")
+            written.append(out_path)
             continue
         if not v.get("ops"):
             # ops가 없으면: 수동 편집한 ✕ PNG가 이미 있으면 보존, 없으면 ○ 복제(편집 시작점)
