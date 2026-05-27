@@ -76,30 +76,10 @@
       <button id="btn-del" class="danger">영역 삭제</button>
     </div>
 
-    <!-- ✕ 버튼 변형 (이슈 #12) -->
+    <!-- ✕ 버튼 변형 (이슈 #12/#15) -->
     <div id="variant-panel" hidden>
-      <h2>✕ 버튼 변형 <span class="muted">#12</span></h2>
-      <label class="vt-toggle"><input type="checkbox" id="vt-include"> 이 텍스처를 ✕ 변형 대상에 포함</label>
-      <div id="vt-body" hidden>
-        <label class="vt-label">✕ 변형 메모</label>
-        <textarea id="vt-memo" rows="3" placeholder="이 텍스처에서 ○→✕로 무엇을 바꾸는지 메모"></textarea>
-        <button id="vt-memo-save">메모 저장</button>
-        <div class="vt-compare">
-          <figure><figcaption>○ 기본</figcaption><div class="vt-imgbox"><img id="vt-base"></div></figure>
-          <figure><figcaption>✕ 변형</figcaption><div class="vt-imgbox"><img id="vt-variant"></div></figure>
-        </div>
-        <div class="vt-noop muted" id="vt-noop" hidden>
-          ops가 없어 ○ 복제만 생성됩니다. <code>textures/kr/ui_xbutton/</code>의 PNG를 직접 ✕로 편집하거나
-          <code>button_variants.json</code>에 ops를 추가하세요.
-        </div>
-        <div class="vt-edit" id="vt-edit" hidden>
-          <p class="muted" style="font-size:11px; margin:0;">지금 <b>✕용 행</b>입니다. region을 편집(텍스트 변경·삭제 등)하고 상단 <b>"저장 및 미리보기"</b>를 누르면 <code>textures/kr/ui_xbutton/</code>에 ✕ 텍스처로 저장·렌더됩니다. 일반(○)용은 목록의 ✕ 없는 같은 해시 행에서 편집하세요.</p>
-        </div>
-        <div class="vt-actions">
-          <button id="vt-rebuild">✕판 재생성</button>
-          <button id="vt-export" class="primary">✕ 추가팩 zip 내보내기</button>
-        </div>
-      </div>
+      <label class="vt-toggle" id="vt-include-row"><input type="checkbox" id="vt-include"> 이 텍스처에 ✕용 추가 (목록에 ✕용 행 생성)</label>
+      <p class="vt-edit muted" id="vt-edit" hidden>지금 <b>✕용 행</b>입니다. region을 편집하고 상단 <b>"저장 및 미리보기"</b>를 누르면 <code>textures/kr/ui_xbutton/</code>에 저장됩니다.</p>
       <p class="vt-caveat muted" id="vt-caveat"></p>
     </div>
   </aside>
@@ -127,6 +107,6 @@
 
 <div id="spinner" hidden><div class="spin"></div><div class="spin-label">이미지 생성 중…</div></div>
 <div id="toast"></div>
-<script src="/static/app.js?v=xbtn4"></script>
+<script src="/static/app.js?v=xbtn5"></script>
 </body>
 </html>

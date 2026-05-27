@@ -711,34 +711,19 @@ async function renderPreview() {
 // ===== ✕ 버튼 변형 (이슈 #12/#15) =====
 // 개념: 같은 텍스처가 목록에서 '일반용'과 '✕용'(별도 행, key=<hash>#x) 으로 나뉜다.
 // ✕용 행을 선택해 region을 편집/저장하면 textures/kr/ui_xbutton 에 렌더된다.
-let VT_CAVEAT = "";
 async function refreshVariantPanel() {
   if (!CUR) { $("#variant-panel").hidden = true; return; }
   const isVar = CUR.variant === "xbutton";
   $("#variant-panel").hidden = false;
   const info = await api(`/api/button_variants?hash=${encodeURIComponent(CUR.hash)}`);
-  VT_CAVEAT = info.caveat || "";
-  $("#vt-caveat").textContent = VT_CAVEAT;
-  const sel = info.selected;
-  const included = !!sel;
-  // ✕용 행에선 include 토글 숨김(이미 변형 항목). 일반 행에선 토글 노출.
-  $("#vt-include").parentElement.style.display = isVar ? "none" : "";
-  $("#vt-include").checked = included;
-  $("#vt-body").hidden = !included;
-  if (included) {
-    $("#vt-memo").value = sel.memo || "";
-    $("#vt-noop").hidden = sel.has_ops || sel.region_based;
-    const bust = "&t=" + Date.now();
-    $("#vt-base").src = `/api/image?path=${encodeURIComponent(sel.base_png)}${bust}`;
-    $("#vt-variant").src = sel.variant_png
-      ? `/api/image?path=${encodeURIComponent(sel.variant_png)}${bust}`
-      : "";
-    // 안내: ✕용 행에서 region 편집→저장하면 ui_xbutton에 렌더
-    $("#vt-edit").hidden = !(isVar && CUR.system !== "manual");
-  }
+  $("#vt-caveat").textContent = info.caveat || "";
+  // 일반 행: ✕용 추가 토글. ✕용 행: 토글 숨기고 안내문만.
+  $("#vt-include-row").style.display = isVar ? "none" : "";
+  $("#vt-include").checked = !!info.selected;
+  $("#vt-edit").hidden = !isVar;
 }
 
-// ✕용 행에서 저장: region 세트를 그대로 저장 + ui_xbutton 렌더
+// ✕용 행 저장: region 세트를 그대로 저장 + ui_xbutton 렌더 ("저장 및 미리보기"가 호출)
 async function saveVariantRegions() {
   if (SEL >= 0) readProps();
   $("#spinner").hidden = false;
@@ -746,12 +731,11 @@ async function saveVariantRegions() {
     const res = await api("/api/save_variant_regions",
       { hash: CUR.hash, system: CUR.system, regions: CUR.regions });
     if (!res.ok) { toast(res.error || "저장 실패", true); return; }
-    toast("✕용 저장·렌더 완료 → " + res.path);
-    $("#modal-title").textContent = `✕ 변형 렌더 완료: ${res.path}`;
+    $("#modal-title").textContent = `✕용 저장 완료 → ${res.path}`;
     $("#modal-img").src = `/api/image?path=${encodeURIComponent(res.path)}&t=${Date.now()}`;
     $("#modal-log").textContent = "저장 경로: " + res.path;
     $("#modal").hidden = false;
-    refreshVariantPanel();
+    renderList();  // ✕용 행 썸네일 갱신
   } finally { $("#spinner").hidden = true; }
 }
 async function vtToggle() {
@@ -760,33 +744,10 @@ async function vtToggle() {
     { hash: CUR.hash, include, label: (CUR.memo || CUR.hash) });
   if (!res.ok) { toast(res.error || "실패", true); return; }
   if (include) await api("/api/button_variant_build", { hash: CUR.hash });
-  toast(include ? "✕용 항목 생성 (목록에 ✕용 행 추가)" : "✕용 항목 제거");
-  INDEX = await api("/api/index");  // 변형 항목 행 갱신
+  toast(include ? "✕용 행 생성됨" : "✕용 제거됨");
+  INDEX = await api("/api/index");  // 변형 행 갱신
   renderList();
   refreshVariantPanel();
-}
-async function vtSaveMemo() {
-  const res = await api("/api/button_variant_memo", { hash: CUR.hash, memo: $("#vt-memo").value });
-  toast(res.ok ? "✕ 변형 메모 저장됨" : (res.error || "실패"), !res.ok);
-}
-async function vtRebuild() {
-  $("#spinner").hidden = false;
-  try {
-    const res = await api("/api/button_variant_build", { hash: CUR.hash });
-    if (res.ok) { toast("✕판 재생성 완료"); refreshVariantPanel(); }
-    else toast(res.error || "재생성 실패", true);
-  } finally { $("#spinner").hidden = true; }
-}
-async function vtExport() {
-  $("#spinner").hidden = false;
-  try {
-    const res = await api("/api/button_variant_export", {});
-    $("#modal-title").textContent = res.ok ? `✕ 추가팩 생성: ${res.zip}` : "✕ 추가팩 내보내기 실패";
-    $("#modal-img").src = "";
-    $("#modal-log").textContent = res.log || "";
-    $("#modal").hidden = false;
-    toast(res.ok ? "✕ 추가팩 zip 생성됨 (dist/)" : "내보내기 실패", !res.ok);
-  } finally { $("#spinner").hidden = true; }
 }
 
 // ===== 초기화 =====
@@ -817,9 +778,6 @@ async function init() {
   $("#btn-memo").onclick = saveMemo;
   $("#btn-render").onclick = renderPreview;
   $("#vt-include").onchange = vtToggle;
-  $("#vt-memo-save").onclick = vtSaveMemo;
-  $("#vt-rebuild").onclick = vtRebuild;
-  $("#vt-export").onclick = vtExport;
   $("#modal-close").onclick = () => ($("#modal").hidden = true);
   $("#modal").onclick = (e) => { if (e.target.id === "modal") $("#modal").hidden = true; };
   $$(".modal-bgsel button").forEach((b) => (b.onclick = () => {
