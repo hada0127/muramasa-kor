@@ -7,7 +7,7 @@
   "variants": [
     {
       "hash": "EDA6F03EC4E141EE",
-      "label": "인게임 선택 버튼 아이콘 (ps_buttons 아틀라스)",
+      "label": "인게임 선택 버튼 아이콘 (ps_buttons)",
       "memo": "메뉴 하단 '확인' 선택 버튼 아이콘. 현재 한글패치는 이 셀을 ○로 그리는데, ✕판은 원본 ✕ 글리프로 복원한다. (확인=✕, 취소=○ — 서구식 배치)",
       "ops": [
         {
@@ -23,44 +23,2131 @@
       ]
     },
     {
-      "hash": "3B58B76CBA15E487",
-      "label": "시작화면 버튼 글리프 (system_ui)",
-      "memo": "타이틀 시작화면 '◯ 누르세요'의 ○ 엔소 링 글리프 → 원본 ✕ 붓글씨로 교체. '누르세요' 텍스트는 그대로 유지(텍스트엔 ○ 문자가 베이크돼 있지 않음).",
-      "ops": [
+      "hash": "DF66CADDABE022E3",
+      "label": "메인 UI 메뉴 아틀라스 (4096²)",
+      "memo": "이슈 #15. localize 텍스처. ✕용 region 세트에서 O 그리는 region(text='O') 2개 제거 → 원본 ✕ 노출. ui_xbutton에 렌더.",
+      "ops": [],
+      "system": "localize",
+      "regions": [
         {
-          "type": "clear_box",
           "box": [
-            1915,
-            8,
-            256,
-            256
+            1736,
+            559,
+            261,
+            1291
           ],
-          "note": "○ 엔소 링 슬롯 제거 (kr 기준 ○ 링 bbox x1922-2165 y14-255 포함)"
+          "text": "저장하기",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 90,
+          "font_ratio": 0.73,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
         },
         {
-          "type": "paste_original_cc",
-          "seed": [
-            2070,
-            400
+          "box": [
+            1998,
+            558,
+            1219,
+            270
           ],
-          "alpha_threshold": 60,
-          "dst_center": [
-            2043,
-            134
+          "text": "불러오기",
+          "font_size": 216,
+          "color": [
+            255,
+            255,
+            255,
+            255
           ],
-          "note": "원본 ✕ 붓글씨 연결성분(bbox x1977-2190 y281-520)을 ○ 자리에 중앙 배치"
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1989,
+            1358,
+            1187,
+            274
+          ],
+          "text": "새 게임",
+          "font_size": 216,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            370,
+            3212,
+            599,
+            196
+          ],
+          "text": "설 정",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.66,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1749,
+            1859,
+            1223,
+            188
+          ],
+          "text": "기본 설정",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2684,
+            3186,
+            677,
+            194
+          ],
+          "text": "결 정",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1734,
+            2040,
+            1273,
+            178
+          ],
+          "text": "게임 스타일 선택",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.77,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1740,
+            2218,
+            983,
+            174
+          ],
+          "text": "닌자 주머니",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            0,
+            2851,
+            989,
+            193
+          ],
+          "text": "소유한 칼",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            9,
+            1569,
+            1153,
+            311
+          ],
+          "text": "승 리!",
+          "font_size": 248,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3,
+            1880,
+            805,
+            292
+          ],
+          "text": "전 투!",
+          "font_size": 248,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2,
+            2178,
+            1110,
+            182
+          ],
+          "text": "스테이터스",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1747,
+            2938,
+            630,
+            194
+          ],
+          "text": "단 련",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.75,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2693,
+            2999,
+            619,
+            191
+          ],
+          "text": "능 력",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2690,
+            2835,
+            837,
+            181
+          ],
+          "text": "장신구",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.62,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2687,
+            2640,
+            763,
+            198
+          ],
+          "text": "장 비",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            947,
+            2353,
+            754,
+            227
+          ],
+          "text": "장 비",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3535,
+            3273,
+            554,
+            204
+          ],
+          "text": "효 과",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2677,
+            2392,
+            596,
+            256
+          ],
+          "text": "뒤 로",
+          "font_size": 224,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            897,
+            2576,
+            629,
+            288
+          ],
+          "text": "저 장",
+          "font_size": 216,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3535,
+            3899,
+            558,
+            197
+          ],
+          "text": "결 정",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3352,
+            3009,
+            169,
+            346
+          ],
+          "text": "오 의",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 90,
+          "font_ratio": 0.75,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            0,
+            3931,
+            637,
+            165
+          ],
+          "text": "조 작",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3,
+            3040,
+            902,
+            172
+          ],
+          "text": "데이터 삭제",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "top",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.73,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": 6,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1724,
+            2747,
+            897,
+            191
+          ],
+          "text": "저 장  일 시",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            983,
+            3058,
+            720,
+            195
+          ],
+          "text": "결 과",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            375,
+            3394,
+            608,
+            182
+          ],
+          "text": "결 계",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.7,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            0,
+            3578,
+            695,
+            180
+          ],
+          "text": "회 복",
+          "font_size": 144,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            652,
+            3752,
+            528,
+            221
+          ],
+          "text": "요 리",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1749,
+            3894,
+            520,
+            179
+          ],
+          "text": "변 경",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2279,
+            3888,
+            403,
+            207
+          ],
+          "text": "대장간",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3448,
+            2638,
+            601,
+            188
+          ],
+          "text": "소모품",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1749,
+            2392,
+            932,
+            176
+          ],
+          "text": "필요 재료",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.76,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1744,
+            2568,
+            837,
+            182
+          ],
+          "text": "식재료",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2369,
+            3380,
+            582,
+            202
+          ],
+          "text": "보너스",
+          "font_size": 168,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            993,
+            2864,
+            744,
+            199
+          ],
+          "text": "조 사",
+          "font_size": 168,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3,
+            2581,
+            572,
+            270
+          ],
+          "text": "전 송",
+          "font_size": 216,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3025,
+            1839,
+            168,
+            351
+          ],
+          "text": "전 송",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 90,
+          "font_ratio": 0.79,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2579,
+            1153,
+            618,
+            203
+          ],
+          "text": "평 가",
+          "font_size": 168,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3284,
+            2396,
+            797,
+            170
+          ],
+          "text": "아라시마루",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            2731,
+            2205,
+            935,
+            185
+          ],
+          "text": "악마의 계곡",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            0,
+            3745,
+            660,
+            178
+          ],
+          "text": "필요함",
+          "font_size": 136,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            707,
+            3568,
+            710,
+            176
+          ],
+          "text": "모모히메",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            997,
+            3252,
+            594,
+            202
+          ],
+          "text": "라쥬키",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1990,
+            3442,
+            165,
+            383
+          ],
+          "text": "오디오",
+          "font_size": null,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 90,
+          "font_ratio": 0.7,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": "clear_alpha",
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3219,
+            1910,
+            706,
+            270
+          ],
+          "text": "연 속!",
+          "font_size": 224,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3190,
+            316,
+            679,
+            252
+          ],
+          "text": "없 음",
+          "font_size": 208,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            1741,
+            3139,
+            409,
+            303
+          ],
+          "text": "이동",
+          "font_size": 256,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
+        },
+        {
+          "box": [
+            3661,
+            1403,
+            427,
+            204
+          ],
+          "text": "아이템",
+          "font_size": 152,
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "align": "center",
+          "v_align": "center",
+          "clear": true,
+          "fit_to_box": false,
+          "letter_spacing": 0,
+          "orient": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "layout": "horizontal",
+          "rotation": 0,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "pad_x": null,
+          "pad_y": null,
+          "background": null,
+          "render": true,
+          "blur": 0
         }
       ]
     },
     {
-      "hash": "DF66CADDABE022E3",
-      "label": "메인 UI 메뉴 아틀라스 (4096²)",
-      "memo": "이슈 #15. localize 텍스처라 O를 그리던 region(K45 좌하단·K46 우측 'Items' 옆, text='O'·clear=true)을 빼면 원본 ✕가 드러난다. UI 에디터 '✕ 편집 모드'에서 두 O region을 삭제→저장하면 exclude_region_ids로 저장되고 ui_xbutton에 렌더된다. 중앙 嵐丸 옆 ✕는 원래 ✕라 건드리지 않음.",
+      "hash": "3B58B76CBA15E487",
+      "label": "시작화면 버튼 글리프 (system_ui)",
+      "memo": "이슈 #15. place 텍스처. ✕용 region 세트에서 'O를'→'X를'(나머지 동일). ui_xbutton에 렌더.",
       "ops": [],
-      "system": "localize",
-      "exclude_region_ids": [
-        "K45",
-        "K46"
+      "system": "place",
+      "regions": [
+        {
+          "box": [
+            5,
+            1267,
+            718,
+            253
+          ],
+          "id": "K0",
+          "ja": "",
+          "text": "누르세요",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.92,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "left",
+          "valign": "top",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        },
+        {
+          "box": [
+            1062,
+            0,
+            850,
+            276
+          ],
+          "id": "K1",
+          "ja": "",
+          "text": "X를",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 192,
+          "letter_spacing": 0,
+          "align": "right",
+          "valign": "bottom",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        },
+        {
+          "box": [
+            0,
+            730,
+            1245,
+            197
+          ],
+          "id": "K2",
+          "ja": "",
+          "text": "이어하기",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 178,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        },
+        {
+          "box": [
+            0,
+            1508,
+            889,
+            200
+          ],
+          "id": "K3",
+          "ja": "",
+          "text": "새게임",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 178,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        },
+        {
+          "box": [
+            0,
+            1824,
+            455,
+            224
+          ],
+          "id": "K4",
+          "ja": "",
+          "text": "뒤 로",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 178,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        },
+        {
+          "box": [
+            1373,
+            1266,
+            502,
+            227
+          ],
+          "id": "K5",
+          "ja": "",
+          "text": "시 작",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": 178,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        },
+        {
+          "box": [
+            1977,
+            275,
+            248,
+            269
+          ],
+          "id": null,
+          "ja": "",
+          "text": "",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        },
+        {
+          "box": [
+            2033,
+            680,
+            204,
+            178
+          ],
+          "id": null,
+          "ja": "",
+          "text": "",
+          "background": "clear_alpha",
+          "text_color": "white",
+          "layout": "horizontal",
+          "padding": 0.08,
+          "font_ratio": 0.85,
+          "font_px": null,
+          "letter_spacing": 0,
+          "align": "center",
+          "valign": "center",
+          "rotation": 0,
+          "pad_x": null,
+          "pad_y": null,
+          "outline_width": 0,
+          "outline_color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "render": true
+        }
       ]
     }
   ]

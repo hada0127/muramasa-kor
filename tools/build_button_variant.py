@@ -56,20 +56,19 @@ def set_memo(hash_id: str, memo: str) -> dict:
     return {"ok": True}
 
 
-def localize_regions(hash_id: str) -> list:
-    """texture_localize_config의 해당 텍스처 네이티브 region 목록."""
+def base_regions_ui(hash_id: str, system: str):
+    """기본(일반용) 텍스처의 region을 UI 편집 포맷으로 반환 (ui_editor_index 기준)."""
     import json as _json
-    cfg = _json.loads(LOCALIZE_CONFIG.read_text(encoding="utf-8"))
-    base = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
-    if base is None:
-        return []
-    return base.get("regions") or base.get("manual_regions") or []
+    idx_path = ROOT / "translations" / "ui_editor_index.json"
+    idx = _json.loads(idx_path.read_text(encoding="utf-8"))
+    tex = next((t for t in idx["textures"] if t["hash"] == hash_id), None)
+    return list((tex or {}).get("regions", []))
 
 
-def set_variant_exclude(hash_id: str, exclude_ids: list, system: str = "localize") -> dict:
-    """localize 변형에서 ✕로 만들기 위해 '빼는' region _id 목록을 저장.
+def set_variant_regions(hash_id: str, ui_regions: list, system: str) -> dict:
+    """✕용 텍스처의 독립 region 세트(UI 편집 포맷)를 button_variants.json에 저장.
 
-    O를 그리던 region을 빼면 원본 텍스처의 ✕가 그대로 드러난다(config 대비 작고 재현 가능).
+    '같은 파일'을 일반용(→textures/kr/ui)과 ✕용(→textures/kr/ui_xbutton)으로 분리하는 개념.
     """
     cfg = load_config()
     v = find_variant(cfg, hash_id)
@@ -77,34 +76,46 @@ def set_variant_exclude(hash_id: str, exclude_ids: list, system: str = "localize
         v = {"hash": hash_id, "label": hash_id, "memo": "", "ops": []}
         cfg.setdefault("variants", []).append(v)
     v["system"] = system
-    v["exclude_region_ids"] = list(exclude_ids)
+    # native 중복은 저장 시 떼어내 파일 크기를 줄인다(렌더 시 top-level에서 재구성).
+    v["regions"] = [{k: rr for k, rr in r.items() if k != "native"} for r in ui_regions]
     v.setdefault("ops", [])
-    v.pop("variant_regions", None)  # 구버전 full-region 저장 방식 정리
+    v.pop("exclude_region_ids", None)  # 구버전 정리
     save_config(cfg)
     return {"ok": True}
 
 
-def render_localize_variant(hash_id: str, exclude_ids: list, out_dir: Path | None = None) -> Path:
-    """localize 텍스처에서 exclude_ids region을 빼고 렌더 → ui_xbutton(또는 out_dir).
+def render_region_variant(hash_id: str, system: str, ui_regions: list, out_dir: Path | None = None) -> Path:
+    """✕용 region 세트로 텍스처를 렌더해 ui_xbutton(또는 out_dir)에 저장.
 
-    원본(source)은 그대로 두고, O를 그리던 region만 제거 → 원본 ✕가 드러난다.
+    localize / place 둘 다 지원. 원본(source)은 일반용과 동일, region만 ✕용 세트로 교체.
     """
     import json as _json
-    import texture_localize as TL
+    from localize_region_io import to_native_localize, to_native_place
 
     out_dir = out_dir or (ROOT / load_config()["out_dir"])
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    if system == "place":
+        import render_place_texture_job as PJ
+        doc = _json.loads((ROOT / "translations" / "place_texture_jobs.json").read_text(encoding="utf-8"))
+        base = doc["textures"].get(hash_id)
+        if base is None:
+            raise ValueError(f"place config에 {hash_id} 없음")
+        job = dict(base)
+        job["regions"] = [to_native_place(r) for r in ui_regions]
+        font = PJ.repo_path(doc.get("font"), PJ.DEFAULT_FONT)
+        return PJ.render_job(hash_id, job, out_dir, None, font)
+
+    # localize
+    import texture_localize as TL
     cfg = _json.loads(LOCALIZE_CONFIG.read_text(encoding="utf-8"))
     base = next((t for t in cfg["textures"] if t["hash"] == hash_id), None)
     if base is None:
         raise ValueError(f"localize config에 {hash_id} 없음")
-    excl = set(exclude_ids or [])
-    regs = base.get("regions") or base.get("manual_regions") or []
-    kept = [r for r in regs if r.get("_id") not in excl]
-    if not kept:
-        raise ValueError("렌더할 region이 없습니다")
     tmp = dict(base)
-    tmp["regions"] = kept
+    tmp["regions"] = [to_native_localize(r) for r in ui_regions]
+    if not tmp["regions"]:
+        raise ValueError("렌더할 region이 없습니다")
     orig_imp, orig_repo = TL.IMPORT_DIR, TL.REPO_KR_DIR
     TL.IMPORT_DIR = out_dir
     TL.REPO_KR_DIR = out_dir
@@ -200,10 +211,10 @@ def build(prefix: str | None = None, preview: bool = False) -> list[Path]:
         if not base_path.exists():
             print(f"  ! 기본 텍스처 없음: {base_path}")
             continue
-        if v.get("exclude_region_ids") is not None:
-            # localize 변형: O를 그리던 region을 빼고 렌더 → 원본 ✕ 노출 → ui_xbutton
-            render_localize_variant(h, v["exclude_region_ids"], out_dir)
-            print(f"  ✓ {h}  ({v.get('label','')}) → localize 변형 렌더 (exclude {v['exclude_region_ids']})")
+        if v.get("regions") is not None:
+            # localize/place 변형: ✕용 독립 region 세트로 렌더 → ui_xbutton
+            render_region_variant(h, v.get("system", "localize"), v["regions"], out_dir)
+            print(f"  ✓ {h}  ({v.get('label','')}) → {v.get('system','localize')} 변형 렌더 ({len(v['regions'])} region)")
             written.append(out_path)
             continue
         if not v.get("ops"):

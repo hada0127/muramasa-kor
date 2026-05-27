@@ -38,6 +38,7 @@ if str(ROOT / "tools") not in sys.path:
 
 from localize_region_io import color_list as _color_list  # noqa: E402
 from localize_region_io import to_native_localize as _to_native_localize  # noqa: E402
+from localize_region_io import to_native_place as _to_native_place  # noqa: E402
 from localize_region_io import upd as _upd  # noqa: E402
 
 _LOCK = threading.Lock()
@@ -73,58 +74,6 @@ def update_memo(hash_id, memo):
                 break
         save_json(INDEX_PATH, idx)
     return {"ok": True}
-
-
-def _to_native_place(r):
-    """편집 region → place_texture_jobs 네이티브 region."""
-    x, y, w, h = [int(round(v)) for v in r["box"]]
-    nr = dict(r.get("native") or {})
-    nr["bbox"] = [x, y, x + w, y + h]
-    _upd(nr, "ko", r.get("text", ""), "")
-    _upd(nr, "text_color", r.get("text_color", "black"), "black")
-    _upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
-    _upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
-    if r.get("font_px"):
-        nr["font_px"] = int(r["font_px"])
-    else:
-        nr.pop("font_px", None)
-    _upd(nr, "letter_spacing", int(r.get("letter_spacing") or 0), 0)
-    _upd(nr, "align", r.get("align", "center"), "center")
-    _upd(nr, "valign", r.get("valign", "center"), "center")
-    _upd(nr, "rotation", int(r.get("rotation", 0) or 0), 0)
-    for pk in ("pad_x", "pad_y"):
-        pv = r.get(pk)
-        if pv is None or pv == "":
-            nr.pop(pk, None)
-        else:
-            nr[pk] = int(pv)
-    _upd(nr, "render", bool(r.get("render", True)), True)
-    ow = int(r.get("outline_width") or 0)
-    oc = r.get("outline_color")
-    if ow > 0:
-        nr["outline_width"] = ow
-        nr["outline_color"] = list(oc) if isinstance(oc, list) and len(oc) >= 3 else [0, 0, 0, 255]
-    else:
-        nr.pop("outline_width", None)
-        nr.pop("outline_color", None)
-    bg = r.get("background")
-    if bg in ("red", "black"):
-        nr["background"] = bg
-        nr.pop("clear", None)
-    elif bg == "clear_alpha":
-        nr.pop("background", None)
-        nr["clear"] = "alpha"
-    elif bg == "clear_white":
-        nr.pop("background", None)
-        nr["clear"] = "white"
-    else:
-        nr.pop("background", None)
-        nr.pop("clear", None)
-    if r.get("layout"):
-        nr["layout"] = r["layout"]
-    else:
-        nr.pop("layout", None)
-    return nr
 
 
 def save_regions(hash_id, system, regions):
@@ -279,7 +228,46 @@ def render_preview(hash_id, system):
     return {"ok": True, "path": rel, "log": (proc.stdout + proc.stderr)[-800:]}
 
 
-# ===== ✕ 버튼 변형팩 (이슈 #12) =====
+# ===== ✕ 버튼 변형 (이슈 #12/#15) =====
+# 개념: 같은 텍스처를 '일반용'(→textures/kr/ui)과 '✕용'(→textures/kr/ui_xbutton)으로 분리.
+# UI 에디터 목록엔 ✕용이 별도 항목(key=<hash>#x, variant="xbutton")으로 표시되고, 저장 시
+# button_variants.json에 독립 region 세트로 저장 + ui_xbutton에 렌더된다.
+def index_with_variants():
+    """기본 인덱스 + ✕ 변형 항목(별도 행)을 합쳐 반환."""
+    import build_button_variant as BV
+    idx = load_json(INDEX_PATH)
+    for t in idx["textures"]:
+        t.setdefault("key", t["hash"])
+    base_by_hash = {t["hash"]: t for t in idx["textures"]}
+    cfg = BV.load_config()
+    extra = []
+    for v in cfg.get("variants", []):
+        h = v["hash"]
+        base = base_by_hash.get(h, {})
+        sysv = v.get("system") or base.get("system") or "manual"
+        if sysv not in ("localize", "place"):
+            sysv = "manual"
+        regions = v.get("regions")
+        if regions is None:
+            regions = base.get("regions", []) if sysv in ("localize", "place") else []
+        extra.append({
+            "key": h + "#x",
+            "hash": h,
+            "variant": "xbutton",
+            "system": sysv,
+            "label": v.get("label", ""),
+            "size": base.get("size"),
+            "coord_size": base.get("coord_size"),
+            "source": base.get("source"),
+            "png": f"{cfg['out_dir']}/{h}.png",
+            "memo": "✕용 — " + (v.get("memo", "")),
+            "description": "✕ 텍스처 적용용 (저장 → textures/kr/ui_xbutton)",
+            "regions": regions,
+        })
+    idx["textures"] = idx["textures"] + extra
+    return idx
+
+
 def button_variants_info(hash_id=None):
     """변형 레지스트리 + 각 항목의 ✕ PNG 존재 여부. hash_id 주면 해당 항목만."""
     import build_button_variant as BV
@@ -294,8 +282,7 @@ def button_variants_info(hash_id=None):
             "memo": v.get("memo", ""),
             "has_ops": bool(v.get("ops")),
             "system": v.get("system", ""),
-            "editable": v.get("exclude_region_ids") is not None or v.get("system") == "localize",
-            "excluded": v.get("exclude_region_ids", []) or [],
+            "region_based": v.get("regions") is not None or v.get("system") in ("localize", "place"),
             "variant_png": str(png.relative_to(ROOT)) if png.exists() else None,
             "base_png": f"{cfg['base_dir']}/{v['hash']}.png",
         })
@@ -316,36 +303,16 @@ def button_variant_build(hash_id=None):
     return {"ok": True, **button_variants_info(hash_id)}
 
 
-def variant_regions_get(hash_id):
-    """✕ 편집 모드용: 기본(○) region 전체(UI 포맷) + 현재 ✕에서 빼둔(excluded) region _id 목록."""
-    import build_button_variant as BV
-    idx = load_json(INDEX_PATH)
-    tex = next((t for t in idx["textures"] if t["hash"] == hash_id), None)
-    if tex is None:
-        return {"ok": False, "error": "인덱스에 없음"}
-    v = BV.find_variant(BV.load_config(), hash_id)
-    excluded = (v or {}).get("exclude_region_ids", []) or []
-    return {"ok": True, "hash": hash_id, "regions": tex.get("regions", []),
-            "excluded": excluded, "system": tex.get("system", "")}
-
-
-def save_variant_regions(hash_id, kept_ids):
-    """편집기에서 남긴(kept) region _id 목록으로 exclude를 계산·저장하고 ui_xbutton에 렌더.
-
-    kept_ids = ✕ 편집 모드에서 삭제하지 않고 남긴 region들의 _id. 나머지(=삭제한 것)가 exclude.
-    """
+def save_variant_regions(hash_id, system, regions):
+    """✕용 독립 region 세트 저장 + ui_xbutton에 렌더 (localize/place)."""
     import build_button_variant as BV
     with _LOCK:
-        all_regs = BV.localize_regions(hash_id)
-        all_ids = [r.get("_id") for r in all_regs if r.get("_id")]
-        kept = set(kept_ids or [])
-        exclude = [rid for rid in all_ids if rid not in kept]
-        BV.set_variant_exclude(hash_id, exclude, "localize")
+        BV.set_variant_regions(hash_id, regions, system)
         try:
-            out = BV.render_localize_variant(hash_id, exclude)
+            out = BV.render_region_variant(hash_id, system, regions)
         except Exception as e:  # noqa: BLE001
             return {"ok": False, "error": repr(e)}
-    return {"ok": True, "path": str(out.relative_to(ROOT)), "excluded": exclude}
+    return {"ok": True, "path": str(out.relative_to(ROOT))}
 
 
 def button_variant_export():
@@ -404,13 +371,10 @@ class Handler(BaseHTTPRequestHandler):
         elif route.startswith("/static/"):
             self._send_file(STATIC / route[len("/static/"):])
         elif route == "/api/index":
-            self._send(200, load_json(INDEX_PATH))
+            self._send(200, index_with_variants())
         elif route == "/api/button_variants":
             qs = urllib.parse.parse_qs(parsed.query)
             self._send(200, button_variants_info(qs.get("hash", [None])[0]))
-        elif route == "/api/variant_regions":
-            qs = urllib.parse.parse_qs(parsed.query)
-            self._send(200, variant_regions_get(qs.get("hash", [""])[0]))
         elif route == "/api/image":
             qs = urllib.parse.parse_qs(parsed.query)
             rel = qs.get("path", [""])[0]
@@ -458,7 +422,8 @@ class Handler(BaseHTTPRequestHandler):
             elif route == "/api/button_variant_export":
                 self._send(200, button_variant_export())
             elif route == "/api/save_variant_regions":
-                self._send(200, save_variant_regions(data["hash"], data.get("kept_ids", [])))
+                self._send(200, save_variant_regions(
+                    data["hash"], data.get("system", "localize"), data.get("regions", [])))
             else:
                 self._send(404, {"error": "unknown route"})
         except Exception as e:  # noqa: BLE001

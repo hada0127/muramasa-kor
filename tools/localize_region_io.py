@@ -53,3 +53,55 @@ def to_native_localize(r):
         nr.pop("outline_color", None)
     nr.pop("clear_rect", None)
     return nr
+
+
+def to_native_place(r):
+    """편집 region → place_texture_jobs 네이티브 region."""
+    x, y, w, h = [int(round(v)) for v in r["box"]]
+    nr = dict(r.get("native") or {})
+    nr["bbox"] = [x, y, x + w, y + h]
+    upd(nr, "ko", r.get("text", ""), "")
+    upd(nr, "text_color", r.get("text_color", "black"), "black")
+    upd(nr, "padding", float(r.get("padding", 0.08)), 0.08)
+    upd(nr, "font_ratio", float(r.get("font_ratio", 0.85)), 0.85)
+    if r.get("font_px"):
+        nr["font_px"] = int(r["font_px"])
+    else:
+        nr.pop("font_px", None)
+    upd(nr, "letter_spacing", int(r.get("letter_spacing") or 0), 0)
+    upd(nr, "align", r.get("align", "center"), "center")
+    upd(nr, "valign", r.get("valign", "center"), "center")
+    upd(nr, "rotation", int(r.get("rotation", 0) or 0), 0)
+    for pk in ("pad_x", "pad_y"):
+        pv = r.get(pk)
+        if pv is None or pv == "":
+            nr.pop(pk, None)
+        else:
+            nr[pk] = int(pv)
+    upd(nr, "render", bool(r.get("render", True)), True)
+    ow = int(r.get("outline_width") or 0)
+    oc = r.get("outline_color")
+    if ow > 0:
+        nr["outline_width"] = ow
+        nr["outline_color"] = list(oc) if isinstance(oc, list) and len(oc) >= 3 else [0, 0, 0, 255]
+    else:
+        nr.pop("outline_width", None)
+        nr.pop("outline_color", None)
+    bg = r.get("background")
+    if bg in ("red", "black"):
+        nr["background"] = bg
+        nr.pop("clear", None)
+    elif bg == "clear_alpha":
+        nr.pop("background", None)
+        nr["clear"] = "alpha"
+    elif bg == "clear_white":
+        nr.pop("background", None)
+        nr["clear"] = "white"
+    else:
+        nr.pop("background", None)
+        nr.pop("clear", None)
+    if r.get("layout"):
+        nr["layout"] = r["layout"]
+    else:
+        nr.pop("layout", None)
+    return nr
