@@ -27,7 +27,11 @@
 - 검증: 생성기 재실행 idempotent(git diff 0), py compile/json valid, 서버 API curl 통과.
   브라우저 시각검증은 원격 Chrome이 로컬 127.0.0.1 미도달로 막힘(기능은 curl로 갈음).
   인게임 최종 확인은 사용자(macOS Vita3K 자동화 불가).
-- **미발행**: 버전 표기·`gh release`는 사용자 확인 대기.
+- **✅ v1.2.0 발행 완료**: 사용자 결정(v1.2.0 새 릴리스). version 1.1.1→1.2.0, NOTES_v1.2.0.md,
+  publish_release.py가 ✕ 추가팩 zip 자동 첨부. build_release(본편+추가팩) → tag v1.2.0 push →
+  gh release(--latest). 자산 5종: 본편 zip(68MB)+manifest+sha256+xbutton zip(3.88MB)+NOTES.
+  URL: https://github.com/hada0127/muramasa-kor/releases/tag/v1.2.0
+  본편 번역/폰트/텍스처는 v1.1.1과 동일(텍스처 추가팩만 신규).
 
 ## [2026-05-27] 타이틀 화면 텍스처 HD화 (이슈 #11, 커밋 dad8e10)
 - 신고: 오보로 무라마사/겐로쿠 괴기담 타이틀의 한문 배경·로고가 저화질. 8EFF960FC088FDD7이 HD팩과 같은 4096×2048인데 화질 떨어짐.
