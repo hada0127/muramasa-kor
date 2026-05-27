@@ -19,6 +19,7 @@ import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+import build_button_variant
 import build_patch
 import cpk_patch
 
@@ -34,6 +35,9 @@ TEXTURE_DIRS = [
     PROJECT_DIR / "textures/kr" / "font",
 ]
 PATCHER_TEMPLATE = PROJECT_DIR / "tools" / "apply_release_patch.py"
+XBUTTON_PATCHER_TEMPLATE = PROJECT_DIR / "tools" / "apply_xbutton_patch.py"
+XBUTTON_BASE_DIR = PROJECT_DIR / "textures" / "kr" / "ui"        # ○(기본) 텍스처 — 복원용
+XBUTTON_VARIANT_DIR = PROJECT_DIR / "textures" / "kr" / "ui_xbutton"  # ✕(변형) 텍스처
 MAIN_CPK = PROJECT_DIR / "backup" / "NinPri.cpk"
 PATCH_CPK = PROJECT_DIR / "backup" / "NinPriPatch.cpk"
 PATCH_FORMAT = "muramasa-kor-binary-patch-v1"
@@ -449,6 +453,117 @@ def package_release(version: str, main_cpk: Path, patch_cpk_path: Path) -> tuple
     return zip_path, manifest_path, checksums_path
 
 
+def write_xbutton_notes() -> str:
+    cfg = json.loads((PROJECT_DIR / "translations" / "button_variants.json").read_text(encoding="utf-8"))
+    lines = [
+        "Muramasa Rebirth 한글 패치 — ✕ 버튼 추가팩 (이슈 #12)",
+        "",
+        "선택/확인 버튼 표시를 ○ → ✕ 로 바꾸는 텍스처만 들어 있는 추가팩입니다.",
+        "기본(○) 한글 패치를 먼저 설치한 뒤, 이 팩을 덮어쓰면 됩니다.",
+        "",
+        "★ 매우 중요 ─ 게임이 버튼 글리프를 자체 텍스처로 직접 그리기 때문에,",
+        "  이 팩은 화면 '표시'만 ✕로 바꿉니다. 실제로 ✕가 '확인'이 되게 하려면",
+        "  Vita3K 설정에서 Enter Button Assignment = Cross 로 바꿔야 합니다.",
+        "  (지금 ○로 잘 쓰고 계신 분은 이 팩이 필요 없습니다.)",
+        "",
+        "설치:",
+        "  Windows  : apply_xbutton_windows.bat 실행",
+        "  macOS    : apply_xbutton_macos.command 실행 (또는 python3 apply_xbutton.py)",
+        "  Linux    : python3 apply_xbutton.py",
+        "",
+        "○ 버튼으로 되돌리기:",
+        "  python3 apply_xbutton.py --restore",
+        "",
+        "수동 설치(안드로이드 등):",
+        f"  xbutton/ 폴더의 PNG를 Vita3K의 textures/import/{TITLE_ID}/ 에 덮어쓰면 됩니다.",
+        f"  되돌리려면 restore-o/ 폴더의 PNG를 같은 곳에 덮어쓰세요.",
+        "",
+        "포함 텍스처:",
+    ]
+    for v in cfg["variants"]:
+        lines.append(f"  - {v['hash']}  ({v.get('label','')})")
+        lines.append(f"      {v.get('memo','')}")
+    return "\n".join(lines) + "\n"
+
+
+def package_button_variant_addon(version: str) -> Path | None:
+    """이슈 #12 ✕ 버튼 추가팩(작은 덮어쓰기 zip)을 dist/에 만든다.
+
+    ✕ 변형 텍스처(textures/kr/ui_xbutton)와 복원용 ○ 텍스처(textures/kr/ui)를 담고,
+    독립 설치기(apply_xbutton.py)와 README를 함께 묶는다. 본편 릴리스와 별개 파일.
+    """
+    print("\n== Building ✕ button add-on pack ==")
+    build_button_variant.build()  # ui_xbutton 최신화
+
+    cfg = json.loads((PROJECT_DIR / "translations" / "button_variants.json").read_text(encoding="utf-8"))
+    hashes = [v["hash"] for v in cfg["variants"]]
+    variant_files = [XBUTTON_VARIANT_DIR / f"{h}.png" for h in hashes]
+    base_files = [XBUTTON_BASE_DIR / f"{h}.png" for h in hashes]
+    missing = [str(p) for p in (variant_files + base_files) if not p.exists()]
+    if missing:
+        print("  ! ✕ 추가팩 건너뜀 (파일 누락):\n    " + "\n    ".join(missing))
+        return None
+
+    DIST_DIR.mkdir(parents=True, exist_ok=True)
+    base_name = f"muramasa-kor-xbutton-v{version}"
+    zip_path = DIST_DIR / f"{base_name}.zip"
+
+    manifest = {
+        "name": "muramasa-kor-xbutton",
+        "version": version,
+        "title_id": TITLE_ID,
+        "release_type": "vita3k-texture-overlay",
+        "depends_on": "muramasa-kor base patch",
+        "built_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "note": cfg.get("_caveat", ""),
+        "textures": [
+            {
+                "name": f"{h}.png",
+                "label": next((v.get("label", "") for v in cfg["variants"] if v["hash"] == h), ""),
+                "variant_sha256": sha256_file(XBUTTON_VARIANT_DIR / f"{h}.png"),
+                "base_sha256": sha256_file(XBUTTON_BASE_DIR / f"{h}.png"),
+            }
+            for h in hashes
+        ],
+    }
+
+    windows_bat = (
+        "@echo off\r\n"
+        "cd /d \"%~dp0\"\r\n"
+        "where py >nul 2>nul\r\n"
+        "if %errorlevel%==0 ( py -3 apply_xbutton.py %* & goto end )\r\n"
+        "where python >nul 2>nul\r\n"
+        "if %errorlevel%==0 ( python apply_xbutton.py %* & goto end )\r\n"
+        "echo Python 3 was not found. Install Python 3.9 or later, then run this again.\r\n"
+        ":end\r\n"
+        "pause\r\n"
+    )
+    mac_command = (
+        "#!/bin/sh\n"
+        "cd \"$(dirname \"$0\")\"\n"
+        "if command -v python3 >/dev/null 2>&1; then\n"
+        "  python3 apply_xbutton.py \"$@\"\n"
+        "else\n"
+        "  echo \"Python 3 was not found. Install Python 3.9 or later, then run this again.\"\n"
+        "fi\n"
+        "printf 'Press Enter to close...'\n"
+        "read _\n"
+    )
+
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        _write_zip_file(archive, XBUTTON_PATCHER_TEMPLATE, "apply_xbutton.py", executable=True)
+        _write_zip_text(archive, "apply_xbutton_windows.bat", windows_bat)
+        _write_zip_text(archive, "apply_xbutton_macos.command", mac_command, executable=True)
+        _write_zip_text(archive, "README.txt", write_xbutton_notes())
+        archive.writestr("xbutton-manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+        for h in hashes:
+            archive.write(XBUTTON_VARIANT_DIR / f"{h}.png", f"xbutton/{h}.png")
+            archive.write(XBUTTON_BASE_DIR / f"{h}.png", f"restore-o/{h}.png")
+
+    print(f"  ✓ {zip_path.name}  ({len(hashes)} textures, {zip_path.stat().st_size:,} bytes)")
+    return zip_path
+
+
 def clean_dist() -> None:
     if DIST_DIR.exists():
         shutil.rmtree(DIST_DIR)
@@ -458,6 +573,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build a versioned Vita3K local patcher release into dist/.")
     parser.add_argument("--version", help="Override release/version.json for this build only.")
     parser.add_argument("--keep-dist", action="store_true", help="Keep existing dist/ contents.")
+    parser.add_argument("--no-xbutton", action="store_true", help="✕ 버튼 추가팩(이슈 #12)을 빌드하지 않음.")
+    parser.add_argument("--xbutton-only", action="store_true", help="✕ 버튼 추가팩만 빌드(본편 CPK 패치 생략).")
     args = parser.parse_args()
 
     require_inputs()
@@ -465,14 +582,25 @@ def main() -> int:
     if not args.keep_dist:
         clean_dist()
 
+    if args.xbutton_only:
+        addon = package_button_variant_addon(version)
+        print("\n== Release artifacts ==")
+        print(f"Version: {version}")
+        print(f"✕ button add-on: {addon}")
+        return 0
+
     main_cpk, patch_cpk_path = build_cpks()
     zip_path, manifest_path, checksums_path = package_release(version, main_cpk, patch_cpk_path)
+
+    addon = None if args.no_xbutton else package_button_variant_addon(version)
 
     print("\n== Release artifacts ==")
     print(f"Version: {version}")
     print(f"Zip: {zip_path}")
     print(f"Manifest: {manifest_path}")
     print(f"Checksums: {checksums_path}")
+    if addon:
+        print(f"✕ button add-on: {addon}")
     return 0
 
 
