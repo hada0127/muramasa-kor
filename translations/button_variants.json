@@ -55,8 +55,13 @@
     {
       "hash": "DF66CADDABE022E3",
       "label": "메인 UI 메뉴 아틀라스 (4096²)",
-      "memo": "이슈 #15. 현재 kr이 ✕ 2곳을 ○로 바꿈. ops 없이 수동 편집(ui_xbutton PNG 직접 ✕로) — 재빌드해도 보존. 편집 위치: ① 우측 'Items/아이템' 옆 큰 ○ 링(대략 x3550-3960, y1050-1440) ② 좌하단 '설정/Settings' 옆 ○(대략 x60-360, y3350-3650). 중앙 嵐丸 옆 ✕는 원래 ✕라 그대로 둘 것.",
-      "ops": []
+      "memo": "이슈 #15. localize 텍스처라 O를 그리던 region(K45 좌하단·K46 우측 'Items' 옆, text='O'·clear=true)을 빼면 원본 ✕가 드러난다. UI 에디터 '✕ 편집 모드'에서 두 O region을 삭제→저장하면 exclude_region_ids로 저장되고 ui_xbutton에 렌더된다. 중앙 嵐丸 옆 ✕는 원래 ✕라 건드리지 않음.",
+      "ops": [],
+      "system": "localize",
+      "exclude_region_ids": [
+        "K45",
+        "K46"
+      ]
     }
   ]
 }
