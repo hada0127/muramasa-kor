@@ -21,6 +21,23 @@
      신규 제작 필요** — 현재 repo엔 decoder `ftx_extract.py`만 있음.
 - 사용자 결정: **이번 릴리스 보류.** 상세는 `docs/03-analysis/export-texture-audit-2026-05-20.md` "Ending 完 Handling".
 - 참고: sysmsg 엔딩 텍스트(#255 본편·#279~282 DLC)는 이미 "완결"로 번역됨(텍스트는 정상).
+- **2026-05-30 RGB 퍼셉추얼 재확인(claude+codex 병행)**: CPK 추출본 `Ending_P1~4.png`(1024², RGB 일러스트)를
+  export(741개)+originals(92개)와 32×32 그레이 NCC 비교 → 최고 NCC **0.76**(동일=1.0 기준 한참 미달). 즉
+  **export/UHD 어디에도 엔딩 텍스처 없음** 재확인. import hash 미확보 결론 변동 없음 → 인게임 export 캡처(방법 A) 필요.
+  매칭 스크립트: `/tmp/rgb_fast.py`, 결과 `temp/ending_rgb_fast.json`.
+
+## 보류 — DLC place 아틀라스 `place59`(pack3) 한글화 (2026-05-30 발견)
+
+- `temp/dlc_ftx_png/pack3/GUI/place59.png`(512×256): 近江·伊賀·筑紫城·骸衆本陣·野鎚城 등 **여러 DLC 지명 묶음 아틀라스**.
+- RGB 매칭에서 export/originals 1.0 매치 없음(최고 0.60) → **런타임 import hash 미확보**(엔딩과 동일 한계).
+  개별 지명(近江/伊賀/筑紫/骸衆)은 이미 다른 등록 텍스처/대사에 한글 존재. 인게임 export로 hash 확보 시 등록 가능.
+- 비교: place52~58·60~63(12개 중 11개)은 등록 originals와 NCC **1.000 동일** → 이미 등록·번역 완료.
+
+## 조사 종결 — export/UHD 미번역 지명·신규 텍스트 텍스처 없음 (2026-05-30)
+
+- 계기: 사용자 발견 `FFFFD99DCD90D546` = 茶屋(찻집), 이미 place_jobs 등록·렌더 완료(status needs_review). 신규 아님.
+- export(747)+UHD 팩(2139) 전수, 등록 82개 제외 후 텍스트 텍스처 탐지: claude 스코어러(419후보)·codex 스코어러(50후보)
+  상위 후보 시트 **육안 검증 → 전부 구름/발광/파티클/이펙트**, 붓글씨 한자 지명 카드 0건. → 미번역 지명 텍스처 없음 확정.
 
 ## 의도적으로 하지 않는 항목 (사용자 결정)
 
