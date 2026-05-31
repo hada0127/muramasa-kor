@@ -24,7 +24,8 @@
 
 ## 외부 AI 협의 정책 (필수 준수)
 
-**의사결정·리서치·리뷰가 필요한 경우 반드시 `codex` CLI와 `gemini` CLI를 같이 호출하여 다각도 검토 후 결정할 것.**
+**의사결정·리서치·리뷰가 필요한 경우 반드시 `codex` CLI와 `agy`(antigravity) CLI를 같이 호출하여 다각도 검토 후 결정할 것.**
+> 참고: 구 `gemini` CLI는 서비스 종료됨. 후속으로 Google antigravity CLI(`agy`)를 사용한다.
 
 ### 적용 범위 (언제 호출해야 하는지)
 - **의사결정(Decision)**: 구조 선택, 알고리즘 선택, 큰 리팩토링 방향, 번역 용어 통일 결정, 설계 트레이드오프 선택
@@ -44,8 +45,10 @@
 # Codex CLI (비대화형, exec 서브커맨드)
 codex exec "<프롬프트>" 2>&1 | tee /tmp/codex_review.txt
 
-# Gemini CLI (비대화형, -p 플래그)
-gemini -p "<프롬프트>" 2>&1 | tee /tmp/gemini_review.txt
+# Antigravity CLI (비대화형, -p/--print 플래그; 실행파일명 agy)
+agy -p "<프롬프트>" 2>&1 | tee /tmp/agy_review.txt
+# 응답이 길면 --print-timeout 으로 대기시간 조정 (기본 5분):
+# agy --print-timeout 600s -p "<프롬프트>" 2>&1 | tee /tmp/agy_review.txt
 ```
 
 ### 절차
@@ -54,7 +57,7 @@ gemini -p "<프롬프트>" 2>&1 | tee /tmp/gemini_review.txt
 3. **결과 비교**:
    - 두 의견이 **수렴**하면 → 그 방향으로 진행
    - **발산**하면 → 왜 다른지 분석하고 사용자에게 선택지 제시
-4. **최종 판단 기록**: `.claude/todo.md` 또는 `memory/`에 "codex 의견 + gemini 의견 + 최종 결정" 남기기
+4. **최종 판단 기록**: `.claude/todo.md` 또는 `memory/`에 "codex 의견 + agy 의견 + 최종 결정" 남기기
 
 ### 주의사항
 - **두 CLI는 이 프로젝트를 모름** — 프롬프트에 필요한 파일 경로/핵심 사실을 반드시 포함
