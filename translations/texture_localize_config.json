@@ -587,6 +587,23 @@
           "background": "clear_alpha"
         },
         {
+          "x": 1140,
+          "y": 3365,
+          "w": 395,
+          "h": 255,
+          "text": "",
+          "clear": true,
+          "clear_rect": {
+            "x": 1140,
+            "y": 3365,
+            "w": 395,
+            "h": 255
+          },
+          "render": false,
+          "_id": "K8_serpent_tail_clear",
+          "_note": "이슈 #16: 원본 'White Serpent' 글리프가 K8 박스를 우측/하단으로 초과해 남긴 잔상 소거. K8 글리프(x<=870)·K4 인법첩(x>=1647)·K7 요도(x<=721) 글리프와 겹치지 않는 빈틈만 클리어."
+        },
+        {
           "x": 0,
           "y": 3117,
           "w": 2422,
@@ -1019,7 +1036,7 @@
           "y": 1686,
           "w": 222,
           "h": 113,
-          "text": "술",
+          "text": "반야탕",
           "color": [
             255,
             255,
@@ -1030,7 +1047,7 @@
           "v_align": "center",
           "letter_spacing": 0,
           "clear": true,
-          "fit_to_box": false,
+          "fit_to_box": true,
           "layout": "horizontal",
           "_id": "K10",
           "font_ratio": 0.69,
