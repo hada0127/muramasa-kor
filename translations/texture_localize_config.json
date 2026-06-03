@@ -566,7 +566,7 @@
         {
           "x": 0,
           "y": 3314,
-          "w": 1281,
+          "w": 1164,
           "h": 203,
           "text": "백사전",
           "color": [
@@ -584,7 +584,8 @@
           "_id": "K8",
           "font_ratio": 0.75,
           "render": true,
-          "background": "clear_alpha"
+          "background": "clear_alpha",
+          "_note": "이슈 #16-1: UI에디터 리워크가 박스중앙(640)으로 옮긴 백사전을 pre-UI-editor 정렬위치(중심~582,3401)로 복원 — 88A7 자막과 겹치게. w축소로 중심 좌측이동."
         },
         {
           "x": 1140,
