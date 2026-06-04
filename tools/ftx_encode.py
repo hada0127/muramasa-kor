@@ -336,6 +336,7 @@ def parse_all_gxt(data):
     """
     out = []
     pos = 0
+    block_ord = -1
     while True:
         g = data.find(b'GXT\x00', pos)
         if g < 0:
@@ -348,6 +349,7 @@ def parse_all_gxt(data):
         if num_tex == 0 or num_tex > 256:
             pos = g + 4
             continue
+        block_ord += 1
         for i in range(num_tex):
             eo = 0x20 + i * 32
             if eo + 32 > len(gxt):
@@ -363,6 +365,7 @@ def parse_all_gxt(data):
                 continue
             out.append({
                 'gxt_pos': g,
+                'block_ord': block_ord,
                 'index': i,
                 'tex_off': tex_off,
                 'tex_size': tex_size,
