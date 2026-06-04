@@ -2156,3 +2156,11 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - 검증: 백엔드 전 API curl 통과, 경로탈출 403 차단, 무변경 round-trip = 사실상 0줄(렌더러 무시 필드 1줄 정리만), 실제 렌더러로 localize/place 미리보기 생성 확인(야마시로/시나노 정상)
 - 핵심설계: region 지오메트리/텍스트는 네이티브 config 역기록(기존 키 유지+없던 키는 비기본값만 추가 → 무손실), memo는 인덱스 sidecar. 생성은 실제 texture_localize.py/render_place_texture_job.py 호출 → 게임과 동일 출력
 - 실행: python tools/ui_editor/server.py → http://127.0.0.1:8765
+
+## [2026-06-05] v1.2.3 — 무명도인(無明道人) 표기 통일
+- 제보: 대사·이름 출력에 "무명도인"과 "무묘도인"이 혼재.
+- 조사: `무묘도인` 10건(scemsg 대사, NinPriPatch), `무명도인` 6건(scemsg/sysmsg/scename/staffroll)이 전부 동일 인물(해골중 두령, 코노무라 소칸). 일본어 원문 `無明道人` 확인 → "무묘도인"이 오기.
+- 수정: `translations/jp_messages.json` ko 필드 `무묘도인`→`무명도인` 10건 치환(잔여 0, 총 무명도인 16건). proper_nouns·scename·staffroll는 이미 무명도인이라 변동 없음.
+- 빌드: `build_patch.py`(ASCII 검증 통과) → patch_patch scemsg.nms(content+_US) 갱신. `build_release.py` → dist v1.2.3 zip + ✕ 추가팩.
+- 버전: 1.2.2 → 1.2.3 (release/version.json, README.md).
+- 미검증: macOS라 Vita3K 인게임 육안 확인 불가(텍스트 치환만이라 위험 낮음).
