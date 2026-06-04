@@ -13,7 +13,7 @@
 - 지원 대상: Vita3K Windows/macOS, Android 수동 복사, **실기(real PS Vita) [베타]** — [실기 패치 안내](#실기real-ps-vita-패치-베타) 참조
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
-- 현재 릴리즈: `v1.2.3` (해골중 두령 무명도인(無明道人) 표기 통일 — 대사 10곳의 오기 "무묘도인"을 "무명도인"으로 수정. ○ 대신 ✕ 버튼을 원하는 분을 위한 선택형 [✕ 버튼 추가팩](#-버튼-추가팩-선택) 포함)
+- 현재 릴리즈: `v1.3.0` (**실기(real PS Vita) 패치 [베타] 추가** — rePatch 방식으로 한글 텍스처/폰트를 CPK에 베이크. [실기 패치 안내](#실기real-ps-vita-패치-베타) 참조. ○ 대신 ✕ 버튼을 원하는 분을 위한 선택형 [✕ 버튼 추가팩](#-버튼-추가팩-선택) 포함)
 - 배포 형식: Windows/macOS 공용 로컬 패처 zip, Android용 수동 복사 안내
 
 릴리즈 zip에는 다음만 포함된다.
@@ -261,7 +261,7 @@ py -3 apply_patch.py --restore
 - `muramasa-kor-v1.0.0-vita3k-patcher-manifest.json`
 - `muramasa-kor-v1.0.0-vita3k-patcher-sha256.txt`
 - `muramasa-kor-v1.0.0-vita3k-patcher-release-notes.txt`
-- `muramasa-kor-vX-realhw-patcher-beta.zip` — [실기(real PS Vita) 패치](#실기real-ps-vita-패치-베타) (`v1.2.3`부터)
+- `muramasa-kor-vX-realhw-patcher-beta.zip` — [실기(real PS Vita) 패치](#실기real-ps-vita-패치-베타) (`v1.3.0`부터)
 
 ### ✕ 버튼 추가팩 (선택)
 
@@ -275,7 +275,7 @@ py -3 apply_patch.py --restore
 
 ## 실기(real PS Vita) 패치 [베타]
 
-에뮬레이터(Vita3K)가 아닌 **실제 PS Vita 본체**에서도 한글이 표시되도록 하는 패치다. `v1.2.3`부터
+에뮬레이터(Vita3K)가 아닌 **실제 PS Vita 본체**에서도 한글이 표시되도록 하는 패치다. `v1.3.0`부터
 별도 zip `muramasa-kor-vX-realhw-patcher-beta.zip` 으로 제공한다.
 
 ### Vita3K판과 무엇이 다른가
@@ -324,8 +324,7 @@ python3 tools/apply_realhw_patch.py \
 
 ## 주의
 
-- 이 패치는 Vita3K 전용이다.
-- 실기용 PKG나 VPK가 아니다.
+- 기본 패처는 Vita3K용이다. **실기(real PS Vita)는 별도 [실기 패치(베타)](#실기real-ps-vita-패치-베타)로 지원한다.**
 - 원본 `pkg`, `cpk`, DLC 데이터는 릴리즈에 포함하지 않는다.
 - 패처는 US판 `PCSE00240` 본편 1.00 + 업데이트 1.06의 원본 CPK 해시와 일치할 때만 적용된다.
 - 텍스처 import는 Vita3K의 해시 기반 교체 기능을 사용한다.
@@ -343,7 +342,7 @@ python3 tools/apply_realhw_patch.py \
 
 ## 자주 묻는 질문
 
-- **실기(PS Vita)에서도 되나요?** — 아니다. Vita3K 에뮬레이터 전용이며, 실기 환경이 없어 검증되지 않았다.
+- **실기(PS Vita)에서도 되나요?** — 된다(베타). `v1.3.0`부터 rePatch 방식 [실기 패치(베타)](#실기real-ps-vita-패치-베타)를 제공한다. 단 실기 부팅·표시는 아직 Vita3K 기준으로만 검증됐다.
 - **본편만 설치하면 되나요?** — 아니다. 본편 1.00 + **업데이트 1.06**을 모두 설치해야 한다.
 - **다른 리전(JP/EU)판도 되나요?** — 아니다. US판 `PCSE00240` 전용이다.
 - **Android는요?** — PC/macOS에서 먼저 패치한 결과 파일을 Android Vita3K로 복사한다(위 4단계 참고).
