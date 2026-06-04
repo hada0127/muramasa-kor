@@ -10,7 +10,7 @@
 
 ## 사용자 안내
 
-- 지원 대상: Vita3K Windows/macOS, Android 수동 복사
+- 지원 대상: Vita3K Windows/macOS, Android 수동 복사, **실기(real PS Vita) [베타]** — [실기 패치 안내](#실기real-ps-vita-패치-베타) 참조
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
 - 현재 릴리즈: `v1.2.3` (해골중 두령 무명도인(無明道人) 표기 통일 — 대사 10곳의 오기 "무묘도인"을 "무명도인"으로 수정. ○ 대신 ✕ 버튼을 원하는 분을 위한 선택형 [✕ 버튼 추가팩](#-버튼-추가팩-선택) 포함)
@@ -261,6 +261,7 @@ py -3 apply_patch.py --restore
 - `muramasa-kor-v1.0.0-vita3k-patcher-manifest.json`
 - `muramasa-kor-v1.0.0-vita3k-patcher-sha256.txt`
 - `muramasa-kor-v1.0.0-vita3k-patcher-release-notes.txt`
+- `muramasa-kor-vX-realhw-patcher-beta.zip` — [실기(real PS Vita) 패치](#실기real-ps-vita-패치-베타) (`v1.2.3`부터)
 
 ### ✕ 버튼 추가팩 (선택)
 
@@ -271,6 +272,48 @@ py -3 apply_patch.py --restore
   Vita3K 설정에서 **Enter Button Assignment = Cross** 로도 바꿔야 한다.
 - 설치: 기본 패치 적용 후 `apply_xbutton.py`(또는 `apply_xbutton_windows.bat` / `apply_xbutton_macos.command`) 실행.
 - 되돌리기: `python3 apply_xbutton.py --restore`.
+
+## 실기(real PS Vita) 패치 [베타]
+
+에뮬레이터(Vita3K)가 아닌 **실제 PS Vita 본체**에서도 한글이 표시되도록 하는 패치다. `v1.2.3`부터
+별도 zip `muramasa-kor-vX-realhw-patcher-beta.zip` 으로 제공한다.
+
+### Vita3K판과 무엇이 다른가
+
+Vita3K판은 한글 텍스처/폰트를 hash 이름 PNG로 만들어 Vita3K의 텍스처 import 기능으로 덮어쓴다.
+**실기에는 그 기능이 없으므로**, 한글 텍스처/폰트를 **CPK 내부 FTX(게임 텍스처 컨테이너)에 직접
+구워 넣는다**. 실기는 업스케일(HD)이 불필요해 원본 해상도로 베이크한다. 저작권상 원본 CPK는
+배포하지 않으므로, **사용자 본인의 원본 CPK로부터 패치 CPK를 생성**한다(무거운 인코딩은 사용자 PC에서 수행).
+
+### 요구 사항
+
+- **rePatch 플러그인** (실기에 설치·활성화). CPK 파일을 통째로 override 하는 방식이다.
+- Python 3.8+ 와 패키지: `pip install pillow numpy xxhash`
+- 본편 + 1.06 업데이트 + (선택)DLC가 설치된 상태의 원본 CPK
+  (본편 `NinPri.cpk`/`NinPriPatch.cpk`, DLC `NinPriPack1~4.cpk`)
+
+### 패치 생성·적용
+
+```bash
+# 1) 본인 원본 CPK로 패치 생성 (DLC 없으면 --pack* 생략)
+python3 tools/apply_realhw_patch.py \
+  --ninpri  /경로/NinPri.cpk  --ninpripatch /경로/NinPriPatch.cpk \
+  --pack1 /경로/NinPriPack1.cpk --pack2 ... --pack3 ... --pack4 ... \
+  --out ./out
+
+# 2) 생성된 out/ux0/ 내용을 Vita의 ux0:/ 아래에 그대로 복사
+#    ux0:/rePatch/PCSE00240/NinPri.cpk, NinPriPatch.cpk
+#    ux0:/reAddcont/PCSE00240/OBOROMURAMASAPK1~4/NinPriPack1~4.cpk
+# 3) rePatch 플러그인 활성화 후 게임 실행
+```
+
+- **○/✕ 버튼**: 기본은 ○. ✕로 하려면 `--enter-button cross` (+ Vita 설정 `Enter Button = Cross`).
+- **커버리지**: 한글 텍스처 82종 전부 + 폰트 완성형 2350자를 CPK FTX에 매핑·베이크(누락 0).
+
+### 베타 주의
+
+- 실기 부팅·표시 검증은 아직 **Vita3K 기준**으로만 이뤄진 베타다. 실기 호환을 위해 CPK의 ETOC를
+  무력화했다(실기에서 동작하는 기존 rePatch 패치와 동일 방식). 실기에서 문제가 있으면 제보 바란다.
 
 ## 주의
 
