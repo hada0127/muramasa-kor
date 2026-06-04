@@ -539,6 +539,40 @@ NinPri.cpk        → 베이스 게임 (NinPriPatch가 덮어씀)
 - 따라서 `patch_main/`(NinPri용)과 `patch_patch/`(NinPriPatch용) **둘 다** 빌드·설치해야 함
 - `build_patch.py`는 NinPriPatch_full/scemsg_full.nms를 템플릿으로 사용 (2,178개 US 메시지)
 
+## 실기(real PS Vita) 패치 파이프라인 (v1.2.3+, rePatch 방식)
+
+Vita3K판은 텍스처를 hash PNG로 import 폴더에 넣어 GPU 대체한다. **실기엔 그 기능이 없어** 한글
+텍스처/폰트를 **CPK 내부 FTX(FTEX/GXT, DXT5/swizzle)에 직접 베이크**한다. 원본 미배포 → 사용자 패처가
+본인 CPK로부터 생성(`--enter-button circle|cross`). 출력은 `ux0/rePatch/PCSE00240/`(본편) +
+`ux0/reAddcont/PCSE00240/OBOROMURAMASAPK1~4/`(DLC).
+
+### 핵심 도구
+| 파일 | 설명 |
+|---|---|
+| `ftx_encode.py` | FTX 인코더(ftx_extract 역연산). DXT5/DXT3 + Vita Morton swizzle, **전부 numpy 벡터화**. `parse_all_gxt`(block_ord), `replace_subtexture`. self-test `--selftest-dir` |
+| `build_ftx_map.py` | hash→FTX 매핑 `translations/ftx_texture_map.json`(82/82). 키 = **Vita3K hash 상위32비트** = XXH3_64(swizzled base payload)[:8] (시스템 xxhash와 finalizer 리비전差로 하위32만 어긋나고 상위32 정확 일치) |
+| `realhw_bake.py` | UI 텍스처 베이크(다운스케일→DXT→swizzle→payload 교체). `overrides`로 ✕버튼 ui_xbutton |
+| `realhw_font_bake.py` | 폰트 베이크. NinPri/_US/other/font*.ftx 6페이지(河/重/隼)에 한글 글리프(create_korean_import 재사용) |
+| `apply_realhw_patch.py` | **사용자 패처**(배포 동봉). 선택추출→build_patch(NMS)→베이크→CPK append→ux0 출력 |
+
+### 핵심 사실
+- **block_ord**로 서브텍스처 식별(각 GXT num_tex=1이라 gxt_index는 항상 0 — 비유일). high32로 매핑.
+- 베이크 후 페이지 내용이 바뀌어 high32도 변함 → 검증은 block_ord로 디코드.
+- **ETOC 무력화 필수(실기)**: `patch_cpk_append(disable_etoc=True)` → EtocOffset/EtocSize=0.
+  실기 동작 참고패치(DCInside)도 EtocOffset=0이었음. Vita3K는 유지/무력화 둘 다 OK.
+- 폰트는 US판이 로드하는 `NinPri/_US/other/font*.ftx`만 패치(NinPriPatch엔 _US/other/font 없음).
+- DLC place 11종은 Pack1~4 GUI/place*.ftx에 거주 → reAddcont 베이크.
+- `build_patch.build_korean_patch(base_dir, translations_dir)` 파라미터화로 사용자 추출본에서 NMS 생성.
+- 빌드: `python3 tools/build_release.py --realhw-only` → `dist/muramasa-kor-vX-realhw-patcher-beta.zip`.
+
+### 실기 CPK ↔ Vita3K import 관계 (왜 둘 다 유지하나)
+- 실기용 베이크 CPK는 **Vita3K에서도 그대로 로드**됨. HD팩 미사용 Vita3K 사용자는 이 CPK를
+  `ux0/app/PCSE00240/`에 넣으면 **import 폴더 PNG 복사 절차 없이** 한글 표시 가능.
+- **단 HD팩 사용자는 import 방식 유지 필요**: CPK 베이크 시 텍스처 hash가 바뀌어(베이크 후 high32 변함)
+  HD팩(원본 hash 기준 import)이 그 텍스처에 매칭 안 됨 → 한글 텍스처가 **원본 해상도로 하락**, HD 미적용
+  (비한글 영역은 HD 유지). 그래서 Vita3K 기본 배포는 HD 화질 위해 import 방식 유지, 실기는 CPK 베이크 필수.
+- (옵션 여지: HD 미사용 Vita3K용 "복사 불필요" 간편 변형 = 실기 CPK를 app 폴더에 설치.)
+
 ## 외부 의존 자원
 
 별도 확보 필요 (로컬 전용):

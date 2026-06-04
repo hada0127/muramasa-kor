@@ -60,6 +60,12 @@ def main() -> int:
         assets.append(str(xbutton_zip))
         print(f"(첨부) ✕ 버튼 추가팩: {xbutton_zip.name}")
 
+    # 실기(real Vita) 패처 베타 zip이 있으면 같은 릴리스 자산으로 첨부
+    realhw_zip = DIST_DIR / f"muramasa-kor-v{version}-realhw-patcher-beta.zip"
+    if realhw_zip.exists():
+        assets.append(str(realhw_zip))
+        print(f"(첨부) 실기 패처(베타): {realhw_zip.name}")
+
     cmd = [
         "gh",
         "release",

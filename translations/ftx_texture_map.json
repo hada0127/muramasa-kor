@@ -1,0 +1,1615 @@
+{
+ "00B61B564A5FD289": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "Pack4",
+    "ftx_path": "GUI/place63.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998,
+    "dlc_out": "OBOROMURAMASAPK4/NinPriPack4.cpk"
+   }
+  ]
+ },
+ "0130920C24D1E53C": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place14.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998
+   }
+  ]
+ },
+ "05D6F7C75F32325B": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place25.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "0770DFDD08479BD2": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place09.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9999
+   }
+  ]
+ },
+ "0912E45A567A41C9": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place43.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "0AA74C448087838A": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place42.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "1823D39C0279886B": {
+  "orig_size": [
+   1024,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/worldmap_01.ftx",
+    "block_ord": 2,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9975
+   }
+  ]
+ },
+ "1D6742BBC0DDB7EC": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/Interface_shop.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9975
+   }
+  ]
+ },
+ "244AED1DB11AD6DC": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place27.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "247C255A400261FF": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/Cooking02.ftx",
+    "block_ord": 1,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9961
+   }
+  ]
+ },
+ "2611666E71A8181A": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place39.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "2D3A29BE9B32D34A": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place31.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "2E2003777A770327": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/Cooking01.ftx",
+    "block_ord": 1,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9962
+   }
+  ]
+ },
+ "30033EF8FD9CC4EB": {
+  "orig_size": [
+   1024,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place01.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "31710FB73B2686EF": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place47.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "3302A86BDC50A780": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place32.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998
+   }
+  ]
+ },
+ "3B58B76CBA15E487": {
+  "orig_size": [
+   4096,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/title.ftx",
+    "block_ord": 6,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9979
+   }
+  ]
+ },
+ "3B7BDFB1087549B8": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place45.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "3ECF3B0D2C2907BE": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "Pack1",
+    "ftx_path": "GUI/place53.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998,
+    "dlc_out": "OBOROMURAMASAPK1/NinPriPack1.cpk"
+   }
+  ]
+ },
+ "4633B92FBA1371F4": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "Pack1",
+    "ftx_path": "GUI/place54.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998,
+    "dlc_out": "OBOROMURAMASAPK1/NinPriPack1.cpk"
+   }
+  ]
+ },
+ "464E370EF865D0AC": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "Pack2",
+    "ftx_path": "GUI/place57.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998,
+    "dlc_out": "OBOROMURAMASAPK2/NinPriPack2.cpk"
+   }
+  ]
+ },
+ "4709F3E364671D89": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place46.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "48AA5B2EBC6C43B1": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place20.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "4AEC2546371FFF47": {
+  "orig_size": [
+   4096,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/opening01.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 1024,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9927
+   },
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/opening01.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 1024,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9927
+   }
+  ]
+ },
+ "5329BF3C3BF9B18C": {
+  "orig_size": [
+   1024,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place00.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "547720A3B20C12AB": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/Cooking03.ftx",
+    "block_ord": 2,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9961
+   }
+  ]
+ },
+ "5882EA68BABF3C63": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place40.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9994
+   }
+  ]
+ },
+ "59015B61BFC0B7BC": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "Pack4",
+    "ftx_path": "GUI/place61.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998,
+    "dlc_out": "OBOROMURAMASAPK4/NinPriPack4.cpk"
+   }
+  ]
+ },
+ "615858B46587A60E": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place41.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9995
+   }
+  ]
+ },
+ "6605F569D9389F9C": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "Pack3",
+    "ftx_path": "GUI/place60.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9999,
+    "dlc_out": "OBOROMURAMASAPK3/NinPriPack3.cpk"
+   }
+  ]
+ },
+ "6B6116F83EBE7153": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place02.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998
+   }
+  ]
+ },
+ "6CD92157D6C2502F": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place30.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "7053B8FFC8B89807": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place37.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9989
+   }
+  ]
+ },
+ "72165D43344F3190": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "Pack1",
+    "ftx_path": "GUI/place52.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9999,
+    "dlc_out": "OBOROMURAMASAPK1/NinPriPack1.cpk"
+   }
+  ]
+ },
+ "7282AD29CF433DA0": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place50.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9992
+   }
+  ]
+ },
+ "73420FAEA9F664FD": {
+  "orig_size": [
+   4096,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/title.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 1024,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "7358BEAA2EF5F8A8": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place51.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9988
+   }
+  ]
+ },
+ "74EEEC230BEE120C": {
+  "orig_size": [
+   4096,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/ChrSelect.ftx",
+    "block_ord": 3,
+    "gxt_index": 0,
+    "w": 1024,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.999
+   }
+  ]
+ },
+ "75B04DBF5C53AF28": {
+  "orig_size": [
+   1024,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place24.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9993
+   }
+  ]
+ },
+ "779C5ABBFCE00424": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place07.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9999
+   }
+  ]
+ },
+ "79C935AA47DD1810": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/opening01.ftx",
+    "block_ord": 2,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9973
+   }
+  ]
+ },
+ "7B49071BF36FC555": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place18.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "7DC6CF5A87DB1312": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/Interface.ftx",
+    "block_ord": 1,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9983
+   }
+  ]
+ },
+ "7E0669E71FCD7B64": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "Pack2",
+    "ftx_path": "GUI/place55.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9995,
+    "dlc_out": "OBOROMURAMASAPK2/NinPriPack2.cpk"
+   }
+  ]
+ },
+ "8098AD7E2C438C22": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place49.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9989
+   }
+  ]
+ },
+ "85A4D54EE933339D": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place11.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9999
+   }
+  ]
+ },
+ "864BD9CBCC496F78": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place33.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "8725F040AEE76DFC": {
+  "orig_size": [
+   4096,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/Interface.ftx",
+    "block_ord": 4,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9979
+   }
+  ]
+ },
+ "88A7A10233A61E85": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/ChrSelect.ftx",
+    "block_ord": 11,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.8729
+   }
+  ]
+ },
+ "89578D1F704C35E4": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place21.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "8EFF960FC088FDD7": {
+  "orig_size": [
+   4096,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/title.ftx",
+    "block_ord": 3,
+    "gxt_index": 0,
+    "w": 1024,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9989
+   }
+  ]
+ },
+ "919ABD92603E242F": {
+  "orig_size": [
+   1024,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place22.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9992
+   }
+  ]
+ },
+ "922337BDB8D32D0F": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place28.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "A3BE57CE9854B5CC": {
+  "orig_size": [
+   4096,
+   4096
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/ChrSelect.ftx",
+    "block_ord": 2,
+    "gxt_index": 0,
+    "w": 1024,
+    "h": 1024,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9991
+   }
+  ]
+ },
+ "A3CBE285F1E92FCA": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/ChrSelect.ftx",
+    "block_ord": 4,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.8862
+   }
+  ]
+ },
+ "A62172B559EED573": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place29.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "A8486C49F76167C3": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place48.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9992
+   }
+  ]
+ },
+ "ADE2B8B5998887A9": {
+  "orig_size": [
+   1024,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/title.ftx",
+    "block_ord": 4,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9982
+   }
+  ]
+ },
+ "AF183888BC366FCA": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place15.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998
+   }
+  ]
+ },
+ "BAD2BDA6C2AE4B16": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place16.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "C3848C8E5ED70F7A": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place34.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "C84B5B3A51547DF0": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place35.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "C8B2975F2A629F4B": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place38.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9995
+   }
+  ]
+ },
+ "C8C4589102431759": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place36.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "C8E42A56480DB818": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "Pack2",
+    "ftx_path": "GUI/place56.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998,
+    "dlc_out": "OBOROMURAMASAPK2/NinPriPack2.cpk"
+   }
+  ]
+ },
+ "CB18104E808B56B3": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place04.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998
+   }
+  ]
+ },
+ "D35B39CA7FAED5D7": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place05.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998
+   }
+  ]
+ },
+ "DD1F1F1DE2039AAC": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place17.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "DF66CADDABE022E3": {
+  "orig_size": [
+   4096,
+   4096
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/Interface.ftx",
+    "block_ord": 3,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9982
+   }
+  ]
+ },
+ "E210275AFFF0A8D8": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place13.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998
+   }
+  ]
+ },
+ "E4A9FD9D2047280B": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/Ending0.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.2708
+   }
+  ]
+ },
+ "E581194DE2C76C56": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place26.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "E8E01EAF5D41DB52": {
+  "orig_size": [
+   2048,
+   2048
+  ],
+  "locations": [
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/Interface.ftx",
+    "block_ord": 2,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 512,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9986
+   }
+  ]
+ },
+ "E9E834DE4BAFDAB2": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "Pack4",
+    "ftx_path": "GUI/place62.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997,
+    "dlc_out": "OBOROMURAMASAPK4/NinPriPack4.cpk"
+   }
+  ]
+ },
+ "E9F2EC8557984A58": {
+  "orig_size": [
+   1024,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place44.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9994
+   }
+  ]
+ },
+ "EC585E08CC88B03F": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place23.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9996
+   }
+  ]
+ },
+ "EDA6F03EC4E141EE": {
+  "orig_size": [
+   512,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/Interface.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 128,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9948
+   },
+   {
+    "cpk": "NinPri",
+    "ftx_path": "_US/GUI/Interface.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 128,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9948
+   },
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "GUI/Interface.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 128,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9948
+   },
+   {
+    "cpk": "NinPriPatch",
+    "ftx_path": "_US/GUI/Interface.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 128,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9948
+   }
+  ]
+ },
+ "EE60DEFADBDD82C5": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place08.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9999
+   }
+  ]
+ },
+ "F1C8031232197225": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place03.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9999
+   }
+  ]
+ },
+ "F24874ADB9581870": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place19.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ },
+ "FFC64B053648525E": {
+  "orig_size": [
+   2048,
+   1024
+  ],
+  "locations": [
+   {
+    "cpk": "Pack3",
+    "ftx_path": "GUI/place58.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 512,
+    "h": 256,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9998,
+    "dlc_out": "OBOROMURAMASAPK3/NinPriPack3.cpk"
+   }
+  ]
+ },
+ "FFFFD99DCD90D546": {
+  "orig_size": [
+   1024,
+   512
+  ],
+  "locations": [
+   {
+    "cpk": "NinPri",
+    "ftx_path": "GUI/place10.ftx",
+    "block_ord": 0,
+    "gxt_index": 0,
+    "w": 256,
+    "h": 128,
+    "fmt": "0x87000000",
+    "mipmaps": 1,
+    "alpha_ncc": 0.9997
+   }
+  ]
+ }
+}

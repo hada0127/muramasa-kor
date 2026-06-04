@@ -405,10 +405,18 @@ def rebuild_nms(original_path: str, translated_msgs: list, kr_map: dict, output_
     return orig_count, matched, len(result)
 
 
-def build_korean_patch():
-    """Build the complete Korean patch."""
-    base_dir = Path(__file__).parent.parent
-    translations_dir = base_dir / 'translations'
+def build_korean_patch(base_dir=None, translations_dir=None):
+    """Build the complete Korean patch.
+
+    base_dir: 'extracted/' 입력과 'patch_main/'·'patch_patch/' 출력의 루트.
+        기본 = repo 루트. 실기 패처(apply_realhw_patch)는 사용자 CPK 추출본이 있는
+        작업 디렉토리를 넘겨 사용자 측에서 동일 NMS를 생성한다.
+    translations_dir: 번역 JSON 위치. 기본 = base_dir/translations (또는 repo).
+    """
+    repo_dir = Path(__file__).parent.parent
+    base_dir = Path(base_dir) if base_dir is not None else repo_dir
+    translations_dir = Path(translations_dir) if translations_dir is not None \
+        else (repo_dir / 'translations')
 
     with open(translations_dir / 'jp_messages.json', 'r', encoding='utf-8') as f:
         translations = json.load(f)

@@ -10,10 +10,10 @@
 
 ## 사용자 안내
 
-- 지원 대상: Vita3K Windows/macOS, Android 수동 복사
+- 지원 대상: Vita3K Windows/macOS, Android 수동 복사, **실기(real PS Vita) [베타]** — [실기 패치 안내](#실기real-ps-vita-패치-베타) 참조
 - 대상 타이틀 ID: `PCSE00240`
 - 대상 게임: `Muramasa Rebirth` US판 (영문)
-- 현재 릴리즈: `v1.2.3` (해골중 두령 무명도인(無明道人) 표기 통일 — 대사 10곳의 오기 "무묘도인"을 "무명도인"으로 수정. ○ 대신 ✕ 버튼을 원하는 분을 위한 선택형 [✕ 버튼 추가팩](#-버튼-추가팩-선택) 포함)
+- 현재 릴리즈: `v1.3.0` (**실기(real PS Vita) 패치 [베타] 추가** — rePatch 방식으로 한글 텍스처/폰트를 CPK에 베이크. [실기 패치 안내](#실기real-ps-vita-패치-베타) 참조. ○ 대신 ✕ 버튼을 원하는 분을 위한 선택형 [✕ 버튼 추가팩](#-버튼-추가팩-선택) 포함)
 - 배포 형식: Windows/macOS 공용 로컬 패처 zip, Android용 수동 복사 안내
 
 릴리즈 zip에는 다음만 포함된다.
@@ -261,6 +261,7 @@ py -3 apply_patch.py --restore
 - `muramasa-kor-v1.0.0-vita3k-patcher-manifest.json`
 - `muramasa-kor-v1.0.0-vita3k-patcher-sha256.txt`
 - `muramasa-kor-v1.0.0-vita3k-patcher-release-notes.txt`
+- `muramasa-kor-vX-realhw-patcher-beta.zip` — [실기(real PS Vita) 패치](#실기real-ps-vita-패치-베타) (`v1.3.0`부터)
 
 ### ✕ 버튼 추가팩 (선택)
 
@@ -272,10 +273,58 @@ py -3 apply_patch.py --restore
 - 설치: 기본 패치 적용 후 `apply_xbutton.py`(또는 `apply_xbutton_windows.bat` / `apply_xbutton_macos.command`) 실행.
 - 되돌리기: `python3 apply_xbutton.py --restore`.
 
+## 실기(real PS Vita) 패치 [베타]
+
+에뮬레이터(Vita3K)가 아닌 **실제 PS Vita 본체**에서도 한글이 표시되도록 하는 패치다. `v1.3.0`부터
+별도 zip `muramasa-kor-vX-realhw-patcher-beta.zip` 으로 제공한다.
+
+### Vita3K판과 무엇이 다른가
+
+Vita3K판은 한글 텍스처/폰트를 hash 이름 PNG로 만들어 Vita3K의 텍스처 import 기능으로 덮어쓴다.
+**실기에는 그 기능이 없으므로**, 한글 텍스처/폰트를 **CPK 내부 FTX(게임 텍스처 컨테이너)에 직접
+구워 넣는다**. 실기는 업스케일(HD)이 불필요해 원본 해상도로 베이크한다. 저작권상 원본 CPK는
+배포하지 않으므로, **사용자 본인의 원본 CPK로부터 패치 CPK를 생성**한다(무거운 인코딩은 사용자 PC에서 수행).
+
+> **참고 — 이 CPK는 Vita3K에서도 로드된다.** 따라서 HD 텍스처 팩을 쓰지 않는 Vita3K 사용자는 이
+> 실기용 CPK를 `ux0/app/PCSE00240/`에 넣으면 **import 폴더로 PNG를 복사하는 절차 없이** 한글이
+> 표시된다. 다만 **HD 팩 사용자**는 import 방식(현행 Vita3K 패처)을 써야 한다. CPK에 한글을 베이크하면
+> 해당 텍스처의 hash가 바뀌어 HD 팩(원본 hash 기준 import)이 그 텍스처엔 더 이상 적용되지 않아 한글
+> 텍스처가 **원본 해상도로 떨어지기** 때문이다. 그래서 Vita3K 기본 배포는 HD 화질 지원을 위해 import
+> 방식을 유지한다.
+
+### 요구 사항
+
+- **rePatch 플러그인** (실기에 설치·활성화). CPK 파일을 통째로 override 하는 방식이다.
+- Python 3.8+ 와 패키지: `pip install pillow numpy xxhash`
+- 본편 + 1.06 업데이트 + (선택)DLC가 설치된 상태의 원본 CPK
+  (본편 `NinPri.cpk`/`NinPriPatch.cpk`, DLC `NinPriPack1~4.cpk`)
+
+### 패치 생성·적용
+
+```bash
+# 1) 본인 원본 CPK로 패치 생성 (DLC 없으면 --pack* 생략)
+python3 tools/apply_realhw_patch.py \
+  --ninpri  /경로/NinPri.cpk  --ninpripatch /경로/NinPriPatch.cpk \
+  --pack1 /경로/NinPriPack1.cpk --pack2 ... --pack3 ... --pack4 ... \
+  --out ./out
+
+# 2) 생성된 out/ux0/ 내용을 Vita의 ux0:/ 아래에 그대로 복사
+#    ux0:/rePatch/PCSE00240/NinPri.cpk, NinPriPatch.cpk
+#    ux0:/reAddcont/PCSE00240/OBOROMURAMASAPK1~4/NinPriPack1~4.cpk
+# 3) rePatch 플러그인 활성화 후 게임 실행
+```
+
+- **○/✕ 버튼**: 기본은 ○. ✕로 하려면 `--enter-button cross` (+ Vita 설정 `Enter Button = Cross`).
+- **커버리지**: 한글 텍스처 82종 전부 + 폰트 완성형 2350자를 CPK FTX에 매핑·베이크(누락 0).
+
+### 베타 주의
+
+- 실기 부팅·표시 검증은 아직 **Vita3K 기준**으로만 이뤄진 베타다. 실기 호환을 위해 CPK의 ETOC를
+  무력화했다(실기에서 동작하는 기존 rePatch 패치와 동일 방식). 실기에서 문제가 있으면 제보 바란다.
+
 ## 주의
 
-- 이 패치는 Vita3K 전용이다.
-- 실기용 PKG나 VPK가 아니다.
+- 기본 패처는 Vita3K용이다. **실기(real PS Vita)는 별도 [실기 패치(베타)](#실기real-ps-vita-패치-베타)로 지원한다.**
 - 원본 `pkg`, `cpk`, DLC 데이터는 릴리즈에 포함하지 않는다.
 - 패처는 US판 `PCSE00240` 본편 1.00 + 업데이트 1.06의 원본 CPK 해시와 일치할 때만 적용된다.
 - 텍스처 import는 Vita3K의 해시 기반 교체 기능을 사용한다.
@@ -293,7 +342,7 @@ py -3 apply_patch.py --restore
 
 ## 자주 묻는 질문
 
-- **실기(PS Vita)에서도 되나요?** — 아니다. Vita3K 에뮬레이터 전용이며, 실기 환경이 없어 검증되지 않았다.
+- **실기(PS Vita)에서도 되나요?** — 된다(베타). `v1.3.0`부터 rePatch 방식 [실기 패치(베타)](#실기real-ps-vita-패치-베타)를 제공한다. 단 실기 부팅·표시는 아직 Vita3K 기준으로만 검증됐다.
 - **본편만 설치하면 되나요?** — 아니다. 본편 1.00 + **업데이트 1.06**을 모두 설치해야 한다.
 - **다른 리전(JP/EU)판도 되나요?** — 아니다. US판 `PCSE00240` 전용이다.
 - **Android는요?** — PC/macOS에서 먼저 패치한 결과 파일을 Android Vita3K로 복사한다(위 4단계 참고).

@@ -291,8 +291,13 @@ def patch_cpk(cpk_path, output_path, file_replacements):
     return replaced
 
 
-def patch_cpk_append(cpk_path, output_path, file_replacements):
-    """Patch CPK by inserting new data before ETOC and shifting ETOC to end."""
+def patch_cpk_append(cpk_path, output_path, file_replacements, disable_etoc=False):
+    """Patch CPK by inserting new data before ETOC and shifting ETOC to end.
+
+    disable_etoc: 실기(real PS Vita)용. ETOC를 재배치하지 않고 헤더 EtocOffset/EtocSize=0
+        으로 무력화한다. 실기 드라이버가 ETOC 내부의 (갱신 안 된) 오프셋을 검증하다 크래시하는
+        문제를 회피 — 실기에서 동작하는 기존 rePatch 패치도 EtocOffset=0/EtocSize=0 이었음.
+        Vita3K는 ETOC 유지/무력화 모두 동작하나, 실기 호환을 위해 무력화 권장."""
     with open(cpk_path, 'rb') as f:
         cpk = bytearray(f.read())
     original_size = len(cpk)
@@ -350,11 +355,16 @@ def patch_cpk_append(cpk_path, output_path, file_replacements):
 
     # Update CPK header: ContentSize and EtocOffset
     new_content_size = len(cpk) - content_offset
-    new_etoc_offset = len(cpk)
+    # 실기용: ETOC 무력화 (재배치 안 함, 헤더 0). 아니면 끝으로 이동.
+    new_etoc_offset = 0 if disable_etoc else len(cpk)
+    new_etoc_size = 0 if disable_etoc else etoc_size
 
     cpk_dec_header = bytearray(xor_crypt(bytes(cpk[0x10:0x10+cpk_ts])))
     cpk_hdr_reader = UTFReader(bytes(cpk_dec_header))
-    for field, value in [('ContentSize', new_content_size), ('EtocOffset', new_etoc_offset)]:
+    header_updates = [('ContentSize', new_content_size), ('EtocOffset', new_etoc_offset)]
+    if disable_etoc:
+        header_updates.append(('EtocSize', new_etoc_size))
+    for field, value in header_updates:
         off = cpk_hdr_reader.get_row_field_offset(0, field)
         if off is None:
             continue
@@ -367,8 +377,8 @@ def patch_cpk_append(cpk_path, output_path, file_replacements):
                 break
     cpk[0x10:0x10+cpk_ts] = xor_crypt(bytes(cpk_dec_header))
 
-    # Re-append ETOC
-    if etoc_data:
+    # Re-append ETOC (실기용 disable_etoc면 생략 → 헤더 0으로 무력화)
+    if etoc_data and not disable_etoc:
         cpk.extend(etoc_data)
 
     print(f"  ContentSize: {new_content_size:,}, EtocOffset: 0x{new_etoc_offset:X}")
