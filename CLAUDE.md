@@ -565,6 +565,14 @@ Vita3K판은 텍스처를 hash PNG로 import 폴더에 넣어 GPU 대체한다. 
 - `build_patch.build_korean_patch(base_dir, translations_dir)` 파라미터화로 사용자 추출본에서 NMS 생성.
 - 빌드: `python3 tools/build_release.py --realhw-only` → `dist/muramasa-kor-vX-realhw-patcher-beta.zip`.
 
+### 실기 CPK ↔ Vita3K import 관계 (왜 둘 다 유지하나)
+- 실기용 베이크 CPK는 **Vita3K에서도 그대로 로드**됨. HD팩 미사용 Vita3K 사용자는 이 CPK를
+  `ux0/app/PCSE00240/`에 넣으면 **import 폴더 PNG 복사 절차 없이** 한글 표시 가능.
+- **단 HD팩 사용자는 import 방식 유지 필요**: CPK 베이크 시 텍스처 hash가 바뀌어(베이크 후 high32 변함)
+  HD팩(원본 hash 기준 import)이 그 텍스처에 매칭 안 됨 → 한글 텍스처가 **원본 해상도로 하락**, HD 미적용
+  (비한글 영역은 HD 유지). 그래서 Vita3K 기본 배포는 HD 화질 위해 import 방식 유지, 실기는 CPK 베이크 필수.
+- (옵션 여지: HD 미사용 Vita3K용 "복사 불필요" 간편 변형 = 실기 CPK를 app 폴더에 설치.)
+
 ## 외부 의존 자원
 
 별도 확보 필요 (로컬 전용):
