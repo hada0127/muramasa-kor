@@ -48,10 +48,19 @@ def group_locations(manifest):
     return groups
 
 
-def _load_kr_resized(kr_dir, hsh, w, h):
-    """한글 텍스처 PNG → (h,w,4) RGBA, base 치수로 알파인지 다운스케일."""
-    p = os.path.join(kr_dir, hsh + '.png')
-    if not os.path.exists(p):
+def _load_kr_resized(kr_dir, hsh, w, h, overrides=None):
+    """한글 텍스처 PNG → (h,w,4) RGBA, base 치수로 알파인지 다운스케일.
+
+    overrides: {hash: png_path} 가 있으면 그 경로를 우선 사용(✕버튼 변형 등).
+    """
+    p = None
+    if overrides and hsh in overrides:
+        p = overrides[hsh]
+    else:
+        cand = os.path.join(kr_dir, hsh + '.png')
+        if os.path.exists(cand):
+            p = cand
+    if not p or not os.path.exists(p):
         return None
     im = Image.open(p).convert('RGBA')
     if im.size != (w, h):
@@ -59,10 +68,11 @@ def _load_kr_resized(kr_dir, hsh, w, h):
     return np.array(im)
 
 
-def bake_ftx(ftx_bytes, items, kr_dir=KR_UI):
+def bake_ftx(ftx_bytes, items, kr_dir=KR_UI, overrides=None):
     """FTX bytes 안의 지정 서브텍스처들을 한글로 교체.
 
     items: [(hash, loc), ...] (loc은 block_ord/w/h/fmt 포함)
+    overrides: {hash: png_path} 특정 해시를 다른 PNG로(✕버튼 ui_xbutton 등).
     Returns (new_bytes, log[list of dict]).
     """
     data = ftx_bytes
@@ -85,7 +95,7 @@ def bake_ftx(ftx_bytes, items, kr_dir=KR_UI):
         if cur_high != hsh[:8]:
             log.append({'hash': hsh, 'status': 'high32-mismatch', 'got': cur_high})
             continue
-        kr = _load_kr_resized(kr_dir, hsh, e['width'], e['height'])
+        kr = _load_kr_resized(kr_dir, hsh, e['width'], e['height'], overrides)
         if kr is None:
             log.append({'hash': hsh, 'status': 'no-kr-png'})
             continue
@@ -96,9 +106,10 @@ def bake_ftx(ftx_bytes, items, kr_dir=KR_UI):
     return data, log
 
 
-def bake_cpk_ftx(manifest, src_dir, cpk, kr_dir, out_dir):
+def bake_cpk_ftx(manifest, src_dir, cpk, kr_dir, out_dir, overrides=None):
     """한 CPK(src_dir 추출본)의 FTX들을 베이크해 out_dir에 동일 상대경로로 저장.
 
+    overrides: {hash: png_path} ✕버튼 변형 등 특정 해시 소스 교체.
     Returns {ftx_path: log} (이 cpk에 해당하는 것만).
     """
     groups = group_locations(manifest)
@@ -111,7 +122,7 @@ def bake_cpk_ftx(manifest, src_dir, cpk, kr_dir, out_dir):
             results[ftx_path] = [{'status': 'src-missing'}]
             continue
         data = open(src, 'rb').read()
-        new_data, log = bake_ftx(data, items, kr_dir)
+        new_data, log = bake_ftx(data, items, kr_dir, overrides)
         out = os.path.join(out_dir, ftx_path)
         os.makedirs(os.path.dirname(out), exist_ok=True)
         with open(out, 'wb') as f:
