@@ -228,8 +228,11 @@ def read_chunk(f, encrypted=False):
     return sig, table_data
 
 
-def extract_cpk(cpk_path: str, output_dir: str, list_only: bool = False):
-    """Extract all files from a CPK archive."""
+def extract_cpk(cpk_path: str, output_dir: str, list_only: bool = False, path_filter=None):
+    """Extract all files from a CPK archive.
+
+    path_filter: callable(path)->bool. 주어지면 True인 파일만 추출(실기 패처가 FTX/NMS만
+        빠르게 뽑을 때 사용). None이면 전체 추출."""
     cpk_path = Path(cpk_path)
     output_dir = Path(output_dir)
 
@@ -340,6 +343,8 @@ def extract_cpk(cpk_path: str, output_dir: str, list_only: bool = False):
 
         extracted = 0
         for fi in files:
+            if path_filter is not None and not path_filter(fi['path']):
+                continue
             out_path = output_dir / fi['path']
             out_path.parent.mkdir(parents=True, exist_ok=True)
 
