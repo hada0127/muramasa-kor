@@ -564,6 +564,87 @@ def package_button_variant_addon(version: str) -> Path | None:
     return zip_path
 
 
+REALHW_GUIDE = """\
+Muramasa Rebirth 한글 패치 — 실기(real PS Vita) 버전 [베타]
+=============================================================
+
+이 패치는 텍스처/폰트를 CPK 내부에 직접 베이크해 실기에서 한글이 표시되게 합니다.
+저작권상 원본 CPK는 포함하지 않으므로, 사용자 본인의 원본 CPK로부터 패치를 생성합니다.
+
+[요구 사항]
+- Python 3.8+ 와 패키지: pip install pillow numpy xxhash
+- rePatch 플러그인 (실기에 설치·활성화)
+- 게임 본편 + 1.06 패치 + (선택)DLC 설치된 상태의 원본 CPK
+
+[원본 CPK 위치 (예시)]
+- 본편:  app/PCSE00240/NinPri.cpk, NinPriPatch.cpk
+- DLC :  addcont/PCSE00240/OBOROMURAMASAPK1~4/NinPriPack1~4.cpk
+
+[패치 생성]
+  python3 tools/apply_realhw_patch.py \\
+    --ninpri /경로/NinPri.cpk --ninpripatch /경로/NinPriPatch.cpk \\
+    --pack1 /경로/NinPriPack1.cpk --pack2 ... --pack3 ... --pack4 ... \\
+    --out ./out
+
+  • DLC가 없으면 --pack* 생략 가능(본편만 패치).
+  • 결정 버튼을 ✕로: --enter-button cross (Vita 설정 Enter Button=Cross 와 함께 사용)
+
+[Vita에 적용]
+  생성된 out/ux0/ 안의 내용을 Vita의 ux0:/ 아래에 그대로 복사:
+    ux0:/rePatch/PCSE00240/NinPri.cpk, NinPriPatch.cpk
+    ux0:/reAddcont/PCSE00240/OBOROMURAMASAPK1~4/NinPriPack1~4.cpk
+  rePatch 플러그인을 활성화하고 게임 실행.
+
+[베타 주의]
+  실기 부팅·표시는 Vita3K 검증만 거친 베타입니다. 문제 발생 시 제보 바랍니다.
+  (실기 호환을 위해 CPK ETOC를 무력화했습니다 — 기존 실기 동작 패치와 동일 방식.)
+"""
+
+
+def package_realhw_patcher(version: str) -> Path | None:
+    """실기(real Vita) 한글 패처 + 자산을 zip으로 패키징.
+
+    원본 CPK는 포함하지 않는다. 사용자가 자기 원본 CPK로 apply_realhw_patch.py를 실행해
+    한글 패치 CPK를 생성한다. 무거운 인코딩은 사용자 PC에서 수행(저작권/버전 안전).
+    """
+    manifest = PROJECT_DIR / "translations" / "ftx_texture_map.json"
+    if not manifest.exists():
+        print("realhw: ftx_texture_map.json 없음 — build_ftx_map.py 먼저 실행 필요. 생략.")
+        return None
+
+    DIST_DIR.mkdir(parents=True, exist_ok=True)
+    zip_path = DIST_DIR / f"muramasa-kor-v{version}-realhw-patcher-beta.zip"
+    root = "muramasa-kor-realhw"
+
+    def _add_tree(archive, src_dir: Path, arc_prefix: str, pattern: str = "*"):
+        for p in sorted(src_dir.rglob(pattern)):
+            if not p.is_file() or p.name == ".DS_Store":
+                continue
+            if "__pycache__" in p.parts:
+                continue
+            rel = p.relative_to(src_dir).as_posix()
+            _write_zip_file(archive, p, f"{root}/{arc_prefix}/{rel}")
+
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        # 도구: tools/*.py (top-level) + font_page_refs
+        for p in sorted((PROJECT_DIR / "tools").glob("*.py")):
+            _write_zip_file(archive, p, f"{root}/tools/{p.name}")
+        _add_tree(archive, PROJECT_DIR / "tools" / "font_page_refs", "tools/font_page_refs")
+        # 번역 데이터 (JSON 전체 — 안전)
+        _add_tree(archive, PROJECT_DIR / "translations", "translations", "*.json")
+        # 한글 텍스처 + ✕변형
+        _add_tree(archive, PROJECT_DIR / "textures" / "kr" / "ui", "textures/kr/ui", "*.png")
+        _add_tree(archive, PROJECT_DIR / "textures" / "kr" / "ui_xbutton", "textures/kr/ui_xbutton", "*.png")
+        # 폰트
+        _add_tree(archive, PROJECT_DIR / "fonts", "fonts")
+        # 안내 + requirements
+        _write_zip_text(archive, f"{root}/README_실기패치.txt", REALHW_GUIDE)
+        _write_zip_text(archive, f"{root}/requirements.txt", "pillow\nnumpy\nxxhash\n")
+
+    print(f"  실기 패처 zip: {zip_path} ({zip_path.stat().st_size/1e6:.1f} MB)")
+    return zip_path
+
+
 def clean_dist() -> None:
     if DIST_DIR.exists():
         shutil.rmtree(DIST_DIR)
@@ -575,12 +656,21 @@ def main() -> int:
     parser.add_argument("--keep-dist", action="store_true", help="Keep existing dist/ contents.")
     parser.add_argument("--no-xbutton", action="store_true", help="✕ 버튼 추가팩(이슈 #12)을 빌드하지 않음.")
     parser.add_argument("--xbutton-only", action="store_true", help="✕ 버튼 추가팩만 빌드(본편 CPK 패치 생략).")
+    parser.add_argument("--realhw-only", action="store_true", help="실기(real Vita) 패처 zip만 빌드.")
+    parser.add_argument("--no-realhw", action="store_true", help="실기 패처 zip을 빌드하지 않음.")
     args = parser.parse_args()
 
     require_inputs()
     version = args.version or load_version()
     if not args.keep_dist:
         clean_dist()
+
+    if args.realhw_only:
+        realhw = package_realhw_patcher(version)
+        print("\n== Release artifacts ==")
+        print(f"Version: {version}")
+        print(f"실기 패처: {realhw}")
+        return 0
 
     if args.xbutton_only:
         addon = package_button_variant_addon(version)
@@ -593,6 +683,7 @@ def main() -> int:
     zip_path, manifest_path, checksums_path = package_release(version, main_cpk, patch_cpk_path)
 
     addon = None if args.no_xbutton else package_button_variant_addon(version)
+    realhw = None if args.no_realhw else package_realhw_patcher(version)
 
     print("\n== Release artifacts ==")
     print(f"Version: {version}")
@@ -601,6 +692,8 @@ def main() -> int:
     print(f"Checksums: {checksums_path}")
     if addon:
         print(f"✕ button add-on: {addon}")
+    if realhw:
+        print(f"실기 패처: {realhw}")
     return 0
 
 
