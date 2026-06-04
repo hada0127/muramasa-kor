@@ -582,6 +582,7 @@
           "fit_to_box": false,
           "layout": "horizontal",
           "_id": "K8",
+          "glyph_image": "textures/sprites/baeksajeon_brush.png",
           "font_ratio": 0.75,
           "render": true,
           "background": "clear_alpha",

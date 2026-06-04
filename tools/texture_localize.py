@@ -351,6 +351,33 @@ def process_texture(hash_id, tex_config, preview=False):
                 orig_arr[:, :, 3] = 0  # alpha to 0
                 result.paste(Image.fromarray(orig_arr), (cx, cy))
 
+            # 1.5 glyph_image: 폰트 렌더 대신 미리 만든 글리프 PNG를 박스에 정렬 합성.
+            #     repo에 없는 붓글씨 폰트 글리프(예: 백사전 — 88A7 자막과 일치)를 재현용.
+            glyph_image = region.get("glyph_image")
+            if glyph_image:
+                sprite = Image.open(PROJECT_DIR / glyph_image).convert("RGBA")
+                sw, sh = sprite.size
+                a_ = region.get("align", "left")
+                va_ = region.get("v_align", "center")
+                if a_ == "center":
+                    px = x + (w - sw) // 2
+                elif a_ == "right":
+                    px = x + w - sw
+                else:
+                    px = x
+                if va_ == "center":
+                    py = y + (h - sh) // 2
+                elif va_ == "bottom":
+                    py = y + h - sh
+                else:
+                    py = y
+                px += int(region.get("nudge_x", 0))
+                py += int(region.get("nudge_y", 0))
+                gov = Image.new("RGBA", result.size, (0, 0, 0, 0))
+                gov.paste(sprite, (px, py))
+                result = Image.alpha_composite(result, gov)
+                continue
+
             # 2. 한글 텍스트 렌더링 — layout 이 rotated/vertical 이면 place 의 render_text 위임
             layout = region.get("layout")
             rotation = int(region.get("rotation") or 0)
