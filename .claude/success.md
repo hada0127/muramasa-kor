@@ -37,6 +37,8 @@ FTX에 직접 베이크**해야 함. **CPK 직접 배포 불가 → 사용자 �
 - 출력: `ux0/rePatch/PCSE00240/{NinPri,NinPriPatch}.cpk` + `ux0/reAddcont/.../NinPriPack1~4.cpk`.
 - **베타**: 실기 부팅 검증은 Vita3K 기준만(macOS 한계). ETOC 무력화로 실기 호환 시도, 실기 피드백 대기.
 - ○/✕: `--enter-button cross`(+Vita Enter=Cross). README·CLAUDE.md 실기 섹션 추가.
+- **✅ v1.3.0 발행**(마이너 업): main 머지 + tag v1.3.0 + gh release(--latest), 실기 베타 zip 첨부.
+  README '실기 전용 아님' 문구 제거. https://github.com/hada0127/muramasa-kor/releases/tag/v1.3.0
 
 ## [2026-06-04] GitHub 이슈 #16 — 백사전 글자 정렬 + 반야탕 표기 통일 (v1.2.2)
 - 신고(mtmate-rgb, HD팩+✕패치 사용): #16-1 겐로쿠 괴기담 "백사전" 챕터선택 글자가 그림자랑 어긋나 이중,

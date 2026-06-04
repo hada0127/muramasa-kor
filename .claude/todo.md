@@ -7,10 +7,12 @@
 
 ---
 
-## 실기(real PS Vita) 패치 — 베타 완성, 실기 부팅 검증 대기 (2026-06-05)
+## 실기(real PS Vita) 패치 — v1.3.0 발행 완료, 실기 부팅 검증 대기 (2026-06-05)
 
-- 브랜치 `feature/realhw-patch`. 상세는 success.md. CPK 내부 FTX에 한글 텍스처/폰트 직접 베이크 →
-  사용자 패처(`apply_realhw_patch.py`)로 본인 CPK에서 생성 → `ux0/rePatch`+`reAddcont`.
+- **✅ v1.3.0 발행**(main 머지, tag v1.3.0, gh release --latest, 실기 베타 zip 첨부).
+  https://github.com/hada0127/muramasa-kor/releases/tag/v1.3.0
+- CPK 내부 FTX에 한글 텍스처/폰트 직접 베이크 → 사용자 패처(`apply_realhw_patch.py`)로
+  본인 CPK에서 생성 → `ux0/rePatch`+`reAddcont`. 상세는 success.md.
 - **완료·검증**: 82/82 텍스처+폰트 매핑(high32, 누락 0), 커버리지 86/86 알파NCC>0.97, end-to-end
   CPK 라운드트립 한글 정상, clean-room zip OK. ETOC 무력화(실기 참고패치와 일치).
 - **열린 항목(베타)**: 실기 부팅·표시는 **Vita3K 검증만**(macOS라 실기 불가). **사용자/제보자 실기
