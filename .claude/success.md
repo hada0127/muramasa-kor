@@ -1,5 +1,43 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-06-05] 실기(real PS Vita) 한글 패치 도구 (브랜치 feature/realhw-patch)
+
+DCInside 제보 패치(no.171678, rePatch 방식) 참고 + 사용자 요청: 다음 릴리스부터 실기 패치 제공.
+Vita3K판은 텍스처를 hash PNG import로 대체하나 실기엔 그 기능이 없어 **텍스처/폰트를 CPK 내부
+FTX에 직접 베이크**해야 함. **CPK 직접 배포 불가 → 사용자 패처(도구) 제공**(사용자 결정).
+
+### codex + agy 협의 (CLAUDE.md 규칙)
+- **수렴**: CPK 통째 override가 정답. 원본 FTX/GXT 구조 보존 + payload만 동일 raw size 교체 →
+  포맷 유지 DXT3/DXT5 인코딩 → 16바이트 블록 Vita swizzle → CRILAYLA → CPK append. **1순위 검증 =
+  swizzle byte-exact 라운드트립**. 폰트는 존재하는 모든 font FTX 패치. 매핑은 매니페스트로 고정.
+- **함정**: mipmap(하위레벨도 생성), 포맷 유지(0x87 DXT5/0x86 DXT3), 알파전용은 알파 기준, 비정사각.
+- **발산(배포)**: codex=사용자측 생성 / agy=사전베이크 델타. 저작권상 **사용자측 생성 확정**(사용자 결정 일치).
+- **agy 단독 경고**: append가 ETOC 내부 미갱신 → 실기 크래시 가능. **대비책 ETOC 무력화**.
+  → **실기 동작 참고패치도 EtocOffset=0** 확인 → `disable_etoc` 채택(정확히 일치).
+
+### 구현 (7 Phase, 단계별 커밋)
+1. **`ftx_encode.py`**: FTX 인코더(ftx_extract 역). DXT5/DXT3+swizzle, **numpy 벡터화**. self-test
+   swizzle byte-exact 113/113, 인코더 품질 alpha MAE 0.60. `parse_all_gxt`(block_ord)·`replace_subtexture`.
+2. **`build_ftx_map.py` → `translations/ftx_texture_map.json`**: **82/82 정확 매핑(누락 0)**.
+   핵심 = Vita3K hash = XXH3_64(swizzled base payload). 시스템 xxhash와 finalizer 리비전差로 **상위32만
+   정확 일치**(하위32는 상수패턴 0x02000100差) → high32 매칭. NCC 83/86>0.9 교차확인. 시각검증
+   (The End→완결, 에피소드명, DLC place NCC~1.0). 소스 NinPri60+NinPriPatch15+DLC11.
+3. **`realhw_bake.py`**: UI 텍스처 다운스케일 베이크. CPK append 라운드트립 검증(한글 보존).
+4. **`realhw_font_bake.py`**: 폰트 6페이지(NinPri/_US/other/font*.ftx, 河/重/隼) 한글 글리프
+   (create_korean_import 재사용). 河959×3·重1024·隼366 = 완성형 2350.
+5. **✕버튼**: `bake_ftx(overrides=)` ui_xbutton. 3해시 매핑확인. DLC place 11종 Pack1~4 베이크.
+6. **`apply_realhw_patch.py`(사용자 패처)**: 선택추출→build_patch(base_dir 파라미터화)→베이크→
+   CPK append(disable_etoc)→ux0/rePatch+reAddcont. `build_release.py --realhw-only` 패키징.
+   `cpk_extract` path_filter, `cpk_patch` disable_etoc 추가.
+7. **검증**: end-to-end(backup+DLC4팩) 성공, 출력 CPK 재추출→한글 폰트/텍스처 디코드 정상.
+   **커버리지 86/86 위치 알파NCC>0.97 일치, 누락 0** + 폰트 6페이지. clean-room zip 임포트 검증.
+
+### 결과
+- `dist/muramasa-kor-vX-realhw-patcher-beta.zip` (63.8MB, 원본 미포함).
+- 출력: `ux0/rePatch/PCSE00240/{NinPri,NinPriPatch}.cpk` + `ux0/reAddcont/.../NinPriPack1~4.cpk`.
+- **베타**: 실기 부팅 검증은 Vita3K 기준만(macOS 한계). ETOC 무력화로 실기 호환 시도, 실기 피드백 대기.
+- ○/✕: `--enter-button cross`(+Vita Enter=Cross). README·CLAUDE.md 실기 섹션 추가.
+
 ## [2026-06-04] GitHub 이슈 #16 — 백사전 글자 정렬 + 반야탕 표기 통일 (v1.2.2)
 - 신고(mtmate-rgb, HD팩+✕패치 사용): #16-1 겐로쿠 괴기담 "백사전" 챕터선택 글자가 그림자랑 어긋나 이중,
   #16-2 닌자주머니 메뉴 "반야탕" vs HUD "술" 불일치.
