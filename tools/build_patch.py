@@ -565,8 +565,37 @@ def build_korean_patch(base_dir=None, translations_dir=None):
         msgs = translations[trans_key]['messages']
         mode = info.get('match_mode', 'content')
         skip_idx = info.get('skip_indices')
+        custom_idx_main = None
+        if name == '_itemdata_US':
+            # base(NinPri) _itemdata shares the JP BOSS-dummy shift in the
+            # accessory zone (same root cause as patch_patch): JP 506-517 are 6
+            # BOSS dummy items absent from US, so US accessory slots are +12.
+            # base has NO DLC magatama (US566='-' separator, skill table at 567+),
+            # so only [506,566) needs correcting; everything else keeps the
+            # existing index mapping. patch_main/_itemdata is normally overridden
+            # by NinPriPatch.cpk, but we fix it for consistency/safety.
+            # (issue: boss-drop "인왕의 팔찌→쌍나루코")
+            for _us, _exp in {506: '鎖帷子', 552: '二繋ぎの鳴子', 564: '仁王の腕輪'}.items():
+                _jp = _us + 12
+                _got = msgs[_jp].get('ja', '') if _jp < len(msgs) else None
+                if _got != _exp:
+                    raise ValueError(
+                        f"_itemdata_main offset drift: US{_us} -> JP{_jp} "
+                        f"ja={_got!r}, expected {_exp!r}. BOSS dummy layout changed.")
+            custom_idx_main = {}
+            for i, m in enumerate(msgs):
+                ko = m.get('ko', '')
+                if ko:
+                    custom_idx_main[i] = ko
+            for i in range(506, 566):
+                jp_i = i + 12
+                if jp_i < len(msgs):
+                    ko = msgs[jp_i].get('ko', '')
+                    if ko:
+                        custom_idx_main[i] = ko
+            mode = 'custom_idx'
         try:
-            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, skip_indices=skip_idx)
+            count, matched, size = rebuild_nms(source_path, msgs, kr_map, output_path, match_mode=mode, skip_indices=skip_idx, custom_idx_to_ko=custom_idx_main)
             print(f"  {name}: {matched}/{count} matched ({mode}), {size} bytes")
         except Exception as e:
             print(f"  {name}: ERROR - {e}")
@@ -603,16 +632,40 @@ def build_korean_patch(base_dir=None, translations_dir=None):
             main_msgs = translations.get('_itemdata_main', {}).get('messages', [])
             # US _itemdata separators ('-') that must not be overwritten:
             #   [0],[1]  : placeholder dashes at file start
-            #   [594]    : separator between items and skill names (excluded by range gap)
+            #   [594]    : separator between items and skill names
             #   [704]    : separator between skill names and effect name/desc pairs
-            us_separators = {0, 1, 704}
+            us_separators = {0, 1, 594, 704}
             custom_idx_ko = {}
-            for i in range(0, 594):
+            # US-to-JP item/accessory offset shift. The JP _itemdata table has
+            # dev-only/dummy entries that are ABSENT from the US table, so the US
+            # item slots are shifted relative to JP:
+            #   [0, 506)   : matches JP exactly                       (+0)
+            #   [506, 566) : JP 506-517 = 6 BOSS dummy items (12 slots) omitted (+12)
+            #   [566, 595) : JP 578-585 = 4 回復X items (8 slots) also omitted (+20)
+            # Without this, US564 (Bracelet of the Deva King / 인왕의 팔찌) wrongly
+            # received JP564 (二繋ぎの鳴子 / 쌍나루코), and 6 BOSS dummy names leaked
+            # into the accessory menu. (issue: boss-drop "인왕의 팔찌→쌍나루코")
+            def _us_to_jp(i):
+                return i if i < 506 else (i + 12 if i < 566 else i + 20)
+            # Drift guard (codex 권고): if the JP _itemdata layout ever changes, the
+            # +12/+20 rule silently maps valid Korean onto the wrong slots. Verify the
+            # JP source text at key anchors and abort the build on any mismatch.
+            _anchors = {506: '鎖帷子', 552: '二繋ぎの鳴子', 564: '仁王の腕輪', 566: '琥珀の勾玉'}
+            for _us, _exp in _anchors.items():
+                _jp = _us_to_jp(_us)
+                _got = msgs[_jp].get('ja', '') if _jp < len(msgs) else None
+                if _got != _exp:
+                    raise ValueError(
+                        f"_itemdata offset drift: US{_us} -> JP{_jp} ja={_got!r}, "
+                        f"expected {_exp!r}. BOSS/recovery dummy layout changed; "
+                        f"review the +12/+20 shift rules in build_patch.py.")
+            for i in range(0, 595):
                 if i in us_separators:
                     continue
-                if i >= len(msgs):
+                jp_i = _us_to_jp(i)
+                if jp_i >= len(msgs):
                     continue
-                ko = msgs[i].get('ko', '')
+                ko = msgs[jp_i].get('ko', '')
                 if ko:
                     custom_idx_ko[i] = ko
             for i in range(595, 705):
