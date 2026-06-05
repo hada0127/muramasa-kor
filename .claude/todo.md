@@ -185,9 +185,16 @@
   → **둘 결합**: offset 규칙 + 빌드 시 앵커 드리프트 가드(US506=鎖帷子/552=二繋ぎの鳴子/564=仁王の腕輪/566=琥珀の勾玉 불일치 시 빌드 중단).
 - `tools/build_patch.py`: patch_patch `us_itemdata_hybrid` offset 보정 + patch_main `_itemdata_US`
   [506,566) +12 보정(base는 곡옥 없음). 양쪽 빌드 후 US564="인왕의 팔찌", 보스 더미 잔존 0 검증.
-- 44개 액세서리 전수 영문↔한글 대조 정상. **재빌드·재배포 필요**(릴리스 갱신).
+- 44개 액세서리 전수 영문↔한글 대조 정상.
 - 참고: 한글 아이템명은 **일본어 원판 기준**이라 영문 공략명과 다름(인왕의 팔찌=Bracelet of the
   Deva King, 쌍나루코=Cowbell, 나루코=Triangle) — 이는 버그 아닌 번역 정책.
+- **BOSS 더미 사실확인**(사용자 질문): `BOSS鬼助/百姫 N本目`는 효과 `敵用 所持/使用するな`(적 전용)
+  = 적(보스)으로 등장 시 내부 데이터, 플레이어용 아님(영문판도 제거). "영문에선 oss로 표시" = 사실
+  아님(oss는 boss battles 단어 일부). 공략의 "2회차 보스 클리어 후 사용가능 보스 아이템"은 별개 —
+  반대/같은 캐릭터 보스 재격파로 얻는 **정상 드롭 액세서리**(인왕의 팔찌 등) 의미. 더미 숨김이 정답.
+- **✅ v1.3.1 발행 완료** (2026-06-05): main push(228a069), tag v1.3.1, gh release --latest,
+  5자산(vita3k-patcher/manifest/sha256 + xbutton + realhw-beta). 최종 배포 CPK 내부 US564=인왕의 팔찌
+  검증. https://github.com/hada0127/muramasa-kor/releases/tag/v1.3.1 → 인게임 최종 확인은 사용자/제보자.
 
 ## 조사 종결 — export/UHD 미번역 지명·신규 텍스트 텍스처 없음 (2026-05-30)
 
