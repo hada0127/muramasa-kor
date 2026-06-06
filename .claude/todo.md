@@ -7,6 +7,20 @@
 
 ---
 
+## 설치 UX 개선 — 파이썬 없이 쉬운 설치 (2026-06-06, 진행 중)
+
+- **계기(사용자 피드백)**: "설치법이 너무 어렵다, 특히 실기 적용 부분. 가능하면 파이썬 설치 없이."
+  Vita3K 설치 방법도 같이 개선 요청.
+- **현황 분석**:
+  - 실기 패처(`apply_realhw_patch.py`): pillow+numpy+xxhash 필요 + CRILAYLA 재압축/FTX 인코딩 무거움.
+    긴 CLI 인자(--ninpri/--ninpripatch/--pack1~4/--out/--enter-button)를 사용자가 직접 입력. **진짜 어려움.**
+  - Vita3K 패처(`apply_patch.py`): 표준 라이브러리만(외부 패키지 X). 델타 bin 적용+PNG 복사.
+    apply_windows.bat/apply_macos.command가 시스템 python 자동 탐색. 그래도 python 런타임은 필요.
+  - 공통 제약: 저작권상 원본 CPK 배포 불가 → 클라이언트 측 생성 필수.
+- **codex+agy 병렬 협의 진행 중**(동일 프롬프트, /tmp/codex_review.txt, /tmp/agy_review.txt).
+  질문: 파이썬 없는 배포(PyInstaller/GUI/대안)·UX 단순화·초보자 설명서·실기↔Vita3K 통합 여부.
+- 다음: 두 의견 비교 → 수렴/발산 정리 → 사용자에게 최종 방향 제시 → 설치툴+설명서 구현.
+
 ## 실기(real PS Vita) 패치 — v1.3.0 발행 완료, 실기 부팅 검증 대기 (2026-06-05)
 
 - **✅ v1.3.0 발행**(main 머지, tag v1.3.0, gh release --latest, 실기 베타 zip 첨부).
