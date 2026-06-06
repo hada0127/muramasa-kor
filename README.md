@@ -8,6 +8,31 @@
 
 이 저장소와 릴리즈는 원본 게임 PKG/CPK를 포함하지 않는다. 사용자는 본인이 합법적으로 보유한 원본 게임을 Vita3K에 먼저 설치한 뒤, 릴리즈에 포함된 로컬 패처로 본인 PC의 원본 CPK에 패치를 적용한다.
 
+## 🖱️ 빠른 시작 — 통합 GUI 도구 (가장 쉬움, 권장)
+
+> **설치가 처음이거나 복잡한 게 싫다면 여기만 보면 된다.** 명령어·파이썬 없이 마우스 클릭만으로 끝난다.
+
+명령어를 칠 필요 없이 **마우스 클릭만으로** Vita3K(에뮬레이터)와 실기(real PS Vita) 패치를 모두 만드는 통합 GUI 도구를 제공한다. 원본 CPK 경로도 자동으로 찾는다.
+
+- **받을 파일**: `muramasa-kor-vX-patcher-windows.zip` (Windows용 `MuramasaPatcher.exe`는 릴리즈에 별도 첨부 — zip 폴더 안에 넣으면 된다)
+- **Windows**: `MuramasaPatcher.exe` 더블클릭 — **파이썬 설치가 필요 없다.**
+  - 처음 실행 시 SmartScreen 파란 경고가 뜨면 **"추가 정보" → "실행"** 을 누른다.
+- **macOS / Linux**: zip을 풀고 `실행_Mac.command`(맥) 또는 `실행_Linux.sh`(리눅스)를 실행 — 파이썬 3.9 이상 필요.
+  - macOS에서 "확인되지 않은 개발자" 경고가 뜨면 Finder에서 **우클릭 → 열기**, 또는 터미널에서 `xattr -dr com.apple.quarantine "실행_Mac.command"`.
+
+**사용 순서**
+
+1. 도구를 실행하면 창이 뜬다.
+2. 맨 위에서 **설치 대상**을 고른다.
+   - **Vita3K 에뮬레이터**: 경로를 자동으로 찾는다. 그대로 **[패치 시작]**.
+   - **실기 PS Vita**: 원본 `NinPri.cpk` / `NinPriPatch.cpk`(+DLC) 경로와 결과 저장 폴더를 고른 뒤 **[패치 시작]**.
+3. 진행 로그가 끝나고 "완료" 창이 뜨면 성공이다.
+
+- Vita3K는 패치가 곧바로 적용된다(폰트/UI가 안 보이면 Vita3K 설정 `GPU > Import Textures`를 켠다). "원본으로 복원" 체크 후 시작하면 되돌린다.
+- 실기는 생성된 결과 폴더의 `ux0` 폴더를 Vita 본체 `ux0:/` 아래에 복사하고 rePatch 플러그인을 켠다. → [실기 쉬운 설치 가이드](docs/실기-쉬운-설치-가이드.md) 참고.
+
+> 아래의 명령어(CLI) 방식은 그대로 유지된다. GUI가 동작하지 않거나 자동화하려는 사용자를 위한 **수동/고급 경로**다.
+
 ## 사용자 안내
 
 - 지원 대상: Vita3K Windows/macOS, Android 수동 복사, **실기(real PS Vita) [베타]** — [실기 패치 안내](#실기real-ps-vita-패치-베타) 참조
@@ -31,29 +56,6 @@ release/manifest.json
 `textures/import/PCSE00240/*.png`에는 한글 폰트와 UI 텍스처 import가 포함된다.
 
 `NinPri.cpk`, `NinPriPatch.cpk`, 원본 PKG, DLC 데이터는 포함하지 않는다.
-
-## 🖱️ 가장 쉬운 설치 — 통합 GUI 도구 (권장)
-
-명령어를 칠 필요 없이 **마우스 클릭만으로** Vita3K(에뮬레이터)와 실기(real PS Vita) 패치를 모두 만드는 통합 GUI 도구를 제공한다. 원본 CPK 경로도 자동으로 찾는다.
-
-- **받을 파일**: `muramasa-kor-vX-patcher-windows.zip` (Windows용 `MuramasaPatcher.exe`는 릴리즈에 별도 첨부 — zip 폴더 안에 넣으면 된다)
-- **Windows**: `MuramasaPatcher.exe` 더블클릭 — **파이썬 설치가 필요 없다.**
-  - 처음 실행 시 SmartScreen 파란 경고가 뜨면 **"추가 정보" → "실행"** 을 누른다.
-- **macOS / Linux**: zip을 풀고 `실행_Mac.command`(맥) 또는 `실행_Linux.sh`(리눅스)를 실행 — 파이썬 3.9 이상 필요.
-  - macOS에서 "확인되지 않은 개발자" 경고가 뜨면 Finder에서 **우클릭 → 열기**, 또는 터미널에서 `xattr -dr com.apple.quarantine "실행_Mac.command"`.
-
-**사용 순서**
-
-1. 도구를 실행하면 창이 뜬다.
-2. 맨 위에서 **설치 대상**을 고른다.
-   - **Vita3K 에뮬레이터**: 경로를 자동으로 찾는다. 그대로 **[패치 시작]**.
-   - **실기 PS Vita**: 원본 `NinPri.cpk` / `NinPriPatch.cpk`(+DLC) 경로와 결과 저장 폴더를 고른 뒤 **[패치 시작]**.
-3. 진행 로그가 끝나고 "완료" 창이 뜨면 성공이다.
-
-- Vita3K는 패치가 곧바로 적용된다(폰트/UI가 안 보이면 Vita3K 설정 `GPU > Import Textures`를 켠다). "원본으로 복원" 체크 후 시작하면 되돌린다.
-- 실기는 생성된 결과 폴더의 `ux0` 폴더를 Vita 본체 `ux0:/` 아래에 복사하고 rePatch 플러그인을 켠다. → [실기 패치 안내](#실기real-ps-vita-패치-베타) 참고.
-
-> 아래 "설치 방법"의 명령어(CLI) 방식은 그대로 유지된다. GUI가 동작하지 않거나 자동화하려는 사용자를 위한 **수동/고급 경로**다.
 
 ## 원본 게임 준비
 

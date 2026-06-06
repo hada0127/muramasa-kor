@@ -66,6 +66,18 @@ def main() -> int:
         assets.append(str(realhw_zip))
         print(f"(첨부) 실기 패처(베타): {realhw_zip.name}")
 
+    # 통합 GUI 번들(Vita3K+실기, exe 포함 가능) zip
+    gui_zip = DIST_DIR / f"muramasa-kor-v{version}-patcher-windows.zip"
+    if gui_zip.exists():
+        assets.append(str(gui_zip))
+        print(f"(첨부) 통합 GUI 번들: {gui_zip.name}")
+
+    # 단독 Windows exe (번들과 별개로 받아 zip 폴더에 넣고 싶은 사용자/교체용)
+    gui_exe = DIST_DIR / "MuramasaPatcher.exe"
+    if gui_exe.exists():
+        assets.append(str(gui_exe))
+        print(f"(첨부) Windows 실행파일: {gui_exe.name}")
+
     cmd = [
         "gh",
         "release",
