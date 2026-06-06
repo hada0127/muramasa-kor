@@ -17,9 +17,39 @@
   - Vita3K 패처(`apply_patch.py`): 표준 라이브러리만(외부 패키지 X). 델타 bin 적용+PNG 복사.
     apply_windows.bat/apply_macos.command가 시스템 python 자동 탐색. 그래도 python 런타임은 필요.
   - 공통 제약: 저작권상 원본 CPK 배포 불가 → 클라이언트 측 생성 필수.
-- **codex+agy 병렬 협의 진행 중**(동일 프롬프트, /tmp/codex_review.txt, /tmp/agy_review.txt).
-  질문: 파이썬 없는 배포(PyInstaller/GUI/대안)·UX 단순화·초보자 설명서·실기↔Vita3K 통합 여부.
-- 다음: 두 의견 비교 → 수렴/발산 정리 → 사용자에게 최종 방향 제시 → 설치툴+설명서 구현.
+- **codex+agy 협의 완료**(/tmp/codex_review.txt, /tmp/agy_review.txt):
+  - **agy**: PyInstaller --onefile + Tkinter GUI **통합** 강력 권장. GitHub Actions 3-OS 매트릭스
+    크로스빌드, Windows는 임베디드 파이썬(10MB) 동봉도 대안. macOS Gatekeeper는 `xattr -d
+    com.apple.quarantine` 안내. 원본 CPK 자동탐지 + threading 비동기 + 진행률.
+  - **codex**: 결론 텍스트는 미출력(파일 탐색+web검색만)하고 종료했으나, `PyInstaller cross
+    compiling`·`Apple notarizing Gatekeeper` 검색 정황 → **같은 방향(PyInstaller+서명이슈)** 검토.
+  - **수렴**: PyInstaller+GUI 통합. 크로스빌드 불가→GitHub Actions OS별 빌드. macOS 무서명 Gatekeeper 마찰.
+- **사용자 결정(2026-06-06)**:
+  ① 실행파일은 **Windows exe만**(맥/리눅스는 기존 python 스크립트 유지+문서개선). macOS 코드서명/Sequoia 마찰 회피.
+  ② 실기+Vita3K **하나의 GUI로 통합**.  ③ **Tkinter GUI 창**.
+- **구현 계획**:
+  - `tools/gui_patcher.py` — Tkinter 통합 GUI. 모드 라디오(Vita3K/실기), CPK 자동탐지+찾아보기,
+    DLC 선택, ○/✕, 진행률, threading+queue 로그. 두 엔진을 함수 호출
+    (`apply_release_patch` 함수들 / `apply_realhw_patch.patch()`).
+  - `build_release.py` 통합 GUI 번들 패키징(실기 자산 tools/translations/textures/fonts +
+    Vita3K 자산 vita3k/release+patches+import텍스처 + gui_patcher + .command).
+  - `.github/workflows/build-gui.yml` — windows-latest PyInstaller onedir 빌드 → 릴리스 첨부.
+  - 초보자 설명서(스크린샷 단계형) + zip 내 README + SmartScreen/quarantine 안내.
+- **자산 레이아웃**(통합 zip): 패키지루트/{gui_patcher.py, MuramasaPatcher.exe, tools/, translations/,
+  textures/, fonts/, vita3k/release+patches+textures/import, 설명서}. PKG_ROOT는 frozen/소스 양쪽 탐색.
+
+### ✅ 구현 완료 (2026-06-06, 빌드/배포 대기)
+- `tools/gui_patcher.py` — Tkinter 통합 GUI. 모드 라디오, 자동탐지(Vita3K root·CPK·DLC4팩 전부 검증됨),
+  ○/✕, threading+queue 로그, 진행바. 두 엔진을 stdout 캡처로 함수 호출.
+- `MuramasaPatcher.spec` — PyInstaller(onefile, console=False, hiddenimports로 tools 모듈+PIL/numpy collect).
+  exe는 **코드+런타임만**, 데이터 미포함(원본 CPK 불필요 → CI 빌드 가능).
+- `.github/workflows/build-windows-gui.yml` — windows-latest, tag push/dispatch 시 exe 빌드+릴리스 첨부.
+- `build_release.py` `package_gui_bundle()` + `--gui-bundle-only` — 통합 데이터 번들 zip(실기 자산+vita3k 델타+gui+가이드).
+  실빌드 검증: `muramasa-kor-v1.3.1-patcher-windows.zip` 131.8MB, 254파일, vita3k 델타4/텍스처88 정상.
+- **end-to-end 검증**: zip 풀어서 PKG_ROOT/VITA3K_ASSETS 탐색·manifest 읽기·델타/텍스처 존재·실기 REPO==PKG_ROOT 전부 OK.
+- 문서: README "🖱️ 가장 쉬운 설치 GUI" 섹션 + 실기 섹션 GUI 우선 안내, `docs/실기-쉬운-설치-가이드.md`(rePatch~복사 단계별).
+- **남은 일**: ① 실제 릴리스 시 GitHub Actions로 exe 빌드 → dist/ 에 넣고 `build_release.py` 재빌드(exe 포함 번들).
+  ② Windows에서 exe 실제 더블클릭 동작 확인(메인테이너/사용자). ③ macOS는 사용자가 직접 GUI 띄워 시각 확인.
 
 ## 실기(real PS Vita) 패치 — v1.3.0 발행 완료, 실기 부팅 검증 대기 (2026-06-05)
 

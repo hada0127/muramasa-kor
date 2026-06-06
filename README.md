@@ -32,6 +32,29 @@ release/manifest.json
 
 `NinPri.cpk`, `NinPriPatch.cpk`, 원본 PKG, DLC 데이터는 포함하지 않는다.
 
+## 🖱️ 가장 쉬운 설치 — 통합 GUI 도구 (권장)
+
+명령어를 칠 필요 없이 **마우스 클릭만으로** Vita3K(에뮬레이터)와 실기(real PS Vita) 패치를 모두 만드는 통합 GUI 도구를 제공한다. 원본 CPK 경로도 자동으로 찾는다.
+
+- **받을 파일**: `muramasa-kor-vX-patcher-windows.zip` (Windows용 `MuramasaPatcher.exe`는 릴리즈에 별도 첨부 — zip 폴더 안에 넣으면 된다)
+- **Windows**: `MuramasaPatcher.exe` 더블클릭 — **파이썬 설치가 필요 없다.**
+  - 처음 실행 시 SmartScreen 파란 경고가 뜨면 **"추가 정보" → "실행"** 을 누른다.
+- **macOS / Linux**: zip을 풀고 `실행_Mac.command`(맥) 또는 `실행_Linux.sh`(리눅스)를 실행 — 파이썬 3.9 이상 필요.
+  - macOS에서 "확인되지 않은 개발자" 경고가 뜨면 Finder에서 **우클릭 → 열기**, 또는 터미널에서 `xattr -dr com.apple.quarantine "실행_Mac.command"`.
+
+**사용 순서**
+
+1. 도구를 실행하면 창이 뜬다.
+2. 맨 위에서 **설치 대상**을 고른다.
+   - **Vita3K 에뮬레이터**: 경로를 자동으로 찾는다. 그대로 **[패치 시작]**.
+   - **실기 PS Vita**: 원본 `NinPri.cpk` / `NinPriPatch.cpk`(+DLC) 경로와 결과 저장 폴더를 고른 뒤 **[패치 시작]**.
+3. 진행 로그가 끝나고 "완료" 창이 뜨면 성공이다.
+
+- Vita3K는 패치가 곧바로 적용된다(폰트/UI가 안 보이면 Vita3K 설정 `GPU > Import Textures`를 켠다). "원본으로 복원" 체크 후 시작하면 되돌린다.
+- 실기는 생성된 결과 폴더의 `ux0` 폴더를 Vita 본체 `ux0:/` 아래에 복사하고 rePatch 플러그인을 켠다. → [실기 패치 안내](#실기real-ps-vita-패치-베타) 참고.
+
+> 아래 "설치 방법"의 명령어(CLI) 방식은 그대로 유지된다. GUI가 동작하지 않거나 자동화하려는 사용자를 위한 **수동/고급 경로**다.
+
 ## 원본 게임 준비
 
 영문판 본편 + 1.06 업데이트 PKG, DLC PKG는 4개를 전부 설치가 필요하다. 모든 PKG는 정품 소유자가 합법적으로 확보한 파일을 사용할 것.
@@ -292,14 +315,20 @@ Vita3K판은 한글 텍스처/폰트를 hash 이름 PNG로 만들어 Vita3K의 �
 > 텍스처가 **원본 해상도로 떨어지기** 때문이다. 그래서 Vita3K 기본 배포는 HD 화질 지원을 위해 import
 > 방식을 유지한다.
 
+> 💡 **가장 쉬운 방법은 [통합 GUI 도구](#️-가장-쉬운-설치--통합-gui-도구-권장)다.** 아래 명령어(CLI) 방식은
+> GUI가 안 되거나 자동화하려는 사용자를 위한 수동 경로다. GUI를 쓰면 아래 "요구 사항"의 파이썬/패키지
+> 설치(Windows exe 기준)와 긴 명령어 입력이 필요 없다.
+>
+> 📘 **처음이라 막막하다면** → [실기 쉬운 설치 가이드](docs/실기-쉬운-설치-가이드.md) (rePatch 설치부터 Vita 복사까지 단계별).
+
 ### 요구 사항
 
 - **rePatch 플러그인** (실기에 설치·활성화). CPK 파일을 통째로 override 하는 방식이다.
-- Python 3.8+ 와 패키지: `pip install pillow numpy xxhash`
+- Python 3.8+ 와 패키지: `pip install pillow numpy xxhash` *(GUI Windows exe를 쓰면 불필요)*
 - 본편 + 1.06 업데이트 + (선택)DLC가 설치된 상태의 원본 CPK
   (본편 `NinPri.cpk`/`NinPriPatch.cpk`, DLC `NinPriPack1~4.cpk`)
 
-### 패치 생성·적용
+### 패치 생성·적용 (CLI — 수동/고급)
 
 ```bash
 # 1) 본인 원본 CPK로 패치 생성 (DLC 없으면 --pack* 생략)

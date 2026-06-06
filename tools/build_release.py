@@ -645,6 +645,175 @@ def package_realhw_patcher(version: str) -> Path | None:
     return zip_path
 
 
+GUI_BUNDLE_README = """\
+Muramasa Rebirth 한글 패치 — 통합 설치 도구
+=============================================
+
+마우스 클릭만으로 Vita3K(에뮬레이터)와 실기(real PS Vita) 양쪽 패치를 만들 수 있는
+GUI 도구입니다. 원본 게임 데이터는 들어 있지 않습니다 — 본인이 보유한 원본 CPK로부터
+패치를 생성합니다.
+
+[실행 방법]
+- Windows : MuramasaPatcher.exe 를 더블클릭 (파이썬 설치 불필요)
+            * 처음 실행 시 SmartScreen 경고가 뜨면 "추가 정보" -> "실행"을 누르세요.
+- macOS   : 실행_Mac.command 를 더블클릭 (파이썬 3.9+ 필요)
+            * "확인되지 않은 개발자" 경고가 뜨면 Finder 에서 우클릭 -> 열기,
+              또는 터미널에서  xattr -dr com.apple.quarantine "실행_Mac.command"
+- Linux   : sh 실행_Linux.sh   (또는  python3 tools/gui_patcher.py)
+
+[사용 순서]
+1. 도구를 실행하면 창이 뜹니다.
+2. 맨 위에서 설치 대상을 고릅니다:
+   - "Vita3K 에뮬레이터" : 경로를 자동으로 찾습니다. 그대로 [패치 시작].
+   - "실기 PS Vita"      : 원본 NinPri.cpk / NinPriPatch.cpk (+ DLC) 경로를 고르고,
+                          결과 저장 폴더를 정한 뒤 [패치 시작].
+3. 진행 로그가 끝나고 "완료" 창이 뜨면 성공입니다.
+
+[Vita3K 사용자]
+- 폰트/UI 텍스처가 안 보이면 Vita3K 설정에서 GPU > Import Textures 를 켜고 재시작하세요.
+- "원본으로 복원" 체크 후 [패치 시작] 하면 패치를 되돌립니다.
+
+[실기 사용자]
+- 생성된 결과 폴더 안의 ux0 폴더를 Vita 본체의 ux0:/ 아래에 그대로 복사하세요.
+- rePatch 플러그인이 활성화돼 있어야 합니다.
+- 결정 버튼을 ✕ 로 골랐다면 Vita 설정에서 Enter Button = Cross 로 맞추세요.
+- 실기 표시는 아직 베타입니다.
+"""
+
+
+def _add_tree_to_zip(archive, src_dir: Path, arc_prefix: str, pattern: str = "*") -> None:
+    if not src_dir.exists():
+        return
+    for p in sorted(src_dir.rglob(pattern)):
+        if not p.is_file() or p.name == ".DS_Store" or "__pycache__" in p.parts:
+            continue
+        rel = p.relative_to(src_dir).as_posix()
+        _write_zip_file(archive, p, f"{arc_prefix}/{rel}")
+
+
+def package_gui_bundle(version: str, main_cpk: Path, patch_cpk_path: Path) -> Path:
+    """통합 GUI 데이터 번들(zip). exe(dist/MuramasaPatcher.exe)가 있으면 함께 담는다.
+
+    레이아웃은 tools/gui_patcher.py 의 PKG_ROOT / VITA3K_ASSETS 탐색과 일치한다:
+      <root>/ {MuramasaPatcher.exe, tools/, translations/, textures/, fonts/,
+               vita3k/release+patches+textures/import}
+    """
+    DIST_DIR.mkdir(parents=True, exist_ok=True)
+    work = DIST_DIR / "_gui_patch_work"
+    if work.exists():
+        shutil.rmtree(work)
+    work.mkdir(parents=True)
+
+    zip_path = DIST_DIR / f"muramasa-kor-v{version}-patcher-windows.zip"
+    root = "muramasa-kor-patcher"
+
+    print("\n== Building unified GUI bundle ==")
+    main_patch = build_binary_patch(
+        MAIN_CPK, main_cpk,
+        work / "NinPri.cpk.patch.json", work / "NinPri.cpk.patch.bin",
+    )
+    update_patch = build_binary_patch(
+        PATCH_CPK, patch_cpk_path,
+        work / "NinPriPatch.cpk.patch.json", work / "NinPriPatch.cpk.patch.bin",
+    )
+    texture_files = collect_texture_files()
+
+    manifest = {
+        "name": "muramasa-kor",
+        "version": version,
+        "title_id": TITLE_ID,
+        "release_type": "vita3k-local-patcher",
+        "built_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "files": [
+            {
+                "name": "NinPri.cpk",
+                "install_path": f"ux0/app/{TITLE_ID}/NinPri.cpk",
+                "patch_file": "patches/NinPri.cpk.patch.json",
+                "blob_file": "patches/NinPri.cpk.patch.bin",
+                "source_sha256": main_patch["source_sha256"],
+                "source_size": main_patch["source_size"],
+                "target_sha256": main_patch["target_sha256"],
+                "target_size": main_patch["target_size"],
+                "changed_bytes": main_patch["changed_bytes"],
+                "chunk_count": len(main_patch["chunks"]),
+            },
+            {
+                "name": "NinPriPatch.cpk",
+                "install_path": f"ux0/app/{TITLE_ID}/NinPriPatch.cpk",
+                "patch_file": "patches/NinPriPatch.cpk.patch.json",
+                "blob_file": "patches/NinPriPatch.cpk.patch.bin",
+                "source_sha256": update_patch["source_sha256"],
+                "source_size": update_patch["source_size"],
+                "target_sha256": update_patch["target_sha256"],
+                "target_size": update_patch["target_size"],
+                "changed_bytes": update_patch["changed_bytes"],
+                "chunk_count": len(update_patch["chunks"]),
+            },
+        ],
+        "textures": {
+            "archive_path": f"textures/import/{TITLE_ID}",
+            "count": len(texture_files),
+        },
+    }
+
+    mac_command = (
+        "#!/bin/sh\n"
+        "cd \"$(dirname \"$0\")\"\n"
+        "if command -v python3 >/dev/null 2>&1; then\n"
+        "  python3 tools/gui_patcher.py\n"
+        "else\n"
+        "  echo \"Python 3 를 찾을 수 없습니다. Python 3.9+ 설치 후 다시 실행하세요.\"\n"
+        "  printf 'Press Enter to close...'; read _\n"
+        "fi\n"
+    )
+    linux_sh = (
+        "#!/bin/sh\n"
+        "cd \"$(dirname \"$0\")\"\n"
+        "python3 tools/gui_patcher.py\n"
+    )
+
+    exe_path = DIST_DIR / "MuramasaPatcher.exe"
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        if exe_path.exists():
+            _write_zip_file(archive, exe_path, f"{root}/MuramasaPatcher.exe", executable=True)
+        else:
+            _write_zip_text(
+                archive, f"{root}/[Windows] MuramasaPatcher.exe 는 별도 첨부.txt",
+                "Windows용 MuramasaPatcher.exe 는 GitHub Actions 빌드 산출물로 따로 첨부됩니다.\n"
+                "이 폴더에 MuramasaPatcher.exe 를 넣고 더블클릭하면 됩니다.\n",
+            )
+        _write_zip_text(archive, f"{root}/실행_Mac.command", mac_command, executable=True)
+        _write_zip_text(archive, f"{root}/실행_Linux.sh", linux_sh, executable=True)
+        _write_zip_text(archive, f"{root}/README_먼저읽기.txt", GUI_BUNDLE_README)
+        guide = PROJECT_DIR / "docs" / "실기-쉬운-설치-가이드.md"
+        if guide.exists():
+            _write_zip_file(archive, guide, f"{root}/실기-쉬운-설치-가이드.md")
+
+        # 실기 + GUI 코드/자산
+        for p in sorted((PROJECT_DIR / "tools").glob("*.py")):
+            _write_zip_file(archive, p, f"{root}/tools/{p.name}")
+        _add_tree_to_zip(archive, PROJECT_DIR / "tools" / "font_page_refs", f"{root}/tools/font_page_refs")
+        _add_tree_to_zip(archive, PROJECT_DIR / "translations", f"{root}/translations", "*.json")
+        _add_tree_to_zip(archive, PROJECT_DIR / "textures" / "kr" / "ui", f"{root}/textures/kr/ui", "*.png")
+        _add_tree_to_zip(archive, PROJECT_DIR / "textures" / "kr" / "ui_xbutton", f"{root}/textures/kr/ui_xbutton", "*.png")
+        _add_tree_to_zip(archive, PROJECT_DIR / "fonts", f"{root}/fonts")
+
+        # Vita3K 패치 자산 (vita3k/ 하위 — apply_release_patch 가 root 인자로 받음)
+        archive.writestr(f"{root}/vita3k/release/manifest.json",
+                         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+        archive.writestr(f"{root}/vita3k/release/version.txt", version + "\n")
+        for patch_file in sorted(work.iterdir()):
+            archive.write(patch_file, f"{root}/vita3k/patches/{patch_file.name}")
+        for texture in texture_files:
+            archive.write(texture, f"{root}/vita3k/textures/import/{TITLE_ID}/{texture.name}")
+
+    shutil.rmtree(work)
+    size_mb = zip_path.stat().st_size / 1e6
+    exe_note = "exe 포함" if exe_path.exists() else "exe 미포함(Actions 빌드 첨부 필요)"
+    print(f"  통합 GUI 번들: {zip_path} ({size_mb:.1f} MB, {exe_note})")
+    return zip_path
+
+
 def clean_dist() -> None:
     if DIST_DIR.exists():
         shutil.rmtree(DIST_DIR)
@@ -658,6 +827,8 @@ def main() -> int:
     parser.add_argument("--xbutton-only", action="store_true", help="✕ 버튼 추가팩만 빌드(본편 CPK 패치 생략).")
     parser.add_argument("--realhw-only", action="store_true", help="실기(real Vita) 패처 zip만 빌드.")
     parser.add_argument("--no-realhw", action="store_true", help="실기 패처 zip을 빌드하지 않음.")
+    parser.add_argument("--gui-bundle-only", action="store_true", help="통합 GUI 번들만 빌드(본편 zip 등 생략).")
+    parser.add_argument("--no-gui-bundle", action="store_true", help="통합 GUI 번들을 빌드하지 않음(기본 빌드에서 제외).")
     args = parser.parse_args()
 
     require_inputs()
@@ -679,11 +850,20 @@ def main() -> int:
         print(f"✕ button add-on: {addon}")
         return 0
 
+    if args.gui_bundle_only:
+        main_cpk, patch_cpk_path = build_cpks()
+        gui_bundle = package_gui_bundle(version, main_cpk, patch_cpk_path)
+        print("\n== Release artifacts ==")
+        print(f"Version: {version}")
+        print(f"통합 GUI 번들: {gui_bundle}")
+        return 0
+
     main_cpk, patch_cpk_path = build_cpks()
     zip_path, manifest_path, checksums_path = package_release(version, main_cpk, patch_cpk_path)
 
     addon = None if args.no_xbutton else package_button_variant_addon(version)
     realhw = None if args.no_realhw else package_realhw_patcher(version)
+    gui_bundle = None if args.no_gui_bundle else package_gui_bundle(version, main_cpk, patch_cpk_path)
 
     print("\n== Release artifacts ==")
     print(f"Version: {version}")
@@ -694,6 +874,8 @@ def main() -> int:
         print(f"✕ button add-on: {addon}")
     if realhw:
         print(f"실기 패처: {realhw}")
+    if gui_bundle:
+        print(f"통합 GUI 번들: {gui_bundle}")
     return 0
 
 
