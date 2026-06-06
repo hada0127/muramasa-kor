@@ -53,7 +53,10 @@
   → ③ **macOS GUI 실렌더 확인 완료**(python3 tools/gui_patcher.py, 창 정상, 2026-06-06).
 
 ### 배포 진행 (2026-06-06, 사용자 결정 "지금 push, 통합 번들 일원화")
-- **push 완료**(main 7c86288). 워크플로 등록됨. `workflow_dispatch`로 exe 빌드 수동 트리거 → 결과 확인 중.
+- **push 완료**(main 7c86288). 워크플로 등록됨. `workflow_dispatch`로 exe 빌드 → **✅ 성공**(run 27049713677,
+  1m24s, smoke test 통과). 산출물 `MuramasaPatcher.exe` 32MB PE32+ GUI x86-64. dist/에 배치(통합 번들용).
+  - 경고(무해): actions Node20 deprecation(2026-09 제거 예정), windows-latest→windows-2025 리다이렉트(06-15).
+    추후 actions 버전 업 검토(checkout@v4 등). 현재 빌드 정상.
 - **일원화 방향**(다음 릴리스 시 반영): 신규 사용자에겐 **통합 GUI 번들 하나**만 안내(README 최상단 GUI 섹션 완료).
   기존 vita3k-patcher/realhw zip은 고급/호환용으로 유지. 릴리스 노트도 GUI 우선 서술.
 - **정식 릴리스 TODO**(미정 시점): version 올림(v1.4.0?) → 태그 push로 build-windows-gui.yml 자동 exe 빌드 →
