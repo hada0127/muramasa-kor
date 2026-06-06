@@ -59,8 +59,13 @@
     추후 actions 버전 업 검토(checkout@v4 등). 현재 빌드 정상.
 - **일원화 방향**(다음 릴리스 시 반영): 신규 사용자에겐 **통합 GUI 번들 하나**만 안내(README 최상단 GUI 섹션 완료).
   기존 vita3k-patcher/realhw zip은 고급/호환용으로 유지. 릴리스 노트도 GUI 우선 서술.
-- **정식 릴리스 TODO**(미정 시점): version 올림(v1.4.0?) → 태그 push로 build-windows-gui.yml 자동 exe 빌드 →
-  메인테이너가 `build_release.py`(dist에 exe 두고)로 통합 번들(exe 포함) 빌드 → gh release 첨부.
+- **✅ v1.4.0 정식 릴리스 진행**(2026-06-06, 사용자 "진행해줘"):
+  - README "🖱️ 빠른 시작 GUI"를 **소개 직후 최상단**으로 이동(사용자 요청).
+  - version.json 1.4.0, release/NOTES_v1.4.0.md 작성.
+  - 워크플로 release 첨부 스텝 제거(아티팩트 전용) → 충돌 회피. publish_release.py에 통합번들+단독exe 첨부 추가.
+  - 전체 빌드(--keep-dist, dist에 exe 둔 채): vita3k zip + xbutton + realhw + **통합 GUI 번들(exe 포함 158M)** 생성.
+    통합 번들 내 MuramasaPatcher.exe 33MB 포함 확인.
+  - 다음: 커밋 → push → tag v1.4.0 push → publish_release.py --latest.
 
 ## 실기(real PS Vita) 패치 — v1.3.0 발행 완료, 실기 부팅 검증 대기 (2026-06-05)
 
