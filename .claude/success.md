@@ -1,5 +1,28 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-06-06] v1.4.1 — 통합 GUI 코드 리뷰(codex+agy) 반영
+
+v1.4.0 발행 직후 사용자 요청으로 codex+agy 병렬 코드 리뷰. 두 리뷰가 **상호 보완적**
+(codex=도메인 로직, agy=런타임 안전성)이라 합쳐서 실버그 3 + 개선 6 수정.
+
+### codex 발견(도메인)
+- **C1**: Vita3K 모드에서 ✕ 선택이 무시됨(run_vita3k가 enter_button 미수신). → ✕ 텍스처(ui_xbutton)
+  설치 추가. **실버그.**
+- **C2**: "원본 복원"이 CPK만 되돌리고 import 텍스처 잔존. → 우리가 깐 텍스처도 제거(번들 파일명 일치분만).
+- hiddenimports는 정적 재귀로 대체로 잡히나 ftx_encode/auto_font_import 명시 권장.
+
+### agy 발견(런타임 안전)
+- **H-2(실버그)**: console=False(--windowed)에서 sys.stdout/stderr=None → print 시 크래시.
+  → 시작 시 _NullStream 가드.
+- H-1: frozen PKG_ROOT를 exe 옆 우선(현재도 번들 동작하나 방어적). H-3: 진행 중 닫기 경고.
+  M-1: 드라이브 스캔 OSError 가드+자동탐지 비동기. M-2: DLC 경로 사전검증. L-2: 완료 안내 구체화.
+- ※ agy "H-3 원본 CPK 손상"은 **과장**으로 판정: Vita3K는 os.replace(원자적)+백업, 실기는 새 파일 출력 →
+  원본은 안전. 닫기 경고는 UX로만 채택.
+
+### 결과
+- 수정 전부 gui_patcher.py + spec 한정(엔진 무수정). py_compile·import·헬퍼·GUI 실렌더 검증.
+- v1.4.1 발행. 패치 내용은 v1.4.0과 동일, 설치 도구 안정화.
+
 ## [2026-06-06] v1.4.0 — 파이썬 없이 쓰는 통합 GUI 설치 도구
 
 설치(특히 실기)가 너무 어렵다는 사용자 피드백 대응. "파이썬 설치 없이 쉽게"가 목표.
