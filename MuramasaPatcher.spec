@@ -22,6 +22,11 @@ hidden = [
     "crilayla_compress",
     "nms_parser",
     "font_mapping",
+    # realhw 베이크가 간접적으로 끌고 오는 모듈(정적 재귀 분석 누락 대비)
+    "ftx_encode",
+    "ftx_extract",
+    "auto_font_import",
+    "hd_font_import",
 ]
 hidden += collect_submodules("PIL")
 hidden += collect_submodules("numpy")

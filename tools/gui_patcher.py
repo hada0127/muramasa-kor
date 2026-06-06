@@ -37,6 +37,25 @@ from pathlib import Path
 TITLE_ID = "PCSE00240"
 
 
+class _NullStream:
+    """console=False(PyInstaller --windowed) 빌드에서 sys.stdout/stderr 가 None 이라
+    어디선가 print/traceback 이 호출되면 'NoneType has no attribute write' 로 크래시한다.
+    앱 시작 시 None 스트림을 이 더미로 교체해 막는다."""
+
+    def write(self, *_a, **_k):
+        return 0
+
+    def flush(self):
+        pass
+
+
+def _ensure_std_streams():
+    if sys.stdout is None:
+        sys.stdout = _NullStream()
+    if sys.stderr is None:
+        sys.stderr = _NullStream()
+
+
 # ---------------------------------------------------------------------------
 # 패키지 루트 / 모듈 경로 해석 (frozen exe·소스 양쪽 지원)
 # ---------------------------------------------------------------------------
@@ -61,11 +80,20 @@ def _candidate_roots():
 
 
 def resolve_pkg_root():
-    """tools/ 와 translations/ 가 함께 있는 디렉토리를 패키지 루트로 본다."""
+    """tools/ 와 translations/ 가 함께 있는 디렉토리를 패키지 루트로 본다.
+
+    frozen exe(PyInstaller)는 데이터를 _MEIPASS(임시)가 아니라 exe 옆에 동봉한다.
+    따라서 frozen 이면 exe 옆을 우선 확인한다(데이터 폴더 = translations 유무로 판정)."""
+    if getattr(sys, "frozen", False):
+        exe_dir = Path(sys.executable).resolve().parent
+        if (exe_dir / "translations").is_dir():
+            return exe_dir
     for c in _candidate_roots():
         if (c / "tools").is_dir() and (c / "translations").is_dir():
             return c
-    # 폴백: tools/ 의 부모
+    # 폴백
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
     return Path(__file__).resolve().parent.parent
 
 
@@ -120,8 +148,12 @@ def detect_cpk_dir():
                 pass
 
     for d in candidates:
-        if _cpk_dir_has_game(d):
-            return d
+        try:
+            if _cpk_dir_has_game(d):
+                return d
+        except OSError:
+            # 빈 카드리더/오프라인 네트워크 드라이브 등 접근 실패는 건너뛴다
+            continue
     return None
 
 
@@ -171,7 +203,48 @@ def _run_capturing(log_queue, fn):
         sys.stdout, sys.stderr = old_out, old_err
 
 
-def run_vita3k(log_queue, content_root, restore=False):
+def _install_xbutton_textures(arp, content_root):
+    """Vita3K ✕ 버튼: ui_xbutton PNG를 import 폴더에 덮어쓴다(기존 ✕ 추가팩과 동일 방식)."""
+    import shutil
+    src = PKG_ROOT / "textures" / "kr" / "ui_xbutton"
+    if not src.is_dir():
+        return 0
+    pngs = sorted(src.glob("*.png"))
+    n = 0
+    for base in arp.texture_import_roots(content_root):
+        dest = base / "textures" / "import" / TITLE_ID
+        dest.mkdir(parents=True, exist_ok=True)
+        for png in pngs:
+            shutil.copy2(png, dest / png.name)
+            n += 1
+    return n
+
+
+def _remove_installed_textures(arp, asset_root, content_root):
+    """복원: 우리가 설치한 import 텍스처(한글 + ✕버튼)를 import 폴더에서 제거한다.
+
+    번들에 들어 있는 정확한 파일명만 지우므로, 사용자가 따로 둔 다른 텍스처는 건드리지 않는다.
+    (단 우리가 HD 베이스 위에 오버레이한 폰트 텍스처는 같은 이름이라 제거된다 — HD팩 사용자는 재설치 필요.)"""
+    names = set()
+    for d in (asset_root / "textures" / "import" / TITLE_ID,
+              PKG_ROOT / "textures" / "kr" / "ui_xbutton"):
+        if d.is_dir():
+            names |= {p.name for p in d.glob("*.png")}
+    n = 0
+    for base in arp.texture_import_roots(content_root):
+        dest = base / "textures" / "import" / TITLE_ID
+        for name in names:
+            f = dest / name
+            if f.exists():
+                try:
+                    f.unlink()
+                    n += 1
+                except OSError:
+                    pass
+    return n
+
+
+def run_vita3k(log_queue, content_root, restore=False, enter_button="circle"):
     def job():
         import apply_release_patch as arp
         root = VITA3K_ASSETS if VITA3K_ASSETS.is_dir() else PKG_ROOT
@@ -181,11 +254,16 @@ def run_vita3k(log_queue, content_root, restore=False):
         print(f"Vita3K content root: {cr}\n")
         if restore:
             n = arp.restore_originals(cr, manifest, False)
-            print(f"\n완료 — 원본 {n}개 복원.")
+            removed = _remove_installed_textures(arp, root, cr)
+            print(f"\n완료 — 원본 CPK {n}개 복원, import 텍스처 {removed}개 제거.")
+            print("(HD 텍스처 팩을 쓰던 분은 팩을 다시 설치하세요.)")
             return
         for entry in manifest["files"]:
             print(arp.apply_file_patch(root, cr, manifest, entry, False))
         print(arp.install_textures(root, cr, TITLE_ID, False))
+        if enter_button == "cross":
+            n = _install_xbutton_textures(arp, cr)
+            print(f"✕ 버튼 텍스처 {n}개 설치 — Vita3K 설정에서 Enter Button = Cross 로 맞추세요.")
         print("\n완료 — 폰트/UI 텍스처가 안 보이면 Vita3K 설정에서 GPU > Import Textures 를 켜세요.")
 
     threading.Thread(target=_run_capturing, args=(log_queue, job), daemon=True).start()
@@ -349,12 +427,18 @@ def launch_gui():
         log.configure(state="normal"); log.delete("1.0", "end"); log.configure(state="disabled")
         if mode_var.get() == "vita3k":
             _set_busy(True)
-            run_vita3k(log_queue, v3k_root.get().strip(), restore_var.get())
+            run_vita3k(log_queue, v3k_root.get().strip(), restore_var.get(), enter_var.get())
         else:
             ninpri = ninpri_var.get().strip()
             ninpripatch = ninpripatch_var.get().strip()
             if not (ninpri and os.path.exists(ninpri)) or not (ninpripatch and os.path.exists(ninpripatch)):
                 messagebox.showerror("경로 오류", "NinPri.cpk 와 NinPriPatch.cpk 경로를 올바르게 지정하세요.")
+                return
+            bad = [k for k, v in pack_vars.items()
+                   if v.get().strip() and not os.path.exists(v.get().strip())]
+            if bad:
+                messagebox.showerror("DLC 경로 오류",
+                                     f"{', '.join(bad)} 경로의 파일을 찾을 수 없습니다.\n경로를 고치거나 비워 두세요.")
                 return
             out_dir = out_var.get().strip() or str(Path.home() / "MuramasaPatchOut")
             packs = {k: (v.get().strip() or None) for k, v in pack_vars.items()}
@@ -369,8 +453,13 @@ def launch_gui():
                     _append(payload)
                 elif kind == "done":
                     _set_busy(False)
-                    _append("\n\n✅ 완료되었습니다.\n")
-                    messagebox.showinfo("완료", "패치가 완료되었습니다.")
+                    if mode_var.get() == "realhw":
+                        msg = ("패치 완료. 결과 저장 폴더 안의 'ux0' 폴더를 PS Vita 본체의 ux0:/ 아래에 "
+                               "그대로 복사한 뒤, rePatch 플러그인을 켜고 게임을 실행하세요.")
+                    else:
+                        msg = "패치 완료. Vita3K 를 실행하면 한글이 표시됩니다."
+                    _append("\n\n✅ " + msg + "\n")
+                    messagebox.showinfo("완료", msg)
                 elif kind == "error":
                     _set_busy(False)
                     _append("\n\n❌ 오류로 중단되었습니다. 위 로그를 확인하세요.\n")
@@ -379,14 +468,26 @@ def launch_gui():
             pass
         root.after(100, _poll)
 
+    def _on_close():
+        if busy["running"]:
+            if not messagebox.askyesno(
+                "종료 확인",
+                "패치가 진행 중입니다. 지금 닫으면 패치가 중단됩니다.\n그래도 닫을까요?",
+            ):
+                return
+        root.destroy()
+
+    root.protocol("WM_DELETE_WINDOW", _on_close)
     _switch()
-    _autodetect()
     root.after(100, _poll)
+    # 창을 먼저 띄운 뒤 탐지(드라이브 스캔 지연이 시작 프리징으로 보이지 않게)
+    root.after(50, _autodetect)
     root.mainloop()
 
 
 def main():
-    # 콘솔 인자 없이 더블클릭 실행을 기본 경로로 둔다.
+    # console=False(--windowed) 빌드에서 stdout/stderr=None 크래시 방지
+    _ensure_std_streams()
     try:
         launch_gui()
     except Exception:
