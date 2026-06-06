@@ -1,5 +1,36 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-06-06] v1.4.0 — 파이썬 없이 쓰는 통합 GUI 설치 도구
+
+설치(특히 실기)가 너무 어렵다는 사용자 피드백 대응. "파이썬 설치 없이 쉽게"가 목표.
+
+### codex + agy 협의
+동일 프롬프트 병렬 호출. **agy**: PyInstaller --onefile + Tkinter GUI **통합** 강력 권장, GitHub Actions
+멀티OS 크로스빌드, macOS Gatekeeper는 quarantine 해제 안내, 임베디드 파이썬도 대안. **codex**: 결론
+텍스트 미출력했으나 `PyInstaller cross compiling`·`Apple notarizing` 검색 정황 → 같은 방향. **수렴**:
+PyInstaller+GUI, 크로스빌드 불가→OS별 CI 빌드, macOS 무서명 마찰.
+
+### 사용자 결정
+① 실행파일은 **Windows exe만**(맥/리눅스는 python 스크립트 유지) — macOS 코드서명/Sequoia 마찰 회피.
+② 실기+Vita3K **하나의 GUI 통합**. ③ Tkinter. ④ 통합 번들로 일원화. ⑤ README 최상단에 GUI 안내.
+
+### 구현
+- `tools/gui_patcher.py` — Vita3K/실기 통합 Tkinter GUI. CPK·DLC 경로 자동탐지(검증됨), ○/✕,
+  threading+queue 비동기 로그, 진행바. 기존 두 엔진(`apply_release_patch`/`apply_realhw_patch.patch`)을
+  stdout 캡처로 함수 호출(새 로직 없음). macOS 실렌더 확인.
+- `MuramasaPatcher.spec` + `.github/workflows/build-windows-gui.yml` — exe는 **코드+런타임만**
+  (원본 CPK 불필요 → CI 빌드 가능). CI 빌드 성공(32MB PE32+ GUI, 1m24s, smoke test 통과).
+- `build_release.py` `package_gui_bundle()`/`--gui-bundle-only` — 통합 번들 zip(실기 자산+vita3k 델타+
+  gui+가이드, exe는 dist에 있으면 포함). 레이아웃이 PKG_ROOT/VITA3K_ASSETS 탐색과 일치(e2e 검증).
+- 문서: README 최상단 "🖱️ 빠른 시작 GUI" + `docs/실기-쉬운-설치-가이드.md`(rePatch~복사 단계별).
+- `publish_release.py` 통합번들+단독exe 첨부 추가.
+
+### 발행
+- v1.4.0 Latest 발행: https://github.com/hada0127/muramasa-kor/releases/tag/v1.4.0
+- 자산: 통합 GUI 번들(exe 포함 165MB) + 단독 MuramasaPatcher.exe(33MB) + 기존 vita3k/realhw/xbutton zip.
+- 패치 내용(번역·텍스처)은 v1.3.1과 동일 — 이번은 **설치 편의성** 릴리스.
+- 사용자 흐름: exe 더블클릭 → 모드 선택 → 자동탐지 경로 확인 → [패치 시작]. 파이썬·터미널·CLI 불필요.
+
 ## [2026-06-05] 액세서리 아이템명 시프트 버그 수정 (보스 드롭 "인왕의 팔찌→쌍나루코")
 
 제보자(짜옹이) 재제보 + 스크린샷으로 06-01 "패치 무관" 오판을 뒤집고 **실제 버그 확정·수정**.
