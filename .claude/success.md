@@ -2285,3 +2285,11 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - 빌드: `build_patch.py`(ASCII 검증 통과) → patch_patch scemsg.nms(content+_US) 갱신. `build_release.py` → dist v1.2.3 zip + ✕ 추가팩.
 - 버전: 1.2.2 → 1.2.3 (release/version.json, README.md).
 - 미검증: macOS라 Vita3K 인게임 육안 확인 불가(텍스트 치환만이라 위험 낮음).
+
+## [2026-06-07] 설치 설명서 더 쉽게 개편 (commit dc9c103)
+- 계기: DCInside retrogame/174988 "이미지 한장으로 설명" — v1.4.1 딸깍 통합 소개글 참고
+- README_먼저읽기.txt(build_release.py GUI_BUNDLE_README): 빽빽한 문단 → "딸깍 3단계" 박스,
+  에뮬(대부분 여기!)/실기 분기 명확화, "한글 안 보이면 Import Textures" 등 흔한 질문 상단 배치
+- docs/실기-쉬운-설치-가이드.md: 맨 위 3줄 TL;DR 추가
+- 검증: ast.parse 문법 OK, README 렌더 미리보기 확인
+- 미반영: 기존 dist v1.4.1 zip은 아직 옛 설명서 포함 → 다음 빌드(build_release) 시 자동 반영
