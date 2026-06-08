@@ -679,14 +679,22 @@ GUI_BUNDLE_README = """\
 
 
 ────────────────────────────────────────────────
- ② 설치 대상 선택 — 본인에 맞는 하나만 보세요
+ ② 원본 위치 — Vita3K 설치 폴더 (공통)
+────────────────────────────────────────────────
+
+  맨 위 "① 원본 위치 — Vita3K 설치 폴더" 가 자동으로 채워집니다.
+  (게임이 PC의 Vita3K에 설치돼 있어야 합니다. 거기에 복호화된 원본 CPK가 있습니다.)
+  비어 있으면 [찾아보기]로 Vita3K 폴더를 지정하세요.
+
+
+────────────────────────────────────────────────
+ ③ 설치 대상 선택 — 본인에 맞는 하나만 보세요
 ────────────────────────────────────────────────
 
   ■ 에뮬레이터(Vita3K)로 즐긴다   ← 대부분 여기!
      ─────────────────────────────────────
-      1. 맨 위에서 "Vita3K 에뮬레이터" 선택
-      2. 경로는 자동으로 채워집니다. 손댈 것 없음.
-      3. ③ [패치 시작] 클릭 → 끝.
+      1. "Vita3K 에뮬레이터 (이 PC)" 선택
+      2. [패치 시작] 클릭 → 끝. (위 Vita3K에 바로 설치됩니다.)
 
       ※ 한글/UI가 안 보이면? (가장 흔한 질문)
          Vita3K 설정 → GPU → "Import Textures" 켜고 재시작.
@@ -698,13 +706,13 @@ GUI_BUNDLE_README = """\
       실기는 준비물(rePatch 플러그인 등)과 복사 과정이 더 있습니다.
       이 폴더의  "실기-쉬운-설치-가이드.md"  를 그대로 따라 하세요.
 
-      요약: 원본 NinPri.cpk / NinPriPatch.cpk (+ DLC) 경로 지정
-            → [패치 시작] → 생긴 ux0 폴더를 Vita의 ux0:/ 에 복사
-            → 재부팅.
+      요약: (위 Vita3K 폴더의 복호화 CPK를 자동 사용) "실기 PS Vita" 선택
+            → 결과 저장 폴더 지정 → [패치 시작]
+            → 생긴 ux0 폴더를 Vita의 ux0:/ 에 복사 → 재부팅.
 
 
 ────────────────────────────────────────────────
- ③ [패치 시작] 클릭
+ ④ [패치 시작] 클릭
 ────────────────────────────────────────────────
 
   PC 성능에 따라 1~5분 걸립니다.
@@ -853,6 +861,8 @@ def package_gui_bundle(version: str, main_cpk: Path, patch_cpk_path: Path) -> Pa
         _add_tree_to_zip(archive, PROJECT_DIR / "translations", f"{root}/translations", "*.json")
         _add_tree_to_zip(archive, PROJECT_DIR / "textures" / "kr" / "ui", f"{root}/textures/kr/ui", "*.png")
         _add_tree_to_zip(archive, PROJECT_DIR / "textures" / "kr" / "ui_xbutton", f"{root}/textures/kr/ui_xbutton", "*.png")
+        # 폰트 텍스처도 가시적으로 동봉(실제 설치는 vita3k/textures/import 사용. 누락 오해 방지 — 이슈 #18)
+        _add_tree_to_zip(archive, PROJECT_DIR / "textures" / "kr" / "font", f"{root}/textures/kr/font", "*.png")
         _add_tree_to_zip(archive, PROJECT_DIR / "fonts", f"{root}/fonts")
 
         # Vita3K 패치 자산 (vita3k/ 하위 — apply_release_patch 가 root 인자로 받음)

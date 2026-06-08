@@ -27,7 +27,7 @@ HALFWIDTH_CODES = {0x20, 0x2E}
 # ASCII는 이 코드로 폴백 → 화면에 안 보임(엉뚱한 글리프 대신 공백).
 SPACE_SJIS = (0x8C, 0x6D)
 
-_PROJECT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_PROJECT = os.environ.get("MURAMASA_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _JP_MSG = os.path.join(_PROJECT, "translations", "jp_messages.json")
 _MAPPING = os.path.join(_PROJECT, "translations", "kr_sjis_mapping.json")
 

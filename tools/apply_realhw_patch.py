@@ -28,7 +28,9 @@ import glob
 import argparse
 import tempfile
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 데이터 루트: 프로즌 exe(PyInstaller)는 데이터를 exe 옆에 동봉하므로 __file__ 기준이
+# 빗나간다. gui_patcher 가 MURAMASA_ROOT 로 올바른 패키지 루트를 넘겨준다(없으면 소스 기준).
+REPO = os.environ.get('MURAMASA_ROOT') or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, 'tools'))
 
 import cpk_extract
@@ -77,7 +79,52 @@ def _xbutton_overrides():
     return ov
 
 
+def _check_decrypted_cpk(path, label):
+    """복호화된 CPK인지 최소 검증.
+
+    실기(real Vita) 본체의 앱 데이터는 PFS 암호화돼 직접 읽을 수 없고, 복호화된
+    CPK는 Vita3K가 게임 설치 시 풀어 둔 ux0/app·ux0/addcont 에만 존재한다.
+    여기서는 파일 선두 매직(b'CPK ')만 확인해, 엉뚱한/암호화 파일을 빨리 걸러낸다.
+    """
+    try:
+        with open(path, 'rb') as f:
+            sig = f.read(4)
+    except OSError as e:
+        raise SystemExit(f"[오류] {label} 를 열 수 없습니다: {path}\n  {e}")
+    if sig != b'CPK ':
+        raise SystemExit(
+            f"[오류] {label} 가 올바른 CPK가 아닙니다(매직 {sig!r}): {path}\n"
+            "  파일이 손상됐거나 엉뚱한 파일일 수 있습니다. 또한 실기 본체의 암호화 파일은\n"
+            "  쓸 수 없습니다 — Vita3K에 게임을 설치하면 ux0/app/PCSE00240/ 에 생기는\n"
+            "  복호화된 CPK를 사용하세요.")
+
+
+def resolve_cpks_from_vita3k(vita3k_root):
+    """Vita3K 설치 폴더(또는 content root)에서 복호화된 CPK 경로들을 해석.
+
+    반환: (ninpri, ninpripatch, {'Pack1': path|None, ...})
+    실기 패치 재료(복호화 CPK)의 신뢰 가능한 단일 출처는 Vita3K 설치본이다.
+    """
+    sys.path.insert(0, os.path.join(REPO, 'tools'))
+    import apply_release_patch as arp
+    content_root = arp.resolve_content_root(vita3k_root or None, TITLE_ID)
+    app_dir = content_root / 'ux0' / 'app' / TITLE_ID
+    ninpri = str(app_dir / 'NinPri.cpk')
+    ninpripatch = str(app_dir / 'NinPriPatch.cpk')
+    addcont = content_root / 'ux0' / 'addcont' / TITLE_ID
+    packs = {}
+    for key, (rel, _) in DLC_PACKS.items():
+        cand = addcont / rel
+        packs[key] = str(cand) if cand.exists() else None
+    return ninpri, ninpripatch, packs
+
+
 def patch(ninpri, ninpripatch, packs, out_dir, enter_button='circle'):
+    _check_decrypted_cpk(ninpri, 'NinPri.cpk')
+    _check_decrypted_cpk(ninpripatch, 'NinPriPatch.cpk')
+    for key, cpk in packs.items():
+        if cpk:
+            _check_decrypted_cpk(cpk, f'{key} ({os.path.basename(cpk)})')
     manifest = rb.load_manifest()
     overrides = _xbutton_overrides() if enter_button == 'cross' else None
     work = tempfile.mkdtemp(prefix='realhw_')
@@ -173,8 +220,10 @@ def _print_bake_summary(bake_log):
 
 def main():
     ap = argparse.ArgumentParser(description='Muramasa 실기(real Vita) 한글 패처')
-    ap.add_argument('--ninpri', required=True, help='원본 NinPri.cpk 경로')
-    ap.add_argument('--ninpripatch', required=True, help='원본 NinPriPatch.cpk 경로')
+    ap.add_argument('--vita3k', help='Vita3K 설치 폴더(또는 content root). 지정 시 복호화 CPK를 '
+                                     '여기서 자동 해석한다(권장). 실기 본체의 암호화 파일 대신 사용.')
+    ap.add_argument('--ninpri', help='원본 NinPri.cpk 경로 (--vita3k 미사용 시 필수)')
+    ap.add_argument('--ninpripatch', help='원본 NinPriPatch.cpk 경로 (--vita3k 미사용 시 필수)')
     ap.add_argument('--pack1', help='원본 NinPriPack1.cpk (DLC, 선택)')
     ap.add_argument('--pack2', help='원본 NinPriPack2.cpk (DLC, 선택)')
     ap.add_argument('--pack3', help='원본 NinPriPack3.cpk (DLC, 선택)')
@@ -184,12 +233,25 @@ def main():
                     help='결정 버튼 표시: circle(○, 기본) / cross(✕, Vita Enter=Cross 필요)')
     args = ap.parse_args()
 
-    for label, p in [('NinPri', args.ninpri), ('NinPriPatch', args.ninpripatch)]:
-        if not os.path.exists(p):
-            ap.error(f"{label} 파일 없음: {p}")
+    if args.vita3k:
+        if args.ninpri or args.ninpripatch:
+            ap.error("--vita3k 와 --ninpri/--ninpripatch 는 함께 쓸 수 없습니다. 하나만 지정하세요.")
+        try:
+            ninpri, ninpripatch, packs = resolve_cpks_from_vita3k(args.vita3k)
+        except FileNotFoundError:
+            ap.error(f"Vita3K 설치에서 게임을 찾지 못했습니다: {args.vita3k}\n"
+                     "  Vita3K 폴더가 맞는지, 게임이 설치돼 있는지 확인하세요.")
+    else:
+        if not (args.ninpri and args.ninpripatch):
+            ap.error("--vita3k 또는 (--ninpri 와 --ninpripatch)를 지정하세요.")
+        ninpri, ninpripatch = args.ninpri, args.ninpripatch
+        packs = {'Pack1': args.pack1, 'Pack2': args.pack2, 'Pack3': args.pack3, 'Pack4': args.pack4}
 
-    packs = {'Pack1': args.pack1, 'Pack2': args.pack2, 'Pack3': args.pack3, 'Pack4': args.pack4}
-    patch(args.ninpri, args.ninpripatch, packs, args.out, args.enter_button)
+    for label, p in [('NinPri', ninpri), ('NinPriPatch', ninpripatch)]:
+        if not os.path.exists(p):
+            ap.error(f"{label} 파일 없음: {p}\n  Vita3K에 게임이 설치돼 있는지 확인하세요.")
+
+    patch(ninpri, ninpripatch, packs, args.out, args.enter_button)
 
 
 if __name__ == '__main__':

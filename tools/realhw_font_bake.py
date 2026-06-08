@@ -28,7 +28,7 @@ import numpy as np
 import xxhash
 from PIL import Image
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get('MURAMASA_ROOT') or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'tools'))
 import ftx_encode as fe
 import auto_font_import as af

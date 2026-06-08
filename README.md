@@ -327,17 +327,18 @@ Vita3K판은 한글 텍스처/폰트를 hash 이름 PNG로 만들어 Vita3K의 �
 
 - **rePatch 플러그인** (실기에 설치·활성화). CPK 파일을 통째로 override 하는 방식이다.
 - Python 3.8+ 와 패키지: `pip install pillow numpy xxhash` *(GUI Windows exe를 쓰면 불필요)*
-- 본편 + 1.06 업데이트 + (선택)DLC가 설치된 상태의 원본 CPK
-  (본편 `NinPri.cpk`/`NinPriPatch.cpk`, DLC `NinPriPack1~4.cpk`)
+- **PC의 Vita3K에 게임이 설치돼 있어야 한다.** 패치는 *복호화된* 원본 CPK로 만드는데, 그 복호화본은
+  Vita3K가 게임 설치 시 풀어 둔 `ux0/app/PCSE00240/` (+ DLC는 `ux0/addcont/...`)에 있다. 실기 본체의
+  앱 데이터는 암호화돼 있어 그대로는 쓸 수 없다.
 
 ### 패치 생성·적용 (CLI — 수동/고급)
 
 ```bash
-# 1) 본인 원본 CPK로 패치 생성 (DLC 없으면 --pack* 생략)
+# 1) Vita3K 설치 폴더만 지정하면 복호화 CPK(본편+DLC)를 자동으로 찾아 패치 생성 (권장)
 python3 tools/apply_realhw_patch.py \
-  --ninpri  /경로/NinPri.cpk  --ninpripatch /경로/NinPriPatch.cpk \
-  --pack1 /경로/NinPriPack1.cpk --pack2 ... --pack3 ... --pack4 ... \
+  --vita3k "/path/to/Vita3K/Vita3K" \
   --out ./out
+#   (직접 경로를 주려면 --ninpri/--ninpripatch[/--pack1~4] 사용 — MaiDump 등으로 뽑은 복호화 CPK)
 
 # 2) 생성된 out/ux0/ 내용을 Vita의 ux0:/ 아래에 그대로 복사
 #    ux0:/rePatch/PCSE00240/NinPri.cpk, NinPriPatch.cpk

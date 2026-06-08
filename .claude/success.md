@@ -1,5 +1,38 @@
 # SUCCESS - 성공한 작업 기록
 
+## [2026-06-09] v1.4.2 — 실기 UX 개편 + 이슈 #17/#18
+
+사용자 제보(실기 미고려 + #17 느낌표 한자 재발 + #18 폰트 누락)를 codex+agy 협의로 해결.
+
+### 실기 설치 UX 개편 (입력=Vita3K 폴더, 출력 에뮬/실기 분기)
+- 핵심 사실: 실기 본체 앱데이터는 PFS 암호화 → 복호화 CPK는 PC의 Vita3K 설치본에만 존재. 기존 GUI
+  실기 모드는 CPK 파일을 직접 고르게 해 실기 사용자가 막혔다.
+- codex(=출력 (b)rePatch통일)/agy(=(a)app덮어쓰기) **발산** → 사용자+CLAUDE.md가 "Vita3K는 ux0/app에
+  베이크 CPK를 넣어야 로드(rePatch 미인식)"라 명시 → codex 전제 부정확. 공통: 입력 Vita3K폴더 단일화,
+  HD import는 에뮬 기본 유지(HD 사용자 보호). **최종**: 입력=Vita3K 폴더, 에뮬=기존 import(무변경),
+  실기=Vita3K 복호화 CPK 베이크→rePatch/reAddcont 폴더.
+- `apply_realhw_patch`: `resolve_cpks_from_vita3k` + `--vita3k` CLI + 복호화 매직 검증. `gui_patcher`:
+  공유 Vita3K 폴더 입력 + 에뮬/실기 토글(CPK 파일 선택 UI 제거). end-to-end 검증(본편+DLC4 베이크 OK).
+- docs(README CLI·실기 가이드·GUI 번들 README) 새 흐름으로 갱신("Vita에서 암호화 CPK 꺼내기"→"Vita3K
+  복호화본 사용").
+
+### 이슈 #17 (튜토리얼 '멋지다 !' 느낌표→한자, HD 사용자)
+- HD 폰트 `6706A53E`가 stale(ASCII 오버플로 local 960~1023 미오버레이, cell965=한자 菌). HD팩 base에서
+  현재 hd_font_import로 4096 재생성 → cell965='!' 확정. 비-HD 텍스처는 원래 정상.
+
+### 이슈 #18 (5F01AD86 누락 제보 — 실제론 누락 아님)
+- v1.3.0·v1.4.1 vita3k-patcher.zip 텍스처 88개 동일(5F01AD86 포함) 확인. GUI 번들 textures/kr/에 font
+  하위폴더가 안 보여 생긴 오해 → 번들에 textures/kr/font 가시 동봉.
+
+### codex+agy 엄격 리뷰 반영 (실버그 수정)
+- **GUI 멈춤 버그**: 백그라운드 스레드의 `SystemExit`(매직검증·build_patch ASCII검증)가 `except Exception`에
+  안 잡혀 done/error 미전송 → 진행바 영구 회전. `_run_capturing`에 `except SystemExit` 추가(단위검증).
+- **frozen exe 데이터 경로**: realhw 체인(apply_realhw_patch/realhw_bake/realhw_font_bake/font_mapping)이
+  `__file__` 기준이라 exe옆 데이터 못 찾음. `MURAMASA_ROOT` env(gui가 PKG_ROOT 주입, 가산적이라 소스/CLI
+  무영향)로 해소. **빈 입력 시 검증/실행 탐지 경로 일치**(SD 드라이브스캔 제거). CLI `--vita3k` 배타성·친절오류.
+- ⚠️ 메모: codex가 workspace-write로 리뷰 중 내 후속편집 일부를 롤백 → 재적용함. 차후 codex 리뷰는
+  read-only 보장 필요.
+
 ## [2026-06-06] v1.4.1 — 통합 GUI 코드 리뷰(codex+agy) 반영
 
 v1.4.0 발행 직후 사용자 요청으로 codex+agy 병렬 코드 리뷰. 두 리뷰가 **상호 보완적**

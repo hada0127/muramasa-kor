@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Muramasa Rebirth 한글 패치 — 통합 GUI 설치 도구 (Vita3K 에뮬레이터 + 실기 PS Vita).
 
-Tkinter 기반 단일 창. 사용자는 모드(에뮬레이터/실기)를 고르고, 자동 탐지된 경로를
-확인한 뒤 버튼 한 번으로 패치한다. CLI 인자를 직접 칠 필요가 없다.
+Tkinter 기반 단일 창. 입력은 항상 "Vita3K 설치 폴더"(복호화된 원본 CPK의 유일한
+출처) 하나이고, 출력만 에뮬레이터/실기로 분기한다. 실기 본체의 앱 데이터는 암호화돼
+직접 쓸 수 없으므로, 사용자는 CPK 파일을 직접 찾을 필요 없이 Vita3K 폴더만 고르면 된다.
+  - 에뮬레이터: 그 Vita3K에 바로 설치(바이너리 패치 + import 텍스처, HD 보존)
+  - 실기: 복호화 CPK에서 베이크 → ux0/rePatch + ux0/reAddcont 폴더 생성(→ Vita SD로 복사)
 
 - Windows: PyInstaller로 빌드한 MuramasaPatcher.exe 로 더블클릭 실행(파이썬 설치 불필요).
 - macOS/Linux: `python3 gui_patcher.py` (또는 동봉된 .command) 로 실행.
@@ -102,6 +105,9 @@ TOOLS_DIR = PKG_ROOT / "tools"
 if TOOLS_DIR.is_dir():
     sys.path.insert(0, str(TOOLS_DIR))
 VITA3K_ASSETS = PKG_ROOT / "vita3k"
+# 엔진 모듈(apply_realhw_patch/realhw_bake/realhw_font_bake/font_mapping)이 데이터 루트를
+# __file__ 기준으로 잡으면 frozen exe 에서 빗나간다. 올바른 패키지 루트를 env 로 넘긴다.
+os.environ["MURAMASA_ROOT"] = str(PKG_ROOT)
 
 
 # ---------------------------------------------------------------------------
@@ -120,59 +126,19 @@ def _cpk_dir_has_game(d: Path) -> bool:
     return (d / "NinPri.cpk").exists() and (d / "NinPriPatch.cpk").exists()
 
 
-def detect_cpk_dir():
-    """본편 CPK가 들어 있는 app/PCSE00240 폴더를 추정한다.
+def detect_cpk_dir_from_root(root_str: str):
+    """Vita3K 폴더(빈 값=기본 위치 자동)에서 app/PCSE00240 CPK 폴더를 해석.
 
-    1) Vita3K content root 아래 ux0/app/PCSE00240
-    2) (Windows) 마운트된 드라이브의 [ux0/]app/PCSE00240 (실기 SD카드 직결 대비)
-    """
-    candidates = []
-    cr = detect_vita3k_content_root()
-    if cr:
-        candidates.append(Path(cr) / "ux0" / "app" / TITLE_ID)
-
-    if sys.platform == "win32":
-        for letter in range(ord("D"), ord("Z") + 1):
-            drive = Path(f"{chr(letter)}:\\")
-            if drive.exists():
-                candidates.append(drive / "app" / TITLE_ID)
-                candidates.append(drive / "ux0" / "app" / TITLE_ID)
-    elif sys.platform == "darwin":
-        vols = Path("/Volumes")
-        if vols.is_dir():
-            try:
-                for vol in vols.iterdir():
-                    candidates.append(vol / "app" / TITLE_ID)
-                    candidates.append(vol / "ux0" / "app" / TITLE_ID)
-            except OSError:
-                pass
-
-    for d in candidates:
-        try:
-            if _cpk_dir_has_game(d):
-                return d
-        except OSError:
-            # 빈 카드리더/오프라인 네트워크 드라이브 등 접근 실패는 건너뛴다
-            continue
-    return None
-
-
-def detect_dlc_paths(cpk_dir: Path | None):
-    """cpk_dir 옆 addcont 또는 같은 위치에서 DLC Pack1~4 cpk를 추정."""
-    found = {f"Pack{i}": "" for i in range(1, 5)}
-    if cpk_dir is None:
-        return found
-    # ux0/app/PCSE00240 -> ux0/addcont/PCSE00240/OBOROMURAMASAPKn/NinPriPackn.cpk
+    실기 흐름은 '복호화된' CPK만 써야 하므로, 암호화된 실기 SD카드를 잡을 수 있는
+    드라이브 스캔을 쓰지 않고 Vita3K 설치(resolve_content_root)만 본다. 이 결과는
+    run_realhw 의 resolve_cpks_from_vita3k 와 동일 경로로 해석돼 항상 일치한다."""
     try:
-        ux0 = cpk_dir.parent.parent  # .../ux0
+        import apply_release_patch as arp
+        cr = arp.resolve_content_root(root_str or None, TITLE_ID)
     except Exception:
-        return found
-    addcont = ux0 / "addcont" / TITLE_ID
-    for i in range(1, 5):
-        cand = addcont / f"OBOROMURAMASAPK{i}" / f"NinPriPack{i}.cpk"
-        if cand.exists():
-            found[f"Pack{i}"] = str(cand)
-    return found
+        return None
+    d = Path(cr) / "ux0" / "app" / TITLE_ID
+    return d if _cpk_dir_has_game(d) else None
 
 
 # ---------------------------------------------------------------------------
@@ -196,6 +162,11 @@ def _run_capturing(log_queue, fn):
     try:
         fn()
         log_queue.put(("done", None))
+    except SystemExit as e:
+        # 엔진은 검증 실패 시 SystemExit(메시지)로 중단한다(예: ASCII 검증, CPK 매직).
+        # SystemExit 는 Exception 이 아니므로 따로 잡지 않으면 스레드가 조용히 죽어 GUI가 멈춘다.
+        log_queue.put(("log", "\n" + (str(e) or "작업이 중단되었습니다.") + "\n"))
+        log_queue.put(("error", None))
     except Exception:
         log_queue.put(("log", "\n" + traceback.format_exc()))
         log_queue.put(("error", None))
@@ -269,9 +240,16 @@ def run_vita3k(log_queue, content_root, restore=False, enter_button="circle"):
     threading.Thread(target=_run_capturing, args=(log_queue, job), daemon=True).start()
 
 
-def run_realhw(log_queue, ninpri, ninpripatch, packs, out_dir, enter_button):
+def run_realhw(log_queue, vita3k_root, out_dir, enter_button):
+    """실기용 파일 생성: Vita3K 설치 폴더의 복호화 CPK에서 베이크 → ux0/rePatch+reAddcont."""
     def job():
         import apply_realhw_patch as arh
+        ninpri, ninpripatch, packs = arh.resolve_cpks_from_vita3k(vita3k_root or None)
+        print("Vita3K 복호화 CPK 사용:")
+        print(f"  {ninpri}")
+        print(f"  {ninpripatch}")
+        found = [k for k, v in packs.items() if v]
+        print(f"  DLC: {', '.join(found) if found else '(없음 — 본편만 패치)'}\n")
         arh.patch(ninpri, ninpripatch, packs, out_dir, enter_button)
 
     threading.Thread(target=_run_capturing, args=(log_queue, job), daemon=True).start()
@@ -302,54 +280,52 @@ def launch_gui():
     ttk.Label(main, text="Muramasa Rebirth 한글 패치", font=("", 15, "bold")).pack(anchor="w")
     ttk.Label(
         main,
-        text="원본 CPK는 포함돼 있지 않습니다. 본인이 보유한 게임의 원본 파일로 패치를 만듭니다.",
+        text="원본 CPK는 포함돼 있지 않습니다. Vita3K에 설치된(=복호화된) 게임 파일로 패치를 만듭니다.",
         foreground="#555",
     ).pack(anchor="w", pady=(0, 8))
 
-    # --- 모드 선택 ---------------------------------------------------------
-    mode_box = ttk.LabelFrame(main, text="설치 대상", padding=8)
+    # --- 공유 입력: Vita3K 설치 폴더 ---------------------------------------
+    # 실기 본체의 앱 데이터는 암호화돼 직접 못 쓰므로, 복호화된 원본 CPK의 유일한
+    # 출처인 Vita3K 설치 폴더를 입력으로 받는다(에뮬/실기 공통).
+    src_box = ttk.LabelFrame(main, text="① 원본 위치 — Vita3K 설치 폴더", padding=8)
+    src_box.pack(fill="x", pady=4)
+    v3k_root = tk.StringVar()
+    rowv = ttk.Frame(src_box); rowv.pack(fill="x", pady=2)
+    ttk.Label(rowv, text="Vita3K 경로:", width=12).pack(side="left")
+    ttk.Entry(rowv, textvariable=v3k_root).pack(side="left", fill="x", expand=True, padx=4)
+    ttk.Button(rowv, text="찾아보기",
+               command=lambda: _pick_dir(v3k_root)).pack(side="left")
+    ttk.Label(src_box,
+              text="비워두면 자동으로 찾습니다. (게임이 Vita3K에 설치돼 있어야 합니다.)",
+              foreground="#777").pack(anchor="w")
+
+    # --- 설치 대상 선택 ----------------------------------------------------
+    mode_box = ttk.LabelFrame(main, text="② 설치 대상", padding=8)
     mode_box.pack(fill="x", pady=4)
-    ttk.Radiobutton(mode_box, text="Vita3K 에뮬레이터", value="vita3k",
+    ttk.Radiobutton(mode_box, text="Vita3K 에뮬레이터 (이 PC)", value="vita3k",
                     variable=mode_var, command=lambda: _switch()).pack(side="left", padx=6)
     ttk.Radiobutton(mode_box, text="실기 PS Vita (rePatch)", value="realhw",
                     variable=mode_var, command=lambda: _switch()).pack(side="left", padx=6)
 
-    # --- Vita3K 패널 -------------------------------------------------------
-    v3k = ttk.LabelFrame(main, text="Vita3K 설정", padding=8)
-    v3k_root = tk.StringVar()
-    rowv = ttk.Frame(v3k); rowv.pack(fill="x", pady=2)
-    ttk.Label(rowv, text="Vita3K 경로:", width=14).pack(side="left")
-    ttk.Entry(rowv, textvariable=v3k_root).pack(side="left", fill="x", expand=True, padx=4)
-    ttk.Button(rowv, text="찾아보기",
-               command=lambda: _pick_dir(v3k_root)).pack(side="left")
+    # --- Vita3K(에뮬) 패널 -------------------------------------------------
+    v3k = ttk.LabelFrame(main, text="Vita3K 에뮬레이터 설정", padding=8)
     ttk.Checkbutton(v3k, text="원본으로 복원 (패치 되돌리기)",
-                    variable=restore_var).pack(anchor="w", pady=(4, 0))
-    ttk.Label(v3k, text="비워두면 자동으로 찾습니다. 폰트/UI가 안 보이면 Vita3K의 Import Textures 옵션을 켜세요.",
+                    variable=restore_var).pack(anchor="w", pady=(0, 0))
+    ttk.Label(v3k, text="위 Vita3K 폴더에 바로 설치합니다. 폰트/UI가 안 보이면 Vita3K의 "
+                        "GPU > Import Textures 옵션을 켜고 재시작하세요.",
               foreground="#777").pack(anchor="w")
 
     # --- 실기 패널 ---------------------------------------------------------
     rhw = ttk.LabelFrame(main, text="실기 PS Vita 설정", padding=8)
-    ninpri_var = tk.StringVar()
-    ninpripatch_var = tk.StringVar()
-    pack_vars = {f"Pack{i}": tk.StringVar() for i in range(1, 5)}
     out_var = tk.StringVar()
-
-    def _file_row(parent, label, var, optional=False):
-        r = ttk.Frame(parent); r.pack(fill="x", pady=2)
-        ttk.Label(r, text=label, width=16).pack(side="left")
-        ttk.Entry(r, textvariable=var).pack(side="left", fill="x", expand=True, padx=4)
-        ttk.Button(r, text="찾아보기",
-                   command=lambda: _pick_file(var)).pack(side="left")
-
-    _file_row(rhw, "NinPri.cpk:", ninpri_var)
-    _file_row(rhw, "NinPriPatch.cpk:", ninpripatch_var)
-    for i in range(1, 5):
-        _file_row(rhw, f"DLC Pack{i} (선택):", pack_vars[f"Pack{i}"])
+    ttk.Label(rhw, text="원본 CPK는 위 Vita3K 폴더에서 자동으로 읽습니다 (복호화된 파일).",
+              foreground="#555").pack(anchor="w", pady=(0, 4))
     ro = ttk.Frame(rhw); ro.pack(fill="x", pady=2)
-    ttk.Label(ro, text="결과 저장 폴더:", width=16).pack(side="left")
+    ttk.Label(ro, text="결과 저장 폴더:", width=12).pack(side="left")
     ttk.Entry(ro, textvariable=out_var).pack(side="left", fill="x", expand=True, padx=4)
     ttk.Button(ro, text="찾아보기", command=lambda: _pick_dir(out_var)).pack(side="left")
-    ttk.Label(rhw, text="생성된 ux0 폴더를 Vita의 ux0:/ 아래에 복사하고 rePatch 플러그인을 켜세요.",
+    ttk.Label(rhw, text="생성된 ux0 폴더를 Vita의 ux0:/ 아래에 복사하고 rePatch 플러그인을 켜세요. "
+                        "(DLC는 Vita3K에 설치돼 있으면 함께 패치됩니다.)",
               foreground="#777").pack(anchor="w", pady=(2, 0))
 
     # --- 공통: 결정 버튼 ---------------------------------------------------
@@ -371,11 +347,6 @@ def launch_gui():
     log.pack(fill="both", expand=True, pady=(4, 0))
 
     # --- 헬퍼 -------------------------------------------------------------
-    def _pick_file(var):
-        p = filedialog.askopenfilename(filetypes=[("CPK", "*.cpk"), ("모든 파일", "*.*")])
-        if p:
-            var.set(p)
-
     def _pick_dir(var):
         p = filedialog.askdirectory()
         if p:
@@ -396,19 +367,11 @@ def launch_gui():
             rhw.pack(fill="x", pady=4, after=mode_box)
 
     def _autodetect():
-        # Vita3K
+        # Vita3K 설치 폴더(복호화 CPK의 출처) 자동 탐지
         cr = detect_vita3k_content_root()
         if cr:
             v3k_root.set(cr)
-        # 실기 CPK
-        cpk_dir = detect_cpk_dir()
-        if cpk_dir:
-            ninpri_var.set(str(cpk_dir / "NinPri.cpk"))
-            ninpripatch_var.set(str(cpk_dir / "NinPriPatch.cpk"))
-            for key, p in detect_dlc_paths(cpk_dir).items():
-                if p:
-                    pack_vars[key].set(p)
-        # 기본 출력 폴더 = 바탕화면/MuramasaPatchOut
+        # 실기 결과 기본 출력 폴더 = 바탕화면/MuramasaPatchOut
         desktop = Path.home() / "Desktop"
         base = desktop if desktop.is_dir() else Path.home()
         out_var.set(str(base / "MuramasaPatchOut"))
@@ -429,21 +392,18 @@ def launch_gui():
             _set_busy(True)
             run_vita3k(log_queue, v3k_root.get().strip(), restore_var.get(), enter_var.get())
         else:
-            ninpri = ninpri_var.get().strip()
-            ninpripatch = ninpripatch_var.get().strip()
-            if not (ninpri and os.path.exists(ninpri)) or not (ninpripatch and os.path.exists(ninpripatch)):
-                messagebox.showerror("경로 오류", "NinPri.cpk 와 NinPriPatch.cpk 경로를 올바르게 지정하세요.")
-                return
-            bad = [k for k, v in pack_vars.items()
-                   if v.get().strip() and not os.path.exists(v.get().strip())]
-            if bad:
-                messagebox.showerror("DLC 경로 오류",
-                                     f"{', '.join(bad)} 경로의 파일을 찾을 수 없습니다.\n경로를 고치거나 비워 두세요.")
+            # 실기: 위 Vita3K 폴더에서 복호화 CPK를 자동 해석한다.
+            cpk_dir = detect_cpk_dir_from_root(v3k_root.get().strip())
+            if cpk_dir is None:
+                messagebox.showerror(
+                    "원본을 찾지 못함",
+                    "Vita3K 설치 폴더에서 NinPri.cpk / NinPriPatch.cpk 를 찾지 못했습니다.\n"
+                    "① 위에서 올바른 Vita3K 폴더를 지정했는지,\n"
+                    "② 게임이 Vita3K에 설치돼 있는지 확인하세요.")
                 return
             out_dir = out_var.get().strip() or str(Path.home() / "MuramasaPatchOut")
-            packs = {k: (v.get().strip() or None) for k, v in pack_vars.items()}
             _set_busy(True)
-            run_realhw(log_queue, ninpri, ninpripatch, packs, out_dir, enter_var.get())
+            run_realhw(log_queue, v3k_root.get().strip(), out_dir, enter_var.get())
 
     def _poll():
         try:
