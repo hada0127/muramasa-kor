@@ -174,7 +174,7 @@ def _run_capturing(log_queue, fn):
         sys.stdout, sys.stderr = old_out, old_err
 
 
-def _install_xbutton_textures(arp, content_root):
+def _install_xbutton_textures(arp, content_root, user_path=None):
     """Vita3K ✕ 버튼: ui_xbutton PNG를 import 폴더에 덮어쓴다(기존 ✕ 추가팩과 동일 방식)."""
     import shutil
     src = PKG_ROOT / "textures" / "kr" / "ui_xbutton"
@@ -182,7 +182,7 @@ def _install_xbutton_textures(arp, content_root):
         return 0
     pngs = sorted(src.glob("*.png"))
     n = 0
-    for base in arp.texture_import_roots(content_root):
+    for base in arp.texture_import_roots(content_root, user_path):
         dest = base / "textures" / "import" / TITLE_ID
         dest.mkdir(parents=True, exist_ok=True)
         for png in pngs:
@@ -191,7 +191,7 @@ def _install_xbutton_textures(arp, content_root):
     return n
 
 
-def _remove_installed_textures(arp, asset_root, content_root):
+def _remove_installed_textures(arp, asset_root, content_root, user_path=None):
     """복원: 우리가 설치한 import 텍스처(한글 + ✕버튼)를 import 폴더에서 제거한다.
 
     번들에 들어 있는 정확한 파일명만 지우므로, 사용자가 따로 둔 다른 텍스처는 건드리지 않는다.
@@ -202,7 +202,7 @@ def _remove_installed_textures(arp, asset_root, content_root):
         if d.is_dir():
             names |= {p.name for p in d.glob("*.png")}
     n = 0
-    for base in arp.texture_import_roots(content_root):
+    for base in arp.texture_import_roots(content_root, user_path):
         dest = base / "textures" / "import" / TITLE_ID
         for name in names:
             f = dest / name
@@ -216,26 +216,33 @@ def _remove_installed_textures(arp, asset_root, content_root):
 
 
 def run_vita3k(log_queue, content_root, restore=False, enter_button="circle"):
+    user_path = content_root or None  # 사용자가 입력한 Vita3K 폴더(비면 자동)
+
     def job():
         import apply_release_patch as arp
         root = VITA3K_ASSETS if VITA3K_ASSETS.is_dir() else PKG_ROOT
         manifest = arp.load_manifest(root)
-        cr = arp.resolve_content_root(content_root or None, TITLE_ID)
+        cr = arp.resolve_content_root(user_path, TITLE_ID)
         print(f"Muramasa Korean Patch v{manifest['version']}")
-        print(f"Vita3K content root: {cr}\n")
+        print(f"Vita3K 게임(ux0) 폴더: {cr}\n")
         if restore:
             n = arp.restore_originals(cr, manifest, False)
-            removed = _remove_installed_textures(arp, root, cr)
+            removed = _remove_installed_textures(arp, root, cr, user_path)
             print(f"\n완료 — 원본 CPK {n}개 복원, import 텍스처 {removed}개 제거.")
             print("(HD 텍스처 팩을 쓰던 분은 팩을 다시 설치하세요.)")
             return
         for entry in manifest["files"]:
             print(arp.apply_file_patch(root, cr, manifest, entry, False))
-        print(arp.install_textures(root, cr, TITLE_ID, False))
+        print(arp.install_textures(root, cr, TITLE_ID, False, user_path))
         if enter_button == "cross":
-            n = _install_xbutton_textures(arp, cr)
+            n = _install_xbutton_textures(arp, cr, user_path)
             print(f"✕ 버튼 텍스처 {n}개 설치 — Vita3K 설정에서 Enter Button = Cross 로 맞추세요.")
         print("\n완료 — 폰트/UI 텍스처가 안 보이면 Vita3K 설정에서 GPU > Import Textures 를 켜세요.")
+        if sys.platform == "win32" and not user_path:
+            print(
+                "\n[안내] Windows Vita3K 는 텍스처를 보통 'Vita3K.exe 가 있는 폴더'에서 읽습니다.\n"
+                "  게임은 한글이 나오는데 UI/폰트만 안 바뀌면, 위 'Vita3K 경로'에\n"
+                "  Vita3K.exe 가 있는 폴더를 지정하고 다시 '패치 시작' 을 누르세요.")
 
     threading.Thread(target=_run_capturing, args=(log_queue, job), daemon=True).start()
 
@@ -296,8 +303,10 @@ def launch_gui():
     ttk.Button(rowv, text="찾아보기",
                command=lambda: _pick_dir(v3k_root)).pack(side="left")
     ttk.Label(src_box,
-              text="비워두면 자동으로 찾습니다. (게임이 Vita3K에 설치돼 있어야 합니다.)",
-              foreground="#777").pack(anchor="w")
+              text="비워두면 자동으로 찾습니다. (게임이 Vita3K에 설치돼 있어야 합니다.)\n"
+                   "※ 한글이 일부만 적용되면 Vita3K.exe 가 있는 폴더를 직접 지정하세요 "
+                   "— Windows 는 텍스처를 exe 폴더에서 읽습니다.",
+              foreground="#777", justify="left").pack(anchor="w")
 
     # --- 설치 대상 선택 ----------------------------------------------------
     mode_box = ttk.LabelFrame(main, text="② 설치 대상", padding=8)

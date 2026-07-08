@@ -223,6 +223,21 @@
 ---
 새 작업·이슈가 생기면 이 파일에 추가하고, 끝나면 success.md로 옮긴다.
 
+## [2026-07-09] 이슈 #19 — 사용자별 Vita3K 경로 차이로 텍스처 미적용
+- 증상: 자동 패처가 CPK는 %APPDATA%(Roaming) VitaFS에 정상 패치했으나, textures/import 가
+  실제 에뮬레이터가 읽는 폴더와 달라 한글 텍스처 미적용. 사용자가 수동으로 Vita3K.exe 폴더에
+  textures/import/PCSE00240 복사해야 해결됨.
+- codex+agy 협의 결론:
+  - agy: config.yml `pref-path`(신빌드 `vita_fs_path`) 가 데이터 루트. portable/ 폴더 우선.
+  - codex(핵심): Vita3K 는 VitaFS 루트(ux0/CPK=SDL pref path)와 shared 루트(textures/import·
+    config.yml·cache=SDL base path)가 **다를 수 있음**. Windows 일반 빌드는 shared=Vita3K.exe 폴더,
+    VitaFS=%APPDATA%. → 두 CLI 발산했고, codex 모델이 증상과 정확히 일치.
+  - 최종 결정: (1) VitaFS 는 config.yml pref-path/vita_fs_path + portable + 플랫폼 기본으로 해석,
+    (2) 텍스처는 알아낼 수 있는 모든 shared 루트 후보(content_root±fs/부모, config.yml 폴더,
+    사용자가 준 Vita3K.exe/데이터 폴더, portable)에 전부 설치(shotgun), (3) GUI 입력을
+    "Vita3K.exe 폴더도 됨"으로 안내 + 설치 후 어디에 넣었는지/안 보이면 exe 폴더 지정 안내.
+- 적용: tools/apply_release_patch.py, tools/apply_xbutton_patch.py, tools/gui_patcher.py
+
 ## [2026-06-07] 설명서 더 쉽게 개선 (DCInside v1.4.1 소개글 참고)
 - 참고: gall.dcinside retrogame/174988 — "이미지 한장으로 설명", 핵심 "딸깍 통합으로 누구나 패치"
 - 대상:

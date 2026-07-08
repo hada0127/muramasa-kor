@@ -2326,3 +2326,18 @@ b2_offset = b2 - 0x41 (b2 >= 0x80, 0x7F 스킵)
 - docs/실기-쉬운-설치-가이드.md: 맨 위 3줄 TL;DR 추가
 - 검증: ast.parse 문법 OK, README 렌더 미리보기 확인
 - 미반영: 기존 dist v1.4.1 zip은 아직 옛 설명서 포함 → 다음 빌드(build_release) 시 자동 반영
+
+## [2026-07-09] 이슈 #19 — 사용자별 Vita3K 경로 차이 대응(텍스처 미적용 해결)
+- 문제: 자동 패처가 CPK는 %APPDATA%(Roaming) VitaFS에 정상 패치했으나 textures/import 가
+  실제 에뮬레이터가 읽는 폴더와 달라 한글 텍스처 미적용(사용자가 수동으로 Vita3K.exe 폴더에 복사해야 됐음).
+- codex+agy 협의: Vita3K 는 VitaFS 루트(ux0/CPK)와 shared 루트(textures/import·config.yml)가
+  다를 수 있음(Windows 일반 빌드: shared=Vita3K.exe 폴더, VitaFS=%APPDATA%). codex 모델이 증상과 일치.
+- 적용:
+  - `apply_release_patch.py`/`apply_xbutton_patch.py`: config.yml `pref-path`/`vita_fs_path` 파싱,
+    portable + 플랫폼 기본 후보로 VitaFS(CPK) 해석. 텍스처는 알아낼 수 있는 모든 shared 루트
+    (content_root±fs/부모, config.yml 폴더, 사용자 지정 폴더, 실행중 프로세스 경로, 흔한 설치 위치)에
+    전부 설치(shotgun). `_looks_like_vita3k_root` 로 엉뚱한 폴더 배제.
+  - `gui_patcher.py`: 입력 폴더를 텍스처 설치에 함께 전달, 안내문에 "Vita3K.exe 폴더 지정" 추가,
+    Windows 자동모드에서 exe 폴더 미탐지 시 재지정 안내 출력.
+- 검증: Mac 실기 + Windows 분리루트 픽스처로 확인 — 사용자가 exe 폴더 지정 시 %APPDATA%와 exe 폴더
+  양쪽 텍스처 커버, idempotent 재실행 0카피. 테스트 오염 정리 완료.

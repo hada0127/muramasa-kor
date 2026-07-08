@@ -32,27 +32,91 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def default_pref_candidates() -> list[Path]:
+# Vita3K 데이터 루트 탐지 — apply_release_patch.py 와 동일 로직(독립 배포용 복제). 이슈 #19.
+_CONFIG_DATA_KEYS = ("pref-path", "vita_fs_path")
+
+
+def _dedup_paths(paths) -> list[Path]:
+    seen: set[Path] = set()
+    unique: list[Path] = []
+    for path in paths:
+        try:
+            path = path.expanduser()
+        except Exception:
+            pass
+        if path not in seen:
+            seen.add(path)
+            unique.append(path)
+    return unique
+
+
+def parse_config_data_root(config_file: Path) -> Path | None:
+    try:
+        text = config_file.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+    for line in text.splitlines():
+        stripped = line.strip()
+        for key in _CONFIG_DATA_KEYS:
+            if stripped.startswith(key + ":"):
+                value = stripped[len(key) + 1:].strip().strip('"').strip("'")
+                if not value or value in (".", "./", ".\\"):
+                    return config_file.parent
+                path = Path(value).expanduser()
+                if not path.is_absolute():
+                    path = config_file.parent / path
+                try:
+                    return path.resolve()
+                except OSError:
+                    return path
+    return None
+
+
+def platform_config_dirs() -> list[Path]:
+    dirs: list[Path] = []
+    if sys.platform == "win32":
+        for env in ("APPDATA", "LOCALAPPDATA"):
+            base = os.environ.get(env)
+            if base:
+                dirs.append(Path(base) / "Vita3K" / "Vita3K")
+    elif sys.platform == "darwin":
+        support = Path.home() / "Library" / "Application Support" / "Vita3K"
+        dirs += [support / "Vita3K", support]
+    else:
+        dirs += [
+            Path.home() / ".local" / "share" / "Vita3K" / "Vita3K",
+            Path.home() / ".local" / "share" / "Vita3K",
+            Path.home() / ".config" / "Vita3K",
+        ]
+    return dirs
+
+
+def user_path_dirs(user_path: str | None) -> list[Path]:
+    if not user_path:
+        return []
+    base = Path(user_path).expanduser()
+    return [base, base / "portable", base / "Vita3K", base / "Vita3K" / "Vita3K", base.parent]
+
+
+def config_search_dirs(user_path: str | None) -> list[Path]:
+    return _dedup_paths(user_path_dirs(user_path) + platform_config_dirs())
+
+
+def default_pref_candidates(user_path: str | None = None) -> list[Path]:
     candidates: list[Path] = []
     env_pref = os.environ.get("VITA3K_PREF_PATH")
     if env_pref:
         candidates.append(Path(env_pref).expanduser())
-    if sys.platform == "win32":
-        appdata = os.environ.get("APPDATA")
-        if appdata:
-            candidates.append(Path(appdata) / "Vita3K" / "Vita3K")
-    elif sys.platform == "darwin":
-        candidates.append(Path.home() / "Library" / "Application Support" / "Vita3K" / "Vita3K")
-    else:
-        candidates.append(Path.home() / ".local" / "share" / "Vita3K")
-    seen: set[Path] = set()
-    unique: list[Path] = []
-    for c in candidates:
-        r = c.expanduser()
-        if r not in seen:
-            unique.append(r)
-            seen.add(r)
-    return unique
+    for cfg_dir in config_search_dirs(user_path):
+        cfg = cfg_dir / "config.yml"
+        if cfg.is_file():
+            data_root = parse_config_data_root(cfg)
+            if data_root:
+                candidates.append(data_root)
+            candidates.append(cfg_dir)
+    candidates += user_path_dirs(user_path)
+    candidates += platform_config_dirs()
+    return _dedup_paths(candidates)
 
 
 def content_root_candidates(paths: list[Path]) -> list[Path]:
@@ -62,17 +126,11 @@ def content_root_candidates(paths: list[Path]) -> list[Path]:
         candidates.append(expanded)
         if expanded.name != "fs":
             candidates.append(expanded / "fs")
-    seen: set[Path] = set()
-    unique: list[Path] = []
-    for c in candidates:
-        if c not in seen:
-            unique.append(c)
-            seen.add(c)
-    return unique
+    return _dedup_paths(candidates)
 
 
 def resolve_content_root(arg_path: str | None, title_id: str) -> Path:
-    raw = [Path(arg_path).expanduser()] if arg_path else default_pref_candidates()
+    raw = default_pref_candidates(arg_path)
     candidates = content_root_candidates(raw)
     installed = [p for p in candidates if (p / "ux0" / "app" / title_id / "NinPri.cpk").exists()]
     if installed:
@@ -86,17 +144,97 @@ def resolve_content_root(arg_path: str | None, title_id: str) -> Path:
     )
 
 
-def texture_import_roots(content_root: Path) -> list[Path]:
-    roots = [content_root]
+def _looks_like_vita3k_root(path: Path) -> bool:
+    try:
+        return path.is_dir() and any((path / name).exists()
+                                     for name in ("config.yml", "ux0", "textures"))
+    except OSError:
+        return False
+
+
+def _running_vita3k_dirs() -> list[Path]:
+    dirs: list[Path] = []
+    import subprocess
+    if sys.platform == "win32":
+        cmds = [
+            ["wmic", "process", "where", "name='Vita3K.exe'", "get", "ExecutablePath"],
+            ["powershell", "-NoProfile", "-Command",
+             "Get-CimInstance Win32_Process -Filter \"name='Vita3K.exe'\" "
+             "| Select-Object -ExpandProperty ExecutablePath"],
+        ]
+        for cmd in cmds:
+            try:
+                out = subprocess.run(cmd, capture_output=True, text=True, timeout=10).stdout
+            except Exception:
+                continue
+            for line in out.splitlines():
+                line = line.strip()
+                if line.lower().endswith("vita3k.exe"):
+                    dirs.append(Path(line).parent)
+            if dirs:
+                break
+    else:
+        try:
+            out = subprocess.run(["pgrep", "-af", "Vita3K"], capture_output=True, text=True, timeout=8).stdout
+            for line in out.splitlines():
+                for token in line.split():
+                    if token.endswith("Vita3K") or token.endswith("Vita3K.exe"):
+                        p = Path(token)
+                        if p.exists():
+                            dirs.append(p.parent)
+        except Exception:
+            pass
+    return dirs
+
+
+def _common_vita3k_install_dirs() -> list[Path]:
+    guesses: list[Path] = []
+    if sys.platform == "win32":
+        home = Path.home()
+        env = os.environ
+        bases = [
+            env.get("LOCALAPPDATA"), env.get("PROGRAMFILES"), env.get("PROGRAMFILES(X86)"),
+            str(home), str(home / "Desktop"), str(home / "Downloads"), str(home / "Documents"),
+            "C:/", "D:/",
+        ]
+        names = ["Vita3K", "vita3k", "Programs/Vita3K", "emulators/Vita3K", "Emulators/Vita3K"]
+        for base in filter(None, bases):
+            for name in names:
+                guesses.append(Path(base) / name)
+    result: list[Path] = []
+    for d in _dedup_paths(guesses):
+        try:
+            if (d / "Vita3K.exe").exists():
+                result.append(d)
+        except OSError:
+            pass
+    return result
+
+
+def texture_import_roots(content_root: Path, user_path: str | None = None) -> list[Path]:
+    roots: list[Path] = [content_root]
     if content_root.name == "fs":
         roots.append(content_root.parent)
-    seen: set[Path] = set()
-    unique: list[Path] = []
-    for r in roots:
-        if r not in seen:
-            unique.append(r)
-            seen.add(r)
-    return unique
+    else:
+        roots.append(content_root / "fs")
+        roots.append(content_root.parent)
+    for cfg_dir in config_search_dirs(user_path):
+        roots.append(cfg_dir)
+        cfg = cfg_dir / "config.yml"
+        if cfg.is_file():
+            data_root = parse_config_data_root(cfg)
+            if data_root:
+                roots.append(data_root)
+                if data_root.name == "fs":
+                    roots.append(data_root.parent)
+    roots += user_path_dirs(user_path)
+    roots += _running_vita3k_dirs()
+    roots += _common_vita3k_install_dirs()
+    result: list[Path] = []
+    for candidate in _dedup_paths(roots):
+        if candidate == content_root or _looks_like_vita3k_root(candidate):
+            result.append(candidate)
+    return result
 
 
 def load_manifest(root: Path) -> dict:
@@ -106,16 +244,18 @@ def load_manifest(root: Path) -> dict:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
-def copy_textures(root: Path, content_root: Path, title_id: str, src_subdir: str, dry_run: bool) -> str:
+def copy_textures(root: Path, content_root: Path, title_id: str, src_subdir: str, dry_run: bool,
+                  user_path: str | None = None) -> str:
     source_dir = root / src_subdir
     files = sorted(source_dir.glob("*.png"))
     if not files:
         return f"SKIP  {src_subdir}에 텍스처 없음"
+    dests = texture_import_roots(content_root, user_path)
     if dry_run:
-        dests = ", ".join(str(b / "textures" / "import" / title_id) for b in texture_import_roots(content_root))
-        return f"WOULD copy {len(files)} textures ({src_subdir}) -> {dests}"
+        listed = ", ".join(str(b / "textures" / "import" / title_id) for b in dests)
+        return f"WOULD copy {len(files)} textures ({src_subdir}) -> {listed}"
     parts = []
-    for base in texture_import_roots(content_root):
+    for base in dests:
         dest_dir = base / "textures" / "import" / title_id
         dest_dir.mkdir(parents=True, exist_ok=True)
         copied = 0
@@ -154,7 +294,7 @@ def main() -> int:
     print(f"Vita3K content root: {content_root}")
 
     subdir = "restore-o" if args.restore else "xbutton"
-    print(copy_textures(root, content_root, title_id, subdir, args.dry_run))
+    print(copy_textures(root, content_root, title_id, subdir, args.dry_run, args.vita3k))
 
     if args.restore:
         print("완료. ○ 버튼 텍스처로 되돌렸습니다.")
