@@ -494,7 +494,14 @@ def build_korean_patch(base_dir=None, translations_dir=None):
     #         NOT the broken small extraction (NinPriPatch).
     # Other files: use NinPriPatch originals as before.
     patch_files = {}
-    for name in ['scemsg', 'sysmsg', '_itemdata', 'scename', 'staffroll', 'lyricmsg']:
+    # NOTE: 'staffroll' is intentionally NOT regenerated here. The NinPriPatch
+    # extraction only carries a 203-entry partial staff roll, so rebuilding it
+    # would truncate/break the in-game roll (which the base NinPri renders with
+    # 443 entries). Commit 0c1f7bd manually committed the full 443-entry
+    # Japanese staffroll into patch_patch/{,_US/}msgsheet/staffroll.nms as an
+    # override; skipping it here keeps that committed file authoritative instead
+    # of clobbering it on every build.
+    for name in ['scemsg', 'sysmsg', '_itemdata', 'scename', 'lyricmsg']:
         # scemsg: use full extraction from NinPriPatch (update patch overrides base)
         if name == 'scemsg':
             src_jp = 'extracted/NinPriPatch_full/msgsheet/scemsg_full.nms'
